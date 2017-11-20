@@ -418,7 +418,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="loc-info text-right hidden-xs hidden-sm">
-                                <h3 class="loc-info-title"><img src="img/flags/32/fr.png" alt="Image Alternative text" title="Image Title" />Paris</h3>
+                                <h3 class="loc-info-title"><img src="{{url('img/flags/32/fr.png')}}" alt="Image Alternative text" title="Image Title" />Paris</h3>
                                 <p class="loc-info-weather"><span class="loc-info-weather-num">+31</span><i class="im im-rain loc-info-weather-icon"></i>
                                 </p>
                                 <ul class="loc-info-list">
@@ -513,7 +513,7 @@
                     <div class="thumb">
                         <header class="thumb-header">
                             <a class="hover-img curved" href="#">
-                                <img src="img/the_journey_home_400x300.jpg" alt="Image Alternative text" title="the journey home" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                                <img src="{{url('img/the_journey_home_400x300.jpg')}}" alt="Image Alternative text" title="the journey home" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
                             </a>
                         </header>
                         <div class="thumb-caption">
@@ -526,7 +526,7 @@
                     <div class="thumb">
                         <header class="thumb-header">
                             <a class="hover-img curved" href="#">
-                                <img src="img/upper_lake_in_new_york_central_park_800x600.jpg" alt="Image Alternative text" title="Upper Lake in New York Central Park" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                                <img src="{{url('img/upper_lake_in_new_york_central_park_800x600.jpg')}}" alt="Image Alternative text" title="Upper Lake in New York Central Park" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
                             </a>
                         </header>
                         <div class="thumb-caption">
@@ -539,7 +539,7 @@
                     <div class="thumb">
                         <header class="thumb-header">
                             <a class="hover-img curved" href="#">
-                                <img src="img/people_on_the_beach_800x600.jpg" alt="Image Alternative text" title="people on the beach" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                                <img src="{{url('img/people_on_the_beach_800x600.jpg')}}" alt="Image Alternative text" title="people on the beach" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
                             </a>
                         </header>
                         <div class="thumb-caption">
@@ -552,7 +552,7 @@
                     <div class="thumb">
                         <header class="thumb-header">
                             <a class="hover-img curved" href="#">
-                                <img src="img/lack_of_blue_depresses_me_800x600.jpg" alt="Image Alternative text" title="lack of blue depresses me" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                                <img src="{{url('img/lack_of_blue_depresses_me_800x600.jpg')}}" alt="Image Alternative text" title="lack of blue depresses me" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
                             </a>
                         </header>
                         <div class="thumb-caption">
