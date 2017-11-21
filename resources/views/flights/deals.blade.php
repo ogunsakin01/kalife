@@ -9,19 +9,7 @@
         <h3 class="booking-title">530 things to do in New York on Mar 22 - Apr 17</h3>
         <div class="row">
             <div class="col-md-12">
-                {{--<div class="nav-drop booking-sort">--}}
-                    {{--<h5 class="booking-sort-title"><a href="#">Sort: Ranking<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a></h5>--}}
-                    {{--<ul class="nav-drop-menu">--}}
-                        {{--<li><a href="#">Name (A-Z)</a>--}}
-                        {{--</li>--}}
-                        {{--<li><a href="#">Name (Z-A)</a>--}}
-                        {{--</li>--}}
-                        {{--<li><a href="#">Number of Reviews</a>--}}
-                        {{--</li>--}}
-                        {{--<li><a href="#">Just Added</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
+                {{--php artisian serve--}}
                 <div class="row row-wrap page-content">
                     <div class="col-md-3 page-content-1">
                         <div class="thumb">

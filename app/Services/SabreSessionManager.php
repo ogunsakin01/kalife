@@ -42,9 +42,14 @@ class SabreSessionManager{
     }
 
     public function sessionInfo($plainResponse){
-     $result_object = $this->sabreConfig->mungXmlToObject($plainResponse);
-     $session_token = '';
-     $session_message_id = '';
+       return $this->sabreConfig->mungXmlToObject($plainResponse);
+    }
+
+    public function sessionCreateInfo($plainResponse){
+     $result_object = $this->sessionInfo($plainResponse);
+//     return $result_object;
+     $session_token = $result_object['soap-env_Header']['wsse_Security']['wsse_BinarySecurityToken'];
+     $session_message_id = $result_object['soap-env_Header']['eb_MessageHeader']['eb_MessageData']['eb_MessageId'];
      return array(
          'session_token' => $session_token,
          'message_id'    => $session_message_id
@@ -52,14 +57,16 @@ class SabreSessionManager{
     }
 
     public function createSession(){
-      return $this->sessionInfo($this->sessionCall($this->sabreSessionXml->sessionCreateHeader(),$this->sabreSessionXml->sessionCreateBody(),'CreateSessionRQ'));
+      return $this->sessionCreateInfo($this->sessionCall($this->sabreSessionXml->sessionCreateHeader(),$this->sabreSessionXml->sessionCreateBody(),'CreateSessionRQ'));
     }
 
-    public function refreshSession(){
+    public function refreshSession($token,$message_id){
+        return $this->sessionInfo($this->sessionCall($this->sabreSessionXml->sessionRefreshHeader($token,$message_id),$this->sabreSessionXml->sessionRefreshBody(),'OTA_PingRQ'));
 
     }
 
-    public function closeSession(){
+    public function closeSession($token,$message_id){
+      return $this->sessionInfo($this->sessionCall($this->sabreSessionXml->sessionCloseHeader($token,$message_id),$this->sabreSessionXml->sessionCloseBody(),'OTA_PingRQ'));
 
     }
 

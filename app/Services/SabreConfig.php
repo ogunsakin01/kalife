@@ -72,7 +72,7 @@ class SabreConfig{
             // PERFORM THE REPLACEMENT
             $xml =  preg_replace($rgx, $rep, $xml);
         }
-        return simplexml_load_string($xml);
+        return json_decode(json_encode(SimpleXML_Load_String($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
     }
     
 }
