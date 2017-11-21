@@ -9,6 +9,7 @@
 namespace App\Services;
 
 use App\Services\SabreConfig;
+use App\Services\SabreSessionsXml;
 class SabreSessionManager{
 
     public $token = null;
@@ -16,11 +17,10 @@ class SabreSessionManager{
     public $messageId = null;
     public function __construct(){
         $this->sabreConfig = new SabreConfig();
+        $this->sabreSessionXml = new SabreSessionsXml();
     }
 
     public function sessionCall($header,$body,$action){
-        // xml post structure
-
         $xml_post_string = '<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/1999/XMLSchema">'
             . '<SOAP-ENV:Header>'
             . $header
@@ -41,7 +41,25 @@ class SabreSessionManager{
         return $this->sabreConfig->callSabre($headers,$xml_post_string);
     }
 
-    public function tokenManager(){
+    public function sessionInfo($plainResponse){
+     $result_object = $this->sabreConfig->mungXmlToObject($plainResponse);
+     $session_token = '';
+     $session_message_id = '';
+     return array(
+         'session_token' => $session_token,
+         'message_id'    => $session_message_id
+     );
+    }
+
+    public function createSession(){
+      return $this->sessionInfo($this->sessionCall($this->sabreSessionXml->sessionCreateHeader(),$this->sabreSessionXml->sessionCreateBody(),'CreateSessionRQ'));
+    }
+
+    public function refreshSession(){
+
+    }
+
+    public function closeSession(){
 
     }
 
