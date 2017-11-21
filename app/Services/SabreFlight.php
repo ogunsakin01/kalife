@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Services\SabreConfig;
+
 class SabreFlight
 {
     public function __construct(){
-
+      $this->sabreConfig = new SabreConfig();
     }
     public function doCall($headersXml, $body, $action) {
         //Data, connection, auth
@@ -29,25 +31,16 @@ class SabreFlight
             "Content-length: " . strlen($xml_post_string)
         );
 
-        error_log($action);
-        error_log($xml_post_string);
-        error_log("------------------------------------------------");
 
-        // PHP cURL  for https connection with auth
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_URL, $soapUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-//            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml_post_string); // the SOAP request
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_VERBOSE, false);
-
-        // converting
-        $response = curl_exec($ch);
-        curl_close($ch);
-        return $response;
     }
+
+    public function xmlHeader()
+    {
+        $xml = new \DOMDocument('', '');
+        $xml_env = $xml->createElement('SOAP-ENV:Envelope');
+
+        $xml->appendChild($xml_env);
+
+    }
+
 }

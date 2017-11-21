@@ -12,6 +12,8 @@ class FlightController extends Controller
 
     }
     public function flightDeals(){
+        $t = new SabreFlight();
+        dd($t->test());
         $var = "john";
         return view("flights.deals", compact('var'));
     }
