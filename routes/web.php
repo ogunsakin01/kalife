@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 Route::get('/flight-deals', 'FlightController@flightDeals');
 Route::post('/searchFlight','FlightController@searchFlight');
+
+Route::view('/test', 'backend.test');
