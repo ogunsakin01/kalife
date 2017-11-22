@@ -29,32 +29,37 @@ function isEntered(value){
 }
 
 $('.search_flight').on("click",function(){
-    var departure_airport= '.departure_airport';
-    var arrival_airport  = '.arrival_airport';
-    var departure_date   = '.departure_date';
-    var arrival_date     = '.arrival_date';
-    var adult_passengers = '.adult_passengers';
-    var children_passengers = '.child_passengers';
-    var infant_passengers = '.infant_passengers';
     var flight_type = $('.flight_type').val();
-    var option;
-    if(flight_type === 'One Way'){option = 1;}
-    else if(flight_type === 'Round Trip'){option = 0;}
-    var departure = $($(departure_airport)[option]).val();
-    var arrival = $($(arrival_airport)[option]).val();
-    var departure_period = $($(departure_date)[option]).val();
-    var arrival_period = $($(arrival_date)[option]).val();
-    var adults = $($(adult_passengers)[option]).val();
-    var children = $($(children_passengers)[option]).val();
-    var infants = $($(infant_passengers)[option]).val();
-    axios.post('/user', {
-        departure_airport: departure,
-        arrival_airport: arrival,
-        departure_date: departure_period,
-        arrival_date: arrival_period,
-        adult_passengers: adults,
-        child_passengers : children,
-        infant_passengers : infants,
+    alert(flight_type);
+     if(flight_type === 'One Way'){
+
+         var departure_airport = $('.departure_airport_one').val();
+         var arrival_airport  =  $('.arrival_airport_one').val();
+         var departure_date   =  $('.departure_date_one').val();
+         var arrival_date     =  $('.arrival_date_one').val();
+         var adult_passengers =  $('.adult_passengers_one').val();
+         var children_passengers = $('.child_passengers_one').val();
+         var infant_passengers = $('.infant_passengers_one').val();
+
+     }else if(flight_type === 'Round Trip'){
+
+         var departure_airport = $('.departure_airport').val();
+         var arrival_airport  =  $('.arrival_airport').val();
+         var departure_date   =  $('.departure_date').val();
+         var arrival_date     =  $('.arrival_date').val();
+         var adult_passengers =  $('.adult_passengers').val();
+         var children_passengers = $('.child_passengers').val();
+         var infant_passengers = $('.infant_passengers').val();
+     }
+
+    axios.post('/searchFlight', {
+        departure_airport: departure_airport,
+        arrival_airport: arrival_airport,
+        departure_date: departure_date,
+        arrival_date: arrival_date,
+        adult_passengers: adult_passengers,
+        child_passengers : children_passengers,
+        infant_passengers : infant_passengers,
         flight_type : flight_type
     })
         .then(function (response) {
@@ -66,14 +71,7 @@ $('.search_flight').on("click",function(){
             return false;
         });
 
-    alert(flight_type);
-    alert(departure);
-    alert(arrival);
-    alert(departure_period);
-    alert(arrival_period);
-    alert(adults);
-    alert(children);
-    alert(infants);
+
     // $.post('',{
     //
     // },function(response){

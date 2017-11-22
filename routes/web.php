@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('frontend.home');
 });
 Route::get('/flight-deals', 'FlightController@flightDeals');
+Route::post('/searchFlight','FlightController@searchFlight');

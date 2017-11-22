@@ -25,17 +25,21 @@ class FlightController extends Controller
             "session_close" => $var_close,
             "session_re_refresh" => $var_re_refresh
         ));
-        return view("flights.deals", compact('var'));
+        return view("frontend.flights.deals", compact('var'));
     }
-    public function searchFlight(){
-       $search_parameters =  $this->validate([
-           'departure_airport' => 'required|string',
-           'arrival_airport' => 'required|string',
-           'departure_date' => 'required|date',
-           'arrival_date' => 'sometimes|required|date',
-           'adult_passengers' => 'required|integer',
-           'child_passengers' => 'required|integer',
-           'infant_passengers' => 'required|integer',
-       ]);
+    public function searchFlight(Request $r){
+
+//       $this->validate($r, [
+//           'departure_airport' => 'required|string',
+//           'arrival_airport' => 'required|string',
+//           'departure_date' => 'required|date',
+//           'arrival_date' => 'sometimes|required|date',
+//           'adult_passengers' => 'required|integer',
+//           'child_passengers' => 'required|integer',
+//           'infant_passengers' => 'required|integer',
+//           'flight_type' => 'required|string'
+//       ]);
+
+        return $r;
     }
 }

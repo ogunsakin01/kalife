@@ -43,13 +43,13 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                                         <label>From</label>
-                                                                        <input class="typeahead form-control departure_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
+                                                                        <input class="typeahead form-control" id="departure_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                                         <label>To</label>
-                                                                        <input class="typeahead form-control arrival_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
+                                                                        <input class="typeahead form-control" id="arrival_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -119,13 +119,13 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                                         <label>From</label>
-                                                                        <input class="typeahead form-control departure_airport" placeholder="City, Airport, U.S. Zip" value="" type="text" />
+                                                                        <input class="typeahead form-control" id="departure_airport_one" placeholder="City, Airport, U.S. Zip" value="" type="text" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                                         <label>To</label>
-                                                                        <input class="typeahead form-control arrival_airport" placeholder="City, Airport, U.S. Zip" value="" type="text" />
+                                                                        <input class="typeahead form-control" id="arrival_airport_one" placeholder="City, Airport, U.S. Zip" value="" type="text" />
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -133,10 +133,10 @@
                                                                 <div class="col-md-3">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
                                                                         <label>Departing</label>
-                                                                        <input class="date-pick form-control departure_date" data-date-format="M d, D" value="" type="text" />
+                                                                        <input class="date-pick form-control departure_date_one" data-date-format="M d, D" value="" type="text" />
                                                                     </div>
                                                                 </div>
-                                                                <input type="hidden" class="arrival_date" value=""/>
+                                                                <input type="hidden" class="arrival_date_one" value=""/>
                                                                 <div class="col-md-3">
                                                                     <div class="form-group form-group-lg form-group-select-plus">
                                                                         <label>Adults <small>12 years +</small></label>
@@ -154,7 +154,7 @@
                                                                 <div class="col-md-3">
                                                                     <div class="form-group form-group-lg form-group-select-plus">
                                                                         <label>Children <small>2 - 11 years</small></label>
-                                                                        <select class="form-control child_passengers">
+                                                                        <select class="form-control child_passengers_one">
                                                                             <option value="0" selected="selected">0</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
@@ -169,7 +169,7 @@
                                                                 <div class="col-md-3">
                                                                     <div class="form-group form-group-lg form-group-select-plus">
                                                                         <label>Infants <small>below 2 years</small></label>
-                                                                        <select class="form-control infant_passengers">
+                                                                        <select class="form-control infant_passengers_one">
                                                                             < <option value="0" selected="selected">0</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
