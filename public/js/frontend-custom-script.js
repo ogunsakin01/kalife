@@ -47,9 +47,24 @@ $('.search_flight').on("click",function(){
     var adults = $($(adult_passengers)[option]).val();
     var children = $($(children_passengers)[option]).val();
     var infants = $($(infant_passengers)[option]).val();
-    if(isEntered(flight_type)){alert("Yeah");}
-    else{alert("Nope");}
-    return false;
+    axios.post('/user', {
+        departure_airport: departure,
+        arrival_airport: arrival,
+        departure_date: departure_period,
+        arrival_date: arrival_period,
+        adult_passengers: adults,
+        child_passengers : children,
+        infant_passengers : infants,
+        flight_type : flight_type
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+            alert(error);
+            return false;
+        });
 
     alert(flight_type);
     alert(departure);

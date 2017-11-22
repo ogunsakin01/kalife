@@ -34,3 +34,4 @@
 <script src="{{asset("js/iziToast.js")}}"></script>
 <script src="{{asset("js/jquery.twbsPagination.js")}}"></script>
 <script src="{{asset("js/frontend-custom-script.js")}}"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
