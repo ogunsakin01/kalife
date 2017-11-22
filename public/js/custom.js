@@ -59,6 +59,7 @@ $('.typeahead').typeahead({
             dataType: 'json',
             type: 'get',
             url: 'http://gd.geobytes.com/AutoCompleteCity?callback=?&q=' + q,
+
             chache: false,
             success: function(data) {
                 var result = [];

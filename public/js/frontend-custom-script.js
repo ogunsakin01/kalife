@@ -33,8 +33,8 @@ $('.search_flight').on("click",function(){
     alert(flight_type);
      if(flight_type === 'One Way'){
 
-         var departure_airport = $('.departure_airport_one').val();
-         var arrival_airport  =  $('.arrival_airport_one').val();
+         var departure_airport = $('#departure_airport_one').val();
+         var arrival_airport  =  $('#arrival_airport_one').val();
          var departure_date   =  $('.departure_date_one').val();
          var arrival_date     =  $('.arrival_date_one').val();
          var adult_passengers =  $('.adult_passengers_one').val();
@@ -43,15 +43,16 @@ $('.search_flight').on("click",function(){
 
      }else if(flight_type === 'Round Trip'){
 
-         var departure_airport = $('.departure_airport').val();
-         var arrival_airport  =  $('.arrival_airport').val();
+         var departure_airport = $('#departure_airport').val();
+         var arrival_airport  =  $('#arrival_airport').val();
          var departure_date   =  $('.departure_date').val();
          var arrival_date     =  $('.arrival_date').val();
          var adult_passengers =  $('.adult_passengers').val();
          var children_passengers = $('.child_passengers').val();
          var infant_passengers = $('.infant_passengers').val();
      }
-
+   alert(departure_airport);
+     alert(arrival_airport);
     axios.post('/searchFlight', {
         departure_airport: departure_airport,
         arrival_airport: arrival_airport,
