@@ -18,3 +18,7 @@ Route::get('/flight-deals', 'FlightController@flightDeals');
 Route::post('/searchFlight','FlightController@searchFlight');
 
 Route::view('/test', 'backend.test');
+
+Route::prefix('backend')->group(function (){
+  Route::view('home', 'backend.home')->name('home');
+});

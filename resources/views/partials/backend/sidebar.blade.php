@@ -2,7 +2,7 @@
   <div class="sidebar-wrapper">
     <div class="profile-sidebar">
       <div class="avatar">
-        <img src="assets/images/profiles/05.jpg" alt="">
+        <img src="{{asset('backend/images/profiles/05.jpg')}}" alt="">
       </div>
       <div class="profile-name">
         Jane Doe
