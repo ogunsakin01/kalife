@@ -10,11 +10,15 @@
     <meta name="description" content="Traveler - Premium template for travel companies">
     <meta name="author" content="Tsoy">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+        var baseUrl = "{{url("/")}}";
 
+        var path = "{{ route('typeaheadJs') }}";
+    </script>
     @include('partials.css')
 </head>
 
-<body>
+<body id="body">
 
 <!-- FACEBOOK WIDGET -->
 <div id="fb-root"></div>

@@ -40,16 +40,29 @@
                                                         <input type="hidden" class="flight_type" value="Round Trip"/>
                                                         <div class="tab-pane fade in active" id="flight-search-1">
                                                             <div class="row">
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-5">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                                         <label>From</label>
                                                                         <input class="typeahead form-control" id="departure_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-5">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                                         <label>To</label>
                                                                         <input class="typeahead form-control" id="arrival_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group form-group-lg form-group-select-plus">
+                                                                        <label>Cabin Type</label>
+                                                                        <select class="form-control cabin_type">
+                                                                            <option selected="selected" value="Y">Economy</option>
+                                                                            <option value="S">Premium Economy</option>
+                                                                            <option value="C">Business</option>
+                                                                            <option value="J">Premium Business</option>
+                                                                            <option value="F">First</option>
+                                                                            <option value="P">Premium First</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -64,7 +77,7 @@
                                                                     <div class="col-md-3">
                                                                         <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
                                                                             <label>Returning</label>
-                                                                            <input class="form-control arrival_date" value="" name="end" type="text" />
+                                                                            <input class="form-control return_date" value="" name="end" type="text" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-2">
@@ -116,16 +129,29 @@
                                                         </div>
                                                         <div class="tab-pane fade" id="flight-search-2">
                                                             <div class="row">
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-5">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                                         <label>From</label>
                                                                         <input class="typeahead form-control" id="departure_airport_one" placeholder="City, Airport, U.S. Zip" value="" type="text" />
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-6">
+                                                                <div class="col-md-5">
                                                                     <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                                         <label>To</label>
                                                                         <input class="typeahead form-control" id="arrival_airport_one" placeholder="City, Airport, U.S. Zip" value="" type="text" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <div class="form-group form-group-lg form-group-select-plus">
+                                                                        <label>Cabin Type</label>
+                                                                        <select class="form-control cabin_type_one">
+                                                                            <option selected="selected" value="Y">Economy</option>
+                                                                            <option value="S">Premium Economy</option>
+                                                                            <option value="C">Business</option>
+                                                                            <option value="J">Premium Business</option>
+                                                                            <option value="F">First</option>
+                                                                            <option value="P">Premium First</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -140,7 +166,7 @@
                                                                 <div class="col-md-3">
                                                                     <div class="form-group form-group-lg form-group-select-plus">
                                                                         <label>Adults <small>12 years +</small></label>
-                                                                        <select class="form-control adult_passengers">
+                                                                        <select class="form-control adult_passengers_one">
                                                                             <option selected="selected" value="1">1</option>
                                                                             <option value="2">2</option>
                                                                             <option value="3">3</option>

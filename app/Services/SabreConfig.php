@@ -40,6 +40,7 @@ class SabreConfig{
         curl_close($ch);
         return $response;
     }
+
     public function mungXmlToObject($xml){
         $obj = SimpleXML_Load_String($xml);
         if ($obj === FALSE) return $xml;

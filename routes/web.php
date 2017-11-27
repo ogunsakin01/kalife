@@ -22,3 +22,5 @@ Route::view('/test', 'backend.test');
 Route::prefix('backend')->group(function (){
   Route::view('home', 'backend.home')->name('home');
 });
+
+Route::get('typeaheadJs', 'FlightController@typeaheadJs')->name('typeaheadJs');
