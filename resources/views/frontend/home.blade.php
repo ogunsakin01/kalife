@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <!-- TOP AREA -->
     <div class="top-area show-onload">
         <div class="bg-holder full">

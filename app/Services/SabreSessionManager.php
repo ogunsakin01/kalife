@@ -146,7 +146,7 @@ class SabreSessionManager{
                 }elseif($refresh_data == 1){
                     return session()->get('session_info');
                 }elseif($refresh_data == 2){
-                    return 2;
+//                    return 2;
                     return $this->createSessionStore();
                 }elseif($refresh_data == 3){
                     return 3;

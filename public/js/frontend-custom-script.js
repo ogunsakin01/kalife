@@ -10,7 +10,7 @@ function toastWarning(message){
         id: 'question',
         title: 'Hey',
         message: message,
-        position: 'center',
+        position: 'topRight',
         buttons: [
             ['<button><b>OK</b></button>', function (instance, toast) {
 
@@ -192,7 +192,22 @@ $('.search_flight').on("click",function(){
     })
         .then(function (response) {
             $(body).LoadingOverlay("hide");
-            console.log(response);
+            if(response.data === 0){
+                toastError("Connection Error. Ensure you are connected to the internet");
+                return false;
+            }else if(response.data === 1){
+                toastSuccess("Search completed. Redirecting to available flights page");
+                window.location.href = baseUrl+"/available-flights/";
+            }else if(response.data === 2) {
+                toastWarning("Unable to process your request");
+                return false;
+            }else if(response.data === 3) {
+                toastWarning("No result found for your search option. Try again with different search options");
+                return false;
+            }else if(response.data === 3) {
+                toastWarning("Invalid request type");
+                return false;
+            }
         })
         .catch(function (error) {
             $(body).LoadingOverlay("hide");

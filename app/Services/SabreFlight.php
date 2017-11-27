@@ -170,4 +170,354 @@ class SabreFlight
 </OTA_AirLowFareSearchRQ>';
     }
 
+    public function flightSearchValidator($responseArray){
+        if(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['Errors']['Error'])){
+            return 4;
+        }
+        elseif(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['Success'])){
+            return 1;
+        }
+        else{
+            return 3;
+        }
+    }
+
+    public static function sortFlightArray($responseArray){
+        $iteneraries = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['PricedItineraries']['PricedItinerary'];
+        /**
+        if more tha one flight is found for the search
+         */
+        if(isset($iteneraries[0])){
+            $numberOfFlights = count($iteneraries);
+            $generalReturnArray = array();
+            for($i = 0; $i < $numberOfFlights; $i++){
+                $iteneraries = $iteneraries[$i];
+                $totalAmount = array("totalAmount" => $iteneraries['AirItineraryPricingInfo']['ItinTotalFare']['TotalFare']['@attributes']['Amount']);
+                $originDestination = $iteneraries['AirItinerary']['OriginDestinationOptions']['OriginDestinationOption'];
+
+
+                /**
+                if the number of origin and destinations is more than one
+                */
+
+
+                if(isset($originDestination[0])){
+                    $numberOfOriginDestination = count($originDestination);
+                    $originDestinationArray = array();
+                    for($j = 0; $j < $numberOfOriginDestination; $j++){
+                        $originDestination = $originDestination[$j];
+                        $segment = $originDestination['FlightSegment'];
+                        /**
+                        if the number of flight segments in one origin destination is more than one
+                         */
+                        if(isset($segment[0])){
+                            $numberOfSegments = count($segment);
+                            $segmentArray = array();
+                            for($k = 0; $k < $numberOfSegments; $k++){
+                                $segment = $segment[$k];
+                                $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                                $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                                $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                                $flightNumber = $segment['OperatingAirline']['@attributes']['FlightNumber'];
+                                $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                                $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                                $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                                $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                                $eTicket = $segment['TPA_Extensions']['eTicket']['@attributes']['Ind'];
+                                $mileage = $segment['TPA_Extensions']['Mileage']['@attributes']['Amount'];
+                                $thisSegmentArray = array(
+                                    "departureAirport" => $departureAirport,
+                                    "arrivalAirport" => $arrivalAirport,
+                                    "operatingAirline" => $operatingAirline,
+                                    "flightNumber" => $flightNumber,
+                                    "equipment" => $equipment,
+                                    "marketingAirlie" => $marketingAirline,
+                                    "departureTimeZone" => $departureTimeZone,
+                                    "arrivalTimeZone" => $arrivalTimeZone,
+                                    "eTicket" => $eTicket,
+                                    "mileage" => $mileage
+                                );
+                                array_push($segmentArray,$thisSegmentArray);
+                            }
+                            array_values($segmentArray);
+                        }
+                        /**
+                        if the number of flights segment in one origin destination is just one
+                         */
+                        else{
+                            $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                            $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                            $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                            $flightNumber = $segment['OperatingAirline']['@attributes']['FlightNumber'];
+                            $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                            $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                            $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                            $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                            $eTicket = $segment['TPA_Extensions']['eTicket']['@attributes']['Ind'];
+                            $mileage = $segment['TPA_Extensions']['Mileage']['@attributes']['Amount'];
+                            $segmentArray = array(
+                                "departureAirport" => $departureAirport,
+                                "arrivalAirport" => $arrivalAirport,
+                                "operatingAirline" => $operatingAirline,
+                                "flightNumber" => $flightNumber,
+                                "equipment" => $equipment,
+                                "marketingAirlie" => $marketingAirline,
+                                "departureTimeZone" => $departureTimeZone,
+                                "arrivalTimeZone" => $arrivalTimeZone,
+                                "eTicket" => $eTicket,
+                                "mileage" => $mileage
+                            );
+
+                        }
+                        array_push($originDestinationArray,$segmentArray);
+                        array_values($originDestinationArray);
+                    }
+
+                }
+
+
+                /**
+                if number of origin and destination is just one
+                 */
+
+
+                else{
+                    $originDestinationArray = array();
+                    $segment = $originDestination['FlightSegment'];
+                    /**
+                    if the number of flight segments in one origin destination is more than one
+                     */
+                    if(isset($segment[0])){
+                        $numberOfSegments = count($segment);
+                        $segmentArray = array();
+                        for($k = 0; $k < $numberOfSegments; $k++){
+                            $segment = $segment[$k];
+                            $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                            $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                            $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                            $flightNumber = $segment['OperatingAirline']['@attributes']['FlightNumber'];
+                            $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                            $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                            $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                            $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                            $eTicket = $segment['TPA_Extensions']['eTicket']['@attributes']['Ind'];
+                            $mileage = $segment['TPA_Extensions']['Mileage']['@attributes']['Amount'];
+                            $thisSegmentArray = array(
+                                "departureAirport" => $departureAirport,
+                                "arrivalAirport" => $arrivalAirport,
+                                "operatingAirline" => $operatingAirline,
+                                "flightNumber" => $flightNumber,
+                                "equipment" => $equipment,
+                                "marketingAirlie" => $marketingAirline,
+                                "departureTimeZone" => $departureTimeZone,
+                                "arrivalTimeZone" => $arrivalTimeZone,
+                                "eTicket" => $eTicket,
+                                "mileage" => $mileage
+                            );
+                            array_push($segmentArray,$thisSegmentArray);
+                        }
+                        array_values($segmentArray);
+                    }
+                    /**
+                    if the number of flights segment in one origin destination is just one
+                     */
+                    else{
+                        $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                        $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                        $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                        $flightNumber = $segment['OperatingAirline']['@attributes']['FlightNumber'];
+                        $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                        $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                        $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                        $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                        $eTicket = $segment['TPA_Extensions']['eTicket']['@attributes']['Ind'];
+                        $mileage = $segment['TPA_Extensions']['Mileage']['@attributes']['Amount'];
+                        $segmentArray = array(
+                            "departureAirport" => $departureAirport,
+                            "arrivalAirport" => $arrivalAirport,
+                            "operatingAirline" => $operatingAirline,
+                            "flightNumber" => $flightNumber,
+                            "equipment" => $equipment,
+                            "marketingAirlie" => $marketingAirline,
+                            "departureTimeZone" => $departureTimeZone,
+                            "arrivalTimeZone" => $arrivalTimeZone,
+                            "eTicket" => $eTicket,
+                            "mileage" => $mileage
+                        );
+
+                    }
+                    array_push($originDestinationArray,$segmentArray);
+                    array_values($originDestinationArray);
+                }
+
+
+                array_push($generalReturnArray,$originDestinationArray);
+                array_push($generalReturnArray,$totalAmount);
+            }
+            array_values($generalReturnArray);
+        }
+        /**
+        if just one flight is found for the search
+         */
+        else{
+            $originDestination = $iteneraries['AirItinerary']['OriginDestinationOptions']['OriginDestinationOption'];
+            $totalAmount = array("totalAmount" => $iteneraries['AirItineraryPricingInfo']['ItinTotalFare']['TotalFare']['@attributes']['Amount']);
+            /**
+            if the number of origin and destinations is more than one
+             */
+            if(isset($originDestination[0])){
+                $numberOfOriginDestination = count($originDestination);
+                $originDestinationArray = array();
+                for($j = 0; $j < $numberOfOriginDestination; $j++){
+                    $originDestination = $originDestination[$j];
+                    $segment = $originDestination['FlightSegment'];
+                    /**
+                    if the number of flight segments in one origin destination is more than one
+                     */
+                    if(isset($segment[0])){
+                        $numberOfSegments = count($segment);
+                        $segmentArray = array();
+                        for($k = 0; $k < $numberOfSegments; $k++){
+                            $segment = $segment[$k];
+                            $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                            $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                            $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                            $flightNumber = $segment['OperatingAirline']['@attributes']['FlightNumber'];
+                            $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                            $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                            $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                            $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                            $eTicket = $segment['TPA_Extensions']['eTicket']['@attributes']['Ind'];
+                            $mileage = $segment['TPA_Extensions']['Mileage']['@attributes']['Amount'];
+                            $thisSegmentArray = array(
+                                "departureAirport" => $departureAirport,
+                                "arrivalAirport" => $arrivalAirport,
+                                "operatingAirline" => $operatingAirline,
+                                "flightNumber" => $flightNumber,
+                                "equipment" => $equipment,
+                                "marketingAirlie" => $marketingAirline,
+                                "departureTimeZone" => $departureTimeZone,
+                                "arrivalTimeZone" => $arrivalTimeZone,
+                                "eTicket" => $eTicket,
+                                "mileage" => $mileage
+                            );
+                            array_push($segmentArray,$thisSegmentArray);
+                        }
+                        array_values($segmentArray);
+                    }
+                    /**
+                    if the number of flights segment in one origin destination is just one
+                     */
+                    else{
+                        $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                        $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                        $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                        $flightNumber = $segment['OperatingAirline']['@attributes']['FlightNumber'];
+                        $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                        $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                        $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                        $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                        $eTicket = $segment['TPA_Extensions']['eTicket']['@attributes']['Ind'];
+                        $mileage = $segment['TPA_Extensions']['Mileage']['@attributes']['Amount'];
+                        $segmentArray = array(
+                            "departureAirport" => $departureAirport,
+                            "arrivalAirport" => $arrivalAirport,
+                            "operatingAirline" => $operatingAirline,
+                            "flightNumber" => $flightNumber,
+                            "equipment" => $equipment,
+                            "marketingAirlie" => $marketingAirline,
+                            "departureTimeZone" => $departureTimeZone,
+                            "arrivalTimeZone" => $arrivalTimeZone,
+                            "eTicket" => $eTicket,
+                            "mileage" => $mileage
+                        );
+
+                    }
+                    array_push($originDestinationArray,$segmentArray);
+                    array_values($originDestinationArray);
+                }
+
+            }
+            /**
+            if number of origin and destination is just one
+             */
+            else{
+                $segment = $originDestination['FlightSegment'];
+                $originDestinationArray = array();
+                /**
+                if the number of flight segments in one origin destination is more than one
+                 */
+                if(isset($segment[0])){
+                    $numberOfSegments = count($segment);
+                    $segmentArray = array();
+                    for($k = 0; $k < $numberOfSegments; $k++){
+                        $segment = $segment[$k];
+                        $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                        $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                        $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                        $flightNumber = $segment['OperatingAirline']['@attributes']['FlightNumber'];
+                        $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                        $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                        $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                        $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                        $eTicket = $segment['TPA_Extensions']['eTicket']['@attributes']['Ind'];
+                        $mileage = $segment['TPA_Extensions']['Mileage']['@attributes']['Amount'];
+                        $thisSegmentArray = array(
+                            "departureAirport" => $departureAirport,
+                            "arrivalAirport" => $arrivalAirport,
+                            "operatingAirline" => $operatingAirline,
+                            "flightNumber" => $flightNumber,
+                            "equipment" => $equipment,
+                            "marketingAirlie" => $marketingAirline,
+                            "departureTimeZone" => $departureTimeZone,
+                            "arrivalTimeZone" => $arrivalTimeZone,
+                            "eTicket" => $eTicket,
+                            "mileage" => $mileage
+                        );
+                        array_push($segmentArray,$thisSegmentArray);
+                    }
+                    array_values($segmentArray);
+                }
+                /**
+                if the number of flights segment in one origin destination is just one
+                 */
+                else{
+
+                    $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                    $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                    $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                    $flightNumber = $segment['OperatingAirline']['@attributes']['FlightNumber'];
+                    $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                    $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                    $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                    $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                    $eTicket = $segment['TPA_Extensions']['eTicket']['@attributes']['Ind'];
+                    $mileage = $segment['TPA_Extensions']['Mileage']['@attributes']['Amount'];
+                    $segmentArray = array(
+                        "departureAirport" => $departureAirport,
+                        "arrivalAirport" => $arrivalAirport,
+                        "operatingAirline" => $operatingAirline,
+                        "flightNumber" => $flightNumber,
+                        "equipment" => $equipment,
+                        "marketingAirlie" => $marketingAirline,
+                        "departureTimeZone" => $departureTimeZone,
+                        "arrivalTimeZone" => $arrivalTimeZone,
+                        "eTicket" => $eTicket,
+                        "mileage" => $mileage
+                    );
+
+                }
+                array_push($originDestinationArray,$segmentArray);
+
+            }
+            array_push($originDestinationArray,$totalAmount);
+            array_values($originDestinationArray);
+            array_push($generalReturnArray,$originDestinationArray);
+            array_values($generalReturnArray);
+
+        }
+        return $generalReturnArray;
+    }
+
+
 }
