@@ -6,7 +6,6 @@ function toastWarning(message){
    return iziToast.warning({
         timeout: 15000,
         close: true,
-        toastOnce: true,
         id: 'question',
         title: 'Hey',
         message: message,
@@ -193,7 +192,7 @@ $('.search_flight').on("click",function(){
         .then(function (response) {
             $(body).LoadingOverlay("hide");
             if(response.data === 0){
-                toastError("Connection Error. Ensure you are connected to the internet");
+                toastError("Connection Error. Poor Internet Connection");
                 return false;
             }else if(response.data === 1){
                 toastSuccess("Search completed. Redirecting to available flights page");
@@ -213,8 +212,11 @@ $('.search_flight').on("click",function(){
             $(body).LoadingOverlay("hide");
             var Error = error.response.data.errors;
 
-            if(Error.departure_airport[0] || Error.departure_airport[0]){
-              toastWarning(Error.departure_airport[0]+" and "+Error.departure_airport[0]);
+            if(Error.departure_airport[0]){
+              toastWarning(Error.departure_airport[0]);
+            }
+            if(Error.arrival_airport[0]){
+                toastWarning(Error.arrival_airport[0]);
             }
             return false;
         });

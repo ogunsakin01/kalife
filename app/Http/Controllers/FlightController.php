@@ -25,7 +25,10 @@ class FlightController extends Controller
 
     public function availableFlights(){
         $flightsResult = session()->get('availableFlights');
-        return view("frontend.flights.available-flights",compact('flightsResult'));
+        $airlines = $this->availableAirline($flightsResult);
+        $flightsResult = $this->Sabreflight->sortFlightArray($flightsResult);
+        $flightSearchParam = session()->get('flightSearchParam');
+        return view("frontend.flights.available-flights",compact('flightsResult','flightSearchParam','airlines'));
     }
 
     public function searchFlight(Request $r){
@@ -44,10 +47,13 @@ class FlightController extends Controller
         }elseif($check_session == 2){
             return 2;
         }
+          $requestArray =  response()->json($r->all());
           $search = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('BargainFinderMaxRQ'),$this->Sabreflight->BargainMaxFinderXml($r),'BargainFinderMaxRQ');
           $search_array = $this->SabreConfig->mungXmlToObject($search);
-          $sorted_array = $this->Sabreflight->sortFlightArray($search_array);
-          session()->put('availableFlights',$sorted_array);
+          session()->put('availableFlights',$search_array);
+//          session()->put('flightSearchParam',json_decode($r,true));
+          session()->put('flightSearchParam',$requestArray);
+
           return  $this->Sabreflight->flightSearchValidator($search_array);
     }
 
@@ -57,8 +63,18 @@ class FlightController extends Controller
             ->where("name","LIKE","%{$request->input('query')}%")
             ->orWhere("iata","LIKE","%{$request->input('query')}%")
             ->get();
+//        $data = IataCity::typeAhead($request);
 
         return response()->json($data);
+    }
+
+    public function availableAirline($responseArray){
+        $flightResponse = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['TPA_Extensions']['AirlineOrderList']['AirlineOrder'];
+        $airlineArray = [];
+        foreach($flightResponse as $i => $airlinedata){
+            array_push($airlineArray,$airlinedata['@attributes']['Code']);
+        }
+        return array_values($airlineArray);
     }
 
 }

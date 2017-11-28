@@ -6708,7 +6708,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   line-height: 1.3em;
 }
 .booking-item-airline-logo > img {
-  width: 40px;
+  width: 100%;
 }
 .booking-item-flight-class {
   margin-bottom: 7px;
