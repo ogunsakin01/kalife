@@ -190,9 +190,9 @@ class SabreFlight
         $iteneraries = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['PricedItineraries']['PricedItinerary'];
         $returnArray = [];
         if(isset($iteneraries[0])){
-            $numberOfItenaries = count($iteneraries);
-            for($i = 0; $i < $numberOfItenaries; $i++){
-                $itenerary = $iteneraries[$i];
+//            $numberOfItenaries = count($iteneraries);
+            foreach($iteneraries as $i => $itenerary){
+
                 $itenaryInfoArray = [];
 
                 $originDestination = $itenerary['AirItinerary']['OriginDestinationOptions']['OriginDestinationOption'];
@@ -203,9 +203,10 @@ class SabreFlight
                      $segment = $originDest['FlightSegment'];
                      if(isset($segment[0])){
                          $segmentArray = [];
-                         $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
-                         $topdepartureDateTime = $originDestination[0]['FlightSegment'][0]['@attributes']['DepartureDateTime'];
-                         $toparrivalDateTime =  $originDestination[0]['FlightSegment'][0]['@attributes']['ArrivalDateTime'];
+//                         $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
+//                         $topdepartureDateTime = $originDestination[0]['FlightSegment'][0]['@attributes']['DepartureDateTime'];
+                         $airline = "";
+                         $topdepartureDateTime = "";
                          $stops = count($segment) - 1;
                          foreach($segment as $k => $seg){
                             $segment = array_get($segment, "FlightSegment.".$k);
@@ -473,6 +474,14 @@ class SabreFlight
         return 'http://pics.avs.io/200/200/'.$airlineCode.'.png';
     }
 
+    public static function cabinType($code){
+        if($code == 'Y'){return "Economy";}
+        elseif($code == 'S'){return "Premium Economy";}
+        elseif($code == 'C'){return "Business";}
+        elseif($code == 'J'){return "Premium Business";}
+        elseif($code == 'F'){return "First";}
+        elseif($code == 'P'){return "Premium First";}
+    }
 
 
 }

@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('title')Flight, Hotel, Travel and Tourism Booking Agency @endsection
+@section('activeHome')
+    class='active'
+    @endsection
 @section('content')
 
     <!-- TOP AREA -->

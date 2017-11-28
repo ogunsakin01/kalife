@@ -1,4 +1,4 @@
-<header id="main-header">
+
     <div class="header-top">
         <div class="container">
             <div class="row">
@@ -81,12 +81,4 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="nav">
-            <ul class="slimmenu" id="slimmenu">
-                <li><a href="{{url('/')}}">Home</a></li>
-                <li><a href="{{url('/flight-deals')}}">Flights</a></li>
-            </ul>
-        </div>
-    </div>
-</header>
+

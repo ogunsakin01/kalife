@@ -1,7 +1,11 @@
 @extends('layouts.app')
+@section('title')Available flights @endsection
+@section('activeFlight')
+   class='active'
+@endsection
 @section('content')
     <pre>
-        {{--{{var_dump($flightsResult),die}}--}}
+        {{var_dump($flightsResult),die}}
         {{--{{dd($airlines)}}--}}
         </pre>
     <div class="container">
@@ -66,7 +70,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group form-group-lg form-group-select-plus">
-                                            <label>Adults <small>12 years +</small></label>
+                                            <label>Adults </label>
                                             <select class="form-control adult_passengers">
                                                 <option selected="selected" value="1">1</option>
                                                 <option value="2">2</option>
@@ -80,7 +84,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group form-group-lg form-group-select-plus">
-                                            <label>Children <small>2 - 11 years</small></label>
+                                            <label>Children </label>
                                             <select class="form-control child_passengers">
                                                 <option value="0" selected="selected">0</option>
                                                 <option value="1">1</option>
@@ -95,7 +99,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group form-group-lg form-group-select-plus">
-                                            <label>Infants <small>below 2 years</small></label>
+                                            <label>Infants </label>
                                             <select class="form-control infant_passengers">
                                                 < <option value="0" selected="selected">0</option>
                                                 <option value="1">1</option>
@@ -320,7 +324,7 @@
                                         <p>{{$flight[0]['stops']}} stop(s)</p>
                                     </div>
                                     <div class="col-md-3"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['totalPrice'])}}</span>
-                                        <p class="booking-item-flight-class">Class: Economy</p><a class="btn btn-primary" href="#">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i></a>
+                                        <p class="booking-item-flight-class">Class: Economy</p><a class="btn btn-primary" href="#">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -333,7 +337,7 @@
                                         <h5 class="list-title">{{\App\Airport::getCity($segment['departureAirport'])}} ({{$segment['departureAirport']}}) to {{\App\Airport::getCity($segment['arrivalAirport'])}} ({{$segment['arrivalAirport']}})</h5>
                                         <ul class="list">
                                             <li>{{\App\Airline::getAirline($segment['operatingAirline'])}} <b>{{$segment['operatingAirline']}} - {{$segment['flightNumber']}}</b></li>
-                                            <li>Economy / Coach Class (M), {{\App\equipment::getEquipment($segment['equipment'])}}</li>
+                                            <li>{{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')->original['cabin_type'])}} ({{session()->get('flightSearchParam')->original['cabin_type']}}), {{\App\Equipment::getEquipment($segment['equipment'])}}</li>
                                             <li><b>Depart</b> {{date('g:i A D, M d',strtotime($segment['departureDateTime']))}} <b>Arrive</b> {{date('g:i A D, M d',strtotime($segment['arrivalDateTime']))}}</li>
                                             <li><b>Duration</b>: {{$segment['timeDuration']}}</li>
                                         </ul>

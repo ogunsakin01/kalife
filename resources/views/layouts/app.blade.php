@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Traveler - Index</title>
+    <title>Kalife - @yield('title')</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
@@ -34,7 +34,22 @@
 </script>
 <!-- /FACEBOOK WIDGET -->
 <div class="global-wrap">
+    <header id="main-header">
     @include('partials.header')
+        <div class="container">
+            <div class="nav">
+                <ul class="slimmenu" id="slimmenu">
+                    <li class=""><a href="{{url('/')}}">Home</a></li>
+                    <li class=""><a href="{{url('/flight-deals')}}">Flights</a></li>
+                    <li class=""><a href="#">Hotels</a></li>
+                    <li class=""><a href="#">Cars</a></li>
+                    <li class=""><a href="#">Activities</a></li>
+                    <li class=""><a href="{{url('/about-us')}}">About Us</a></li>
+                    <li class=""><a href="{{url('/contact-us')}}">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
 
    @yield('content')
 

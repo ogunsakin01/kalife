@@ -17,6 +17,7 @@ Route::get('/', function () {
 Route::get('/flight-deals', 'FlightController@flightDeals');
 Route::post('/searchFlight','FlightController@searchFlight');
 Route::get('/available-flights','FlightController@availableFlights');
+Route::view('/contact-us','frontend.contactus');
 
 
 Route::view('/test', 'backend.test');
