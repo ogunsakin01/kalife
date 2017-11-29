@@ -132,7 +132,7 @@ class SabreFlight
            $passenger = $passenger.'<PassengerTypeQuantity Code="ADT" Quantity="'.$param->adult_passengers.'" />';
         }
         if($param->child_passengers > 0){
-            $passenger = $passenger.'<PassengerTypeQuantity Code="CHD" Quantity="'.$param->child_passengers.'" />';
+            $passenger = $passenger.'<PassengerTypeQuantity Code="CNN" Quantity="'.$param->child_passengers.'" />';
 
         }
         if($param->infant_passengers > 0){
@@ -173,6 +173,46 @@ class SabreFlight
         </IntelliSellTransaction>
     </TPA_Extensions>
 </OTA_AirLowFareSearchRQ>';
+    }
+
+    public function EnhancedAirBookRQ($Itinerary,$param){
+        $returnXml = '<EnhancedAirBookRQ Version="2.5.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
+			<OTA_AirBookRQ HaltOnError="true">
+				<OriginDestinationInformation>
+					<FlightSegment DepartureDateTime="2014-04-22T06:20" FlightNumber="2401" NumberInParty="1" ResBookDesigCode="Y" Status="NN">
+						<DestinationLocation LocationCode="LAX"/>
+						<Equipment AirEquipType="738"/>
+						<MarketingAirline Code="AA" FlightNumber="2401"/>
+						<MarriageGrp Ind="false"/>
+						<OriginLocation LocationCode="DFW"/>
+					</FlightSegment>
+					<FlightSegment DepartureDateTime="2014-04-29T06:00" FlightNumber="2410" NumberInParty="1" ResBookDesigCode="Y" Status="NN">
+						<DestinationLocation LocationCode="DFW"/>
+						<Equipment AirEquipType="738"/>
+						<MarketingAirline Code="AA" FlightNumber="2410"/>
+						<MarriageGrp Ind="false"/>
+						<OriginLocation LocationCode="LAX"/>
+					</FlightSegment>
+				</OriginDestinationInformation>
+			</OTA_AirBookRQ>
+			<OTA_AirPriceRQ HaltOnError="true">
+				<PriceRequestInformation Retain="true">
+					<OptionalQualifiers>
+						<PricingQualifiers>
+							<PassengerType Code="ADT" Quantity="1"/>
+						</PricingQualifiers>
+					</OptionalQualifiers>
+				</PriceRequestInformation>
+			</OTA_AirPriceRQ>
+			<PostProcessing HaltOnError="true" RedisplayReservation="true"/>
+		</EnhancedAirBookRQ>';
+
+        return $returnXml;
+
+    }
+
+    public function PassengerDetailsRQ(){
+
     }
 
     public function flightSearchValidator($responseArray){
@@ -307,8 +347,6 @@ class SabreFlight
                 }
 
 
-
-
                 else{
                     $originDestinationArray = [];
                     $segment = $originDestination['FlightSegment'];
@@ -416,8 +454,10 @@ class SabreFlight
                     "airline" => $airline,
                     "stops" => $stops,
                 ];
+
                 array_push($itineraryInfoArray,$itineraryPrimaryInfo);
                 array_push($itineraryInfoArray,$originDestinationArray);
+                array_push($itineraryInfoArray,$this->fareBrakeDown($itinerary));
                 array_push($returnArray,$itineraryInfoArray);
             }
             array_values($returnArray);
@@ -430,6 +470,38 @@ class SabreFlight
         }
         array_values($returnArray);
         return $returnArray;
+    }
+
+    public function fareBrakeDown($itinerary){
+        $fareBrakeDowns = $itinerary['AirItineraryPricingInfo']['PTC_FareBreakdowns']['PTC_FareBreakdown'];
+        if(array_has($fareBrakeDowns,0)){
+            $fareBrakeDownsArray = [];
+            foreach($fareBrakeDowns as $i => $fareBrakeDown){
+                $passengerType = $fareBrakeDown['PassengerTypeQuantity']['@attributes']['Code'];
+                $quantity = $fareBrakeDown['PassengerTypeQuantity']['@attributes']['Quantity'];
+                $totalFarePrice = $fareBrakeDown['PassengerFare']['TotalFare']['@attributes']['Amount'];
+                $arrayFareBrakeDownPrimaryData = [
+                    'passengerType' => $passengerType,
+                    'quantity' => $quantity,
+                    'totalPrice' => $totalFarePrice
+                ];
+                array_push($fareBrakeDownsArray,$arrayFareBrakeDownPrimaryData);
+            }
+            array_values($fareBrakeDownsArray);
+        }else{
+            $fareBrakeDownsArray = [];
+            $passengerType = $fareBrakeDowns['PassengerTypeQuantity']['@attributes']['Code'];
+            $quantity = $fareBrakeDowns['PassengerTypeQuantity']['@attributes']['Quantity'];
+            $totalFarePrice = $fareBrakeDowns['PassengerFare']['TotalFare']['@attributes']['Amount'];
+            $arrayFareBrakeDownPrimaryData = [
+                'passengerType' => $passengerType,
+                'quantity' => $quantity,
+                'totalPrice' => $totalFarePrice
+            ];
+            array_push($fareBrakeDownsArray,$arrayFareBrakeDownPrimaryData);
+            array_values($fareBrakeDownsArray);
+        }
+        return $fareBrakeDownsArray;
     }
 
      //    public function sortFlightResult($responseArray){
@@ -577,6 +649,20 @@ class SabreFlight
             "minimumPrice" => $min
         ];
     }
+
+    public function availableAirline($responseArray){
+        $flightResponse = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['TPA_Extensions']['AirlineOrderList']['AirlineOrder'];
+        $airlineArray = [];
+        if(array_has($flightResponse,0)){
+            foreach($flightResponse as $i => $airlinedata){
+                array_push($airlineArray,$airlinedata['@attributes']['Code']);
+            }
+        }else{
+            array_push($airlineArray,$flightResponse['@attributes']['Code']);
+        }
+        return array_values($airlineArray);
+    }
+
 
 
 }

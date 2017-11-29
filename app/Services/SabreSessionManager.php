@@ -124,7 +124,7 @@ class SabreSessionManager{
             return 2;
         }else{
             session()->put('session_info',$session_data);
-            return session()->all();
+//            return session()->all();
         }
     }
 
@@ -146,7 +146,6 @@ class SabreSessionManager{
                 }elseif($refresh_data == 1){
                     return session()->get('session_info');
                 }elseif($refresh_data == 2){
-//                    return 2;
                     return $this->createSessionStore();
                 }elseif($refresh_data == 3){
                     return 3;
@@ -164,6 +163,39 @@ class SabreSessionManager{
 
     }
 
+    public function refreshSessionToken()
+    {
+        if ($this->ifSessionExists('session_info'))
+        {
+            if ($this->ifSessionIsEmpty('session_info'))
+            {
+                return 4;
+            }
+            else{
+                $token = session()->get('session_info')['session_token'];
+                $messageId = session()->get('session_info')['message_id'];
 
+                $refresh_data = $this->sessionRefreshValidator($this->refreshSession($token,$messageId));
+                if($refresh_data == 0){
+                    return 0;
+                }elseif($refresh_data == 1){
+                    return 1;
+                }elseif($refresh_data == 2){
+                    return 2;
+                }elseif($refresh_data == 3){
+                    return 3;
+                }
+                /**
+                Might return 3 on worst case scenario of errors
+                 * add elseif($refresh_data == 3){
+                return 3;
+                 * }
+                 */
+            }
+        }else{
+            return 4;
+        }
+
+    }
 
 }

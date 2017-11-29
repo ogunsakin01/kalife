@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Airport;
 use App\IataCity;
 use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
@@ -25,7 +26,7 @@ class FlightController extends Controller
 
     public function availableFlights(){
         $flightsResult = session()->get('availableFlights');
-        $airlines = $this->availableAirline($flightsResult);
+        $airlines = $this->Sabreflight->availableAirline($flightsResult);
         $flightsResult = $this->Sabreflight->sortFlightArray($flightsResult);
         $flightSearchParam = session()->get('flightSearchParam');
         return view("frontend.flights.available-flights",compact('flightsResult','flightSearchParam','airlines'));
@@ -59,22 +60,19 @@ class FlightController extends Controller
 
     public function typeaheadJs(Request $request)
     {
-        $data = IataCity::select(DB::raw('CONCAT(name, " - ", iata) AS name'))
-            ->where("name","LIKE","%{$request->input('query')}%")
-            ->orWhere("iata","LIKE","%{$request->input('query')}%")
-            ->get();
+//        $data = IataCity::select(DB::raw('CONCAT(name, " - ", iata) AS name'))
+//            ->where("name","LIKE","%{$request->input('query')}%")
+//            ->orWhere("iata","LIKE","%{$request->input('query')}%")
+//            ->get();
 //        $data = IataCity::typeAhead($request);
+        $data = Airport::select(DB::raw('CONCAT(airport_name, " - ", airport_code) AS name'))
+            ->where("airport_name","LIKE","%{$request->input('query')}%")
+            ->orWhere("airport_code","LIKE","%{$request->input('query')}%")
+            ->get();
 
         return response()->json($data);
     }
 
-    public function availableAirline($responseArray){
-        $flightResponse = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['TPA_Extensions']['AirlineOrderList']['AirlineOrder'];
-        $airlineArray = [];
-        foreach($flightResponse as $i => $airlinedata){
-            array_push($airlineArray,$airlinedata['@attributes']['Code']);
-        }
-        return array_values($airlineArray);
-    }
+
 
 }

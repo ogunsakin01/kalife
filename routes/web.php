@@ -21,6 +21,7 @@ Route::view('/contact-us','frontend.contactUs');
 Route::view('/about-us','frontend.aboutUs');
 Route::post('/subscribe','FrontEndController@subscribe');
 Route::post('/message','FrontEndController@message');
+Route::post('/tokenRefresh','FrontEndController@tokenRefresh');
 
 
 Route::view('/test', 'backend.test');

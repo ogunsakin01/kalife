@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Email;
 //use App\Message;
+use App\Services\SabreFlight;
+use App\Services\SabreSessionManager;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 
 class FrontEndController extends Controller
 {
     public function __construct(){
-
+        $this->SabreFlight = new SabreFlight();
+        $this->SessionManager = new SabreSessionManager();
     }
+
     public function subscribe(Request $r){
         $this->validate($r, [
             'email' => 'required|string'
@@ -38,5 +42,13 @@ class FrontEndController extends Controller
             return 1;
         }
 
+    }
+
+    public function tokenRefresh(Request $r){
+        $this->validate($r, [
+            'refresh' => 'required|string'
+            ]);
+
+        return $this->SessionManager->refreshSessionToken();
     }
 }

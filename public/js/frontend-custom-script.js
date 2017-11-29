@@ -2,6 +2,11 @@
  * Created by UniQue on 11/20/2017.
  */
 var body = '#body';
+
+/**
+ * Start of JavaScript Functions
+ * **/
+
 function toastWarning(message){
    return iziToast.warning({
         timeout: 15000,
@@ -48,7 +53,7 @@ function toastSuccess(message){
 function toastError(message){
    return iziToast.error({
         id: 'error',
-       close: true,
+        close: true,
         title: 'Error',
         message: message,
         position: 'topRight',
@@ -62,11 +67,8 @@ function toastInfo(message) {
         close: true,
         title: 'Hello',
         message: message,
-        imageWidth: 70,
-        position: 'bottomLeft',
-        transitionIn: 'bounceInRight',
-        rtl: true,
-        iconText: 'star'
+        position: 'topLeft',
+        transitionIn: 'bounceInRight'
     });
 }
 
@@ -124,6 +126,68 @@ function modalInfo(message){
     return $('#modalInfo').iziModal('open');
 }
 
+function isEmail(email) {
+    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
+}
+
+function refreshSabreSession(){
+        axios.post('/tokenRefresh',{
+             "refresh" : 'yes'
+        })
+        .then(function(response){
+           if(response.data === 0){
+               setInterval(refreshSabreSession,20000);
+           }else if(response.data === 1){
+               toastInfo("active");
+                console.log("Success");
+           }else if(response.data === 2){
+
+               iziToast.warning({
+                   timeout: 20000,
+                   close: false,
+                   overlay: true,
+                   toastOnce: true,
+                   id: 'question',
+                   zindex: 999,
+                   title: 'Session Expired',
+                   message: 'Your session expired, you will be redirected to our home page to start your booking all over',
+                   position: 'center',
+                   buttons: [
+                       ['OK', function (instance, toast) {
+                           toastInfo("Redirecting to our search homepage");
+                           window.location.href = baseUrl+"/";
+
+                       }, true]
+                   ],
+                   onClosing: function(instance, toast, closedBy){
+                       toastInfo("Redirecting to our search homepage");
+                       window.location.href = baseUrl+"/";
+                   },
+                   onClosed: function(instance, toast, closedBy){
+                       toastInfo("Redirecting to our search homepage");
+                   }
+               });
+
+           }else if(response.data === 3){
+               console.log("Worst Case scenario");
+           }else if(response.data === 4){
+               console.log("Session not available");
+           }
+        })
+        .catch(function(error){
+
+        });
+}
+
+/**
+ * End of JavaScript Functions
+ * **/
+
+
+/**
+ * Start of JavaScript Actions
+ * **/
 $('.pagination').twbsPagination({
     totalPages: 16,
     visiblePages: 6,
@@ -142,11 +206,6 @@ $('.trip_type').on("click",function(){
     var trip_type = $(this).text();
     $('.flight_type').val(trip_type);
 });
-
-function isEmail(email) {
-    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
-}
 
 $('.search_flight').on("click",function(){
 
@@ -211,8 +270,8 @@ $('.search_flight').on("click",function(){
             }else if(response.data === 3) {
                 toastWarning("No result found for your search option. Try again with different search options");
                 return false;
-            }else if(response.data === 3) {
-                toastWarning("Invalid request type");
+            }else if(response.data === 4) {
+                toastWarning("No result found for your search option. Try again with different search options");
                 return false;
             }
         })
@@ -245,10 +304,11 @@ $(".subscribe").on('click',function(){
     })
         .then(function(response){
             $(".subscribe").LoadingOverlay("hide");
+            $("#subscribe_email").val('');
             if(response.data === 0){
                  toastError("Connection Error. Poor internet connection detected");
             }else if(response.data === 1){
-                toastSuccess("Thank you, your email has been successfully added to our subscribers list")
+                toastSuccess("Thank you, your email has been successfully added to our subscribers list");
             }else if(response.data === 2){
                 toastWarning("Email found on subscribers list");
             }
@@ -282,6 +342,9 @@ $("#send_message").on('click',function(){
     })
         .then(function(response){
             $("#send_message").LoadingOverlay("hide");
+            $('#message_email').val('');
+            $('#message_name').val('');
+            $('#message').val('');
             if(response.data === 1){
                 toastSuccess("Your message was sent successfully");
             }
@@ -302,20 +365,52 @@ $("#send_message").on('click',function(){
         });
 });
 
-alert("It is going to work oo");
+$('.selected_airline').on('click change',function(){
+    $('.to_spin').addClass('fa fa-refresh fa-spin');
+    var airline_code = $(this).val();
+    var length = $(".flights_"+ airline_code).length;
+    if(length === 0){
+        toastInfo("Sorry, No flights available under this airline.");
+    }else if(length > 0){
+        toastInfo(length +" flight(s) found under this airline ("+ airline_code +")");
+        $(".flights").addClass("hidden");
+        $(".flights_"+ airline_code).removeClass("hidden");
+        $('.all_check').not(this).prop('checked', false);
+        $('.to_spin').removeClass('fa fa-refresh fa-spin');
+        $(this).prop('checked',true);
+    }
 
-$('.select_airline').on('click',function(){
-   alert("Clicked");
-})
+});
+
+$('.stops').on('click change',function(){
+    $('.to_spin').addClass('fa fa-refresh fa-spin');
+    var stops = $(this).val();
+    var length = $(".flights_"+ stops).length;
+    if(length === 0){
+        toastInfo("Sorry, No flights available under this category.");
+    }else{
+        toastInfo(length +" flight(s) found under this category");
+        $(".flights").addClass("hidden");
+        $(".flights_"+ stops).removeClass("hidden");
+        $('.all_check').not(this).prop('checked', false);
+        $('.to_spin').removeClass('fa fa-refresh fa-spin');
+        $(this).prop('checked',true);
+    }
+
+});
+
+$('.all_flights').on('click change',function(){
+    var length = $(".all_check").length;
+    $(".flights").removeClass("hidden");
+    $('.all_check').not(this).prop('checked', false);
+    toastInfo(length+" flight(s) displayed");
+    $(this).prop('checked',true);
 
 
-// $('#price-slider').on("change paste keyup input propertychange",function(){
-//     // var price = $(this).val();
-//     alert("Yeah");
-//     // alert(price);
-//      // toastWarning(price);
-// });
-//
-// $("#price-slider").on("input", function() {
-//     alert("Change to " + this.value);
-// });
+});
+
+setInterval(refreshSabreSession(), 5000);
+
+/**
+ * End of JavaScript Actions
+ * **/
