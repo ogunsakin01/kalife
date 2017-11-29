@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Airline;
 use App\Airport;
 use App\IataCity;
+use Faker\Provider\DateTime;
 use Illuminate\Support\Carbon;
 
 
@@ -187,15 +188,14 @@ class SabreFlight
     }
 
     public function sortFlightArray($responseArray){
-        $iteneraries = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['PricedItineraries']['PricedItinerary'];
+        $itineraries = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['PricedItineraries']['PricedItinerary'];
         $returnArray = [];
-        if(isset($iteneraries[0])){
-//            $numberOfItenaries = count($iteneraries);
-            foreach($iteneraries as $i => $itenerary){
+        if(isset($itineraries[0])){
+            foreach($itineraries as $i => $itinerary){
 
-                $itenaryInfoArray = [];
+                $itineraryInfoArray = [];
 
-                $originDestination = $itenerary['AirItinerary']['OriginDestinationOptions']['OriginDestinationOption'];
+                $originDestination = $itinerary['AirItinerary']['OriginDestinationOptions']['OriginDestinationOption'];
                 if(isset($originDestination[0])){
                     $originDestinationArray = [];
                     foreach($originDestination as $j => $originDest){
@@ -204,9 +204,11 @@ class SabreFlight
                      if(isset($segment[0])){
                          $segmentArray = [];
 //                         $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
-//                         $topdepartureDateTime = $originDestination[0]['FlightSegment'][0]['@attributes']['DepartureDateTime'];
-                         $airline = "";
-                         $topdepartureDateTime = "";
+                         if(isset($originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'])){
+                             $airline = $originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'];
+                         }else{
+                             $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
+                         }
                          $stops = count($segment) - 1;
                          foreach($segment as $k => $seg){
                             $segment = array_get($segment, "FlightSegment.".$k);
@@ -253,9 +255,11 @@ class SabreFlight
                      }
                      else{
                          $segmentArray = [];
-                         $airline = $originDest['FlightSegment']['OperatingAirline']['@attributes']['Code'];
-                         $topdepartureDateTime = $originDest['FlightSegment']['@attributes']['DepartureDateTime'];
-                         $toparrivalDateTime =  $originDest['FlightSegment']['@attributes']['ArrivalDateTime'];
+                         if(isset($originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'])){
+                             $airline = $originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'];
+                         }else{
+                             $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
+                         }
                          $stops = 0;
                          $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
                          $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
@@ -309,12 +313,10 @@ class SabreFlight
                     $originDestinationArray = [];
                     $segment = $originDestination['FlightSegment'];
                     if(isset($segment[0])){
-                        $numberOfSegments = count($segment);
                         $segmentArray = [];
+                        $airline = $originDestination['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
                         $stops = count($segment) - 1;
                         foreach($segment as $k => $seg){
-                            $airline = $originDestination['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
-                            $topdepartureDateTime = $originDestination['FlightSegment'][0]['@attributes']['DepartureDateTime'];
                             $segment = array_get($segment, "FlightSegment.".$k);
                             $departureAirport = $seg['DepartureAirport']['@attributes']['LocationCode'];
                             $arrivalAirport = $seg['ArrivalAirport']['@attributes']['LocationCode'];
@@ -360,7 +362,6 @@ class SabreFlight
                     else{
                         $segmentArray = [];
                         $airline = $originDestination['FlightSegment']['OperatingAirline']['@attributes']['Code'];
-                        $topdepartureDateTime = $originDestination['FlightSegment']['@attributes']['DepartureDateTime'];
                         $stops = 0;
                         $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
                         $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
@@ -405,31 +406,104 @@ class SabreFlight
                     array_push($originDestinationArray,$segmentArray);
                     array_values($originDestinationArray);
                 }
-                $iteneraryPrice = $itenerary['AirItineraryPricingInfo']['ItinTotalFare']['TotalFare']['@attributes']['Amount'];
-                $iteneraryPricingSource = $itenerary['AirItineraryPricingInfo']['@attributes']['PricingSource'];
-                $iteneraryPricingSubSource = $itenerary['AirItineraryPricingInfo']['@attributes']['PricingSubSource'];
-                $iteneraryPrimaryInfo = [
-                    "totalPrice" => $iteneraryPrice,
-                    "itenaryPricingSource" =>  $iteneraryPricingSource,
-                    "iteneraryPricingSubSource" => $iteneraryPricingSubSource,
+                $itineraryPrice = $itinerary['AirItineraryPricingInfo']['ItinTotalFare']['TotalFare']['@attributes']['Amount'];
+                $itineraryPricingSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSource'];
+                $itineraryPricingSubSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSubSource'];
+                $itineraryPrimaryInfo = [
+                    "totalPrice" => $itineraryPrice,
+                    "itineraryPricingSource" =>  $itineraryPricingSource,
+                    "itineraryPricingSubSource" => $itineraryPricingSubSource,
                     "airline" => $airline,
                     "stops" => $stops,
-                    "departureTime" => date("g:i A",strtotime($topdepartureDateTime))
                 ];
-                array_push($itenaryInfoArray,$iteneraryPrimaryInfo);
-                array_push($itenaryInfoArray,$originDestinationArray);
-                array_push($returnArray,$itenaryInfoArray);
+                array_push($itineraryInfoArray,$itineraryPrimaryInfo);
+                array_push($itineraryInfoArray,$originDestinationArray);
+                array_push($returnArray,$itineraryInfoArray);
             }
             array_values($returnArray);
         }
         else{
             /**
             if just one flight is returned
+             * Need to update this soon
              */
         }
         array_values($returnArray);
         return $returnArray;
     }
+
+     //    public function sortFlightResult($responseArray){
+//        $itineraries = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['PricedItineraries']['PricedItinerary'];
+//        $returnArray = [];
+//
+//        foreach($itineraries as $i => $itinerary){
+//            $itineraryArray = [];
+//            $itineraryPrice = $itinerary['AirItineraryPricingInfo']['ItinTotalFare']['TotalFare']['@attributes']['Amount'];
+//            $itineraryPricingSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSource'];
+//            $itineraryPricingSubSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSubSource'];
+//            $itineraryPrimaryData = [
+//                'itineraryPrice' => $itineraryPrice,
+//                'itineraryPricingSource' => $itineraryPricingSource,
+//                'itineraryPricingSubSource' => $itineraryPricingSubSource,
+//                'stops' => '',
+//                'airline' => ''
+//            ];
+//            array_push($itineraryArray,$itineraryPrimaryData);
+//            $originDestinations = $itinerary['AirItinerary']['OriginDestinationOptions']['OriginDestinationOption'];
+//            foreach($originDestinations as $j => $originDestination){
+//                $originDestinationsArray = [];
+//                $segments = $originDestination['FlightSegment'];
+//                foreach($segments as $k => $segment){
+////                    dd($segment['@attributes']['FlightNumber']);
+//                    $flightNumber = $segment['@attributes']['FlightNumber'];
+//                    $departureDateTime = $segment['@attributes']['DepartureDateTime'];
+//                    $arrivalDateTime = $segment['@attributes']['ArrivalDateTime'];
+//                    $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+//                    $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+//                    $departureAirportName = Airport::getCity($departureAirport);
+//                    $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+//                    $arrivalAirportName = Airport::getCity($arrivalAirport);
+//                    $operatingAirlineName = Airline::getAirline($operatingAirline);
+//                    $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+//                    $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+//                    $marketingAirlineName = Airline::getAirline($marketingAirline);
+//                    $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+//                    $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+//                    $resBookDesigCode = $segment['@attributes']['ResBookDesigCode'];
+//                    $t1 = Carbon::parse($departureDateTime);
+//                    $t2 = Carbon::parse($arrivalDateTime);
+//                    $diff = $t1->diff($t2);
+//                    $timeDuration = $diff->format('%h')."h ".$diff->format('%i')."m";
+//                    $segmentData = [
+//                        "departureAirport" => $departureAirport,
+//                        "arrivalAirport" => $arrivalAirport,
+//                        "flightNumber" => $flightNumber,
+//                        "departureDateTime" => $departureDateTime,
+//                        "arrivalDateTime" => $arrivalDateTime,
+//                        "operatingAirline" => $operatingAirline,
+//                        "equipment" => $equipment,
+//                        "marketingAirline" => $marketingAirline,
+//                        "departureTimeZone" => $departureTimeZone,
+//                        "arrivalTimeZone" => $arrivalTimeZone,
+//                        "resBookDesigCode" => $resBookDesigCode,
+//                        "departureAirportName" => $departureAirportName,
+//                        "arrivalAirportName" => $arrivalAirportName,
+//                        "operatingAirlineName" => $operatingAirlineName,
+//                        "marketingAirlineName" => $marketingAirlineName,
+//                        "timeDuration" => $timeDuration
+//                    ];
+//                    array_push($originDestinationsArray, $segmentData);
+//                }
+//                array_values($originDestinationsArray);
+//                array_push($itineraryArray,$originDestinationsArray);
+//            }
+//
+//            array_values($itineraryArray);
+//            array_push($returnArray,$itineraryArray);
+//        }
+//          array_values($returnArray);
+//        return $returnArray;
+//    }
 
     public function iataCodeDecodeType($type,$iataCode){
         if($type == 'Airline'){
@@ -481,6 +555,27 @@ class SabreFlight
         elseif($code == 'J'){return "Premium Business";}
         elseif($code == 'F'){return "First";}
         elseif($code == 'P'){return "Premium First";}
+    }
+
+    public static function minimumPrice($key,$value,$sortedArray){
+        $arrayData = [];
+        foreach($sortedArray as $i => $data){
+            $thisvalue = $data[0][$key];
+            if($thisvalue == $value){
+                array_push($arrayData,$data[0]['totalPrice']);
+            }
+        }
+          array_values($arrayData);
+        $num = count($arrayData);
+        if($num == 0){
+            $min = 0;
+        }else{
+            $min =  min($arrayData);
+        }
+        return [
+            "number" => $num,
+            "minimumPrice" => $min
+        ];
     }
 
 

@@ -5,13 +5,14 @@
 @endsection
 @section('content')
     <pre>
-        {{var_dump($flightsResult),die}}
+{{--        {{var_dump($flightsResult),die}}--}}
         {{--{{dd($airlines)}}--}}
         </pre>
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
             </li>
+            <li class="active">{{session()->get('flightSearchParam')->original['departure_airport']}}</li>
             <li class="active">{{session()->get('flightSearchParam')->original['arrival_airport']}}</li>
         </ul>
         <div class="mfp-with-anim mfp-hide mfp-dialog mfp-search-dialog" id="search-dialog">
@@ -212,87 +213,35 @@
                             <h5 class="booking-filters-title">Stops <small>Price from</small></h5>
                             <div class="checkbox">
                                 <label>
-                                    <input class="i-check" type="checkbox" />Non-stop<span class="pull-right">$215</span>
+                                    <input class="i-check stops" type="checkbox" value="0" />Non-stop ({{\App\Services\SabreFlight::minimumPrice('stops','0',$flightsResult)['number']}})<span class="pull-right">&#x20A6; {{number_format(\App\Services\SabreFlight::minimumPrice('stops','0',$flightsResult)['minimumPrice'])}}</span>
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input class="i-check" type="checkbox" />1 Stop<span class="pull-right">$154</span>
+                                    <input class="i-check stops" type="checkbox" value="1" />1 Stop ({{\App\Services\SabreFlight::minimumPrice('stops','1',$flightsResult)['number']}})<span class="pull-right">&#x20A6; {{number_format(\App\Services\SabreFlight::minimumPrice('stops','1',$flightsResult)['minimumPrice'])}}</span>
                                 </label>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input class="i-check" type="checkbox" />2+ Stops<span class="pull-right">$197</span>
-                                </label>
-                            </div>
-                        </li>
-                        <li>
-                            <h5 class="booking-filters-title">Price </h5>
-                            <input type="text" id="price-slider">
-                        </li>
-                        <li>
-                            <h5 class="booking-filters-title">Flight Class <small>Price from</small></h5>
-                            <div class="checkbox">
-                                <label>
-                                    <input class="i-check" type="checkbox" />Economy<span class="pull-right">$154</span>
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input class="i-check" type="checkbox" />Business<span class="pull-right">$316</span>
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input class="i-check" type="checkbox" />First<span class="pull-right">$450</span>
+                                    <input class="i-check stops" type="checkbox" value="2" />2 Stops ({{\App\Services\SabreFlight::minimumPrice('stops','2',$flightsResult)['number']}})<span class="pull-right">&#x20A6; {{number_format(\App\Services\SabreFlight::minimumPrice('stops','2',$flightsResult)['minimumPrice'])}}7</span>
                                 </label>
                             </div>
                         </li>
                         <li>
                             <h5 class="booking-filters-title">Airlines <small>Price from</small></h5>
                             @foreach($airlines as $i => $airline)
-                                <div class="checkbox">
+                                <div class="checkbox airline">
                                     <label>
-                                        <input class="i-check airline_filter" value="{{$airline}}" type="checkbox" />{{\App\Airline::getAirline($airline)}}<span class="pull-right">$215</span>
+                                        <input class="i-check select_airline" value="{{$airline}}" type="checkbox" />{{\App\Airline::getAirline($airline)}} ({{\App\Services\SabreFlight::minimumPrice('airline',$airline,$flightsResult)['number']}})<span class="pull-right">&#x20A6; {{number_format(\App\Services\SabreFlight::minimumPrice('airline',$airline,$flightsResult)['minimumPrice'])}}</span>
                                     </label>
                                 </div>
                                 @endforeach
 
                         </li>
-                        <li>
-                            <h5 class="booking-filters-title">Departure Time</h5>
-                            <div class="checkbox">
-                                <label>
-                                    <input class="i-check" type="checkbox" />Morning (5:00a - 11:59a)</label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input class="i-check" type="checkbox" />Afternoon (12:00p - 5:59p)</label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input class="i-check" type="checkbox" />Evening (6:00p - 11:59p)</label>
-                            </div>
-                        </li>
                     </ul>
                 </aside>
             </div>
             <div class="col-md-9">
-                <div class="nav-drop booking-sort">
-                    <h5 class="booking-sort-title"><a href="#">Sort: Sort: Price (low to high)<i class="fa fa-angle-down"></i><i class="fa fa-angle-up"></i></a></h5>
-                    <ul class="nav-drop-menu">
-                        <li><a href="#">Price (high to low)</a>
-                        </li>
-                        <li><a href="#">Duration</a>
-                        </li>
-                        <li><a href="#">Stops</a>
-                        </li>
-                        <li><a href="#">Arrival</a>
-                        </li>
-                        <li><a href="#">Departure</a>
-                        </li>
-                    </ul>
-                </div>
                 <ul class="booking-list">
                     @foreach($flightsResult as $i => $flight)
                                                 <li class="{{$flight[0]['airline']}} {{"price_".$flight[0]['totalPrice']}} {{"stop_".$flight[0]['stops']}}">
@@ -324,7 +273,7 @@
                                         <p>{{$flight[0]['stops']}} stop(s)</p>
                                     </div>
                                     <div class="col-md-3"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['totalPrice'])}}</span>
-                                        <p class="booking-item-flight-class">Class: Economy</p><a class="btn btn-primary" href="#">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a>
+                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')->original['cabin_type'])}}</p><a class="btn btn-primary" href="#">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -332,7 +281,7 @@
                                 <div class="row">
                                     @foreach($flight[1] as $originDestination => $originDest)
                                     <div class="col-md-6">
-                                        <p>Flight(s) Details</p>
+                                        <p>Trip (Flights (s)) Details</p>
                                         @foreach($originDest as $segmentInfo => $segment)
                                         <h5 class="list-title">{{\App\Airport::getCity($segment['departureAirport'])}} ({{$segment['departureAirport']}}) to {{\App\Airport::getCity($segment['arrivalAirport'])}} ({{$segment['arrivalAirport']}})</h5>
                                         <ul class="list">

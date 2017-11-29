@@ -25,6 +25,7 @@ function toastWarning(message){
         }
     });
 }
+
 function toastSuccess(message){
      return iziToast.success({
         id: 'success',
@@ -43,6 +44,7 @@ function toastSuccess(message){
     });
 
 }
+
 function toastError(message){
    return iziToast.error({
         id: 'error',
@@ -53,6 +55,7 @@ function toastError(message){
         transitionIn: 'fadeInDown'
     });
 }
+
 function toastInfo(message) {
     return iziToast.info({
         id: 'info',
@@ -66,6 +69,7 @@ function toastInfo(message) {
         iconText: 'star'
     });
 }
+
 function modalError(message){
     $("#modalError").iziModal({
         title: "Attention",
@@ -83,6 +87,7 @@ function modalError(message){
         event.preventDefault();
    return $('#modalError').iziModal('open');
 }
+
 function modalSuccess(message){
     $("#modalSuccess").iziModal({
         title: "Success",
@@ -100,6 +105,7 @@ function modalSuccess(message){
     event.preventDefault();
     return $('#modalSuccess').iziModal('open');
 }
+
 function modalInfo(message){
     $("#modalInfo").iziModal({
         title: "Info",
@@ -117,6 +123,7 @@ function modalInfo(message){
     event.preventDefault();
     return $('#modalInfo').iziModal('open');
 }
+
 $('.pagination').twbsPagination({
     totalPages: 16,
     visiblePages: 6,
@@ -135,6 +142,7 @@ $('.trip_type').on("click",function(){
     var trip_type = $(this).text();
     $('.flight_type').val(trip_type);
 });
+
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
@@ -223,3 +231,91 @@ $('.search_flight').on("click",function(){
 
 
 });
+
+$(".subscribe").on('click',function(){
+    $(".subscribe").LoadingOverlay("show");
+    var email = $("#subscribe_email").val();
+    if(!isEmail(email)){
+        toastWarning("Enter a valid email");
+        $(".subscribe").LoadingOverlay("hide");
+        return false;
+    }
+    axios.post('/subscribe', {
+        email : email
+    })
+        .then(function(response){
+            $(".subscribe").LoadingOverlay("hide");
+            if(response.data === 0){
+                 toastError("Connection Error. Poor internet connection detected");
+            }else if(response.data === 1){
+                toastSuccess("Thank you, your email has been successfully added to our subscribers list")
+            }else if(response.data === 2){
+                toastWarning("Email found on subscribers list");
+            }
+        })
+        .catch(function(error){
+            var Error = error.response.data.errors;
+            $(".subscribe").LoadingOverlay("hide");
+            if(Error.email[0]){
+                toastWarning("Enter a valid email");
+            }
+        });
+
+
+});
+
+$("#send_message").on('click',function(){
+    $("#send_message").LoadingOverlay("show");
+    var email = $("#message_email").val();
+    var name = $("#message_name").val();
+    var message = $("#message").val();
+    if(!(isEmail(email))){
+        $("#send_message").LoadingOverlay("hide");
+        toastWarning("Enter a valid email");
+        return false;
+    }
+
+    axios.post('/message',{
+        email : email,
+        name : name,
+        message : message
+    })
+        .then(function(response){
+            $("#send_message").LoadingOverlay("hide");
+            if(response.data === 1){
+                toastSuccess("Your message was sent successfully");
+            }
+            if(response.data === 2){
+                toastWarning("You have sent us this message already");
+            }
+        })
+        .catch(function(error){
+            var Error = error.response.data.errors;
+            console.log(Error);
+            $("#send_message").LoadingOverlay("hide");
+            if(Error.name[0]){
+                toastWarning("Please enter a valid name");
+            }
+            if(Error.message[0]){
+                toastWarning("Please enter a message");
+            }
+        });
+});
+
+alert("It is going to work oo");
+
+$('.select_airline').on('click',function(){
+   alert("Clicked");
+})
+
+
+// $('#price-slider').on("change paste keyup input propertychange",function(){
+//     // var price = $(this).val();
+//     alert("Yeah");
+//     // alert(price);
+//      // toastWarning(price);
+// });
+//
+// $("#price-slider").on("input", function() {
+//     alert("Change to " + this.value);
+// });

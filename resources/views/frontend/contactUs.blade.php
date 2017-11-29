@@ -1,6 +1,6 @@
 @extends('layouts.app')
-{{--@section('title')Contact Us  @endsection--}}
-@section('activeContactUs')active@endsection
+@section('title')Contact Us  @endsection
+{{--@section('activeContactUs')active@endsection--}}
 @section('content')
     <div class="container">
         <h1 class="page-title">Contact Us</h1>
@@ -19,21 +19,21 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" type="text" />
+                                <input class="form-control" type="text" id="message_name" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>E-mail</label>
-                                <input class="form-control" type="text" />
+                                <input class="form-control" type="text" id="message_email" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea class="form-control"></textarea>
+                        <textarea class="form-control" id="message"></textarea>
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Send Message" />
+                    <input class="btn btn-primary" type="button" value="Send Message" id="send_message"/>
                 </form>
             </div>
             <div class="col-md-4">

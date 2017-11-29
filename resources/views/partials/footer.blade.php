@@ -29,10 +29,10 @@
                 <h4>Newsletter</h4>
                 <form>
                     <label>Enter your E-mail Address</label>
-                    <input type="text" class="form-control">
+                    <input type="email" id="subscribe_email" class="form-control">
                     <p class="mt5"><small>*We Never Send Spam</small>
                     </p>
-                    <input type="submit" class="btn btn-primary" value="Subscribe">
+                    <input type="button" class="btn btn-primary subscribe" value="Subscribe">
                 </form>
             </div>
             <div class="col-md-2">

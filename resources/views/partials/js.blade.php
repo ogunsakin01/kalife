@@ -30,7 +30,6 @@
 <script src="{{asset("js/bootbox.min.js")}}"></script>
 <script src="{{asset("js/toastr.min.js")}}"></script>
 <script src="{{asset("js/jquery.datatables.min.js")}}"></script>
-<script src="{{asset("js/myjs.js")}}"></script>
 <script src="{{asset("js/iziModal.js")}}"></script>
 <script src="{{asset("js/iziToast.js")}}"></script>
 <script src="{{asset("js/jquery.twbsPagination.js")}}"></script>

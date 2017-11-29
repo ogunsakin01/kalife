@@ -6637,7 +6637,7 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   line-height: 1em;
 }
 .booking-item-price {
-  font-size: 47px;
+  font-size: 30px;
   color: #626262;
   line-height: 1em;
   display: inline-block;

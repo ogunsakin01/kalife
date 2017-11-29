@@ -251,10 +251,10 @@ $('.nav-drop').dropit();
 
 
 $("#price-slider").ionRangeSlider({
-    min: 130,
-    max: 575,
+    min: 10,
+    max: 20000,
     type: 'double',
-    prefix: "$",
+    prefix: "&#x20A6;",
     // maxPostfix: "+",
     prettify: false,
     hasGrid: true
