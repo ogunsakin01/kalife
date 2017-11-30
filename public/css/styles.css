@@ -1145,6 +1145,7 @@ ul.slimmenu.slimmenu-collapsed li .slimmenu-sub-collapser > i {
   border-bottom: 1px solid #fff;
 }
 .search-tabs > .tabbable >.tab-content > .tab-pane {
+  z-index: 999;
   padding: 15px;
 }
 .search-tabs > .tabbable > .nav-tabs > li > a {
@@ -1198,12 +1199,15 @@ ul.slimmenu.slimmenu-collapsed li .slimmenu-sub-collapser > i {
   margin-bottom: 25px;
 }
 .search-tabs-bg > .tabbable >.tab-content > .tab-pane {
+  z-index: 999;
   background: #fff;
   padding: 25px;
   -webkit-box-shadow: 0 2px 1px rgba(0,0,0,0.15);
   box-shadow: 0 2px 1px rgba(0,0,0,0.15);
+
 }
 .search-tabs-bg > .tabbable >.tab-content > .tab-pane .form-control {
+  z-index: 999;
   background: rgba(255,255,255,0.5);
 }
 .search-tabs-bg > .tabbable > .nav-tabs {
@@ -1255,6 +1259,7 @@ ul.slimmenu.slimmenu-collapsed li .slimmenu-sub-collapser > i {
   padding: 25px 0;
   -webkit-box-shadow: none;
   box-shadow: none;
+  z-index: 999;
 }
 .search-tabs-lift-top {
   margin-top: -50px;

@@ -1,7 +1,25 @@
 /**
  * Created by UniQue on 11/20/2017.
  */
+
+/**
+ * Variables Used Through out
+ * **/
+
+
 var body = '#body';
+
+var date = new Date();
+
+date.setDate(date.getDate()+1);
+
+
+
+
+/**
+ * End of Variables Used Through out
+ * **/
+
 
 /**
  * Start of JavaScript Functions
@@ -41,10 +59,11 @@ function toastSuccess(message){
         transitionIn: 'bounceInLeft',
         // iconText: 'star',
         onOpened: function(instance, toast){
-            // console.info(instance)
+
         },
         onClosed: function(instance, toast, closedBy){
             console.info('closedBy: ' + closedBy);
+
         }
     });
 
@@ -137,11 +156,14 @@ function refreshSabreSession(){
         })
         .then(function(response){
            if(response.data === 0){
-               setInterval(refreshSabreSession,20000);
-           }else if(response.data === 1){
+               toastWarning("Poor Connection");
+               refreshSabreSession();
+           }
+           else if(response.data === 1){
                toastInfo("active");
                 console.log("Success");
-           }else if(response.data === 2){
+           }
+           else if(response.data === 2){
 
                iziToast.warning({
                    timeout: 20000,
@@ -151,10 +173,11 @@ function refreshSabreSession(){
                    id: 'question',
                    zindex: 999,
                    title: 'Session Expired',
-                   message: 'Your session expired, you will be redirected to our home page to start your booking all over',
+                   message: 'Your session expired, you will be redirected to our search homepage',
                    position: 'center',
                    buttons: [
-                       ['OK', function (instance, toast) {
+                       ['<button><b>OK</b></button>', function (instance, toast) {
+                           instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
                            toastInfo("Redirecting to our search homepage");
                            window.location.href = baseUrl+"/";
 
@@ -165,18 +188,20 @@ function refreshSabreSession(){
                        window.location.href = baseUrl+"/";
                    },
                    onClosed: function(instance, toast, closedBy){
-                       toastInfo("Redirecting to our search homepage");
+
                    }
                });
 
-           }else if(response.data === 3){
+           }
+           else if(response.data === 3){
                console.log("Worst Case scenario");
-           }else if(response.data === 4){
+           }
+           else if(response.data === 4){
                console.log("Session not available");
            }
         })
         .catch(function(error){
-
+            var Error = error.response.data.errors;
         });
 }
 
@@ -365,7 +390,7 @@ $("#send_message").on('click',function(){
         });
 });
 
-$('.selected_airline').on('click change',function(){
+$('.selected_airline').on('click',function(){
     $('.to_spin').addClass('fa fa-refresh fa-spin');
     var airline_code = $(this).val();
     var length = $(".flights_"+ airline_code).length;
@@ -382,7 +407,7 @@ $('.selected_airline').on('click change',function(){
 
 });
 
-$('.stops').on('click change',function(){
+$('.stops').on('click',function(){
     $('.to_spin').addClass('fa fa-refresh fa-spin');
     var stops = $(this).val();
     var length = $(".flights_"+ stops).length;
@@ -399,8 +424,8 @@ $('.stops').on('click change',function(){
 
 });
 
-$('.all_flights').on('click change',function(){
-    var length = $(".all_check").length;
+$('.all_flights').on('click',function(){
+    var length = $(".flights").length;
     $(".flights").removeClass("hidden");
     $('.all_check').not(this).prop('checked', false);
     toastInfo(length+" flight(s) displayed");
@@ -409,7 +434,64 @@ $('.all_flights').on('click change',function(){
 
 });
 
-setInterval(refreshSabreSession(), 5000);
+window.setInterval(function(){
+    refreshSabreSession();
+    }, 600000);
+
+$('.multi-datepicker').datepicker({
+    startDate: '-0d',
+    changeMonth: true,
+    showClose : true,
+    showClear : true
+});
+
+$('.add-destination').on('click',function(){
+    var seg = '.multi_seg_num';
+    var seg_num = $(seg).val();
+    var new_seg_num = +seg_num + 1;
+    if(new_seg_num === 7){
+        toastInfo("Limit Exceeded");
+        return false;
+    }
+    $(seg).val(new_seg_num);
+    var i;
+    for(i = 0; i < new_seg_num; i++){
+        $('.toHide'+i).removeClass('hidden');
+    }
+});
+
+$('.reduce_by_one').on('click',function(){
+    var seg = '.multi_seg_num';
+    var seg_num = $(seg).val();
+    var new_seg_num = seg_num - 1;
+    $(seg).val(new_seg_num);
+    var i;
+    $('.toHide').addClass('hidden');
+    for(i = 0; i < new_seg_num; i++){
+        $('.toHide'+i).removeClass('hidden');
+    }
+});
+
+$('.search_multi_flight').on('click',function(){
+    var seg = '.multi_seg_num';
+    var seg_num = $(seg).val();
+    var i;
+   for(i = 0; i < seg_num; i++){
+       var j;
+        j = i - 1;
+      var departure_airport = $('.toHide'+i).find('.departure_airport_multi').val();
+      var arrival_airport = $('.toHide'+i).find('.arrival_airport_multi').val();
+      var departure_date = $('.toHide'+i).find('.departure_date_multi').val();
+      if( !(departure_airport) || !(arrival_airport) || !(departure_date)){
+          toastr.success("OOOhhhhhhhkkkk");
+      }else{
+          toastr.error(departure_airport);
+          toastr.warning(arrival_airport);
+          toastr.info(departure_date);
+      }
+   }
+});
+
 
 /**
  * End of JavaScript Actions

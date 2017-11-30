@@ -16,195 +16,8 @@
             <li class="active">{{session()->get('flightSearchParam')->original['departure_airport']}}</li>
             <li class="active">{{session()->get('flightSearchParam')->original['arrival_airport']}}</li>
         </ul>
-        <div class="mfp-with-anim mfp-hide mfp-dialog mfp-search-dialog" id="search-dialog">
-            <h3>Search for Flight</h3>
-            <form>
-                <div class="tabbable">
-                    <ul class="nav nav-pills nav-sm nav-no-br mb10" id="flightChooseTab">
-                        <li class="active"><a href="#flight-search-1" data-toggle="tab" class="trip_type">Round Trip</a>
-                        </li>
-                        <li><a href="#flight-search-2" data-toggle="tab" class="trip_type">One Way</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <input type="hidden" class="flight_type" value="Round Trip"/>
-                        <div class="tab-pane fade in active" id="flight-search-1">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                        <label>From</label>
-                                        <input class="typeahead form-control" id="departure_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                        <label>To</label>
-                                        <input class="typeahead form-control" id="arrival_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group form-group-lg form-group-select-plus">
-                                        <label>Cabin Type</label>
-                                        <select class="form-control cabin_type">
-                                            <option selected="selected" value="Y">Economy</option>
-                                            <option value="S">Premium Economy</option>
-                                            <option value="C">Business</option>
-                                            <option value="J">Premium Business</option>
-                                            <option value="F">First</option>
-                                            <option value="P">Premium First</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="input-daterange" data-date-format="M d, D">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
-                                            <label>Departing</label>
-                                            <input class="form-control departure_date" value="" name="start" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
-                                            <label>Returning</label>
-                                            <input class="form-control return_date" value="" name="end" type="text" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group form-group-lg form-group-select-plus">
-                                            <label>Adults </label>
-                                            <select class="form-control adult_passengers">
-                                                <option selected="selected" value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group form-group-lg form-group-select-plus">
-                                            <label>Children </label>
-                                            <select class="form-control child_passengers">
-                                                <option value="0" selected="selected">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group form-group-lg form-group-select-plus">
-                                            <label>Infants </label>
-                                            <select class="form-control infant_passengers">
-                                                < <option value="0" selected="selected">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="flight-search-2">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                        <label>From</label>
-                                        <input class="typeahead form-control" id="departure_airport_one" placeholder="City, Airport, U.S. Zip" value="" type="text" />
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                        <label>To</label>
-                                        <input class="typeahead form-control" id="arrival_airport_one" placeholder="City, Airport, U.S. Zip" value="" type="text" />
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group form-group-lg form-group-select-plus">
-                                        <label>Cabin Type</label>
-                                        <select class="form-control cabin_type_one">
-                                            <option selected="selected" value="Y">Economy</option>
-                                            <option value="S">Premium Economy</option>
-                                            <option value="C">Business</option>
-                                            <option value="J">Premium Business</option>
-                                            <option value="F">First</option>
-                                            <option value="P">Premium First</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
-                                        <label>Departing</label>
-                                        <input class="date-pick form-control departure_date_one" data-date-format="M d, D" value="" type="text" />
-                                    </div>
-                                </div>
-                                <input type="hidden" class="arrival_date_one" value=""/>
-                                <div class="col-md-3">
-                                    <div class="form-group form-group-lg form-group-select-plus">
-                                        <label>Adults <small>12 years +</small></label>
-                                        <select class="form-control adult_passengers_one">
-                                            <option selected="selected" value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group form-group-lg form-group-select-plus">
-                                        <label>Children <small>2 - 11 years</small></label>
-                                        <select class="form-control child_passengers_one">
-                                            <option value="0" selected="selected">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group form-group-lg form-group-select-plus">
-                                        <label>Infants <small>below 2 years</small></label>
-                                        <select class="form-control infant_passengers_one">
-                                            < <option value="0" selected="selected">0</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-primary btn-lg search_flight" type="button">Search for Flights</button>
-            </form>
-        </div>
-        <h3 class="booking-title">{{count($flightsResult)}} Flights from {{session()->get('flightSearchParam')->original['departure_airport']}} to {{session()->get('flightSearchParam')->original['arrival_airport']}} on {{date('D, M d',strtotime(session()->get('flightSearchParam')->original['departure_date']))}} for {{session()->get('flightSearchParam')->original['adult_passengers']}} adult(s),{{session()->get('flightSearchParam')->original['child_passengers']}} children and {{session()->get('flightSearchParam')->original['infant_passengers']}} infant(s) <small><a class="popup-text" href="#search-dialog" data-effect="mfp-zoom-out">Change search</a></small></h3>
+
+        <h3 class="booking-title">{{count($flightsResult)}} Flights from {{session()->get('flightSearchParam')->original['departure_airport']}} to {{session()->get('flightSearchParam')->original['arrival_airport']}} on {{date('D, M d',strtotime(session()->get('flightSearchParam')->original['departure_date']))}} for {{session()->get('flightSearchParam')->original['adult_passengers']}} adult(s),{{session()->get('flightSearchParam')->original['child_passengers']}} children and {{session()->get('flightSearchParam')->original['infant_passengers']}} infant(s) <small><a class="popup-text" href="#flight-search-dialog" data-effect="mfp-zoom-out">Change search</a></small></h3>
         <div class="row">
             <div class="col-md-3">
                 <aside class="booking-filters text-white">
@@ -281,7 +94,7 @@
                                         <p>{{$flight[0]['stops']}} stop(s)</p>
                                     </div>
                                     <div class="col-md-3"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['totalPrice'])}}</span>
-                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')->original['cabin_type'])}}</p><a class="btn btn-primary" href="#">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a>
+                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')->original['cabin_type'])}}</p><a class="btn btn-primary" href="{{url('flight-details')}}">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -320,10 +133,13 @@
                     @endforeach
 
                 </ul>
-                <p class="text-right">Not what you're looking for? <a class="popup-text" href="#search-dialog" data-effect="mfp-zoom-out">Try your search again</a>
+                <p class="text-right">Not what you're looking for? <a class="popup-text" href="#flight-search-dialog" data-effect="mfp-zoom-out">Try your search again</a>
                 </p>
             </div>
         </div>
         <div class="gap"></div>
     </div>
 @endsection
+@section('timeoutScript')
+    @include('partials.timeout')
+    @endsection

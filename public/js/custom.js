@@ -48,50 +48,6 @@ $('.form-group').each(function() {
     });
 });
 
-// $('.typeahead').typeahead({
-//     hint: true,
-//     highlight: true,
-//     minLength: 3,
-//     limit: 8
-// }, {
-//     source: function(q, cb) {
-//         /*axios.get('https://iatacodes.org/api/v6/autocomplete?api_key=6e0002b9-b344-439d-b4df-072df7436e92&query='+ q)
-//             .then(function (response) {
-//                 console.log(response.data)
-//             })
-//             .catch(function (error) {
-//                 console.log(error)
-//             })*/
-//
-//
-//         return $.ajax({
-//             dataType: 'json',
-//             type: 'get',
-//             headers : {
-//                 "Accept":"application/json, text/javascript, */*; q=0.01",
-//  "Accept-Encoding":"gzip, deflate, br",
-//  "Accept-Language":"en-US",
-//  "Connection":"keep-alive",
-//  "Host":"iatacodes.org",
-//  "Origin":"http://localhost:8000",
-//  "Referer":"http://localhost:8000/",
-//  "User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 UBrowser/7.0.125.1001 Safari/537.36"
-//             },
-//             url : 'https://iatacodes.org/api/v6/autocomplete?api_key=YOUR_KEY&query='+ q,
-//             // url: 'http://gd.geobytes.com/AutoCompleteCity?callback=?&q=' + q,
-//             chache: false,
-//             success: function(data) {
-//                 var result = [];
-//                 $.each(data, function(index, val) {
-//                     result.push({
-//                         value: val
-//                     });
-//                 });
-//                 cb(result);
-//             }
-//         });
-//     }
-// });
 $('.typeahead').typeahead({
     source: function (query, process) {
         return $.get(path, { query: query }, function (data) {
@@ -108,6 +64,7 @@ $('input.date-pick, .input-daterange, .date-pick-inline').datepicker({
 
 
 $('input.date-pick, .input-daterange input[name="start"]').datepicker('setDate', 'today');
+// $('.multi-datepicker').datepicker('setDate','today');
 $('.input-daterange input[name="end"]').datepicker('setDate', '+7d');
 
 $('input.time-pick').timepicker({
