@@ -258,7 +258,8 @@ $('.search_flight').on("click",function(){
          var infant_passengers = $('.infant_passengers_one').val();
          var cabin_type        = $('.cabin_type_one').val();
 
-     }else if(flight_type === 'Round Trip'){
+     }
+     else if(flight_type === 'Round Trip'){
 
          var departure_airport = $('#departure_airport').val();
          var arrival_airport  =  $('#arrival_airport').val();
@@ -449,7 +450,7 @@ $('.add-destination').on('click',function(){
     var seg = '.multi_seg_num';
     var seg_num = $(seg).val();
     var new_seg_num = +seg_num + 1;
-    if(new_seg_num === 7){
+    if(new_seg_num === 6){
         toastInfo("Limit Exceeded");
         return false;
     }
@@ -473,23 +474,66 @@ $('.reduce_by_one').on('click',function(){
 });
 
 $('.search_multi_flight').on('click',function(){
+    $(body).LoadingOverlay("show");
     var seg = '.multi_seg_num';
     var seg_num = $(seg).val();
     var i;
+    var originDestinations = [];
+    var searchParam = [];
    for(i = 0; i < seg_num; i++){
-       var j;
-        j = i - 1;
       var departure_airport = $('.toHide'+i).find('.departure_airport_multi').val();
       var arrival_airport = $('.toHide'+i).find('.arrival_airport_multi').val();
       var departure_date = $('.toHide'+i).find('.departure_date_multi').val();
       if( !(departure_airport) || !(arrival_airport) || !(departure_date)){
-          toastr.success("OOOhhhhhhhkkkk");
+          $(body).LoadingOverlay("show");
+          toastWarning("All input fields must be required");
+          return false;
       }else{
-          toastr.error(departure_airport);
-          toastr.warning(arrival_airport);
-          toastr.info(departure_date);
+          var originDestination = {
+              departure_airport : departure_airport,
+              arrival_airport : arrival_airport,
+              departure_date : departure_date
+          };
+          originDestinations.push(originDestination);
       }
    }
+   var cabinType = $(".cabin_type_multi").val();
+    var numOfAdults = $(".adult_passengers_multi").val();
+    var numOfInfants = $(".infant_passengers_multi").val();
+    var numOfChildren = $(".child_passengers_multi").val();
+    var otherParams = {
+        cabin_type : cabinType,
+        adult_passengers : numOfAdults,
+        child_passengers : numOfChildren,
+        infant_passengers : numOfInfants
+    };
+    searchParam.push(otherParams,originDestinations);
+    axios.post('/multiCitySearch',{
+      searchParameters : searchParam
+    })
+        .then(function(response){
+            $(body).LoadingOverlay("hide");
+            if(response.data === 0){
+                toastError("Connection Error. Poor Internet Connection");
+                return false;
+            }else if(response.data === 1){
+                toastSuccess("Search completed. Redirecting to available flights page");
+                window.location.href = baseUrl+"/available-flights/";
+            }else if(response.data === 2) {
+                toastWarning("Unable to process your request");
+                return false;
+            }else if(response.data === 3) {
+                toastWarning("No result found for your search option. Try again with different search options");
+                return false;
+            }else if(response.data === 4) {
+                toastWarning("No result found for your search option. Try again with different search options");
+                return false;
+            }
+        })
+        .catch(function(error){
+            $(body).LoadingOverlay("hide");
+            var Error = error.response.data.errors;
+        });
 });
 
 

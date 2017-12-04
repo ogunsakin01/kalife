@@ -9,7 +9,7 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="flight-search-1">
                     <input type="hidden" class="multi_seg_num" value="1"/>
-                    <div class="row toHide toHide1">
+                    <div class="row toHide toHide0">
                         <div class="col-md-4">
                             <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                 <label>From</label>
@@ -26,6 +26,31 @@
                             <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
                                 <label>Departure Date</label>
                                 <input class="form-control departure_date_multi multi-datepicker" value="" name="start" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row hidden toHide toHide1">
+                        <div class="col-md-4">
+                            <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                <label>From</label>
+                                <input class="typeahead form-control departure_airport_multi" id="" value="" placeholder="City, Airport, U.S. Zip" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
+                                <label>To</label>
+                                <input class="typeahead form-control arrival_airport_multi" id="arrival_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
+                                <label>Departure Date</label>
+                                <input class="form-control departure_date_multi multi-datepicker" value="" name="start" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group form-group-lg form-group-icon-left">
+                                <i class="fa fa-times-circle input-icon reduce_by_one"></i>
                             </div>
                         </div>
                     </div>
@@ -80,31 +105,6 @@
                         </div>
                     </div>
                     <div class="row hidden toHide toHide4">
-                        <div class="col-md-4">
-                            <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                <label>From</label>
-                                <input class="typeahead form-control departure_airport_multi" id="" value="" placeholder="City, Airport, U.S. Zip" type="text" />
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
-                                <label>To</label>
-                                <input class="typeahead form-control arrival_airport_multi" id="arrival_airport" value="" placeholder="City, Airport, U.S. Zip" type="text" />
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
-                                <label>Departure Date</label>
-                                <input class="form-control departure_date_multi multi-datepicker" value="" name="start" type="text" />
-                            </div>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="form-group form-group-lg form-group-icon-left">
-                                <i class="fa fa-times-circle input-icon reduce_by_one"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row hidden toHide toHide5">
                         <div class="col-md-4">
                             <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                 <label>From</label>

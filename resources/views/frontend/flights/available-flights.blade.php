@@ -11,13 +11,13 @@
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
-            <li>{{session()->get('flightSearchParam')->original['flight_type']}}</li>
+            <li>{{session()->get('flightSearchParam')['flight_type']}}</li>
             </li>
-            <li class="active">{{session()->get('flightSearchParam')->original['departure_airport']}}</li>
-            <li class="active">{{session()->get('flightSearchParam')->original['arrival_airport']}}</li>
+            <li class="active">{{session()->get('flightSearchParam')['departure_airport']}}</li>
+            <li class="active">{{session()->get('flightSearchParam')['arrival_airport']}}</li>
         </ul>
 
-        <h3 class="booking-title">{{count($flightsResult)}} Flights from {{session()->get('flightSearchParam')->original['departure_airport']}} to {{session()->get('flightSearchParam')->original['arrival_airport']}} on {{date('D, M d',strtotime(session()->get('flightSearchParam')->original['departure_date']))}} for {{session()->get('flightSearchParam')->original['adult_passengers']}} adult(s),{{session()->get('flightSearchParam')->original['child_passengers']}} children and {{session()->get('flightSearchParam')->original['infant_passengers']}} infant(s) <small><a class="popup-text" href="#flight-search-dialog" data-effect="mfp-zoom-out">Change search</a></small></h3>
+        <h3 class="booking-title">{{count($flightsResult)}} Flights from {{session()->get('flightSearchParam')['departure_airport']}} to {{session()->get('flightSearchParam')['arrival_airport']}} on {{date('D, M d',strtotime(session()->get('flightSearchParam')['departure_date']))}} for {{session()->get('flightSearchParam')['adult_passengers']}} adult(s),{{session()->get('flightSearchParam')['child_passengers']}} children and {{session()->get('flightSearchParam')['infant_passengers']}} infant(s) <small><a class="popup-text" href="#flight-search-dialog" data-effect="mfp-zoom-out">Change search</a></small></h3>
         <div class="row">
             <div class="col-md-3">
                 <aside class="booking-filters text-white">
@@ -94,7 +94,7 @@
                                         <p>{{$flight[0]['stops']}} stop(s)</p>
                                     </div>
                                     <div class="col-md-3"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['totalPrice'])}}</span>
-                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')->original['cabin_type'])}}</p><a class="btn btn-primary" href="{{url('flight-details')}}">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a>
+                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}}</p><a class="btn btn-primary" href="{{url('flight-details')}}">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                         <h5 class="list-title">{{\App\Airport::getCity($segment['departureAirport'])}} ({{$segment['departureAirport']}}) to {{\App\Airport::getCity($segment['arrivalAirport'])}} ({{$segment['arrivalAirport']}})</h5>
                                         <ul class="list">
                                             <li>{{\App\Airline::getAirline($segment['operatingAirline'])}} <b>{{$segment['operatingAirline']}} - {{$segment['flightNumber']}}</b></li>
-                                            <li>{{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')->original['cabin_type'])}} ({{session()->get('flightSearchParam')->original['cabin_type']}}), {{\App\Equipment::getEquipment($segment['equipment'])}}</li>
+                                            <li>{{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}} ({{session()->get('flightSearchParam')['cabin_type']}}), {{\App\Equipment::getEquipment($segment['equipment'])}}</li>
                                             <li><b>Depart</b> {{date('g:i A D, M d',strtotime($segment['departureDateTime']))}} <b>Arrive</b> {{date('g:i A D, M d',strtotime($segment['arrivalDateTime']))}}</li>
                                             <li><b>Duration</b>: {{$segment['timeDuration']}}</li>
                                         </ul>

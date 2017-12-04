@@ -96,7 +96,7 @@ class SabreFlight
         if(isset($param->return_date) AND !empty($param->return_date)){
             $return_date = date('Y-m-d',strtotime($param->return_date));
             return '<OriginDestinationInformation RPH="1">
-        <DepartureDateTime>'.$departure_date.'T11:00:00</DepartureDateTime>
+        <DepartureDateTime>'.$departure_date.'T00:00:00</DepartureDateTime>
         <OriginLocation LocationCode="'.$departure_airport.'" />
         <DestinationLocation LocationCode="'.$arrival_airport.'" />
         <TPA_Extensions>
@@ -104,7 +104,7 @@ class SabreFlight
         </TPA_Extensions>
     </OriginDestinationInformation>
     <OriginDestinationInformation RPH="2">
-        <DepartureDateTime>'.$return_date.'T11:00:00</DepartureDateTime>
+        <DepartureDateTime>'.$return_date.'T00:00:00</DepartureDateTime>
         <OriginLocation LocationCode="'.$arrival_airport.'" />
         <DestinationLocation LocationCode="'.$departure_airport.'" />
         <TPA_Extensions>
@@ -114,7 +114,7 @@ class SabreFlight
         }
         else{
             return '<OriginDestinationInformation RPH="1">
-        <DepartureDateTime>'.$departure_date.'T11:00:00</DepartureDateTime>
+        <DepartureDateTime>'.$departure_date.'T00:00:00</DepartureDateTime>
         <OriginLocation LocationCode="'.$departure_airport.'" />
         <DestinationLocation LocationCode="'.$arrival_airport.'" />
         <TPA_Extensions>
@@ -173,6 +173,54 @@ class SabreFlight
         </IntelliSellTransaction>
     </TPA_Extensions>
 </OTA_AirLowFareSearchRQ>';
+    }
+
+    public function MultiCityOriginDestination($params){
+        $returnValue = '';
+        foreach($params as $i => $param){
+          $originDestination = '<OriginDestinationInformation RPH="'. ($i+1) .'">
+        <DepartureDateTime>'.date('Y-m-d',strtotime($param['departure_date'])).'T00:00:00</DepartureDateTime>
+        <OriginLocation LocationCode="'.$this->airportCode($param['departure_airport']).'" />
+        <DestinationLocation LocationCode="'.$this->airportCode($param['arrival_airport']).'" />
+        <TPA_Extensions>
+            <SegmentType Code="O" />
+        </TPA_Extensions>
+    </OriginDestinationInformation>';
+          $returnValue = $returnValue.$originDestination;
+        }
+
+       return  $returnValue;
+    }
+
+    public function MultiCityBargainMaxFinderXml($param){
+        $otherParam = $param['searchParameters'][0];
+        $otherParamObject = (object) $otherParam;
+        $originDestination = $param['searchParameters'][1];
+
+        return '<OTA_AirLowFareSearchRQ xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Production" Version="3.3.0" ResponseType="OTA" ResponseVersion="3.3.0">
+    <POS>
+        <Source PseudoCityCode="'.$this->sabreConfig->soap_ipcc.'">
+        <RequestorID ID="1" Type="1">
+            <CompanyName Code="TN" />
+        </RequestorID>
+        </Source>
+    </POS>
+   '.$this->MultiCityOriginDestination($originDestination).'
+    <TravelPreferences ValidInterlineTicket="true">
+        <CabinPref PreferLevel="Preferred" Cabin="'.$otherParam['cabin_type'].'" />
+        <TPA_Extensions>
+            <LongConnectTime Min="780" Max="1200" Enable="true" />
+            <ExcludeCallDirectCarriers Enabled="true" />
+        </TPA_Extensions>
+    </TravelPreferences>
+    '.$this->travelerInfoSummary($otherParamObject).'
+    <TPA_Extensions>
+        <IntelliSellTransaction>
+            <RequestType Name="50ITINS" />
+        </IntelliSellTransaction>
+    </TPA_Extensions>
+</OTA_AirLowFareSearchRQ>';
+
     }
 
     public function EnhancedAirBookRQ($Itinerary,$param){
@@ -651,14 +699,23 @@ class SabreFlight
     }
 
     public function availableAirline($responseArray){
-        $flightResponse = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['TPA_Extensions']['AirlineOrderList']['AirlineOrder'];
         $airlineArray = [];
-        if(array_has($flightResponse,0)){
-            foreach($flightResponse as $i => $airlinedata){
-                array_push($airlineArray,$airlinedata['@attributes']['Code']);
+        if(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['TPA_Extensions']['AirlineOrderList']['AirlineOrder'])){
+            $flightResponse = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['TPA_Extensions']['AirlineOrderList']['AirlineOrder'];
+            if(array_has($flightResponse,0)){
+                foreach($flightResponse as $i => $airlinedata){
+                    array_push($airlineArray,$airlinedata['@attributes']['Code']);
+                }
+            }else{
+                array_push($airlineArray,$flightResponse['@attributes']['Code']);
             }
         }else{
-            array_push($airlineArray,$flightResponse['@attributes']['Code']);
+            $flights = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['PricedItineraries']['PricedItinerary'];
+            if(isset($flights[0])){
+                foreach($flights as $i => $flight){
+                    array_push($airlineArray,$flight['TPA_Extensions']['ValidatingCarrier']['@attributes']['Code']);
+                }
+            }
         }
         return array_values($airlineArray);
     }
