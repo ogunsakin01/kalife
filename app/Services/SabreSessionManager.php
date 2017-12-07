@@ -57,7 +57,7 @@ class SabreSessionManager{
     }
 
     public function sessionInfo($plainResponse){
-        return $this->sabreConfig->mungXmlToObject($plainResponse);
+        return $this->sabreConfig->mungXmlToArray($plainResponse);
     }
 
     public function sessionCreateValidator($ResponseArray){
@@ -142,7 +142,7 @@ class SabreSessionManager{
 
                 $refresh_data = $this->sessionRefreshValidator($this->refreshSession($token,$messageId));
                 if($refresh_data == 0){
-                     return 0;
+                     return session()->get('session_info');
                 }elseif($refresh_data == 1){
                     return session()->get('session_info');
                 }elseif($refresh_data == 2){

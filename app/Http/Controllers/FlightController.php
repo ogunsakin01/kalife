@@ -29,8 +29,8 @@ class FlightController extends Controller
 //        dd($flightsResult);
         $airlines = $this->Sabreflight->availableAirline($flightsResult);
         $flightsResult = $this->Sabreflight->sortFlightArray($flightsResult);
+//        session()->put('availableFlights',$flightsResult);
         $flightSearchParam = session()->get('flightSearchParam');
-//        dd($flightSearchParam);
         return view("frontend.flights.available-flights",compact('flightsResult','flightSearchParam','airlines'));
     }
 
@@ -61,7 +61,7 @@ class FlightController extends Controller
             'flight_type' => $r->flight_type
         ];
           $search = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('BargainFinderMaxRQ'),$this->Sabreflight->BargainMaxFinderXml($r),'BargainFinderMaxRQ');
-          $search_array = $this->SabreConfig->mungXmlToObject($search);
+          $search_array = $this->SabreConfig->mungXmlToArray($search);
           session()->put('availableFlights',$search_array);
           session()->put('flightSearchParam',$requestArray);
 
@@ -86,7 +86,7 @@ class FlightController extends Controller
             'flight_type' => 'Multi Destinations'
         ];
         $search = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('BargainFinderMaxRQ'),$this->Sabreflight->MultiCityBargainMaxFinderXml($r),'BargainFinderMaxRQ');
-        $search_array = $this->SabreConfig->mungXmlToObject($search);
+        $search_array = $this->SabreConfig->mungXmlToArray($search);
         session()->put('availableFlights',$search_array);
         session()->put('flightSearchParam',$requestArray);
         return  $this->Sabreflight->flightSearchValidator($search_array);
@@ -105,6 +105,12 @@ class FlightController extends Controller
             ->get();
 
         return response()->json($data);
+    }
+
+    public function flightBookPricing($id){
+         $priceItinerary = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('EnhancedAirBookRQ'),$this->Sabreflight->EnhancedAirBookRQXML(session()->get('availableFlights'),$id,session()->get('flightSearchParam')),'EnhancedAirBookRQ');
+         $priceItineraryArray = $this->SabreConfig->mungXmlToArray($priceItinerary);
+         dd($priceItineraryArray);
     }
 
 

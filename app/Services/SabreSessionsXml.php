@@ -42,6 +42,7 @@ class SabreSessionsXml{
       </wsse:UsernameToken>
       </wsse:Security>';
     }
+
     public function sessionRefreshHeader($token,$message_id){
      return '<eb:MessageHeader SOAP-ENV:mustUnderstand="1" eb:version="1.0">
         <eb:ConversationId/>
@@ -65,6 +66,7 @@ class SabreSessionsXml{
         <wsse:BinarySecurityToken>'.$token.'</wsse:BinarySecurityToken>
         </wsse:Security>';
     }
+
     public function sessionCloseHeader($token,$message_id){
     return '<eb:MessageHeader SOAP-ENV:mustUnderstand="1" eb:version="1.0">
             <eb:ConversationId/>
@@ -88,6 +90,7 @@ class SabreSessionsXml{
             <wsse:BinarySecurityToken>'.$token.'</wsse:BinarySecurityToken>
             </wsse:Security>';
     }
+
     public function sessionCreateBody(){
       return '<SessionCreateRQ returnContextID="true">
               <POS>
@@ -95,11 +98,13 @@ class SabreSessionsXml{
               </POS>
               </SessionCreateRQ>';
     }
+
     public function sessionRefreshBody(){
        return '<OTA_PingRQ xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="'.date('Y-m-d').'T10:15:00-06:00" Version="1.0.0">
                <EchoData>Are you there</EchoData>
                </OTA_PingRQ>';
     }
+
     public function sessionCloseBody(){
        return '<SessionCloseRQ>
                <POS>

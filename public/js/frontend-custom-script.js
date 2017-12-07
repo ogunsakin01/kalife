@@ -392,7 +392,6 @@ $("#send_message").on('click',function(){
 });
 
 $('.selected_airline').on('click',function(){
-    $('.to_spin').addClass('fa fa-refresh fa-spin');
     var airline_code = $(this).val();
     var length = $(".flights_"+ airline_code).length;
     if(length === 0){

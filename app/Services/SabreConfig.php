@@ -41,7 +41,7 @@ class SabreConfig{
         return $response;
     }
 
-    public function mungXmlToObject($xml){
+    public function mungXmlToArray($xml){
         $obj = SimpleXML_Load_String($xml);
         if ($obj === FALSE) return $xml;
         // GET NAMESPACES, IF ANY

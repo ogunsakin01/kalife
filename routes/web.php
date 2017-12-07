@@ -24,10 +24,10 @@ Route::post('/subscribe','FrontEndController@subscribe');
 Route::post('/message','FrontEndController@message');
 Route::post('/tokenRefresh','FrontEndController@tokenRefresh');
 Route::post('/pageTimeOut','FrontEndController@pageTimeOut');
-
+Route::get('{id}/flight-booking-details','FlightController@flightBookPricing');
 
 Route::view('/test', 'backend.test');
 Route::prefix('backend')->group(function (){
-  Route::view('home', 'backend.home')->name('home');
+    Route::view('home', 'backend.home')->name('home');
 });
 

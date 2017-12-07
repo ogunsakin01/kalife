@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <pre>
-{{--        {{dd($flightsResult)}}--}}
+        {{--{{dd($flightsResult)}}--}}
         {{--{{dd($airlines)}}--}}
         </pre>
     <div class="container">
@@ -75,7 +75,7 @@
                                             <p>{{\App\Airline::getAirline($flight[0]['airline'])}}</p>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-4">
                                         <div class="booking-item-flight-details">
                                             <div class="booking-item-departure"><i class="fa fa-plane"></i>
                                                 <h5>{{date('g:i A',strtotime($flight[1][0][0]['departureDateTime']))}}</h5>
@@ -93,8 +93,8 @@
                                         <h5>{{$flight[1][0][0]['timeDuration']}}</h5>
                                         <p>{{$flight[0]['stops']}} stop(s)</p>
                                     </div>
-                                    <div class="col-md-3"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['totalPrice'])}}</span>
-                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}}</p><a class="btn btn-primary" href="{{url('flight-details')}}">Select</a>&nbsp;<a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a>
+                                    <div class="col-md-4"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['totalPrice'])}}</span>
+                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}}</p><a class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</a> <a class="btn btn-primary" href="{{url($i.'/flight-booking-details')}}"> Select <i class="fa fa-send"></i></a>&nbsp;
                                     </div>
                                 </div>
                             </div>

@@ -86,6 +86,9 @@ class SabreFlight
     }
 
     public function airportCode($string){
+        if(strlen($string) == 3){
+            return $string;
+        }
         return substr($string, -3,3);
     }
 
@@ -124,6 +127,23 @@ class SabreFlight
     ';
         }
 
+    }
+
+    public function MultiCityOriginDestination($params){
+        $returnValue = '';
+        foreach($params as $i => $param){
+            $originDestination = '<OriginDestinationInformation RPH="'. ($i+1) .'">
+        <DepartureDateTime>'.date('Y-m-d',strtotime($param['departure_date'])).'T00:00:00</DepartureDateTime>
+        <OriginLocation LocationCode="'.$this->airportCode($param['departure_airport']).'" />
+        <DestinationLocation LocationCode="'.$this->airportCode($param['arrival_airport']).'" />
+        <TPA_Extensions>
+            <SegmentType Code="O" />
+        </TPA_Extensions>
+    </OriginDestinationInformation>';
+            $returnValue = $returnValue.$originDestination;
+        }
+
+        return  $returnValue;
     }
 
     public function travelerInfoSummary($param){
@@ -175,23 +195,6 @@ class SabreFlight
 </OTA_AirLowFareSearchRQ>';
     }
 
-    public function MultiCityOriginDestination($params){
-        $returnValue = '';
-        foreach($params as $i => $param){
-          $originDestination = '<OriginDestinationInformation RPH="'. ($i+1) .'">
-        <DepartureDateTime>'.date('Y-m-d',strtotime($param['departure_date'])).'T00:00:00</DepartureDateTime>
-        <OriginLocation LocationCode="'.$this->airportCode($param['departure_airport']).'" />
-        <DestinationLocation LocationCode="'.$this->airportCode($param['arrival_airport']).'" />
-        <TPA_Extensions>
-            <SegmentType Code="O" />
-        </TPA_Extensions>
-    </OriginDestinationInformation>';
-          $returnValue = $returnValue.$originDestination;
-        }
-
-       return  $returnValue;
-    }
-
     public function MultiCityBargainMaxFinderXml($param){
         $otherParam = $param['searchParameters'][0];
         $otherParamObject = (object) $otherParam;
@@ -223,55 +226,19 @@ class SabreFlight
 
     }
 
-    public function EnhancedAirBookRQ($Itinerary,$param){
-        $returnXml = '<EnhancedAirBookRQ Version="2.5.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
-			<OTA_AirBookRQ HaltOnError="true">
-				<OriginDestinationInformation>
-					<FlightSegment DepartureDateTime="2014-04-22T06:20" FlightNumber="2401" NumberInParty="1" ResBookDesigCode="Y" Status="NN">
-						<DestinationLocation LocationCode="LAX"/>
-						<Equipment AirEquipType="738"/>
-						<MarketingAirline Code="AA" FlightNumber="2401"/>
-						<MarriageGrp Ind="false"/>
-						<OriginLocation LocationCode="DFW"/>
-					</FlightSegment>
-					<FlightSegment DepartureDateTime="2014-04-29T06:00" FlightNumber="2410" NumberInParty="1" ResBookDesigCode="Y" Status="NN">
-						<DestinationLocation LocationCode="DFW"/>
-						<Equipment AirEquipType="738"/>
-						<MarketingAirline Code="AA" FlightNumber="2410"/>
-						<MarriageGrp Ind="false"/>
-						<OriginLocation LocationCode="LAX"/>
-					</FlightSegment>
-				</OriginDestinationInformation>
-			</OTA_AirBookRQ>
-			<OTA_AirPriceRQ HaltOnError="true">
-				<PriceRequestInformation Retain="true">
-					<OptionalQualifiers>
-						<PricingQualifiers>
-							<PassengerType Code="ADT" Quantity="1"/>
-						</PricingQualifiers>
-					</OptionalQualifiers>
-				</PriceRequestInformation>
-			</OTA_AirPriceRQ>
-			<PostProcessing HaltOnError="true" RedisplayReservation="true"/>
-		</EnhancedAirBookRQ>';
-
-        return $returnXml;
-
-    }
-
-    public function PassengerDetailsRQ(){
-
-    }
-
     public function flightSearchValidator($responseArray){
-        if(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['Errors']['Error'])){
-            return 4;
-        }
-        elseif(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['Success'])){
-            return 1;
-        }
-        else{
-            return 3;
+        if(!empty($responseArray)){
+            if(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['Errors']['Error'])){
+                return 4;
+            }
+            elseif(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['Success'])){
+                return 1;
+            }
+            else{
+                return 3;
+            }
+        }else{
+            return 0;
         }
     }
 
@@ -288,49 +255,98 @@ class SabreFlight
                     $originDestinationArray = [];
                     foreach($originDestination as $j => $originDest){
 //                     $originDestination = array_get($originDestination, 'OriginDestinationOption.'.$j);
-                     $segment = $originDest['FlightSegment'];
-                     if(isset($segment[0])){
-                         $segmentArray = [];
+                        $segment = $originDest['FlightSegment'];
+                        if(isset($segment[0])){
+                            $segmentArray = [];
 //                         $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
-                         if(isset($originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'])){
-                             $airline = $originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'];
-                         }else{
-                             $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
-                         }
-                         $stops = count($segment) - 1;
-                         foreach($segment as $k => $seg){
-                            $segment = array_get($segment, "FlightSegment.".$k);
-                            $departureAirport = $seg['DepartureAirport']['@attributes']['LocationCode'];
-                            $departureAirportName = Airport::getCity($departureAirport);
-                            $arrivalAirport = $seg['ArrivalAirport']['@attributes']['LocationCode'];
+                            if(isset($originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'])){
+                                $airline = $originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'];
+                            }else{
+                                $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
+                            }
+                            $stops = count($segment) - 1;
+                            foreach($segment as $k => $seg){
+                                $segment = array_get($segment, "FlightSegment.".$k);
+                                $departureAirport = $seg['DepartureAirport']['@attributes']['LocationCode'];
+                                $departureAirportName = Airport::getCity($departureAirport);
+                                $arrivalAirport = $seg['ArrivalAirport']['@attributes']['LocationCode'];
+                                $arrivalAirportName = Airport::getCity($arrivalAirport);
+                                $flightNumber = $seg['@attributes']['FlightNumber'];
+                                $departureDateTime = $seg['@attributes']['DepartureDateTime'];
+                                $arrivalDateTime = $seg['@attributes']['ArrivalDateTime'];
+                                $operatingAirline = $seg['OperatingAirline']['@attributes']['Code'];
+                                $operatingAirlineName = Airline::getAirline($operatingAirline);
+                                $equipment = $seg['Equipment']['@attributes']['AirEquipType'];
+                                $marketingAirline = $seg['MarketingAirline']['@attributes']['Code'];
+                                $marketingAirlineName = Airline::getAirline($marketingAirline);
+                                $departureTimeZone = $seg['DepartureTimeZone']['@attributes']['GMTOffset'];
+                                $arrivalTimeZone = $seg['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                                $resBookDesigCode = $seg['@attributes']['ResBookDesigCode'];
+                                $t1 = Carbon::parse($departureDateTime);
+                                $t2 = Carbon::parse($arrivalDateTime);
+                                $diff = $t1->diff($t2);
+                                $timeDuration = $diff->format('%h')."h ".$diff->format('%i')."m";
+                                $segmentPrimaryDataArray = [
+                                    "departureAirport" => $departureAirport,
+                                    "arrivalAirport" => $arrivalAirport,
+                                    "flightNumber" => $flightNumber,
+                                    "departureDateTime" => $departureDateTime,
+                                    "arrivalDateTime" => $arrivalDateTime,
+                                    "operatingAirline" => $operatingAirline,
+                                    "equipment" => $equipment,
+                                    "marketingAirline" => $marketingAirline,
+                                    "departureTimeZone" => $departureTimeZone,
+                                    "arrivalTimeZone" => $arrivalTimeZone,
+                                    "resBookDesigCode" => $resBookDesigCode,
+                                    "departureAirportName" => $departureAirportName,
+                                    "arrivalAirportName" => $arrivalAirportName,
+                                    "operatingAirlineName" => $operatingAirlineName,
+                                    "marketingAirlineName" => $marketingAirlineName,
+                                    "timeDuration" => $timeDuration
+                                ];
+                                array_push($segmentArray,$segmentPrimaryDataArray);
+                            }
+                            array_values($segmentArray);
+                        }
+                        else{
+                            $segmentArray = [];
+                            if(isset($originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'])){
+                                $airline = $originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'];
+                            }else{
+                                $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
+                            }
+                            $stops = 0;
+                            $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
+                            $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
+                            $flightNumber = $segment['@attributes']['FlightNumber'];
+                            $departureDateTime = $segment['@attributes']['DepartureDateTime'];
+                            $arrivalDateTime = $segment['@attributes']['ArrivalDateTime'];
+                            $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
+                            $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
+                            $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
+                            $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
+                            $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
+                            $resBookDesigCode = $segment['@attributes']['ResBookDesigCode'];
                             $arrivalAirportName = Airport::getCity($arrivalAirport);
-                            $flightNumber = $seg['@attributes']['FlightNumber'];
-                            $departureDateTime = $seg['@attributes']['DepartureDateTime'];
-                            $arrivalDateTime = $seg['@attributes']['ArrivalDateTime'];
-                            $operatingAirline = $seg['OperatingAirline']['@attributes']['Code'];
                             $operatingAirlineName = Airline::getAirline($operatingAirline);
-                            $equipment = $seg['Equipment']['@attributes']['AirEquipType'];
-                            $marketingAirline = $seg['MarketingAirline']['@attributes']['Code'];
+                            $departureAirportName = Airport::getCity($departureAirport);
                             $marketingAirlineName = Airline::getAirline($marketingAirline);
-                            $departureTimeZone = $seg['DepartureTimeZone']['@attributes']['GMTOffset'];
-                            $arrivalTimeZone = $seg['ArrivalTimeZone']['@attributes']['GMTOffset'];
-                            $resBookDesigCode = $seg['@attributes']['ResBookDesigCode'];
-                             $t1 = Carbon::parse($departureDateTime);
-                             $t2 = Carbon::parse($arrivalDateTime);
-                             $diff = $t1->diff($t2);
-                             $timeDuration = $diff->format('%h')."h ".$diff->format('%i')."m";
+                            $t1 = Carbon::parse($departureDateTime);
+                            $t2 = Carbon::parse($arrivalDateTime);
+                            $diff = $t1->diff($t2);
+                            $timeDuration = $diff->format('%h')."h ".$diff->format('%i')."m";
                             $segmentPrimaryDataArray = [
-                               "departureAirport" => $departureAirport,
-                               "arrivalAirport" => $arrivalAirport,
-                               "flightNumber" => $flightNumber,
-                               "departureDateTime" => $departureDateTime,
-                               "arrivalDateTime" => $arrivalDateTime,
-                               "operatingAirline" => $operatingAirline,
-                               "equipment" => $equipment,
-                               "marketingAirline" => $marketingAirline,
-                               "departureTimeZone" => $departureTimeZone,
-                               "arrivalTimeZone" => $arrivalTimeZone,
-                               "resBookDesigCode" => $resBookDesigCode,
+                                "departureAirport" => $departureAirport,
+                                "arrivalAirport" => $arrivalAirport,
+                                "flightNumber" => $flightNumber,
+                                "departureDateTime" => $departureDateTime,
+                                "arrivalDateTime" => $arrivalDateTime,
+                                "operatingAirline" => $operatingAirline,
+                                "equipment" => $equipment,
+                                "marketingAirline" => $marketingAirline,
+                                "departureTimeZone" => $departureTimeZone,
+                                "arrivalTimeZone" => $arrivalTimeZone,
+                                "resBookDesigCode" => $resBookDesigCode,
                                 "departureAirportName" => $departureAirportName,
                                 "arrivalAirportName" => $arrivalAirportName,
                                 "operatingAirlineName" => $operatingAirlineName,
@@ -338,60 +354,11 @@ class SabreFlight
                                 "timeDuration" => $timeDuration
                             ];
                             array_push($segmentArray,$segmentPrimaryDataArray);
-                         }
-                         array_values($segmentArray);
-                     }
-                     else{
-                         $segmentArray = [];
-                         if(isset($originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'])){
-                             $airline = $originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'];
-                         }else{
-                             $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
-                         }
-                         $stops = 0;
-                         $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
-                         $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
-                         $flightNumber = $segment['@attributes']['FlightNumber'];
-                         $departureDateTime = $segment['@attributes']['DepartureDateTime'];
-                         $arrivalDateTime = $segment['@attributes']['ArrivalDateTime'];
-                         $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
-                         $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
-                         $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
-                         $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
-                         $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
-                         $resBookDesigCode = $segment['@attributes']['ResBookDesigCode'];
-                         $arrivalAirportName = Airport::getCity($arrivalAirport);
-                         $operatingAirlineName = Airline::getAirline($operatingAirline);
-                         $departureAirportName = Airport::getCity($departureAirport);
-                         $marketingAirlineName = Airline::getAirline($marketingAirline);
-                         $t1 = Carbon::parse($departureDateTime);
-                         $t2 = Carbon::parse($arrivalDateTime);
-                         $diff = $t1->diff($t2);
-                         $timeDuration = $diff->format('%h')."h ".$diff->format('%i')."m";
-                         $segmentPrimaryDataArray = [
-                             "departureAirport" => $departureAirport,
-                             "arrivalAirport" => $arrivalAirport,
-                             "flightNumber" => $flightNumber,
-                             "departureDateTime" => $departureDateTime,
-                             "arrivalDateTime" => $arrivalDateTime,
-                             "operatingAirline" => $operatingAirline,
-                             "equipment" => $equipment,
-                             "marketingAirline" => $marketingAirline,
-                             "departureTimeZone" => $departureTimeZone,
-                             "arrivalTimeZone" => $arrivalTimeZone,
-                             "resBookDesigCode" => $resBookDesigCode,
-                             "departureAirportName" => $departureAirportName,
-                             "arrivalAirportName" => $arrivalAirportName,
-                             "operatingAirlineName" => $operatingAirlineName,
-                             "marketingAirlineName" => $marketingAirlineName,
-                             "timeDuration" => $timeDuration
-                         ];
-                         array_push($segmentArray,$segmentPrimaryDataArray);
-                         array_values($segmentArray);
-                     }
-                     array_push($originDestinationArray,$segmentArray);
-                  }
-                  array_values($originDestinationArray);
+                            array_values($segmentArray);
+                        }
+                        array_push($originDestinationArray,$segmentArray);
+                    }
+                    array_values($originDestinationArray);
                 }
 
 
@@ -520,6 +487,89 @@ class SabreFlight
         return $returnArray;
     }
 
+    public function EnhancedAirBookRQXML($result,$id,$param){
+        $flightsResult = $this->sortFlightArray($result);
+        $Itinerary = $flightsResult[$id];
+        $passenger = '';
+        if($param['adult_passengers'] > 0){
+            $passenger = $passenger.'<PassengerType Code="ADT" Quantity="'.$param['adult_passengers'].'" />';
+        }
+        if($param['child_passengers'] > 0){
+            $passenger = $passenger.'<PassengerType Code="CNN" Quantity="'.$param['child_passengers'].'" />';
+
+        }
+        if($param['infant_passengers'] > 0){
+            $passenger = $passenger.'<PassengerType Code="INF" Quantity="'.$param['infant_passengers'].'" />';
+
+        }
+        $number_of_passengers = $param['adult_passengers'] + $param['child_passengers'];
+         $originDestinationInformation = '';
+        $openingTag = '<OriginDestinationInformation>';
+        $closingTag = '</OriginDestinationInformation>';
+        foreach($Itinerary[1] as $i => $itinerary_info){
+                $segments = '';
+                foreach($itinerary_info as $j => $segment){
+                  $segment_info = '<FlightSegment ArrivalDateTime="'.$segment['arrivalDateTime'].'" DepartureDateTime="'.$segment['departureDateTime'].'" FlightNumber="'.$segment['flightNumber'].'" NumberInParty="'.$number_of_passengers.'" ResBookDesigCode="'.$segment['resBookDesigCode'].'" InstantPurchase="true" Status="NN">
+						<DestinationLocation LocationCode="'.$segment['arrivalAirport'].'"/>
+						<Equipment AirEquipType="'.$segment['equipment'].'"/>
+						<MarketingAirline Code="'.$segment['marketingAirline'].'" FlightNumber="'.$segment['flightNumber'].'"/>
+						<OriginLocation LocationCode="'.$segment['departureAirport'].'"/>
+					      </FlightSegment>';
+                  $segments = $segments.$segment_info;
+                }
+
+            $originDestinationInformation = $originDestinationInformation.$segments;
+        }
+        $originDestinationInformation = $openingTag.$originDestinationInformation.$closingTag;
+//dd($originDestinationInformation);
+        $returnXml = '
+      <EnhancedAirBookRQ version="3.8.0" xmlns="http://services.sabre.com/sp/eab/v3_8" HaltOnError="true">
+			<OTA_AirBookRQ >'.$originDestinationInformation.'</OTA_AirBookRQ>
+			<OTA_AirPriceRQ >
+				<PriceRequestInformation Retain="true">
+					<OptionalQualifiers>
+						<PricingQualifiers>
+							'.$passenger.'
+						</PricingQualifiers>
+					</OptionalQualifiers>
+				</PriceRequestInformation>
+			</OTA_AirPriceRQ>
+			 <PostProcessing IgnoreAfter="true">
+              <RedisplayReservation WaitInterval="5000"/>
+             </PostProcessing>
+		</EnhancedAirBookRQ>';
+
+//        dd($returnXml);
+
+        return $returnXml;
+
+
+
+    }
+
+    public function PassengerDetailsRQ(){
+
+    }
+
+    public function sortEnhancedAirBookRS($responseArray){
+
+    }
+    public function enhancedAirBookValidator($responseArray){
+        if(empty($responseArray)){
+            return 0;
+        }else{
+            if(in_array($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray)){
+                $sortedResponse = $this->sortEnhancedAirBookRS($responseArray);
+                session()->put('flightEnhancedBookSortedResponse',$sortedResponse);
+                  return 1;
+            }elseif(!(in_array($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray))){
+                 return 2;
+            }else{
+                return 3;
+            }
+        }
+    }
+
     public function fareBrakeDown($itinerary){
         $fareBrakeDowns = $itinerary['AirItineraryPricingInfo']['PTC_FareBreakdowns']['PTC_FareBreakdown'];
         if(array_has($fareBrakeDowns,0)){
@@ -551,79 +601,6 @@ class SabreFlight
         }
         return $fareBrakeDownsArray;
     }
-
-     //    public function sortFlightResult($responseArray){
-//        $itineraries = $responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['PricedItineraries']['PricedItinerary'];
-//        $returnArray = [];
-//
-//        foreach($itineraries as $i => $itinerary){
-//            $itineraryArray = [];
-//            $itineraryPrice = $itinerary['AirItineraryPricingInfo']['ItinTotalFare']['TotalFare']['@attributes']['Amount'];
-//            $itineraryPricingSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSource'];
-//            $itineraryPricingSubSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSubSource'];
-//            $itineraryPrimaryData = [
-//                'itineraryPrice' => $itineraryPrice,
-//                'itineraryPricingSource' => $itineraryPricingSource,
-//                'itineraryPricingSubSource' => $itineraryPricingSubSource,
-//                'stops' => '',
-//                'airline' => ''
-//            ];
-//            array_push($itineraryArray,$itineraryPrimaryData);
-//            $originDestinations = $itinerary['AirItinerary']['OriginDestinationOptions']['OriginDestinationOption'];
-//            foreach($originDestinations as $j => $originDestination){
-//                $originDestinationsArray = [];
-//                $segments = $originDestination['FlightSegment'];
-//                foreach($segments as $k => $segment){
-////                    dd($segment['@attributes']['FlightNumber']);
-//                    $flightNumber = $segment['@attributes']['FlightNumber'];
-//                    $departureDateTime = $segment['@attributes']['DepartureDateTime'];
-//                    $arrivalDateTime = $segment['@attributes']['ArrivalDateTime'];
-//                    $operatingAirline = $segment['OperatingAirline']['@attributes']['Code'];
-//                    $departureAirport = $segment['DepartureAirport']['@attributes']['LocationCode'];
-//                    $departureAirportName = Airport::getCity($departureAirport);
-//                    $arrivalAirport = $segment['ArrivalAirport']['@attributes']['LocationCode'];
-//                    $arrivalAirportName = Airport::getCity($arrivalAirport);
-//                    $operatingAirlineName = Airline::getAirline($operatingAirline);
-//                    $equipment = $segment['Equipment']['@attributes']['AirEquipType'];
-//                    $marketingAirline = $segment['MarketingAirline']['@attributes']['Code'];
-//                    $marketingAirlineName = Airline::getAirline($marketingAirline);
-//                    $departureTimeZone = $segment['DepartureTimeZone']['@attributes']['GMTOffset'];
-//                    $arrivalTimeZone = $segment['ArrivalTimeZone']['@attributes']['GMTOffset'];
-//                    $resBookDesigCode = $segment['@attributes']['ResBookDesigCode'];
-//                    $t1 = Carbon::parse($departureDateTime);
-//                    $t2 = Carbon::parse($arrivalDateTime);
-//                    $diff = $t1->diff($t2);
-//                    $timeDuration = $diff->format('%h')."h ".$diff->format('%i')."m";
-//                    $segmentData = [
-//                        "departureAirport" => $departureAirport,
-//                        "arrivalAirport" => $arrivalAirport,
-//                        "flightNumber" => $flightNumber,
-//                        "departureDateTime" => $departureDateTime,
-//                        "arrivalDateTime" => $arrivalDateTime,
-//                        "operatingAirline" => $operatingAirline,
-//                        "equipment" => $equipment,
-//                        "marketingAirline" => $marketingAirline,
-//                        "departureTimeZone" => $departureTimeZone,
-//                        "arrivalTimeZone" => $arrivalTimeZone,
-//                        "resBookDesigCode" => $resBookDesigCode,
-//                        "departureAirportName" => $departureAirportName,
-//                        "arrivalAirportName" => $arrivalAirportName,
-//                        "operatingAirlineName" => $operatingAirlineName,
-//                        "marketingAirlineName" => $marketingAirlineName,
-//                        "timeDuration" => $timeDuration
-//                    ];
-//                    array_push($originDestinationsArray, $segmentData);
-//                }
-//                array_values($originDestinationsArray);
-//                array_push($itineraryArray,$originDestinationsArray);
-//            }
-//
-//            array_values($itineraryArray);
-//            array_push($returnArray,$itineraryArray);
-//        }
-//          array_values($returnArray);
-//        return $returnArray;
-//    }
 
     public function iataCodeDecodeType($type,$iataCode){
         if($type == 'Airline'){
