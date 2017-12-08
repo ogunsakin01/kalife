@@ -29,7 +29,7 @@ class FlightController extends Controller
         $airlines = $this->Sabreflight->availableAirline($flightsResult);
         $flightsResult = $this->Sabreflight->sortFlightArray($flightsResult);
         $flightSearchParam = session()->get('flightSearchParam');
-        return view('frontend.flights.available-flights',compact('flightsResult','flightSearchParam','airlines'));
+        return view('frontend.flights.available_flights',compact('flightsResult','flightSearchParam','airlines'));
     }
 
     public function flightPassengerDetails(){

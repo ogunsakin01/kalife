@@ -32,6 +32,7 @@ $.LoadingOverlaySetup({
  * Start of JavaScript Functions
  * **/
 
+
 function toastWarning(message){
    return iziToast.warning({
         timeout: 15000,
@@ -152,6 +153,21 @@ function modalInfo(message){
     return $('#modalInfo').iziModal('open');
 }
 
+function returnHome(){
+    axios.post('/pageTimeOut',{
+        'timeout': 'yes'
+    })
+        .then(function(response){
+            if(response.data === 1){
+                toastInfo('Redirecting to our search homepage');
+                window.location.href = baseUrl+"/";
+            }
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+}
+
 function isEmail(email) {
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email);
@@ -185,14 +201,14 @@ function refreshSabreSession(){
                    buttons: [
                        ['<button><b>OK</b></button>', function (instance, toast) {
                            instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
-                           toastInfo("Redirecting to our search homepage");
-                           window.location.href = baseUrl+"/";
+                           toastInfo("Ending your session ...");
+                           returnHome();
 
                        }, true]
                    ],
                    onClosing: function(instance, toast, closedBy){
-                       toastInfo("Redirecting to our search homepage");
-                       window.location.href = baseUrl+"/";
+                       toastInfo("Ending your session ...");
+                       returnHome();
                    },
                    onClosed: function(instance, toast, closedBy){
 

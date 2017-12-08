@@ -20,7 +20,7 @@ class CreateAdminMarkupsTable extends Migration
             $table->integer('flight_markup_type')->default("1");
             $table->integer('flight_markup_value')->default("0");
             $table->integer('hotel_markup_type')->default("1");
-            $table->string('hotel_markup_value')->default("0");
+            $table->integer('hotel_markup_value')->default("0");
             $table->integer('car_markup_type')->default("1");
             $table->integer('car_markup_value')->default("0");
             $table->integer('package_markup_type')->default("1");
