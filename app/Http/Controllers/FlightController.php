@@ -26,12 +26,15 @@ class FlightController extends Controller
 
     public function availableFlights(){
         $flightsResult = session()->get('availableFlights');
-//        dd($flightsResult);
         $airlines = $this->Sabreflight->availableAirline($flightsResult);
         $flightsResult = $this->Sabreflight->sortFlightArray($flightsResult);
-//        session()->put('availableFlights',$flightsResult);
         $flightSearchParam = session()->get('flightSearchParam');
-        return view("frontend.flights.available-flights",compact('flightsResult','flightSearchParam','airlines'));
+        return view('frontend.flights.available-flights',compact('flightsResult','flightSearchParam','airlines'));
+    }
+
+    public function flightPassengerDetails(){
+        $itinerary = session()->get('selectedItinerary');
+       return view('frontend.flights.passenger_details',compact('itinerary'));
     }
 
     public function searchFlight(Request $r){
@@ -107,10 +110,16 @@ class FlightController extends Controller
         return response()->json($data);
     }
 
-    public function flightBookPricing($id){
-         $priceItinerary = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('EnhancedAirBookRQ'),$this->Sabreflight->EnhancedAirBookRQXML(session()->get('availableFlights'),$id,session()->get('flightSearchParam')),'EnhancedAirBookRQ');
-         $priceItineraryArray = $this->SabreConfig->mungXmlToArray($priceItinerary);
-         dd($priceItineraryArray);
+    public function flightBookPricing(Request $r){
+        $id = $r->id;
+        $Itinerary = $this->Sabreflight->sortFlightArray(session()->get('availableFlights'))[$id];
+         $priceItinerary = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('EnhancedAirBookRQ'),$this->Sabreflight->EnhancedAirBookRQXML($Itinerary,session()->get('flightSearchParam')),'EnhancedAirBookRQ');
+                 $flightBookPricing = $this->SabreConfig->mungXmlToArray($priceItinerary);
+                  $status = $this->Sabreflight->enhancedAirBookValidator($flightBookPricing);
+        //        $flightBookPricingInformation = $this->Sabreflight->sortEnhancedAirBookRS($flightBookPricing);
+        session()->put('selectedItinerary',$Itinerary);
+//                  session()->put('selectedItineraryBagging','');
+                  return $status;
     }
 
 

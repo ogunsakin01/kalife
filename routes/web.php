@@ -24,7 +24,8 @@ Route::post('/subscribe','FrontEndController@subscribe');
 Route::post('/message','FrontEndController@message');
 Route::post('/tokenRefresh','FrontEndController@tokenRefresh');
 Route::post('/pageTimeOut','FrontEndController@pageTimeOut');
-Route::get('{id}/flight-booking-details','FlightController@flightBookPricing');
+Route::post('/flightBookPricing','FlightController@flightBookPricing');
+Route::get('/flight-passenger-details', 'FlightController@flightPassengerDetails');
 
 Route::view('/test', 'backend.test');
 Route::prefix('backend')->group(function (){

@@ -487,9 +487,7 @@ class SabreFlight
         return $returnArray;
     }
 
-    public function EnhancedAirBookRQXML($result,$id,$param){
-        $flightsResult = $this->sortFlightArray($result);
-        $Itinerary = $flightsResult[$id];
+    public function EnhancedAirBookRQXML($Itinerary,$param){
         $passenger = '';
         if($param['adult_passengers'] > 0){
             $passenger = $passenger.'<PassengerType Code="ADT" Quantity="'.$param['adult_passengers'].'" />';
@@ -554,15 +552,14 @@ class SabreFlight
     public function sortEnhancedAirBookRS($responseArray){
 
     }
+
     public function enhancedAirBookValidator($responseArray){
         if(empty($responseArray)){
             return 0;
         }else{
-            if(in_array($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray)){
-                $sortedResponse = $this->sortEnhancedAirBookRS($responseArray);
-                session()->put('flightEnhancedBookSortedResponse',$sortedResponse);
+            if(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray)){
                   return 1;
-            }elseif(!(in_array($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray))){
+            }elseif(!(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray))){
                  return 2;
             }else{
                 return 3;

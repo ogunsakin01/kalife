@@ -13,7 +13,14 @@ var date = new Date();
 
 date.setDate(date.getDate()+1);
 
-
+$.LoadingOverlaySetup({
+    color           : "rgba(0, 0, 0, 0.6)",
+    // image           : "images/loadingflight.gif",
+    maxSize         : "160px",
+    minSize         : "40px",
+    resizeInterval  : 0,
+    size            : "90%"
+});
 
 
 /**
@@ -234,14 +241,10 @@ $('.trip_type').on("click",function(){
 
 $('.search_flight').on("click",function(){
 
-    $.LoadingOverlaySetup({
-        color           : "rgba(0, 0, 0, 0.6)",
-        // image           : "images/loadingflight.gif",
-        maxSize         : "160px",
-        minSize         : "40px",
-        resizeInterval  : 0,
-        size            : "90%"
-    });
+
+
+    // $('.main-content').addClass('hidden');
+    // $('.flight-search-loader').removeClass('hidden');
 
 
     var flight_type = $('.flight_type').val();
@@ -284,6 +287,9 @@ $('.search_flight').on("click",function(){
     })
         .then(function (response) {
             $(body).LoadingOverlay("hide");
+            // $('.main-content').removeClass('hidden');
+            // $('.flight-search-loader').addClass('hidden');
+
             if(response.data === 0){
                 toastError("Connection Error. Poor Internet Connection");
                 return false;
@@ -294,15 +300,19 @@ $('.search_flight').on("click",function(){
                 toastWarning("Unable to process your request");
                 return false;
             }else if(response.data === 3) {
-                toastWarning("No result found for your search option. Try again with different search options");
+                toastWarning("No result found for your search option. Try again");
                 return false;
             }else if(response.data === 4) {
-                toastWarning("No result found for your search option. Try again with different search options");
+                toastWarning("No result found for your search option. Try again");
                 return false;
             }
         })
         .catch(function (error) {
             $(body).LoadingOverlay("hide");
+            // $('.main-content').removeClass('hidden');
+            // $('.flight-search-loader').addClass('hidden');
+
+
             var Error = error.response.data.errors;
 
             if(Error.departure_airport[0]){
@@ -522,10 +532,10 @@ $('.search_multi_flight').on('click',function(){
                 toastWarning("Unable to process your request");
                 return false;
             }else if(response.data === 3) {
-                toastWarning("No result found for your search option. Try again with different search options");
+                toastWarning("No result found for your search option. Try again ");
                 return false;
             }else if(response.data === 4) {
-                toastWarning("No result found for your search option. Try again with different search options");
+                toastWarning("No result found for your search option. Try again");
                 return false;
             }
         })
@@ -533,6 +543,29 @@ $('.search_multi_flight').on('click',function(){
             $(body).LoadingOverlay("hide");
             var Error = error.response.data.errors;
         });
+});
+
+$('.itinerary_select').on('click',function(){
+  var id = $(this).val();
+  $(body).LoadingOverlay('show');
+  axios.post('/flightBookPricing',{
+      id : id
+  })
+      .then(function(response){
+          $(body).LoadingOverlay('hide');
+          if(response.data === 1){
+             window.location.href = baseUrl+'/flight-passenger-details';
+          }else if(response.data === 2){
+              toastWarning('Unable to get flight pricing. Select another flight');
+          }else if(response.data === 3){
+              toastError('Unable to get flight pricing. Select another flight from the list');
+          }else if(response.data === 0){
+              toastError('Poor Connection. Unable to get flight pricing. Try Again');
+          }
+      })
+      .catch(function(error){
+          $(body).LoadingOverlay('hide');
+      })
 });
 
 
