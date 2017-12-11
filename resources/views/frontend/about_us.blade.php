@@ -2,7 +2,7 @@
 @section('title')About Us  @endsection
 @section('content')
     <div class="container">
-        <h1 class="page-title">About Us</h1>
+        <h1>About Us</h1>
     </div>
     <div class="container">
         <div class="row">

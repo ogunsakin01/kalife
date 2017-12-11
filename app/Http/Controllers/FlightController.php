@@ -29,6 +29,7 @@ class FlightController extends Controller
         $airlines = $this->Sabreflight->availableAirline($flightsResult);
         $flightsResult = $this->Sabreflight->sortFlightArray($flightsResult);
         $flightSearchParam = session()->get('flightSearchParam');
+//        session()->forget("session_info");
         return view('frontend.flights.available_flights',compact('flightsResult','flightSearchParam','airlines'));
     }
 
@@ -93,6 +94,19 @@ class FlightController extends Controller
         session()->put('availableFlights',$search_array);
         session()->put('flightSearchParam',$requestArray);
         return  $this->Sabreflight->flightSearchValidator($search_array);
+    }
+
+    public function flightCreatePNR(Request $r){
+//        dd($this->Sabreflight->PassengerDetailsRQXML($r));
+        $request = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('PassengerDetailsRQ'),$this->Sabreflight->PassengerDetailsRQXML($r),'PassengerDetailsRQ');
+        if(!empty($request)){
+            $this->SabreSession->closeSession(session()->forget('session_info')['session_token'],session()->forget('session_info')['message_id']);
+            session()->forget('session_info');
+            session()->forget('availableFlights');
+            session()->forget('flightSearchParam');
+        }
+        $requestArray = $this->SabreConfig->mungXmlToArray($request);
+        dd(array($requestArray,$this->Sabreflight->PassengerDetailsRQXML($r)));
     }
 
     public function typeaheadJs(Request $request)

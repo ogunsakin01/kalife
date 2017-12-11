@@ -157,7 +157,8 @@ class SabreSessionManager{
                  * }
                  */
             }
-        }else{
+        }
+        else{
             return $this->createSessionStore();
         }
 

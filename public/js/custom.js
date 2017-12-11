@@ -76,6 +76,29 @@ $('input.date-pick-years').datepicker({
     startView: 2
 });
 
+$('input.date-pick-adult').datepicker({
+    startDate: '-90y',
+    endDate: '-12y',
+    autoclose : true,
+    clearBtn : true,
+    defaultViewDate: {year:1940, month:0, day:1}
+});
+
+$('input.date-pick-child').datepicker({
+    startDate: '-11y',
+    endDate: '-2y',
+    autoclose : true,
+    clearBtn : true,
+    defaultViewDate: {year:2010, month:0, day:1}
+});
+
+$('input.date-pick-infant').datepicker({
+    startDate: '-2y',
+    endDate :  '1y',
+    autoclose : true,
+    clearBtn : true,
+    defaultViewDate: {year: 2016, month:0, day:1}
+});
 
 
 

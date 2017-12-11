@@ -26,9 +26,18 @@ Route::post('/tokenRefresh','FrontEndController@tokenRefresh');
 Route::post('/pageTimeOut','FrontEndController@pageTimeOut');
 Route::post('/flightBookPricing','FlightController@flightBookPricing');
 Route::get('/flight-passenger-details', 'FlightController@flightPassengerDetails');
+Route::view('/register-login','frontend.register_login');
+Route::get('/logout','Auth\LoginController@logout');
+Route::post('/passengerDetailsRQ','FlightController@flightCreatePNR');
+
+
 
 Route::view('/test', 'backend.test');
 Route::prefix('backend')->group(function (){
     Route::view('home', 'backend.home')->name('home');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

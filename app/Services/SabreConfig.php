@@ -75,5 +75,13 @@ class SabreConfig{
         }
         return json_decode(json_encode(SimpleXML_Load_String($xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
     }
+
+    public function priceTypeCalculator($type,$value,$amount){
+        if($type == 0){
+            return (($value/100) * $amount);
+        }if($type == 1){
+            return $value;
+        }
+    }
     
 }

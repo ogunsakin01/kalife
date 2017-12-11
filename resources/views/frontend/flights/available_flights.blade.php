@@ -93,7 +93,7 @@
                                         <h5>{{$flight[1][0][0]['timeDuration']}}</h5>
                                         <p>{{$flight[0]['stops']}} stop(s)</p>
                                     </div>
-                                    <div class="col-md-4"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['totalPrice'])}}</span>
+                                    <div class="col-md-4"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['adminToUserSumTotal'])}}</span>
                                         <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}}</p><button class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</button>&nbsp; <button class="btn btn-primary itinerary_select" type="button" value="{{$i}}" {{--href="{{url($i.'/flight-booking-details')}}"--}}> Select <i class="fa fa-send"></i></button>
                                     </div>
                                 </div>
@@ -115,18 +115,18 @@
                                     </div>
                                    @endforeach
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h3>Pricing Summary</h3>
-                                    </div>
-                                </div>
-                                @foreach($flight[2] as $i => $item)
-                                <div class="row">
-                                    <div class="col-md-4"><h4 class="text text-center">{{$item['passengerType']}}<small>X(1) = (&#x20A6; {{number_format($item['totalPrice'])}})</small></h4></div>
-                                    <div class="col-md-4"><h4 class="text text-center">X({{$item['quantity']}})</h4></div>
-                                    <div class="col-md-4"><h4 class="text text-center">&#x20A6; {{number_format($item['totalPrice'] * $item['quantity'],2)}}</h4></div>
-                                </div>
-                                    @endforeach
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-md-12">--}}
+                                        {{--<h3>Pricing Summary</h3>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--@foreach($flight[2] as $i => $item)--}}
+                                {{--<div class="row">--}}
+                                    {{--<div class="col-md-4"><h4 class="text text-center">{{$item['passengerType']}}<small>X(1) = (&#x20A6; {{number_format($item['totalPrice'])}})</small></h4></div>--}}
+                                    {{--<div class="col-md-4"><h4 class="text text-center">X({{$item['quantity']}})</h4></div>--}}
+                                    {{--<div class="col-md-4"><h4 class="text text-center">&#x20A6; {{number_format($item['totalPrice'] * $item['quantity'],2)}}</h4></div>--}}
+                                {{--</div>--}}
+                                    {{--@endforeach--}}
                             </div>
                         </div>
                     </li>

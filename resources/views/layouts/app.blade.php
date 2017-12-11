@@ -32,16 +32,18 @@
                         <li class=""><a href="#">Activities</a></li>
                         <li class=""><a href="{{url('/about-us')}}">About Us</a></li>
                         <li class=""><a href="{{url('/contact-us')}}">Contact Us</a></li>
+                        <li class=""><a href="{{url('/register-login')}}">Login</a></li>
                     </ul>
                 </div>
             </div>
         </header>
-
+    <div class="gap"></div>
         @yield('content')
         @include('partials.footer')
-    @include('partials.js')
     @include('partials.flightSearch')
     @include('partials.multiCity')
+    @include('partials.usersReg');
+    @include('partials.js')
 </div>
 @yield('timeoutScript')
 </body>

@@ -5,6 +5,9 @@ namespace App\Services;
 use App\Airline;
 use App\Airport;
 use App\IataCity;
+use App\AdminMarkup;
+use App\Markdown;
+use App\Vat;
 use Faker\Provider\DateTime;
 use Illuminate\Support\Carbon;
 
@@ -462,12 +465,29 @@ class SabreFlight
                 $itineraryPrice = $itinerary['AirItineraryPricingInfo']['ItinTotalFare']['TotalFare']['@attributes']['Amount'];
                 $itineraryPricingSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSource'];
                 $itineraryPricingSubSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSubSource'];
+                $adminUserMarkupObject = AdminMarkup::getAdminUserMarkup();
+                $adminUserMarkupDefault = $this->sabreConfig->priceTypeCalculator($adminUserMarkupObject->flight_markup_type,$adminUserMarkupObject->flight_markup_value,$itineraryPrice);
+                $vatObject = Vat::getVat();
+                $vat = $this->sabreConfig->priceTypeCalculator($vatObject->flight_vat_type,$vatObject->flight_vat_value,$itineraryPrice);
+                $markdownObject = Markdown::getAirlineMarkdown($airline);
+                if($markdownObject == 0){
+                    $airlineMarkdown = 0;
+                    $adminUserMarkup = $this->sabreConfig->priceTypeCalculator($adminUserMarkupObject->flight_markup_type,$adminUserMarkupObject->flight_markup_value,$itineraryPrice);
+                }else{
+                    $airlineMarkdown = $this->sabreConfig->priceTypeCalculator($markdownObject->type,$markdownObject->value,$itineraryPrice);
+                    $adminUserMarkup = 0;
+                }
+                $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
                 $itineraryPrimaryInfo = [
                     "totalPrice" => $itineraryPrice,
                     "itineraryPricingSource" =>  $itineraryPricingSource,
                     "itineraryPricingSubSource" => $itineraryPricingSubSource,
                     "airline" => $airline,
                     "stops" => $stops,
+                    "adminToUserMarkup" => $adminUserMarkupDefault,
+                    "airlineMarkdown" => $airlineMarkdown,
+                    "vat" => $vat,
+                    "adminToUserSumTotal" => $adminToUserSumTotal
                 ];
 
                 array_push($itineraryInfoArray,$itineraryPrimaryInfo);
@@ -532,7 +552,7 @@ class SabreFlight
 					</OptionalQualifiers>
 				</PriceRequestInformation>
 			</OTA_AirPriceRQ>
-			 <PostProcessing IgnoreAfter="true">
+			 <PostProcessing IgnoreAfter="false">
               <RedisplayReservation WaitInterval="5000"/>
              </PostProcessing>
 		</EnhancedAirBookRQ>';
@@ -545,8 +565,71 @@ class SabreFlight
 
     }
 
-    public function PassengerDetailsRQ(){
+    public function PassengerDetailsPassenger($param){
+        $adults = session()->get('flightSearchParam')['adult_passengers'];
+        $children = session()->get('flightSearchParam')['child_passengers'];
+        $infants = session()->get('flightSearchParam')['infant_passengers'];
+           $passengerDetails = '';
+        if($adults > 0){
+            for($i = 0; $i < $adults; $i++){
+                $given_name = $param->adult_given_name[$i];
+                    $surname = $param->adult_surname[$i];
+             $personDetails = '<PersonName Infant="false" NameNumber="1.'.($i + 1).'" PassengerType="ADT">
+                <GivenName>'.$given_name.'</GivenName>
+                <Surname>'.$surname.'</Surname>
+            </PersonName>';
+             $passengerDetails = $passengerDetails.$personDetails;
+            }
+        }
+        if($children > 0){
+            for($i = 0; $i < $children; $i++){
+                $given_name = $param->child_given_name[$i];
+                $surname = $param->child_surname[$i];
+                $personDetails = '<PersonName Infant="false" NameNumber="1.'.($i + 1).'" PassengerType="CNN">
+                <GivenName>'.$given_name.'</GivenName>
+                <Surname>'.$surname.'</Surname>
+            </PersonName>';
+                $passengerDetails = $passengerDetails.$personDetails;
+            }
+        }
+        if($infants > 0){
+            for($i = 0; $i < $infants; $i++){
+                $given_name = $param->infant_given_name[$i];
+                $surname = $param->infant_surname[$i];
+                $personDetails = '<PersonName Infant="true" NameNumber="1.'.($i + 1).'" PassengerType="INF">
+                <GivenName>'.$given_name.'</GivenName>
+                <Surname>'.$surname.'</Surname>
+            </PersonName>';
+                $passengerDetails = $passengerDetails.$personDetails;
+            }
+        }
+        return $passengerDetails;
+    }
 
+    public function PassengerDetailsRQXML($param){
+        $phone_number = auth()->user()->phone_number;  $email = auth()->user()->email;
+
+ return '<PassengerDetailsRQ version="3.3.0" xmlns="http://services.sabre.com/sp/pd/v3_3" IgnoreOnError="false" HaltOnError="true">
+    <PostProcessing RedisplayReservation="true">
+		<EndTransactionRQ>
+			<EndTransaction Ind="true">
+			</EndTransaction>
+			<Source ReceivedFrom="SWS TESTING"/>
+		</EndTransactionRQ>
+	</PostProcessing>
+    <TravelItineraryAddInfoRQ>
+        <AgencyInfo>
+			<Ticketing TicketType="7T-A"/>
+		</AgencyInfo>
+        <CustomerInfo>
+            <ContactNumbers>
+                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="'.$phone_number.'" PhoneUseType="H"/>
+            </ContactNumbers>
+            <Email Address="'.$email.'" NameNumber="1.1" Type="CC"/>
+            '.$this->PassengerDetailsPassenger($param).'
+        </CustomerInfo>
+	</TravelItineraryAddInfoRQ>
+</PassengerDetailsRQ>';
     }
 
     public function sortEnhancedAirBookRS($responseArray){
@@ -560,7 +643,8 @@ class SabreFlight
             if(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray)){
                   return 1;
             }elseif(!(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray))){
-                 return 2;
+                 return $responseArray;
+//                 return 2;
             }else{
                 return 3;
             }
@@ -694,6 +778,11 @@ class SabreFlight
         return array_values($airlineArray);
     }
 
+    public function adminToUserFlightSumTotal($markup,$markdown,$vat,$itineraryPrice){
+         if($markdown > 0){
+             return $markup + $mark;
+         }
 
+    }
 
 }

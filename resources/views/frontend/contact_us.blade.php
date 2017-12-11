@@ -3,7 +3,7 @@
 {{--@section('activeContactUs')active@endsection--}}
 @section('content')
     <div class="container">
-        <h1 class="page-title">Contact Us</h1>
+        <h1>Contact Us</h1>
     </div>
         <div class="container">
     </div>
