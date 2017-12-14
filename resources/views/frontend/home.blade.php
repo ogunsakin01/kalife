@@ -1,10 +1,7 @@
 @extends('layouts.app')
 @section('title')Flight, Hotel, Travel and Tourism Booking Agency @endsection
-@section('activeHome')
-    class='active'
-    @endsection
 @section('content')
-
+ {{--{{dd($_SERVER['HTTP_HOST'])}}--}}
     <!-- TOP AREA -->
     <div class="top-area show-onload">
         <div class="bg-holder full">

@@ -29,6 +29,7 @@ Route::get('/flight-passenger-details', 'FlightController@flightPassengerDetails
 Route::view('/register-login','frontend.register_login');
 Route::get('/logout','Auth\LoginController@logout');
 Route::post('/passengerDetailsRQ','FlightController@flightCreatePNR');
+Route::get('/flight-booking-payment-methods','FlightController@flightPaymentPage');
 
 
 

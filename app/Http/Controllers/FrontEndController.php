@@ -56,10 +56,6 @@ class FrontEndController extends Controller
         $this->validate($r, [
             'timeout' => 'required|string'
         ]);
-        $this->SessionManager->closeSession(session()->forget('session_info')['session_token'],session()->forget('session_info')['message_id']);
-        session()->forget('session_info');
-        session()->forget('availableFlights');
-        session()->forget('flightSearchParam');
         return 1;
     }
 }

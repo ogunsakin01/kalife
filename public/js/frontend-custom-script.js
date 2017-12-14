@@ -173,60 +173,60 @@ function isEmail(email) {
     return regex.test(email);
 }
 
-function refreshSabreSession(){
-        axios.post('/tokenRefresh',{
-             "refresh" : 'yes'
-        })
-        .then(function(response){
-           if(response.data === 0){
-               toastWarning("Poor Connection");
-               refreshSabreSession();
-           }
-           else if(response.data === 1){
-               toastInfo("active");
-                console.log("Success");
-           }
-           else if(response.data === 2){
-
-               iziToast.warning({
-                   timeout: 20000,
-                   close: false,
-                   overlay: true,
-                   toastOnce: true,
-                   id: 'question',
-                   zindex: 999,
-                   title: 'Session Expired',
-                   message: 'Your session expired, you will be redirected to our search homepage',
-                   position: 'center',
-                   buttons: [
-                       ['<button><b>OK</b></button>', function (instance, toast) {
-                           instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
-                           toastInfo("Ending your session ...");
-                           returnHome();
-
-                       }, true]
-                   ],
-                   onClosing: function(instance, toast, closedBy){
-                       toastInfo("Ending your session ...");
-                       returnHome();
-                   },
-                   onClosed: function(instance, toast, closedBy){
-
-                   }
-               });
-
-           }
-           else if(response.data === 3){
-               console.log("Worst Case scenario");
-           }
-           else if(response.data === 4){
-               console.log("Session not available");
-           }
-        })
-        .catch(function(error){
-            var Error = error.response.data.errors;
-        });
-}
+// function refreshSabreSession(){
+//         axios.post('/tokenRefresh',{
+//              "refresh" : 'yes'
+//         })
+//         .then(function(response){
+//            if(response.data === 0){
+//                toastWarning("Poor Connection");
+//                refreshSabreSession();
+//            }
+//            else if(response.data === 1){
+//                toastInfo("active");
+//                 console.log("Success");
+//            }
+//            else if(response.data === 2){
+//
+//                iziToast.warning({
+//                    timeout: 20000,
+//                    close: false,
+//                    overlay: true,
+//                    toastOnce: true,
+//                    id: 'question',
+//                    zindex: 999,
+//                    title: 'Session Expired',
+//                    message: 'Your session expired, you will be redirected to our search homepage',
+//                    position: 'center',
+//                    buttons: [
+//                        ['<button><b>OK</b></button>', function (instance, toast) {
+//                            instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
+//                            toastInfo("Ending your session ...");
+//                            returnHome();
+//
+//                        }, true]
+//                    ],
+//                    onClosing: function(instance, toast, closedBy){
+//                        toastInfo("Ending your session ...");
+//                        returnHome();
+//                    },
+//                    onClosed: function(instance, toast, closedBy){
+//
+//                    }
+//                });
+//
+//            }
+//            else if(response.data === 3){
+//                console.log("Worst Case scenario");
+//            }
+//            else if(response.data === 4){
+//                console.log("Session not available");
+//            }
+//         })
+//         .catch(function(error){
+//             var Error = error.response.data.errors;
+//         });
+// }
 
 /**
  * End of JavaScript Functions
@@ -307,16 +307,19 @@ $('.search_flight').on("click",function(){
             // $('.flight-search-loader').addClass('hidden');
 
             if(response.data === 0){
-                toastError("Connection Error. Poor Internet Connection");
+                toastError("Connection Error. Poor Internet Connection, try again.");
                 return false;
             }else if(response.data === 1){
                 toastSuccess("Search completed. Redirecting to available flights page");
                 window.location.href = baseUrl+"/available-flights/";
             }else if(response.data === 2) {
-                toastWarning("Unable to process your request");
+                toastWarning("Unable to connect to server. Try again");
                 return false;
             }else if(response.data === 3) {
-                toastWarning("No result found for your search option. Try again");
+                toastWarning("Connection error. Try again");
+                return false;
+            }else if(response.data === 31) {
+                toastWarning("Fatal Connection error. Try again");
                 return false;
             }else if(response.data === 4) {
                 toastWarning("No result found for your search option. Try again");
@@ -545,10 +548,13 @@ $('.search_multi_flight').on('click',function(){
                 toastSuccess("Search completed. Redirecting to available flights page");
                 window.location.href = baseUrl+"/available-flights/";
             }else if(response.data === 2) {
-                toastWarning("Unable to process your request");
+                toastWarning("Unable to connect to server. Try again.");
                 return false;
             }else if(response.data === 3) {
-                toastWarning("No result found for your search option. Try again ");
+                toastWarning("Connection error. Try again");
+                return false;
+            }else if(response.data === 31) {
+                toastWarning("Fatal connection error. Try again");
                 return false;
             }else if(response.data === 4) {
                 toastWarning("No result found for your search option. Try again");
@@ -576,7 +582,9 @@ $('.itinerary_select').on('click',function(){
           }else if(response.data === 3){
               toastError('Unable to get flight pricing. Select another flight from the list');
           }else if(response.data === 0){
-              toastError('Poor Connection. Unable to get flight pricing. Try Again');
+              toastError('Unable to connect to server. Try again');
+          }else if(response.data === 21){
+              toastWarning('Connection to server not established. Try again');
           }
       })
       .catch(function(error){

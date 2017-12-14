@@ -14,6 +14,7 @@ use Illuminate\Support\Carbon;
 
 class SabreFlight
 {
+
     public function __construct(){
       $this->sabreConfig = new SabreConfig();
     }
@@ -63,7 +64,7 @@ class SabreFlight
 
     }
 
-    public function callsHeader($action){
+    public function callsHeader($action,$session_info){
         return '<m:MessageHeader xmlns:m="http://www.ebxml.org/namespaces/messageHeader">
 			<m:From>
 				<m:PartyId type="urn:x12.org:IO5:01">'.$_SERVER['HTTP_HOST'].'</m:PartyId>
@@ -76,7 +77,7 @@ class SabreFlight
 			<m:Service m:type="OTA">'.$action.'</m:Service>
 			<m:Action>'.$action.'</m:Action>
 			<m:MessageData>
-				<m:MessageId>'.session()->get('session_info')['message_id'].'</m:MessageId>
+				<m:MessageId>'.$session_info['message_id'].'</m:MessageId>
 				<m:Timestamp>2001-02-15T11:15:12Z</m:Timestamp>
 				<m:TimeToLive>2001-02-15T11:15:12Z</m:TimeToLive>
 			</m:MessageData>
@@ -84,7 +85,7 @@ class SabreFlight
 			<m:Description>Bargain Finder Max Service</m:Description>
 		</m:MessageHeader>
 		<wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
-			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">'.session()->get('session_info')['session_token'].'</wsse:BinarySecurityToken>
+			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">'.$session_info['token'].'</wsse:BinarySecurityToken>
 		</wsse:Security>';
     }
 
@@ -542,7 +543,15 @@ class SabreFlight
 //dd($originDestinationInformation);
         $returnXml = '
       <EnhancedAirBookRQ version="3.8.0" xmlns="http://services.sabre.com/sp/eab/v3_8" HaltOnError="true">
-			<OTA_AirBookRQ >'.$originDestinationInformation.'</OTA_AirBookRQ>
+			<OTA_AirBookRQ >
+			<HaltOnStatus Code="UC"/>
+            <HaltOnStatus Code="LL"/>
+            <HaltOnStatus Code="UL"/>
+            <HaltOnStatus Code="UN"/>
+            <HaltOnStatus Code="NO"/>
+            <HaltOnStatus Code="HL"/>
+			'.$originDestinationInformation.'
+			</OTA_AirBookRQ>
 			<OTA_AirPriceRQ >
 				<PriceRequestInformation Retain="true">
 					<OptionalQualifiers>
@@ -553,8 +562,10 @@ class SabreFlight
 				</PriceRequestInformation>
 			</OTA_AirPriceRQ>
 			 <PostProcessing IgnoreAfter="false">
-              <RedisplayReservation WaitInterval="5000"/>
-             </PostProcessing>
+               <RedisplayReservation/>
+               </PostProcessing>
+               <PreProcessing IgnoreBefore="false">
+             </PreProcessing>
 		</EnhancedAirBookRQ>';
 
 //        dd($returnXml);
@@ -570,6 +581,7 @@ class SabreFlight
         $children = session()->get('flightSearchParam')['child_passengers'];
         $infants = session()->get('flightSearchParam')['infant_passengers'];
            $passengerDetails = '';
+           $priceQuoteInfo = '';
         if($adults > 0){
             for($i = 0; $i < $adults; $i++){
                 $given_name = $param->adult_given_name[$i];
@@ -579,31 +591,35 @@ class SabreFlight
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
              $passengerDetails = $passengerDetails.$personDetails;
+             $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="1.'.($i + 1).'" Record="1"/>';
             }
         }
         if($children > 0){
             for($i = 0; $i < $children; $i++){
                 $given_name = $param->child_given_name[$i];
                 $surname = $param->child_surname[$i];
-                $personDetails = '<PersonName Infant="false" NameNumber="1.'.($i + 1).'" PassengerType="CNN">
+                $personDetails = '<PersonName Infant="false" NameNumber="2.'.($i + 1).'" PassengerType="CNN">
                 <GivenName>'.$given_name.'</GivenName>
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
                 $passengerDetails = $passengerDetails.$personDetails;
+                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="2.'.($i + 1).'" Record="2"/>';
             }
         }
         if($infants > 0){
+            if($children > 0){$nameNumber = 3;}else{$nameNumber = 2;}
             for($i = 0; $i < $infants; $i++){
                 $given_name = $param->infant_given_name[$i];
                 $surname = $param->infant_surname[$i];
-                $personDetails = '<PersonName Infant="true" NameNumber="1.'.($i + 1).'" PassengerType="INF">
+                $personDetails = '<PersonName Infant="true" NameNumber="'.$nameNumber.'.'.($i + 1).'" PassengerType="INF">
                 <GivenName>'.$given_name.'</GivenName>
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
                 $passengerDetails = $passengerDetails.$personDetails;
+                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.$nameNumber.'.'.($i + 1).'" Record="'.$nameNumber.'"/>';
             }
         }
-        return $passengerDetails;
+        return ['passengers' => $passengerDetails, 'priceQuoteInfo' => $priceQuoteInfo ];
     }
 
     public function PassengerDetailsRQXML($param){
@@ -617,6 +633,9 @@ class SabreFlight
 			<Source ReceivedFrom="SWS TESTING"/>
 		</EndTransactionRQ>
 	</PostProcessing>
+	<PriceQuoteInfo>
+		'.$this->PassengerDetailsPassenger($param)['priceQuoteInfo'].'
+	</PriceQuoteInfo>
     <TravelItineraryAddInfoRQ>
         <AgencyInfo>
 			<Ticketing TicketType="7T-A"/>
@@ -626,7 +645,7 @@ class SabreFlight
                 <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="'.$phone_number.'" PhoneUseType="H"/>
             </ContactNumbers>
             <Email Address="'.$email.'" NameNumber="1.1" Type="CC"/>
-            '.$this->PassengerDetailsPassenger($param).'
+            '.$this->PassengerDetailsPassenger($param)['passengers'].'
         </CustomerInfo>
 	</TravelItineraryAddInfoRQ>
 </PassengerDetailsRQ>';
@@ -640,11 +659,11 @@ class SabreFlight
         if(empty($responseArray)){
             return 0;
         }else{
-            if(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray)){
+            if(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'])){
                   return 1;
-            }elseif(!(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'],$responseArray))){
-                 return $responseArray;
-//                 return 2;
+            }elseif(!(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success']))){
+                return $responseArray;
+//                return 2;
             }else{
                 return 3;
             }
@@ -778,11 +797,19 @@ class SabreFlight
         return array_values($airlineArray);
     }
 
-    public function adminToUserFlightSumTotal($markup,$markdown,$vat,$itineraryPrice){
-         if($markdown > 0){
-             return $markup + $mark;
-         }
-
+    public function passengerDetailsValidator($responseArray){
+        $responseObject = json_encode($responseArray,true);
+        if(empty($responseArray)){
+            return 0;
+        }else{
+            if(isset($responseArray['soap-env_Body']['PassengerDetailsRS']['ItineraryRef']['@attributes']['ID'])){
+                $pnr = $responseArray['soap-env_Body']['PassengerDetailsRS']['ItineraryRef']['@attributes']['ID'];
+                $ticket_time_limit = $responseArray['soap-env_Body']['PassengerDetailsRS']['TravelItinerary']['ItineraryInfo']['Ticketing']['@attributes']['TicketTimeLimit'];
+                return ['responseObject' => $responseObject, 'pnr' => $pnr, 'ticketTimeLimit' => $ticket_time_limit, 'pnrStatus' => 1];
+            }else{
+                return ['responseObject' => $responseObject, 'pnr' => null, 'ticketTimeLimit' => null, 'pnrStatus' => 0];
+            }
+        }
     }
 
 }

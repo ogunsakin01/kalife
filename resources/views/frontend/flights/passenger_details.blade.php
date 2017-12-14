@@ -7,6 +7,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @if($itinerary[0]['itineraryPriceAddition'] > 0)
+                   <div class="alert alert-warning">
+                       <i class="fa fa-warning"></i>
+                       The price of this this Itinerary has increased by &#x20A6; {{number_format($itinerary[0]['itineraryPriceAddition'])}}
+                   </div>
+                @endif
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -22,6 +29,12 @@
                         {{session()->get('message')}}
                     </div>
                 @endif
+                    @if(session()->has('bookingError'))
+                        <div class="alert alert-warning">
+                            <i class="fa fa-warning"></i>
+                            {{session()->get('bookingError')}}
+                        </div>
+                    @endif
             </div>
             <div class="col-md-8">
                 <h3>Customer - Passenger(s)</h3>
@@ -248,10 +261,16 @@
                                         <p class="booking-item-payment-price-amount">&#x20A6; {{number_format($itinerary[0]['airlineMarkdown'],2)}}
                                         </p>
                                     </li>
+                                    <li>
+                                        <p class="booking-item-payment-price-title">Price Increase</p>
+                                        <p class="booking-item-payment-price-amount">&#x20A6; {{number_format($itinerary[0]['itineraryPriceAddition'])}}
+                                        </p>
+                                    </li>
+
                             </ul>
                         </li>
                     </ul>
-                    <p class="booking-item-payment-total">Total trip: <span>&#x20A6; {{number_format($itinerary[0]['adminToUserSumTotal'],2)}}</span>
+                    <p class="booking-item-payment-total">Total Amount: <span>&#x20A6; {{number_format($itinerary[0]['adminToUserSumTotal'],2)}}</span>
                     </p>
                 </div>
             </div>

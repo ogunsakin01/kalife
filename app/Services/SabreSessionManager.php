@@ -10,6 +10,8 @@ namespace App\Services;
 
 use App\Services\SabreConfig;
 use App\Services\SabreSessionsXml;
+use App\SessionToken;
+
 class SabreSessionManager{
 
     public $token = null;
@@ -61,12 +63,12 @@ class SabreSessionManager{
     }
 
     public function sessionCreateValidator($ResponseArray){
-        if($ResponseArray){
+        if(!empty($ResponseArray)){
             $session_token = $ResponseArray['soap-env_Header']['wsse_Security']['wsse_BinarySecurityToken'];
             $session_message_id = $ResponseArray['soap-env_Header']['eb_MessageHeader']['eb_MessageData']['eb_MessageId'];
             if($session_token != null){
                 return array(
-                    'session_token' => $session_token,
+                    'token' => $session_token,
                     'message_id'    => $session_message_id
                 );
             }else{
@@ -79,7 +81,7 @@ class SabreSessionManager{
     }
 
     public function sessionRefreshValidator($ResponseArray){
-        if($ResponseArray){
+        if(!empty($ResponseArray)){
             if(isset($ResponseArray['soap-env_Body']['soap-env_Fault']['faultcode'])){
                 return 2;
             }elseif(isset($ResponseArray['soap-env_Body']['OTA_PingRS']['Success'])){
@@ -121,82 +123,79 @@ class SabreSessionManager{
         if($session_data == 0){
             return 0;
         }elseif($session_data == 2){
-            return 2;
+            return $this->createSessionStore();
         }else{
-            session()->put('session_info',$session_data);
-//            return session()->all();
+            SessionToken::store($session_data);
+            return $session_data;
         }
     }
 
     public function sessionStore()
     {
-        if ($this->ifSessionExists('session_info'))
-        {
-            if ($this->ifSessionIsEmpty('session_info'))
-            {
-               return $this->createSessionStore();
-            }
-            else{
-                $token = session()->get('session_info')['session_token'];
-                $messageId = session()->get('session_info')['message_id'];
-
-                $refresh_data = $this->sessionRefreshValidator($this->refreshSession($token,$messageId));
-                if($refresh_data == 0){
-                     return session()->get('session_info');
-                }elseif($refresh_data == 1){
-                    return session()->get('session_info');
-                }elseif($refresh_data == 2){
-                    return $this->createSessionStore();
-                }elseif($refresh_data == 3){
-                    return 3;
-                }
-                /**
-                Might return 3 on worst case scenario of errors
-                 * add elseif($refresh_data == 3){
-                       return 3;
-                 * }
-                 */
-            }
-        }
-        else{
-            return $this->createSessionStore();
-        }
-
+     $session_info = SessionToken::getToken();
+     if(empty($session_info || is_null($session_info))){
+        return $this->createSessionStore();
+     }
+     else{
+         $created_at = strtotime($session_info['created_at']);
+         $now = strtotime(date('Y-m-d H:i:s'));
+         $difference = round(abs($now - $created_at) / 60,2);
+         if($difference > 10){
+             $refreshStatus = $this->sessionRefreshValidator($this->refreshSession($session_info['token'],$session_info['message_id']));
+             if($refreshStatus == 1){
+                 return $this->getTokenSort($session_info);
+             }elseif($refreshStatus == 2){
+                 return $this->createSessionStore();
+             }elseif($refreshStatus == 3){
+                 return 3;
+             }elseif($refreshStatus == 0){
+                 return 0;
+             }else{
+                 return 31;
+             }
+         }else{
+             return $this->getTokenSort($session_info);
+         }
+     }
     }
 
-    public function refreshSessionToken()
-    {
-        if ($this->ifSessionExists('session_info'))
-        {
-            if ($this->ifSessionIsEmpty('session_info'))
-            {
-                return 4;
-            }
-            else{
-                $token = session()->get('session_info')['session_token'];
-                $messageId = session()->get('session_info')['message_id'];
-
-                $refresh_data = $this->sessionRefreshValidator($this->refreshSession($token,$messageId));
-                if($refresh_data == 0){
-                    return 0;
-                }elseif($refresh_data == 1){
-                    return 1;
-                }elseif($refresh_data == 2){
-                    return 2;
-                }elseif($refresh_data == 3){
-                    return 3;
-                }
-                /**
-                Might return 3 on worst case scenario of errors
-                 * add elseif($refresh_data == 3){
-                return 3;
-                 * }
-                 */
-            }
-        }else{
-            return 4;
-        }
-
+    public function getTokenSort($response){
+        return ['message_id' => $response->message_id, 'token' => $response->token ];
     }
+
+//    public function refreshSessionToken()
+//    {
+//        if ($this->ifSessionExists('session_info'))
+//        {
+//            if ($this->ifSessionIsEmpty('session_info'))
+//            {
+//                return 4;
+//            }
+//            else{
+//                $token = session()->get('session_info')['session_token'];
+//                $messageId = session()->get('session_info')['message_id'];
+//
+//                $refresh_data = $this->sessionRefreshValidator($this->refreshSession($token,$messageId));
+//                if($refresh_data == 0){
+//                    return 0;
+//                }elseif($refresh_data == 1){
+//                    return 1;
+//                }elseif($refresh_data == 2){
+//                    return 2;
+//                }elseif($refresh_data == 3){
+//                    return 3;
+//                }
+//                /**
+//                Might return 3 on worst case scenario of errors
+//                 * add elseif($refresh_data == 3){
+//                return 3;
+//                 * }
+//                 */
+//            }
+//        }else{
+//            return 4;
+//        }
+//
+//    }
 
 }

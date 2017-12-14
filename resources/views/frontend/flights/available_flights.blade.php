@@ -4,10 +4,6 @@
    class='active'
 @endsection
 @section('content')
-    <pre>
-        {{--{{dd($flightsResult)}}--}}
-        {{--{{dd($airlines)}}--}}
-        </pre>
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
@@ -94,7 +90,7 @@
                                         <p>{{$flight[0]['stops']}} stop(s)</p>
                                     </div>
                                     <div class="col-md-4"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['adminToUserSumTotal'])}}</span>
-                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}}</p><button class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</button>&nbsp; <button class="btn btn-primary itinerary_select" type="button" value="{{$i}}" {{--href="{{url($i.'/flight-booking-details')}}"--}}> Select <i class="fa fa-send"></i></button>
+                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}}</p><button class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</button>&nbsp; <button class="btn btn-primary itinerary_select" type="button" value="{{$i}}" {{--href="{{url($i.'/flight-booking-details')}}"--}}> Select <i class="fa fa-plane"></i></button>
                                     </div>
                                 </div>
                             </div>

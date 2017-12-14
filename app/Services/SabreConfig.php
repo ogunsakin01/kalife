@@ -22,6 +22,17 @@ class SabreConfig{
     public  $restEnvironment = 'https://api-crt.cert.havail.sabre.com';
     public  $soapEnvironment = 'https://sws-crt.cert.havail.sabre.com';
 
+    public function bookingReference($type){
+        if($type == 'flight'){
+            return 'AIR-'. rand(000,999) .'-SBR-'.uniqid();
+        }elseif($type == 'hotel'){
+            return 'HOT-'. rand(000,999) .'-SBR-'.uniqid();
+        }elseif($type == 'package'){
+            return 'PKG-'. rand(000,999) .'-SBR-'.uniqid();
+        }elseif($type == 'car'){
+            return 'CAR-'. rand(000,999) .'-SBR-'.uniqid();
+        }
+    }
 
     public function callSabre($headers,$xml_post_string){
         $ch = curl_init();

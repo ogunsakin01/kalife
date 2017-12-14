@@ -1,0 +1,42 @@
+<PassengerDetailsRQ version="3.3.0" xmlns="http://services.sabre.com/sp/pd/v3_3" IgnoreOnError="false" HaltOnError="true">
+    <PostProcessing RedisplayReservation="true">
+		<EndTransactionRQ>
+			<EndTransaction Ind="true">
+			</EndTransaction>
+			<Source ReceivedFrom="SWS TESTING"/>
+		</EndTransactionRQ>
+	</PostProcessing>
+	<PriceQuoteInfo>
+		<Link NameNumber="1.1" Record="1"/><Link NameNumber="1.2" Record="1"/><Link NameNumber="1.3" Record="1"/><Link NameNumber="2.1" Record="2"/><Link NameNumber="2.2" Record="2"/><Link NameNumber="3.1" Record="3"/>
+	</PriceQuoteInfo>
+    <TravelItineraryAddInfoRQ>
+        <AgencyInfo>
+			<Ticketing TicketType="7T-A"/>
+		</AgencyInfo>
+        <CustomerInfo>
+            <ContactNumbers>
+                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="0230208382382" PhoneUseType="H"/>
+            </ContactNumbers>
+            <Email Address="ogunsakin191@gmail.com" NameNumber="1.1" Type="CC"/>
+            <PersonName Infant="false" NameNumber="1.1" PassengerType="ADT">
+                <GivenName>Ogunsakin</GivenName>
+                <Surname>Damilola</Surname>
+            </PersonName><PersonName Infant="false" NameNumber="1.2" PassengerType="ADT">
+                <GivenName>Ogunsakin</GivenName>
+                <Surname>Olamide</Surname>
+            </PersonName><PersonName Infant="false" NameNumber="1.3" PassengerType="ADT">
+                <GivenName>Ogunsakin</GivenName>
+                <Surname>James</Surname>
+            </PersonName><PersonName Infant="false" NameNumber="2.1" PassengerType="CNN">
+                <GivenName>Ogunsakin</GivenName>
+                <Surname>Junior</Surname>
+            </PersonName><PersonName Infant="false" NameNumber="2.2" PassengerType="CNN">
+                <GivenName>Ogunsakin</GivenName>
+                <Surname>Junior2</Surname>
+            </PersonName><PersonName Infant="true" NameNumber="3.1" PassengerType="INF">
+                <GivenName>Ogunsakin</GivenName>
+                <Surname>young</Surname>
+            </PersonName>
+        </CustomerInfo>
+	</TravelItineraryAddInfoRQ>
+</PassengerDetailsRQ>

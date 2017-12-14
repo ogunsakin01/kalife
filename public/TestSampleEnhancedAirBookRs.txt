@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">EnhancedAirBookRQ</eb:Service><eb:Action>EnhancedAirBookRS</eb:Action><eb:MessageData><eb:MessageId>c3dmcj1mm</eb:MessageId><eb:Timestamp>2017-12-14T10:27:02</eb:Timestamp><eb:RefToMessageId>2836919376148840611</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/CERTG!ICESMSLB\/CRT.LB!-3200465353219042939!747742!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><EnhancedAirBookRS xmlns="http://services.sabre.com/sp/eab/v3_8"><ApplicationResults xmlns="http://services.sabre.com/STL_Payload/v02_01" status="Complete"><Success timeStamp="2017-12-14T04:27:02.571-06:00"/></ApplicationResults><OTA_AirBookRS><OriginDestinationOption><FlightSegment ArrivalDateTime="2017-12-14T23:50:00" DepartureDateTime="2017-12-14T23:35:00" eTicket="true" FlightNumber="513" NumberInParty="5" ResBookDesigCode="O" Status="NN"><DestinationLocation LocationCode="BAH"/><MarketingAirline Code="GF" FlightNumber="513"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="DXB"/></FlightSegment><FlightSegment ArrivalDateTime="2017-12-15T06:35:00" DepartureDateTime="2017-12-15T02:00:00" eTicket="true" FlightNumber="7" NumberInParty="5" ResBookDesigCode="O" Status="NN"><DestinationLocation LocationCode="LHR"/><MarketingAirline Code="GF" FlightNumber="7"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="BAH"/></FlightSegment><FlightSegment ArrivalDateTime="2017-12-21T19:00:00" DepartureDateTime="2017-12-21T09:30:00" eTicket="true" FlightNumber="2" NumberInParty="5" ResBookDesigCode="O" Status="NN"><DestinationLocation LocationCode="BAH"/><MarketingAirline Code="GF" FlightNumber="2"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="LHR"/></FlightSegment><FlightSegment ArrivalDateTime="2017-12-21T22:35:00" DepartureDateTime="2017-12-21T20:20:00" eTicket="true" FlightNumber="512" NumberInParty="5" ResBookDesigCode="O" Status="NN"><DestinationLocation LocationCode="DXB"/><MarketingAirline Code="GF" FlightNumber="512"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="BAH"/></FlightSegment></OriginDestinationOption></OTA_AirBookRS><OTA_AirPriceRS><PriceQuote>
+  <MiscInformation>
+   <BaggageInfo>
+    <SubCodeProperties RPH="1" SolutionSequenceNmbr="1">
+     <AncillaryFeeGroupCode>BG</AncillaryFeeGroupCode>
+     <CommercialNameofBaggageItemType>FREE BAGGAGE ALLOWANCE</CommercialNameofBaggageItemType>
+     <EMD_Type>4</EMD_Type>
+     <ExtendedSubCodeKey>0DFAAGF</ExtendedSubCodeKey>
+    </SubCodeProperties>
+    <SubCodeProperties RPH="2" SolutionSequenceNmbr="1">
+     <AncillaryFeeGroupCode>BG</AncillaryFeeGroupCode>
+     <AncillaryService SubGroupCode="CY">
+      <Text>CARRY ON HAND BAGGAGE</Text>
+     </AncillaryService>
+     <CommercialNameofBaggageItemType>CARRYON HAND BAGGAGE ALLOWANCE</CommercialNameofBaggageItemType>
+     <EMD_Type>4</EMD_Type>
+     <ExtendedSubCodeKey>0LNABGF</ExtendedSubCodeKey>
+    </SubCodeProperties>
+   </BaggageInfo>
+   <HeaderInformation SolutionSequenceNmbr="1">
+    <DepartureDate>2017-12-14</DepartureDate>
+    <Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH GF</Text>
+    <Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text>
+    <Text>BAG ALLOWANCE     -DXBLHR-30KG/GF</Text>
+    <Text>BAG ALLOWANCE     -LHRDXB-30KG/GF</Text>
+    <Text>CARRY ON ALLOWANCE</Text>
+    <Text>DXBBAH BAHLHR LHRBAH BAHDXB-06KG/GF</Text>
+    <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
+    <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
+    <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
+    <Text>EACH CNN REQUIRES ACCOMPANYING SAME CABIN ADT</Text>
+    <Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH GF</Text>
+    <Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text>
+    <Text>BAG ALLOWANCE     -DXBLHR-30KG/GF</Text>
+    <Text>BAG ALLOWANCE     -LHRDXB-30KG/GF</Text>
+    <Text>CARRY ON ALLOWANCE</Text>
+    <Text>DXBBAH BAHLHR LHRBAH BAHDXB-06KG/GF</Text>
+    <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
+    <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
+    <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
+    <Text>REQUIRES ACCOMPANYING ADT PASSENGER</Text>
+    <Text>EACH INF REQUIRES ACCOMPANYING ADT PASSENGER</Text>
+    <Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH GF</Text>
+    <Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text>
+    <Text>BAG ALLOWANCE     -DXBLHR-10KG/GF</Text>
+    <Text>BAG ALLOWANCE     -LHRDXB-10KG/GF</Text>
+    <Text>CARRY ON ALLOWANCE</Text>
+    <Text>DXBBAH BAHLHR LHRBAH BAHDXB-03KG/GF</Text>
+    <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
+    <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
+    <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
+    <ValidatingCarrier Code="HR"/>
+   </HeaderInformation>
+   <SolutionInformation SolutionSequenceNmbr="1">
+    <CurrencyCode>NGN</CurrencyCode>
+    <RequiresRebook>false</RequiresRebook>
+    <TicketNumber>0</TicketNumber>
+    <TotalAmount>1267555</TotalAmount>
+   </SolutionInformation>
+  </MiscInformation>
+  <PricedItinerary AlternativePricing="false" CurrencyCode="NGN" MultiTicket="false" TotalAmount="1267555">
+   <AirItineraryPricingInfo SolutionSequenceNmbr="1">
+    <BaggageProvisions RPH="1">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-14</DepartureDate>
+      <DepartureDate RPH="2">2017-12-15</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="LHR" RPH="2"/>
+      <FlightNumber RPH="1">513</FlightNumber>
+      <FlightNumber RPH="2">7</FlightNumber>
+      <OriginLocation LocationCode="DXB" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <PNR_Segment RPH="1">2</PNR_Segment>
+      <PNR_Segment RPH="2">3</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>A</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0DFAAGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">30</WeightLimit>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="2">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-21</DepartureDate>
+      <DepartureDate RPH="2">2017-12-21</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="DXB" RPH="2"/>
+      <FlightNumber RPH="1">2</FlightNumber>
+      <FlightNumber RPH="2">512</FlightNumber>
+      <OriginLocation LocationCode="LHR" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <PNR_Segment RPH="1">4</PNR_Segment>
+      <PNR_Segment RPH="2">5</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>A</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0DFAAGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">30</WeightLimit>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="3">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CarrierCode RPH="3">GF</CarrierCode>
+      <CarrierCode RPH="4">GF</CarrierCode>
+      <CountForSegmentAssociatedID>4</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-14</DepartureDate>
+      <DepartureDate RPH="2">2017-12-15</DepartureDate>
+      <DepartureDate RPH="3">2017-12-21</DepartureDate>
+      <DepartureDate RPH="4">2017-12-21</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="LHR" RPH="2"/>
+      <DestinationLocation LocationCode="BAH" RPH="3"/>
+      <DestinationLocation LocationCode="DXB" RPH="4"/>
+      <FlightNumber RPH="1">513</FlightNumber>
+      <FlightNumber RPH="2">7</FlightNumber>
+      <FlightNumber RPH="3">2</FlightNumber>
+      <FlightNumber RPH="4">512</FlightNumber>
+      <OriginLocation LocationCode="DXB" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <OriginLocation LocationCode="LHR" RPH="3"/>
+      <OriginLocation LocationCode="BAH" RPH="4"/>
+      <PNR_Segment RPH="1">2</PNR_Segment>
+      <PNR_Segment RPH="2">3</PNR_Segment>
+      <PNR_Segment RPH="3">4</PNR_Segment>
+      <PNR_Segment RPH="4">5</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="3">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="4">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+      <StatusCode RPH="3">SS</StatusCode>
+      <StatusCode RPH="4">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>B</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0LNABGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">6</WeightLimit>
+    </BaggageProvisions>
+    <FareCalculation>
+     <Text>DXB GF X/BAH GF LON138.85GF X/BAH GF DXB138.85Q DXBDXB13.00NUC290.70END ROE3.67296</Text>
+    </FareCalculation>
+    <FareCalculationBreakdown>
+     <Branch PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="DXB" ArrivalAirportCode="BAH" ArrivalCityCode="BAH" CityCode="DXB" GenericInd="X"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+     <Surcharges Ind="Q" Type="UNK">13.00</Surcharges>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch FirstJointCarrier="GF" PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="BAH" ArrivalAirportCode="LHR" ArrivalCityCode="LON" CityCode="BAH" GenericInd="O"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5" FareAmount="138.85" FarePassengerType="ADT" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON" TripTypeInd="R"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+     <RuleCategoryIndicator>4</RuleCategoryIndicator>
+     <RuleCategoryIndicator>5</RuleCategoryIndicator>
+     <RuleCategoryIndicator>6</RuleCategoryIndicator>
+     <RuleCategoryIndicator>7</RuleCategoryIndicator>
+     <RuleCategoryIndicator>8</RuleCategoryIndicator>
+     <RuleCategoryIndicator>9</RuleCategoryIndicator>
+     <RuleCategoryIndicator>10</RuleCategoryIndicator>
+     <RuleCategoryIndicator>11</RuleCategoryIndicator>
+     <RuleCategoryIndicator>12</RuleCategoryIndicator>
+     <RuleCategoryIndicator>15</RuleCategoryIndicator>
+     <RuleCategoryIndicator>16</RuleCategoryIndicator>
+     <RuleCategoryIndicator>18</RuleCategoryIndicator>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="LHR" ArrivalAirportCode="BAH" ArrivalCityCode="BAH" CityCode="LON" GenericInd="X"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch FirstJointCarrier="GF" PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="BAH" ArrivalAirportCode="DXB" ArrivalCityCode="DXB" CityCode="BAH" GenericInd="O"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5" FareAmount="138.85" FarePassengerType="ADT" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON" TripTypeInd="R"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+     <RuleCategoryIndicator>4</RuleCategoryIndicator>
+     <RuleCategoryIndicator>5</RuleCategoryIndicator>
+     <RuleCategoryIndicator>6</RuleCategoryIndicator>
+     <RuleCategoryIndicator>7</RuleCategoryIndicator>
+     <RuleCategoryIndicator>8</RuleCategoryIndicator>
+     <RuleCategoryIndicator>9</RuleCategoryIndicator>
+     <RuleCategoryIndicator>10</RuleCategoryIndicator>
+     <RuleCategoryIndicator>11</RuleCategoryIndicator>
+     <RuleCategoryIndicator>12</RuleCategoryIndicator>
+     <RuleCategoryIndicator>15</RuleCategoryIndicator>
+     <RuleCategoryIndicator>16</RuleCategoryIndicator>
+     <RuleCategoryIndicator>18</RuleCategoryIndicator>
+    </FareCalculationBreakdown>
+    <ItinTotalFare NonRefundableInd="N">
+     <BaggageInfo>
+      <NonUS_DOT_Disclosure>
+       <Text>BAG ALLOWANCE     -DXBLHR-30KG/GF</Text>
+       <Text>BAG ALLOWANCE     -LHRDXB-30KG/GF</Text>
+       <Text>CARRY ON ALLOWANCE</Text>
+       <Text>DXBBAH BAHLHR LHRBAH BAHDXB-06KG/GF</Text>
+       <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
+       <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
+       <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
+      </NonUS_DOT_Disclosure>
+     </BaggageInfo>
+     <BaseFare Amount="1070" CurrencyCode="AED"/>
+     <Endorsements>
+      <Text>NOSHOW NOT REFUNDABLE/RES CHG/NOSHOW FEE APPLY/REFUND BEFORE</Text>
+      <Text>DEP. W/FEES/NON END/VALID ON GF ONLY</Text>
+     </Endorsements>
+     <EquivFare Amount="104920" CurrencyCode="NGN"/>
+     <Taxes TotalAmount="162771">
+      <Tax Amount="90212" TaxCode="YQF" TaxName="SERVICE FEE - FUEL" TicketingTaxCode="YQ"/>
+      <Tax Amount="2162" TaxCode="YRI" TaxName="SERVICE FEE - CARRIER-IMPOSED" TicketingTaxCode="YR"/>
+      <Tax Amount="7355" TaxCode="AE4" TaxName="PASSENGER SERVICE CHARGE INTER" TicketingTaxCode="AE"/>
+      <Tax Amount="491" TaxCode="TP" TaxName="PASSENGER SECURITY AND SAFETY" TicketingTaxCode="TP"/>
+      <Tax Amount="982" TaxCode="ZR" TaxName="INTERNATIONAL ADVANCED PASSENG" TicketingTaxCode="ZR"/>
+      <Tax Amount="3432" TaxCode="F62" TaxName="PASSENGER FACILITIES CHARGE" TicketingTaxCode="F6"/>
+      <Tax Amount="1918" TaxCode="BH" TaxName="PASSENGER SERVICE FEE  INTERNA" TicketingTaxCode="BH"/>
+      <Tax Amount="288" TaxCode="HM" TaxName="PASSENGER FACILITY FEE" TicketingTaxCode="HM"/>
+      <Tax Amount="36016" TaxCode="GB" TaxName="AIR PASSENGER DUTY APD" TicketingTaxCode="GB"/>
+      <Tax Amount="19915" TaxCode="UB" TaxName="PASSENGER SERVICE CHARGE DEPAR" TicketingTaxCode="UB"/>
+     </Taxes>
+     <TotalFare Amount="267691" CurrencyCode="NGN"/>
+     <Warnings>
+      <Warning ShortText="MIXED PASSENGER TYPES - VERIFY RESTRICTIONS"/>
+     </Warnings>
+    </ItinTotalFare>
+    <PassengerTypeQuantity Code="ADT" Quantity="3"/>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+     <Surcharges Ind="Q" Type="UNK">13.00</Surcharges>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5" FareAmount="138.85" FarePassengerType="ADT" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5" FareAmount="138.85" FarePassengerType="ADT" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+   </AirItineraryPricingInfo>
+   <AirItineraryPricingInfo SolutionSequenceNmbr="1">
+    <BaggageProvisions RPH="1">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-14</DepartureDate>
+      <DepartureDate RPH="2">2017-12-15</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="LHR" RPH="2"/>
+      <FlightNumber RPH="1">513</FlightNumber>
+      <FlightNumber RPH="2">7</FlightNumber>
+      <OriginLocation LocationCode="DXB" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <PNR_Segment RPH="1">2</PNR_Segment>
+      <PNR_Segment RPH="2">3</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>A</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0DFAAGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">30</WeightLimit>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="2">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-21</DepartureDate>
+      <DepartureDate RPH="2">2017-12-21</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="DXB" RPH="2"/>
+      <FlightNumber RPH="1">2</FlightNumber>
+      <FlightNumber RPH="2">512</FlightNumber>
+      <OriginLocation LocationCode="LHR" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <PNR_Segment RPH="1">4</PNR_Segment>
+      <PNR_Segment RPH="2">5</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>A</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0DFAAGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">30</WeightLimit>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="3">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CarrierCode RPH="3">GF</CarrierCode>
+      <CarrierCode RPH="4">GF</CarrierCode>
+      <CountForSegmentAssociatedID>4</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-14</DepartureDate>
+      <DepartureDate RPH="2">2017-12-15</DepartureDate>
+      <DepartureDate RPH="3">2017-12-21</DepartureDate>
+      <DepartureDate RPH="4">2017-12-21</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="LHR" RPH="2"/>
+      <DestinationLocation LocationCode="BAH" RPH="3"/>
+      <DestinationLocation LocationCode="DXB" RPH="4"/>
+      <FlightNumber RPH="1">513</FlightNumber>
+      <FlightNumber RPH="2">7</FlightNumber>
+      <FlightNumber RPH="3">2</FlightNumber>
+      <FlightNumber RPH="4">512</FlightNumber>
+      <OriginLocation LocationCode="DXB" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <OriginLocation LocationCode="LHR" RPH="3"/>
+      <OriginLocation LocationCode="BAH" RPH="4"/>
+      <PNR_Segment RPH="1">2</PNR_Segment>
+      <PNR_Segment RPH="2">3</PNR_Segment>
+      <PNR_Segment RPH="3">4</PNR_Segment>
+      <PNR_Segment RPH="4">5</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="3">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="4">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+      <StatusCode RPH="3">SS</StatusCode>
+      <StatusCode RPH="4">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>B</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0LNABGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">6</WeightLimit>
+    </BaggageProvisions>
+    <FareCalculation>
+     <Text>DXB GF X/BAH GF LON111.08GF X/BAH GF DXB111.08Q DXBDXB13.00NUC235.16END ROE3.67296</Text>
+    </FareCalculation>
+    <FareCalculationBreakdown>
+     <Branch PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="DXB" ArrivalAirportCode="BAH" ArrivalCityCode="BAH" CityCode="DXB" GenericInd="X"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5CH" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+     <Surcharges Ind="Q" Type="UNK">13.00</Surcharges>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch FirstJointCarrier="GF" PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="BAH" ArrivalAirportCode="LHR" ArrivalCityCode="LON" CityCode="BAH" GenericInd="O"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5CH" FareAmount="111.08" FarePassengerType="CNN" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON" TripTypeInd="R"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+     <RuleCategoryIndicator>4</RuleCategoryIndicator>
+     <RuleCategoryIndicator>5</RuleCategoryIndicator>
+     <RuleCategoryIndicator>6</RuleCategoryIndicator>
+     <RuleCategoryIndicator>7</RuleCategoryIndicator>
+     <RuleCategoryIndicator>8</RuleCategoryIndicator>
+     <RuleCategoryIndicator>9</RuleCategoryIndicator>
+     <RuleCategoryIndicator>10</RuleCategoryIndicator>
+     <RuleCategoryIndicator>11</RuleCategoryIndicator>
+     <RuleCategoryIndicator>12</RuleCategoryIndicator>
+     <RuleCategoryIndicator>15</RuleCategoryIndicator>
+     <RuleCategoryIndicator>16</RuleCategoryIndicator>
+     <RuleCategoryIndicator>18</RuleCategoryIndicator>
+     <RuleCategoryIndicator>19</RuleCategoryIndicator>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="LHR" ArrivalAirportCode="BAH" ArrivalCityCode="BAH" CityCode="LON" GenericInd="X"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5CH" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch FirstJointCarrier="GF" PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="BAH" ArrivalAirportCode="DXB" ArrivalCityCode="DXB" CityCode="BAH" GenericInd="O"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5CH" FareAmount="111.08" FarePassengerType="CNN" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON" TripTypeInd="R"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+     <RuleCategoryIndicator>4</RuleCategoryIndicator>
+     <RuleCategoryIndicator>5</RuleCategoryIndicator>
+     <RuleCategoryIndicator>6</RuleCategoryIndicator>
+     <RuleCategoryIndicator>7</RuleCategoryIndicator>
+     <RuleCategoryIndicator>8</RuleCategoryIndicator>
+     <RuleCategoryIndicator>9</RuleCategoryIndicator>
+     <RuleCategoryIndicator>10</RuleCategoryIndicator>
+     <RuleCategoryIndicator>11</RuleCategoryIndicator>
+     <RuleCategoryIndicator>12</RuleCategoryIndicator>
+     <RuleCategoryIndicator>15</RuleCategoryIndicator>
+     <RuleCategoryIndicator>16</RuleCategoryIndicator>
+     <RuleCategoryIndicator>18</RuleCategoryIndicator>
+     <RuleCategoryIndicator>19</RuleCategoryIndicator>
+    </FareCalculationBreakdown>
+    <ItinTotalFare NonRefundableInd="N">
+     <BaggageInfo>
+      <NonUS_DOT_Disclosure>
+       <Text>BAG ALLOWANCE     -DXBLHR-30KG/GF</Text>
+       <Text>BAG ALLOWANCE     -LHRDXB-30KG/GF</Text>
+       <Text>CARRY ON ALLOWANCE</Text>
+       <Text>DXBBAH BAHLHR LHRBAH BAHDXB-06KG/GF</Text>
+       <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
+       <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
+       <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
+      </NonUS_DOT_Disclosure>
+     </BaggageInfo>
+     <BaseFare Amount="870" CurrencyCode="AED"/>
+     <Endorsements>
+      <Text>NOSHOW NOT REFUNDABLE/RES CHG/NOSHOW FEE APPLY/REFUND BEFORE</Text>
+      <Text>DEP. W/FEES/NON END/VALID ON GF ONLY</Text>
+     </Endorsements>
+     <EquivFare Amount="85309" CurrencyCode="NGN"/>
+     <Taxes TotalAmount="126755">
+      <Tax Amount="90212" TaxCode="YQF" TaxName="SERVICE FEE - FUEL" TicketingTaxCode="YQ"/>
+      <Tax Amount="2162" TaxCode="YRI" TaxName="SERVICE FEE - CARRIER-IMPOSED" TicketingTaxCode="YR"/>
+      <Tax Amount="7355" TaxCode="AE4" TaxName="PASSENGER SERVICE CHARGE INTER" TicketingTaxCode="AE"/>
+      <Tax Amount="491" TaxCode="TP" TaxName="PASSENGER SECURITY AND SAFETY" TicketingTaxCode="TP"/>
+      <Tax Amount="982" TaxCode="ZR" TaxName="INTERNATIONAL ADVANCED PASSENG" TicketingTaxCode="ZR"/>
+      <Tax Amount="3432" TaxCode="F62" TaxName="PASSENGER FACILITIES CHARGE" TicketingTaxCode="F6"/>
+      <Tax Amount="1918" TaxCode="BH" TaxName="PASSENGER SERVICE FEE  INTERNA" TicketingTaxCode="BH"/>
+      <Tax Amount="288" TaxCode="HM" TaxName="PASSENGER FACILITY FEE" TicketingTaxCode="HM"/>
+      <Tax Amount="19915" TaxCode="UB" TaxName="PASSENGER SERVICE CHARGE DEPAR" TicketingTaxCode="UB"/>
+     </Taxes>
+     <TotalFare Amount="212064" CurrencyCode="NGN"/>
+     <Warnings>
+      <Warning ShortText="MIXED PASSENGER TYPES - VERIFY RESTRICTIONS"/>
+     </Warnings>
+    </ItinTotalFare>
+    <PassengerTypeQuantity Code="CNN" Quantity="2"/>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5CH" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+     <Surcharges Ind="Q" Type="UNK">13.00</Surcharges>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5CH" FareAmount="111.08" FarePassengerType="CNN" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5CH" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5CH" FareAmount="111.08" FarePassengerType="CNN" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON"/>
+     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+   </AirItineraryPricingInfo>
+   <AirItineraryPricingInfo SolutionSequenceNmbr="1">
+    <BaggageProvisions RPH="1">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-14</DepartureDate>
+      <DepartureDate RPH="2">2017-12-15</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="LHR" RPH="2"/>
+      <FlightNumber RPH="1">513</FlightNumber>
+      <FlightNumber RPH="2">7</FlightNumber>
+      <OriginLocation LocationCode="DXB" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <PNR_Segment RPH="1">2</PNR_Segment>
+      <PNR_Segment RPH="2">3</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>A</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0DFAAGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">10</WeightLimit>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="2">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-21</DepartureDate>
+      <DepartureDate RPH="2">2017-12-21</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="DXB" RPH="2"/>
+      <FlightNumber RPH="1">2</FlightNumber>
+      <FlightNumber RPH="2">512</FlightNumber>
+      <OriginLocation LocationCode="LHR" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <PNR_Segment RPH="1">4</PNR_Segment>
+      <PNR_Segment RPH="2">5</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>A</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0DFAAGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">10</WeightLimit>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="3">
+     <Associations>
+      <CarrierCode RPH="1">GF</CarrierCode>
+      <CarrierCode RPH="2">GF</CarrierCode>
+      <CarrierCode RPH="3">GF</CarrierCode>
+      <CarrierCode RPH="4">GF</CarrierCode>
+      <CountForSegmentAssociatedID>4</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2017-12-14</DepartureDate>
+      <DepartureDate RPH="2">2017-12-15</DepartureDate>
+      <DepartureDate RPH="3">2017-12-21</DepartureDate>
+      <DepartureDate RPH="4">2017-12-21</DepartureDate>
+      <DestinationLocation LocationCode="BAH" RPH="1"/>
+      <DestinationLocation LocationCode="LHR" RPH="2"/>
+      <DestinationLocation LocationCode="BAH" RPH="3"/>
+      <DestinationLocation LocationCode="DXB" RPH="4"/>
+      <FlightNumber RPH="1">513</FlightNumber>
+      <FlightNumber RPH="2">7</FlightNumber>
+      <FlightNumber RPH="3">2</FlightNumber>
+      <FlightNumber RPH="4">512</FlightNumber>
+      <OriginLocation LocationCode="DXB" RPH="1"/>
+      <OriginLocation LocationCode="BAH" RPH="2"/>
+      <OriginLocation LocationCode="LHR" RPH="3"/>
+      <OriginLocation LocationCode="BAH" RPH="4"/>
+      <PNR_Segment RPH="1">2</PNR_Segment>
+      <PNR_Segment RPH="2">3</PNR_Segment>
+      <PNR_Segment RPH="3">4</PNR_Segment>
+      <PNR_Segment RPH="4">5</PNR_Segment>
+      <ResBookDesigCode RPH="1">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="3">O</ResBookDesigCode>
+      <ResBookDesigCode RPH="4">O</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+      <StatusCode RPH="3">SS</StatusCode>
+      <StatusCode RPH="4">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>GF</CarrierWhoseBaggageProvisionsApply>
+     <ProvisionType>B</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0LNABGF</SubCodeForChargesOthers>
+     </SubCodeInfo>
+     <WeightLimit Units="K">3</WeightLimit>
+    </BaggageProvisions>
+    <FareCalculation>
+     <Text>DXB GF X/BAH GF LON13.88GF X/BAH GF DXB13.88NUC27.76END ROE3.67296</Text>
+    </FareCalculation>
+    <FareCalculationBreakdown>
+     <Branch PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="DXB" ArrivalAirportCode="BAH" ArrivalCityCode="BAH" CityCode="DXB" GenericInd="X"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5IN" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG010</FreeBaggageAllowance>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch FirstJointCarrier="GF" PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="BAH" ArrivalAirportCode="LHR" ArrivalCityCode="LON" CityCode="BAH" GenericInd="O"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5IN" FareAmount="13.88" FarePassengerType="INF" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON" TripTypeInd="R"/>
+     <FreeBaggageAllowance>KG010</FreeBaggageAllowance>
+     <RuleCategoryIndicator>4</RuleCategoryIndicator>
+     <RuleCategoryIndicator>5</RuleCategoryIndicator>
+     <RuleCategoryIndicator>6</RuleCategoryIndicator>
+     <RuleCategoryIndicator>7</RuleCategoryIndicator>
+     <RuleCategoryIndicator>8</RuleCategoryIndicator>
+     <RuleCategoryIndicator>9</RuleCategoryIndicator>
+     <RuleCategoryIndicator>10</RuleCategoryIndicator>
+     <RuleCategoryIndicator>11</RuleCategoryIndicator>
+     <RuleCategoryIndicator>12</RuleCategoryIndicator>
+     <RuleCategoryIndicator>15</RuleCategoryIndicator>
+     <RuleCategoryIndicator>16</RuleCategoryIndicator>
+     <RuleCategoryIndicator>18</RuleCategoryIndicator>
+     <RuleCategoryIndicator>19</RuleCategoryIndicator>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="LHR" ArrivalAirportCode="BAH" ArrivalCityCode="BAH" CityCode="LON" GenericInd="X"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5IN" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG010</FreeBaggageAllowance>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch FirstJointCarrier="GF" PCC="WD4H"/>
+     <Departure AirlineCode="GF" AirportCode="BAH" ArrivalAirportCode="DXB" ArrivalCityCode="DXB" CityCode="BAH" GenericInd="O"/>
+     <FareBasis Cabin="Y" Code="OE3MAE5IN" FareAmount="13.88" FarePassengerType="INF" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON" TripTypeInd="R"/>
+     <FreeBaggageAllowance>KG010</FreeBaggageAllowance>
+     <RuleCategoryIndicator>4</RuleCategoryIndicator>
+     <RuleCategoryIndicator>5</RuleCategoryIndicator>
+     <RuleCategoryIndicator>6</RuleCategoryIndicator>
+     <RuleCategoryIndicator>7</RuleCategoryIndicator>
+     <RuleCategoryIndicator>8</RuleCategoryIndicator>
+     <RuleCategoryIndicator>9</RuleCategoryIndicator>
+     <RuleCategoryIndicator>10</RuleCategoryIndicator>
+     <RuleCategoryIndicator>11</RuleCategoryIndicator>
+     <RuleCategoryIndicator>12</RuleCategoryIndicator>
+     <RuleCategoryIndicator>15</RuleCategoryIndicator>
+     <RuleCategoryIndicator>16</RuleCategoryIndicator>
+     <RuleCategoryIndicator>18</RuleCategoryIndicator>
+     <RuleCategoryIndicator>19</RuleCategoryIndicator>
+    </FareCalculationBreakdown>
+    <ItinTotalFare NonRefundableInd="N">
+     <BaggageInfo>
+      <NonUS_DOT_Disclosure>
+       <Text>BAG ALLOWANCE     -DXBLHR-10KG/GF</Text>
+       <Text>BAG ALLOWANCE     -LHRDXB-10KG/GF</Text>
+       <Text>CARRY ON ALLOWANCE</Text>
+       <Text>DXBBAH BAHLHR LHRBAH BAHDXB-03KG/GF</Text>
+       <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
+       <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
+       <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
+      </NonUS_DOT_Disclosure>
+     </BaggageInfo>
+     <BaseFare Amount="110" CurrencyCode="AED"/>
+     <Endorsements>
+      <Text>NOSHOW NOT REFUNDABLE/RES CHG/NOSHOW FEE APPLY/REFUND BEFORE</Text>
+      <Text>DEP. W/FEES/NON END/VALID ON GF ONLY</Text>
+     </Endorsements>
+     <EquivFare Amount="10787" CurrencyCode="NGN"/>
+     <Taxes TotalAmount="29567">
+      <Tax Amount="7202" TaxCode="YQF" TaxName="SERVICE FEE - FUEL" TicketingTaxCode="YQ"/>
+      <Tax Amount="2162" TaxCode="YRI" TaxName="SERVICE FEE - CARRIER-IMPOSED" TicketingTaxCode="YR"/>
+      <Tax Amount="288" TaxCode="HM" TaxName="PASSENGER FACILITY FEE" TicketingTaxCode="HM"/>
+      <Tax Amount="19915" TaxCode="UB" TaxName="PASSENGER SERVICE CHARGE DEPAR" TicketingTaxCode="UB"/>
+     </Taxes>
+     <TotalFare Amount="40354" CurrencyCode="NGN"/>
+     <Warnings>
+      <Warning ShortText="MIXED PASSENGER TYPES - VERIFY RESTRICTIONS"/>
+     </Warnings>
+    </ItinTotalFare>
+    <PassengerTypeQuantity Code="INF" Quantity="1"/>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5IN" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG010</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5IN" FareAmount="13.88" FarePassengerType="INF" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON"/>
+     <FreeBaggageAllowance>KG010</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5IN" FilingCarrier="GF"/>
+     <FreeBaggageAllowance>KG010</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="OE3MAE5IN" FareAmount="13.88" FarePassengerType="INF" FareType="P" FilingCarrier="GF" GlobalInd="EH" Market="DXBLON"/>
+     <FreeBaggageAllowance>KG010</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+   </AirItineraryPricingInfo>
+  </PricedItinerary>
+ </PriceQuote></OTA_AirPriceRS><TravelItineraryReadRS><TravelItinerary><CustomerInfo/><ItineraryInfo><ItineraryPricing><PriceQuote RPH="1"><MiscInformation><SignatureLine ExpirationDateTime="00:00" Source="SYS" Status="ACTIVE"><Text>WD4H WD4H*AWS 1127/14DEC17</Text></SignatureLine></MiscInformation><PricedItinerary DisplayOnly="false" InputMessage="WPP3ADT/2CNN/1INF¥RQ" RPH="1" StatusCode="A" TaxExempt="false" ValidatingCarrier="HR" StoredDateTime="2017-12-14T11:27"><AirItineraryPricingInfo><ItinTotalFare><BaseFare Amount="1070" CurrencyCode="AED"/><EquivFare Amount="104920" CurrencyCode="NGN"/><Taxes><Tax Amount="162771" TaxCode="XT"/><TaxBreakdownCode TaxPaid="false">90212YQ</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">2162YR</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">7355AE</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">491TP</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">982ZR</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">3432F6</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">1918BH</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">288HM</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">36016GB</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">19915UB</TaxBreakdownCode></Taxes><TotalFare Amount="267691" CurrencyCode="NGN"/><Totals><BaseFare Amount="3210"/><EquivFare Amount="314760"/><Taxes><Tax Amount="488313"/></Taxes><TotalFare Amount="803073"/></Totals></ItinTotalFare><PassengerTypeQuantity Code="ADT" Quantity="03"/><PTC_FareBreakdown><Endorsements><Endorsement type="PRICING_PARAMETER"><Text>WPP3ADT/2CNN/1INF$RQ</Text></Endorsement><Endorsement type="WARNING"><Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text></Endorsement><Endorsement type="WARNING"><Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH GF</Text></Endorsement><Endorsement type="SYSTEM_ENDORSEMENT"><Text>NOSHOW NOT REFUNDABLE/RES CHG/NOSHOW FEE APPLY/REFUND BEFORE DEP. W/FEES/NON END/VALID ON GF ONLY</Text></Endorsement></Endorsements><FareBasis Code="OE3MAE5/OE3MAE5/OE3MAE5/OE3MAE5"/><FareCalculation><Text>DXB GF X/BAH GF LON138.85GF X/BAH GF DXB138.85Q DXBDXB13.00NUC290.70END ROE3.67296</Text></FareCalculation><FareSource>ATPC</FareSource><FlightSegment ConnectionInd="O" DepartureDateTime="12-14T23:35" FlightNumber="513" ResBookDesigCode="O" SegmentNumber="1" Status="OK"><BaggageAllowance Number="30K"/><FareBasis Code="OE3MAE5"/><MarketingAirline Code="GF" FlightNumber="513"/><OriginLocation LocationCode="DXB"/><ValidityDates><NotValidAfter>2017-12-14</NotValidAfter><NotValidBefore>2017-12-14</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="X" DepartureDateTime="12-15T02:00" FlightNumber="7" ResBookDesigCode="O" SegmentNumber="2" Status="OK"><BaggageAllowance Number="30K"/><FareBasis Code="OE3MAE5"/><MarketingAirline Code="GF" FlightNumber="7"/><OriginLocation LocationCode="BAH"/><ValidityDates><NotValidAfter>2017-12-15</NotValidAfter><NotValidBefore>2017-12-15</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="O" DepartureDateTime="12-21T09:30" FlightNumber="2" ResBookDesigCode="O" SegmentNumber="3" Status="OK"><BaggageAllowance Number="30K"/><FareBasis Code="OE3MAE5"/><MarketingAirline Code="GF" FlightNumber="2"/><OriginLocation LocationCode="LHR"/><ValidityDates><NotValidAfter>2017-12-21</NotValidAfter><NotValidBefore>2017-12-21</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="X" DepartureDateTime="12-21T20:20" FlightNumber="512" ResBookDesigCode="O" SegmentNumber="4" Status="OK"><BaggageAllowance Number="30K"/><FareBasis Code="OE3MAE5"/><MarketingAirline Code="GF" FlightNumber="512"/><OriginLocation LocationCode="BAH"/><ValidityDates><NotValidAfter>2017-12-21</NotValidAfter><NotValidBefore>2017-12-21</NotValidBefore></ValidityDates></FlightSegment><FlightSegment><OriginLocation LocationCode="DXB"/></FlightSegment><FareComponent FareBasisCode="OE3MAE5" FareDirectionality="FROM" Amount="13885" TicketDesignator="" GoverningCarrier="GF"><Location Origin="DXB" Destination="LON"/><Dates DepartureDateTime="12-14T23:35" ArrivalDateTime="12-15T06:35"/></FareComponent><FareComponent FareBasisCode="OE3MAE5" FareDirectionality="TO" Amount="13885" TicketDesignator="" GoverningCarrier="GF"><Location Origin="LON" Destination="DXB"/><Dates DepartureDateTime="12-21T09:30" ArrivalDateTime="12-21T22:35"/></FareComponent></PTC_FareBreakdown></AirItineraryPricingInfo></PricedItinerary><ResponseHeader><Text>FARE - PRICE RETAINED</Text><Text>FARE NOT GUARANTEED UNTIL TICKETED</Text></ResponseHeader><PriceQuotePlus DomesticIntlInd="I" PricingStatus="S" VerifyFareCalc="false" ItineraryChanged="false" ManualFare="false" NegotiatedFare="false" SystemIndicator="S" NUCSuppresion="false" SubjToGovtApproval="false" IT_BT_Fare="BT" DisplayOnly="false" DiscountAmount="0"><TicketingInstructionsInfo/></PriceQuotePlus></PriceQuote><PriceQuote RPH="2"><MiscInformation><SignatureLine ExpirationDateTime="00:00" Source="SYS" Status="ACTIVE"><Text>WD4H WD4H*AWS 1127/14DEC17</Text></SignatureLine></MiscInformation><PricedItinerary DisplayOnly="false" InputMessage="WPP3ADT/2CNN/1INF¥RQ" RPH="2" StatusCode="A" TaxExempt="false" ValidatingCarrier="HR" StoredDateTime="2017-12-14T11:27"><AirItineraryPricingInfo><ItinTotalFare><BaseFare Amount="870" CurrencyCode="AED"/><EquivFare Amount="85309" CurrencyCode="NGN"/><Taxes><Tax Amount="126755" TaxCode="XT"/><TaxBreakdownCode TaxPaid="false">90212YQ</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">2162YR</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">7355AE</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">491TP</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">982ZR</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">3432F6</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">1918BH</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">288HM</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">19915UB</TaxBreakdownCode></Taxes><TotalFare Amount="212064" CurrencyCode="NGN"/><Totals><BaseFare Amount="1740"/><EquivFare Amount="170618"/><Taxes><Tax Amount="253510"/></Taxes><TotalFare Amount="424128"/></Totals></ItinTotalFare><PassengerTypeQuantity Code="CNN" Quantity="02"/><PTC_FareBreakdown><Endorsements><Endorsement type="PRICING_PARAMETER"><Text>WPP3ADT/2CNN/1INF$RQ</Text></Endorsement><Endorsement type="WARNING"><Text>EACH CNN REQUIRES ACCOMPANYING SAME CABIN ADT</Text></Endorsement><Endorsement type="WARNING"><Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text></Endorsement><Endorsement type="WARNING"><Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH GF</Text></Endorsement><Endorsement type="SYSTEM_ENDORSEMENT"><Text>NOSHOW NOT REFUNDABLE/RES CHG/NOSHOW FEE APPLY/REFUND BEFORE DEP. W/FEES/NON END/VALID ON GF ONLY</Text></Endorsement></Endorsements><FareBasis Code="OE3MAE5CH/OE3MAE5CH/OE3MAE5CH/OE3MAE5CH"/><FareCalculation><Text>DXB GF X/BAH GF LON111.08GF X/BAH GF DXB111.08Q DXBDXB13.00NUC235.16END ROE3.67296</Text></FareCalculation><FareSource>ATPC</FareSource><FlightSegment ConnectionInd="O" DepartureDateTime="12-14T23:35" FlightNumber="513" ResBookDesigCode="O" SegmentNumber="1" Status="OK"><BaggageAllowance Number="30K"/><FareBasis Code="OE3MAE5CH"/><MarketingAirline Code="GF" FlightNumber="513"/><OriginLocation LocationCode="DXB"/><ValidityDates><NotValidAfter>2017-12-14</NotValidAfter><NotValidBefore>2017-12-14</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="X" DepartureDateTime="12-15T02:00" FlightNumber="7" ResBookDesigCode="O" SegmentNumber="2" Status="OK"><BaggageAllowance Number="30K"/><FareBasis Code="OE3MAE5CH"/><MarketingAirline Code="GF" FlightNumber="7"/><OriginLocation LocationCode="BAH"/><ValidityDates><NotValidAfter>2017-12-15</NotValidAfter><NotValidBefore>2017-12-15</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="O" DepartureDateTime="12-21T09:30" FlightNumber="2" ResBookDesigCode="O" SegmentNumber="3" Status="OK"><BaggageAllowance Number="30K"/><FareBasis Code="OE3MAE5CH"/><MarketingAirline Code="GF" FlightNumber="2"/><OriginLocation LocationCode="LHR"/><ValidityDates><NotValidAfter>2017-12-21</NotValidAfter><NotValidBefore>2017-12-21</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="X" DepartureDateTime="12-21T20:20" FlightNumber="512" ResBookDesigCode="O" SegmentNumber="4" Status="OK"><BaggageAllowance Number="30K"/><FareBasis Code="OE3MAE5CH"/><MarketingAirline Code="GF" FlightNumber="512"/><OriginLocation LocationCode="BAH"/><ValidityDates><NotValidAfter>2017-12-21</NotValidAfter><NotValidBefore>2017-12-21</NotValidBefore></ValidityDates></FlightSegment><FlightSegment><OriginLocation LocationCode="DXB"/></FlightSegment><FareComponent FareBasisCode="OE3MAE5CH" FareDirectionality="FROM" Amount="11108" TicketDesignator="" GoverningCarrier="GF"><Location Origin="DXB" Destination="LON"/><Dates DepartureDateTime="12-14T23:35" ArrivalDateTime="12-15T06:35"/></FareComponent><FareComponent FareBasisCode="OE3MAE5CH" FareDirectionality="TO" Amount="11108" TicketDesignator="" GoverningCarrier="GF"><Location Origin="LON" Destination="DXB"/><Dates DepartureDateTime="12-21T09:30" ArrivalDateTime="12-21T22:35"/></FareComponent></PTC_FareBreakdown></AirItineraryPricingInfo></PricedItinerary><ResponseHeader><Text>FARE - PRICE RETAINED</Text><Text>FARE NOT GUARANTEED UNTIL TICKETED</Text></ResponseHeader><PriceQuotePlus DomesticIntlInd="I" PricingStatus="S" VerifyFareCalc="false" ItineraryChanged="false" ManualFare="false" NegotiatedFare="false" SystemIndicator="S" NUCSuppresion="false" SubjToGovtApproval="false" IT_BT_Fare="BT" DisplayOnly="false" DiscountAmount="0"><TicketingInstructionsInfo/></PriceQuotePlus></PriceQuote><PriceQuote RPH="3"><MiscInformation><SignatureLine ExpirationDateTime="00:00" Source="SYS" Status="ACTIVE"><Text>WD4H WD4H*AWS 1127/14DEC17</Text></SignatureLine></MiscInformation><PricedItinerary DisplayOnly="false" InputMessage="WPP3ADT/2CNN/1INF¥RQ" RPH="3" StatusCode="A" TaxExempt="false" ValidatingCarrier="HR" StoredDateTime="2017-12-14T11:27"><AirItineraryPricingInfo><ItinTotalFare><BaseFare Amount="110" CurrencyCode="AED"/><EquivFare Amount="10787" CurrencyCode="NGN"/><Taxes><Tax Amount="29567" TaxCode="XT"/><TaxBreakdownCode TaxPaid="false">7202YQ</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">2162YR</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">288HM</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">19915UB</TaxBreakdownCode></Taxes><TotalFare Amount="40354" CurrencyCode="NGN"/><Totals><BaseFare Amount="110"/><EquivFare Amount="10787"/><Taxes><Tax Amount="29567"/></Taxes><TotalFare Amount="40354"/></Totals></ItinTotalFare><PassengerTypeQuantity Code="INF" Quantity="01"/><PTC_FareBreakdown><Endorsements><Endorsement type="PRICING_PARAMETER"><Text>WPP3ADT/2CNN/1INF$RQ</Text></Endorsement><Endorsement type="WARNING"><Text>REQUIRES ACCOMPANYING ADT PASSENGER</Text></Endorsement><Endorsement type="WARNING"><Text>EACH INF REQUIRES ACCOMPANYING ADT PASSENGER</Text></Endorsement><Endorsement type="WARNING"><Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text></Endorsement><Endorsement type="WARNING"><Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH GF</Text></Endorsement><Endorsement type="SYSTEM_ENDORSEMENT"><Text>NOSHOW NOT REFUNDABLE/RES CHG/NOSHOW FEE APPLY/REFUND BEFORE DEP. W/FEES/NON END/VALID ON GF ONLY</Text></Endorsement></Endorsements><FareBasis Code="OE3MAE5IN/OE3MAE5IN/OE3MAE5IN/OE3MAE5IN"/><FareCalculation><Text>DXB GF X/BAH GF LON13.88GF X/BAH GF DXB13.88NUC27.76END ROE3.67296</Text></FareCalculation><FareSource>ATPC</FareSource><FlightSegment ConnectionInd="O" DepartureDateTime="12-14T23:35" FlightNumber="513" ResBookDesigCode="O" SegmentNumber="1" Status="NS"><BaggageAllowance Number="10K"/><FareBasis Code="OE3MAE5IN"/><MarketingAirline Code="GF" FlightNumber="513"/><OriginLocation LocationCode="DXB"/><ValidityDates><NotValidAfter>2017-12-14</NotValidAfter><NotValidBefore>2017-12-14</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="X" DepartureDateTime="12-15T02:00" FlightNumber="7" ResBookDesigCode="O" SegmentNumber="2" Status="NS"><BaggageAllowance Number="10K"/><FareBasis Code="OE3MAE5IN"/><MarketingAirline Code="GF" FlightNumber="7"/><OriginLocation LocationCode="BAH"/><ValidityDates><NotValidAfter>2017-12-15</NotValidAfter><NotValidBefore>2017-12-15</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="O" DepartureDateTime="12-21T09:30" FlightNumber="2" ResBookDesigCode="O" SegmentNumber="3" Status="NS"><BaggageAllowance Number="10K"/><FareBasis Code="OE3MAE5IN"/><MarketingAirline Code="GF" FlightNumber="2"/><OriginLocation LocationCode="LHR"/><ValidityDates><NotValidAfter>2017-12-21</NotValidAfter><NotValidBefore>2017-12-21</NotValidBefore></ValidityDates></FlightSegment><FlightSegment ConnectionInd="X" DepartureDateTime="12-21T20:20" FlightNumber="512" ResBookDesigCode="O" SegmentNumber="4" Status="NS"><BaggageAllowance Number="10K"/><FareBasis Code="OE3MAE5IN"/><MarketingAirline Code="GF" FlightNumber="512"/><OriginLocation LocationCode="BAH"/><ValidityDates><NotValidAfter>2017-12-21</NotValidAfter><NotValidBefore>2017-12-21</NotValidBefore></ValidityDates></FlightSegment><FlightSegment><OriginLocation LocationCode="DXB"/></FlightSegment><FareComponent FareBasisCode="OE3MAE5IN" FareDirectionality="FROM" Amount="1388" TicketDesignator="" GoverningCarrier="GF"><Location Origin="DXB" Destination="LON"/><Dates DepartureDateTime="12-14T23:35" ArrivalDateTime="12-15T06:35"/></FareComponent><FareComponent FareBasisCode="OE3MAE5IN" FareDirectionality="TO" Amount="1388" TicketDesignator="" GoverningCarrier="GF"><Location Origin="LON" Destination="DXB"/><Dates DepartureDateTime="12-21T09:30" ArrivalDateTime="12-21T22:35"/></FareComponent></PTC_FareBreakdown></AirItineraryPricingInfo></PricedItinerary><ResponseHeader><Text>FARE - PRICE RETAINED</Text><Text>FARE USED TO CALCULATE DISCOUNT</Text><Text>FARE NOT GUARANTEED UNTIL TICKETED</Text></ResponseHeader><PriceQuotePlus DomesticIntlInd="I" PricingStatus="S" VerifyFareCalc="false" ItineraryChanged="false" ManualFare="false" NegotiatedFare="false" SystemIndicator="S" NUCSuppresion="false" SubjToGovtApproval="false" IT_BT_Fare="BT" DisplayOnly="false" DiscountAmount="0"><TicketingInstructionsInfo/></PriceQuotePlus></PriceQuote><PriceQuoteTotals><BaseFare Amount="5060.00"/><EquivFare Amount="496165.00"/><Taxes><Tax Amount="771390.00"/></Taxes><TotalFare Amount="1267555.00"/></PriceQuoteTotals></ItineraryPricing><ReservationItems><Item RPH="1"><FlightSegment AirMilesFlown="0302" ArrivalDateTime="12-14T23:50" DayOfWeekInd="4" DepartureDateTime="2017-12-14T23:35" ElapsedTime="01.15" eTicket="true" FlightNumber="0513" NumberInParty="05" ResBookDesigCode="O" SegmentNumber="0001" SmokingAllowed="false" SpecialMeal="false" Status="SS" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="BAH"/><Equipment AirEquipType="320"/><MarketingAirline Code="GF" FlightNumber="0513"><Banner>MARKETED BY GULF AIR</Banner></MarketingAirline><Meal Code="S"/><OperatingAirline Code="GF" FlightNumber="0513" ResBookDesigCode="O"><Banner>OPERATED BY GULF AIR</Banner></OperatingAirline><OperatingAirlinePricing Code="GF"/><DisclosureCarrier Code="GF"><Banner>GULF AIR</Banner></DisclosureCarrier><OriginLocation LocationCode="DXB" Terminal="TERMINAL 1" TerminalCode="1"/><SupplierRef ID="DCGF"/><UpdatedArrivalTime>12-14T23:50</UpdatedArrivalTime><UpdatedDepartureTime>12-14T23:35</UpdatedDepartureTime></FlightSegment></Item><Item RPH="2"><FlightSegment AirMilesFlown="3169" ArrivalDateTime="12-15T06:35" DayOfWeekInd="5" DepartureDateTime="2017-12-15T02:00" ElapsedTime="07.35" eTicket="true" FlightNumber="0007" NumberInParty="05" ResBookDesigCode="O" SegmentNumber="0002" SmokingAllowed="false" SpecialMeal="false" Status="SS" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="LHR" Terminal="TERMINAL 4" TerminalCode="4"/><Equipment AirEquipType="332"/><MarketingAirline Code="GF" FlightNumber="0007"><Banner>MARKETED BY GULF AIR</Banner></MarketingAirline><Meal Code="B"/><OperatingAirline Code="GF" FlightNumber="0007" ResBookDesigCode="O"><Banner>OPERATED BY GULF AIR</Banner></OperatingAirline><OperatingAirlinePricing Code="GF"/><DisclosureCarrier Code="GF"><Banner>GULF AIR</Banner></DisclosureCarrier><OriginLocation LocationCode="BAH"/><SupplierRef ID="DCGF"/><UpdatedArrivalTime>12-15T06:35</UpdatedArrivalTime><UpdatedDepartureTime>12-15T02:00</UpdatedDepartureTime></FlightSegment></Item><Item RPH="3"><FlightSegment AirMilesFlown="3169" ArrivalDateTime="12-21T19:00" DayOfWeekInd="4" DepartureDateTime="2017-12-21T09:30" ElapsedTime="06.30" eTicket="true" FlightNumber="0002" NumberInParty="05" ResBookDesigCode="O" SegmentNumber="0003" SmokingAllowed="false" SpecialMeal="false" Status="SS" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="BAH"/><Equipment AirEquipType="332"/><MarketingAirline Code="GF" FlightNumber="0002"><Banner>MARKETED BY GULF AIR</Banner></MarketingAirline><Meal Code="L"/><OperatingAirline Code="GF" FlightNumber="0002" ResBookDesigCode="O"><Banner>OPERATED BY GULF AIR</Banner></OperatingAirline><OperatingAirlinePricing Code="GF"/><DisclosureCarrier Code="GF"><Banner>GULF AIR</Banner></DisclosureCarrier><OriginLocation LocationCode="LHR" Terminal="TERMINAL 4" TerminalCode="4"/><SupplierRef ID="DCGF"/><UpdatedArrivalTime>12-21T19:00</UpdatedArrivalTime><UpdatedDepartureTime>12-21T09:30</UpdatedDepartureTime></FlightSegment></Item><Item RPH="4"><FlightSegment AirMilesFlown="0302" ArrivalDateTime="12-21T22:35" DayOfWeekInd="4" DepartureDateTime="2017-12-21T20:20" ElapsedTime="01.15" eTicket="true" FlightNumber="0512" NumberInParty="05" ResBookDesigCode="O" SegmentNumber="0004" SmokingAllowed="false" SpecialMeal="false" Status="SS" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="DXB" Terminal="TERMINAL 1" TerminalCode="1"/><Equipment AirEquipType="320"/><MarketingAirline Code="GF" FlightNumber="0512"><Banner>MARKETED BY GULF AIR</Banner></MarketingAirline><Meal Code="S"/><OperatingAirline Code="GF" FlightNumber="0512" ResBookDesigCode="O"><Banner>OPERATED BY GULF AIR</Banner></OperatingAirline><OperatingAirlinePricing Code="GF"/><DisclosureCarrier Code="GF"><Banner>GULF AIR</Banner></DisclosureCarrier><OriginLocation LocationCode="BAH"/><SupplierRef ID="DCGF"/><UpdatedArrivalTime>12-21T22:35</UpdatedArrivalTime><UpdatedDepartureTime>12-21T20:20</UpdatedDepartureTime></FlightSegment></Item></ReservationItems></ItineraryInfo><ItineraryRef AirExtras="false" InhibitCode="U" PartitionID="AA" PrimeHostID="1S"><Source PseudoCityCode="WD4H"/></ItineraryRef></TravelItinerary></TravelItineraryReadRS></EnhancedAirBookRS></soap-env:Body></soap-env:Envelope>
