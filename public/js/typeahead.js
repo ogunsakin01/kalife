@@ -476,7 +476,8 @@
         dataset: '<div class="tt-dataset-%CLASS%"></div>',
         suggestions: '<span class="tt-suggestions"></span>',
         suggestion: '<div class="tt-suggestion"></div>'
-    }, k = {
+    },
+        k = {
             wrapper: {
                 position: "relative",
                 display: "block"

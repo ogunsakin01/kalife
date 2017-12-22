@@ -111,18 +111,6 @@
                                     </div>
                                    @endforeach
                                 </div>
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-md-12">--}}
-                                        {{--<h3>Pricing Summary</h3>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--@foreach($flight[2] as $i => $item)--}}
-                                {{--<div class="row">--}}
-                                    {{--<div class="col-md-4"><h4 class="text text-center">{{$item['passengerType']}}<small>X(1) = (&#x20A6; {{number_format($item['totalPrice'])}})</small></h4></div>--}}
-                                    {{--<div class="col-md-4"><h4 class="text text-center">X({{$item['quantity']}})</h4></div>--}}
-                                    {{--<div class="col-md-4"><h4 class="text text-center">&#x20A6; {{number_format($item['totalPrice'] * $item['quantity'],2)}}</h4></div>--}}
-                                {{--</div>--}}
-                                    {{--@endforeach--}}
                             </div>
                         </div>
                     </li>

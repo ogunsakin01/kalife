@@ -22,7 +22,7 @@
                                         <a>Hi, {{auth()->user()->first_name}} </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="btn btn-default" style="color:#000;">Bookings</a>
+                                        <a href="{{url('/bookings')}}" class="btn btn-default" style="color:#000;">Bookings</a>
                                     </li>
                                     <li><a href="{{url('/logout')}}">Sign Out</a>
                                     </li>

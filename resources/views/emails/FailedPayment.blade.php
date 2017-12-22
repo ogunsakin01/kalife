@@ -1,12 +1,17 @@
 @component('mail::message')
-# Introduction
+<img src="{{asset('img/logo-invert.png') }}">
+# Hi {{$userInfo->first_name}},
+Your attempt tp make a payment failed,
 
-The body of your message.
-
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::panel')
+    {{$transactionStatus['responseDescription']}}
 @endcomponent
 
-Thanks,<br>
+@component('mail::button', ['url' => url('/bookings')])
+Bookings
+@endcomponent
+
+Regards,
+Kalife Travels and Tours<br>
 {{ config('app.name') }}
 @endcomponent

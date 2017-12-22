@@ -12,6 +12,8 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/flight-booking-confirmation',
+        '/hotel-booking-confirmation',
+        '/package-booking-confirmation'
     ];
 }

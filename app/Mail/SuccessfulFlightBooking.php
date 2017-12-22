@@ -16,9 +16,17 @@ class SuccessfulFlightBooking extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $bookingInfo;
+
+    public $userInfo;
+
+    public $transactionStatus;
+
+    public function __construct($userInfo, $transactionStatus, $bookingInfo)
     {
-        //
+        $this->userInfo = $userInfo;
+        $this->transactionStatus = $transactionStatus;
+        $this->bookingInfo = $bookingInfo;
     }
 
     /**
@@ -28,6 +36,7 @@ class SuccessfulFlightBooking extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.SuccessfulFlightBooking');
+        return $this->from('no-reply@KalifeTravelsandTours.com','Kalife Travels and Tours')
+                    ->markdown('emails.SuccessfulFlightBooking');
     }
 }

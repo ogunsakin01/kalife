@@ -1,0 +1,61 @@
+
+<GetHotelContentRQ xmlns="http://services.sabre.com/hotel/content/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" xsi:schemaLocation="http://services.sabre.com/hotel/content/v1 GetHotelContentRQ.xsd">
+    <SearchCriteria>
+        <HotelRefs>
+            <HotelRef HotelCode="0007510" />
+        </HotelRefs>
+        <DescriptiveInfoRef>
+            <PropertyInfo>true</PropertyInfo>
+            <LocationInfo>true</LocationInfo>
+            <Amenities>true</Amenities>
+            <Descriptions>
+                <Description Type="ShortDescription" />
+                <Description Type="Services" />
+                <Description Type="Attractions" />
+                <Description Type="CancellationPolicy" />
+                <Description Type="Directions" />
+            </Descriptions>
+            <Airports>true</Airports>
+            <AcceptedCreditCards>false</AcceptedCreditCards>
+        </DescriptiveInfoRef>
+        <ImageRef MaxImages="ALL">
+        <Images>
+          <Image Type="THUMBNAIL"/>
+          <Image Type="ORIGINAL"/>
+          <Image Type="SMALL"/>
+          <Image Type="MEDIUM"/>
+          <Image Type="LARGE"/>
+        </Images>
+        <Categories>
+          <Category Code="1"/>
+          <Category Code="2"/>
+          <Category Code="3"/>
+          <Category Code="4"/>
+          <Category Code="5"/>
+          <Category Code="6"/>
+          <Category Code="7"/>
+          <Category Code="8"/>
+          <Category Code="9"/>
+          <Category Code="10"/>
+          <Category Code="11"/>
+          <Category Code="12"/>
+          <Category Code="13"/>
+          <Category Code="14"/>
+          <Category Code="15"/>
+          <Category Code="16"/>
+          <Category Code="17"/>
+          <Category Code="18"/>
+          <Category Code="19"/>
+          <Category Code="20"/>
+          <Category Code="21"/>
+          <Category Code="22"/>
+        </Categories>
+        <AdditionalInfo>
+          <Info Type="CAPTION">true</Info>
+        </AdditionalInfo>
+        <Languages>
+          <Language Code="EN"/>
+        </Languages>
+        </ImageRef>
+    </SearchCriteria>
+</GetHotelContentRQ>

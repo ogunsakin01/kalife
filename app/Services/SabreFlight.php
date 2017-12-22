@@ -82,7 +82,7 @@ class SabreFlight
 				<m:TimeToLive>2001-02-15T11:15:12Z</m:TimeToLive>
 			</m:MessageData>
 			<m:DuplicateElimination/>
-			<m:Description>Bargain Finder Max Service</m:Description>
+			<m:Description>'.$action.'</m:Description>
 		</m:MessageHeader>
 		<wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
 			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">'.$session_info['token'].'</wsse:BinarySecurityToken>
@@ -93,7 +93,7 @@ class SabreFlight
         if(strlen($string) == 3){
             return $string;
         }
-        return substr($string, -3,3);
+        return substr($string, 0,3);
     }
 
     public function originDestination($param){
@@ -193,7 +193,7 @@ class SabreFlight
     '.$this->travelerInfoSummary($param).'
     <TPA_Extensions>
         <IntelliSellTransaction>
-            <RequestType Name="50ITINS" />
+            <RequestType Name="100ITINS" />
         </IntelliSellTransaction>
     </TPA_Extensions>
 </OTA_AirLowFareSearchRQ>';
@@ -223,7 +223,7 @@ class SabreFlight
     '.$this->travelerInfoSummary($otherParamObject).'
     <TPA_Extensions>
         <IntelliSellTransaction>
-            <RequestType Name="50ITINS" />
+            <RequestType Name="100ITINS" />
         </IntelliSellTransaction>
     </TPA_Extensions>
 </OTA_AirLowFareSearchRQ>';
@@ -582,44 +582,80 @@ class SabreFlight
         $infants = session()->get('flightSearchParam')['infant_passengers'];
            $passengerDetails = '';
            $priceQuoteInfo = '';
+           $specialRequests ='';
+           $y = 0;
+           $infants_num = 2;
         if($adults > 0){
             for($i = 0; $i < $adults; $i++){
                 $given_name = $param->adult_given_name[$i];
                     $surname = $param->adult_surname[$i];
-             $personDetails = '<PersonName Infant="false" NameNumber="1.'.($i + 1).'" PassengerType="ADT">
+                    $dob = $param->adult_date_of_birth[$i];
+                    $sex = $param->adult_sex[$i];
+             $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="ADT">
                 <GivenName>'.$given_name.'</GivenName>
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
+
+             $specialRequest = '<SecureFlight SegmentNumber="A" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                    <GivenName>'.$given_name.'</GivenName>
+                    <Surname>'.$surname.'</Surname>
+                </PersonName>
+            </SecureFlight>';
+
              $passengerDetails = $passengerDetails.$personDetails;
-             $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="1.'.($i + 1).'" Record="1"/>';
+             $specialRequests = $specialRequests.$specialRequest;
+             $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="1"/>';
+             $y = $y+1;
             }
         }
         if($children > 0){
             for($i = 0; $i < $children; $i++){
                 $given_name = $param->child_given_name[$i];
                 $surname = $param->child_surname[$i];
-                $personDetails = '<PersonName Infant="false" NameNumber="2.'.($i + 1).'" PassengerType="CNN">
+                $dob = $param->child_date_of_birth[$i];
+                $sex = $param->child_sex[$i];
+                $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="CNN">
                 <GivenName>'.$given_name.'</GivenName>
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
+                $specialRequest = '<SecureFlight SegmentNumber="A" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                    <GivenName>'.$given_name.'</GivenName>
+                    <Surname>'.$surname.'</Surname>
+                </PersonName>
+            </SecureFlight>';
                 $passengerDetails = $passengerDetails.$personDetails;
-                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="2.'.($i + 1).'" Record="2"/>';
+                $specialRequests = $specialRequests.$specialRequest;
+                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="2"/>';
+                $y = $y+1;
             }
+            $infants_num = $infants_num + 1;
         }
         if($infants > 0){
             if($children > 0){$nameNumber = 3;}else{$nameNumber = 2;}
             for($i = 0; $i < $infants; $i++){
                 $given_name = $param->infant_given_name[$i];
                 $surname = $param->infant_surname[$i];
-                $personDetails = '<PersonName Infant="true" NameNumber="'.$nameNumber.'.'.($i + 1).'" PassengerType="INF">
+                $dob = $param->infant_date_of_birth[$i];
+                $sex = $param->infant_sex[$i];
+                $personDetails = '<PersonName Infant="true" NameNumber="'.($y + 1).'.1" PassengerType="INF">
                 <GivenName>'.$given_name.'</GivenName>
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
+                $specialRequest = '<SecureFlight SegmentNumber="A" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                    <GivenName>'.$given_name.'</GivenName>
+                    <Surname>'.$surname.'</Surname>
+                </PersonName>
+            </SecureFlight>';
                 $passengerDetails = $passengerDetails.$personDetails;
-                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.$nameNumber.'.'.($i + 1).'" Record="'.$nameNumber.'"/>';
+                $specialRequests = $specialRequests.$specialRequest;
+                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'. ($y + 1) .'.1" Record="'.$infants_num.'"/>';
+                $y = $y+1;
             }
         }
-        return ['passengers' => $passengerDetails, 'priceQuoteInfo' => $priceQuoteInfo ];
+        return ['passengers' => $passengerDetails, 'priceQuoteInfo' => $priceQuoteInfo, 'specialRequests' => $specialRequests];
     }
 
     public function PassengerDetailsRQXML($param){
@@ -636,9 +672,16 @@ class SabreFlight
 	<PriceQuoteInfo>
 		'.$this->PassengerDetailsPassenger($param)['priceQuoteInfo'].'
 	</PriceQuoteInfo>
+	<SpecialReqDetails>
+    <SpecialServiceRQ>
+        <SpecialServiceInfo>
+            '.$this->PassengerDetailsPassenger($param)['specialRequests'].'
+        </SpecialServiceInfo>
+    </SpecialServiceRQ>
+</SpecialReqDetails>
     <TravelItineraryAddInfoRQ>
         <AgencyInfo>
-			<Ticketing TicketType="7T-A"/>
+			<Ticketing TicketType="7T-"/>
 		</AgencyInfo>
         <CustomerInfo>
             <ContactNumbers>
@@ -658,12 +701,13 @@ class SabreFlight
     public function enhancedAirBookValidator($responseArray){
         if(empty($responseArray)){
             return 0;
-        }else{
+        }
+        else{
             if(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'])){
                   return 1;
             }elseif(!(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success']))){
-                return $responseArray;
-//                return 2;
+//                return $responseArray;
+                return 2;
             }else{
                 return 3;
             }
@@ -794,7 +838,7 @@ class SabreFlight
                 }
             }
         }
-        return array_values($airlineArray);
+        return array_values(array_unique($airlineArray));
     }
 
     public function passengerDetailsValidator($responseArray){
@@ -804,7 +848,7 @@ class SabreFlight
         }else{
             if(isset($responseArray['soap-env_Body']['PassengerDetailsRS']['ItineraryRef']['@attributes']['ID'])){
                 $pnr = $responseArray['soap-env_Body']['PassengerDetailsRS']['ItineraryRef']['@attributes']['ID'];
-                $ticket_time_limit = $responseArray['soap-env_Body']['PassengerDetailsRS']['TravelItinerary']['ItineraryInfo']['Ticketing']['@attributes']['TicketTimeLimit'];
+                $ticket_time_limit = $responseArray['soap-env_Body']['PassengerDetailsRS']['TravelItineraryReadRS']['TravelItinerary']['ItineraryInfo']['Ticketing']['@attributes']['TicketTimeLimit'];
                 return ['responseObject' => $responseObject, 'pnr' => $pnr, 'ticketTimeLimit' => $ticket_time_limit, 'pnrStatus' => 1];
             }else{
                 return ['responseObject' => $responseObject, 'pnr' => null, 'ticketTimeLimit' => null, 'pnrStatus' => 0];

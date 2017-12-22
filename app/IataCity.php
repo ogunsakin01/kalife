@@ -17,9 +17,9 @@ class IataCity extends Model
     }
 
     public static function typeAhead($request){
-        return static::select(static::raw('CONCAT(name, " - ", iata) AS name'))
-            ->where("name","LIKE","%{$request->input('query')}%")
-            ->orWhere("iata","LIKE","%{$request->input('query')}%")
+        return static::select(static::raw('CONCAT(iata, " - ", name) AS name'))
+            ->where("iata","LIKE","%{$request->input('query')}%")
+            ->orWhere("name","LIKE","%{$request->input('query')}%")
             ->get();
     }
 }

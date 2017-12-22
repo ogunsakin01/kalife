@@ -16,9 +16,15 @@ class FailedPayment extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $userInfo;
+
+    public $transactionStatus;
+
+
+    public function __construct($userInfo, $transactionStatus)
     {
-        //
+        $this->userInfo = $userInfo;
+        $this->transactionStatus = $transactionStatus;
     }
 
     /**
@@ -28,6 +34,7 @@ class FailedPayment extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.FailedPayment');
+        return $this->from('no-reply@KalifeTravelsandTours.com','Kalife Travels and Tours')
+                    ->markdown('emails.FailedPayment');
     }
 }

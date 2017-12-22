@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Email;
 //use App\Message;
+use App\OnlinePayment;
+use App\Services\InterswitchConfig;
+use App\Services\PaystackConfig;
 use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
 use Illuminate\Http\Request;
@@ -14,6 +17,8 @@ class FrontEndController extends Controller
     public function __construct(){
         $this->SabreFlight = new SabreFlight();
         $this->SessionManager = new SabreSessionManager();
+        $this->InterswitchConfig = new InterswitchConfig();
+        $this->PaystackConfig = new PaystackConfig();
     }
 
     public function subscribe(Request $r){
@@ -58,4 +63,9 @@ class FrontEndController extends Controller
         ]);
         return 1;
     }
+
+
+
+
+
 }

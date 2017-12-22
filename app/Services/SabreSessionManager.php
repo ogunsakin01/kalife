@@ -140,7 +140,7 @@ class SabreSessionManager{
          $created_at = strtotime($session_info['created_at']);
          $now = strtotime(date('Y-m-d H:i:s'));
          $difference = round(abs($now - $created_at) / 60,2);
-         if($difference > 10){
+         if($difference > 60){
              $refreshStatus = $this->sessionRefreshValidator($this->refreshSession($session_info['token'],$session_info['message_id']));
              if($refreshStatus == 1){
                  return $this->getTokenSort($session_info);

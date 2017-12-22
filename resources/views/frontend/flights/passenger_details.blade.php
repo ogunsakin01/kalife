@@ -29,10 +29,10 @@
                         {{session()->get('message')}}
                     </div>
                 @endif
-                    @if(session()->has('bookingError'))
+                    @if(session()->has('errorMessage'))
                         <div class="alert alert-warning">
                             <i class="fa fa-warning"></i>
-                            {{session()->get('bookingError')}}
+                            {{session()->get('errorMessage')}}
                         </div>
                     @endif
             </div>
@@ -90,17 +90,20 @@
                                 <li>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p class="text-bigger">ADULT ({{$i+1}})</p>
+                                            <p class="text-bigger">ADULT ({{$i+1}}) <small>above 12 years old</small></p>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-                                                    <label>Given name</label>
-                                                     <input class="form-control" name="adult_given_name[]" required type="text" />
-                                                 </div>
+                                        <div class="col-md-3">
+                                            <label>Sex</label>
+                                            <div class="radio-inline radio-small">
+                                                <label>
+                                                    <input class="i-radio" type="radio" name="adult_sex[]" />Male</label>
+                                            </div>
+                                            <div class="radio-inline radio-small">
+                                                <label>
+                                                    <input class="i-radio" type="radio" name="adult_sex[]" />Female</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
                                                     <label>Surname</label>
@@ -108,7 +111,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
+                                                    <label>Given name</label>
+                                                    <input class="form-control" name="adult_given_name[]" required type="text" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-show"></i>
                                                     <label>Date of Birth</label>
@@ -123,17 +134,20 @@
                                 <li>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p class="text-bigger">CHILD ({{$i+1}})</p>
+                                            <p class="text-bigger">CHILD ({{$i+1}}) <small>2 - 11 years old</small></p>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-                                                    <label>Given name</label>
-                                                     <input class="form-control" name="child_given_name[]" required type="text" />
-                                                </div>
+                                        <div class="col-md-3">
+                                            <label>Sex</label>
+                                            <div class="radio-inline radio-small">
+                                                <label>
+                                                    <input class="i-radio" type="radio" name="child_sex[]" />Male</label>
+                                            </div>
+                                            <div class="radio-inline radio-small">
+                                                <label>
+                                                    <input class="i-radio" type="radio" name="child_sex[]" />Female</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
                                                     <label>Surname</label>
@@ -141,11 +155,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
+                                                    <label>Given name</label>
+                                                    <input class="form-control" name="child_given_name[]" required type="text" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-show"></i>
                                                     <label>Date of Birth</label>
-                                                     <input class="date-pick-child form-control" name="child_date_of_birth[]" required type="text" />
+                                                    <input class="date-pick-infant form-control" name="child_date_of_birth[]" required type="text" />
                                                 </div>
                                             </div>
                                         </div>
@@ -156,17 +178,20 @@
                                 <li>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <p class="text-bigger">INFANT ({{$i+1}})</p>
+                                            <p class="text-bigger">INFANT ({{$i+1}}) <small>below 2 years old</small></p>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
-                                                    <label>Given name</label>
-                                                    <input class="form-control" name="infant_given_name[]" required type="text" />
-                                                </div>
+                                        <div class="col-md-3">
+                                            <label>Sex</label>
+                                            <div class="radio-inline radio-small">
+                                                <label>
+                                                    <input class="i-radio" type="radio" name="infant_sex[]" />Male</label>
+                                            </div>
+                                            <div class="radio-inline radio-small">
+                                                <label>
+                                                    <input class="i-radio" type="radio" name="infant_sex[]" />Female</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
                                                     <label>Surname</label>
@@ -174,11 +199,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <div class="form-group form-group-icon-left"><i class="fa fa-user input-icon input-icon-show"></i>
+                                                    <label>Given name</label>
+                                                    <input class="form-control" name="infant_given_name[]" required type="text" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-show"></i>
                                                     <label>Date of Birth</label>
-                                                    <input class="date-pick-infant" name="infant_date_of_birth[]" required type="text" />
+                                                    <input class="date-pick-infant form-control" name="infant_date_of_birth[]" required type="text" />
                                                 </div>
                                             </div>
                                         </div>

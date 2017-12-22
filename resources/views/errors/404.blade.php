@@ -2,7 +2,7 @@
 <html class="full">
 
 <head>
-    <title>Kalife - Invalid Access</title>
+    <title>Kalife - Page Not Found</title>
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">

@@ -27,22 +27,26 @@ class PaystackConfig{
         $this->publicKey = $this->test_public_key;
     }
 
-    public function makeRedirectUrl($page){
-        return $_SERVER['HTTP_HOST'].$page;
-    }
-
-    public function initialize($email,$amount,$txnRef,$redirectPage){
+    public function initialize($email,$amount,$txnRef,$redirectUrl){
         $postData =  [
             'email' => $email,
             'amount' => $amount,
             "reference" => $txnRef,
-            "callback_url" => $this->makeRedirectUrl($redirectPage)
+            "callback_url" => $redirectUrl
             ];
             $url = $this->request_url;
         $headers = [
             'Authorization: Bearer '.$this->secretKey,
             'Content-Type: application/json',
         ];
+        $info = [
+            'txn_reference' => $txnRef,
+            'user_id' => auth()->user()->id,
+            'amount' => $amount,
+            'gateway_id' => 2,
+            'payment_status' => 0
+        ];
+        OnlinePayment::store($info);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -52,14 +56,14 @@ class PaystackConfig{
         $response = curl_exec ($ch);
         curl_close ($ch);
         if(empty($response)){
-            return 0;
+            return  redirect(session()->previousUrl())->with('errorMessage','Unable to make use of payment gateway at the moment. Bad internet Connection');
         }else{
             $response = json_decode($response, true);
             if(!isset($response['data']['authorization_url'])){
-                return 2;
+                return  redirect(session()->previousUrl())->with('errorMessage','You are unable to make use of this payment gateway at the time, please try another payment gateway');
             }elseif(isset($response['data']['authorization_url'])){
                 $url = $response['data']['authorization_url'];
-                redirect(url($url));
+                return redirect(url($url));
             }
         }
 
@@ -76,25 +80,38 @@ class PaystackConfig{
         );
         $response = curl_exec($ch);
         curl_close($ch);
-        return $this->queryValidator($response);
+        return $this->queryValidator($txnRef,$response);
     }
 
-    public function queryValidator($response){
+    public function queryValidator($txnRef,$response){
         if(empty($response)){
-            return 0;
+            return [
+                'reference' => $txnRef,
+                'status' => 0,
+                'responseCode' => '--',
+                'responseDescription' => 'Could not confirm Payment Status, Bad Internet Connection',
+                'responseFull' => '0',
+                'amount' => '0'
+            ];
         }else{
             $response = json_decode($response, true);
             if(isset($response['status'])){
                 return [
+                    'reference' => $txnRef,
                     'status' => 1,
                     'responseCode' => '00',
-                    'responseDescription' => 'Payment Made Successfully'
+                    'responseDescription' => 'Payment Made Successfully',
+                    'responseFull' => json_encode($response,true),
+                    'amount' => $response['data']['amount']
                 ];
             }else{
                 return [
+                    'reference' => $txnRef,
                     'status' => 0,
                     'responseCode' => '--',
-                    'responseDescription' => 'Payment Not Successful'
+                    'responseDescription' => 'Payment Not Successful',
+                    'responseFull' => json_encode($response,true),
+                    'amount' => '0'
                 ];
             }
         }

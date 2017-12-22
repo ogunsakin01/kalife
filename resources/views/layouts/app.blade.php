@@ -26,8 +26,8 @@
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
                         <li class=""><a href="{{url('/')}}">Home</a></li>
-                        <li class=""><a href="{{url('/flight-deals')}}">Flights</a></li>
-                        <li class=""><a href="#">Hotels</a></li>
+                        <li class=""><a href="{{url('/flights')}}">Flights</a></li>
+                        <li class=""><a href="{{url('/hotels')}}">Hotels</a></li>
                         <li class=""><a href="#">Cars</a></li>
                         <li class=""><a href="#">Activities</a></li>
                         <li class=""><a href="{{url('/about-us')}}">About Us</a></li>

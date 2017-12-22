@@ -35,7 +35,7 @@ $.LoadingOverlaySetup({
 
 function toastWarning(message){
    return iziToast.warning({
-        timeout: 15000,
+        timeout: 10000,
         close: true,
         id: 'question',
         title: 'Hey',
@@ -60,6 +60,7 @@ function toastWarning(message){
 function toastSuccess(message){
      return iziToast.success({
         id: 'success',
+         timeout: 7000,
          close: true,
         title: 'Success',
         message: message,
@@ -80,6 +81,7 @@ function toastSuccess(message){
 function toastError(message){
    return iziToast.error({
         id: 'error',
+       timeout: 7000,
         close: true,
         title: 'Error',
         message: message,
@@ -91,6 +93,7 @@ function toastError(message){
 function toastInfo(message) {
     return iziToast.info({
         id: 'info',
+        timeout: 7000,
         close: true,
         title: 'Hello',
         message: message,
@@ -173,60 +176,8 @@ function isEmail(email) {
     return regex.test(email);
 }
 
-// function refreshSabreSession(){
-//         axios.post('/tokenRefresh',{
-//              "refresh" : 'yes'
-//         })
-//         .then(function(response){
-//            if(response.data === 0){
-//                toastWarning("Poor Connection");
-//                refreshSabreSession();
-//            }
-//            else if(response.data === 1){
-//                toastInfo("active");
-//                 console.log("Success");
-//            }
-//            else if(response.data === 2){
-//
-//                iziToast.warning({
-//                    timeout: 20000,
-//                    close: false,
-//                    overlay: true,
-//                    toastOnce: true,
-//                    id: 'question',
-//                    zindex: 999,
-//                    title: 'Session Expired',
-//                    message: 'Your session expired, you will be redirected to our search homepage',
-//                    position: 'center',
-//                    buttons: [
-//                        ['<button><b>OK</b></button>', function (instance, toast) {
-//                            instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
-//                            toastInfo("Ending your session ...");
-//                            returnHome();
-//
-//                        }, true]
-//                    ],
-//                    onClosing: function(instance, toast, closedBy){
-//                        toastInfo("Ending your session ...");
-//                        returnHome();
-//                    },
-//                    onClosed: function(instance, toast, closedBy){
-//
-//                    }
-//                });
-//
-//            }
-//            else if(response.data === 3){
-//                console.log("Worst Case scenario");
-//            }
-//            else if(response.data === 4){
-//                console.log("Session not available");
-//            }
-//         })
-//         .catch(function(error){
-//             var Error = error.response.data.errors;
-//         });
-// }
+
+
 
 /**
  * End of JavaScript Functions
@@ -323,6 +274,9 @@ $('.search_flight').on("click",function(){
                 return false;
             }else if(response.data === 4) {
                 toastWarning("No result found for your search option. Try again");
+                return false;
+            }else{
+                toastWarning("Your device could not establish a connection to the server. Try again");
                 return false;
             }
         })
@@ -463,10 +417,6 @@ $('.all_flights').on('click',function(){
 
 });
 
-window.setInterval(function(){
-    refreshSabreSession();
-    }, 600000);
-
 $('.multi-datepicker').datepicker({
     startDate: '-0d',
     changeMonth: true,
@@ -591,6 +541,124 @@ $('.itinerary_select').on('click',function(){
           $(body).LoadingOverlay('hide');
       })
 });
+
+$('.pay_now').on('click',function(){
+    var gateway_id = $(this).val();
+    var user_id = $('.cust_id_'+ gateway_id).val();
+    var txn_reference = $('.reference_'+ gateway_id).val();
+    var amount = $('.amount_'+ gateway_id).val();
+    // alert(gateway_id + '__' + user_id + '__' + txn_reference + '__' + amount);
+    axios.post('/saveTransaction',{
+        gateway_id : gateway_id,
+        user_id : user_id,
+        txn_reference : txn_reference,
+        amount : amount
+    });
+
+
+});
+
+$('.search_hotel').on('click',function(){
+    var city = $('.destination_city').val();
+    var checkin_date = $('.checkin_date').val();
+    var checkout_date = $('.checkout_date').val();
+    var guests = $('.guests').val();
+    $(body).LoadingOverlay("show");
+    axios.post('/searchHotel',{
+        city : city,
+        checkin_date : checkin_date,
+        checkout_date : checkout_date,
+        guests : guests
+    })
+
+        .then(function (response){
+            $(body).LoadingOverlay("hide");
+            if(response.data === 1){
+                toastSuccess('Search completed. Redirecting to available hotels page');
+                window.location.href = baseUrl+ '/available-hotels';
+            }else if(response.data == 0){
+                toastError('Poor internet connection. Try again');
+            }else if(response.data == 2){
+                toastError('No result found for your search options. Try again')
+            }else if(response.data == 21){
+                toastInfo('Your search was completed, but no hotel was returned. Kindly chose another city or try again with different dates');
+            }
+        })
+        .catch(function (error){
+            $(body).LoadingOverlay("hide");
+            var Error = error.response.data.errors;
+            if(typeof Error.city[0] !== 'undefined'){
+                toastWarning(Error.city[0]);
+            }
+            if(typeof Error.checkin_date[0] !== 'undefined'){
+                toastWarning(Error.checkin_date[0]);
+            }
+            if(typeof Error.checkout_date[0] !== 'undefined'){
+                toastWarning(Error.checkout_date[0]);
+            }
+            return false;
+        })
+});
+
+$('.hotel_filter').on('click',function(){
+   var filter_value = $(this).val();
+   if(filter_value === 'all-hotel'){
+       $(this).prop('checked',true);
+       $('.all_check').not(this).prop('checked', false);
+       $('.all-hotels').removeClass('hidden');
+       toastInfo("All available hotels displayed");
+   }else{
+       var allFilters = ''; var toShow = '';
+       $("input:checkbox[class=hotel_filter]:checked").each(function () {
+           var className = $(this).val();
+           allFilters = allFilters+', '+className;
+           toShow = toShow+'.'+className;
+           $('.'+className).removeClass('hidden');
+       });
+
+       if($(toShow).length < 1){
+           toastWarning('No hotel found with the combination of the filters elected');
+       }else{
+           $('.all_available').prop('checked',false);
+           $('.all-hotels').addClass('hidden');
+           $(toShow).removeClass('hidden');
+           toastInfo("Hotels with "+ allFilters+ " are being displayed");
+       }
+
+   }
+});
+
+$('.hotel_description').on('click',function(){
+    $(body).LoadingOverlay("show");
+    var id = $(this).val();
+    axios.post('/hotelPropertyDescription',{
+      id : id
+    })
+        .then(function(response){
+            $(body).LoadingOverlay("hide");
+            if(response.data === 1){
+                toastInfo('Hotel property description retained. Redirecting to information page');
+                window.location.href = baseUrl+'/hotel-information';
+            }else if(response.data === 2){
+                toastInfo('Unable to fetch hotel')
+            }else if(response.data === 3){
+                toastWarning('Unable to get hotel description at the moment. Try again');
+            }else if(response.data === 0){
+              toastError('Unable to connect to server. Try again');
+            }else if(response.data === 21){
+              toastWarning('Connection to server not established. Try again');
+            }else if(response.data === 22){
+                toastWarning('No available rooms was found for this hotel when we checked. Kindly select another hotel');
+            }
+        })
+
+        .catch(function(error){
+            $(body).LoadingOverlay("hide");
+            var Error = error.response.data.errors;
+        })
+});
+
+$('.data-table').dataTable({"bSort" : false});
 
 
 /**

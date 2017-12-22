@@ -1,12 +1,26 @@
 @component('mail::message')
-# Introduction
-
-The body of your message.
-
-@component('mail::button', ['url' => ''])
-Button Text
+<img src="{{asset('img/logo-invert.png') }}">
+# Hi {{$userInfo->first_name}},
+Below is the information of your booking
+@component('mail::panel')
+> Your PNR Code is  **{{$bookingInfo->pnr}}**
 @endcomponent
-
-Thanks,<br>
+@component('mail::table')
+    |                            |                        |
+    | -------------------------- |:----------------------:|
+    | Adults                     |                        |
+    | Children                   |                        |
+    | Infants                    |                        |
+    |**Total Amount**            | &#x20A6;               |
+@endcomponent
+@component('mail::panel')
+Note that your reservation has been created on the flights of your house according to the number of passengers and cabin you selected.
+We urge you to follow the link below to you issue the ticket to the flight yourself.
+@endcomponent
+@component('mail::button', ['url' => url('/flight-bookings') ])
+Flight Bookings
+@endcomponent
+Regards,
+Kalife Travels and Tours <br>
 {{ config('app.name') }}
 @endcomponent

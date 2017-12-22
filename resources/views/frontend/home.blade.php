@@ -370,87 +370,46 @@
                                         <form>
                                             <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-map-marker input-icon"></i>
                                                 <label>Where are you going?</label>
-                                                <input class="typeahead form-control" placeholder="City, Airport, Point of Interest or U.S. Zip Code" type="text" />
+                                                <input class="typeahead form-control destination_city"  placeholder="City, Airport, Point of Interest or U.S. Zip Code" type="text" />
                                             </div>
                                             <div class="input-daterange" data-date-format="M d, D">
                                                 <div class="row">
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-4">
                                                         <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
                                                             <label>Check-in</label>
-                                                            <input class="form-control" name="start" type="text" />
+                                                            <input class="form-control checkin_date" name="start" type="text" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-4">
                                                         <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-highlight"></i>
                                                             <label>Check-out</label>
-                                                            <input class="form-control" name="end" type="text" />
+                                                            <input class="form-control checkout_date" name="end" type="text" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group form-group-lg form-group-select-plus">
-                                                            <label>Rooms</label>
-                                                            <div class="btn-group btn-group-select-num" data-toggle="buttons">
-                                                                <label class="btn btn-primary active">
-                                                                    <input type="radio" name="options" />1</label>
-                                                                <label class="btn btn-primary">
-                                                                    <input type="radio" name="options" />2</label>
-                                                                <label class="btn btn-primary">
-                                                                    <input type="radio" name="options" />3</label>
-                                                                <label class="btn btn-primary">
-                                                                    <input type="radio" name="options" />3+</label>
-                                                            </div>
-                                                            <select class="form-control hidden">
-                                                                <option selected="selected">1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                                <option>4</option>
-                                                                <option>5</option>
-                                                                <option>6</option>
-                                                                <option>7</option>
-                                                                <option>8</option>
-                                                                <option>9</option>
-                                                                <option>10</option>
-                                                                <option>11</option>
-                                                                <option>12</option>
-                                                                <option>13</option>
-                                                                <option>14</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group form-group-lg form-group-select-plus">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group form-group-lg form-group-icon-left"><i class="fa fa-user input-icon input-icon-highlight"></i>
                                                             <label>Guests</label>
-                                                            <div class="btn-group btn-group-select-num" data-toggle="buttons">
-                                                                <label class="btn btn-primary active">
-                                                                    <input type="radio" name="options" />1</label>
-                                                                <label class="btn btn-primary">
-                                                                    <input type="radio" name="options" />2</label>
-                                                                <label class="btn btn-primary">
-                                                                    <input type="radio" name="options" />3</label>
-                                                                <label class="btn btn-primary">
-                                                                    <input type="radio" name="options" />3+</label>
-                                                            </div>
-                                                            <select class="form-control hidden">
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                                <option selected="selected">4</option>
-                                                                <option>5</option>
-                                                                <option>6</option>
-                                                                <option>7</option>
-                                                                <option>8</option>
-                                                                <option>9</option>
-                                                                <option>10</option>
-                                                                <option>11</option>
-                                                                <option>12</option>
-                                                                <option>13</option>
-                                                                <option>14</option>
+                                                            <select class="form-control guests">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                                <option value="6">6</option>
+                                                                <option value="7">7</option>
+                                                                <option value="8">8</option>
+                                                                <option value="9">9</option>
+                                                                <option value="10">10</option>
+                                                                <option value="11">11</option>
+                                                                <option value="12">12</option>
+                                                                <option value="13">13</option>
+                                                                <option value="14">14</option>
                                                             </select>
-                                                        </div>
                                                     </div>
+                                                        </div>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-primary btn-lg" type="submit">Search for Hotels</button>
+                                            <button class="btn btn-primary btn-lg search_hotel" type="button">Search for Hotels</button>
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="tab-3">
@@ -626,18 +585,18 @@
             <div class="owl-carousel owl-slider owl-carousel-area visible-lg" id="owl-carousel-slider" data-nav="false">
                 <div class="bg-holder full">
                     <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(img/196_365_2048x1365.jpg);"></div>
+                    <div class="bg-img" style="background-image:url({{asset('img/196_365_2048x1365.jpg')}});"></div>
                 </div>
                 <div class="bg-holder full">
                     <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(img/el_inevitable_paso_del_tiempo_2048x2048.jpg);"></div>
+                    <div class="bg-img" style="background-image:url({{asset('img/el_inevitable_paso_del_tiempo_2048x2048.jpg')}});"></div>
                 </div>
                 <div class="bg-holder full">
                     <div class="bg-mask"></div>
-                    <div class="bg-img" style="background-image:url(img/viva_las_vegas_2048x1365.jpg);"></div>
+                    <div class="bg-img" style="background-image:url({{asset('img/viva_las_vegas_2048x1365.jpg')}});"></div>
                 </div>
             </div>
-            <div class="bg-img hidden-lg" style="background-image:url(img/196_365_2048x1365.jpg);"></div>
+            <div class="bg-img hidden-lg" style="background-image:url({{asset('img/196_365_2048x1365.jpg')}});"></div>
             <div class="bg-mask hidden-lg"></div>
         </div>
     </div>
@@ -683,7 +642,7 @@
     </div>
     <div class="bg-holder">
         <div class="bg-mask"></div>
-        <div class="bg-parallax" style="background-image:url(img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg);"></div>
+        <div class="bg-parallax" style="background-image:url({{asset('img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg')}});"></div>
         <div class="bg-content">
             <div class="container">
                 <div class="gap gap-big text-center text-white">

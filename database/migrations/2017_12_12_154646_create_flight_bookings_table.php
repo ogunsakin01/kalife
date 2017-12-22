@@ -24,7 +24,7 @@ class CreateFlightBookingsTable extends Migration
             $table->integer('airline_markdown');
             $table->integer('vat');
             $table->integer('total_amount');
-            $table->integer('ticket_time_limit');
+            $table->text('ticket_time_limit');
             $table->integer('pnr_status')->default("0");
             $table->integer('payment_status')->default("0");
             $table->integer('issue_ticket_status')->default("0");

@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Airport;
 use App\FlightBooking;
 use App\IataCity;
+use App\Services\InterswitchConfig;
+use App\Services\PaystackConfig;
 use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
 use App\SessionToken;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -20,6 +23,8 @@ class FlightController extends Controller
         $this->Sabreflight = new SabreFlight();
         $this->SabreSession = new SabreSessionManager();
         $this->SabreConfig = new SabreConfig();
+        $this->InterswitchConfig = new InterswitchConfig();
+        $this->PaystackConfig = new PaystackConfig();
     }
 
     public function flightDeals(){
@@ -144,20 +149,19 @@ class FlightController extends Controller
         fclose($file);
 
         if($info == 0){
-            dd(0);
-            redirect(url(session()->previousUrl()))->with('bookingError','Unable to connect to the booking server. Ensure your internet connection is strong and try again');
+            return redirect(url('/flight-passenger-details'))->with('errorMessage','Unable to connect to the booking server. Ensure your internet connection is strong and try again');
         }
         else{
             if($info['pnrStatus'] == 0){
-                dd($info);
-                redirect(url(session()->previousUrl()))->with('bookingError','We were not able to create a reservation for you. Select another flight from the results');
+                return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Select another flight from the result and try again.');
             }else{
                 $this->SabreSession->closeSession($token,$message_id);
                 SessionToken::tokenClosed($message_id);
                 SessionToken::tokenUsed($message_id);
+                $txnRef = $this->SabreConfig->bookingReference('flight');
                 $data = [
                     'user_id' => auth()->user()->id,
-                    'booking_reference' => $this->SabreConfig->bookingReference('flight'),
+                    'booking_reference' => $txnRef,
                     'pnr_code' => $info['pnr'],
                     'itinerary_amount' => $itinerary[0]['totalPrice'],
                     'admin_markup' => $itinerary[0]['adminToUserMarkup'],
@@ -169,9 +173,9 @@ class FlightController extends Controller
                     'pnr_status' => $info['pnrStatus'],
                     'pnr_request_response' => $info['responseObject']
                 ];
-                dd($data);
                 FlightBooking::store($data);
-                redirect(url("/flight-booking-payment-method"));
+                session()->put('bookingReference',$txnRef);
+              return redirect(url("/flight-booking-payment-methods"));
             }
 
         }
@@ -184,9 +188,9 @@ class FlightController extends Controller
 //            ->orWhere("iata","LIKE","%{$request->input('query')}%")
 //            ->get();
 //        $data = IataCity::typeAhead($request);
-        $data = Airport::select(DB::raw('CONCAT(airport_name, " - ", airport_code) AS name'))
-            ->where("airport_name","LIKE","%{$request->input('query')}%")
-            ->orWhere("airport_code","LIKE","%{$request->input('query')}%")
+        $data = Airport::select(DB::raw('CONCAT(airport_code, " - ", airport_name) AS name'))
+            ->where("airport_code","LIKE","%{$request->input('query')}%")
+            ->orWhere("airport_name","LIKE","%{$request->input('query')}%")
             ->get();
 
         return response()->json($data);
@@ -236,7 +240,21 @@ class FlightController extends Controller
 
     public function flightPaymentPage(){
         $itinerary = session()->get('selectedItinerary');
-        return view('frontend.flights.payment_options',compact('itinerary'));
+        $txnRef = session()->get('bookingReference');
+        $bookingInfo = FlightBooking::getBooking($txnRef);
+        $custInfo = User::getUserById($bookingInfo->user_id);
+        $paymentInfo = [
+            'reference' => $txnRef,
+            'amount' => $bookingInfo->total_amount,
+            'pay_item_id' => $this->InterswitchConfig->item_id,
+            'site_redirect_url' => url('/flight-booking-confirmation'),
+            'product_id' => $this->InterswitchConfig->product_id,
+            'cust_id' => $bookingInfo->user_id,
+            'cust_name' => $custInfo->first_name.' '.$custInfo->last_name,
+            'hash' => $this->InterswitchConfig->transactionHash($txnRef,$bookingInfo->total_amount,url('/flight-booking-confirmation')),
+            'email' => $custInfo->email
+        ];
+        return view('frontend.flights.payment_options',compact('itinerary','paymentInfo'));
     }
 
 

@@ -24,13 +24,13 @@ class SabreConfig{
 
     public function bookingReference($type){
         if($type == 'flight'){
-            return 'AIR-'. rand(000,999) .'-SBR-'.uniqid();
+            return 'AIR-'. rand(000,999) .'-KLF-'.uniqid();
         }elseif($type == 'hotel'){
-            return 'HOT-'. rand(000,999) .'-SBR-'.uniqid();
+            return 'HOT-'. rand(000,999) .'-KLF-'.uniqid();
         }elseif($type == 'package'){
-            return 'PKG-'. rand(000,999) .'-SBR-'.uniqid();
+            return 'PKG-'. rand(000,999) .'-KLF-'.uniqid();
         }elseif($type == 'car'){
-            return 'CAR-'. rand(000,999) .'-SBR-'.uniqid();
+            return 'CAR-'. rand(000,999) .'-KLF-'.uniqid();
         }
     }
 
@@ -92,6 +92,14 @@ class SabreConfig{
             return (($value/100) * $amount);
         }if($type == 1){
             return $value;
+        }
+    }
+
+    public static function yesOrNo($type){
+        if($type == 1){
+            return '<i class="fa fa-check"></i>';
+        }elseif($type == 0){
+            return '<i class="fa fa-times"></i>';
         }
     }
     
