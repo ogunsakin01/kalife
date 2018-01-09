@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title')Available Hotels  @endsection
 @section('content')
+    {{--{{dd(session()->all())}}--}}
     {{--{{dd($hotels)}}--}}
     <div class="container">
         <ul class="breadcrumb">

@@ -1,12 +1,12 @@
 
 <HotelPropertyDescriptionRQ Version="2.3.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <AvailRequestSegment>
-        <GuestCounts Count="3" />
+        <GuestCounts Count="1" />
         <HotelSearchCriteria>
             <Criterion>
-                <HotelRef HotelCode="0061192" />
+                <HotelRef HotelCode="0012721" />
             </Criterion>
         </HotelSearchCriteria>
-        <TimeSpan End="01-20" Start="01-03" />
+        <TimeSpan End="01-16" Start="01-13" />
     </AvailRequestSegment>
 </HotelPropertyDescriptionRQ>

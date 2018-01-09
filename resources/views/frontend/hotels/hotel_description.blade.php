@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title') {{$selectedHotel['hotelName']}} Hotel Information  @endsection
 @section('content')
+    {{--{{dd([$selectedHotel,$hotel])}}--}}
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
@@ -14,14 +15,12 @@
             <header class="booking-item-header">
                 <div class="row">
                     <div class="col-md-9">
-                        <h2 class="lh1em">InterContinental New York Barclay</h2>
-                        <p class="lh1em text-small"><i class="fa fa-map-marker"></i> 6782 Sarasea Circle, Siesta Key, FL 34242</p>
+                        <h2 class="lh1em">{{$selectedHotel['hotelName']}}</h2>
+                        <p class="lh1em text-small"><i class="fa fa-map-marker"></i> {{$selectedHotel['address']}} ({{$selectedHotel['locationDescription']}})</p>
                         <ul class="list list-inline text-small">
-                            <li><a href="#"><i class="fa fa-envelope"></i> Hotel E-mail</a>
+                            <li><a><i class="fa fa-fax"></i> {{$selectedHotel['fax']}}</a>
                             </li>
-                            <li><a href="#"><i class="fa fa-home"></i> Hotel Website</a>
-                            </li>
-                            <li><i class="fa fa-phone"></i> +1 (546) 967-9414</li>
+                            <li><a><i class="fa fa-phone"></i> {{$selectedHotel['phone']}}</a></li>
                         </ul>
                     </div>
                     <div class="col-md-3">
@@ -260,44 +259,24 @@
                             </div>
                             <div class="tab-pane fade" id="tab-4">
                                 <div class="row mt20">
-                                    <div class="col-md-4">
-                                        <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
-                                            <li><i class="im im-wi-fi"></i><span class="booking-item-feature-title">Wi-Fi Internet</span>
-                                            </li>
-                                            <li><i class="im im-parking"></i><span class="booking-item-feature-title">Parking</span>
-                                            </li>
-                                            <li><i class="im im-plane"></i><span class="booking-item-feature-title">Airport Transport</span>
-                                            </li>
-                                            <li><i class="im im-bus"></i><span class="booking-item-feature-title">Shuttle Bus Service</span>
-                                            </li>
-                                            <li><i class="im im-fitness"></i><span class="booking-item-feature-title">Fitness Center</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
-                                            <li><i class="im im-pool"></i><span class="booking-item-feature-title">Pool</span>
-                                            </li>
-                                            <li><i class="im im-spa"></i><span class="booking-item-feature-title">SPA</span>
-                                            </li>
-                                            <li><i class="im im-restaurant"></i><span class="booking-item-feature-title">Restaurant</span>
-                                            </li>
-                                            <li><i class="im im-wheel-chair"></i><span class="booking-item-feature-title">Wheelchair Access</span>
-                                            </li>
-                                            <li><i class="im im-business-person"></i><span class="booking-item-feature-title">Business Center</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
-                                            <li><i class="im im-children"></i><span class="booking-item-feature-title">Children Activites</span>
-                                            </li>
-                                            <li><i class="im im-casino"></i><span class="booking-item-feature-title">Casino & Gambling</span>
-                                            </li>
-                                            <li><i class="im im-bar"></i><span class="booking-item-feature-title">Bar/Lounge</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+
+                                            @if(!is_null($hotel['hotelAmenity']))
+                                                @php
+                                                $amenities = explode(' ', $hotel['hotelAmenity']);
+                                                @endphp
+                                                   @foreach($amenities as $i => $amenity)
+                                                       @if(!is_null($amenity))
+                                                <div class="col-md-4">
+                                                    <ul class="booking-item-features booking-item-features-expand mb30 clearfix">
+                                                    <li><i class="fa fa-windows"></i><span class="booking-item-feature-title">{{$amenity}}</span></li>
+                                                    </ul>
+                                                </div>
+                                                    @endif
+                                                @endforeach
+                                        @endif
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -325,106 +304,112 @@
                                 </p>
                             </div>
                         </div>
-                        <h4>About the Hotel</h4>
-                        <p>Amet facilisi a phasellus conubia natoque neque etiam ad dis et neque dictumst est euismod lectus nisl iaculis habitasse dis</p>
+                        <h3>About the Hotel</h3>
+                        <p>{{$selectedHotel['hotelDescription']}}</p>
+                    </div>
+                    <div class="ml20">
+                        <h3>Location Description</h3>
+                        <p>{{$selectedHotel['locationDescription']}}</p>
                     </div>
                 </div>
             </div>
-            <div class="gap"></div>
+            {{--<div class="gap"></div>--}}
             <h3>Available Rooms</h3>
             <div class="row">
                 <div class="col-md-8">
-                    <div class="booking-item-dates-change">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="input-daterange" data-date-format="MM d, D">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>
-                                                    <label>Check in</label>
-                                                    <input class="form-control" name="start" type="text" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>
-                                                    <label>Check out</label>
-                                                    <input class="form-control" name="end" type="text" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label>Adults</label>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                            <option>13</option>
-                                            <option>14</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label>Children</label>
-                                        <select class="form-control">
-                                            <option>0</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                            <option>13</option>
-                                            <option>14</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label>Rooms</label>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="gap gap-small"></div>
+                    {{--<div class="booking-item-dates-change">--}}
+                        {{--<form>--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<div class="input-daterange" data-date-format="MM d, D">--}}
+                                        {{--<div class="row">--}}
+                                            {{--<div class="col-md-6">--}}
+                                                {{--<div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>--}}
+                                                    {{--<label>Check in</label>--}}
+                                                    {{--<input class="form-control" name="start" type="text" />--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-md-6">--}}
+                                                {{--<div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>--}}
+                                                    {{--<label>Check out</label>--}}
+                                                    {{--<input class="form-control" name="end" type="text" />--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-2">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label>Adults</label>--}}
+                                        {{--<select class="form-control">--}}
+                                            {{--<option>1</option>--}}
+                                            {{--<option>2</option>--}}
+                                            {{--<option>3</option>--}}
+                                            {{--<option>4</option>--}}
+                                            {{--<option>5</option>--}}
+                                            {{--<option>6</option>--}}
+                                            {{--<option>7</option>--}}
+                                            {{--<option>8</option>--}}
+                                            {{--<option>9</option>--}}
+                                            {{--<option>10</option>--}}
+                                            {{--<option>11</option>--}}
+                                            {{--<option>12</option>--}}
+                                            {{--<option>13</option>--}}
+                                            {{--<option>14</option>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-2">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label>Children</label>--}}
+                                        {{--<select class="form-control">--}}
+                                            {{--<option>0</option>--}}
+                                            {{--<option>1</option>--}}
+                                            {{--<option>2</option>--}}
+                                            {{--<option>3</option>--}}
+                                            {{--<option>4</option>--}}
+                                            {{--<option>5</option>--}}
+                                            {{--<option>6</option>--}}
+                                            {{--<option>7</option>--}}
+                                            {{--<option>8</option>--}}
+                                            {{--<option>9</option>--}}
+                                            {{--<option>10</option>--}}
+                                            {{--<option>11</option>--}}
+                                            {{--<option>12</option>--}}
+                                            {{--<option>13</option>--}}
+                                            {{--<option>14</option>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-2">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label>Rooms</label>--}}
+                                        {{--<select class="form-control">--}}
+                                            {{--<option>1</option>--}}
+                                            {{--<option>2</option>--}}
+                                            {{--<option>3</option>--}}
+                                            {{--<option>4</option>--}}
+                                            {{--<option>5</option>--}}
+                                            {{--<option>6</option>--}}
+                                            {{--<option>7</option>--}}
+                                            {{--<option>8</option>--}}
+                                            {{--<option>9</option>--}}
+                                            {{--<option>10</option>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</form>--}}
+                    {{--</div>--}}
+                    {{--<div class="gap gap-small"></div>--}}
                     <ul class="booking-list">
-                        <li>
+                           @if(!empty($selectedHotel['rooms']))
+                               @foreach($selectedHotel['rooms'] as $r => $room)
+                            <li>
                             <a class="booking-item">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <img src="img/hotel_porto_bay_rio_internacional_rooftop_pool_800x600.jpg" alt="Image Alternative text" title="hotel PORTO BAY RIO INTERNACIONAL rooftop pool" />
+                                        <img src="{{asset('img/hotel_porto_bay_rio_internacional_rooftop_pool_800x600.jpg')}}" alt="Image Alternative text" title="hotel PORTO BAY RIO INTERNACIONAL rooftop pool" />
                                     </div>
                                     <div class="col-md-6">
                                         <h5 class="booking-item-title">Superior Penthouse</h5>
@@ -461,176 +446,29 @@
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a class="booking-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img src="img/hotel_2_800x600.jpg" alt="Image Alternative text" title="hotel 2" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5 class="booking-item-title">Double Room with Town View</h5>
-                                        <p class="text-small">Penatibus arcu sollicitudin rhoncus tellus rutrum hendrerit mauris dictumst duis cursus potenti sit</p>
-                                        <ul class="booking-item-features booking-item-features-sign clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Children Occupancy"><i class="im im-children"></i><span class="booking-item-feature-sign">x 1</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 2</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">400</span>
-                                            </li>
-                                        </ul>
-                                        <ul class="booking-item-features booking-item-features-small clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Air Conditioning"><i class="im im-air"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Flat Screen TV"><i class="im im-tv"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Mini Bar"><i class="im im-bar"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Bathtub"><i class="im im-bathtub"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Kitchen"><i class="im im-kitchen"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Patio"><i class="im im-patio"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="SPA tub"><i class="im im-spa"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Terrace"><i class="im im-terrace"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Washing Machine"><i class="im im-washing-machine"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Pool"><i class="im im-pool"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3"><span class="booking-item-price">$216</span><span>/night</span><span class="btn btn-primary">Book</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="booking-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img src="img/the_pool_800x600.jpg" alt="Image Alternative text" title="The pool" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5 class="booking-item-title">Family Suite</h5>
-                                        <p class="text-small">Dolor dolor vehicula mauris bibendum venenatis faucibus lobortis porttitor interdum inceptos inceptos integer</p>
-                                        <ul class="booking-item-features booking-item-features-sign clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 1</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Children Occupancy"><i class="im im-children"></i><span class="booking-item-feature-sign">x 2</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 2</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">770</span>
-                                            </li>
-                                        </ul>
-                                        <ul class="booking-item-features booking-item-features-small clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Air Conditioning"><i class="im im-air"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Mini Bar"><i class="im im-bar"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Bathtub"><i class="im im-bathtub"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Patio"><i class="im im-patio"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Soundproof"><i class="im im-soundproof"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="SPA tub"><i class="im im-spa"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Pool"><i class="im im-pool"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3"><span class="booking-item-price">$364</span><span>/night</span><span class="btn btn-primary">Book</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="booking-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img src="img/lhotel_porto_bay_sao_paulo_lobby_800x600.jpg" alt="Image Alternative text" title="LHOTEL PORTO BAY SAO PAULO lobby" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5 class="booking-item-title">Standard Double room</h5>
-                                        <p class="text-small">Ac fames molestie aliquet primis nullam netus varius amet libero risus velit ultrices</p>
-                                        <ul class="booking-item-features booking-item-features-sign clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 2</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 2</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">270</span>
-                                            </li>
-                                        </ul>
-                                        <ul class="booking-item-features booking-item-features-small clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Air Conditioning"><i class="im im-air"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Mini Bar"><i class="im im-bar"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Patio"><i class="im im-patio"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Soundproof"><i class="im im-soundproof"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Terrace"><i class="im im-terrace"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Washing Machine"><i class="im im-washing-machine"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Pool"><i class="im im-pool"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3"><span class="booking-item-price">$356</span><span>/night</span><span class="btn btn-primary">Book</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="booking-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <img src="img/hotel_1_800x600.jpg" alt="Image Alternative text" title="hotel 1" />
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5 class="booking-item-title">Junior Suite</h5>
-                                        <p class="text-small">Iaculis sit laoreet sit magna vel duis primis inceptos tempor ornare class dictum</p>
-                                        <ul class="booking-item-features booking-item-features-sign clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 2</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 2</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">320</span>
-                                            </li>
-                                        </ul>
-                                        <ul class="booking-item-features booking-item-features-small clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Air Conditioning"><i class="im im-air"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Mini Bar"><i class="im im-bar"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Bathtub"><i class="im im-bathtub"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Kitchen"><i class="im im-kitchen"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Patio"><i class="im im-patio"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Terrace"><i class="im im-terrace"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Pool"><i class="im im-pool"></i>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-3"><span class="booking-item-price">$373</span><span>/night</span><span class="btn btn-primary">Book</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                            @endforeach
+                            @else
+                            <li>
+                                <a class="booking-item">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <img src="{{asset('img/sorry.jpg')}}" alt="Image Alternative text" title="No room available" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5 class="booking-item-title">Sorry, No room Available</h5>
+                                            <p class="text-small">
+                                                No rooms was found for this hotel, kindly go back and select another hotel from the available hotels returned
+                                            </p>
+
+                                        </div>
+                                        </div>
+                                </a>
+                                   </li>
+                            @endif
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h4>Hotels Near InterContinental New York Barclay</h4>
+                    <h4>Hot Hotel Deals</h4>
                     <ul class="booking-list">
                         <li>
                             <div class="booking-item booking-item-small">

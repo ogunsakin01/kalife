@@ -660,7 +660,34 @@ $('.hotel_description').on('click',function(){
 
 $('.data-table').dataTable({"bSort" : false});
 
+$('.requery').on('click', function(){
+    var reference = $(this).val();
+    $('#'+reference).LoadingOverlay('show');
+    axios.post('/requery',{
+        reference : reference
+      })
+        .then(function(response){
+            $('#'+reference).LoadingOverlay('hide');
+            if(response.data['responseCode'] == '--'){
+                toastr.error(response.data['responseDescription']);
+            }
+            if(response.data['responseCode'] == '00'){
+                toastr.success(response.data['responseDescription']);
+                $('.response_code_'+reference).text(response.data['responseCode']);
+                $('.response_description_'+reference).text(response.data['responseDescription']);
+                $(this).addClass('hidden');
+            }
+            if(response.data['responseCode'] != '00' && response.data['responseCode'] != '--'){
+                toastr.warning(response.data['responseDescription']);
+                $('.response_code_'+reference).text(response.data['responseCode']);
+                $('.response_description_'+reference).text(response.data['responseDescription']);
+            }
+        })
 
+        .catch(function(error){
+            $('#'+reference).LoadingOverlay('hide');
+        })
+});
 /**
  * End of JavaScript Actions
  * **/

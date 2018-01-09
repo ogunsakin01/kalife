@@ -180,4 +180,22 @@ class FrontEndPaymentController extends Controller
         $transactionStatus = session()->get('transactionStatus');
         return view("frontend.flights.success_payment", compact('transactionStatus','Itinerary'));
     }
+
+    public function interswitchRequery(Request $r){
+       $transactionInfo = OnlinePayment::getTransaction($r->reference);
+
+       $requery = $this->InterswitchConfig->requery($r->reference,$transactionInfo->amount);
+           $userInfo = User::getUserById($transactionInfo->user_id);
+           $requery['email'] = $userInfo->email;
+           if($requery['responseCode'] !== '--'){
+               OnlinePayment::updateTransaction($requery);
+               FlightBooking::updatePaymentStatus($requery);
+               $bookingInfo = FlightBooking::getBooking($r->reference);
+               if($requery['status'] == 1){
+                   Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$requery));
+                   Mail::to($userInfo)->send(new SuccessfulFlightBooking($userInfo,$requery,$bookingInfo));
+               }
+           }
+        return $requery;
+    }
 }

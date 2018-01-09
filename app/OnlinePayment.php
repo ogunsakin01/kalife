@@ -38,4 +38,10 @@ class OnlinePayment extends Model
     public static function getTransaction($reference){
         return static::where('txn_reference', $reference)->first();
     }
+
+    public static function getAllInterswitchTransactions(){
+        return static::where('gateway_id', 1)
+            ->orderBy('id','desc')
+            ->get();
+    }
 }

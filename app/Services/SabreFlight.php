@@ -232,6 +232,7 @@ class SabreFlight
 
     public function flightSearchValidator($responseArray){
         if(!empty($responseArray)){
+//            return $responseArray;
             if(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['Errors']['Error'])){
                 return 4;
             }
@@ -597,7 +598,7 @@ class SabreFlight
             </PersonName>';
 
              $specialRequest = '<SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($y + 1).'.1" >
                     <GivenName>'.$given_name.'</GivenName>
                     <Surname>'.$surname.'</Surname>
                 </PersonName>
@@ -620,7 +621,7 @@ class SabreFlight
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
                 $specialRequest = '<SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($y + 1).'.1" >
                     <GivenName>'.$given_name.'</GivenName>
                     <Surname>'.$surname.'</Surname>
                 </PersonName>
@@ -644,7 +645,7 @@ class SabreFlight
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
                 $specialRequest = '<SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($y + 1).'.1" >
                     <GivenName>'.$given_name.'</GivenName>
                     <Surname>'.$surname.'</Surname>
                 </PersonName>
