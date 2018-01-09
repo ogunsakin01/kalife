@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdminMarkup;
 use App\MarkupType;
 use App\MarkupValueType;
 use App\Role;
@@ -28,9 +29,26 @@ class MarkupController extends Controller
 
   public function saveAdminMarkup(Request $r)
   {
+    $markup = new AdminMarkup();
+
     $this->validate($r, [
       'role' => 'required',
-      ''
+      'markup_type' => 'required',
+      'markup_value_type' => 'required',
+      'markup_value' =>'required|numeric'
     ]);
+
+    if ($markup->updateOrCreateMarkup($r->all()))
+    {
+      $response = 1;
+      return response()->json($response);
+    }
+
+    $response = 0;
+    return response()->json($response);
+
+
+
+
   }
 }

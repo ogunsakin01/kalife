@@ -18,8 +18,7 @@
             <strong>Note!</strong> all fields are required
           </div>
 
-          {!! Form::open() !!}
-
+          {!! Form::open(['route'=> 'backend-save-markup']) !!}
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">

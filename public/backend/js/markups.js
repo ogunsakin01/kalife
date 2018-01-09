@@ -124,10 +124,39 @@ function modalInfo(message){
   return $('#modalInfo').iziModal('open');
 }
 
+function extractError(error) {
+  for(var error_log in error.response.data.errors) {
+    var err = error.response.data.errors[error_log];
+    toastError(err);
+  }
+}
+
 $(function () {
 
-  $('#save_markup').click(function () {
 
+  $('#save_markup').click(function () {
+    var role = $('#role').val();
+    var markup_type = $('#markup_type').val();
+    var markup_value_type = $('#markup_value_type').val();
+    var markup_value = $('#markup_value').val();
+
+    axios.post('/backend/additions/markup/admin', {
+      'role': role,
+      'markup_type': markup_type,
+      'markup_value_type': markup_value_type,
+      'markup_value': markup_value
+    }).then(function (response) {
+      if(response.data == 1)
+      {
+        toastSuccess('Markup saved successfully')
+      }
+      else
+      {
+        toastError('Could not save markup');
+      }
+    }).catch(function (error) {
+      extractError(error);
+    })
   });
 
 });

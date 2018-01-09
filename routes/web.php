@@ -69,6 +69,8 @@ Route::prefix('backend')->group(function (){
 
     Route::prefix('additions')->group(function (){
       Route::get('markup', 'MarkupController@markupView')->name('backend-markup');
+      Route::post('markup/admin', 'MarkupController@saveAdminMarkup')->name('backend-save-markup');
+
       Route::view('markdown', 'backend.additions.markdown')->name('backend-markdown');
       Route::view('vat', 'backend.additions.vat')->name('backend-vat');
     });
