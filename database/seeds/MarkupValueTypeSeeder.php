@@ -14,12 +14,12 @@ class MarkupValueTypeSeeder extends Seeder
     {
       $markups = [
           [
-              'id' => 0,
+              'id' => 1,
               'type' => 'Percentage'
           ],
 
           [
-              'id' => 1,
+              'id' => 2,
               'type' => 'Naira'
           ],
       ];

@@ -63,8 +63,8 @@ Route::prefix('backend')->group(function (){
     Route::view('home', 'backend.home')->name('backend-home');
 
     Route::prefix('users')->group(function () {
-      Route::view('new', 'backend.users.new')->name('backend-users-new');
-      Route::view('manage', 'backend.users.manage')->name('backend-users-manage');
+      Route::get('new', 'UserController@index')->name('backend-new-users');
+      Route::view('manage', 'backend.users.manage')->name('backend-manage-users');
     });
 
     Route::prefix('additions')->group(function (){

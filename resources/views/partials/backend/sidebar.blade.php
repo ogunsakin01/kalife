@@ -33,8 +33,8 @@
           <span class="icon ti-notepad"></span>User Management
         </a>
         <ul id="users" class="collapse" data-parent="#menus">
-          <li><a href="{{route('backend-users-new')}}">New</a></li>
-          <li><a href="{{route('backend-users-manage')}}">Manage</a></li>
+          <li><a href="{{route('backend-new-users')}}">New</a></li>
+          <li><a href="{{route('backend-manage-users')}}">Manage</a></li>
         </ul>
       </li>
 
