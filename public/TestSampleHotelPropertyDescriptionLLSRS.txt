@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">HotelPropertyDescriptionLLSRQ</eb:Service><eb:Action>HotelPropertyDescriptionLLSRS</eb:Action><eb:MessageData><eb:MessageId>1107338447400150151</eb:MessageId><eb:Timestamp>2018-01-09T12:25:43</eb:Timestamp><eb:RefToMessageId>1107440447349970611</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3191234934062241394!134706!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><HotelPropertyDescriptionRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
+ <stl:ApplicationResults status="Complete">
+  <stl:Success timeStamp="2018-01-09T06:25:43-06:00"/>
+ </stl:ApplicationResults>
+ <RoomStay>
+  <BasicPropertyInfo ChainCode="WV" GeoConfidenceLevel="0" HotelCityCode="LHR" HotelCode="0011004" HotelName="THE WESTBURY MAYFAIR" Latitude="51.549730" Longitude=".004150" NumFloors="7" RPH="001">
+   <Address>
+    <AddressLine>BOND STREET</AddressLine>
+    <AddressLine>LONDON GB W1S 2YF</AddressLine>
+    <CountryCode>GB</CountryCode>
+   </Address>
+   <Awards>
+    <AwardProvider>NTM4  CROWN</AwardProvider>
+   </Awards>
+   <CheckInTime>14:00</CheckInTime>
+   <CheckOutTime>12:00</CheckOutTime>
+   <ContactNumbers>
+    <ContactNumber Fax="44-207-4951163" Phone="44-207-6297755"/>
+   </ContactNumbers>
+   <DirectConnect Ind="true">
+    <AdditionalData Ind="false"/>
+    <CurrencyConverted Ind="false"/>
+    <DC_AvailParticipant Ind="true"/>
+    <DC_SellParticipant Ind="true"/>
+    <RequestFail Ind="false"/>
+    <UnAvail Ind="false"/>
+   </DirectConnect>
+   <IndexData>
+    <Index CountryState="C/GB" DistanceDirection="1N" LocationCode="A" Point="MADAME TUSAUDS" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="4E" LocationCode="A" Point="LEICESTER SQUARE" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="ROYAL ACADEMY OF ARTS" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="OXFORD STREET" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="2S" LocationCode="A" Point="LONDON EYE" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0S" LocationCode="A" Point="GREEN PARK" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="LONDON" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1E" LocationCode="A" Point="BRITISH MUSEUM" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1SE" LocationCode="A" Point="BIG BEN" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1SW" LocationCode="A" Point="BUCKINGHAM PALACE" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="2E" LocationCode="A" Point="ST PAULS" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="PICCADILLY CIRCUS" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1W" LocationCode="A" Point="HYDE PARK" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1E" LocationCode="A" Point="COVENT GARDEN" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="2W" LocationCode="A" Point="EARLS COURT" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="2W" LocationCode="A" Point="NATURAL HISTORY MUSEUM" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1SE" LocationCode="A" Point="NATIONAL GALLERY" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="BOND STREET" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="MAYFAIR" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1S" LocationCode="A" Point="TRAFALGAR SQUARE"/>
+    <Index CountryState="C/GB" DistanceDirection="2S" LocationCode="A" Point="BUCKINGHAM PALACE GDNS"/>
+    <Index CountryState="C/GB" DistanceDirection="1S" LocationCode="A" Point="HARRODS"/>
+    <Index CountryState="C/GB" DistanceDirection="2S" LocationCode="A" Point="TOWER BRIDGE"/>
+    <Index CountryState="C/GB" DistanceDirection="4SE" LocationCode="A" Point="TOWER OF LONDON"/>
+    <Index CountryState="C/GB" DistanceDirection="1NE" LocationCode="A" Point="UNIVERSITY COLLEGE LONDON"/>
+    <Index CountryState="C/GB" DistanceDirection="1NE" LocationCode="A" Point="VICTORIA STATION"/>
+    <Index DistanceDirection="16E" LocationCode="C" Point="LHR" TransportationCode="O"/>
+    <Index DistanceDirection="0N" LocationCode="A" Point="LON" TransportationCode="O"/>
+    <Index DistanceDirection="37NE" LocationCode="S" Point="STN"/>
+    <Index DistanceDirection="41N" LocationCode="S" Point="LGW" TransportationCode="O"/>
+    <Index DistanceDirection="10E" LocationCode="A" Point="LCY"/>
+    <Index DistanceDirection="34NW" LocationCode="C" Point="LTN"/>
+   </IndexData>
+   <PropertyOptionInfo>
+    <ADA_Accessible Ind="false"/>
+    <AdultsOnly Ind="false"/>
+    <AirportShuttle Ind="false"/>
+    <BeachFront Ind="false"/>
+    <Breakfast Ind="false"/>
+    <BusinessCenter Ind="true"/>
+    <BusinessReady Ind="false"/>
+    <CarRentalCounter>N</CarRentalCounter>
+    <Conventions Ind="false"/>
+    <Dataport Ind="true"/>
+    <Dining Ind="true"/>
+    <DryClean Ind="true"/>
+    <EcoCertified Ind="false"/>
+    <ExecutiveFloors Ind="false"/>
+    <FamilyPlan Ind="false"/>
+    <FitnessCenter Ind="true"/>
+    <FreeLocalCalls Ind="true"/>
+    <FreeParking Ind="false"/>
+    <FreeShuttle Ind="false"/>
+    <FreeWifiInMeetingRooms Ind="false"/>
+    <FreeWifiInPublicSpaces Ind="false"/>
+    <FreeWifiInRooms Ind="false"/>
+    <FullServiceSpa Ind="false"/>
+    <GameFacilities Ind="false"/>
+    <Golf Ind="false"/>
+    <GovtSafetyFire Ind="false"/>
+    <HighSpeedInternet Ind="true"/>
+    <HypoallergenicRooms Ind="false"/>
+    <IndoorPool Ind="false"/>
+    <IndPetRestriction Ind="false"/>
+    <InRoomCoffeeTea Ind="false"/>
+    <InRoomMiniBar Ind="false"/>
+    <InRoomRefrigerator Ind="false"/>
+    <InRoomSafe Ind="false"/>
+    <InteriorDoorways Ind="true"/>
+    <Jacuzzi Ind="false"/>
+    <KidsFacilities Ind="false"/>
+    <KitchenFacilities Ind="false"/>
+    <MealService Ind="true"/>
+    <MeetingFacilities Ind="true"/>
+    <NoAdultTV Ind="false"/>
+    <NonSmoking Ind="true"/>
+    <OutdoorPool Ind="false"/>
+    <Parking>Y</Parking>
+    <Pets Ind="false"/>
+    <Pool Ind="false"/>
+    <PublicTransportationAdjacent Ind="false"/>
+    <Recreation Ind="false"/>
+    <RestrictedRoomAccess Ind="false"/>
+    <RoomService Ind="true"/>
+    <RoomService24Hours Ind="false"/>
+    <RoomsWithBalcony Ind="false"/>
+    <SkiInOutProperty Ind="false"/>
+    <SmokeFree Ind="false"/>
+    <SmokingRoomsAvail Ind="false"/>
+    <Tennis Ind="false"/>
+    <WaterPurificationSystem Ind="false"/>
+    <Wheelchair Ind="true"/>
+   </PropertyOptionInfo>
+   <PropertyTypeInfo>
+    <AllInclusive Ind="false"/>
+    <Apartments Ind="false"/>
+    <BedBreakfast Ind="false"/>
+    <Castle Ind="false"/>
+    <Conventions Ind="false"/>
+    <Economy Ind="false"/>
+    <ExtendedStay Ind="false"/>
+    <Farm Ind="false"/>
+    <First Ind="false"/>
+    <Luxury Ind="false"/>
+    <Moderate Ind="false"/>
+    <Motel Ind="false"/>
+    <Resort Ind="false"/>
+    <Suites Ind="false"/>
+   </PropertyTypeInfo>
+   <SpecialOffers Ind="false"/>
+   <Taxes>
+    <Text>5PCT SVC</Text>
+    <Text>17.5PCT TT</Text>
+   </Taxes>
+   <VendorMessages>
+    <AdditionalAttractions>
+     <Text>- ESTEE LAUDER. . . . . . . . . . . . 0.4 MI/0.6 KM</Text>
+     <Text>- GENERAL ELECTRICS. . . . . . . . . .0.4 MI/0.6 KM</Text>
+     <Text>- GUCCI. . . . . . . . . . . . . . . .0.3 MI/0.5 KM</Text>
+     <Text>- HSBC. . . . . . . . . . . . . . . . 0.2 MI/0.3 KM</Text>
+     <Text>- LOUIS VUITTON. . . . . . . . . . . .0.0 MI/0.0 KM</Text>
+     <Text>- SOTHERBYS. . . . . . . . . . . . . .0.0 MI/0.0 KM</Text>
+    </AdditionalAttractions>
+    <Attractions>
+     <Text>- BERKELEY SQUARE. . . . . . . . . . .0.2 MI/0.3 KM</Text>
+     <Text>- BIG BEN. . . . . . . . . . . . . . .2.0 MI/3.2 KM</Text>
+     <Text>- BOND STREET. . . . . . . . . . . . .0.0 MI/0.0 KM</Text>
+     <Text>- BUCKINGHAM PALACE. . . . . . . . . .1.0 MI/1.6 KM</Text>
+     <Text>- BURBERRY. . . . . . . . . . . . . . 0.0 MI/0.0 KM</Text>
+     <Text>- GREEN PARK. . . . . . . . . . . . . 0.5 MI/0.8 KM</Text>
+     <Text>- HANNOVER SQUARE. . . . . . . . . . .0.2 MI/0.3 KM</Text>
+     <Text>- HYDE PARK. . . . . . . . . . . . . .1.5 MI/2.4 KM</Text>
+     <Text>- LEICESTER SQUARE. . . . . . . . . . 0.4 MI/0.6 KM</Text>
+     <Text>- LONDON EYE. . . . . . . . . . . . . 2.5 MI/4.0 KM</Text>
+     <Text>- MAYFAIR. . . . . . . . . . . . . . .0.0 MI/0.0 KM</Text>
+     <Text>- OXFORD STREET. . . . . . . . . . . .0.3 MI/0.5 KM</Text>
+     <Text>- PICCADILLY CIRCUS. . . . . . . . . .0.3 MI/0.5 KM</Text>
+     <Text>- ROYAL ACADEMY OF ART. . . . . . . . 0.0 MI/0.0 KM</Text>
+     <Text>- SKETCH. . . . . . . . . . . . . . . 0.1 MI/0.2 KM</Text>
+    </Attractions>
+    <Awards>
+     <Text>-STAR RATING - 5 STARS</Text>
+     <Text>-MOBIL RATING - N STARS</Text>
+    </Awards>
+    <Cancellation>
+     <Text>-CANCELLATIONS MUST BE COMPLETED AND RECEIVED NO LATER THAN</Text>
+     <Text>24 HOURS PRIOR TO THE DATE OF ARRIVAL -BEFORE 2PM LONDON</Text>
+     <Text>TIME-.</Text>
+     <Text>CANCELLATIONS AFTER THIS TIME WILL BE SUBJECT TO A PENALTY</Text>
+     <Text>FEE OF ONE NIGHT ACCOMMODATION CHARGE.</Text>
+     <Text>-EARLY CHECKOUT POLICY</Text>
+     <Text>-NOTICE OF AN EARLY DEPARTURE MUST BE ADVISED NO LATER THAN</Text>
+     <Text>2PM THE DAY PRIOR TO THE NEW DEPARTURE DATE -24HOURS-</Text>
+     <Text>OTHERWISE A LATE CANCELLATION FEE OF 1 NIGHT WILL BE</Text>
+     <Text>INCURRED.</Text>
+     <Text>-EXCEPTIONS MAY APPLY DURING HOLIDAYS/SPECIAL EVENTS OR</Text>
+     <Text>CONVENTIONS - SEE RATE RULES.</Text>
+    </Cancellation>
+    <Description>
+     <Text>SITUATED IN THE HEART OF MAYFAIR-THE ONLY HOTEL</Text>
+     <Text>LOCATED ON BOND STREET-A STONES THROW AWAY FROM</Text>
+     <Text>CULTURAL TREASURES- SHOPPING-THEATRES AND LONDONS</Text>
+     <Text>COMMERCIAL CENTRE. EXPERIENCE CALM-COMPLETENESS AND</Text>
+     <Text>CHARM. 249 LUXURIOUS ROOMS AND SUITES-ONE OF LONDONS</Text>
+     <Text>FAVOURITE RESTAURANTS-THE POLO BAR AND THE LOUNGE-WITH</Text>
+     <Text>ABOVE ALL ELSE KNOWLEGDABLE STAFF ABLE TO REVEAL AN</Text>
+     <Text>INSIDERS VIEW OF LONDON.</Text>
+    </Description>
+    <Dining>
+     <Text>ARTISAN</Text>
+     <Text>CUISINE TYPE -</Text>
+     <Text>LOCATION - ON PROPERTY</Text>
+     <Text>DISTANCE FROM HOTEL -0.0MI / 0.0KM</Text>
+     <Text>ARTISAN IS THE ULTIMATE DESTINATION IN MAYFAIR.WITH ITS</Text>
+     <Text>STUNNING INTERIOR- ELEGANT DESIGN AND SHEER OPULENCE. THERE</Text>
+     <Text>IS MORE THAN ONE REASON TO MAKE A BEELINE FOR THIS</Text>
+     <Text>RESTAURANT.THE MENU IS UNPRETENTIOUS BUT CAPTURES THE TRUE</Text>
+     <Text>TALENT AND PASSION OF THE CHEF BEHIND ITS CREATION. MODERN</Text>
+     <Text>EUROPEAN CUISINE PAR EXCELLENCE- WITH EFFICIENT AND</Text>
+     <Text>WELL-INFORMED STAFF.ALL OF WHICH CONTRIBUTE TO MAKING IT HE</Text>
+     <Text>PERFECT RESTAURANT TO INDULGE AND ENTERTAIN IN.</Text>
+     <Text>POLO BAR</Text>
+     <Text>CUISINE TYPE - INTERNATIONAL</Text>
+     <Text>LOCATION - ON PROPERTY</Text>
+     <Text>DISTANCE FROM HOTEL -0.0MI / 0.0KM</Text>
+     <Text>TODAY-THE NEW LOOK POLO BAR HAS A CONTEMPORARY-VIBRANT YET</Text>
+     <Text>SOPHISTICATED STYLE. THE FINISHES OF THE BAR INCLUDE</Text>
+     <Text>SWAROVSKI CRYSTAL AND STYLISH GUCCI FURNISHINGS.IT IS A</Text>
+     <Text>PERFECT PLACE TO GET TOGETHER TO RELAX AND ENJOY TRADITIONAL</Text>
+     <Text>AFTERNOON TEA-COCKTAILS AND OUR EXCELLENT BAR MENU.</Text>
+     <Text>THE LOUNGE</Text>
+     <Text>CUISINE TYPE -</Text>
+     <Text>LOCATION - ON PROPERTY</Text>
+     <Text>DISTANCE FROM HOTEL -0.0MI / 0.0KM</Text>
+     <Text>THE LOUNGE IS AN IDEAL SPOT FOR SHOPPERS OR BUSINESS PEOPLE</Text>
+     <Text>TO MEET FOR MORNING COFFEE-LIGHT MEALS OR REFRESHMENTS</Text>
+     <Text>THROUGHOUT THE DAY. TRADITIONAL AND SEASONAL MENUS ARE</Text>
+     <Text>OFFERED-IN ADDITION TO A LARGE VARIETY OF TEA.</Text>
+    </Dining>
+    <Directions>
+     <Text>--LEAVE THE AIRPORT ON THE M4 MOTORWAY HEADING EAST TOWARDS</Text>
+     <Text>LONDON</Text>
+     <Text>THE M4 WILL EVENTUALLY MERGE INTO THE A4 WHICH GOES ALL THE</Text>
+     <Text>WAY INTO CENTRAL LONDON.</Text>
+     <Text>-FOLLOW THE A4 THROUGH HAMMERSMITH- PAST HARRODS-THROUGH</Text>
+     <Text>KNIGHTSBRIDGE</Text>
+     <Text>-AT HYDE PARK TURN LEFT AND TAKE THE SLIP ROAD GOING UP PARK</Text>
+     <Text>LANE. PARK LANE IS IN FACT TWO ROADS ONE GOING UP AND THE</Text>
+     <Text>OTHER GOING DOWN - CROSS OVER TO THE ONE COMING DOWN AT THE</Text>
+     <Text>DORCHESTER HOTEL INTO DEANERY STREET TOWARDS THE LEFT</Text>
+     <Text>-AT THE TRAFFIC LIGHTS GO ACROSS INTO HILL ROAD UNTIL</Text>
+     <Text>BERKELEY SQUARE</Text>
+     <Text>-ON BERKELEY SQUARE TURN LEFT BUT STAY ON THE RIGHT HAND</Text>
+     <Text>SIDE AND TURN LEFT ON BRUTON STREET</Text>
+     <Text>-AT THE TRAFFIC LIGHTS CROSS OVER BOND STREET AND THE</Text>
+     <Text>ENTRANCE IS THE JUST ON THE CORNER OF BOND STREET AND</Text>
+     <Text>CONDUIT STREET ON THE RIGHT HAND SIDE.</Text>
+     <Text>--LEAVE THE AIRPORT ON THE M23 MOTORWAY- HEADING NORTH</Text>
+     <Text>TOWARDS LONDON</Text>
+     <Text>-JOIN ONTO THE M25 MOTORWAY AT JUNCTION 7</Text>
+     <Text>-JOIN ONTO THE M4 MOTORWAY AT JUNCTION 15 AND CONTINUE</Text>
+     <Text>HEADING EAST TOWARDS LONDON</Text>
+     <Text>-THE M4 WILL EVENTUALLY MERGE INTO THE A4 WHICH GOES ALL THE</Text>
+     <Text>WAY INTO CENTRAL LONDON</Text>
+     <Text>-FOLLOW THE A4 THROUGH HAMMERSMITH PAST HARRODS THROUGH</Text>
+     <Text>KNIGHTSBRIDGE</Text>
+     <Text>-AT HYDE PARK TURN LEFT AND TAKE THE SLIP ROAD GOING UP PARK</Text>
+     <Text>LANE. PARK LANE IN FACT IS TWO ROADS ONE GOING UP AND THE</Text>
+     <Text>OTHER GOING DOWN - CROSS OVER TO THE COMING DOWN AT THE</Text>
+     <Text>DORCHESTER HOTEL INTO DEANERY STREET TOWARDS THE LEFT</Text>
+     <Text>-AT THE TRAFFIC LIGHTS GO ACROSS INTO HILL ROAD UNTIL</Text>
+     <Text>BERKELEY SQUARE</Text>
+     <Text>-ON BERKELEY SQUARE TURN LEFT BUT STAY ON THE RIGHT HAND</Text>
+     <Text>SIDE AND TURN LEFT ON BRUTON STREET</Text>
+     <Text>-AT THE TRAFFIC LIGHTS CROSS OVER BOND STREET AND THE</Text>
+     <Text>ENTRANCE IS THE JUST ON THE CORNER OF BOND STREET AND</Text>
+     <Text>CONDUIT STREET ON THE RIGHT HAND SIDE.</Text>
+    </Directions>
+    <Facilities>
+     <Text>-BABYSITTING</Text>
+     <Text>-BILINGUAL SERVICES</Text>
+     <Text>-CONCIERGE SVC LEVEL</Text>
+     <Text>-CURRENCY EXCHANGE</Text>
+     <Text>-EXPRESS CHECK IN-OUT POLICIES</Text>
+     <Text>-ELEVATORS</Text>
+     <Text>-HANDICAP FACILITIES</Text>
+     <Text>-LAUNDRY-VALET SVC</Text>
+     <Text>-SHOE SHINE SVC</Text>
+     <Text>-24-HOUR ROOM SVC</Text>
+     <Text>-LUGGAGE STORAGE</Text>
+     <Text>-MAID SVC</Text>
+     <Text>-WAKE-UP CALL</Text>
+     <Text>-HIGH SPEED INTERNET</Text>
+     <Text>-BELLMAN-PORTER</Text>
+     <Text>-FAX AND COPY SERVICES</Text>
+     <Text>-MEETING FACILITIES</Text>
+     <Text>-AIR CONDITIONING             -MEETS BUILDING CODES</Text>
+     <Text>-DISABLED ACCESS              -LOUNGE / BAR AREA</Text>
+     <Text>-LOUNGES                      -DISABLED ROOMS</Text>
+     <Text>-NON SMOKING ROOMS            -SUITES</Text>
+     <Text>-GUEST LAUNDRY</Text>
+     <Text>-FRONT DESK 24HR              -INTERIOR ACCESS</Text>
+     <Text>-SOME FACILITIES MAY INCLUDE A CHARGE</Text>
+    </Facilities>
+    <Guarantee>
+     <Text>-ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID</Text>
+     <Text>CREDIT CARD AT THE TIME OF BOOKING.</Text>
+     <Text>-EXCEPTIONS MAY APPLY DURING HOLIDAYS/SPECIAL EVENTS</Text>
+     <Text>OR CONVENTIONS - SEE RATE RULES.</Text>
+    </Guarantee>
+    <Location>
+     <Text>BOND ST</Text>
+     <Text>LONDON NULL GB W1S 2YF</Text>
+    </Location>
+    <MiscServices>
+     <Text>-MEETING ROOMS - 4</Text>
+     <Text>-LARGEST SEATING CAPACITY - 150</Text>
+     <Text>-SMALLEST SEATING CAPACITY - 2</Text>
+     <Text>-BRIGHTON ROOM</Text>
+     <Text>TOTAL CAPACITY - 50</Text>
+     <Text>-MOUNT VERNON</Text>
+     <Text>TOTAL CAPACITY - 150</Text>
+     <Text>-PINE ROOM</Text>
+     <Text>TOTAL CAPACITY - 120</Text>
+     <Text>-REGENCY ROOM</Text>
+     <Text>TOTAL CAPACITY - 30</Text>
+    </MiscServices>
+    <Policies>
+     <Text>GENERAL POLICY</Text>
+     <Text>MAXIMUM 3 BOOKING SEGMENTS ALLOWED BY PNR-</Text>
+     <Text>SERVICE CHARGE 5 PCT-</Text>
+     <Text>CHECK-IN 2PM</Text>
+     <Text>CHECK-OUT NOON</Text>
+     <Text>DUE TO THE HOTEL S CREDIT POLICY FOR THIRD PARTY PAYMENT</Text>
+     <Text>PLEASE CONTACT RESERVATIONS DIRECTLY PRIOR TO ARRIVAL.</Text>
+     <Text>RATES ARE SUBJECT TO CHANGE.</Text>
+     <Text>EXTRA BEDS ARE AVAILABLE ON REQUEST IN A DELUXE ROOM</Text>
+     <Text>CATEGORY OR ABOVE. PLEASE CONTACT RESERVATIONS DIRECTLY TO</Text>
+     <Text>ARRANGE THIS FACILITY.</Text>
+     <Text>DUE TO THE HOTELS CREDIT POLICY FOR THIRD PARTY PAYMENT</Text>
+     <Text>PLEASE CONTACT RESERVATIONS DIRECTLY PRIOR TO ARRIVAL.</Text>
+     <Text>-TAX AND SERVICE CHARGE POLICY</Text>
+     <Text>TOTAL TAX 17.5PCT</Text>
+     <Text>SERVICE CHARGE 5PCT</Text>
+     <Text>-CHECKIN - 14 00</Text>
+     <Text>-CHECKOUT - 12 00</Text>
+     <Text>-FAMILY POLICY</Text>
+     <Text>-CHILDREN UP TO 2 YEARS STAY FREE USING EXISTING BEDDING.</Text>
+     <Text>EXTRA BEDS INCUR AN ADDITIONAL FEE PER NIGHT AND CAN ONLY BE</Text>
+     <Text>ACCOMODATED IN DELUXE ROOMS AND SUITES.</Text>
+     <Text>-PET POLICY</Text>
+     <Text>NO PETS ARE ALLOWED.</Text>
+     <Text>-GROUP POLICY</Text>
+     <Text>PLEASE CONTACT HOTEL DIRECTLY.</Text>
+     <Text>-MEAL PLANS</Text>
+     <Text>BB -</Text>
+     <Text>-COMMISSION POLICY</Text>
+     <Text>8 PCT PAYABLE TO TRAVEL AGENTS</Text>
+    </Policies>
+    <Recreation>
+     <Text>-CARDIO EQUIPMENT</Text>
+     <Text>-LIMITED HEALTH CLUB</Text>
+    </Recreation>
+    <Rooms>
+     <Text>-SUPERIOR QUEEN-</Text>
+     <Text>STANDARD QUEEN ROOM UNIQUELY DECORATED IN A WARM TRADITIONAL</Text>
+     <Text>BRITISH STYLE.COMFORTABLY FURNISHED SITTING</Text>
+     <Text>AREA-AC-SAFE-HAIRDRYER AND OTHER AMENITIES.</Text>
+     <Text>-SUPERIOR KING-</Text>
+     <Text>SUPERIOR KING ROOM UNIQUELY DECORATED IN A WARM TRADITIONAL</Text>
+     <Text>BRITISH STYLE. COMFORTABLY FURNISHED SITTING AREA-AC-SAFE-</Text>
+     <Text>HAIRDRYER AND OTHER AMENITIES.</Text>
+     <Text>-DELUXE KING-</Text>
+     <Text>DELUXE KING ROOM UNIQUELY DECORATED IN A WARM TRADITIONAL</Text>
+     <Text>BRITISH STYLE.COMFORTABLY FURNISHED SITTING AREA WITH SOFA-</Text>
+     <Text>AC-SAFE-HAIRDRYER AND OTHER AMENITIES.</Text>
+     <Text>-SUPERIOR SUITE-</Text>
+     <Text>ONE BEDROOM SUITE MEASURING 515 SQFT DECORATED IN A WARM</Text>
+     <Text>TRADITIONAL BRITISH STYLE OVERLOOKING BOND STREET AND</Text>
+     <Text>NEIGHBOURING MAYFAIR. THE SUITE HAS AC-SAFE-HAIRDRYER AND</Text>
+     <Text>OTHER AMENITIES.</Text>
+     <Text>-DELUXE SUITE-</Text>
+     <Text>ONE BEDROOM SUITE MEASURING 837 SQFT NEWLY RENOVATED WITH</Text>
+     <Text>HANDMADE ITALIAN FURNITURE. PLASMA TV-STEREO AND DINING</Text>
+     <Text>TABLE THAT SEATS 4 ARE JUST SOME OF THE AMENITIES.THE FULL</Text>
+     <Text>LIMESTONE BATHROOM FEATURES A TUB AND SEPARATE SHOWER</Text>
+     <Text>COMBINATION WITH BIDET AND DOUBLE SINKS.</Text>
+     <Text>-DELUXE TERRACE SUITE-</Text>
+     <Text>ONE BEDROOM SUITE MEASURING 537-687 SQFT NEWLY RENOVATED</Text>
+     <Text>WITH HANDMADE ITALIAN FURNITURE OVERLOOKING BOND STREET FROM</Text>
+     <Text>ITS TERRACE. PLASMA TV-STEREO AND DINING TABLE THAT SEATS 4</Text>
+     <Text>ARE JUST SOME OF THE AMENITIES. THE FULL LIMESTONE BATHROOM</Text>
+     <Text>FEATURES A TUB AND SEPARATE SHOWER COMBINATION WITH BIDET</Text>
+     <Text>AND DOUBLE SINKS.</Text>
+     <Text>-DELUXE CORNER SUITE-</Text>
+     <Text>THE WESTBURYS NEWEST SUITE-THE DELUXE CORNER SUITE HAS BEEN</Text>
+     <Text>RECENTLY BUILT AND MEASURES 540 -690 SQUARE FEET FITTED WITH</Text>
+     <Text>MARBLE BATHROOM AND PLUSH FURNITURE-THESE SUITES OFFER EVERY</Text>
+     <Text>COMFORT A PERSON COULD WANT.</Text>
+     <Text>-ST GEORGE S PENTHOUSE-</Text>
+     <Text>THE MOST CAPTIVATING FEATURE OF THE ST GEORGES PENTHOUSE IS</Text>
+     <Text>THE MAGNIFICANT PANORAMIC VIEW OVER MAYFAIR AND LONDON FROM</Text>
+     <Text>THE PRIVATE TERRACE.LOCATED ON THE TOP FLOOR OF THE HOTEL</Text>
+     <Text>THE SUITE MEASURES 1216 SUARE FEET AND FEATURES A MASTER</Text>
+     <Text>BEDROOM-PRIVATE DINING AND LOUNGE ROOM-A LUXURIOUS MARBLE</Text>
+     <Text>BATHROOM AND SEPARATE POWDER ROOM. THE ST GOERGES PENTHOUSE</Text>
+     <Text>IS UNDOUBTABLY THE JEWEL IN THE CROWN AT THE WESTBURY.</Text>
+     <Text>ROOM AM</Text>
+    </Rooms>
+    <Safety>
+     <Text>-24 HOUR SECURITY          -ELECTRONIC KEYCARDS</Text>
+     <Text>-EXIT SIGNS LIT            -HALLWAY FIRE DETECTORS</Text>
+     <Text>-PUBLIC FIRE DETECTORS     -ROOM FIRE DETECTORS</Text>
+     <Text>-STAFF FIRST AID TRAINED</Text>
+    </Safety>
+    <Services>
+     <Text>-BUSINESS CENTER</Text>
+     <Text>-BUSINESS CENTER SERVICES</Text>
+     <Text>-CAR RENTAL DESK</Text>
+     <Text>-CELL PHONE RENTAL</Text>
+     <Text>-CHILD CARE</Text>
+     <Text>-COFFEE</Text>
+     <Text>-COPY SERVICE</Text>
+     <Text>-CURRENCY EXCHANGE</Text>
+     <Text>-DOCTOR ON CALL</Text>
+     <Text>-EARLY CHECK OUT PENALTY</Text>
+     <Text>-EXPRESS CHECK OUT</Text>
+     <Text>-EXPRESS CHECK IN FEE</Text>
+     <Text>-FAXING INCOMING</Text>
+     <Text>-FAXING OUTGOING</Text>
+     <Text>-LATE CHECK OUT</Text>
+     <Text>-LATE CHECK OUT GUARANTEE</Text>
+     <Text>-LAUNDRY VALET</Text>
+     <Text>-LOCAL CALLS</Text>
+     <Text>-LOCAL FAXES</Text>
+     <Text>-LONG DISTANCE ACCESS</Text>
+     <Text>-NEWSPAPER</Text>
+     <Text>-PARKING</Text>
+     <Text>-SHOE SHINE</Text>
+     <Text>-ROOM SERVICE</Text>
+     <Text>-SOME SERVICES MAY INCLUDE A CHARGE</Text>
+    </Services>
+    <Transportation>
+     <Text>-HEATHROW AIRPORT - 16.5MI / 26.6KM</Text>
+     <Text>ALTERNATE -  GBP</Text>
+     <Text>BOAT -  GBP</Text>
+     <Text>BUS -  GBP</Text>
+     <Text>LIMO -  GBP</Text>
+     <Text>METROSUBWAY -  GBP</Text>
+     <Text>SHUTTLE -  GBP</Text>
+     <Text>TAXI -  GBP</Text>
+     <Text>TRAIN -  GBP</Text>
+     <Text>-GATWICK AIRPORT - 40.8MI / 65.7KM</Text>
+     <Text>SHUTTLE - 17.00 GBP - GATWICK EXPRESS TO LIVERPOOL</Text>
+     <Text>STREET STATIONALTERNATE - GBP</Text>
+     <Text>BOAT -  GBP</Text>
+     <Text>BUS -  GBP</Text>
+     <Text>LIMO -  GBP</Text>
+     <Text>METROSUBWAY -  GBP</Text>
+     <Text>TAXI - 100.00 GBP</Text>
+     <Text>TRAIN -  GBP</Text>
+     <Text>-CITY AIRPORT - 9.8MI / 15.8KM</Text>
+     <Text>-LUTON AIRPORT - 33.9MI / 54.6KM</Text>
+     <Text>-STANSTED - 36.7MI / 59.1KM</Text>
+    </Transportation>
+   </VendorMessages>
+  </BasicPropertyInfo>
+  <Guarantee>
+   <DepositsAccepted>
+    <PaymentCard Code="AX" Type="AMERICAN EXPRESS"/>
+    <PaymentCard Code="CA" Type="MASTERCARD"/>
+    <PaymentCard Code="DC" Type="DINERS CLUB CARD"/>
+    <PaymentCard Code="EC" Type="EUROCARD"/>
+    <PaymentCard Code="VI" Type="VISA"/>
+   </DepositsAccepted>
+   <GuaranteesAccepted>
+    <PaymentCard Code="AX" Type="AMERICAN EXPRESS"/>
+    <PaymentCard Code="CA" Type="MASTERCARD"/>
+    <PaymentCard Code="DC" Type="DINERS CLUB CARD"/>
+    <PaymentCard Code="EC" Type="EUROCARD"/>
+    <PaymentCard Code="VI" Type="VISA"/>
+    <Text>/GAGT             GUARANTEE TO AGENCY TIDS/IATA NUMBER</Text>
+    <Text>/GDPST            DEPOSIT WILL BE SENT</Text>
+    <Text>/GDPST...         IMMEDIATE DEPOSIT TYPE OR FORM</Text>
+   </GuaranteesAccepted>
+  </Guarantee>
+  <RoomRates>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1QBAR" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="001" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="24" Option="H"/>
+     <Commission NonCommission="false">12.0 PERCENT COMMISSION</Commission>
+     <DCA_Cancellation>
+      <Text>CANCELLATIONS ARE ALLOWED UNTIL 12 NOON 24 HOURS PRIOR TO</Text>
+      <Text>ARRIVAL DATE FOR BOOKINGS UP TO 6 NIGHTS FOR BOOKINGS OVER 6</Text>
+      <Text>NIGHTS CANCELLATIONS HAVE TO BE RECEIVED 7 DAYS IN ADVANCE FOR</Text>
+      <Text>LATE CXL 3 DAY</Text>
+     </DCA_Cancellation>
+     <DCA_Guarantee>
+      <Text>ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID CREDIT CARD AT</Text>
+      <Text>THE TIME OF BOOKING</Text>
+     </DCA_Guarantee>
+     <PaymentCard Code="VI"/>
+     <PaymentCard Code="CA"/>
+     <PaymentCard Code="JC"/>
+     <PaymentCard Code="DC"/>
+     <PaymentCard Code="AX"/>
+     <Text>SIGNATURE QUEEN ROOM 220 SQ FT 20 SQ MTR WIFI</Text>
+     <Text>AC TV SAFE DESK M BAR MARBLED BATH RAIN SHWR</Text>
+     <Text>RATE EXCLUSIVE OF VAT</Text>
+     <Text>EXCLUSIVE SERVICE CHARGE AND BREAKFAST</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="399.00" ChangeIndicator="false" CurrencyCode="GBP" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="1">
+        <Charges ExtraPerson="0.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="478.80">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <TotalTaxes Amount="79.80">
+        <TaxFieldOne>79.80</TaxFieldOne>
+        <Text>CITYTAX</Text>
+       </TotalTaxes>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="SIGBAR" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="002" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="SI" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="24" Option="H"/>
+     <Commission NonCommission="false">12.0 PERCENT COMMISSION</Commission>
+     <DCA_Cancellation>
+      <Text>CANCELLATIONS ARE ALLOWED UNTIL 12 NOON 24 HOURS PRIOR TO</Text>
+      <Text>ARRIVAL DATE FOR BOOKINGS UP TO 6 NIGHTS FOR BOOKINGS OVER 6</Text>
+      <Text>NIGHTS CANCELLATIONS HAVE TO BE RECEIVED 7 DAYS IN ADVANCE FOR</Text>
+      <Text>LATE CXL 3 DAY</Text>
+     </DCA_Cancellation>
+     <DCA_Guarantee>
+      <Text>ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID CREDIT CARD AT</Text>
+      <Text>THE TIME OF BOOKING</Text>
+     </DCA_Guarantee>
+     <PaymentCard Code="VI"/>
+     <PaymentCard Code="CA"/>
+     <PaymentCard Code="JC"/>
+     <PaymentCard Code="DC"/>
+     <PaymentCard Code="AX"/>
+     <Text>SIGNATURE ROOM 260 SQ FT NEWLY RENOVATED</Text>
+     <Text>SEATING AREA AND FULLY MARBLED BATHROOM</Text>
+     <Text>RATE EXCLUSIVE OF VAT</Text>
+     <Text>EXCLUSIVE SERVICE CHARGE AND BREAKFAST</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="439.00" ChangeIndicator="false" CurrencyCode="GBP" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="1">
+        <Charges ExtraPerson="0.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="526.80">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <TotalTaxes Amount="87.80">
+        <TaxFieldOne>87.80</TaxFieldOne>
+        <Text>CITYTAX</Text>
+       </TotalTaxes>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="L1KBAR" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="003" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="L1" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="24" Option="H"/>
+     <Commission NonCommission="false">12.0 PERCENT COMMISSION</Commission>
+     <DCA_Cancellation>
+      <Text>CANCELLATIONS ARE ALLOWED UNTIL 12 NOON 24 HOURS PRIOR TO</Text>
+      <Text>ARRIVAL DATE FOR BOOKINGS UP TO 6 NIGHTS FOR BOOKINGS OVER 6</Text>
+      <Text>NIGHTS CANCELLATIONS HAVE TO BE RECEIVED 7 DAYS IN ADVANCE FOR</Text>
+      <Text>LATE CXL 3 DAY</Text>
+     </DCA_Cancellation>
+     <DCA_Guarantee>
+      <Text>ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID CREDIT CARD AT</Text>
+      <Text>THE TIME OF BOOKING</Text>
+     </DCA_Guarantee>
+     <PaymentCard Code="VI"/>
+     <PaymentCard Code="CA"/>
+     <PaymentCard Code="JC"/>
+     <PaymentCard Code="DC"/>
+     <PaymentCard Code="AX"/>
+     <Text>LUXURY ROOM KING BED 300 SQ FT NEWLY RENOVATED</Text>
+     <Text>WORKING DESK MARBLED BATH W TUB AND SHOWER</Text>
+     <Text>RATE EXCLUSIVE OF VAT</Text>
+     <Text>EXCLUSIVE SERVICE CHARGE AND BREAKFAST</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="509.00" ChangeIndicator="false" CurrencyCode="GBP" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="1">
+        <Charges ExtraPerson="0.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="610.80">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <TotalTaxes Amount="101.80">
+        <TaxFieldOne>101.80</TaxFieldOne>
+        <Text>CITYTAX</Text>
+       </TotalTaxes>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="AJSBAR" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="004" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="AJ" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="24" Option="H"/>
+     <Commission NonCommission="false">12.0 PERCENT COMMISSION</Commission>
+     <DCA_Cancellation>
+      <Text>CANCELLATIONS ARE ALLOWED UNTIL 12 NOON 24 HOURS PRIOR TO</Text>
+      <Text>ARRIVAL DATE FOR BOOKINGS UP TO 6 NIGHTS FOR BOOKINGS OVER 6</Text>
+      <Text>NIGHTS CANCELLATIONS HAVE TO BE RECEIVED 7 DAYS IN ADVANCE FOR</Text>
+      <Text>LATE CXL 3 DAY</Text>
+     </DCA_Cancellation>
+     <DCA_Guarantee>
+      <Text>ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID CREDIT CARD AT</Text>
+      <Text>THE TIME OF BOOKING</Text>
+     </DCA_Guarantee>
+     <PaymentCard Code="VI"/>
+     <PaymentCard Code="CA"/>
+     <PaymentCard Code="JC"/>
+     <PaymentCard Code="DC"/>
+     <PaymentCard Code="AX"/>
+     <Text>JUNIOR SUITE  441 SQ FT KING BED AND LIVING SPA</Text>
+     <Text>CE PLASMA TV AND WORKING DESK</Text>
+     <Text>RATE EXCLUSIVE OF VAT</Text>
+     <Text>EXCLUSIVE SERVICE CHARGE AND BREAKFAST</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="609.00" ChangeIndicator="false" CurrencyCode="GBP" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="1">
+        <Charges ExtraPerson="0.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="730.80">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <TotalTaxes Amount="121.80">
+        <TaxFieldOne>121.80</TaxFieldOne>
+        <Text>CITYTAX</Text>
+       </TotalTaxes>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1QPRO" IATA_ProductIdentification="BED AND BREAKFAST" LowInventoryThreshold="false" RPH="005" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="24" Option="H"/>
+     <Commission NonCommission="false">8.0 PERCENT COMMISSION</Commission>
+     <DCA_Cancellation>
+      <Text>CANCELLATIONS ARE ALLOWED UNTIL 12 NOON 24 HOURS PRIOR TO</Text>
+      <Text>ARRIVAL DATE FOR BOOKINGS UP TO 6 NIGHTS FOR BOOKINGS OVER 6</Text>
+      <Text>NIGHTS CANCELLATIONS HAVE TO BE RECEIVED 7 DAYS IN ADVANCE FOR</Text>
+      <Text>LATE CXL 3 DAY</Text>
+     </DCA_Cancellation>
+     <DCA_Guarantee>
+      <Text>ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID CREDIT CARD AT</Text>
+      <Text>THE TIME OF BOOKING</Text>
+     </DCA_Guarantee>
+     <PaymentCard Code="VI"/>
+     <PaymentCard Code="CA"/>
+     <PaymentCard Code="JC"/>
+     <PaymentCard Code="DC"/>
+     <PaymentCard Code="AX"/>
+     <Text>SIGNATURE QUEEN ROOM 220 SQ FT 20 SQ MTR WIFI</Text>
+     <Text>AC TV SAFE DESK M BAR MARBLED BATH RAIN SHWR</Text>
+     <Text>RATE INC BREAKFAST, EXCL VAT AND SERVICE CHARGE</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="414.00" ChangeIndicator="false" CurrencyCode="GBP" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="1">
+        <Charges ExtraPerson="23.50"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="496.80">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <TotalTaxes Amount="82.80">
+        <TaxFieldOne>82.80</TaxFieldOne>
+        <Text>CITYTAX</Text>
+       </TotalTaxes>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="SIGPRO" IATA_ProductIdentification="BED AND BREAKFAST" LowInventoryThreshold="false" RPH="006" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="SI" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="24" Option="H"/>
+     <Commission NonCommission="false">8.0 PERCENT COMMISSION</Commission>
+     <DCA_Cancellation>
+      <Text>CANCELLATIONS ARE ALLOWED UNTIL 12 NOON 24 HOURS PRIOR TO</Text>
+      <Text>ARRIVAL DATE FOR BOOKINGS UP TO 6 NIGHTS FOR BOOKINGS OVER 6</Text>
+      <Text>NIGHTS CANCELLATIONS HAVE TO BE RECEIVED 7 DAYS IN ADVANCE FOR</Text>
+      <Text>LATE CXL 3 DAY</Text>
+     </DCA_Cancellation>
+     <DCA_Guarantee>
+      <Text>ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID CREDIT CARD AT</Text>
+      <Text>THE TIME OF BOOKING</Text>
+     </DCA_Guarantee>
+     <PaymentCard Code="VI"/>
+     <PaymentCard Code="CA"/>
+     <PaymentCard Code="JC"/>
+     <PaymentCard Code="DC"/>
+     <PaymentCard Code="AX"/>
+     <Text>SIGNATURE ROOM 260 SQ FT NEWLY RENOVATED</Text>
+     <Text>SEATING AREA AND FULLY MARBLED BATHROOM</Text>
+     <Text>RATE INC BREAKFAST, EXCL VAT AND SERVICE CHARGE</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="454.00" ChangeIndicator="false" CurrencyCode="GBP" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="1">
+        <Charges ExtraPerson="23.50"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="544.80">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <TotalTaxes Amount="90.80">
+        <TaxFieldOne>90.80</TaxFieldOne>
+        <Text>CITYTAX</Text>
+       </TotalTaxes>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="L1KPRO" IATA_ProductIdentification="BED AND BREAKFAST" LowInventoryThreshold="false" RPH="007" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="L1" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="24" Option="H"/>
+     <Commission NonCommission="false">8.0 PERCENT COMMISSION</Commission>
+     <DCA_Cancellation>
+      <Text>CANCELLATIONS ARE ALLOWED UNTIL 12 NOON 24 HOURS PRIOR TO</Text>
+      <Text>ARRIVAL DATE FOR BOOKINGS UP TO 6 NIGHTS FOR BOOKINGS OVER 6</Text>
+      <Text>NIGHTS CANCELLATIONS HAVE TO BE RECEIVED 7 DAYS IN ADVANCE FOR</Text>
+      <Text>LATE CXL 3 DAY</Text>
+     </DCA_Cancellation>
+     <DCA_Guarantee>
+      <Text>ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID CREDIT CARD AT</Text>
+      <Text>THE TIME OF BOOKING</Text>
+     </DCA_Guarantee>
+     <PaymentCard Code="VI"/>
+     <PaymentCard Code="CA"/>
+     <PaymentCard Code="JC"/>
+     <PaymentCard Code="DC"/>
+     <PaymentCard Code="AX"/>
+     <Text>LUXURY ROOM KING BED 300 SQ FT NEWLY RENOVATED</Text>
+     <Text>WORKING DESK MARBLED BATH W TUB AND SHOWER</Text>
+     <Text>RATE INC BREAKFAST, EXCL VAT AND SERVICE CHARGE</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="524.00" ChangeIndicator="false" CurrencyCode="GBP" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="1">
+        <Charges ExtraPerson="23.50"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="628.80">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <TotalTaxes Amount="104.80">
+        <TaxFieldOne>104.80</TaxFieldOne>
+        <Text>CITYTAX</Text>
+       </TotalTaxes>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="AJSPRO" IATA_ProductIdentification="BED AND BREAKFAST" LowInventoryThreshold="false" RPH="008" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="AJ" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="24" Option="H"/>
+     <Commission NonCommission="false">8.0 PERCENT COMMISSION</Commission>
+     <DCA_Cancellation>
+      <Text>CANCELLATIONS ARE ALLOWED UNTIL 12 NOON 24 HOURS PRIOR TO</Text>
+      <Text>ARRIVAL DATE FOR BOOKINGS UP TO 6 NIGHTS FOR BOOKINGS OVER 6</Text>
+      <Text>NIGHTS CANCELLATIONS HAVE TO BE RECEIVED 7 DAYS IN ADVANCE FOR</Text>
+      <Text>LATE CXL 3 DAY</Text>
+     </DCA_Cancellation>
+     <DCA_Guarantee>
+      <Text>ALL RESERVATIONS MUST BE GUARANTEED WITH A VALID CREDIT CARD AT</Text>
+      <Text>THE TIME OF BOOKING</Text>
+     </DCA_Guarantee>
+     <PaymentCard Code="VI"/>
+     <PaymentCard Code="CA"/>
+     <PaymentCard Code="JC"/>
+     <PaymentCard Code="DC"/>
+     <PaymentCard Code="AX"/>
+     <Text>JUNIOR SUITE  441 SQ FT KING BED AND LIVING SPA</Text>
+     <Text>CE PLASMA TV AND WORKING DESK</Text>
+     <Text>RATE INC BREAKFAST, EXCL VAT AND SERVICE CHARGE</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="624.00" ChangeIndicator="false" CurrencyCode="GBP" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="1">
+        <Charges ExtraPerson="23.50"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="748.80">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <TotalTaxes Amount="124.80">
+        <TaxFieldOne>124.80</TaxFieldOne>
+        <Text>CITYTAX</Text>
+       </TotalTaxes>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+  </RoomRates>
+  <TimeSpan Duration="0005" End="2018-01-16" Start="2018-01-15"/>
+ </RoomStay>
+</HotelPropertyDescriptionRS></soap-env:Body></soap-env:Envelope>

@@ -259,11 +259,9 @@ class SabreFlight
                 if(isset($originDestination[0])){
                     $originDestinationArray = [];
                     foreach($originDestination as $j => $originDest){
-//                     $originDestination = array_get($originDestination, 'OriginDestinationOption.'.$j);
                         $segment = $originDest['FlightSegment'];
                         if(isset($segment[0])){
                             $segmentArray = [];
-//                         $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
                             if(isset($originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'])){
                                 $airline = $originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'];
                             }else{

@@ -95,6 +95,13 @@ class SabreConfig{
         }
     }
 
+    public function rateAmountCalculator($amount,$rate){
+        if($rate == 0){
+            return '';
+        }
+        return $amount/$rate;
+    }
+
     public static function yesOrNo($type){
         if($type == 1){
             return '<i class="fa fa-check"></i>';

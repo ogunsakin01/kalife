@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">DisplayCurrencyLLSRQ</eb:Service><eb:Action>DisplayCurrencyLLSRS</eb:Action><eb:MessageData><eb:MessageId>814896328031320151</eb:MessageId><eb:Timestamp>2018-01-09T09:06:43</eb:Timestamp><eb:RefToMessageId>814758327929600611</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3191283849940232826!41378!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><DisplayCurrencyRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.1.0">
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">DisplayCurrencyLLSRQ</eb:Service><eb:Action>DisplayCurrencyLLSRS</eb:Action><eb:MessageData><eb:MessageId>1107788447590130150</eb:MessageId><eb:Timestamp>2018-01-09T12:26:00</eb:Timestamp><eb:RefToMessageId>1107440447349970611</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3191234934062241394!134706!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><DisplayCurrencyRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.1.0">
  <stl:ApplicationResults status="Complete">
-  <stl:Success timeStamp="2018-01-09T03:06:43-06:00"/>
+  <stl:Success timeStamp="2018-01-09T06:26:00-06:00"/>
  </stl:ApplicationResults>
- <Country Name="INDIA" RPH="1">
-  <CurrencyCode>INR</CurrencyCode>
-  <CurrencyName>RUPEE</CurrencyName>
-  <DecimalPlaces>0</DecimalPlaces>
-  <Rate Type="BSR">0.17732087</Rate>
+ <Country Name="UNITED KINGDOM" RPH="1">
+  <CurrencyCode>GBP</CurrencyCode>
+  <CurrencyName>POUND</CurrencyName>
+  <DecimalPlaces>2</DecimalPlaces>
+  <Rate Type="BSR">0.00206514</Rate>
+  <Text>*** EFFECTIVE 10JAN          NEW RATE  0.0020652       BSR</Text>
  </Country>
 </DisplayCurrencyRS></soap-env:Body></soap-env:Envelope>

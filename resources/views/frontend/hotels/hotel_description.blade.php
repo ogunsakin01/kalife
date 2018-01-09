@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title') {{$selectedHotel['hotelName']}} Hotel Information  @endsection
 @section('content')
-    {{--{{dd([$selectedHotel,$hotel])}}--}}
+{{--{{dd($hotel)}}--}}
+
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
@@ -24,7 +25,7 @@
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <p class="booking-item-header-price"><small>price from</small>  <span class="text-lg">$350</span>/night</p>
+                        <p class="booking-item-header-price">  @if($hotel['minimumPrice'] == 0) Not Available @elseif($hotel['minimumPrice'] != 0) <small>price from</small><span class="text-lg">&#x20A6;{{number_format($hotel['minimumPrice'])}}</span>/night @endif </p>
                     </div>
                 </div>
             </header>
@@ -32,17 +33,17 @@
                 <div class="col-md-8">
                     <div class="tabbable booking-details-tabbable">
                         <ul class="nav nav-tabs" id="myTab">
-                            <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-camera"></i>Photos</a>
+                            {{--<li><a href="#tab-1" data-toggle="tab"><i class="fa fa-camera"></i>Photos</a>--}}
+                            {{--</li>--}}
+                            <li class="active"><a href="#google-map-tab" data-toggle="tab"><i class="fa fa-map-marker"></i>On the Map</a>
                             </li>
-                            <li><a href="#google-map-tab" data-toggle="tab"><i class="fa fa-map-marker"></i>On the Map</a>
-                            </li>
-                            <li><a href="#tab-3" data-toggle="tab"><i class="fa fa-signal"></i>Rating</a>
-                            </li>
+                            {{--<li><a href="#tab-3" data-toggle="tab"><i class="fa fa-signal"></i>Rating</a>--}}
+                            {{--</li>--}}
                             <li><a href="#tab-4" data-toggle="tab"><i class="fa fa-asterisk"></i>Facilities</a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane fade in active" id="tab-1">
+                            <div class="tab-pane fade" id="tab-1">
                                 <!-- START LIGHTBOX GALLERY -->
                                 <div class="row row-no-gutter" id="popup-gallery">
                                     <div class="col-md-3">
@@ -128,7 +129,7 @@
                                 </div>
                                 <!-- END LIGHTBOX GALLERY -->
                             </div>
-                            <div class="tab-pane fade" id="google-map-tab">
+                            <div class="tab-pane fade in active" id="google-map-tab">
                                 <div id="map-canvas" style="width:100%; height:500px;"></div>
                             </div>
                             <div class="tab-pane fade" id="tab-3">
@@ -286,162 +287,55 @@
                     <div class="ml20">
                         <div class="booking-item-meta">
                             <h2 class="lh1em mt40">Exeptional!</h2>
-                            <h3>97% <small >of guests recommend</small></h3>
+                            {{--<h3>97% <small >of guests recommend</small></h3>--}}
                             <div class="booking-item-rating">
                                 <ul class="icon-list icon-group booking-item-rating-stars">
-                                    <li><i class="fa fa-star"></i>
-                                    </li>
-                                    <li><i class="fa fa-star"></i>
-                                    </li>
-                                    <li><i class="fa fa-star"></i>
-                                    </li>
-                                    <li><i class="fa fa-star"></i>
-                                    </li>
-                                    <li><i class="fa fa-star"></i>
-                                    </li>
-                                </ul><span class="booking-item-rating-number"><b >4.7</b> of 5 <small class="text-smaller">guest rating</small></span>
-                                <p><a class="text-default" href="#">based on 1535 reviews</a>
+                                    @for($y = 0; $y < $hotel['starRating']; $y++)
+                                        <li><i class="fa fa-star"></i>
+                                        </li>
+                                    @endfor
+                                    @for($z = 0; $z < (5 - $hotel['starRating']); $z++)
+                                        <li><i class="fa fa-star-o"></i>
+                                        </li>
+                                    @endfor
+                                </ul><span class="booking-item-rating-number"><b >{{$hotel['starRating']}}</b> of 5 <small class="text-smaller">star rating</small></span>
+                                {{--<p><a class="text-default" href="#">based on 1535 reviews</a>--}}
                                 </p>
                             </div>
                         </div>
                         <h3>About the Hotel</h3>
                         <p>{{$selectedHotel['hotelDescription']}}</p>
                     </div>
-                    <div class="ml20">
-                        <h3>Location Description</h3>
-                        <p>{{$selectedHotel['locationDescription']}}</p>
-                    </div>
                 </div>
             </div>
-            {{--<div class="gap"></div>--}}
             <h3>Available Rooms</h3>
             <div class="row">
                 <div class="col-md-8">
-                    {{--<div class="booking-item-dates-change">--}}
-                        {{--<form>--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col-md-6">--}}
-                                    {{--<div class="input-daterange" data-date-format="MM d, D">--}}
-                                        {{--<div class="row">--}}
-                                            {{--<div class="col-md-6">--}}
-                                                {{--<div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>--}}
-                                                    {{--<label>Check in</label>--}}
-                                                    {{--<input class="form-control" name="start" type="text" />--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="col-md-6">--}}
-                                                {{--<div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>--}}
-                                                    {{--<label>Check out</label>--}}
-                                                    {{--<input class="form-control" name="end" type="text" />--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-md-2">--}}
-                                    {{--<div class="form-group">--}}
-                                        {{--<label>Adults</label>--}}
-                                        {{--<select class="form-control">--}}
-                                            {{--<option>1</option>--}}
-                                            {{--<option>2</option>--}}
-                                            {{--<option>3</option>--}}
-                                            {{--<option>4</option>--}}
-                                            {{--<option>5</option>--}}
-                                            {{--<option>6</option>--}}
-                                            {{--<option>7</option>--}}
-                                            {{--<option>8</option>--}}
-                                            {{--<option>9</option>--}}
-                                            {{--<option>10</option>--}}
-                                            {{--<option>11</option>--}}
-                                            {{--<option>12</option>--}}
-                                            {{--<option>13</option>--}}
-                                            {{--<option>14</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-md-2">--}}
-                                    {{--<div class="form-group">--}}
-                                        {{--<label>Children</label>--}}
-                                        {{--<select class="form-control">--}}
-                                            {{--<option>0</option>--}}
-                                            {{--<option>1</option>--}}
-                                            {{--<option>2</option>--}}
-                                            {{--<option>3</option>--}}
-                                            {{--<option>4</option>--}}
-                                            {{--<option>5</option>--}}
-                                            {{--<option>6</option>--}}
-                                            {{--<option>7</option>--}}
-                                            {{--<option>8</option>--}}
-                                            {{--<option>9</option>--}}
-                                            {{--<option>10</option>--}}
-                                            {{--<option>11</option>--}}
-                                            {{--<option>12</option>--}}
-                                            {{--<option>13</option>--}}
-                                            {{--<option>14</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-md-2">--}}
-                                    {{--<div class="form-group">--}}
-                                        {{--<label>Rooms</label>--}}
-                                        {{--<select class="form-control">--}}
-                                            {{--<option>1</option>--}}
-                                            {{--<option>2</option>--}}
-                                            {{--<option>3</option>--}}
-                                            {{--<option>4</option>--}}
-                                            {{--<option>5</option>--}}
-                                            {{--<option>6</option>--}}
-                                            {{--<option>7</option>--}}
-                                            {{--<option>8</option>--}}
-                                            {{--<option>9</option>--}}
-                                            {{--<option>10</option>--}}
-                                        {{--</select>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</form>--}}
-                    {{--</div>--}}
-                    {{--<div class="gap gap-small"></div>--}}
                     <ul class="booking-list">
                            @if(!empty($selectedHotel['rooms']))
                                @foreach($selectedHotel['rooms'] as $r => $room)
                             <li>
-                            <a class="booking-item">
+                            <a  href="{{url('room-booking/'.$r)}}" class="booking-item">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <img src="{{asset('img/hotel_porto_bay_rio_internacional_rooftop_pool_800x600.jpg')}}" alt="Image Alternative text" title="hotel PORTO BAY RIO INTERNACIONAL rooftop pool" />
+                                        <img src="{{asset('img/hotel_porto_bay_rio_internacional_rooftop_pool_800x600.jpg')}}" alt="Image Alternative text" title="{{$room['roomDescription']}}" />
                                     </div>
-                                    <div class="col-md-6">
-                                        <h5 class="booking-item-title">Superior Penthouse</h5>
-                                        <p class="text-small">Semper a dui sapien proin dis tellus eu praesent sodales posuere cum hendrerit</p>
+                                    <div class="col-md-5">
+                                        <h5 class="booking-item-title">{{$room['roomDescription']}}</h5>
+                                        <p class="text-small">{{$room['roomAmenitySummary']}}</p>
                                         <ul class="booking-item-features booking-item-features-sign clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Adults Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x 3</span>
+                                            <li rel="tooltip" data-placement="top" title="Guests Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x {{session()->get('hotelSearchParam')['guests']}}</span>
                                             </li>
-                                            <li rel="tooltip" data-placement="top" title="Beds"><i class="im im-bed"></i><span class="booking-item-feature-sign">x 1</span>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Room footage (square feet)"><i class="im im-width"></i><span class="booking-item-feature-sign">410</span>
+                                            <li rel="tooltip" data-placement="top" title="Stay Duration"><i class="fa fa-calendar"></i><span class="booking-item-feature-sign">x {{number_format($room['Duration'])}}</span>
                                             </li>
                                         </ul>
-                                        <ul class="booking-item-features booking-item-features-small clearfix">
-                                            <li rel="tooltip" data-placement="top" title="Air Conditioning"><i class="im im-air"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Mini Bar"><i class="im im-bar"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Bathtub"><i class="im im-bathtub"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Kitchen"><i class="im im-kitchen"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="SPA tub"><i class="im im-spa"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Terrace"><i class="im im-terrace"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Washing Machine"><i class="im im-washing-machine"></i>
-                                            </li>
-                                            <li rel="tooltip" data-placement="top" title="Pool"><i class="im im-pool"></i>
-                                            </li>
-                                        </ul>
+                                        <span class="text">
+                                            <p class="text text-bigger">Check In :  {{date('D, M d',strtotime($selectedHotel['checkinDate']))}}  , {{date('g:i A',strtotime($selectedHotel['checkInTime']))}}</p>
+                                            <p class="text text-bigger">Check Out :  {{date('D, M d',strtotime($selectedHotel['checkoutDate']))}} , {{date('g:i A',strtotime($selectedHotel['checkOutTime']))}} </p>
+                                        </span>
                                     </div>
-                                    <div class="col-md-3"><span class="booking-item-price">$444</span><span>/night</span><span class="btn btn-primary">Book</span>
+                                    <div class="col-md-4"><span class="booking-item-price">&#x20A6;{{number_format($room['baseAmountPerNightNaira'])}}</span><span>/night</span>
+                                     <span class="btn btn-primary">Select Room</span>
                                     </div>
                                 </div>
                             </a>

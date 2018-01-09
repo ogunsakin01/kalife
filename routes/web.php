@@ -48,7 +48,7 @@ Route::get('/available-hotels', 'HotelController@availableHotels');
 Route::post('/hotelPropertyDescription', 'HotelController@hotelPropertyDescription');
 Route::get('/hotel-information', 'HotelController@selectedHotel');
 Route::view('/hotels', 'frontend.hotels.deals');
-
+Route::get('/room-booking/{room}','HotelController@selectedRoomBooking');
 
 
 Route::post('/initiatePaystack','FrontEndPaymentController@initiatePaystack');

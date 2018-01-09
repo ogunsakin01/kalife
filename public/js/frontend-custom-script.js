@@ -660,6 +660,14 @@ $('.hotel_description').on('click',function(){
 
 $('.data-table').dataTable({"bSort" : false});
 
+$('.select_room').on('click',function(){
+    $(body).LoadingOverlay("show");
+    var roomNumber = $(this).val();
+    toastr.info(roomNumber);
+    $(body).LoadingOverlay("hide");
+
+});
+
 $('.requery').on('click', function(){
     var reference = $(this).val();
     $('#'+reference).LoadingOverlay('show');

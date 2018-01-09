@@ -68,6 +68,15 @@ class HotelController extends Controller
         return view('frontend.hotels.available_hotels',compact('hotelSearchParam','hotels','amenities','ratings'));
     }
 
+    public function selectedRoomBooking($room){
+        $session_info = session()->get('selectedHotel');
+        $selectedHotel = $session_info;
+        $hotelSearchParam = session()->get('hotelSearchParam');
+        $hotelsAvail = session()->get('availableHotels');
+        $hotel = $this->SabreHotel->HotelAvailSort($hotelsAvail)[session()->get('selectedHotelId')];
+        return view('frontend.hotels.selected_room',compact('selectedHotel','hotelSearchParam','hotel','room'));
+    }
+
     public function selectedHotel(){
         $session_info = session()->get('selectedHotel');
         $selectedHotel = $session_info;
@@ -94,9 +103,9 @@ class HotelController extends Controller
         else{
             $getDescription   = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('HotelPropertyDescriptionLLSRQ',$session_store),$this->SabreHotel->HotelPropertyDescriptionRQXML($r),'HotelPropertyDescriptionLLSRQ');
             $hotelPropertyResponse =  $this->SabreHotel->validateHotelPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription));
-//            return $this->SabreConfig->mungXmlToArray($getDescription);
             if($hotelPropertyResponse == 1){
-                $currency = $this->SabreHotel->getHotelRoomsCurrencyRate($this->SabreHotel->sortPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription)));
+                $rate = 0;
+                $currency = $this->SabreHotel->getHotelRoomsCurrencyRate($this->SabreHotel->sortPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription), $rate));
                 if(!is_null($currency)){
                     $getConversionRate = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('DisplayCurrencyLLSRQ',$session_store),$this->SabreHotel->DisplayCurrencyRQXML($currency),'DisplayCurrencyLLSRQ');
                     $file = fopen("TestSampleDisplayCurrencyLLSRQ.txt","w");
@@ -105,9 +114,16 @@ class HotelController extends Controller
                     $file = fopen("TestSampleDisplayCurrencyLLSRS.txt","w");
                     fwrite($file, $getConversionRate);
                     fclose($file);
-                    return $this->SabreConfig->mungXmlToArray($getConversionRate);
+                    $rateConversionRate = $this->SabreConfig->mungXmlToArray($getConversionRate);
+                    if(!is_null($rateConversionRate)){
+                        $rate = $this->SabreHotel->getRate($rateConversionRate);
+                    }else{
+                        $rate = 0;
+                    }
+
                 }
-                session()->put('selectedHotel',$this->SabreHotel->sortPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription)));
+                session()->put('rate',$rate);
+                session()->put('selectedHotel',$this->SabreHotel->sortPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription),$rate));
                 session()->put('selectedHotelId',$r->id);
             }
             $file = fopen("TestSampleHotelPropertyDescriptionLLSRQ.txt","w");
@@ -116,11 +132,7 @@ class HotelController extends Controller
             $file = fopen("TestSampleHotelPropertyDescriptionLLSRS.txt","w");
             fwrite($file, $getDescription);
             fclose($file);
-
-//            return $hotelPropertyResponse;
-
-
-
+            return $hotelPropertyResponse;
         }
 
     }

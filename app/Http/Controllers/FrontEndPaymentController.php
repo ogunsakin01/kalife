@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FlightBooking;
 use App\Mail\FailedPayment;
+use App\Mail\PaymentPreNotification;
 use App\Mail\SuccessfulFlightBooking;
 use App\Mail\SuccessfulPayment;
 use App\OnlinePayment;
@@ -172,6 +173,8 @@ class FrontEndPaymentController extends Controller
     }
 
     public function saveTransaction(Request $r){
+        $userInfo = User::getUserById($r->user_id);
+        Mail::to($userInfo)->send(new PaymentPreNotification($userInfo,$r->amount,$r->txn_reference));
         return OnlinePayment::store($r);
     }
 

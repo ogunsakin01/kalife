@@ -3,9 +3,9 @@
         <GuestCounts Count="1" />
         <HotelSearchCriteria>
             <Criterion>
-                <HotelRef HotelCityCode="BBI" />
+                <HotelRef HotelCityCode="LON" />
             </Criterion>
         </HotelSearchCriteria>
-        <TimeSpan End="01-16" Start="01-13" />
+        <TimeSpan End="01-16" Start="01-15" />
     </AvailRequestSegment>
 </OTA_HotelAvailRQ>

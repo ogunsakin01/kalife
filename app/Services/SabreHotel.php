@@ -8,8 +8,10 @@
 
 namespace App\Services;
 
-
+use App\Vat;
+use App\AdminMarkup;
 use Illuminate\Support\Carbon;
+
 
 class SabreHotel
 {
@@ -217,6 +219,11 @@ class SabreHotel
         }
     }
 
+    public function getRate($responseArray){
+    $rate = $responseArray['soap-env_Body']['DisplayCurrencyRS']['Country']['Rate'];
+    return $rate;
+    }
+
     public function HotelPropertyDescriptionRQXML($r){
         return '
 <HotelPropertyDescriptionRQ Version="2.3.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -261,7 +268,25 @@ class SabreHotel
     }
 
     public function HotelReserveRQXML(){
-        return '';
+       return '<OTA_HotelResRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ReturnHostCommand="false" TimeStamp="2013-11-22T17:15:00-06:00" Version="2.2.0">
+                <Hotel>
+                  <BasicPropertyInfo ChainCode="XX" HotelCode="1234567" InsertAfter="0" RPH="2" />
+                  <Guarantee Type="GDPST">
+                    <CC_Info>
+                     <PaymentCard Code="VI" ExpireDate="2012-12" Number="4123412341234123"/>
+                     <PersonName>
+                     <Surname>TEST</Surname>
+                     </PersonName>
+                    </CC_Info>
+                  </Guarantee>
+                  <GuestCounts Count="2" />
+                  <RoomType NumberOfUnits="1"/>
+                  <SpecialPrefs>
+                   <WrittenConfirmation Ind="true" />
+                  </SpecialPrefs>
+                  <TimeSpan End="12-24T13:00" Start="12-21T12:00"/>
+                </Hotel>
+              </OTA_HotelResRQ>';
     }
 
     public function HotelAvailValidator($responseArray){
@@ -463,7 +488,7 @@ class SabreHotel
         }
     }
 
-    public function sortPropertyDescription($responseArray){
+    public function sortPropertyDescription($responseArray, $rate){
         $checkinDate = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['TimeSpan']['@attributes']['Start'];
         $checkoutDate = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['TimeSpan']['@attributes']['End'];
         $duration = 0;
@@ -521,6 +546,17 @@ class SabreHotel
         if(isset($responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['RoomRates']['RoomRate'])){
             $availableRooms = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['RoomRates']['RoomRate'];
             if(!isset($availableRooms[0])) {
+                $baseAmountPerNightNaira = $this->SabreConfig->rateAmountCalculator($availableRooms['Rates']['Rate']['@attributes']['Amount'],$rate);
+                $baseAmountAllNights = $availableRooms['Rates']['Rate']['HotelTotalPricing']['@attributes']['Amount'];
+                $baseAmountAllNightsNaira = $this->SabreConfig->rateAmountCalculator($baseAmountAllNights,$rate);
+                if($rate == 0){
+                    $baseAmountAllNightsNaira = 0;
+                }
+                $adminUserMarkupObject = AdminMarkup::getAdminUserMarkup();
+                $tax = $this->SabreConfig->priceTypeCalculator($adminUserMarkupObject->hotel_markup_type,$adminUserMarkupObject->hotel_markup_value,$baseAmountAllNightsNaira);
+                $vatObject = Vat::getVat();
+                $vat = $this->SabreConfig->priceTypeCalculator($vatObject->hotel_vat_type,$vatObject->hotel_vat_value,$baseAmountAllNightsNaira);
+                $totalAmount = $baseAmountAllNightsNaira + $vat + $tax;
                 $roomInfo = [
                     'roomDescription' => $availableRooms['AdditionalInfo']['Text'][0],
                     'roomAmenitySummary' => $availableRooms['AdditionalInfo']['Text'][1],
@@ -529,17 +565,32 @@ class SabreHotel
                     'iataCharacteristicsIdentification' => $availableRooms['@attributes']['IATA_CharacteristicIdentification'],
                     'baseAmountPerNight' => $availableRooms['Rates']['Rate']['@attributes']['Amount'],
                     'currencyCode' => $availableRooms['Rates']['Rate']['@attributes']['CurrencyCode'],
-                    'tax' => '',
-                    'vat' => '',
+                    'baseAmountPerNightNaira' => $baseAmountPerNightNaira,
+                    'tax' => $tax,
+                    'vat' => $vat,
                     'Duration' => $duration,
-                    'baseAmountAllNights' => '',
-                    'totalAmount' => '',
-                    'rph' => $availableRooms['@attributes']['RPH']
+                    'baseAmountAllNights' => $baseAmountAllNights,
+                    'baseAmountAllNightsNaira' => $baseAmountAllNightsNaira,
+                    'totalAmount' => $totalAmount,
+                    'rph' => $availableRooms['@attributes']['RPH'],
+                    'rate' => $rate,
+                    'commission' => $availableRooms['AdditionalInfo']['Commission'],
                 ];
                 array_push($allRooms, $roomInfo);
             }
             else {
                 foreach ($availableRooms as $k => $availableRoom) {
+                    $baseAmountPerNightNaira = $this->SabreConfig->rateAmountCalculator($availableRoom['Rates']['Rate']['@attributes']['Amount'],$rate);
+                    $baseAmountAllNights = $availableRoom['Rates']['Rate']['HotelTotalPricing']['@attributes']['Amount'];
+                    $baseAmountAllNightsNaira = $this->SabreConfig->rateAmountCalculator($baseAmountAllNights,$rate);
+                    if($rate == 0){
+                        $baseAmountAllNightsNaira = 0;
+                    }
+                    $adminUserMarkupObject = AdminMarkup::getAdminUserMarkup();
+                    $tax = $this->SabreConfig->priceTypeCalculator($adminUserMarkupObject->hotel_markup_type,$adminUserMarkupObject->hotel_markup_value,$baseAmountAllNightsNaira);
+                    $vatObject = Vat::getVat();
+                    $vat = $this->SabreConfig->priceTypeCalculator($vatObject->hotel_vat_type,$vatObject->hotel_vat_value,$baseAmountAllNightsNaira);
+                    $totalAmount = $baseAmountAllNightsNaira + $vat + $tax;
                     $roomInfo = [
                         'roomDescription' => $availableRoom['AdditionalInfo']['Text'][0],
                         'roomAmenitySummary' => $availableRoom['AdditionalInfo']['Text'][1],
@@ -548,12 +599,16 @@ class SabreHotel
                         'iataCharacteristicsIdentification' => $availableRoom['@attributes']['IATA_CharacteristicIdentification'],
                         'baseAmountPerNight' => $availableRoom['Rates']['Rate']['@attributes']['Amount'],
                         'currencyCode' => $availableRoom['Rates']['Rate']['@attributes']['CurrencyCode'],
-                        'tax' => '',
-                        'vat' => '',
+                        'baseAmountPerNightNaira' => $baseAmountPerNightNaira,
+                        'tax' => $tax,
+                        'vat' => $vat,
                         'Duration' => $duration,
-                        'baseAmountAllNights' => '',
-                        'totalAmount' => '',
-                        'rph' => $availableRoom['@attributes']['RPH']
+                        'baseAmountAllNights' => $baseAmountAllNights,
+                        'baseAmountAllNightsNaira' => $baseAmountAllNightsNaira,
+                        'totalAmount' => $totalAmount,
+                        'rph' => $availableRoom['@attributes']['RPH'],
+                        'rate' => $rate,
+                        'commission' => $availableRoom['AdditionalInfo']['Commission']
                     ];
                     array_push($allRooms, $roomInfo);
                 }
@@ -580,6 +635,95 @@ class SabreHotel
         ];
     }
 
+    public function PassengerDetailsPassenger($param){
+        $adults = session()->get('hotelSearchParam')['adult_passengers'];
+        $children = session()->get('fligSearchParam')['child_passengers'];
+        $infants = session()->get('flightSearchParam')['infant_passengers'];
+        $passengerDetails = '';
+        $priceQuoteInfo = '';
+        $y = 0;
+        $infants_num = 2;
+        if($adults > 0){
+            for($i = 0; $i < $adults; $i++){
+                $given_name = $param->adult_given_name[$i];
+                $surname = $param->adult_surname[$i];
+                $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="ADT">
+                <GivenName>'.$given_name.'</GivenName>
+                <Surname>'.$surname.'</Surname>
+            </PersonName>';
 
+
+                $passengerDetails = $passengerDetails.$personDetails;
+                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="1"/>';
+                $y = $y+1;
+            }
+        }
+        if($children > 0){
+            for($i = 0; $i < $children; $i++){
+                $given_name = $param->child_given_name[$i];
+                $surname = $param->child_surname[$i];
+                $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="CNN">
+                <GivenName>'.$given_name.'</GivenName>
+                <Surname>'.$surname.'</Surname>
+            </PersonName>';
+                $passengerDetails = $passengerDetails.$personDetails;
+                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="2"/>';
+                $y = $y+1;
+            }
+            $infants_num = $infants_num + 1;
+        }
+        if($infants > 0){
+            if($children > 0){$nameNumber = 3;}else{$nameNumber = 2;}
+            for($i = 0; $i < $infants; $i++){
+                $given_name = $param->infant_given_name[$i];
+                $surname = $param->infant_surname[$i];
+                $personDetails = '<PersonName Infant="true" NameNumber="'.($y + 1).'.1" PassengerType="INF">
+                <GivenName>'.$given_name.'</GivenName>
+                <Surname>'.$surname.'</Surname>
+            </PersonName>';
+                $passengerDetails = $passengerDetails.$personDetails;
+                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'. ($y + 1) .'.1" Record="'.$infants_num.'"/>';
+                $y = $y+1;
+            }
+        }
+        return ['passengers' => $passengerDetails, 'priceQuoteInfo' => $priceQuoteInfo];
+    }
+
+    public function PassengerDetailsRQXML($param){
+        $phone_number = auth()->user()->phone_number;  $email = auth()->user()->email;
+
+        return '<PassengerDetailsRQ version="3.3.0" xmlns="http://services.sabre.com/sp/pd/v3_3" IgnoreOnError="false" HaltOnError="true">
+    <PostProcessing RedisplayReservation="true">
+		<EndTransactionRQ>
+			<EndTransaction Ind="true">
+			</EndTransaction>
+			<Source ReceivedFrom="SWS TESTING"/>
+		</EndTransactionRQ>
+	</PostProcessing>
+	<PriceQuoteInfo>
+		'.$this->PassengerDetailsPassenger($param)['priceQuoteInfo'].'
+	</PriceQuoteInfo>
+
+    <TravelItineraryAddInfoRQ>
+        <AgencyInfo>
+			<Address>
+                  <AddressLine>KALIFE TRAVELS</AddressLine>
+                  <CityName>LAGOS</CityName>
+                  <CountryCode>NG</CountryCode>
+                  <PostalCode>101001</PostalCode>
+                  <StateCountyProv StateCode="LA" />
+                  <StreetNmbr>11B Wole Ariyo</StreetNmbr>
+               </Address>
+		</AgencyInfo>
+        <CustomerInfo>
+            <ContactNumbers>
+                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="'.$phone_number.'" PhoneUseType="H"/>
+            </ContactNumbers>
+            <Email Address="'.$email.'" NameNumber="1.1" Type="CC"/>
+            '.$this->PassengerDetailsPassenger($param)['passengers'].'
+        </CustomerInfo>
+	</TravelItineraryAddInfoRQ>
+</PassengerDetailsRQ>';
+    }
 
 }
