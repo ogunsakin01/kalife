@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MarkupType extends Model
+class MarkupValueType extends Model
 {
   public function fetchTypes()
   {

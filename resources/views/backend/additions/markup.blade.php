@@ -21,9 +21,14 @@
           {!! Form::open() !!}
 
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
-                {!! Form::select('role',['1'=>'1'] ,null, ['id'=>'role', 'class'=>'form-control form-control-sm', 'placeholder'=>'select role']) !!}
+                {!! Form::select('role',$markup_types ,null, ['id'=>'role', 'class'=>'form-control form-control-sm', 'placeholder'=>'select role']) !!}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                {!! Form::select('markup_type',$markup_types ,null, ['id'=>'role', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose markup type']) !!}
               </div>
             </div>
           </div>
@@ -31,12 +36,12 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                {!! Form::text('markup_type',null, ['id'=>'role', 'class'=>'form-control', 'placeholder'=>'markup type']) !!}
+                {!! Form::select('markup_type',$markup_types ,null, ['id'=>'role', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose markup value type']) !!}
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                {!! Form::number('markup_value',null, ['id'=>'role', 'class'=>'form-control', 'placeholder'=>'markup value']) !!}
+                {!! Form::number('markup_value',null, ['id'=>'role', 'class'=>'form-control', 'placeholder'=>'markup value e.g. 12.00']) !!}
               </div>
             </div>
 

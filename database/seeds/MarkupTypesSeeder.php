@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\MarkupType;
 
-class markupTypesSeed extends Seeder
+class MarkupTypesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,21 +13,21 @@ class markupTypesSeed extends Seeder
     public function run()
     {
       $markups = [
-        [
-            'type' => 'Flight'
-        ],
+          [
+              'type' => 'Flight'
+          ],
 
-        [
-            'type' => 'Hotel'
-        ],
+          [
+              'type' => 'Hotel'
+          ],
 
-        [
-            'type' => 'Car'
-        ],
+          [
+              'type' => 'Car'
+          ],
 
-        [
-            'type' => 'Package'
-        ]
+          [
+              'type' => 'Package'
+          ]
       ];
 
       foreach ($markups as $key => $value)
