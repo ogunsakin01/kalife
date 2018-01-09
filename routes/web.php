@@ -64,8 +64,23 @@ Route::post('/package-booking-confirmation','FrontEndPaymentController@packagePa
 
 
 Route::view('/test', 'backend.test');
+
 Route::prefix('backend')->group(function (){
-    Route::view('home', 'backend.home')->name('home');
+    Route::view('home', 'backend.home')->name('backend-home');
+
+    Route::prefix('users')->group(function () {
+      Route::get('new', 'UserController@index')->name('backend-new-users');
+      Route::view('manage', 'backend.users.manage')->name('backend-manage-users');
+    });
+
+    Route::prefix('additions')->group(function (){
+      Route::get('markup', 'MarkupController@markupView')->name('backend-markup');
+      Route::post('markup/admin', 'MarkupController@saveAdminMarkup')->name('backend-save-markup');
+
+      Route::view('markdown', 'backend.additions.markdown')->name('backend-markdown');
+      Route::view('vat', 'backend.additions.vat')->name('backend-vat');
+    });
+
 });
 
 
