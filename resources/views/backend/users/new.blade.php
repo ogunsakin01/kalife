@@ -26,8 +26,34 @@
             </div>
           </div>
 
+          <div class="col-md-3">
+            <div class="form-group">
+              {!! Form::select('gender',['',''] ,null, ['id'=>'title', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose gender']) !!}
+            </div>
+          </div>
+
         </div>
 
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              {!! Form::text('first_name', null, ['id'=>'first_name', 'class'=>'form-control form-control', 'placeholder'=>'john']) !!}
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              {!! Form::text('last_name', null, ['id'=>'last_name', 'class'=>'form-control form-control', 'placeholder'=>'doe']) !!}
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              {!! Form::text('other_name', null, ['id'=>'other_name', 'class'=>'form-control form-control', 'placeholder'=>'james']) !!}
+            </div>
+          </div>
+
+        </div>
         {!! Form::close() !!}
       </div>
     </div>

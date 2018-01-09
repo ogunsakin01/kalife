@@ -24,6 +24,9 @@ class CreateUsersTable extends Migration
             $table->string('phone_number');
             $table->longText('address');
             $table->string('gender');
+            $table->string('agency_name');
+            $table->string('agent_id');
+            $table->string('office_number');
             $table->string('password');
             $table->rememberToken();
             $table->integer('account_status');
