@@ -64,6 +64,7 @@ Route::prefix('backend')->group(function (){
 
     Route::prefix('users')->group(function () {
       Route::get('new', 'UserController@index')->name('backend-new-users');
+      Route::post('new','UserController@saveUser')->name('backend-save-new-users');
       Route::view('manage', 'backend.users.manage')->name('backend-manage-users');
     });
 
