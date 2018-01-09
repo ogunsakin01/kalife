@@ -133,7 +133,6 @@ function extractError(error) {
 
 $(function () {
 
-
   $('#save_markup').click(function () {
     var role = $('#role').val();
     var markup_type = $('#markup_type').val();
