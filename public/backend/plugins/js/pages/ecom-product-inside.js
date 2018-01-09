@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".product-slider").slick({slidesToShow:1,slidesToScroll:1,arrows:!1,fade:!0,asNavFor:".slider-nav"}),$(".slider-nav").slick({slidesToShow:3,slidesToScroll:1,asNavFor:".product-slider",dots:!1,centerMode:!0,focusOnSelect:!0})});

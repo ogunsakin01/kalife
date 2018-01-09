@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
          $this->call(MarkupTypesSeeder::class);
          $this->call(MarkupValueTypeSeeder::class);
+         $this->call(RoleSeeder::class);
     }
 }
