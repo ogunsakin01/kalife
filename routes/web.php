@@ -60,12 +60,14 @@ Route::post('/package-booking-confirmation','FrontEndPaymentController@packagePa
 Route::view('/test', 'backend.test');
 
 Route::prefix('backend')->group(function (){
+  Route::view('home', 'backend.home')->name('backend-home');
 
-    Route::get('password/reset', 'PasswordController@showLinkRequestForm')->name('backend-password-reset');
-    Route::post('password/reset', 'PasswordController@sendPasswordResetLink')->name('backend-password-reset-post');
-    Route::get('login', 'LoginController@index')->name('backend-login');
-    Route::post('login', 'LoginController@authenticate')->name('backend-post-login');
-    Route::view('home', 'backend.home')->name('backend-home');
+  Route::get('password/reset', 'PasswordController@showLinkRequestForm')->name('backend-password-reset');
+  Route::post('password/reset', 'PasswordController@sendPasswordResetLink')->name('backend-password-reset-post');
+  Route::get('login', 'LoginController@index')->name('backend-login');
+  Route::post('login', 'LoginController@authenticate')->name('backend-post-login');
+
+  Route::get('logout', 'LogoutController@logout')->name('backend-logout');
 
     Route::prefix('users')->group(function () {
       Route::get('new', 'UserController@index')->name('backend-new-users');

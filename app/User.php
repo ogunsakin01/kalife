@@ -199,7 +199,7 @@ class User extends Authenticatable
     {
       $user = static::where('email', $data['email'])->first();
 
-      if($user->status == $this->active)
+      if($user->account_status == $this->active)
       {
         return true;
       }

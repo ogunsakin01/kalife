@@ -145,7 +145,10 @@ $(function () {
       if (response.data == 1)
       {
         toastSuccess('Login successful. Redirecting to dashboard...');
-        window.location.href = baseUrl+'/backend/home';
+
+        setInterval(function () {
+          window.location.href = BaseUrl + '/backend/home';
+        },2000);
       }
       else if(response.data == 2)
       {

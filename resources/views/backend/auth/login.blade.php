@@ -11,6 +11,10 @@
 
   @include('partials.backend.css')
 
+  <script type="text/javascript">
+    var BaseUrl = "{{url("/")}}";
+  </script>
+
 </head>
 
 <body>
