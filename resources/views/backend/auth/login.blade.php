@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Prudence - Bootstrap Admin Template</title>
+  <title>Login | Kalife</title>
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="x-ua-compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,6 +48,7 @@
   </div>
 </div>
 
+  @include('partials.backend.javascript')
 <script type="text/javascript" src="{{asset('backend/js/login.js')}}">
 
 </script>

@@ -31,6 +31,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public $active = 1;
+
+    public $inactive = 0;
 
     public static function getUserByEmail($email)
     {
@@ -139,6 +142,116 @@ class User extends Authenticatable
     public function fetchUserById($id)
     {
       return static::where('id', $id)->first();
+    }
+
+    public function checkLogin()
+    {
+      if (auth()->check())
+      {
+        return redirect()->route('backend-home');
+      }
+      else
+      {
+        return view('backend.auth.login');
+      }
+    }
+
+    public function ifUserExists(array $data)
+    {
+      $user = static::where('email', $data['email'])->first();
+
+      if(is_null($user) || empty($user))
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
+
+    public function comparePasswordHash(array $data)
+    {
+      $user = static::where('email', $data['email'])->first();
+
+      if(Hash::check($data['password'], $user->password))
+      {
+        return true;
+      }
+      return false;
+    }
+
+    public function ifPasswordExists(array $data)
+      {
+        $user = static::where('email', $data['email'])->first();
+
+        if($user->password == $data['password'])
+        {
+          return true;
+        }
+
+        return false;
+      }
+
+    public function checkAccountStatus(array $data)
+    {
+      $user = static::where('email', $data['email'])->first();
+
+      if($user->status == $this->active)
+      {
+        return true;
+      }
+      return false;
+    }
+
+    public function authenticateUser(array $data)
+    {
+      if ($this->ifUserExists($data))
+      {
+        if ($this->comparePasswordHash($data))
+        {
+          if ($this->checkAccountStatus($data))
+          {
+            /*
+             * Authenticate user
+             * */
+            $response = 1;
+
+            $user = static::where('email', $data['email'])->first();
+
+            auth()->login($user);
+
+            return response()->json($response);
+          }
+          else
+          {
+            /*
+             * Return user back. user has been blocked
+             * */
+            $response = 2;
+
+            return response()->json($response);
+          }
+        }
+        else
+        {
+          /*
+           * Return user back. Incorrect email/ password
+           * */
+          $response = 0;
+
+          return response()->json($response);
+        }
+      }
+      else
+      {
+        /*
+         * Return user back. Incorrect email/ password
+         * */
+        $response = 0;
+
+        return response()->json($response);
+      }
     }
 
 }

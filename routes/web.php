@@ -61,7 +61,7 @@ Route::view('/test', 'backend.test');
 
 Route::prefix('backend')->group(function (){
 
-    Route::view('login', 'backend.auth.login')->name('backend-login');
+    Route::get('login', 'LoginController@index')->name('backend-login');
     Route::post('login', 'LoginController@authenticate')->name('backend-post-login');
     Route::view('home', 'backend.home')->name('backend-home');
 
