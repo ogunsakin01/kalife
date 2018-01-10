@@ -60,7 +60,7 @@ Route::post('/package-booking-confirmation','FrontEndPaymentController@packagePa
 Route::view('/test', 'backend.test');
 
 Route::prefix('backend')->group(function (){
-  Route::view('home', 'backend.home')->name('backend-home');
+  Route::get('home', 'HomeController@index')->name('backend-home');
 
   Route::get('password/reset', 'PasswordController@showLinkRequestForm')->name('backend-password-reset');
   Route::post('password/reset', 'PasswordController@sendPasswordResetLink')->name('backend-password-reset-post');
@@ -69,21 +69,23 @@ Route::prefix('backend')->group(function (){
 
   Route::get('logout', 'LogoutController@logout')->name('backend-logout');
 
-    Route::prefix('users')->group(function () {
-      Route::get('new', 'UserController@index')->name('backend-new-users');
-      Route::post('new','UserController@saveUser')->name('backend-save-new-users');
-      Route::get('fetch','UserController@fetchUsers')->name('backend-fetch-users');
-      Route::get('edit/{id}','UserController@editUser')->name('backend-edit-user');
-      Route::get('delete/{id}','UserController@deleteUser')->name('backend-delete-user');
-      Route::view('manage', 'backend.users.manage')->name('backend-manage-users');
-    });
+  Route::prefix('users')->group(function () {
+    Route::get('new', 'UserController@index')->name('backend-new-users');
+    Route::post('new','UserController@saveUser')->name('backend-save-new-users');
+    Route::get('fetch','UserController@fetchUsers')->name('backend-fetch-users');
+    Route::get('edit/{id}','UserController@editUser')->name('backend-edit-user');
+    Route::get('delete/{id}','UserController@deleteUser')->name('backend-delete-user');
+    Route::view('manage', 'backend.users.manage')->name('backend-manage-users');
+  });
 
-    Route::prefix('additions')->group(function (){
-      Route::get('markup', 'MarkupController@markupView')->name('backend-markup');
-      Route::post('markup/admin', 'MarkupController@saveAdminMarkup')->name('backend-save-markup');
+  Route::prefix('additions')->group(function (){
+    Route::get('markup', 'MarkupController@markupView')->name('backend-markup');
+    Route::post('markup/admin', 'MarkupController@saveAdminMarkup')->name('backend-save-markup');
 
-      Route::view('markdown', 'backend.additions.markdown')->name('backend-markdown');
-      Route::view('vat', 'backend.additions.vat')->name('backend-vat');
+    Route::view('markdown', 'backend.additions.markdown')->name('backend-markdown');
+
+    Route::get('vat', 'VatController@vatView')->name('backend-vat');
+    Route::post('vat', 'VatController@saveVat')->name('backend-save-vat');
     });
 
 });

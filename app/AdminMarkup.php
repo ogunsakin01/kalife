@@ -12,20 +12,21 @@ class AdminMarkup extends Model
     public $package = 4;
 
 
-    public static function getAdminUserMarkup(){
+    public static function getAdminUserMarkup()
+    {
         return static::where('role_id', 3)->first();
     }
 
     public function updateOrCreateMarkup($data)
     {
-      $markup = static::where('user_id', /*auth()->id()*/ 1)
+      $markup = static::where('user_id', auth()->id())
           ->where('role_id', $data['role'])
           ->first();
 
       if (is_null($markup))
       {
         $markup = new static();
-        $markup->user_id = /*auth()->id()*/ 1;
+        $markup->user_id = auth()->id();
         $markup->role_id = $data['role'];
 
         if ($data['markup_type'] == $this->flight)
@@ -84,8 +85,11 @@ class AdminMarkup extends Model
         }
         return false;
       }
+    }
 
-
+    public function fetchAuthenticatedUserMarkup()
+    {
+      $markup = static::where('user_id', auth()->id)->get();
 
     }
 

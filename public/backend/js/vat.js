@@ -1,6 +1,7 @@
 /**
- * Created by hp on 9/1/2018.
+ * Created by hp on 10/1/2018.
  */
+
 function toastWarning(message){
   return iziToast.warning({
     timeout: 10000,
@@ -133,25 +134,23 @@ function extractError(error) {
 
 $(function () {
 
-  $('#save_markup').click(function () {
-    var role = $('#role').val();
-    var markup_type = $('#markup_type').val();
-    var markup_value_type = $('#markup_value_type').val();
-    var markup_value = $('#markup_value').val();
+  $('#save_vat').click(function () {
+    var vat_type = $('#vat_type').val();
+    var vat_value_type = $('#vat_value_type').val();
+    var vat_value = $('#vat_value').val();
 
-    axios.post('/backend/additions/markup/admin', {
-      'role': role,
-      'markup_type': markup_type,
-      'markup_value_type': markup_value_type,
-      'markup_value': markup_value
+    axios.post('/backend/additions/vat', {
+      'vat_type': vat_type,
+      'vat_value_type': vat_value_type,
+      'vat_value': vat_value
     }).then(function (response) {
       if(response.data == 1)
       {
-        toastSuccess('Markup saved successfully')
+        toastSuccess('Vat saved successfully')
       }
       else
       {
-        toastError('Could not save markup');
+        toastError('Could not save vat');
       }
     }).catch(function (error) {
       extractError(error);
@@ -160,7 +159,7 @@ $(function () {
 
 });
 
-function fetchMarkups()
+function fetchVats()
 {
 
 }

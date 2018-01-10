@@ -288,4 +288,13 @@ class User extends Authenticatable
       return static::where('email', $email)->first()->first_name;
     }
 
+    public function getAuthenticatedUserFullName()
+    {
+      return auth()->user()->first_name. " ". auth()->user()->last_name;
+    }
+
+    /*
+     * Relating role table to user table*/
+
+
 }

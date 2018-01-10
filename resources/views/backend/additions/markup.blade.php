@@ -65,6 +65,7 @@
               <thead>
               <tr>
                 <th>#</th>
+                <th>Role</th>
                 <th>Type</th>
                 <th>Value Type</th>
                 <th>Value</th>
