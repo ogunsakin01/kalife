@@ -133,31 +133,27 @@ function extractError(error) {
 }
 
 $(function () {
-  $('#sign_in').click(function () {
+  $('#send_link').click(function () {
     var email = $('#email').val();
-    var password = $('#password').val();
 
-    axios.post('/backend/login', {
-      'email': email,
-      'password': password
+    axios.post('/backend/password/reset', {
+      'email': email
     })
-    .then(function (response) {
-      if (response.data == 1)
-      {
-        toastSuccess('Login successful. Redirecting to dashboard...');
-        window.location.href = baseUrl+'/backend/home';
-      }
-      else if(response.data == 2)
-      {
-        toastError('User blocked. See the admin.');
-      }
-      else if(response.data == 0)
-      {
-        toastError('Incorrect email/password. Try again');
-      }
-    })
-    .catch(function (error) {
-      extractError(error);
-    })
+        .then(function (response) {
+          if (response.data == 1)
+          {
+            toastSuccess('Password reset link sent');
+            window.location.href = baseUrl+'/backend/login';
+          }
+          else if(response.data == 0)
+          {
+            toastError('Could not send email. Check your email and try again');
+          }
+
+          console.log(response);
+        })
+        .catch(function (error) {
+          extractError(error);
+        })
   });
 });

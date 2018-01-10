@@ -61,6 +61,8 @@ Route::view('/test', 'backend.test');
 
 Route::prefix('backend')->group(function (){
 
+    Route::get('password/reset', 'PasswordController@showLinkRequestForm')->name('backend-password-reset');
+    Route::post('password/reset', 'PasswordController@sendPasswordResetLink')->name('backend-password-reset-post');
     Route::get('login', 'LoginController@index')->name('backend-login');
     Route::post('login', 'LoginController@authenticate')->name('backend-post-login');
     Route::view('home', 'backend.home')->name('backend-home');

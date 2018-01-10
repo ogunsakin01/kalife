@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Mail\PasswordResetLink;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 class User extends Authenticatable
 {
@@ -252,6 +254,38 @@ class User extends Authenticatable
 
         return response()->json($response);
       }
+    }
+
+    public function checkPasswordResetEmail(array $data)
+    {
+      if ($this->ifUserExists($data))
+      {
+        try
+        {
+          Mail::to($data['email'])->send(new PasswordResetLink($data['email']));
+
+          $response = 1;
+
+          return response()->json($response);
+        }
+        catch (\Exception $e)
+        {
+          $response = 0;
+
+          return response()->json($response);
+        }
+      }
+      else
+      {
+        $response = 0;
+
+        return response()->json($response);
+      }
+    }
+
+    public function getFirstNameByEmail($email)
+    {
+      return static::where('email', $email)->first()->first_name;
     }
 
 }
