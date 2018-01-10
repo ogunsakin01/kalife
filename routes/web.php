@@ -60,6 +60,9 @@ Route::post('/package-booking-confirmation','FrontEndPaymentController@packagePa
 Route::view('/test', 'backend.test');
 
 Route::prefix('backend')->group(function (){
+
+    Route::view('login', 'backend.auth.login')->name('backend-login');
+    Route::post('login', 'LoginController@authenticate')->name('backend-post-login');
     Route::view('home', 'backend.home')->name('backend-home');
 
     Route::prefix('users')->group(function () {

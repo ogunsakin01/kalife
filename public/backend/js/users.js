@@ -4,6 +4,7 @@
 $('#users_table').dataTable({
 
 });
+
 function toastWarning(message){
   return iziToast.warning({
     timeout: 10000,
