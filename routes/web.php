@@ -65,6 +65,9 @@ Route::prefix('backend')->group(function (){
     Route::prefix('users')->group(function () {
       Route::get('new', 'UserController@index')->name('backend-new-users');
       Route::post('new','UserController@saveUser')->name('backend-save-new-users');
+      Route::get('fetch','UserController@fetchUsers')->name('backend-fetch-users');
+      Route::get('edit/{id}','UserController@editUser')->name('backend-edit-user');
+      Route::get('delete/{id}','UserController@deleteUser')->name('backend-delete-user');
       Route::view('manage', 'backend.users.manage')->name('backend-manage-users');
     });
 

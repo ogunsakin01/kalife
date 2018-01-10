@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-12">
     <div class="card">
       <div class="card-header">
         Create User
@@ -30,14 +30,14 @@
           <div class="col-md-3">
             <div class="form-group">
               {!! Form::label('','Gender') !!}
-              {!! Form::select('gender',$gender ,null, ['id'=>'title', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose gender']) !!}
+              {!! Form::select('gender',$gender ,null, ['id'=>'gender', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose gender']) !!}
             </div>
           </div>
 
           <div class="col-md-3">
             <div class="form-group">
               {!! Form::label('','Account Status') !!}
-              {!! Form::select('status',$status ,null, ['id'=>'title', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose status']) !!}
+              {!! Form::select('account_status',$status ,null, ['id'=>'account_status', 'class'=>'form-control form-control-sm', 'placeholder'=>'choose status']) !!}
             </div>
           </div>
 
@@ -152,10 +152,30 @@
     </div>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">User List</div>
+      <div class="card-body">
+        <div id="example1_wrapper" class="dataTables_wrapper">
+          <table id="users_table" class="table table-striped dataTable">
+            <thead>
+              <th>#</th>
+              <th>Full Name</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Action</th>
+            </thead>
+            <tbody id="user_table_body">
 
+            </tbody>
+          </table>
+          </div>
+      </div>
+    </div>
   </div>
+
 </div>
+
 @endsection
 
 @section('javascript')
