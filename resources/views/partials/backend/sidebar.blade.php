@@ -33,8 +33,8 @@
       </li>
 
       <li>
-        <a class="pr-mn collapsed" href="{{route('backend-new-users')}}">
-          <span class="icon ti-notepad"></span>User Management
+        <a class="pr-mn collapsed" href="{{route('backend-profile-view')}}">
+          <span class="icon ti-user"></span>Profile Management
         </a>
       </li>
 

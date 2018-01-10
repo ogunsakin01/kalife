@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Mail\PasswordResetLink;
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
@@ -293,8 +294,42 @@ class User extends Authenticatable
       return auth()->user()->first_name. " ". auth()->user()->last_name;
     }
 
-    /*
-     * Relating role table to user table*/
+    public function userCreatedDate()
+    {
+      $user = static::where('id', auth()->id())->first();
 
+      $created_date = Carbon::parse($user->created_at)->toFormattedDateString();
+
+      return $created_date;
+    }
+
+    public function authenticatedUserProfile()
+    {
+      $user = static::where('id', auth()->id())->first();
+
+      $title = new Title();
+
+      $gender = new Gender();
+
+      $role = new Role();
+
+      $data = [
+          'title' => $title->getTitleById($user->title),
+          'full_name' => $user->first_name." ".$user->last_name." ".$user->other_name,
+          'date_of_birth' => Carbon::parse($user->date_of_birth)->toFormattedDateString(),
+          'email' => $user->email,
+          'phone_number' => $user->phone_number,
+          'address' => $user->address,
+          'gender' => $gender->getGenderById($user->gender),
+          'agency_name' => $user->agency_name,
+          'agent_id' => $user->agent_id,
+          'office_number' => $user->office_number,
+          'account_status' => $this->status($user->account_status),
+          'role' => $role->role($user->id),
+          'created_on' => Carbon::parse($user->created_at)->toFormattedDateString()
+      ];
+
+      return $data;
+    }
 
 }

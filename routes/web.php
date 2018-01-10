@@ -88,6 +88,10 @@ Route::prefix('backend')->group(function (){
     Route::post('vat', 'VatController@saveVat')->name('backend-save-vat');
     });
 
+  Route::prefix('profile')->group(function (){
+    Route::get('', 'ProfileController@profileView')->name('backend-profile-view');
+  });
+
 });
 
 
