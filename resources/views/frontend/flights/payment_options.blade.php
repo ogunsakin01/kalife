@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('title')Payment Options @endsection
-@section('activeFlight')
-    class='active'
-@endsection
+@section('activeFlight')  active @endsection
 @section('content')
     {{--{{dd($paymentInfo)}}--}}
     <div class="gap gap-small"></div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title') Flying Passengers Details @endsection
-
+@section('activeFlight')  active @endsection
 @section('content')
 <div class="gap gap-small"></div>
     <div class="container">
@@ -71,7 +71,7 @@
                     </form>
                     <div class="checkbox">
                         <label>
-                            Are you a new customer ? <a class="popup-text" href="#register_new_user" data-effect="mfp-zoom-out">Register Here</a>
+                            Are you a new customer ? <a class="popup-text" href="#register_new_user" data-effect="mfp-zoom-out">Register Here</a>. Can't remember password ? <a href="{{url('/password/reset')}}">Recover Here</a>
                         </label>
                     </div>
                     <div class="gap gap-small"></div>

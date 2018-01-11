@@ -4,6 +4,7 @@
     @include('partials.flightSearchOverlay')
     @include('partials.flightPricingOverlay')
 @endsection
+@section('activeFlight')  active @endsection
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">

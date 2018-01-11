@@ -4,9 +4,9 @@
         <GuestCounts Count="1" />
         <HotelSearchCriteria>
             <Criterion>
-                <HotelRef HotelCode="0055497" />
+                <HotelRef HotelCode="0004600" />
             </Criterion>
         </HotelSearchCriteria>
-        <TimeSpan End="01-18" Start="01-11" />
+        <TimeSpan End="02-21" Start="02-19" />
     </AvailRequestSegment>
 </HotelPropertyDescriptionRQ>

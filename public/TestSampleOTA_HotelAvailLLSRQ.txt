@@ -3,9 +3,9 @@
         <GuestCounts Count="1" />
         <HotelSearchCriteria>
             <Criterion>
-                <HotelRef HotelCityCode="DXB" />
+                <HotelRef HotelCityCode="LOS" />
             </Criterion>
         </HotelSearchCriteria>
-        <TimeSpan End="01-18" Start="01-11" />
+        <TimeSpan End="02-21" Start="02-19" />
     </AvailRequestSegment>
 </OTA_HotelAvailRQ>

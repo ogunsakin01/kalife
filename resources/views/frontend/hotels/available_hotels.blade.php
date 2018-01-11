@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title')Available Hotels  @endsection
+@section('activeHotel') active @endsection
 @section('content')
     <div class="container">
         <ul class="breadcrumb">

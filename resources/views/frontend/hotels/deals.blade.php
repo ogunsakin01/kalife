@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title') Top Hotels Deals   @endsection
-
+@section('activeHotel') active @endsection
 @section('content')
 
     <div class="container">

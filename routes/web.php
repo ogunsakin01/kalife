@@ -51,7 +51,7 @@ Route::get('/hotel-information', 'HotelController@selectedHotel');
 Route::view('/hotels', 'frontend.hotels.deals');
 Route::get('/room-booking/{room}','HotelController@selectedRoomBooking');
 Route::post('/hotelPassengerDetailsRQ','HotelController@createReservation');
-Route::get('/payment-option/reservation/{room}','HotelController@hotelPaymentOption');
+Route::get('/payment-option/{room}/reservation','HotelController@hotelPaymentOption');
 
 Route::post('/initiatePaystack','FrontEndPaymentController@initiatePaystack');
 Route::post('/saveTransaction','FrontEndPaymentController@saveTransaction');

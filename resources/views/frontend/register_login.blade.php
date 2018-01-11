@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('title')Join Us,Create an account and login at Kalife Travels and Tours @endsection
-@section('activeHome')
-    class='active'
-@endsection
+@section('activeRegisterLogin') active @endsection
 @section('content')
     <div class="container">
         <h1>Login/Register on Kalife Travels and Tours</h1>
@@ -52,6 +50,9 @@
                                 <label>Password</label>
                                 <input class="form-control" name="password" required type="password" placeholder="my secret password" />
                             </div>
+                        </div>
+                        <div class="col-md-12">
+                            Can't remember password ? <a href="{{url('/password/reset')}}">Recover Here</a>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">

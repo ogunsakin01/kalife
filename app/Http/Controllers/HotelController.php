@@ -7,6 +7,7 @@ use App\Services\PaystackConfig;
 use App\Services\SabreConfig;
 use App\Services\SabreHotel;
 use App\Services\SabreSessionManager;
+use App\SessionToken;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -105,6 +106,12 @@ class HotelController extends Controller
         }
         else{
             $getDescription   = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('HotelPropertyDescriptionLLSRQ',$session_store),$this->SabreHotel->HotelPropertyDescriptionRQXML($r),'HotelPropertyDescriptionLLSRQ');
+            $file = fopen("TestSampleHotelPropertyDescriptionLLSRQ.txt","w");
+            fwrite($file, $this->SabreHotel->HotelPropertyDescriptionRQXML($r));
+            fclose($file);
+            $file = fopen("TestSampleHotelPropertyDescriptionLLSRS.txt","w");
+            fwrite($file, $getDescription);
+            fclose($file);
             $hotelPropertyResponse =  $this->SabreHotel->validateHotelPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription));
 //            return $this->SabreConfig->mungXmlToArray($getDescription);
             if($hotelPropertyResponse == 1){
@@ -130,12 +137,7 @@ class HotelController extends Controller
                 session()->put('selectedHotel',$this->SabreHotel->sortPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription),$rate));
                 session()->put('selectedHotelId',$r->id);
             }
-            $file = fopen("TestSampleHotelPropertyDescriptionLLSRQ.txt","w");
-            fwrite($file, $this->SabreHotel->HotelPropertyDescriptionRQXML($r));
-            fclose($file);
-            $file = fopen("TestSampleHotelPropertyDescriptionLLSRS.txt","w");
-            fwrite($file, $getDescription);
-            fclose($file);
+
             return $hotelPropertyResponse;
         }
 
@@ -156,34 +158,56 @@ class HotelController extends Controller
         }
         else{
             $runPassengerDetails = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('PassengerDetailsRQ',$session_store),$this->SabreHotel->PassengerDetailsRQXML(),'PassengerDetailsRQ');
-            $runHotelReserve      = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('OTA_HotelResLLSRQ',$session_store),$this->SabreHotel->HotelReserveRQXML($room,$selectedHotel),'OTA_HotelResLLSRQ');
-            $runEndTransaction   = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('EndTransactionLLSRQ',$session_store),$this->SabreHotel->EndTransactionRQXML(),'EndTransactionLLSRQ');
-
-            $file = fopen("TestSamplehotelPassenegrDetailsRQ.txt","w");
+            $file = fopen("TestSampleHotelPassengerDetailsRQ.txt","w");
             fwrite($file, $this->SabreHotel->PassengerDetailsRQXML());
             fclose($file);
-            $file = fopen("TestSamplehotelPassenegrDetailsRS.txt","w");
+            $file = fopen("TestSampleHotelPassengerDetailsRS.txt","w");
             fwrite($file, $runPassengerDetails);
             fclose($file);
-            $file = fopen("TestSamplehotelResRQ.txt","w");
-            fwrite($file, $this->SabreHotel->HotelReserveRQXML($room,$selectedHotel));
-            fclose($file);
-            $file = fopen("TestSamplehotelResRS.txt","w");
-            fwrite($file, $runHotelReserve);
-            fclose($file);
-            $file = fopen("TestSampleEndTransactionRQ.txt","w");
-            fwrite($file, $this->SabreHotel->EndTransactionRQXML());
-            fclose($file);
-            $file = fopen("TestSampleEndTransactionRS.txt","w");
-            fwrite($file, $runEndTransaction);
-            fclose($file);
-            dd(
-                [
-                    $this->SabreConfig->mungXmlToArray($runPassengerDetails),
-                    $this->SabreConfig->mungXmlToArray($runHotelReserve),
-                    $this->SabreConfig->mungXmlToArray($runEndTransaction)
-                ]
-            );
+            if($this->SabreHotel->validatePassengerDetailsResponse($runPassengerDetails) == 1){
+                $runHotelReserve = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('OTA_HotelResLLSRQ',$session_store),$this->SabreHotel->HotelReserveRQXML($room,$selectedHotel),'OTA_HotelResLLSRQ');
+                $file = fopen("TestSampleHotelResRQ.txt","w");
+                fwrite($file, $this->SabreHotel->HotelReserveRQXML($room,$selectedHotel));
+                fclose($file);
+                $file = fopen("TestSampleHotelResRS.txt","w");
+                fwrite($file, $runHotelReserve);
+                fclose($file);
+//                dd(
+//                    [
+//                        $this->SabreConfig->mungXmlToArray($runPassengerDetails),
+//                        $this->SabreConfig->mungXmlToArray($runHotelReserve),
+//                    ]
+//                );
+                SessionToken::tokenClosed($session_store['message_id']);
+                SessionToken::tokenUsed($session_store['message_id']);
+                session()->put('message_id',$session_store['message_id']);
+                $responseValidator = $this->SabreHotel->validateHotelResResponse($runHotelReserve);
+                if($responseValidator == 1){
+                    $reference = $this->SabreConfig->bookingReference('hotel');
+                    session()->put('bookingReference',$reference);
+                    /**
+                    Store booking here
+                     */
+                    return redirect(url('/payment-option/'.$room.'/reservation'));
+                }elseif($responseValidator == 2){
+                    return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Select another hotel or another room from the result and try again.');
+                }elseif($responseValidator == 0){
+                    return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Could not connect to server.');
+                }
+            }else{
+//                dd(
+//                    [
+//                        $this->SabreConfig->mungXmlToArray($runPassengerDetails)
+//                    ]
+//                );
+                $responseValidator = $this->SabreHotel->validatePassengerDetailsResponse($runPassengerDetails);
+                if($responseValidator == 2){
+                    return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Select another hotel or another room from the result and try again.');
+                }elseif($responseValidator == 0){
+                    return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Could not connect to server.');
+                }
+            }
+
         }
     }
 
@@ -193,6 +217,20 @@ class HotelController extends Controller
         $hotelSearchParam = session()->get('hotelSearchParam');
         $hotelsAvail = session()->get('availableHotels');
         $hotel = $this->SabreHotel->HotelAvailSort($hotelsAvail)[session()->get('selectedHotelId')];
-        return view('frontend.hotels.payment_options',compact('selectedHotel','hotelSearchParam','hotel','room'));
+        $txnRef = session()->get('bookingReference');
+        $bookingInfo = FlightBooking::getBooking($txnRef);
+        $custInfo = User::getUserById($bookingInfo->user_id);
+        $paymentInfo = [
+            'reference' => $txnRef,
+            'amount' => $bookingInfo->total_amount,
+            'pay_item_id' => $this->InterswitchConfig->item_id,
+            'site_redirect_url' => url('/flight-booking-confirmation'),
+            'product_id' => $this->InterswitchConfig->product_id,
+            'cust_id' => $bookingInfo->user_id,
+            'cust_name' => $custInfo->first_name.' '.$custInfo->last_name,
+            'hash' => $this->InterswitchConfig->transactionHash($txnRef,$bookingInfo->total_amount,url('/hotel-booking-confirmation')),
+            'email' => $custInfo->email
+        ];
+        return view('frontend.hotels.payment_options',compact('selectedHotel','hotelSearchParam','hotel','room','bookingInfo','paymentInfo'));
     }
 }
