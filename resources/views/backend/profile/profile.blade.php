@@ -156,176 +156,42 @@
 
             <!-- Messages tab -->
             <div class="tab-pane fade" id="change_password" aria-expanded="false">
-              <div class="row mb-3">
-                <div class="col-3">
-                  <button class="btn btn-alt-primary btn-block" type="button"><i class="fa fa-edit"></i> New Compose</button>
-                </div>
-                <div class="col-9">
-                  <input type="text" class="form-control form-control-lg" placeholder="Search...">
+              {!! Form::open(['route' => 'backend-change-password']) !!}
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    {!! Form::label('','Old Password') !!}
+                    {!! Form::text('old_password' ,null, ['id'=>'old_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
+                  </div>
                 </div>
               </div>
-              <ul class="message-list"><!-- Message list -->
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    {!! Form::label('','New Password') !!}
+                    {!! Form::text('new_password' ,null, ['id'=>'new_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
                   </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/02.jpg" alt="">
-                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    {!! Form::label('','Confirm Password') !!}
+                    {!! Form::text('confirm_password' ,null, ['id'=>'confirm_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
                   </div>
-                  <div class="sender">
-                    Harris Kane
-                  </div>
-                  <div class="title">
-                    Nihil anim keffiyeh helvetica, craft beer
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/01.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Thomas Mollor
-                  </div>
-                  <div class="title">
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/03.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Gigi Laonard
-                  </div>
-                  <div class="title">
-                    Leggings occaecat craft beer farm-to-table
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/06.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Michael Wong
-                  </div>
-                  <div class="title">
-                    Euweuh nu bisa ngajar kuring ka lembur, kumaha?
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/04.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Phil Neck
-                  </div>
-                  <div class="title">
-                    Nganggo naon urang teu tiasa hilap kana iyeu teh
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/05.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Jane Doe
-                  </div>
-                  <div class="title">
-                    Ulah ngan ukur di ogo wae ateuh
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/07.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Chris Wilox
-                  </div>
-                  <div class="title">
-                    Onsta kal bureno un saena kana
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/08.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Martin Plermo
-                  </div>
-                  <div class="title">
-                    Teu pati teuing ari geuring tapi masih keneh
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/09.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Oscar Dunn
-                  </div>
-                  <div class="title">
-                    Sing sehat badan sareng sakaluargi kasep
-                  </div>
-                </li>
-                <li>
-                  <div class="check">
-                    <input type="checkbox">
-                  </div>
-                  <div class="pic-container">
-                    <div class="pic">
-                      <img src="assets/images/profiles/10.jpg" alt="">
-                    </div>
-                  </div>
-                  <div class="sender">
-                    Frans Likuwa
-                  </div>
-                  <div class="title">
-                    Mun hoyong terang mah diajar atuh geura
-                  </div>
-                </li>
-              </ul><!-- End Message list -->
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <button class="btn btn-alt-primary pull-right btn-sm" id="change_password" name="change_password">Change</button>
+                </div>
+              </div>
+
+              {!! Form::close() !!}
             </div>
             <!-- /End Messages tab -->
 

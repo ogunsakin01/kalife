@@ -156,4 +156,10 @@ $(function () {
           extractError(error);
         })
   });
+
+  $('#change_password').click(function () {
+    var old_password = $('#old_password').val();
+    var new_password = $('#new_password').val();
+    var confirm_password = $('#confirm_password').val();
+  });
 });

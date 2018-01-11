@@ -26,4 +26,12 @@ class PasswordController extends Controller
 
     return $user->checkPasswordResetEmail($r->all());
   }
+
+  public function changePassword(Request $r)
+  {
+    $this->validate($r, [
+       'old_password' => 'required',
+       'new_password' => 'required|same:confirm_password'
+    ]);
+  }
 }
