@@ -161,5 +161,32 @@ $(function () {
     var old_password = $('#old_password').val();
     var new_password = $('#new_password').val();
     var confirm_password = $('#confirm_password').val();
+
+    axios.post('/backend/password/change', {
+      'old_password': old_password,
+      'new_password': new_password,
+      'confirm_password': confirm_password
+    })
+    .then(function (response) {
+
+      if (response.data == 1)
+      {
+        $('#old_password').val("");
+        $('#new_password').val("");
+        $('#confirm_password').val("");
+        toastSuccess('Password changed successfully');
+      }
+      else if (response.data == 0)
+      {
+        toastError('Could not change password. Try again!');
+      }
+      else if (response.data == 2)
+      {
+        toastError('Incorrect password. Try again!');
+      }
+    })
+    .catch(function (error) {
+      extractError(error);
+    })
   });
 });

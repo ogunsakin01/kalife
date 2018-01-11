@@ -332,4 +332,30 @@ class User extends Authenticatable
       return $data;
     }
 
+    public function checkPassword(array $data)
+    {
+      $user = static::where('email', auth()->user()->email)->first();
+
+      if(Hash::check($data['old_password'], $user->password))
+      {
+        return true;
+      }
+
+      return false;
+    }
+
+    public function changePassword(array $data)
+    {
+      $user = static::where('id', auth()->id())->first();
+
+      $user->password = Hash::make($data['new_password']);
+
+      if ($user->update())
+      {
+        return true;
+      }
+
+      return false;
+    }
+
 }

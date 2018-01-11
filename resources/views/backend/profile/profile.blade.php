@@ -39,7 +39,7 @@
             <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile_tab" aria-expanded="true">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="change-password-tab" data-toggle="tab" href="#change_password" aria-expanded="false">Change Password</a>
+            <a class="nav-link" id="change-password-tab" data-toggle="tab" href="#change_password_tab" aria-expanded="false">Change Password</a>
           </li>
         </ul>
 
@@ -155,14 +155,14 @@
             <!-- /End Dashboard tab -->
 
             <!-- Messages tab -->
-            <div class="tab-pane fade" id="change_password" aria-expanded="false">
+            <div class="tab-pane fade" id="change_password_tab" aria-expanded="false">
               {!! Form::open(['route' => 'backend-change-password']) !!}
 
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     {!! Form::label('','Old Password') !!}
-                    {!! Form::text('old_password' ,null, ['id'=>'old_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
+                    {!! Form::password('old_password', ['id'=>'old_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
                   </div>
                 </div>
               </div>
@@ -171,7 +171,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     {!! Form::label('','New Password') !!}
-                    {!! Form::text('new_password' ,null, ['id'=>'new_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
+                    {!! Form::password('new_password', ['id'=>'new_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
                   </div>
                 </div>
               </div>
@@ -180,14 +180,14 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     {!! Form::label('','Confirm Password') !!}
-                    {!! Form::text('confirm_password' ,null, ['id'=>'confirm_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
+                    {!! Form::password('confirm_password', ['id'=>'confirm_password', 'class'=>'form-control', 'placeholder'=>'********']) !!}
                   </div>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6">
-                  <button class="btn btn-alt-primary pull-right btn-sm" id="change_password" name="change_password">Change</button>
+                  <button class="btn btn-alt-primary pull-right btn-sm" type="button" id="change_password" name="change_password">Change</button>
                 </div>
               </div>
 
@@ -202,4 +202,8 @@
 
     </div><!-- .col -->
   </div>
+@endsection
+
+@section('javascript')
+  <script type="text/javascript" src="{{asset('backend/js/passwords.js')}}"></script>
 @endsection
