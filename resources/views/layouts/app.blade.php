@@ -12,14 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript">
         var baseUrl = "{{url("/")}}";
-
         var path = "{{ route('typeaheadJs') }}";
     </script>
     @include('partials.css')
 </head>
 
-<body id="body">
+<body class="full">
 <div class="global-wrap">
+    <div class="template-content">
         <header id="main-header">
             @include('partials.header')
             <div class="container">
@@ -37,12 +37,14 @@
                 </div>
             </div>
         </header>
-    <div class="gap"></div>
+
         @yield('content')
         @include('partials.footer')
     @include('partials.flightSearch')
     @include('partials.multiCity')
     @include('partials.usersReg');
+    </div>
+    @yield('loadingOverlay')
     @include('partials.js')
 </div>
 @yield('timeoutScript')

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')Flight Booking History @endsection
 @section('content')
-
+    <div class="gap gap-small"></div>
     <div class="container">
         <h1 class="page-title">Flights History</h1>
     </div>
     <div class="container">
         <div class="row">
-            @include('partials.profileSideBar');
+            @include('partials.profileSideBar')
             <div class="col-md-9">
              <div style="overflow-x: scroll;">
                  <table class="table table-bordered table-striped table-booking-history data-table">
@@ -33,7 +33,6 @@
                      <tbody>
                      @foreach(\App\FlightBooking::getAllBookingsByUserId(auth()->user()->id) as $i => $flight)
                          <tr>
-                               {{--{{dd(json_decode($flight->pnr_request_response, true)['soap-env_Body']['PassengerDetailsRS']['TravelItineraryReadRS']['TravelItinerary']['CustomerInfo']['PersonName'])}}--}}
                              <td>{{$flight->reference}}</td>
                              <td>@if($flight->payment_status == 1) {{$flight->pnr}} @else <label class="label label-danger">Incomplete</label> @endif </td>
                              <td>&#x20A6;{{number_format($flight->itinerary_amount)}} </td>
@@ -66,51 +65,65 @@
                                          <li>
                                              <h5>Flight Details</h5>
                                              <div class="booking-item-payment-flight">
-                                                 <div class="row">
-                                                     <div class="col-md-9">
-                                                         <div class="booking-item-flight-details">
-                                                             <div class="booking-item-departure"><i class="fa fa-plane"></i>
-                                                                 <h5>10:25 PM</h5>
-                                                                 <p class="booking-item-date">Sun, Mar 22</p>
-                                                                 <p class="booking-item-destination">London, England, United Kingdom (LHR)</p>
-                                                             </div>
-                                                             <div class="booking-item-arrival"><i class="fa fa-plane fa-flip-vertical"></i>
-                                                                 <h5>12:25 PM</h5>
-                                                                 <p class="booking-item-date">Sat, Mar 23</p>
-                                                                 <p class="booking-item-destination">Charlotte, CA, United States (CLT)</p>
-                                                             </div>
-                                                         </div>
-                                                     </div>
-                                                     <div class="col-md-3">
-                                                         <div class="booking-item-flight-duration">
-                                                             <p>Duration</p>
-                                                             <h5>10h</h5>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <p>STOP 2 h 55 min Charlotte, United States</p>
-                                                 <div class="row">
-                                                     <div class="col-md-9">
-                                                         <div class="booking-item-flight-details">
-                                                             <div class="booking-item-departure"><i class="fa fa-plane"></i>
-                                                                 <h5>10:25 PM</h5>
-                                                                 <p class="booking-item-date">Sun, Mar 22</p>
-                                                                 <p class="booking-item-destination">London, England, United Kingdom (LHR)</p>
-                                                             </div>
-                                                             <div class="booking-item-arrival"><i class="fa fa-plane fa-flip-vertical"></i>
-                                                                 <h5>12:25 PM</h5>
-                                                                 <p class="booking-item-date">Sat, Mar 23</p>
-                                                                 <p class="booking-item-destination">Charlotte, CA, United States (CLT)</p>
-                                                             </div>
-                                                         </div>
-                                                     </div>
-                                                     <div class="col-md-3">
-                                                         <div class="booking-item-flight-duration">
-                                                             <p>Duration</p>
-                                                             <h5>10h</h5>
-                                                         </div>
-                                                     </div>
-                                                 </div>
+                                                 @if(isset(json_decode($flight->pnr_request_response, true)['soap-env_Body']['PassengerDetailsRS']['TravelItineraryReadRS']['TravelItinerary']['ItineraryInfo']['ReservationItems']['Item'][0]))
+                                                     @foreach(json_decode($flight->pnr_request_response, true)['soap-env_Body']['PassengerDetailsRS']['TravelItineraryReadRS']['TravelItinerary']['ItineraryInfo']['ReservationItems']['Item'] as $f => $item)
+                                                         @if(isset($item['FlightSegment'][0]))
+                                                             @foreach($item['FlightSegment'] as $g => $ite)
+                                                                 <div class="row">
+                                                                 <div class="col-md-9">
+                                                                 <div class="booking-item-flight-details">
+                                                                 <div class="booking-item-departure"><i class="fa fa-plane"></i>
+
+                                                                 <h5>{{date('g:i A',strtotime($ite['@attributes']['DepartureDateTime']))}}</h5>
+                                                                 <p class="booking-item-date">{{date('D, M d',strtotime($ite['@attributes']['DepartureDateTime']))}}</p>
+                                                                 <p class="booking-item-destination">{{\App\Airport::getCity($ite['OriginLocation']['@attributes']['LocationCode'])}}({{$ite['OriginLocation']['@attributes']['LocationCode']}}) {{--{{$ite['OriginLocation']['@attributes']['Terminal']}}--}}</p>
+                                                                 </div>
+                                                                 <div class="booking-item-arrival"><i class="fa fa-plane fa-flip-vertical"></i>
+                                                                 <h5>{{date('g:i A',strtotime($ite['@attributes']['ArrivalDateTime']))}}</h5>
+                                                                 <p class="booking-item-date">{{date('D, M d',strtotime($ite['@attributes']['ArrivalDateTime']))}}</p>
+                                                                 <p class="booking-item-destination">{{\App\Airport::getCity($ite['DestinationLocation']['@attributes']['LocationCode'])}}({{$ite['DestinationLocation']['@attributes']['LocationCode']}}) {{--{{$ite['DestinationLocation']['@attributes']['Terminal']}}--}}</p>
+                                                                 </div>
+                                                                 </div>
+                                                                 </div>
+                                                                 <div class="col-md-3">
+                                                                 <div class="booking-item-flight-duration">
+                                                                 <p>Duration</p>
+                                                                 <h5>{{$ite['@attributes']['ElapsedTime']}}</h5>
+                                                                 </div>
+                                                                 </div>
+                                                                 </div>
+                                                             @endforeach
+                                                             @else
+                                                                     <div class="row">
+                                                                     <div class="col-md-9">
+                                                                     <div class="booking-item-flight-details">
+                                                                     <div class="booking-item-departure"><i class="fa fa-plane"></i>
+
+                                                                     <h5>{{date('g:i A',strtotime($item['FlightSegment']['@attributes']['DepartureDateTime']))}}</h5>
+                                                                     <p class="booking-item-date">{{date('D, M d',strtotime($item['FlightSegment']['@attributes']['DepartureDateTime']))}}</p>
+                                                                     <p class="booking-item-destination">{{\App\Airport::getCity($item['FlightSegment']['OriginLocation']['@attributes']['LocationCode'])}}({{$item['FlightSegment']['OriginLocation']['@attributes']['LocationCode']}}) {{--{{$item['FlightSegment']['OriginLocation']['@attributes']['Terminal']}}--}}</p>
+                                                                     </div>
+                                                                     <div class="booking-item-arrival"><i class="fa fa-plane fa-flip-vertical"></i>
+                                                                     <h5>{{date('g:i A',strtotime($item['FlightSegment']['@attributes']['ArrivalDateTime']))}}</h5>
+                                                                     <p class="booking-item-date">{{date('D, M d',strtotime($item['FlightSegment']['@attributes']['ArrivalDateTime']))}}</p>
+                                                                     <p class="booking-item-destination">{{\App\Airport::getCity($item['FlightSegment']['DestinationLocation']['@attributes']['LocationCode'])}}({{$item['FlightSegment']['DestinationLocation']['@attributes']['LocationCode']}}) {{--{{$item['FlightSegment']['DestinationLocation']['@attributes']['Terminal']}}--}}</p>
+                                                                     </div>
+                                                                     </div>
+                                                                     </div>
+                                                                     <div class="col-md-3">
+                                                                     <div class="booking-item-flight-duration">
+                                                                     <p>Duration</p>
+                                                                     <h5>{{$item['FlightSegment']['@attributes']['ElapsedTime']}}</h5>
+                                                                     </div>
+                                                                     </div>
+                                                                     </div>
+                                                             @endif
+
+                                                         @endforeach
+
+                                                 @else
+
+                                                     @endif
                                              </div>
                                          </li>
                                      </ul>

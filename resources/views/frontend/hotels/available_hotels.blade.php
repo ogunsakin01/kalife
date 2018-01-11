@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title')Available Hotels  @endsection
 @section('content')
-    {{--{{dd($hotels)}}--}}
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
@@ -10,7 +9,7 @@
             </li>
             <li class="active">{{$hotelSearchParam['city']}} Hotels</li>
         </ul>
-
+        <div class="gap gap-small"></div>
         <h3 class="booking-title">{{count($hotels)}} hotels in {{$hotelSearchParam['city']}} on {{date('M d',strtotime($hotelSearchParam['checkin_date']))}} - {{date('M d',strtotime($hotelSearchParam['checkout_date']))}} for {{$hotelSearchParam['guests']}} guest</h3>
         <form class="booking-item-dates-change mb40">
             <div class="row">
@@ -139,7 +138,7 @@
                                 <div class="col-md-3">
                                     <span class="booking-item-price-from">from</span>
                                     <span class="booking-item-price"> @if($hotel['minimumPrice'] == 0) View Details @elseif($hotel['minimumPrice'] != 0)&#x20A6;{{number_format($hotel['minimumPrice'])}} @endif </span>
-                                    <span>@if($hotel['minimumPrice'] == 0) @elseif($hotel['minimumPrice'] != 0) /night @endif</span>
+                                    <span>@if($hotel['minimumPrice'] == 0) @elseif($hotel['minimumPrice'] != 0) /day @endif</span>
                                     <button class="btn btn-primary hotel_description" value="{{$k}}">More Details</button>
                                 </div>
                             </div>

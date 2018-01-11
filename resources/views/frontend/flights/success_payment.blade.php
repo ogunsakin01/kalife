@@ -2,7 +2,7 @@
 @section('title') Flying Passengers Details @endsection
 
 @section('content')
-{{--    {{dd($Itinerary)}}--}}
+<div class="gap gap-small"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-4">

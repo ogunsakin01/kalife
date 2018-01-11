@@ -232,6 +232,7 @@ class SabreFlight
 
     public function flightSearchValidator($responseArray){
         if(!empty($responseArray)){
+//            return $responseArray;
             if(isset($responseArray['SOAP-ENV_Body']['OTA_AirLowFareSearchRS']['Errors']['Error'])){
                 return 4;
             }
@@ -258,11 +259,9 @@ class SabreFlight
                 if(isset($originDestination[0])){
                     $originDestinationArray = [];
                     foreach($originDestination as $j => $originDest){
-//                     $originDestination = array_get($originDestination, 'OriginDestinationOption.'.$j);
                         $segment = $originDest['FlightSegment'];
                         if(isset($segment[0])){
                             $segmentArray = [];
-//                         $airline = $originDestination[0]['FlightSegment'][0]['OperatingAirline']['@attributes']['Code'];
                             if(isset($originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'])){
                                 $airline = $originDestination[0]['FlightSegment']['OperatingAirline']['@attributes']['Code'];
                             }else{
@@ -597,7 +596,7 @@ class SabreFlight
             </PersonName>';
 
              $specialRequest = '<SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($y + 1).'.1" >
                     <GivenName>'.$given_name.'</GivenName>
                     <Surname>'.$surname.'</Surname>
                 </PersonName>
@@ -620,7 +619,7 @@ class SabreFlight
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
                 $specialRequest = '<SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($y + 1).'.1" >
                     <GivenName>'.$given_name.'</GivenName>
                     <Surname>'.$surname.'</Surname>
                 </PersonName>
@@ -644,7 +643,7 @@ class SabreFlight
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
                 $specialRequest = '<SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$dob.'" NameNumber="'.($y + 1).'.1" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($y + 1).'.1" >
                     <GivenName>'.$given_name.'</GivenName>
                     <Surname>'.$surname.'</Surname>
                 </PersonName>

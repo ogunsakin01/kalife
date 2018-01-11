@@ -1,0 +1,24 @@
+<PassengerDetailsRQ version="3.3.0" xmlns="http://services.sabre.com/sp/pd/v3_3" IgnoreOnError="false" HaltOnError="true">
+    <TravelItineraryAddInfoRQ>
+        <AgencyInfo>
+			<Address>
+                  <AddressLine>KALIFE TRAVELS</AddressLine>
+                  <CityName>LAGOS</CityName>
+                  <CountryCode>NG</CountryCode>
+                  <PostalCode>101001</PostalCode>
+                  <StateCountyProv StateCode="LA" />
+                  <StreetNmbr>11B Wole Ariyo</StreetNmbr>
+               </Address>
+		</AgencyInfo>
+        <CustomerInfo>
+            <ContactNumbers>
+                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="0230208382382" PhoneUseType="H"/>
+            </ContactNumbers>
+            <Email Address="ogunsakin191@gmail.com" NameNumber="1.1" Type="CC"/>
+            <PersonName Infant="false" NameNumber="1.1" PassengerType="ADT">
+                <GivenName>Ikupa</GivenName>
+                <Surname>Harrison</Surname>
+            </PersonName>
+        </CustomerInfo>
+	</TravelItineraryAddInfoRQ>
+</PassengerDetailsRQ>

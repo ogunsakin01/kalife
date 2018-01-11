@@ -1,7 +1,7 @@
 <script src="{{  asset('js/jquery.js') }}"></script>
 <!-- page plugins js -->
 <script src="{{asset('js/modernizr.js')}}"></script>
-<script src="{{asset('js/jquery.js')}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&key=AIzaSyAOLZpsIj0frHhFIHaKfUABQ7LyNV6mg1I"></script>
 <script src="{{asset("js/bootstrap.js")}}"></script>
 <script src="{{asset("js/slimmenu.js")}}"></script>
 <script src="{{asset("js/bootstrap-datepicker.js")}}"></script>

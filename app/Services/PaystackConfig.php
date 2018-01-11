@@ -9,6 +9,8 @@
 namespace App\Services;
 
 
+use App\OnlinePayment;
+
 class PaystackConfig{
     public $request_url = 'https://api.paystack.co/transaction/initialize';
 

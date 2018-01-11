@@ -1,7 +1,0 @@
-<GetHotelImageRQ xmlns="http://services.sabre.com/hotel/image/v1" version="1.0.0">
-    <HotelRefs>
-        <HotelRef HotelCode="0007510" CodeContext="Sabre" />
-    </HotelRefs>
-    <ImageRef Type="MEDIUM" CategoryCode="3" LanguageCode="EN" />
-
-</GetHotelImageRQ>

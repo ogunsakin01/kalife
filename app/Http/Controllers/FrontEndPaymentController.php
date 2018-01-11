@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FlightBooking;
 use App\Mail\FailedPayment;
+use App\Mail\PaymentPreNotification;
 use App\Mail\SuccessfulFlightBooking;
 use App\Mail\SuccessfulPayment;
 use App\OnlinePayment;
@@ -172,6 +173,8 @@ class FrontEndPaymentController extends Controller
     }
 
     public function saveTransaction(Request $r){
+        $userInfo = User::getUserById($r->user_id);
+        Mail::to($userInfo)->send(new PaymentPreNotification($userInfo,$r->amount,$r->txn_reference));
         return OnlinePayment::store($r);
     }
 
@@ -179,5 +182,23 @@ class FrontEndPaymentController extends Controller
         $Itinerary = session()->get('selectedItinerary');
         $transactionStatus = session()->get('transactionStatus');
         return view("frontend.flights.success_payment", compact('transactionStatus','Itinerary'));
+    }
+
+    public function interswitchRequery(Request $r){
+       $transactionInfo = OnlinePayment::getTransaction($r->reference);
+
+       $requery = $this->InterswitchConfig->requery($r->reference,$transactionInfo->amount);
+           $userInfo = User::getUserById($transactionInfo->user_id);
+           $requery['email'] = $userInfo->email;
+           if($requery['responseCode'] !== '--'){
+               OnlinePayment::updateTransaction($requery);
+               FlightBooking::updatePaymentStatus($requery);
+               $bookingInfo = FlightBooking::getBooking($r->reference);
+               if($requery['status'] == 1){
+                   Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$requery));
+                   Mail::to($userInfo)->send(new SuccessfulFlightBooking($userInfo,$requery,$bookingInfo));
+               }
+           }
+        return $requery;
     }
 }

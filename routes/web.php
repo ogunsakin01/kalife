@@ -17,8 +17,11 @@ Route::get('/', function () {
 Route::view('/contact-us','frontend.contact_us');
 Route::view('/about-us','frontend.about_us');
 Route::view('/register-login','frontend.register_login');
+Route::view('/log', 'frontend.online_payment');
+Route::view('/logs', 'frontend.online_payment');
 Route::view('/bookings','frontend.bookings');
 Route::view('flight-bookings','frontend.flight_bookings');
+
 Route::get('/logout','Auth\LoginController@logout');
 
 
@@ -26,6 +29,7 @@ Route::post('/subscribe','FrontEndController@subscribe');
 Route::post('/message','FrontEndController@message');
 Route::post('/tokenRefresh','FrontEndController@tokenRefresh');
 Route::post('/pageTimeOut','FrontEndController@pageTimeOut');
+Route::post('/requery','FrontEndPaymentController@interswitchRequery');
 
 
 Route::get('typeaheadJs', 'FlightController@typeaheadJs')->name('typeaheadJs');
@@ -38,12 +42,16 @@ Route::get('/flight-booking-payment-methods','FlightController@flightPaymentPage
 Route::post('/flightBookPricing','FlightController@flightBookPricing');
 Route::get('/flight-passenger-details', 'FlightController@flightPassengerDetails');
 Route::get('/flight-booking-complete', 'FrontEndPaymentController@bookingComplete');
+Route::view('/loading','frontend.loading');
 
 Route::post('/searchHotel','HotelController@searchHotel');
 Route::get('/available-hotels', 'HotelController@availableHotels');
 Route::post('/hotelPropertyDescription', 'HotelController@hotelPropertyDescription');
 Route::get('/hotel-information', 'HotelController@selectedHotel');
-
+Route::view('/hotels', 'frontend.hotels.deals');
+Route::get('/room-booking/{room}','HotelController@selectedRoomBooking');
+Route::post('/hotelPassengerDetailsRQ','HotelController@createReservation');
+Route::get('/payment-option/reservation/{room}','HotelController@hotelPaymentOption');
 
 Route::post('/initiatePaystack','FrontEndPaymentController@initiatePaystack');
 Route::post('/saveTransaction','FrontEndPaymentController@saveTransaction');

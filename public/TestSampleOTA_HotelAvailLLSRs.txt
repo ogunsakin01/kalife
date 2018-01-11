@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">OTA_HotelAvailLLSRQ</eb:Service><eb:Action>OTA_HotelAvailLLSRS</eb:Action><eb:MessageData><eb:MessageId>1031790447312420610</eb:MessageId><eb:Timestamp>2017-12-22T12:25:33</eb:Timestamp><eb:RefToMessageId>1031734447289230610</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3197605060966971761!604322!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><OTA_HotelAvailRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">OTA_HotelAvailLLSRQ</eb:Service><eb:Action>OTA_HotelAvailLLSRS</eb:Action><eb:MessageData><eb:MessageId>926421369202390151</eb:MessageId><eb:Timestamp>2018-01-11T10:15:28</eb:Timestamp><eb:RefToMessageId>870201342462430150</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190570110013655926!1244418!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><OTA_HotelAvailRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
  <stl:ApplicationResults status="Complete">
-  <stl:Success timeStamp="2017-12-22T06:25:33-06:00"/>
+  <stl:Success timeStamp="2018-01-11T04:15:28-06:00"/>
  </stl:ApplicationResults>
  <AdditionalAvail Ind="true"/>
  <AvailabilityOptions>
   <AvailabilityOption RPH="001">
-   <BasicPropertyInfo AreaID="001SW" ChainCode="SI" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0000841" HotelName="SHERATON BELGRAVIA HOTEL" Latitude="51.496820" Longitude="-.155870">
+   <BasicPropertyInfo AreaID="035SW" ChainCode="MD" Distance="K" GEO_ConfidenceLevel="7" HotelCityCode="DXB" HotelCode="0038795" HotelName="LE ROYAL MERIDIEN BEACH RESORT">
     <Address>
-     <AddressLine>20 CHESHAM PLACE</AddressLine>
-     <AddressLine>LONDON GB SW1X 8HQ</AddressLine>
+     <AddressLine>ABU DHABI ROAD</AddressLine>
+     <AddressLine>DUBAI AE</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="44-207-259-6243" Phone="44-207-235-6040"/>
+     <ContactNumber Fax="971-431-76980" Phone="971-439-95555"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
@@ -21,16 +21,16 @@
      <RatesExceedMax Ind="false"/>
      <UnAvail Ind="false"/>
     </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>NEAR HARRODS</Text>
+    <LocationDescription Code="C">
+     <Text>ARABIAN GULF</Text>
     </LocationDescription>
     <Property Rating="NTM">
-     <Text>4 CROWN</Text>
+     <Text>5 CROWN</Text>
     </Property>
     <PropertyOptionInfo>
      <ADA_Accessible Ind="false"/>
      <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
+     <BeachFront Ind="true"/>
      <Breakfast Ind="false"/>
      <BusinessCenter Ind="true"/>
      <BusinessReady Ind="false"/>
@@ -39,17 +39,17 @@
      <Dining Ind="true"/>
      <DryClean Ind="true"/>
      <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="false"/>
+     <ExecutiveFloors Ind="true"/>
      <FitnessCenter Ind="true"/>
      <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
+     <FreeParking Ind="true"/>
      <FreeShuttle Ind="false"/>
      <FreeWifiInMeetingRooms Ind="false"/>
      <FreeWifiInPublicSpaces Ind="false"/>
      <FreeWifiInRooms Ind="false"/>
      <FullServiceSpa Ind="false"/>
      <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
+     <Golf Ind="true"/>
      <HighSpeedInternet Ind="true"/>
      <HypoallergenicRooms Ind="false"/>
      <IndoorPool Ind="false"/>
@@ -59,15 +59,15 @@
      <InRoomSafe Ind="false"/>
      <InteriorDoorways Ind="false"/>
      <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
+     <KidsFacilities Ind="true"/>
      <KitchenFacilities Ind="false"/>
      <MealService Ind="false"/>
      <MeetingFacilities Ind="true"/>
      <NoAdultTV Ind="false"/>
      <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
+     <OutdoorPool Ind="true"/>
      <Pets Ind="false"/>
-     <Pool Ind="false"/>
+     <Pool Ind="true"/>
      <PublicTransportationAdjacent Ind="false"/>
      <RateAssured Ind="true"/>
      <Recreation Ind="false"/>
@@ -78,7 +78,7 @@
      <SkiInOutProperty Ind="false"/>
      <SmokeFree Ind="false"/>
      <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
+     <Tennis Ind="true"/>
      <WaterPurificationSystem Ind="false"/>
      <Wheelchair Ind="true"/>
     </PropertyOptionInfo>
@@ -92,23 +92,23 @@
    </BasicPropertyInfo>
   </AvailabilityOption>
   <AvailabilityOption RPH="002">
-   <BasicPropertyInfo AreaID="000N" ChainCode="TI" Distance="K" GEO_ConfidenceLevel="3" HotelCityCode="LHR" HotelCode="0000280" HotelName="THISTLE MARBLE ARCH" Latitude="51.514260" Longitude="-.158070">
+   <BasicPropertyInfo AreaID="028NE" ChainCode="HL" Distance="K" GEO_ConfidenceLevel="7" HotelCityCode="DXB" HotelCode="0055497" HotelName="HILTON DUBAI JUMEIRAH">
     <Address>
-     <AddressLine>BRYANSTON STREET</AddressLine>
-     <AddressLine>LONDON GB W1H 7EH</AddressLine>
+     <AddressLine>P. O. BOX. 2431</AddressLine>
+     <AddressLine>DUBAI AE</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="44-845-305 8366" Phone="44-845-305 8327"/>
+     <ContactNumber Fax="971-4-3991112" Phone="971-4-3991111"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="false"/>
+     <DC_AvailParticipant Ind="true"/>
      <DC_SellParticipant Ind="true"/>
      <RatesExceedMax Ind="false"/>
      <UnAvail Ind="false"/>
     </DirectConnect>
-    <LocationDescription Code="A">
-     <Text>MARBLE ARCH</Text>
+    <LocationDescription Code="C">
+     <Text>RESORT  FROM APT N</Text>
     </LocationDescription>
     <Property Rating="NTM">
      <Text>3 CROWN</Text>
@@ -116,50 +116,50 @@
     <PropertyOptionInfo>
      <ADA_Accessible Ind="false"/>
      <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
+     <BeachFront Ind="true"/>
      <Breakfast Ind="false"/>
      <BusinessCenter Ind="true"/>
      <BusinessReady Ind="false"/>
      <Conventions Ind="false"/>
      <Dataport Ind="false"/>
      <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
+     <DryClean Ind="false"/>
+     <EcoCertified Ind="true"/>
      <ExecutiveFloors Ind="true"/>
      <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
+     <FreeLocalCalls Ind="true"/>
+     <FreeParking Ind="true"/>
      <FreeShuttle Ind="false"/>
      <FreeWifiInMeetingRooms Ind="false"/>
      <FreeWifiInPublicSpaces Ind="false"/>
      <FreeWifiInRooms Ind="false"/>
      <FullServiceSpa Ind="false"/>
      <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="false"/>
+     <Golf Ind="true"/>
+     <HighSpeedInternet Ind="true"/>
      <HypoallergenicRooms Ind="false"/>
      <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="true"/>
-     <InRoomMiniBar Ind="true"/>
+     <InRoomCoffeeTea Ind="false"/>
+     <InRoomMiniBar Ind="false"/>
      <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="true"/>
+     <InRoomSafe Ind="false"/>
      <InteriorDoorways Ind="false"/>
      <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
+     <KidsFacilities Ind="true"/>
      <KitchenFacilities Ind="false"/>
      <MealService Ind="false"/>
      <MeetingFacilities Ind="true"/>
      <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
+     <NonSmoking Ind="false"/>
+     <OutdoorPool Ind="true"/>
      <Pets Ind="false"/>
-     <Pool Ind="false"/>
+     <Pool Ind="true"/>
      <PublicTransportationAdjacent Ind="false"/>
      <RateAssured Ind="true"/>
      <Recreation Ind="false"/>
      <RestrictedRoomAccess Ind="false"/>
      <RoomService Ind="true"/>
-     <RoomService24Hours Ind="true"/>
+     <RoomService24Hours Ind="false"/>
      <RoomsWithBalcony Ind="false"/>
      <SkiInOutProperty Ind="false"/>
      <SmokeFree Ind="false"/>
@@ -168,6 +168,7 @@
      <WaterPurificationSystem Ind="false"/>
      <Wheelchair Ind="true"/>
     </PropertyOptionInfo>
+    <RateRange CurrencyCode="NGN" Max="520365" Min="107093"/>
     <RoomRate RateLevelCode="RAC">
      <AdditionalInfo>
       <CancelPolicy Numeric="00"/>
@@ -178,13 +179,13 @@
    </BasicPropertyInfo>
   </AvailabilityOption>
   <AvailabilityOption RPH="003">
-   <BasicPropertyInfo AreaID="001NW" ChainCode="RD" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0022419" HotelName="RADISSON BERKSHIRE HOTEL" Latitude="51.514470" Longitude="-.148510">
+   <BasicPropertyInfo AreaID="009NW" ChainCode="SU" Distance="K" GEO_ConfidenceLevel="7" HotelCityCode="DXB" HotelCode="0077254" HotelName="AL MANZIL HOTEL">
     <Address>
-     <AddressLine>350 OXFORD STREET</AddressLine>
-     <AddressLine>LONDON GB W1C 1BY</AddressLine>
+     <AddressLine>BURJ DUBAI BOULEVARD</AddressLine>
+     <AddressLine>DUBAI AE 114822</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="44-207-514-3427" Phone="44-207-629-7474"/>
+     <ContactNumber Fax="971-4-4285999" Phone="971-4-4285888"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
@@ -193,28 +194,26 @@
      <RatesExceedMax Ind="false"/>
      <UnAvail Ind="false"/>
     </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>CITY CENTRE</Text>
-    </LocationDescription>
+    <LocationDescription Code="A"/>
     <Property Rating="NTM">
-     <Text>3 CROWN</Text>
+     <Text>4 CROWN</Text>
     </Property>
     <PropertyOptionInfo>
      <ADA_Accessible Ind="false"/>
      <AdultsOnly Ind="false"/>
      <BeachFront Ind="false"/>
      <Breakfast Ind="false"/>
-     <BusinessCenter Ind="false"/>
+     <BusinessCenter Ind="true"/>
      <BusinessReady Ind="false"/>
      <Conventions Ind="false"/>
      <Dataport Ind="false"/>
-     <Dining Ind="true"/>
+     <Dining Ind="false"/>
      <DryClean Ind="true"/>
-     <EcoCertified Ind="true"/>
+     <EcoCertified Ind="false"/>
      <ExecutiveFloors Ind="false"/>
      <FitnessCenter Ind="true"/>
      <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
+     <FreeParking Ind="true"/>
      <FreeShuttle Ind="false"/>
      <FreeWifiInMeetingRooms Ind="false"/>
      <FreeWifiInPublicSpaces Ind="false"/>
@@ -237,782 +236,14 @@
      <MeetingFacilities Ind="true"/>
      <NoAdultTV Ind="false"/>
      <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="004">
-   <BasicPropertyInfo AreaID="004NE" ChainCode="YP" Distance="K" GEO_ConfidenceLevel="6" HotelCityCode="LCY" HotelCode="0022647" HotelName="GRAND TRAFALGAR SQUARE">
-    <Address>
-     <AddressLine>NORTHUMBERLAND AVENUE ENTRY B</AddressLine>
-     <AddressLine>LONDON GB WC2N 5BY</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Phone="02078398877"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="A">
-     <Text>LONDON</Text>
-    </LocationDescription>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="false"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="false"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="false"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="false"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="false"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="true"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="false"/>
-     <OutdoorPool Ind="false"/>
+     <OutdoorPool Ind="true"/>
      <Pets Ind="false"/>
      <Pool Ind="false"/>
      <PublicTransportationAdjacent Ind="false"/>
      <RateAssured Ind="false"/>
      <Recreation Ind="false"/>
      <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="false"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="005">
-   <BasicPropertyInfo AreaID="000E" ChainCode="RD" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0022422" HotelName="RADISSON EDWARDIAN SUSSEX HOTE" Latitude="51.449840" Longitude="-.200080">
-    <Address>
-     <AddressLine>19-25 GRANVILLE PLACE</AddressLine>
-     <AddressLine>LONDON GB W1H 6PA</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="44-207-514-3427" Phone="44-207-408-0130"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="A">
-     <Text>CITY CENTRE</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>3 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="false"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="true"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
      <RoomService Ind="false"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="006">
-   <BasicPropertyInfo AreaID="009E" ChainCode="TI" Distance="K" GEO_ConfidenceLevel="3" HotelCityCode="LHR" HotelCode="0013126" HotelName="THE TOWER A GUOMAN HOTEL" Latitude="51.506920" Longitude="-.074140">
-    <Address>
-     <AddressLine>ST KATHARINES WAY</AddressLine>
-     <AddressLine>LONDON GB E1W 1LD</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="44-845-3058374" Phone="44-845-3058335"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="false"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="A">
-     <Text>TOWER BRIDGE AND TO</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>3 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="true"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="true"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="true"/>
-     <InRoomMiniBar Ind="true"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="true"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="true"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="007">
-   <BasicPropertyInfo AreaID="000W" ChainCode="VY" Distance="K" GEO_ConfidenceLevel="3" HotelCityCode="LHR" HotelCode="0048740" HotelName="THE CONNAUGHT" Latitude="51.510510" Longitude="-.149600">
-    <Address>
-     <AddressLine>CARLOS PLACE</AddressLine>
-     <AddressLine>LONDON GB W1K 2AL</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="44-207-495-3262" Phone="44-207-499-7070"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="A">
-     <Text>MAYFAIR</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>5 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="false"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="false"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="false"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="008">
-   <BasicPropertyInfo AreaID="000S" ChainCode="RD" Distance="K" GEO_ConfidenceLevel="3" HotelCityCode="LHR" HotelCode="0001086" HotelName="THE MAYFAIR" Latitude="51.506720" Longitude="-.142910">
-    <Address>
-     <AddressLine>STRATTON STREET</AddressLine>
-     <AddressLine>LONDON GB W1J 8LT</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="44-207-493-0244" Phone="44-207-629-7777"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="A">
-     <Text>SHOPPING</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>5 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="false"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="true"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="true"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="true"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="009">
-   <BasicPropertyInfo AreaID="024W" ChainCode="RT" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0001239" HotelName="NOVOTEL LONDON WEST" Latitude="51.620540" Longitude="-.082140">
-    <Address>
-     <AddressLine>1 SHORTLANDS HAMMERSMITH</AddressLine>
-     <AddressLine>LONDON GB W6 8DR</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="44-208-7412120" Phone="44-208-7411555"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="C">
-     <Text>HAMMERSMITH AREA</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>3 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="false"/>
-     <EcoCertified Ind="true"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="false"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="false"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="true"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="010">
-   <BasicPropertyInfo AreaID="001SW" ChainCode="TI" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0031045" HotelName="THE GROSVENOR THISTLE VICTORIA" Latitude="51.495650" Longitude="-.145600">
-    <Address>
-     <AddressLine>101 BUCKINGHAM PALACE ROAD</AddressLine>
-     <AddressLine>LONDON GB SW1W0SJ</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="44-845-3058376" Phone="44-845-3058337"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="false"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>BUCKINGHAM PALACE</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>3 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="false"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="true"/>
-     <InRoomMiniBar Ind="true"/>
-     <InRoomRefrigerator Ind="true"/>
-     <InRoomSafe Ind="true"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="true"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="true"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="false"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="011">
-   <BasicPropertyInfo AreaID="003NW" ChainCode="LU" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0136168" HotelName="THE MARBLE ARCH BY MONTCALM" Latitude="51.515250" Longitude="-.159850">
-    <Address>
-     <AddressLine>31 GREAT CUMBERLAND PLACE</AddressLine>
-     <AddressLine>LONDON GB W1H 7TA</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="44-20-47020505" Phone="44-20-74792247"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>MARBLE ARCH</Text>
-    </LocationDescription>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="true"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="false"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="false"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="false"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="true"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="true"/>
-     <FreeWifiInPublicSpaces Ind="true"/>
-     <FreeWifiInRooms Ind="true"/>
-     <FullServiceSpa Ind="true"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="true"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="true"/>
-     <InRoomMiniBar Ind="true"/>
-     <InRoomRefrigerator Ind="true"/>
-     <InRoomSafe Ind="true"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="false"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="true"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="false"/>
-     <RoomService24Hours Ind="true"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="true"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="true"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="012">
-   <BasicPropertyInfo AreaID="003NW" ChainCode="LW" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0034565" HotelName="THE LANDMARK LONDON" Latitude="51.521369" Longitude="-.162252">
-    <Address>
-     <AddressLine>222 MARYLEBONE ROAD</AddressLine>
-     <AddressLine>LONDON GB NW1 6JQ</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="44-20-76318080" Phone="44-20-76318000"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>REGENTS PARK</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>5 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="true"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="false"/>
-     <EcoCertified Ind="true"/>
-     <ExecutiveFloors Ind="true"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="true"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="true"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="false"/>
-     <Pets Ind="true"/>
-     <Pool Ind="true"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
      <RoomService24Hours Ind="false"/>
      <RoomsWithBalcony Ind="false"/>
      <SkiInOutProperty Ind="false"/>

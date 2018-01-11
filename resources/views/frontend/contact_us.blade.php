@@ -2,6 +2,7 @@
 @section('title')Contact Us  @endsection
 {{--@section('activeContactUs')active@endsection--}}
 @section('content')
+    <div class="gap gap-small"></div>
     <div class="container">
         <h1>Contact Us</h1>
     </div>

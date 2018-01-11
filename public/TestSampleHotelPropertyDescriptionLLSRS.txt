@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">HotelPropertyDescriptionLLSRQ</eb:Service><eb:Action>HotelPropertyDescriptionLLSRS</eb:Action><eb:MessageData><eb:MessageId>969305419968260151</eb:MessageId><eb:Timestamp>2017-12-22T11:40:00</eb:Timestamp><eb:RefToMessageId>969368419938350611</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/CERTG!ICESMSLB\/CRT.LB!-3197616260516822648!456350!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><HotelPropertyDescriptionRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">HotelPropertyDescriptionLLSRQ</eb:Service><eb:Action>HotelPropertyDescriptionLLSRS</eb:Action><eb:MessageData><eb:MessageId>926911369442810150</eb:MessageId><eb:Timestamp>2018-01-11T10:15:46</eb:Timestamp><eb:RefToMessageId>870201342462430150</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190570110013655926!1244418!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><HotelPropertyDescriptionRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
  <stl:ApplicationResults status="Complete">
-  <stl:Success timeStamp="2017-12-22T05:40:00-06:00"/>
+  <stl:Success timeStamp="2018-01-11T04:15:46-06:00"/>
  </stl:ApplicationResults>
  <RoomStay>
-  <BasicPropertyInfo ChainCode="FA" GeoConfidenceLevel="0" HotelCityCode="DXB" HotelCode="0061192" HotelName="FAIRMONT DUBAI" NumFloors="34" RPH="001">
+  <BasicPropertyInfo ChainCode="HL" GeoConfidenceLevel="0" HotelCityCode="DXB" HotelCode="0055497" HotelName="HILTON DUBAI JUMEIRAH" NumFloors="9" RPH="001">
    <Address>
-    <AddressLine>SHEIKH ZAYED ROAD</AddressLine>
+    <AddressLine>P. O. BOX. 2431</AddressLine>
     <AddressLine>DUBAI AE</AddressLine>
     <CountryCode>AE</CountryCode>
    </Address>
    <Awards>
-    <AwardProvider>NTM5  CROWN</AwardProvider>
+    <AwardProvider>NTM3  CROWN</AwardProvider>
    </Awards>
-   <CheckInTime>15:00</CheckInTime>
+   <CheckInTime>14:00</CheckInTime>
    <CheckOutTime>12:00</CheckOutTime>
    <ContactNumbers>
-    <ContactNumber Fax="971-43-32-4555" Phone="971-43-32-5555"/>
+    <ContactNumber Fax="971-4-3991112" Phone="971-4-3991111"/>
    </ContactNumbers>
    <DirectConnect Ind="true">
-    <AdditionalData Ind="false"/>
+    <AdditionalData Ind="true"/>
     <CurrencyConverted Ind="false"/>
     <DC_AvailParticipant Ind="true"/>
     <DC_SellParticipant Ind="true"/>
@@ -27,64 +27,73 @@
     <UnAvail Ind="false"/>
    </DirectConnect>
    <IndexData>
-    <Index CountryState="C/AE" DistanceDirection="0N" LocationCode="A" Point="DEIRA CITY CTR SHOPPING" TransportationCode="O"/>
-    <Index CountryState="C/AE" DistanceDirection="5N" LocationCode="A" Point="DEIRA SOUQ" TransportationCode="O"/>
-    <Index CountryState="C/AE" DistanceDirection="5NW" LocationCode="A" Point="GOLD SOUQ" TransportationCode="O"/>
-    <Index CountryState="C/AE" DistanceDirection="5S" LocationCode="A" Point="JUMEIRA BEACH PARK" TransportationCode="O"/>
-    <Index DistanceDirection="7NE" LocationCode="A" Point="DXB" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="12N" LocationCode="C" Point="CAMEL RACE TRACK" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="4S" LocationCode="A" Point="WILD WADI" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="12SW" LocationCode="C" Point="DUBAI" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="1W" LocationCode="A" Point="DUBAI INTERNET CITY" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="1S" LocationCode="A" Point="DUBAI INTL MARINE CLUB" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="1W" LocationCode="A" Point="DUBAI MEDIA CITY" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="9N" LocationCode="A" Point="NAD ALSHIBA RACE COURSE" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="1N" LocationCode="A" Point="EMIRATES GOLF CLUB" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="19N" LocationCode="C" Point="GOLD SOUK" TransportationCode="H"/>
+    <Index CountryState="C/AE" DistanceDirection="2S" LocationCode="A" Point="HARD ROCK CAFE" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="22N" LocationCode="C" Point="HERITAGE VILLAGE" TransportationCode="O"/>
+    <Index CountryState="C/AE" DistanceDirection="9S" LocationCode="A" Point="JEBEL ALI FREE ZONE" TransportationCode="O"/>
+    <Index DistanceDirection="18NE" LocationCode="C" Point="DXB" TransportationCode="O"/>
+    <Index DistanceDirection="62NE" LocationCode="R" Point="AUH" TransportationCode="O"/>
    </IndexData>
    <PropertyOptionInfo>
     <ADA_Accessible Ind="false"/>
     <AdultsOnly Ind="false"/>
     <AirportShuttle Ind="false"/>
-    <BeachFront Ind="false"/>
+    <BeachFront Ind="true"/>
     <Breakfast Ind="false"/>
     <BusinessCenter Ind="true"/>
     <BusinessReady Ind="false"/>
-    <CarRentalCounter>AVIS CAR RENTAL</CarRentalCounter>
-    <Conventions Ind="true"/>
-    <Dataport Ind="true"/>
+    <CarRentalCounter>Y-COMPLIMENTARY</CarRentalCounter>
+    <Conventions Ind="false"/>
+    <Dataport Ind="false"/>
     <Dining Ind="true"/>
-    <DryClean Ind="true"/>
+    <DryClean Ind="false"/>
     <EcoCertified Ind="false"/>
     <ExecutiveFloors Ind="true"/>
     <FamilyPlan Ind="true"/>
     <FitnessCenter Ind="true"/>
-    <FreeLocalCalls Ind="false"/>
-    <FreeParking Ind="false"/>
+    <FreeLocalCalls Ind="true"/>
+    <FreeParking Ind="true"/>
     <FreeShuttle Ind="false"/>
     <FreeWifiInMeetingRooms Ind="false"/>
     <FreeWifiInPublicSpaces Ind="false"/>
     <FreeWifiInRooms Ind="false"/>
-    <FullServiceSpa Ind="true"/>
+    <FullServiceSpa Ind="false"/>
     <GameFacilities Ind="false"/>
-    <Golf Ind="false"/>
-    <GovtSafetyFire Ind="true"/>
+    <Golf Ind="true"/>
+    <GovtSafetyFire Ind="false"/>
     <HighSpeedInternet Ind="true"/>
     <HypoallergenicRooms Ind="false"/>
     <IndoorPool Ind="false"/>
     <IndPetRestriction Ind="false"/>
-    <InRoomCoffeeTea Ind="true"/>
-    <InRoomMiniBar Ind="true"/>
-    <InRoomRefrigerator Ind="true"/>
-    <InRoomSafe Ind="true"/>
+    <InRoomCoffeeTea Ind="false"/>
+    <InRoomMiniBar Ind="false"/>
+    <InRoomRefrigerator Ind="false"/>
+    <InRoomSafe Ind="false"/>
     <InteriorDoorways Ind="true"/>
     <Jacuzzi Ind="true"/>
-    <KidsFacilities Ind="false"/>
+    <KidsFacilities Ind="true"/>
     <KitchenFacilities Ind="false"/>
     <MealService Ind="false"/>
     <MeetingFacilities Ind="true"/>
     <NoAdultTV Ind="false"/>
-    <NonSmoking Ind="true"/>
+    <NonSmoking Ind="false"/>
     <OutdoorPool Ind="true"/>
-    <Parking>Y-COMPLIMENTARY</Parking>
+    <Parking>Y-ON SITE</Parking>
     <Pets Ind="false"/>
     <Pool Ind="true"/>
     <PublicTransportationAdjacent Ind="false"/>
     <Recreation Ind="true"/>
-    <RestrictedRoomAccess Ind="true"/>
+    <RestrictedRoomAccess Ind="false"/>
     <RoomService Ind="true"/>
-    <RoomService24Hours Ind="true"/>
+    <RoomService24Hours Ind="false"/>
     <RoomsWithBalcony Ind="false"/>
     <SkiInOutProperty Ind="false"/>
     <SmokeFree Ind="false"/>
@@ -95,12 +104,12 @@
    </PropertyOptionInfo>
    <PropertyTypeInfo>
     <AllInclusive Ind="false"/>
-    <Apartments Ind="true"/>
+    <Apartments Ind="false"/>
     <BedBreakfast Ind="false"/>
     <Castle Ind="false"/>
-    <Conventions Ind="true"/>
+    <Conventions Ind="false"/>
     <Economy Ind="false"/>
-    <ExtendedStay Ind="true"/>
+    <ExtendedStay Ind="false"/>
     <Farm Ind="false"/>
     <First Ind="false"/>
     <Luxury Ind="true"/>
@@ -110,331 +119,362 @@
     <Suites Ind="false"/>
    </PropertyTypeInfo>
    <SpecialOffers Ind="false"/>
-   <Taxes ShortText="10 PCT ROOM SERVICE 10 PCT MUN"/>
+   <Taxes>
+    <Text>20PCT VAT</Text>
+   </Taxes>
    <VendorMessages>
+    <AdditionalAttractions>
+     <Text>* COMPAQ                         15 KM/9.38MILES</Text>
+     <Text>* DUBAL                          15 KM/9.38MILES</Text>
+     <Text>* PARMOBEL                       15 KM/9.38MILES</Text>
+     <Text>* SHARP                          15 KM/9.38MILES</Text>
+     <Text>* NESTLES                        15 KM/9.38MILES</Text>
+     <Text>* DUBAI MEDIA CENTRE             2 KM/1.25MILES</Text>
+     <Text>* DUBAI INVESTMENT PARK          6 KM/3.75MILES</Text>
+    </AdditionalAttractions>
     <Attractions>
-     <Text>ABU DHABI 93.2 MI</Text>
-     <Text>AL AIN 83.9 MI</Text>
-     <Text>AL MAHA 34.2 MI</Text>
-     <Text>DUBAI MUSEUM 0.6 MI</Text>
-     <Text>GRAND MOSQUE 0.6 MI</Text>
-     <Text>HATTA 68.4 MI</Text>
-     <Text>JUMEIRA MOSQUE 0.6 MI</Text>
-     <Text>SHEIKH SAEED AL-MAKTOUM*S HOUSE 0.6 MI</Text>
-     <Text>SHARJA 9.3 MI</Text>
-     <Text>GOLF-DUBAI CREEK GOLF AND YACHT CLUB GOLF-EMIRATES GOLF CLUB</Text>
-     <Text>SPA-THE WILLOW STREAM SPA</Text>
+     <Text>ATTRACTIONS-</Text>
+     <Text>CITY CENTER                        12.4 MI /20.0 KM</Text>
+     <Text>LOCAL-</Text>
+     <Text>ATLANTIS DISCOTHEQUE               1.9  MI /3.0  KM</Text>
+     <Text>DUBAI INTL. MARINE CLUB            1.2  MI /2.0  KM</Text>
+     <Text>EMIRATES GOLF CLUB                 1.9  MI /3.0  KM</Text>
+     <Text>HARD ROCK CAF                      1.9  MI /3.0  KM</Text>
+     <Text>JEBEL ALI FREEZONE                 9.3  MI /15.0 KM</Text>
+     <Text>JEBEL ALI SHOOTING CLUB            6.2  MI /10.0 KM</Text>
+     <Text>SHOPPING CENTRES                   3.1  MI /5.0  KM</Text>
+     <Text>SKI DUBAI                          3.1  MI /5.0  KM</Text>
+     <Text>WILD WADI AMUSEMENT PARK           4.4  MI /7.0  KM</Text>
     </Attractions>
     <Awards>
-     <Text>AASTARRATING 5</Text>
-     <Text>OHG DELUXE</Text>
-     <Text>STAR 5</Text>
+     <Text>RATINGS-</Text>
+     <Text>.</Text>
+     <Text>- MOBIL RATING</Text>
+     <Text>5 STARS</Text>
+     <Text>.</Text>
     </Awards>
     <Cancellation>
-     <Text>CANCEL 24 HOURS PRIOR TO ARRIVAL TO AVOID PENALTY OF 1 NIGHT</Text>
-     <Text>ROOM AND TAX.  EXCEPTION - THE FOLLOWING DATES REQUIRE</Text>
-     <Text>CANCELLATION 7 DAYS PRIOR TO ARRIVAL.  EXCEPTION DATES IN 2009</Text>
-     <Text>- JAN 9 TO 13 / JAN 25 TO 29 / FEB 6 TO 10 / FEB 14 TO 17 / FEB</Text>
-     <Text>22 TO 26 / MAR 9 TO 12 / APR 6 TO 9 / APR 25 TO 28 / MAY 4 TO 8</Text>
-     <Text>/ MAY 23 TO 26 / OCT 17 TO 22 / NOV 13 TO 18 / NOV 22 TO 27</Text>
+     <Text>.</Text>
     </Cancellation>
     <Deposit>
+     <Text>DURING CERTAIN TIMES OF THE YEAR A DEPOSIT FOR PARTIAL OR</Text>
+     <Text>FULL STAY MAY BE REQUIRED AT THE TIME OF BOOKING. IF DEPOSIT</Text>
+     <Text>IS REQUIRED SEE RATE RULES TO AVOID FORFEITURE OF DEPOSIT.</Text>
      <Text>.</Text>
     </Deposit>
     <Description>
-     <Text>A UNIQUE BLEND OF CONTEMPORARY DESIGN AND URBAN CHIC- THE</Text>
-     <Text>FAIRMONT DUBAI IS AN ICON IN THE FINANCIAL HEART OF THE CITY.</Text>
-     <Text>DESIGNED WITH BUSINESS IN MIND- THIS MULTI-USE COMPLEX IS JUST</Text>
-     <Text>MINUTES FROM DUBAI S KEY ATTRACTIONS- SHOPPING FACILITIES- GOLF</Text>
-     <Text>CLUBS AND BEACHES AND IS DIRECTLY LINKED TO THE DUBAI</Text>
-     <Text>INTERNATIONAL CONVENTION CENTRE BY A DEDICATED COVERED WALKWAY.</Text>
-     <Text>MODELED AFTER AN ARABIC WIND TOWER  BARAJEEL - THIS 34 STOREY</Text>
-     <Text>PROPERTY FEATURES 394 GUESTROOMS  INCLUDING 128 SUITES AND</Text>
-     <Text>PENTHOUSES - RESIDENTIAL APARTMENTS AND OFFICES- AS WELL AS ITS</Text>
-     <Text>PREMIER FAIRMONT GOLD *HOTEL WITHIN A HOTEL* PRODUCT.</Text>
-     <Text>TEN CONTEMPORARY DINING AND ENTERTAINMENT VENUES OFFER AN ARRAY</Text>
-     <Text>OF GASTRONOMIC DELIGHTS TO AMUSE THE PALATE FROM SPECTRUM ON</Text>
-     <Text>ONE WITH EIGHT INTERACTIVE KITCHENS SPECIALISING IN SIX</Text>
-     <Text>INFLUENTIAL INTERNATIONAL CUISINES TO CASCADES- SERVING AN</Text>
-     <Text>ARRAY OF INTERNATIONAL DELIGHTS UNDER A SOARING ATRIUM.</Text>
-     <Text>THE EXCHANGE FLOOR HOUSES THREE UNIQUE DESTINATIONS- INCLUDING</Text>
-     <Text>THE AWARD WINNING EXCHANGE GRILL- NOTED FOR ITS TANTALISING</Text>
-     <Text>SELECTION OF GRILL SPECIALTIES AND EXTENSIVE WINE LIST- CIN</Text>
-     <Text>CIN- THE CHIC WINE BAR SHOWCASES OVER 400 GLOBAL LABELS- WHILE</Text>
-     <Text>THE MODERN DAY CIGAR BAR FEATURES A RANGE OF WORLD-CLASS CIGARS</Text>
-     <Text>IN A HAND CRAFTED WALK-IN HUMIDOR.</Text>
-     <Text>NEWLY DEBUTED IS KITSUNE RESTAURANT THAT OFFERS AUTHENTIC</Text>
-     <Text>JAPANESE CUISINE AND THE CAVALLI CLUB- A MULTI FACETED DINING</Text>
-     <Text>AND ENTERTAINMENT DESTINATION.</Text>
-     <Text>THE WILLOW STREAM SPA IS A UNIQUE DESTINATION CREATED TO</Text>
-     <Text>INSPIRE- NOURISH AND GUIDE GUESTS ON A JOURNEY TO FIND THEIR</Text>
-     <Text>PERSONAL ENERGY.</Text>
-     <Text>ENCOMPASSING 40.000 SQUARE FEET- THE SPA ALSO OFFERS A FULLY</Text>
-     <Text>EQUIPPED HEALTH CLUB- COMPLETE WITH TWO ROOFTOP SWIMMING POOLS-</Text>
-     <Text>BOASTING UNFETTERED VIEWS OF BOTH THE SUNRISE AND SUNSET OVER A</Text>
-     <Text>DOTTED SKYLINE.</Text>
+     <Text>SOAK UP THE ARABIAN GULF SUNSHINE FROM THE HILTON DUBAI</Text>
+     <Text>JUMEIRAH RESORT*S PRIVATE BEACH OR OUTDOOR POOL. THIS DUBAI</Text>
+     <Text>HOTEL IS LOCATED ON JUMEIRAH BEACHES* GOLDEN MILE ALONGSIDE</Text>
+     <Text>JUMEIRAH BEACH RESIDENCE AND *THE WALK* DUBAI*S BUSTLING</Text>
+     <Text>OUTDOOR SHOPPING AVENUE WITH OVER 350 SHOPS WHERE YOU CAN</Text>
+     <Text>INDULGE IN SOME RETAIL THERAPY.</Text>
+     <Text>VISIT NEARBY SKI DUBAI EMIRATES GOLF CLUB AND WILD WADI</Text>
+     <Text>WATERPARK OR SIMPLY RELAX IN THE TRANQUIL SPA WITH SIX</Text>
+     <Text>TREATMENT ROOMS SAUNA AND STEAM ROOM. IN THE EVENING ENJOY A</Text>
+     <Text>MEAL IN BICE THE AWARD-WINNING FINE DINING ITALIAN</Text>
+     <Text>RESTAURANT PACHANGA THE VIBRANT LATIN AMERICAN RESTAURANT OR</Text>
+     <Text>FOR MORE CASUAL AL FRESCO DINING CHOOSE WAVEBREAKER</Text>
+     <Text>OVERLOOKING THE AZURE WATERS OF THE GULF.</Text>
+     <Text>WITH 4 HILTON MEETINGS ROOMS A LARGE BALLROOM AND BEAUTIFUL</Text>
+     <Text>LANDSCAPED GARDENS THE HOTEL IS THE PERFECT SETTING FOR ANY</Text>
+     <Text>BUSINESS MEETING PRODUCT LAUNCH BANQUET OR WEDDING RECEPTION</Text>
+     <Text>FOR UP TO 275 GUESTS.</Text>
+     <Text>.</Text>
     </Description>
     <Dining>
-     <Text>TEN CONTEMPORARY DINING AND ENTERTAINMENT VENUES OFFER AN ARRAY</Text>
-     <Text>OF GASTRONOMIC DELIGHTS AND CULINARY EXPERIENCES AT FAIRMONT</Text>
-     <Text>DUBAI.</Text>
-     <Text>ON PROPERTY:</Text>
-     <Text>CASCADES RESTAURANT</Text>
-     <Text>LOCATED ON THE GROUND FLOOR OF THE HOTEL - UNDER THE SOARING</Text>
-     <Text>ATRIUM - CASCADES FEATURES A LIGHT - FRESH INNOVATIVE APPROACH</Text>
-     <Text>- SHOWCASING THE DIVERSE FLAVOURS OF THE REGION AND BEYOND -</Text>
-     <Text>WITH MEDITERRANEAN CUISINE AS THE BACKBONE. FULL   LA CARTE</Text>
-     <Text>LUNCH AND DINER MENUS ARE AVAILABLE IN ADDITION TO THE REGULAR</Text>
-     <Text>BUFFETS - 24 HOURS A DAY - 7 DAYS A WEEK.</Text>
-     <Text>DUE TO MUNICIPAL LAW - ALCOHOLIC BEVERAGES ARE NOT SERVED</Text>
-     <Text>BETWEEN 4:00 P.M. TO 6:00 P.M. IN ANY OUTLET.</Text>
-     <Text>PRICE EXAMPLES</Text>
-     <Text>BREAKFAST BUFFET: 120 DHS</Text>
-     <Text>CONTINENTAL BREAKFAST BUFFET: 90 DHS</Text>
-     <Text>LUNCH BUFFET: 145 DHS</Text>
-     <Text>APPETIZER BUFFET: 110 DHS</Text>
-     <Text>THE EXCHANGE GRILL</Text>
-     <Text>LOCATED ON THE 2ND LEVEL OF THE HOTEL - THE EXCHANGE GRILL IS</Text>
-     <Text>FINISHED IN A RICH DECOR WITH LEATHER SURROUNDINGS - BAS-RELIEF</Text>
-     <Text>TIMBER AND HAND-ETCHED ITALIAN GLASS FLOODED BY NATURAL LIGHT.</Text>
-     <Text>THE MENU FEATURES A SELECTION OF GRILL SPECIALTIES WITH A</Text>
-     <Text>MODERN FLARE - INCLUDING TENDER PRIME AGED ANGUS BEEF - CLASSIC</Text>
-     <Text>GAME DISHES AND FRESH SEAFOOD COMPLEMENTED BY AN EXTENSIVE WINE</Text>
-     <Text>LIST OF PREMIUM INTERNATIONAL VINTAGES.</Text>
-     <Text>CIGAR POLICY: CIGARS - CIGARILLOS AND PIPE SMOKING IS NOT</Text>
-     <Text>ALLOWED INSIDE THE RESTAURANT.</Text>
-     <Text>CHILDREN: CHILDREN UNDER 12 YEARS CANNOT ACCESS THE RESTAURANT.</Text>
-     <Text>SPECTRUM ON ONE</Text>
-     <Text>LOCATED ON THE 1ST LEVEL OF THE HOTEL - SPECTRUM ON ONE IS THE</Text>
-     <Text>FAIRMONT DUBAI S SIGNATURE RESTAURANT. THIS INTERACTIVE</Text>
-     <Text>RESTAURANT SHOWCASES 8 ACTIVITY KITCHENS - EACH MASTERFULLY</Text>
-     <Text>PREPARING AUTHENTIC FLAVOURS FROM AROUND THE WORLD:</Text>
-     <Text>SEAS OF NORMANDY FOR SELECT SEAFOOD AND RAW BAR</Text>
-     <Text>SOUTHERN ASIA FOR SZECHUAN</Text>
-     <Text>COASTAL THAILAND FOR RICH CURRIES</Text>
-     <Text>JAPAN FOR SUSHI - TEPPAN YAKI OR YAKITORI</Text>
-     <Text>INDIA FOR TANDOORI DISHES</Text>
-     <Text>EUROPE FOR SAVOURY GRILLS - SPECIALTY PASTRIES AND MORE.</Text>
-     <Text>DUE TO MUNICIPAL LAW - ALCOHOLIC BEVERAGES ARE NOT SERVED</Text>
-     <Text>BETWEEN 4:00 P.M. TO 6:00 P.M. IN ANY OUTLET.</Text>
-     <Text>SPECTRUM BAR FEATURES A DECOR WI</Text>
+     <Text>-NO MEAL PLANS OFFERED</Text>
+     <Text>-ON SITE RESTAURANT</Text>
+     <Text>AXIS LOBBY LOUNGE-</Text>
+     <Text>CHAT OVER SPECIALTY COFFEES OR COME FOR AFTERNOON TEA</Text>
+     <Text>IN THE COOL OF THIS RELAXED AND MODERN DUBAI CAFE AT</Text>
+     <Text>THE HILTON DUBAI JUMEIRAH RESORT. CONTEMPORARY</Text>
+     <Text>CHANDELIERS AND INDOOR PALMS GIVE THE AXIS LOBBY LOUNGE</Text>
+     <Text>A STYLISH AIRY FEEL WHILE LIVE PIANO MUSIC AT THE END</Text>
+     <Text>OF EACH DAY ADDS AN EXTRA DASH OF ELEGANCE.</Text>
+     <Text>.</Text>
+     <Text>BICE RESTAURANT-</Text>
+     <Text>BICE IS KNOWN THE WORLD OVER FOR ITS MIX OF TRADITIONAL</Text>
+     <Text>AND EXOTIC ITALIAN DISHES. TWO-TONE FLOORS WICKER</Text>
+     <Text>CHAIRS AND CRISP WHITE LINEN MAKE THIS DUBAI RESTAURANT</Text>
+     <Text>A FAVORITE PLACE TO DINE AT THE HILTON DUBAI JUMEIRAH</Text>
+     <Text>RESORT. TRY THE CLASSIC SICILIAN RIGATONI OR INNOVATIVE</Text>
+     <Text>DISHES LIKE LOBSTER CARPACCIO.</Text>
+     <Text>.</Text>
+     <Text>CUBAN BAR-</Text>
+     <Text>RETIRE TO THIS TRADITIONAL CUBAN-STYLE DUBAI BAR AFTER</Text>
+     <Text>DINNER OR POP IN FOR EVENING TAPAS. LOCATED INSIDE</Text>
+     <Text>PACHANGA RESTAURANT AT THE HILTON DUBAI JUMEIRAH RESORT</Text>
+     <Text>UNWIND IN THE STYLISH SURROUNDINGS AND ENJOY A</Text>
+     <Text>REFRESHING COCKTAIL.</Text>
+     <Text>.</Text>
+     <Text>OCEANA RESTAURANT-</Text>
+     <Text>REMINISCENT OF AN ELEGANT 1920S CRUISE SHIP OCEANA*S</Text>
+     <Text>LACQUERED WOOD INTERIORS TALL PLANTS AND COMFORTABLE</Text>
+     <Text>DINING CHAIRS GIVE THIS DUBAI RESTAURANT A WELCOMING</Text>
+     <Text>FEEL. AND ONCE YOU*VE SET EYES ON THE HILTON DUBAI</Text>
+     <Text>JUMEIRAH RESORT*S THEMED DINNER AND BREAKFAST BUFFETS</Text>
+     <Text>YOU*LL BE SPOILT FOR CHOICE.</Text>
+     <Text>.</Text>
+     <Text>PACHANGA RESTAURANT-</Text>
+     <Text>ENJOY SOUTH AMERICAN SPIRIT IN THIS DUBAI RESTAURANT</Text>
+     <Text>WITH ITS FUSION MENU RUSTIC DECOR AND NIGHTLY LIVE</Text>
+     <Text>MUSIC. BRAZIL MEXICO CUBA AND ARGENTINA INFLUENCE THE</Text>
+     <Text>MENU AND INTERIORS WITH A DIFFERENT SECTION FOR EACH</Text>
+     <Text>COUNTRY. WEEKLY TANGO ADDS EVEN MORE FLAIR AT THE</Text>
+     <Text>HILTON DUBAI JUMEIRAH RESORT.</Text>
+     <Text>.</Text>
+     <Text>STUDIO ONE-</Text>
+     <Text>SIT BACK AND RELAX AS YOU WATCH LIVE SPORT ON THE</Text>
+     <Text>PLASMA SCREENS IN THE COMFORTABLE ATMOSPHERE OF STUDIO</Text>
+     <Text>ONE SPORTS BAR. A GREAT SELECTION OF LIGHT BITES AND A</Text>
+     <Text>WIDE VARIETY OF DRINKS AND SPECIALTY COCKTAILS ARE ALSO</Text>
+     <Text>AVAILABLE AT THIS DUBAI BAR.</Text>
+     <Text>.</Text>
+     <Text>WAVEBREAKER-</Text>
+     <Text>PERFECTLY SITUATED BETWEEN THE BEACH AND THE HILTON</Text>
+     <Text>DUBAI JUMEIRAH RESORT*S LUSH GARDENS WAVEBREAKER IS</Text>
+     <Text>RENOWNED FOR ITS VIEWS. SETTLE IN FOR A LAZY AFTERNOON</Text>
+     <Text>SIPP</Text>
     </Dining>
     <Directions>
-     <Text>DUBAI INTL</Text>
-     <Text>FOLLOW AL GARHOUD SIGN  STAY TO THE RIGHT  ONTO RAMP</Text>
-     <Text>ONCE OFF RAMP FOLLOW JEBEL AL-ABU DHABI SIGN</Text>
-     <Text>PROCEED OVER THE AL GARHOUD BRIDGE</Text>
-     <Text>FOLLOW JEBEL ALI ABU DHABI SIGN UNTIL YOU PASS THROUGH A SHORT</Text>
-     <Text>TUNNEL</Text>
-     <Text>AFTER TUNNEL FOLLOW THE TRADE CENTRE SIGN</Text>
-     <Text>MOVE TO RIGHT HAND LANE FOLLOW TRADE CENTRE SIGN</Text>
-     <Text>PROCEED ONTO ROUND-A-BOUT IN CENTRE LANE</Text>
-     <Text>TAKE JEBEL ALI ABU DHABI EXIT OFF ROUND-A-BOUT</Text>
-     <Text>TAKE FIRST RIGHT EXIT  DO NOT GO BACK ONTO HIGHWAY</Text>
-     <Text>THE FAIRMONT DUBAI IS ON YOUR RIGHT HAND SIDE.</Text>
+     <Text>- DUBAI INTL....................22.0MI / 35.4KM</Text>
+     <Text>- ABU DHABI INTERNATIONAL.......62.2MI / 100.0KM</Text>
+     <Text>AIRPORT NADIA</Text>
+     <Text>- FROM DXB -</Text>
+     <Text>DUE TO THE CONTINUAL DEVELOPMENT OF DUBAI MARINA AND THE</Text>
+     <Text>JUMERIAH BEACH RESIDENCES ACCURATE DRIVING DIRECTIONS TO THE</Text>
+     <Text>HOTEL CAN BE REQUESTED THROUGH OUR RESERVATIONS DEPARTMENT</Text>
+     <Text>ON 971 /0/ 4 399 1111 OR VIA</Text>
+     <Text>RESERVATIONS.JUMERIAH*HILTON.COM</Text>
+     <Text>.</Text>
+     <Text>- FROM AUH -</Text>
+     <Text>FOLLOW SIGNS TO DUBAI/JEBEL ALI ON SHEIKH ZAYED ROAD E11.</Text>
+     <Text>ACCURATE DRIVING DIRECTIONS TO THE HOTEL CAN BE REQUESTED</Text>
+     <Text>THROUGH OUR RESERVATIONS DEPARTMENT ON 971 /0/ 4 399 1111 OR</Text>
+     <Text>VIA RESERVATIONS.JUMERIAH*HILTON.COM</Text>
+     <Text>.</Text>
+     <Text>- ADDITIONAL DIRECTIONS</Text>
+     <Text>ONCE ON SHEIKH ZAYED ROAD /E11/ TAKE EXIT 32 AND</Text>
+     <Text>FOLLOW SIGNS FOR DUBAI MARINA. AT THE FIRST</Text>
+     <Text>INTERCHANGE TURN LEFT FOR DUBAI MARINA. YOU ARE</Text>
+     <Text>NOW TRAVELLING PARALLEL TO SHEIKH ZAYED ROAD. TURN</Text>
+     <Text>RIGHT AT THE 2ND SET OF TRAFFIC LIGHTS AND THEN</Text>
+     <Text>LEFT AT THE NEXT SET OF LIGHTS. YOU ARE NOW BY</Text>
+     <Text>JUMEIRAH BEACH RESIDENCE. TAKE THE 1ST RIGHT THEN</Text>
+     <Text>NEXT LEFT HILTON DUBAI JUMEIRAH IS IN FRONT OF YOU</Text>
+     <Text>WELCOME. DRIVE TO THE FRONT OF THE HOTEL FOR VALET</Text>
+     <Text>PARKING.</Text>
+     <Text>.</Text>
+     <Text>-PARKING DETAILS</Text>
+     <Text>SELF PARKING. VALET. SECURED.  PARKING LOT</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>.</Text>
     </Directions>
     <Facilities>
-     <Text>A UNIQUE BLEND OF CONTEMPORARY DESIGN AND URBAN CHIC- FAIRMONT</Text>
-     <Text>IS AN ICON IN THE FINANCIAL HEART OF THE CITY.  PLANNED WITH</Text>
-     <Text>BUSINESS IN MIND THIS 34 STOREY PROPERTY FEATURES 394</Text>
-     <Text>GUESTROOMS - ITS SIGNATURE FAIRMONT GOLD HOTEL-WITHIN-A HOTEL</Text>
-     <Text>PRODUCT - OVER 10 DINING AND ENTERTAINMENT VENUES - WILLOW</Text>
-     <Text>STREAM SPA - TWO SWIMMING POOLS AND FULLY EQUIPPED FITNESS</Text>
-     <Text>CENTRE.</Text>
-     <Text>AIR CONDITIONING              BARBECUE GRILLS AVAILABLE</Text>
-     <Text>CASH MACHINE ATM ONSITE       CASINO</Text>
-     <Text>COFFEE SHOP                   CONVIENENCE STORE</Text>
-     <Text>ELEVATOR                      EXECUTIVE FLOOR</Text>
-     <Text>FRONT DESK HOURS 0000-2359    GIFT SHOP</Text>
-     <Text>GUEST LAUNDRY FACILITY        HANDICAP PARKING</Text>
-     <Text>HOTEL SAFE DEPOSIT BOX        HOUSEKEEPING</Text>
-     <Text>LOUNGE                        NIGHT CLUB</Text>
-     <Text>RESTAURANT                    SOLARIUM</Text>
-     <Text>STORAGE SPACE AVAILABLE       YEAR BUILT 2002</Text>
-     <Text>BUILDING MEETS LOCAL, STATE AND COUNTRY BUILDING CODES</Text>
-     <Text>PARKING FEE MANAGED BY THE HOTEL</Text>
-     <Text>PHYSICALLY CHALLENGED PUBLIC AREAS</Text>
-     <Text>YEAR PUBLIC AREAS REFURBISHED LAST 2002</Text>
+     <Text>AIR CONDITIONING            MEETS BUILDING CODES</Text>
+     <Text>COFFEE SHOP                 EXECUTIVE FLOOR</Text>
+     <Text>GIFT SHOP                   DISABLED PARKING</Text>
+     <Text>DISABLED ACCESS             HOTEL SAFE</Text>
+     <Text>GUEST LAUNDRY</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>EXPRESS MAIL                MEETING FACILITIES</Text>
+     <Text>MULTI LINGUAL STAFF         POOL SIDE SERVICE</Text>
+     <Text>RESTAURANT                  CHILDREN*S MENU</Text>
+     <Text>CRIBS                       HIGH CHAIR</Text>
+     <Text>BAGGAGE STORAGE             BARBER SHOP</Text>
+     <Text>CLOTHING STORE              ELEVATORS</Text>
+     <Text>GUEST SERVICES              LOUNGE</Text>
+     <Text>LUGGAGE HOLD                FAX RENTAL</Text>
+     <Text>ROOM SERVICE</Text>
+     <Text>.</Text>
+     <Text>.</Text>
     </Facilities>
     <Guarantee>
-     <Text>CREDIT CARD GUARANTEE IS REQUIRED WHEN MAKING THE RESERVATION -</Text>
-     <Text>HOWEVER NO DEPOSIT IS REQUIRED TO CONFIRM THE BOOKING.</Text>
+     <Text>SEE RATES RULES FOR GUARANTEE REQUIREMENTS.</Text>
+     <Text>.</Text>
     </Guarantee>
     <Location>
-     <Text>FAIRMONT DUBAI IS SITUATED ON SHEIKH ZAYED ROAD IN THE HEART OF</Text>
-     <Text>THE BUSINESS DISTRICT - DIRECTLY OPPOSITE THE DUBAI</Text>
-     <Text>INTERNATIONAL CONVENTION CENTRE AND CONNECTED BY THE FAIRMONT</Text>
-     <Text>WALKWAY.</Text>
+     <Text>-URL  WWW.DUBAIJUMEIRAH.HILTON.COM</Text>
+     <Text>.</Text>
+     <Text>- DOWNTOWN ...........................12.4 MI/20.0 KM</Text>
     </Location>
     <MarketingInformation>
-     <Text>EFFECTIVE 03/31/14, A TOURISM DIRHAM FEE OF AED 20 PER BEDROOM,</Text>
-     <Text>PER NT WILL BE CHARGED BY THE HOTEL ON ALL STAYS AT CHECK OUT</Text>
+     <Text>NONSMOKING REQ-ENTER NS IN SI FIELD</Text>
+     <Text>HILTON INTERNATIONAL</Text>
     </MarketingInformation>
+    <MiscServices>
+     <Text>- GUARANTEED RATES</Text>
+     <Text>.</Text>
+     <Text>- YEAR BUILT</Text>
+     <Text>1999</Text>
+     <Text>- YEAR REMODELED</Text>
+     <Text>2000</Text>
+     <Text>.</Text>
+     <Text>- COMMISSION PERCENT   10.00 PCT</Text>
+     <Text>- COMMISSION PLAN MEMBER CENTRALIZED PROGRAMS - YE</Text>
+     <Text>.</Text>
+    </MiscServices>
     <Policies>
-     <Text>CANCEL BY 06:00 PM - 24 HOURS PRIOR TO ARRIVAL</Text>
-     <Text>EARLY CHECK OUT POLICY</Text>
-     <Text>NO CHARGE.</Text>
-     <Text>LATE CHECK OUT POLICY</Text>
-     <Text>BASED ON AVAILABILITY.</Text>
-     <Text>HALF DAY  UNTIL 6PM  OR FULL DAY  AFTER 6PM . CHARGE WILL APPLY</Text>
-     <Text>AFTER 12 PM.</Text>
-     <Text>PET POLICY</Text>
-     <Text>ONLY SEEING-EYE DOGS OR OTHER WORKING DOGS ARE PERMITTED IN THE</Text>
-     <Text>HOTEL. THERE WOULD BE NO CHARGE FOR THESE DOGS.</Text>
-     <Text>FAMILY CHILDREN POLICY</Text>
-     <Text>CHILDREN BELOW THE AGE OF 18 YEARS ARE ADMITTED AT NO CHARGE</Text>
-     <Text>ROOM ONLY .  CHILDREN MUST BE 16 YEARS OF AGE OR OLDER IN</Text>
-     <Text>ORDER TO USE THE GYM.</Text>
-     <Text>GROUP CONDITIONS</Text>
-     <Text>THIS IS VALID FOR ANY BOOKINGS FOR A MINIMUM OF 10 ROOMS PER</Text>
-     <Text>NIGHT.</Text>
-     <Text>COMMISSION POLICY</Text>
-     <Text>COMMISSION IS PAYABLE TO IATA CERTIFIED TRAVEL AGENCIES AND TO</Text>
-     <Text>THOSE TRAVEL COMPANIES APPROVED BY MANAGEMENT</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>-FAMILY POLICY</Text>
+     <Text>KIDS HAVE A BALL AT THE KIDZ PARADISE CLUB. DROP THEM OFF</Text>
+     <Text>FOR THE DAY OR LET THEM SPLASH IN THE BABY POOL OR PLAY IN</Text>
+     <Text>THE SAFETY OF THE HILTON DUBAI JUMEIRAH RESORT S GARDEN OR</Text>
+     <Text>PRIVATE BEACH. OLDER KIDS LOVE THE GAMES ROOM WITH</Text>
+     <Text>PLAYSTATIONS. A BABYMINDING SERVICE IS AVAILABLE.</Text>
+     <Text>.</Text>
+     <Text>-MINIMUM LENGTH OF STAY POLICY</Text>
+     <Text>MINIMUM NIGHT STAY MAY BE REQUIRED SEASONALLY.</Text>
+     <Text>.</Text>
     </Policies>
     <Recreation>
-     <Text>THE SPA AND FITNESS FACILITIES AT FAIRMONT DUBAI COVER OVER</Text>
-     <Text>40.000 SQUARE FEET  3700 SQUARE METRES  AND OFFER TWO DISTINCT</Text>
-     <Text>EXPERIENCES - A WILLOW STREAM SPA AND A FULLY EQUIPPED HEALTH</Text>
-     <Text>CLUB.</Text>
-     <Text>CARDIO VASUCLAR EQUIPMENT     EXTENSIVE HEALTH CLUB</Text>
-     <Text>HEATED OUT DOOR POOL          JACUZZI</Text>
-     <Text>MASSAGE                       OUTDOOR POOL</Text>
-     <Text>SAUNA                         SPA</Text>
-     <Text>WEIGHT LIFTING EQUIPMENT</Text>
+     <Text>.</Text>
+     <Text>RECREATION FACILITIES ONSITE-</Text>
+     <Text>-CHILD ACTIVITIES             -FISHING</Text>
+     <Text>-HEATED OUTDOOR POOL          -JACUZZI</Text>
+     <Text>-LIMITED HEALTH CLUB          -MASSAGE</Text>
+     <Text>-OUTDOOR POOL                 -PLAY GROUND</Text>
+     <Text>-SNORKELING                   -WHIRLPOOL</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>RECREATION FACILITIES OFFSITE-</Text>
+     <Text>-DIVING                       -GOLF</Text>
+     <Text>-SNOW SKIING</Text>
+     <Text>.</Text>
+     <Text>RECREATION FACILITIES-</Text>
+     <Text>DRIVING RANGE NEARBY - 2.5 MI</Text>
+     <Text>PUTTING GREEN - 2.5 MI</Text>
+     <Text>BOWLING NEARBY - 10 MI</Text>
+     <Text>BEACH -</Text>
+     <Text>HORSEBACK RIDING - 7 MI</Text>
+     <Text>POOL TABLE -</Text>
+     <Text>WATER SKIING -</Text>
+     <Text>WINDSURFING -</Text>
+     <Text>SAILING NEARBY -</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>CHARGES MAY APPLY FOR SOME RECREATION FACILITIES. CONTACT</Text>
+     <Text>HOTEL FOR INFORMATION</Text>
+     <Text>.</Text>
     </Recreation>
     <Rooms>
-     <Text>CLASSICAL ELEGANCE AND CONTEMPORARY DECOR ARE REFLECTED</Text>
-     <Text>THROUGHOUT THE 394 GUESTROOMS AND SUITES - COMBINING TIMELESS</Text>
-     <Text>STYLE WITH GENEROUS COMFORT. POLISHED GRANITE FLOORS AND SOFT</Text>
-     <Text>LUXURIOUS FABRICS ARE UNITED TO CREATE A SOOTHING ATMOSPHERE -</Text>
-     <Text>COMPLEMENTED BY STUNNING PANORAMIC VIEWS OF THE CITY.</Text>
-     <Text>ALL GUEST ROOMS AT THE FAIRMONT DUBAI OFFER THE FOLLOWING</Text>
-     <Text>AMENITIES:</Text>
-     <Text>AIR CONDITIONING WITH DIGITAL CLIMATE CONTROL</Text>
-     <Text>-CD RADIO ALARM CLOCKS</Text>
-     <Text>-A *SMART MAID SERVICE* DOOR PANEL FOR REQUESTING TURNDOWN OR</Text>
-     <Text>PRIVACY</Text>
-     <Text>-BEDSIDE PANEL TO CONTROL LIGHT INTENSITY</Text>
-     <Text>-INTERACTIVE TELEVISION</Text>
-     <Text>-DATA PORT CONNECTION FOR HIGH SPEED INTERNET ACCESS</Text>
-     <Text>-WIRELESS HIGH SPEED INTERNET ACCESS AVAILABLE</Text>
-     <Text>-TWO DEDICATED PHONE LINES WITH PERSONAL VOICE MAIL</Text>
-     <Text>-IN-ROOM SAFE</Text>
-     <Text>-MILLER HARRIS LUXURY BATHROOM AMENITIES</Text>
-     <Text>-MINI-BAR REFRESHMENT CENTRE WITH A SELECTION OF PREMIUM FOOD</Text>
-     <Text>AND BEVERAGE PRODUCTS</Text>
-     <Text>-TEA AND COFFEE MAKER</Text>
-     <Text>-FAIRMONT BATHROBES AND SLIPPERS</Text>
-     <Text>-BOSE CD RADIO ALARM CLOCK  FAIRMONT GOLD ROOMS AND PENTHOUSE</Text>
-     <Text>SUITES</Text>
-     <Text>-HAIR DRYER</Text>
-     <Text>-IRON AND IRONING BOARD</Text>
-     <Text>-INTERNATIONAL ADAPTER</Text>
-     <Text>-A SELECTION OF MULTILINGUAL PUBLICATIONS AND COMPLIMENTARY</Text>
-     <Text>NEWSPAPERS  NATIONAL OR LOCAL NEWSPAPERS  ARE AVAILABLE UPON</Text>
-     <Text>REQUEST</Text>
-     <Text>STANDARD AMENITIES IN ALL ROOMS</Text>
-     <Text>ALARM CLOCK                   BATHROBE</Text>
-     <Text>BATHROOM AMENITIES            BATHROOM PHONE</Text>
-     <Text>BATHTUB AND SHOWER            BATHTUB ONLY</Text>
-     <Text>BIDET                         CABLE TV</Text>
-     <Text>CD PLAYER                     CLOTHES PRESS</Text>
-     <Text>COFFEE TEA                    COLOR TV</Text>
-     <Text>DIRECT DIAL                   ELECTRICAL ADAPTERS</Text>
-     <Text>ELECTRICAL OUTLET DESK        FULL SIZE MIRROR</Text>
-     <Text>HAIR DRYER                    HSPD</Text>
-     <Text>IRON BOARD                    LAUDRY BASKET</Text>
-     <Text>MINI FRIDGE                   MINIBAR</Text>
-     <Text>MODEM DATAPORT                MOVIES</Text>
-     <Text>NEWS</Text>
+     <Text>- 389 ROOMS</Text>
+     <Text>- 61 SUITES</Text>
+     <Text>- 9 FLOORS</Text>
+     <Text>- INTERIOR CORRIDORS</Text>
+     <Text>.</Text>
+     <Text>AMENITIES IN ALL ROOMS-</Text>
+     <Text>- AIR CONDITIONING       - ALARM CLOCK</Text>
+     <Text>- BATH ROBE              - BATHROOM AMENITIES</Text>
+     <Text>- COFFEE/TEA MAKER       - HAIR DRYER</Text>
+     <Text>- HIGH SPEED INTERNET    - IRONING BOARD</Text>
+     <Text>- MINIBAR                - PHONE IN BATHROOM</Text>
+     <Text>- SAFE                   - SPEAKER PHONE</Text>
+     <Text>- TEMPERATURE CONTROL    - TWO PHONE LINES</Text>
+     <Text>- VOICE MAIL             - WORKDESK LAMP</Text>
+     <Text>.</Text>
+     <Text>AMENITIES IN SELECT ROOMS-</Text>
+     <Text>- DVD PLAYER             - ELECTRICAL PLUG</Text>
+     <Text>ADAPTERS</Text>
+     <Text>- SOFA BED               - STEREO</Text>
+     <Text>- TELEPHONE ADAPTER      - VOLTAGE CONVERTERS</Text>
+     <Text>.</Text>
+     <Text>-FEATURED ROOM AMENITIES</Text>
+     <Text>.</Text>
+     <Text>ACCESSIBLE</Text>
+     <Text>HAND HELD SHOWER</Text>
+     <Text>SHOWER FOR WHEELCHAIR</Text>
+     <Text>CONNECTING ROOMS</Text>
+     <Text>LEVER DOOR HANDLES</Text>
+     <Text>TELEPHONE - AUTO WAKEUP</Text>
+     <Text>AUTOMATIC DOOR CLOSER</Text>
+     <Text>220 AC</Text>
+     <Text>PAY PER VIEW TV</Text>
+     <Text>BATHROOM DOORS AT LEAST 32 INCHES WIDE</Text>
+     <Text>ROOMS ACCESSIBLE FOR WHEELCHAIRS</Text>
+     <Text>ROOM AIR FILTRATION</Text>
+     <Text>EMERGENCY PHONE EXTENSION IN ALL GUEST ROOMS</Text>
+     <Text>.</Text>
+     <Text>.</Text>
     </Rooms>
     <Safety>
-     <Text>24 HOUR SECURITY              ALARMS CONTINUOUSLY MONITORED</Text>
-     <Text>AUDIBLE ALARMS                AUDIBLE SMOKE ALARM HARDWIRED</Text>
-     <Text>AUDIBLE SMOKE ALARMS IN ROOM  AUTO RECALL ELEVATORS</Text>
-     <Text>AUTOLINK TO FIRE DEPARTMENT   AUTOMATIC FIRE DOORS</Text>
-     <Text>DEADBOLTS ON ROOM DOORS       ELECTRONIC KEY CARDS</Text>
-     <Text>EMERGENCY EVACUATION PLAN     EMERGENCY INFO IN ROOMS</Text>
-     <Text>EXIT MAPS IN ROOM             EXIT SIGNS LIT</Text>
-     <Text>EXTERIOR DOORS LOCK           FIRE DETECTORS IN HALLWAYS</Text>
-     <Text>OVERNIGHT SECURITY            PARKING AREAS WELL LIT</Text>
-     <Text>PARKING ATTENDANT             PATROLLED PARKING AREAS</Text>
-     <Text>SECURED FLOORS                SECURITY ESCORT AVAILABLE</Text>
-     <Text>SECURITY PERSONNEL ON SITE    SPRINKLERS IN HALL</Text>
-     <Text>SPRINKLERS IN PUBLIC AREAS    SPRINKLERS IN ROOMS</Text>
-     <Text>STAFF CPR TRAINED             STAFF TRAINED DUPLICATE KEYS</Text>
-     <Text>STAFF TRAINED IN FIRST AID    STAFF TRAINED ON AED</Text>
-     <Text>UNIFORM SECURITY ON PREMISES  VENTILATED STAIR WELLS</Text>
-     <Text>VIDEO SURVEILLANCE ENTRANCE   VIDEO SURVEILLANCE HALLWAYS</Text>
-     <Text>VIEW PORT                     WELL LIT WALKWAYS</Text>
-     <Text>ALARMS HAVE STROBE LIGHTS IN PUBLIC AREAS</Text>
-     <Text>AUDIBLE SMOKE ALARM IN PUBLIC AREAS</Text>
-     <Text>AUDIBLE SMOKE ALARMS IN HALLWAY</Text>
-     <Text>BASIC MEDICAL EQUIPMENT ONSITE</Text>
-     <Text>EMERGENCY EVACATUION DRILL FREQUENCY 4</Text>
-     <Text>EMERGENCY SERVICE RESPONSE TIME 10 MINUTES</Text>
-     <Text>FIRE DETECTORS IN PUBLIC AREAS</Text>
-     <Text>FIRE EXTINGUISHERS IN HALLWAYS</Text>
-     <Text>GUEST ROOM DOORS HAVE SECOND LOCK</Text>
-     <Text>MULTIPLE FIRE EXITS EACH FLOOR</Text>
-     <Text>PROPERTY MEETS REQUIREMENT FOR FIRE SAFETY</Text>
-     <Text>SAFETY CHAIN ON GUEST ROOM DOORS</Text>
-     <Text>VIDEO SURVEILLANCE MONITORED 24H</Text>
-     <Text>VIDEO SURVEILLANCE PARKING AREAS</Text>
-     <Text>VIDEO SURVEILLANCE PUBLIC AREAS</Text>
-     <Text>VIDEO SURVEILLANCE RECORDED 24H</Text>
+     <Text>RESTRICTED PUBLIC ACCESS TO GUEST ROOM FLOORS</Text>
+     <Text>RESTRICTED PHONE ACCESS FROM PUBLIC AREAS</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>-24 HOUR SECURITY             -ALARMS MONITORED</Text>
+     <Text>-EXTERNAL DEFIBRILLATOR       -AUDIBLE ALARMS</Text>
+     <Text>-SMOKE ALARMS IN HALLS        -SMOKE ALARMS IN ROOMS</Text>
+     <Text>-SMOKE ALARMS PUBLIC AREAS    -SMOKE ALARM HARD WIRED</Text>
+     <Text>-ELEVATOR RECALL              -LINKED TO FIRE DEPT</Text>
+     <Text>-AUTOMATIC FIRE DOORS         -BASIC MEDICAL EQUIPMENT</Text>
+     <Text>-DEAD BOLTS                   -ELECTRONIC KEYCARDS</Text>
+     <Text>-EMERGENCY EVAC PLAN          -EMERGENCY INFO IN ROOMS</Text>
+     <Text>-EMERGENCY LIGHTING           -EXIT MAPS IN ROOMS</Text>
+     <Text>-EXIT SIGNS LIT               -EXIT DOORS AUTO LOCK</Text>
+     <Text>-HALLWAY FIRE DETECTORS       -PUBLIC FIRE DETECTORS</Text>
+     <Text>-ROOM FIRE DETECTORS          -FIRE EXTINGUISHERS IN HALLS</Text>
+     <Text>-FIRST AID AVAILABLE          -SECONDARY LOCKS</Text>
+     <Text>-ROOMS HAVE VIEWPORTS         -LOCKS ON GLASS DOORS</Text>
+     <Text>-MULTIPLE EXITS PER FLOOR     -PARKING AREAS LIT</Text>
+     <Text>-PATROLLED PARKING AREAS      -PA SYSTEM</Text>
+     <Text>-ROOM WINDOWS OPEN            -SECURE FLOORS AVAILABLE</Text>
+     <Text>-SECONDARY WINDOW LOCKS       -HALL SPRINKLERS</Text>
+     <Text>-PUBLIC AREAS SPRINKLERS      -SPRINKLERS ROOMS</Text>
+     <Text>-STAFF TRAINED FOR AED        -STAFF TRAINED IN CPR</Text>
+     <Text>-STAFF TRAINED TO DUP KEYS    -STAFF FIRST AID TRAINED</Text>
+     <Text>-VENTILATED STAIRWELLS        -24 HR VIDEO SURVEILLANCE</Text>
+     <Text>-RECORDED VID SURVEILLANCE    -WELL LIT WALKWAYS</Text>
+     <Text>.</Text>
     </Safety>
     <Services>
-     <Text>-BABY SITTING</Text>
-     <Text>BABY SITTING SERVICES ARE AVAILABLE UPON REQUEST.  FOR MORE</Text>
-     <Text>INFORMATION- PLEASE CONTACT THE ROYAL SERVICE DEPARTMENT ON</Text>
-     <Text>971 4 332 5555.</Text>
-     <Text>-CAR RENTAL</Text>
-     <Text>THERE IS A CAR RENTAL AGENCY LOCATED ON THE GROUND FLOOR OF THE</Text>
-     <Text>HOTEL. AT DUBAI INTERNATIONAL AIRPORT- THERE ARE ALSO A NUMBER</Text>
-     <Text>OF CAR RENTAL AGENCIES INCLUDING HERTZ- BUDGET- THRIFTY AND</Text>
-     <Text>AVIS.</Text>
-     <Text>-CHECK IN   CHECK OUT</Text>
-     <Text>CHECK-IN TIME IS FROM 3 PM ONWARDS AND CHECKOUT TIME IS AT 12</Text>
-     <Text>NOON. SHOULD YOU ARRIVE PRIOR TO 3 PM- OUR GUEST SERVICES</Text>
-     <Text>DEPARTMENT WILL BE PLEASED TO STORE YOUR LUGGAGE UNTIL YOUR</Text>
-     <Text>ROOM IS READY.</Text>
-     <Text>-CONCIERGE</Text>
-     <Text>LOCATED IN THE MAIN LOBBY- OUR AWARD WINNING CONCIERGE TEAM IS</Text>
-     <Text>AVAILABLE 24 HOURS A DAY TO ASSIST YOU IN MAKING THE MOST OF</Text>
-     <Text>YOUR STAY IN DUBAI.  FROM ORGANISING SIGHTSEEING TOURS TO</Text>
-     <Text>ARRANGING DINNER AND TRAVEL RESERVATIONS- AS WELL AS PROVIDING</Text>
-     <Text>INSIGHT ON CULTURAL PLACES TO VISIT FOR A GLIMPSE OF MIDDLE</Text>
-     <Text>EASTERN LIFE- OUR INTERNATIONAL TEAM WILL ENSURE THAT EVERY</Text>
-     <Text>DETAIL OF YOUR TRIP IS EXPERIENCED TO ITS FULLEST.</Text>
-     <Text>-ELEVATORS</Text>
-     <Text>THERE ARE SIX GLASS PANORAMIC GUEST ELEVATORS LOCATED IN THE</Text>
-     <Text>MAIN LOBBY.  A DEDICATED ELEVATOR IS ALSO LOCATED ON THE LOBBY</Text>
-     <Text>LEVEL FOR GUESTS DINING IN SPECTRUM ON ONE.</Text>
-     <Text>-HIGH SPEED INTERNET ACCESS</Text>
-     <Text>GUESTS MAY ACCESS THE INTERNET THROUGH DEDICATED COMPUTERS AT</Text>
-     <Text>THE BUSINESS CENTRE OR IN THE PRIVACY OF THEIR GUESTROOM WITH</Text>
-     <Text>FAIRMONT.NET PORTS-WHICH ENABLES USERS TO CONNECT THEIR LAPTOP</Text>
-     <Text>ETHERNET PORT DIRECTLY TO THE INTERNET.</Text>
-     <Text>WIRELESS CAPABILITIES ARE ALSO AVAILABLE IN ALL GUEST AND</Text>
-     <Text>MEETING ROOMS- BUSINESS CENTRE AND THE FAIRMONT GOLD LOUNGE.</Text>
-     <Text>-IN ROOM SAFE</Text>
-     <Text>ALL GUEST ROOMS HAVE AN IN-ROOM SAFE THAT CAN HOLD A LAPTOP</Text>
-     <Text>COMPUTER.</Text>
-     <Text>-LAUNDRY</Text>
-     <Text>LAUNDRY SERVICES ARE AVAILABLE 24 HOURS A DAY- INCLUDING</Text>
-     <Text>SPECIALISED SERVICES UPON REQUEST.</Text>
-     <Text>-MALL SHUTTLE SERVICES</Text>
-     <Text>A COMPLIMENTARY SHUTTLE SERVICES IS AVAILABLE FROM THE FAIRMONT</Text>
-     <Text>DUBAI TO THE DUBAI MALL- BURJUMAN SHOPPING MALL AND DUBAI</Text>
-     <Text>OUTLET MALL. PLEASE VISIT THE CONCIERGE IN THE LOBBY OR DIAL</Text>
-     <Text>EXTENSION 8</Text>
+     <Text>.</Text>
+     <Text>-SERVICES ON PROPERTY</Text>
+     <Text>- AUDIO VISUAL EQUIPMENT      - BEAUTYSHOP</Text>
+     <Text>- BREAKFAST BUFFET            - BUSINESS CENTER</Text>
+     <Text>- BUSINESS CENTER SERVICES    - CAR RENTAL DESK</Text>
+     <Text>- CELL PHONE RENTAL           - COFFEE</Text>
+     <Text>- COMPUTER                    - COMPUTER RENTAL</Text>
+     <Text>- CONCIERGE                   - COPY SERVICE</Text>
+     <Text>- CURRENCY EXCHANGE           - EARLY CHECK OUT PENALTY</Text>
+     <Text>- EVENING TURN DOWN           - EXPRESS CHECK OUT</Text>
+     <Text>- FAXING INCOMING             - FAXING OUTGOING</Text>
+     <Text>- GROCERY SHOPPING SERVICE    - HAIR SALON</Text>
+     <Text>- KIDS PROGRAM                - LATE CHECK OUT</Text>
+     <Text>- PARKING                     - SECRETARY SERVICE</Text>
+     <Text>- SOCIAL HOUR                 - TOUR DESK</Text>
+     <Text>- VALET PARKING</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>SOME SERVICES MAY INCUR AN ADDITIONAL CHARGE</Text>
+     <Text>.</Text>
     </Services>
     <Transportation>
-     <Text>DUBAI INTL</Text>
-     <Text>LIMO-250.00 ONE WAY</Text>
-     <Text>TAXI-50.00 ONE WAY</Text>
+     <Text>AIRPORT DISTANCE-35 KM</Text>
+     <Text>AREA-ON BEACH</Text>
+     <Text>TRANSPORT FROM AIRPORT- PUBLIC BUS  TAXI  LIMO</Text>
+     <Text>RENTAL CAR</Text>
+     <Text>DIRECTIONS TO PROPERTY-DRIVING ON HIGHWAY E11 TAKE</Text>
+     <Text>EXIT NUMBER 5 AT THE HARD ROCK CAFE AND DRIVE TOWARDS</Text>
+     <Text>THE SEA. AT THE END OF THE ROAD TAKE A LEFT TURN</Text>
+     <Text>AFTER ABOUT 300 METRES YOU WILL REACH THE HILTON</Text>
+     <Text>DUBAI JUMEIRAH.</Text>
+     <Text>AREA TRANSPORT-LOCATED NEAR THE FAMOUS EMIRATES GOLF</Text>
+     <Text>COURSE THE VENUE OF THE DESERT CLASSIC THE HOTEL IS SET</Text>
+     <Text>ON THE GOLDEN MILE OF DUBAIS JUMEIRAH BEACH JUST 25</Text>
+     <Text>MINUTES FROM THE CITY CENTRE AND THE AIRPORT.</Text>
+     <Text>A COMPLIMENTARY SHUTTLE BUS SERVICE TO AND FROM THE CITY</Text>
+     <Text>IS AVAILABLE SEVERAL TIMES A DAY FOR ALL HOTELS. THE</Text>
+     <Text>SHUTTLE BUS STOPS AT SEVERAL CONVENIENT LOCATIONS IN</Text>
+     <Text>DUBAI INCLUDING BUR DUBAI GOLD SOUK AND DEIRA.</Text>
+     <Text>PARKING DETAILS-THE HOTEL PROVIDES FREE VALET SERVICES</Text>
+     <Text>AND PARKING IN FRONT OF THE HOTEL FOR ALL GUESTS. SECURE</Text>
+     <Text>UNDERGROUND PARKING IS ALSO AVAILABLE FREE OF CHARGE.</Text>
+     <Text>AIRPORT TRANSFER - FEES APPLY.</Text>
     </Transportation>
    </VendorMessages>
   </BasicPropertyInfo>
@@ -443,231 +483,461 @@
     <PaymentCard Code="AX" Type="AMERICAN EXPRESS"/>
     <PaymentCard Code="CA" Type="MASTERCARD"/>
     <PaymentCard Code="DC" Type="DINERS CLUB CARD"/>
-    <PaymentCard Code="JC" Type="JCB CREDIT CARD"/>
+    <PaymentCard Code="EC" Type="EUROCARD"/>
     <PaymentCard Code="VI" Type="VISA"/>
    </DepositsAccepted>
    <GuaranteesAccepted>
     <PaymentCard Code="AX" Type="AMERICAN EXPRESS"/>
     <PaymentCard Code="CA" Type="MASTERCARD"/>
     <PaymentCard Code="DC" Type="DINERS CLUB CARD"/>
-    <PaymentCard Code="JC" Type="JCB CREDIT CARD"/>
+    <PaymentCard Code="EC" Type="EUROCARD"/>
     <PaymentCard Code="VI" Type="VISA"/>
+    <Text>/GT-              AGENCY NAME AND ADDRESS</Text>
+    <Text>/GAGT             GUARANTEE TO AGENCY TIDS/IATA NUMBER</Text>
+    <Text>/GCR              CORPORATE ID</Text>
     <Text>/GDPST            DEPOSIT WILL BE SENT</Text>
     <Text>/GDPST...         IMMEDIATE DEPOSIT TYPE OR FORM</Text>
    </GuaranteesAccepted>
   </Guarantee>
   <RoomRates>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1QRAC" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="001" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0HLV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="001" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
      <CancelPolicy Numeric="01" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>1 BEDROOM STE KING NS,LIVING ROOM,83 SQM</Text>
-     <Text>LCD TV, WIFI, WORK DESK, SEPARATE SHOWER/BATH</Text>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>TWO QUEEN BED DELUXE ROOM</Text>
+     <Text>2Q CITY VIEW/ SERENITY BED/ WIFI / BALCONY</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2450" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="1149" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="10193">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="804"/>
+       <TotalTaxes Amount="1346"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1KRAC" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="002" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A03LV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="002" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
      <CancelPolicy Numeric="01" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>1 BEDROOM STE GLD NS,LIVING ROOM, 83 SQM</Text>
-     <Text>COMP BREAKFST/SNACKS/CANAPE/COCKTAILS, WIFI</Text>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING DELUXE ROOM</Text>
+     <Text>1K CITY VIEW/ SERENITY BED/ WIFI / BALCONY</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2900" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="1149" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="10193">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="804"/>
+       <TotalTaxes Amount="1346"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="E1KRAC" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="003" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0JLV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="003" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
      <CancelPolicy Numeric="01" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>2 BEDROOM STE KING NS, 105 SQM, LCD TV</Text>
-     <Text>SPACIOUS LIVING WITH PRIVATE DINING AREA,WIFI</Text>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>TWO QUEEN BED GUEST ROOM WITH SEA VIEW</Text>
+     <Text>2Q SEA VIEW/ SERENITY BED/ WIFI / BALCONY</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2800" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="1299" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="11506">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="909"/>
+       <TotalTaxes Amount="1503"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1QBED" IATA_ProductIdentification="BED AND BREAKFAST" LowInventoryThreshold="false" RPH="004" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0FLV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="004" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
      <CancelPolicy Numeric="01" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>1 BEDROOM STE KING NS,LIVING ROOM,83 SQM</Text>
-     <Text>LCD TV, WIFI, WORK DESK, SEPARATE SHOWER/BATH</Text>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING GUEST ROOM WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ SERENITY BED/ WIFI / BALCONY</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2550" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="1299" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="11506">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="909"/>
+       <TotalTaxes Amount="1503"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1KBED" IATA_ProductIdentification="BED AND BREAKFAST" LowInventoryThreshold="false" RPH="005" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0KLV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="005" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
      <CancelPolicy Numeric="01" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>1 BEDROOM STE GLD NS,LIVING ROOM, 83 SQM</Text>
-     <Text>COMP BREAKFST/SNACKS/CANAPE/COCKTAILS, WIFI</Text>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>TWO QUEEN BED EXECUTIVE ROOM</Text>
+     <Text>2Q CITY VIEW/ TOP FLOOR/ LOUNGE ACCESS/ WIFI</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="3000" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="1499" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="13256">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1049"/>
+       <TotalTaxes Amount="1713"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="E1KBED" IATA_ProductIdentification="BED AND BREAKFAST" LowInventoryThreshold="false" RPH="006" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0MLV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="006" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
      <CancelPolicy Numeric="01" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>2 BEDROOM STE KING NS, 105 SQM, LCD TV</Text>
-     <Text>SPACIOUS LIVING WITH PRIVATE DINING AREA,WIFI</Text>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>TWO QUEEN BED EXECUTIVE ROOM WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ TOP FLOOR/ LOUNGE ACCESS/ WIFI</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2900" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="1599" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="14131">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1119"/>
+       <TotalTaxes Amount="1818"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1QSVE" IATA_ProductIdentification="ADV PURCH FULL NON-REF DEP" LowInventoryThreshold="false" RPH="007" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0LLV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="007" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
-     <CancelPolicy Numeric="00" Option="N">
-      <Text>RESERVATION CANNOT BE CANCELED</Text>
-     </CancelPolicy>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>1 BEDROOM STE KING NS,LIVING ROOM,83 SQM</Text>
-     <Text>LCD TV, WIFI, WORK DESK, SEPARATE SHOWER/BATH</Text>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING EXECUTIVE ROOM WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ TOP FLOOR/ LOUNGE ACCESS/BALCONY</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2082" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="1599" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="14131">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1119"/>
+       <TotalTaxes Amount="1818"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1KSVE" IATA_ProductIdentification="ADV PURCH FULL NON-REF DEP" LowInventoryThreshold="false" RPH="008" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0ILV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="008" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
-     <CancelPolicy Numeric="00" Option="N">
-      <Text>RESERVATION CANNOT BE CANCELED</Text>
-     </CancelPolicy>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>1 BEDROOM STE GLD NS,LIVING ROOM, 83 SQM</Text>
-     <Text>COMP BREAKFST/SNACKS/CANAPE/COCKTAILS, WIFI</Text>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING CORNER ALCOVE ROOM WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ LOUNGE ACCESS/ BALCONY</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2465" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="2149" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="18943">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1504"/>
+       <TotalTaxes Amount="2396"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="E1KSVE" IATA_ProductIdentification="ADV PURCH FULL NON-REF DEP" LowInventoryThreshold="false" RPH="009" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A06LV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="009" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
-     <CancelPolicy Numeric="00" Option="N">
-      <Text>RESERVATION CANNOT BE CANCELED</Text>
-     </CancelPolicy>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>2 BEDROOM STE KING NS, 105 SQM, LCD TV</Text>
-     <Text>SPACIOUS LIVING WITH PRIVATE DINING AREA,WIFI</Text>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING ONE BEDROOM SUITE</Text>
+     <Text>1K PARTIAL OR FULL SEA VIEW/ LOUNGE ACCESS</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2380" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="2349" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="20693">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1644"/>
+       <TotalTaxes Amount="2606"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1KSXL" IATA_ProductIdentification="EXTEND YOUR STAY-30PCT" LowInventoryThreshold="false" RPH="010" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A02LV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="010" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
-     <CancelPolicy Numeric="07" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>1 BEDROOM STE GLD NS,LIVING ROOM, 83 SQM</Text>
-     <Text>COMP BREAKFST/SNACKS/CANAPE/COCKTAILS, WIFI</Text>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>FAMILY SUITE WITH SEA VIEW</Text>
+     <Text>1K PARTIAL OR FULL SEA VIEW/ LOUNGE ACCESS</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2030" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="2349" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="20693">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1644"/>
+       <TotalTaxes Amount="2606"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="J1KSXL" IATA_ProductIdentification="EXTEND YOUR STAY-30PCT" LowInventoryThreshold="false" RPH="011" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A08LV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="011" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
-     <CancelPolicy Numeric="07" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>FAIRMONT GOLD 2BD DLX STE 2KING SK, 1470SQFT</Text>
-     <Text>EXEC LOUNGE, PRVI CHECK IN/OUT, LIVING AREA</Text>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING EXECUTIVE SUITE WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ LOUNGE ACCESS/ LIVING ROOM</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2450" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="2449" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="21568">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1714"/>
+       <TotalTaxes Amount="2711"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="U1DSXL" IATA_ProductIdentification="EXTEND YOUR STAY-30PCT" LowInventoryThreshold="false" RPH="012" RateAccessCode="¤¤¤" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A04LV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="012" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
     <AdditionalInfo>
-     <CancelPolicy Numeric="07" Option="D"/>
-     <Commission NonCommission="false">10.00 PERCENT COMMISSION</Commission>
-     <Text>1 BEDROOM STE GLD SM,LIVING ROOM,84 SQM</Text>
-     <Text>COMP BREAKFST/SNACKS/CANAPE/COCKTAILS, WIFI</Text>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING GULF SUITE WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ LOUNGE ACCESS/ 2 BALCONIES/ WIFI</Text>
     </AdditionalInfo>
     <Rates>
-     <Rate Amount="2030" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+     <Rate Amount="2649" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
       <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
-        <Charges AdultRollAway="0" Crib="0" ExtraPerson="250"/>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
        </AdditionalGuestAmount>
       </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="23318">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1854"/>
+       <TotalTaxes Amount="2921"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0OLV5" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="013" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>ROYAL SUITE WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ LOUNGE ACCESS/ 4 BALCONIES</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="5149" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="45193">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="3604"/>
+       <TotalTaxes Amount="5546"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0HC1N" IATA_ProductIdentification="LEISURE ESCAPES" LowInventoryThreshold="false" RPH="014" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>TWO QUEEN BED DELUXE ROOM</Text>
+     <Text>2Q CITY VIEW/ SERENITY BED/ WIFI / BALCONY</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="1306" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="11567">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="914"/>
+       <TotalTaxes Amount="1511"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A03C1N" IATA_ProductIdentification="LEISURE ESCAPES" LowInventoryThreshold="false" RPH="015" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING DELUXE ROOM</Text>
+     <Text>1K CITY VIEW/ SERENITY BED/ WIFI / BALCONY</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="1306" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="11567">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="914"/>
+       <TotalTaxes Amount="1511"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0JC1N" IATA_ProductIdentification="LEISURE ESCAPES" LowInventoryThreshold="false" RPH="016" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>TWO QUEEN BED GUEST ROOM WITH SEA VIEW</Text>
+     <Text>2Q SEA VIEW/ SERENITY BED/ WIFI / BALCONY</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="1456" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="12880">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1019"/>
+       <TotalTaxes Amount="1668"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0FC1N" IATA_ProductIdentification="LEISURE ESCAPES" LowInventoryThreshold="false" RPH="017" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>KING GUEST ROOM WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ SERENITY BED/ WIFI / BALCONY</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="1456" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="12880">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1019"/>
+       <TotalTaxes Amount="1668"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0KC1N" IATA_ProductIdentification="LEISURE ESCAPES" LowInventoryThreshold="false" RPH="018" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>TWO QUEEN BED EXECUTIVE ROOM</Text>
+     <Text>2Q CITY VIEW/ TOP FLOOR/ LOUNGE ACCESS/ WIFI</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="1656" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="14630">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1159"/>
+       <TotalTaxes Amount="1878"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0MC1N" IATA_ProductIdentification="LEISURE ESCAPES" LowInventoryThreshold="false" RPH="019" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="01" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>TWO QUEEN BED EXECUTIVE ROOM WITH SEA VIEW</Text>
+     <Text>1K SEA VIEW/ TOP FLOOR/ LOUNGE ACCESS/ WIFI</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="1756" ChangeIndicator="false" CurrencyCode="AED" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
+        <Charges ExtraPerson="0"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="15505">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="1229"/>
+       <TotalTaxes Amount="1983"/>
+      </HotelTotalPricing>
      </Rate>
     </Rates>
    </RoomRate>
   </RoomRates>
-  <TimeSpan Duration="0005" End="2018-01-20" Start="2018-01-03"/>
+  <TimeSpan Duration="0005" End="2018-01-18" Start="2018-01-11"/>
  </RoomStay>
 </HotelPropertyDescriptionRS></soap-env:Body></soap-env:Envelope>
