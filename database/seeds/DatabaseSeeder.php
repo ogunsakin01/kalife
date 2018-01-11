@@ -18,5 +18,12 @@ class DatabaseSeeder extends Seeder
          $this->call(GenderSeeder::class);
          $this->call(AccountStatusSeeder::class);
          $this->call(UserSeeder::class);
+         $this->call(AirlineSeeder::class);
+         $this->call(AirportSeeder::class);
+         $this->call(EquipmentSeeder::class);
+         $this->call(HotelAmenitySeeder::class);
+         $this->call(HotelAreaSeeder::class);
+         $this->call(HotelRoomSeeder::class);
+         $this->call(HotelSeeder::class);
     }
 }

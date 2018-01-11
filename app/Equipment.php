@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipment extends Model
 {
-//    protected $table = "equipments";
-    public static function getEquipment($iata_code)
-    {
-        $a = static::where('code', $iata_code)->first();
-        if(is_null($a) || empty($a)){
-            return "";
-        }
-        else{
-            return $a->name;
-        }
+  public static function getEquipment($iata_code)
+  {
+    $a = static::where('code', $iata_code)->first();
+    if(is_null($a) || empty($a)){
+      return "";
     }
+    else{
+      return $a->name;
+    }
+  }
 }
