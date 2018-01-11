@@ -1,0 +1,201 @@
+#rig-sidebar {
+  position: fixed;
+  width: 250px;
+  right: 0;
+  top: 0;
+  z-index: 990;
+  height: 100%;
+  padding-top: 65px;
+  -webkit-transition: all ease .2s;
+  -moz-transition: all ease .2s;
+  transition: all ease .2s
+}
+
+.rig-sidebar {
+  display: none
+}
+
+.rig-sidebar-on {
+  display: block
+}
+
+#rig-sidebar .content-wrapper {
+  position: relative;
+  height: 100%
+}
+
+#rig-sidebar .content-wrapper .close-btn {
+  position: absolute;
+  left: -22px;
+  top: 3px;
+  display: block;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, .5);
+  text-decoration: none;
+  font-size: 12px;
+  border-top: 1px solid rgba(0, 0, 0, .15);
+  border-bottom: 1px solid rgba(0, 0, 0, .15)
+}
+
+#rig-sidebar .nav-tabs .nav-item {
+  margin-bottom: 0
+}
+
+#rig-sidebar .nav-tabs .nav-item.show .nav-link,
+#rig-sidebar .nav-tabs .nav-link.active {
+  color: rgba(0, 0, 0, .8);
+  font-weight: 500;
+  background-color: #fff;
+  border-color: transparent
+}
+
+#rig-sidebar .nav-tabs .nav-link {
+  border: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: rgba(0, 0, 0, .4)
+}
+
+#rig-sidebar .nav-tabs .nav-link:focus,
+#rig-sidebar .nav-tabs .nav-link:hover {
+  border-color: transparent
+}
+
+#rig-sidebar .tab-content.sidebar-wrapper {
+  position: relative;
+  max-height: calc(100% - 40px);
+  height: calc(100% - 40px);
+  min-height: 1px;
+  overflow-y: none;
+  padding: 0 20px
+}
+
+#rig-sidebar .tab-content .today-date {
+  text-align: center;
+  margin: 20px 0 40px;
+  font-size: 22px;
+  font-weight: 300
+}
+
+#rig-sidebar .tab-content .today-date .strong {
+  font-weight: 500
+}
+
+#rig-sidebar .tab-content .today-date #prDay {
+  text-align: center;
+  display: block;
+  font-size: 13px;
+  font-weight: 500
+}
+
+#rig-sidebar .tab-content .block-tab {
+  padding: 10px 0;
+  border-top: 1px solid #ddd
+}
+
+#rig-sidebar .tab-content .block-tab .block-title {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, .4)
+}
+
+#rig-sidebar .tab-content .schedule-list li {
+  padding: 10px 0;
+  position: relative
+}
+
+#rig-sidebar .tab-content .schedule-list li:not(:last-child):before {
+  position: absolute;
+  content: '';
+  left: 48px;
+  top: 25px;
+  width: 1px;
+  height: calc(100% - 5px);
+  background-color: #efefef
+}
+
+#rig-sidebar .tab-content .schedule-list li .time {
+  float: left;
+  width: 35px;
+  font-size: 13px;
+  text-align: right;
+  color: #777
+}
+
+#rig-sidebar .tab-content .schedule-list li .time span {
+  display: block;
+  font-size: 11px;
+  color: #bbb
+}
+
+#rig-sidebar .tab-content .schedule-list li .point {
+  float: left;
+  width: 8px;
+  height: 8px;
+  background-color: #efefef;
+  border-radius: 50%;
+  margin-top: 7px;
+  margin-left: 10px
+}
+
+#rig-sidebar .tab-content .schedule-list li:hover .point {
+  background-color: #563d7c
+}
+
+#rig-sidebar .tab-content .schedule-list li .schedule-info {
+  margin-left: 60px;
+  width: calc(100% - 60px)
+}
+
+#rig-sidebar .tab-content .schedule-list li .schedule-info .location {
+  display: block;
+  font-size: 12px;
+  color: #999
+}
+
+#rig-sidebar .tab-content .setting-list li {
+  padding: 10px 0;
+  position: relative;
+  border-bottom: 1px solid #efefef
+}
+
+#rig-sidebar .tab-content .setting-list li.header {
+  border-bottom: 3px solid #efefef;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  padding-top: 25px;
+  color: rgba(0, 0, 0, .6)
+}
+
+#rig-sidebar .tab-content .setting-list li .setting-name {
+  width: calc(100% - 40px)
+}
+
+#rig-sidebar .tab-content .setting-list li .switch {
+  position: absolute;
+  right: 0;
+  top: 10px
+}
+
+#rig-sidebar .tab-content .activity-list li {
+  padding: 7px 0;
+  border-bottom: 1px solid #efefef
+}
+
+#rig-sidebar .tab-content .activity-list li .icon {
+  float: left;
+  width: 30px;
+  color: #999
+}
+
+#rig-sidebar .tab-content .activity-list li .log-info {
+  width: calc(100% - 30px);
+  margin-left: 30px;
+  color: #777
+}
