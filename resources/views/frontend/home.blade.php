@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title')Flight, Hotel, Travel and Tourism Booking Agency @endsection
 @section('loadingOverlay')@include('partials.flightSearchOverlay') @endsection
+@section('activeHome') active @endsection
 @section('content')
     <!-- TOP AREA -->
     <div class="top-area show-onload">

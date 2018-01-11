@@ -25,14 +25,16 @@
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
-                        <li class=""><a href="{{url('/')}}">Home</a></li>
-                        <li class=""><a href="{{url('/flights')}}">Flights</a></li>
-                        <li class=""><a href="{{url('/hotels')}}">Hotels</a></li>
-                        <li class=""><a href="#">Cars</a></li>
-                        <li class=""><a href="#">Activities</a></li>
-                        <li class=""><a href="{{url('/about-us')}}">About Us</a></li>
-                        <li class=""><a href="{{url('/contact-us')}}">Contact Us</a></li>
-                        <li class=""><a href="{{url('/register-login')}}">Login</a></li>
+                        <li class="@yield('activeHome')"><a href="{{url('/')}}">Home</a></li>
+                        <li class="@yield('activeFlight')"><a href="{{url('/flights')}}">Flights</a></li>
+                        <li class="@yield('activeHotel')"><a href="{{url('/hotels')}}">Hotels</a></li>
+                        <li class="@yield('activeCar')"><a href="#">Cars</a></li>
+                        <li class="@yield('activeActivity')"><a href="#">Activities</a></li>
+                        <li class="@yield('activeAbout')"><a href="{{url('/about-us')}}">About Us</a></li>
+                        <li class="@yield('activeContact')"><a href="{{url('/contact-us')}}">Contact Us</a></li>
+                        @if(auth()->guest())
+                            <li class="@yield('activeRegisterLogin')"><a href="{{url('/register-login')}}">Login</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

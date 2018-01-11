@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title') {{$selectedHotel['hotelName']}} Hotel Information  @endsection
+@section('activeHotel') active @endsection
 @section('content')
 
     <div class="container">
@@ -129,7 +130,7 @@
                     </form>
                     <div class="checkbox">
                         <label>
-                            Are you a new customer ? <a class="popup-text" href="#register_new_user" data-effect="mfp-zoom-out">Register Here</a>. Can't remember password ? <a href="#">Click here</a>
+                            Are you a new customer ? <a class="popup-text" href="#register_new_user" data-effect="mfp-zoom-out">Register Here</a>. Can't remember password ? <a href="{{url('/password/reset')}}">Recover Here</a>
                         </label>
                     </div>
                     <div class="gap gap-small"></div>

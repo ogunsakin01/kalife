@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title') Flying Passengers Details @endsection
-
+@section('activeFlight')  active @endsection
 @section('content')
 <div class="gap gap-small"></div>
     <div class="container">

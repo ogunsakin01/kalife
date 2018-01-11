@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title')About Us  @endsection
+@section('activeAbout') active @endsection
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">
