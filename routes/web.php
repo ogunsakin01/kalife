@@ -101,6 +101,10 @@ Route::prefix('backend')->group(function (){
     Route::get('', 'ProfileController@profileView')->name('backend-profile-view');
   });
 
+  Route::prefix('wallet')->group(function (){
+    Route::get('', 'WalletController@walletView')->name('backend-wallet-view');
+  });
+
 });
 
 

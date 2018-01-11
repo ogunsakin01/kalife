@@ -605,7 +605,6 @@ INSERT INTO `hotel_amenities` (`id`, `code`, `name`, `created_at`, `updated_at`)
 (562, 'BUS61', 'Fee charged for first page of outgoing fax', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
 (563, 'BUS62', 'Overnight delivery/pickup', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
 (564, 'BUS63', 'Pager rental', '2017-11-28 13:53:36', '2017-11-28 13:53:36');
-INSERT INTO `hotel_amenities` (`id`, `code`, `name`, `created_at`, `updated_at`) VALUES
 (565, 'BUS64', 'Post/parcel service', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
 (566, 'BUS65', 'Private offices and business services', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
 (567, 'BUS66', 'Analog - dialup connectivity', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),

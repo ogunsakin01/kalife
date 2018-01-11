@@ -60,6 +60,12 @@
         </ul>
       </li>
 
+      <li>
+        <a class="pr-mn collapsed" href="{{route('backend-wallet-view')}}">
+          <span class="icon ti-user"></span>Wallet Management
+        </a>
+      </li>
+
 
       <li class="header">User Interface</li>
     </ul>

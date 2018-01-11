@@ -23,17 +23,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('phone_number');
             $table->longText('address');
-<<<<<<< HEAD
             $table->integer('gender');
-            $table->string('agency_name');
-            $table->string('agent_id');
-            $table->string('office_number');
-=======
-            $table->string('gender');
             $table->string('agency_name')->nullable();
-            $table->string('agent_id')->nullable();
-            $table->string('office_number')->nullable();
->>>>>>> 8969cbfc8a76ae253fb8ccbbca7de7d0446c50fd
+            $table->string('agent_id')->nullable();;
+            $table->string('office_number')->nullable();;
             $table->string('password');
             $table->rememberToken();
             $table->integer('account_status');
