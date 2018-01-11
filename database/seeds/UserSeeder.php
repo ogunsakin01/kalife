@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Wallet;
 
 class UserSeeder extends Seeder
 {
@@ -34,6 +35,10 @@ class UserSeeder extends Seeder
       {
         User::create($value);
       }
+
+      $wallet = new Wallet();
+
+      $wallet->createWallet(1);
 
       DB::table('role_user')->truncate();
       DB::table('role_user')->insert(

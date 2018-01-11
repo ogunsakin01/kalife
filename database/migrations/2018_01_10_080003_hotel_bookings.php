@@ -30,7 +30,6 @@ class HotelBookings extends Migration
             $table->integer('payment_status');
             $table->integer('cancel_status');
             $table->longText('room_info');
-
             $table->timestamps();
         });
     }

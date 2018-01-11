@@ -105,6 +105,10 @@ Route::prefix('backend')->group(function (){
     Route::get('', 'WalletController@walletView')->name('backend-wallet-view');
   });
 
+  Route::prefix('bank-details')->group(function (){
+    Route::get('/fetch/{id}', 'WalletController@getBankDetail')->name('backend-bank-details');
+  });
+
 });
 
 

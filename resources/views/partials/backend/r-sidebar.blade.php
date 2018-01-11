@@ -1,3 +1,4 @@
+{{--
 <aside id="right-sidebar" class="r_sidebar">
   <div class="content-wrapper">
     <a href="javascript:void(0)" class="close-btn">
@@ -148,4 +149,4 @@
       </div>
     </div>
   </div>
-</aside>
+</aside>--}}

@@ -102,8 +102,13 @@ class User extends Authenticatable
         ]
       );
 
+
       if ($user)
       {
+        $wallet = new Wallet();
+
+        $wallet->createWallet($user->id);
+
         $role = Role::where('id', $data['role'])->first();
 
         $user->detachRole($role);

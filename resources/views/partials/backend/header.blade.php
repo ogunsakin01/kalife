@@ -149,7 +149,8 @@
           </div>
         </div>
       </li>
-      <li class="rightSidebar"><button class="btn btn-r_sidebar" type="button">
+      <li class="rightSidebar">
+        <button class="btn btn-r_sidebar" type="button">
           <i class="ti-view-list-alt"></i>
         </button>
       </li>
