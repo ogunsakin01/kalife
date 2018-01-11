@@ -2,7 +2,6 @@
 @section('title') Flying Passengers Details @endsection
 
 @section('content')
-{{--{{dd(session()->get('flightSearchParam'))}}--}}
 <div class="gap gap-small"></div>
     <div class="container">
         <div class="row">

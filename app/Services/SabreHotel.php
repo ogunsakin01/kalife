@@ -272,7 +272,8 @@ class SabreHotel
         return '<OTA_HotelResRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ReturnHostCommand="false" TimeStamp="2013-11-22T17:15:00-06:00" Version="2.2.0">
                 <Hotel>
                   <BasicPropertyInfo RPH="'.$selectedHotel['rooms'][$room]['rph'].'" />
-                  <Guarantee Type="GDPST">
+                  <Customer NameNumber="1.1" />           
+                  <Guarantee Type="'.$selectedHotel['rooms'][$room]['guaranteeSurchargeRequired'].'">
                     <CC_Info>
                      <PaymentCard Code="VI" ExpireDate="2019-07" Number="4111111111111111"/>
                      <PersonName>

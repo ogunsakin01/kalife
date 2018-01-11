@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">EnhancedAirBookRQ</eb:Service><eb:Action>EnhancedAirBookRS</eb:Action><eb:MessageData><eb:MessageId>qq7l3a4xz</eb:MessageId><eb:Timestamp>2018-01-11T08:34:10</eb:Timestamp><eb:RefToMessageId>801368308418270610</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190584051927460211!1210746!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><EnhancedAirBookRS xmlns="http://services.sabre.com/sp/eab/v3_8"><ApplicationResults xmlns="http://services.sabre.com/STL_Payload/v02_01" status="Complete"><Success timeStamp="2018-01-11T02:34:10.842-06:00"/></ApplicationResults><OTA_AirBookRS><OriginDestinationOption><FlightSegment ArrivalDateTime="2018-01-12T04:00:00" DepartureDateTime="2018-01-11T17:05:00" eTicket="true" FlightNumber="98" NumberInParty="1" ResBookDesigCode="Y" Status="NN"><DestinationLocation LocationCode="DXB"/><MarketingAirline Code="BI" FlightNumber="98"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="LHR"/></FlightSegment><FlightSegment ArrivalDateTime="2018-01-18T06:50:00" DepartureDateTime="2018-01-18T03:00:00" eTicket="true" FlightNumber="97" NumberInParty="1" ResBookDesigCode="Y" Status="NN"><DestinationLocation LocationCode="LHR"/><MarketingAirline Code="BI" FlightNumber="97"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="DXB"/></FlightSegment></OriginDestinationOption></OTA_AirBookRS><OTA_AirPriceRS><PriceQuote>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">EnhancedAirBookRQ</eb:Service><eb:Action>EnhancedAirBookRS</eb:Action><eb:MessageData><eb:MessageId>2h85hd684</eb:MessageId><eb:Timestamp>2018-01-11T09:19:10</eb:Timestamp><eb:RefToMessageId>855864335411060610</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190572997794400885!1247146!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><EnhancedAirBookRS xmlns="http://services.sabre.com/sp/eab/v3_8"><ApplicationResults xmlns="http://services.sabre.com/STL_Payload/v02_01" status="Complete"><Success timeStamp="2018-01-11T03:19:10.161-06:00"/></ApplicationResults><OTA_AirBookRS><OriginDestinationOption><FlightSegment ArrivalDateTime="2018-01-18T04:00:00" DepartureDateTime="2018-01-17T17:05:00" eTicket="true" FlightNumber="98" NumberInParty="1" ResBookDesigCode="Y" Status="NN"><DestinationLocation LocationCode="DXB"/><MarketingAirline Code="BI" FlightNumber="98"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="LHR"/></FlightSegment></OriginDestinationOption></OTA_AirBookRS><OTA_AirPriceRS><PriceQuote>
   <MiscInformation>
    <BaggageInfo>
     <SubCodeProperties RPH="1" SolutionSequenceNmbr="1">
@@ -40,17 +40,16 @@
     </SubCodeProperties>
    </BaggageInfo>
    <HeaderInformation SolutionSequenceNmbr="1">
-    <DepartureDate>2018-01-11</DepartureDate>
+    <DepartureDate>2018-01-17</DepartureDate>
     <Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH BI</Text>
     <Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text>
     <Text>BAG ALLOWANCE     -LHRDXB-30KG/BI</Text>
-    <Text>BAG ALLOWANCE     -DXBLHR-30KG/BI</Text>
     <Text>CARRY ON ALLOWANCE</Text>
-    <Text>LHRDXB DXBLHR-01P/BI</Text>
+    <Text>LHRDXB-01P/BI</Text>
     <Text>01/UP TO 15 POUNDS/7 KILOGRAMS AND UP TO 45 LINEAR INCHES/115 L</Text>
     <Text>INEAR CENTIMETERS</Text>
     <Text>CARRY ON CHARGES</Text>
-    <Text>LHRDXB DXBLHR-BI-CARRY ON FEES UNKNOWN-CONTACT CARRIER</Text>
+    <Text>LHRDXB-BI-CARRY ON FEES UNKNOWN-CONTACT CARRIER</Text>
     <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
     <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
     <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
@@ -60,16 +59,16 @@
     <CurrencyCode>NGN</CurrencyCode>
     <RequiresRebook>false</RequiresRebook>
     <TicketNumber>0</TicketNumber>
-    <TotalAmount>1110234</TotalAmount>
+    <TotalAmount>776522</TotalAmount>
    </SolutionInformation>
   </MiscInformation>
-  <PricedItinerary AlternativePricing="false" CurrencyCode="NGN" MultiTicket="false" TotalAmount="1110234">
+  <PricedItinerary AlternativePricing="false" CurrencyCode="NGN" MultiTicket="false" TotalAmount="776522">
    <AirItineraryPricingInfo SolutionSequenceNmbr="1">
     <BaggageProvisions RPH="1">
      <Associations>
       <CarrierCode RPH="1">BI</CarrierCode>
       <CountForSegmentAssociatedID>1</CountForSegmentAssociatedID>
-      <DepartureDate RPH="1">2018-01-11</DepartureDate>
+      <DepartureDate RPH="1">2018-01-17</DepartureDate>
       <DestinationLocation LocationCode="DXB" RPH="1"/>
       <FlightNumber RPH="1">98</FlightNumber>
       <OriginLocation LocationCode="LHR" RPH="1"/>
@@ -88,40 +87,13 @@
      <Associations>
       <CarrierCode RPH="1">BI</CarrierCode>
       <CountForSegmentAssociatedID>1</CountForSegmentAssociatedID>
-      <DepartureDate RPH="1">2018-01-18</DepartureDate>
-      <DestinationLocation LocationCode="LHR" RPH="1"/>
-      <FlightNumber RPH="1">97</FlightNumber>
-      <OriginLocation LocationCode="DXB" RPH="1"/>
-      <PNR_Segment RPH="1">3</PNR_Segment>
-      <ResBookDesigCode RPH="1">Y</ResBookDesigCode>
-      <StatusCode RPH="1">NN</StatusCode>
-     </Associations>
-     <CarrierWhoseBaggageProvisionsApply>BI</CarrierWhoseBaggageProvisionsApply>
-     <ProvisionType>A</ProvisionType>
-     <SubCodeInfo>
-      <SubCodeForChargesOthers>0DFAABI</SubCodeForChargesOthers>
-     </SubCodeInfo>
-     <WeightLimit Units="K">30</WeightLimit>
-    </BaggageProvisions>
-    <BaggageProvisions RPH="3">
-     <Associations>
-      <CarrierCode RPH="1">BI</CarrierCode>
-      <CarrierCode RPH="2">BI</CarrierCode>
-      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
-      <DepartureDate RPH="1">2018-01-11</DepartureDate>
-      <DepartureDate RPH="2">2018-01-18</DepartureDate>
+      <DepartureDate RPH="1">2018-01-17</DepartureDate>
       <DestinationLocation LocationCode="DXB" RPH="1"/>
-      <DestinationLocation LocationCode="LHR" RPH="2"/>
       <FlightNumber RPH="1">98</FlightNumber>
-      <FlightNumber RPH="2">97</FlightNumber>
       <OriginLocation LocationCode="LHR" RPH="1"/>
-      <OriginLocation LocationCode="DXB" RPH="2"/>
       <PNR_Segment RPH="1">2</PNR_Segment>
-      <PNR_Segment RPH="2">3</PNR_Segment>
       <ResBookDesigCode RPH="1">Y</ResBookDesigCode>
-      <ResBookDesigCode RPH="2">Y</ResBookDesigCode>
       <StatusCode RPH="1">NN</StatusCode>
-      <StatusCode RPH="2">NN</StatusCode>
      </Associations>
      <CarrierWhoseBaggageProvisionsApply>BI</CarrierWhoseBaggageProvisionsApply>
      <NumPiecesBDI>1</NumPiecesBDI>
@@ -133,20 +105,12 @@
      </SubCodeInfo>
     </BaggageProvisions>
     <FareCalculation>
-     <Text>LON BI DXB1361.76BI LON1361.76NUC2723.52END ROE0.744255</Text>
+     <Text>LON BI DXB1906.60NUC1906.60END ROE0.744255</Text>
     </FareCalculation>
     <FareCalculationBreakdown>
      <Branch FirstJointCarrier="BI" PCC="WD4H"/>
      <Departure AirlineCode="BI" AirportCode="LHR" ArrivalAirportCode="DXB" ArrivalCityCode="DXB" CityCode="LON" GenericInd="O"/>
-     <FareBasis Cabin="Y" Code="YIF" FareAmount="1361.76" FarePassengerType="ADT" FareType="P" FilingCarrier="BI" GlobalInd="EH" Market="LONDXB" TripTypeInd="R"/>
-     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
-     <Mileage MileageSymbol="M"/>
-     <RuleCategoryIndicator>10</RuleCategoryIndicator>
-    </FareCalculationBreakdown>
-    <FareCalculationBreakdown>
-     <Branch FirstJointCarrier="BI" PCC="WD4H"/>
-     <Departure AirlineCode="BI" AirportCode="DXB" ArrivalAirportCode="LHR" ArrivalCityCode="LON" CityCode="DXB" GenericInd="O"/>
-     <FareBasis Cabin="Y" Code="YIF" FareAmount="1361.76" FarePassengerType="ADT" FareType="P" FilingCarrier="BI" GlobalInd="EH" Market="LONDXB" TripTypeInd="R"/>
+     <FareBasis Cabin="Y" Code="YIF" FareAmount="1906.60" FarePassengerType="ADT" FareType="P" FilingCarrier="BI" GlobalInd="EH" Market="LONDXB" TripTypeInd="O"/>
      <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
      <Mileage MileageSymbol="M"/>
      <RuleCategoryIndicator>10</RuleCategoryIndicator>
@@ -155,42 +119,33 @@
      <BaggageInfo>
       <NonUS_DOT_Disclosure>
        <Text>BAG ALLOWANCE     -LHRDXB-30KG/BI</Text>
-       <Text>BAG ALLOWANCE     -DXBLHR-30KG/BI</Text>
        <Text>CARRY ON ALLOWANCE</Text>
-       <Text>LHRDXB DXBLHR-01P/BI</Text>
+       <Text>LHRDXB-01P/BI</Text>
        <Text>01/UP TO 15 POUNDS/7 KILOGRAMS AND UP TO 45 LINEAR INCHES/115 L</Text>
        <Text>INEAR CENTIMETERS</Text>
        <Text>CARRY ON CHARGES</Text>
-       <Text>LHRDXB DXBLHR-BI-CARRY ON FEES UNKNOWN-CONTACT CARRIER</Text>
+       <Text>LHRDXB-BI-CARRY ON FEES UNKNOWN-CONTACT CARRIER</Text>
        <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
        <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
        <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
       </NonUS_DOT_Disclosure>
      </BaggageInfo>
-     <BaseFare Amount="2027.00" CurrencyCode="GBP"/>
-     <EquivFare Amount="988750" CurrencyCode="NGN"/>
-     <Taxes TotalAmount="121484">
-      <Tax Amount="50730" TaxCode="YQF" TaxName="SERVICE FEE - FUEL" TicketingTaxCode="YQ"/>
+     <BaseFare Amount="1419.00" CurrencyCode="GBP"/>
+     <EquivFare Amount="692174" CurrencyCode="NGN"/>
+     <Taxes TotalAmount="84348">
+      <Tax Amount="25365" TaxCode="YQF" TaxName="SERVICE FEE - FUEL" TicketingTaxCode="YQ"/>
       <Tax Amount="36585" TaxCode="GB" TaxName="AIR PASSENGER DUTY APD" TicketingTaxCode="GB"/>
       <Tax Amount="21907" TaxCode="UB" TaxName="PASSENGER SERVICE CHARGE DEPAR" TicketingTaxCode="UB"/>
-      <Tax Amount="7356" TaxCode="AE4" TaxName="PASSENGER SERVICE CHARGE INTER" TicketingTaxCode="AE"/>
-      <Tax Amount="491" TaxCode="TP" TaxName="PASSENGER SECURITY AND SAFETY" TicketingTaxCode="TP"/>
-      <Tax Amount="982" TaxCode="ZR" TaxName="INTERNATIONAL ADVANCED PASSENG" TicketingTaxCode="ZR"/>
-      <Tax Amount="3433" TaxCode="F62" TaxName="PASSENGER FACILITIES CHARGE" TicketingTaxCode="F6"/>
+      <Tax Amount="491" TaxCode="ZR" TaxName="INTERNATIONAL ADVANCED PASSENG" TicketingTaxCode="ZR"/>
      </Taxes>
-     <TotalFare Amount="1110234" CurrencyCode="NGN"/>
+     <TotalFare Amount="776522" CurrencyCode="NGN"/>
     </ItinTotalFare>
     <PassengerTypeQuantity Code="ADT" Quantity="1"/>
     <PTC_FareBreakdown>
      <Cabin>Y</Cabin>
-     <FareBasis Code="YIF" FareAmount="1361.76" FarePassengerType="ADT" FareType="P" FilingCarrier="BI" GlobalInd="EH" Market="LONDXB"/>
-     <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
-    </PTC_FareBreakdown>
-    <PTC_FareBreakdown>
-     <Cabin>Y</Cabin>
-     <FareBasis Code="YIF" FareAmount="1361.76" FarePassengerType="ADT" FareType="P" FilingCarrier="BI" GlobalInd="EH" Market="LONDXB"/>
+     <FareBasis Code="YIF" FareAmount="1906.60" FarePassengerType="ADT" FareType="P" FilingCarrier="BI" GlobalInd="EH" Market="LONDXB"/>
      <FreeBaggageAllowance>KG030</FreeBaggageAllowance>
     </PTC_FareBreakdown>
    </AirItineraryPricingInfo>
   </PricedItinerary>
- </PriceQuote></OTA_AirPriceRS><TravelItineraryReadRS><TravelItinerary><CustomerInfo/><ItineraryInfo><ItineraryPricing><PriceQuote RPH="1"><MiscInformation><SignatureLine ExpirationDateTime="00:00" Source="SYS" Status="ACTIVE"><Text>WD4H WD4H*AWS 0934/11JAN18</Text></SignatureLine></MiscInformation><PricedItinerary DisplayOnly="false" InputMessage="WPP1ADT¥RQ" RPH="1" StatusCode="A" TaxExempt="false" ValidatingCarrier="HR" StoredDateTime="2018-01-11T09:34"><AirItineraryPricingInfo><ItinTotalFare><BaseFare Amount="2027.00" CurrencyCode="GBP"/><EquivFare Amount="988750" CurrencyCode="NGN"/><Taxes><Tax Amount="121484" TaxCode="XT"/><TaxBreakdownCode TaxPaid="false">50730YQ</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">36585GB</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">21907UB</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">7356AE</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">491TP</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">982ZR</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">3433F6</TaxBreakdownCode></Taxes><TotalFare Amount="1110234" CurrencyCode="NGN"/><Totals><BaseFare Amount="2027.00"/><EquivFare Amount="988750"/><Taxes><Tax Amount="121484"/></Taxes><TotalFare Amount="1110234"/></Totals></ItinTotalFare><PassengerTypeQuantity Code="ADT" Quantity="01"/><PTC_FareBreakdown><Endorsements><Endorsement type="PRICING_PARAMETER"><Text>WPP1ADT$RQ</Text></Endorsement><Endorsement type="WARNING"><Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text></Endorsement><Endorsement type="WARNING"><Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH BI</Text></Endorsement></Endorsements><FareBasis Code="YIF/YIF"/><FareCalculation><Text>LON BI DXB1361.76BI LON1361.76NUC2723.52END ROE0.744255</Text></FareCalculation><FareSource>SITA</FareSource><FlightSegment ConnectionInd="O" DepartureDateTime="01-11T17:05" FlightNumber="98" ResBookDesigCode="Y" SegmentNumber="1" Status="RQ"><BaggageAllowance Number="30K"/><FareBasis Code="YIF"/><MarketingAirline Code="BI" FlightNumber="98"/><OriginLocation LocationCode="LHR"/><ValidityDates><NotValidAfter>2019-01-11</NotValidAfter></ValidityDates></FlightSegment><FlightSegment ConnectionInd="O" DepartureDateTime="01-18T03:00" FlightNumber="97" ResBookDesigCode="Y" SegmentNumber="2" Status="RQ"><BaggageAllowance Number="30K"/><FareBasis Code="YIF"/><MarketingAirline Code="BI" FlightNumber="97"/><OriginLocation LocationCode="DXB"/><ValidityDates><NotValidAfter>2019-01-11</NotValidAfter></ValidityDates></FlightSegment><FlightSegment><OriginLocation LocationCode="LHR"/></FlightSegment><FareComponent FareBasisCode="YIF" FareDirectionality="FROM" Amount="136176" TicketDesignator="" GoverningCarrier="BI"><Location Origin="LON" Destination="DXB"/><Dates DepartureDateTime="01-11T17:05" ArrivalDateTime="01-12T04:00"/></FareComponent><FareComponent FareBasisCode="YIF" FareDirectionality="TO" Amount="136176" TicketDesignator="" GoverningCarrier="BI"><Location Origin="DXB" Destination="LON"/><Dates DepartureDateTime="01-18T03:00" ArrivalDateTime="01-18T06:50"/></FareComponent></PTC_FareBreakdown></AirItineraryPricingInfo></PricedItinerary><ResponseHeader><Text>FARE - PRICE RETAINED</Text><Text>FARE USED TO CALCULATE DISCOUNT</Text><Text>FARE NOT GUARANTEED UNTIL TICKETED</Text></ResponseHeader><PriceQuotePlus DomesticIntlInd="I" PricingStatus="S" VerifyFareCalc="false" ItineraryChanged="false" ManualFare="false" NegotiatedFare="false" SystemIndicator="S" NUCSuppresion="false" SubjToGovtApproval="false" IT_BT_Fare="BT" DisplayOnly="false" DiscountAmount="0"><TicketingInstructionsInfo/></PriceQuotePlus></PriceQuote><PriceQuoteTotals><BaseFare Amount="2027.00"/><EquivFare Amount="988750.00"/><Taxes><Tax Amount="121484.00"/></Taxes><TotalFare Amount="1110234.00"/></PriceQuoteTotals></ItineraryPricing><ReservationItems><Item RPH="1"><FlightSegment AirMilesFlown="3420" ArrivalDateTime="01-12T04:00" DayOfWeekInd="4" DepartureDateTime="2018-01-11T17:05" ElapsedTime="06.55" eTicket="true" FlightNumber="0098" NumberInParty="01" ResBookDesigCode="Y" SegmentNumber="0001" SmokingAllowed="false" SpecialMeal="false" Status="NN" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="DXB" Terminal="TERMINAL 1" TerminalCode="1"/><Equipment AirEquipType="787"/><MarketingAirline Code="BI" FlightNumber="0098"><Banner>MARKETED BY ROYAL BRUNEI AIRLINES</Banner></MarketingAirline><Meal Code="H"/><OperatingAirline Code="BI" FlightNumber="0098" ResBookDesigCode="Y"><Banner>OPERATED BY ROYAL BRUNEI AIRLINES</Banner></OperatingAirline><OperatingAirlinePricing Code="BI"/><DisclosureCarrier Code="BI"><Banner>ROYAL BRUNEI AIRLINES</Banner></DisclosureCarrier><OriginLocation LocationCode="LHR" Terminal="TERMINAL 4" TerminalCode="4"/><SupplierRef ID="nullnull"/><UpdatedArrivalTime>01-12T04:00</UpdatedArrivalTime><UpdatedDepartureTime>01-11T17:05</UpdatedDepartureTime></FlightSegment></Item><Item RPH="2"><FlightSegment AirMilesFlown="3420" ArrivalDateTime="01-18T06:50" DayOfWeekInd="4" DepartureDateTime="2018-01-18T03:00" ElapsedTime="07.50" eTicket="true" FlightNumber="0097" NumberInParty="01" ResBookDesigCode="Y" SegmentNumber="0002" SmokingAllowed="false" SpecialMeal="false" Status="NN" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="LHR" Terminal="TERMINAL 4" TerminalCode="4"/><Equipment AirEquipType="787"/><MarketingAirline Code="BI" FlightNumber="0097"><Banner>MARKETED BY ROYAL BRUNEI AIRLINES</Banner></MarketingAirline><Meal Code="B"/><OperatingAirline Code="BI" FlightNumber="0097" ResBookDesigCode="Y"><Banner>OPERATED BY ROYAL BRUNEI AIRLINES</Banner></OperatingAirline><OperatingAirlinePricing Code="BI"/><DisclosureCarrier Code="BI"><Banner>ROYAL BRUNEI AIRLINES</Banner></DisclosureCarrier><OriginLocation LocationCode="DXB" Terminal="TERMINAL 1" TerminalCode="1"/><SupplierRef ID="nullnull"/><UpdatedArrivalTime>01-18T06:50</UpdatedArrivalTime><UpdatedDepartureTime>01-18T03:00</UpdatedDepartureTime></FlightSegment></Item></ReservationItems></ItineraryInfo><ItineraryRef AirExtras="false" InhibitCode="U" PartitionID="AA" PrimeHostID="1S"><Source PseudoCityCode="WD4H"/></ItineraryRef></TravelItinerary></TravelItineraryReadRS></EnhancedAirBookRS></soap-env:Body></soap-env:Envelope>
+ </PriceQuote></OTA_AirPriceRS><TravelItineraryReadRS><TravelItinerary><CustomerInfo/><ItineraryInfo><ItineraryPricing><PriceQuote RPH="1"><MiscInformation><SignatureLine ExpirationDateTime="00:00" Source="SYS" Status="ACTIVE"><Text>WD4H WD4H*AWS 1019/11JAN18</Text></SignatureLine></MiscInformation><PricedItinerary DisplayOnly="false" InputMessage="WPP1ADT¥RQ" RPH="1" StatusCode="A" TaxExempt="false" ValidatingCarrier="HR" StoredDateTime="2018-01-11T10:19"><AirItineraryPricingInfo><ItinTotalFare><BaseFare Amount="1419.00" CurrencyCode="GBP"/><EquivFare Amount="692174" CurrencyCode="NGN"/><Taxes><Tax Amount="84348" TaxCode="XT"/><TaxBreakdownCode TaxPaid="false">25365YQ</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">36585GB</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">21907UB</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">491ZR</TaxBreakdownCode></Taxes><TotalFare Amount="776522" CurrencyCode="NGN"/><Totals><BaseFare Amount="1419.00"/><EquivFare Amount="692174"/><Taxes><Tax Amount="84348"/></Taxes><TotalFare Amount="776522"/></Totals></ItinTotalFare><PassengerTypeQuantity Code="ADT" Quantity="01"/><PTC_FareBreakdown><Endorsements><Endorsement type="PRICING_PARAMETER"><Text>WPP1ADT$RQ</Text></Endorsement><Endorsement type="WARNING"><Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text></Endorsement><Endorsement type="WARNING"><Text>VALIDATING CARRIER - HR PER GSA AGREEMENT WITH BI</Text></Endorsement></Endorsements><FareBasis Code="YIF"/><FareCalculation><Text>LON BI DXB1906.60NUC1906.60END ROE0.744255</Text></FareCalculation><FareSource>SITA</FareSource><FlightSegment ConnectionInd="O" DepartureDateTime="01-17T17:05" FlightNumber="98" ResBookDesigCode="Y" SegmentNumber="1" Status="RQ"><BaggageAllowance Number="30K"/><FareBasis Code="YIF"/><MarketingAirline Code="BI" FlightNumber="98"/><OriginLocation LocationCode="LHR"/><ValidityDates><NotValidAfter>2019-01-17</NotValidAfter></ValidityDates></FlightSegment><FlightSegment><OriginLocation LocationCode="DXB"/></FlightSegment><FareComponent FareBasisCode="YIF" FareDirectionality="FROM" Amount="190660" TicketDesignator="" GoverningCarrier="BI"><Location Origin="LON" Destination="DXB"/><Dates DepartureDateTime="01-17T17:05" ArrivalDateTime="01-18T04:00"/></FareComponent></PTC_FareBreakdown></AirItineraryPricingInfo></PricedItinerary><ResponseHeader><Text>FARE - PRICE RETAINED</Text><Text>FARE USED TO CALCULATE DISCOUNT</Text><Text>FARE NOT GUARANTEED UNTIL TICKETED</Text></ResponseHeader><PriceQuotePlus DomesticIntlInd="I" PricingStatus="S" VerifyFareCalc="false" ItineraryChanged="false" ManualFare="false" NegotiatedFare="false" SystemIndicator="S" NUCSuppresion="false" SubjToGovtApproval="false" IT_BT_Fare="BT" DisplayOnly="false" DiscountAmount="0"><TicketingInstructionsInfo/></PriceQuotePlus></PriceQuote><PriceQuoteTotals><BaseFare Amount="1419.00"/><EquivFare Amount="692174.00"/><Taxes><Tax Amount="84348.00"/></Taxes><TotalFare Amount="776522.00"/></PriceQuoteTotals></ItineraryPricing><ReservationItems><Item RPH="1"><FlightSegment AirMilesFlown="3420" ArrivalDateTime="01-18T04:00" DayOfWeekInd="3" DepartureDateTime="2018-01-17T17:05" ElapsedTime="06.55" eTicket="true" FlightNumber="0098" NumberInParty="01" ResBookDesigCode="Y" SegmentNumber="0001" SmokingAllowed="false" SpecialMeal="false" Status="NN" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="DXB" Terminal="TERMINAL 1" TerminalCode="1"/><Equipment AirEquipType="787"/><MarketingAirline Code="BI" FlightNumber="0098"><Banner>MARKETED BY ROYAL BRUNEI AIRLINES</Banner></MarketingAirline><Meal Code="H"/><OperatingAirline Code="BI" FlightNumber="0098" ResBookDesigCode="Y"><Banner>OPERATED BY ROYAL BRUNEI AIRLINES</Banner></OperatingAirline><OperatingAirlinePricing Code="BI"/><DisclosureCarrier Code="BI"><Banner>ROYAL BRUNEI AIRLINES</Banner></DisclosureCarrier><OriginLocation LocationCode="LHR" Terminal="TERMINAL 4" TerminalCode="4"/><SupplierRef ID="nullnull"/><UpdatedArrivalTime>01-18T04:00</UpdatedArrivalTime><UpdatedDepartureTime>01-17T17:05</UpdatedDepartureTime></FlightSegment></Item></ReservationItems></ItineraryInfo><ItineraryRef AirExtras="false" InhibitCode="U" PartitionID="AA" PrimeHostID="1S"><Source PseudoCityCode="WD4H"/></ItineraryRef></TravelItinerary></TravelItineraryReadRS></EnhancedAirBookRS></soap-env:Body></soap-env:Envelope>

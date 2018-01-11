@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title') {{$selectedHotel['hotelName']}} Hotel Information  @endsection
 @section('content')
-    {{--{{dd($selectedHotel)}}--}}
+
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>

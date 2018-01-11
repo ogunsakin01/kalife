@@ -1,4 +1,5 @@
-<div class="flight-pricing-loader hidden">
+
+<div class="container flight-pricing-loader hidden full-center">
     <div class="container" style="background-image:url({{asset('img/upper_lake_in_new_york_central_park_1024x487.jpg')}}); width:100%; background-repeat: no-repeat;">
         <div class="container" align="center" style="padding: 15px;">
             <img src="{{asset('img/logo-invert.png')}}" style="height: 30%; width: 30%;" align="left"/>

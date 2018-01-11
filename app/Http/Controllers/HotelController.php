@@ -52,9 +52,12 @@ class HotelController extends Controller
             fwrite($file, $search);
             fclose($file);
             $responseArray = $this->SabreConfig->mungXmlToArray($search);
-            session()->put('availableHotels',$responseArray);
-            session()->put('hotelSearchParam',$requestArray);
-            return $this->SabreHotel->HotelAvailValidator($responseArray);
+            $validator = $this->SabreHotel->HotelAvailValidator($responseArray);
+            if($validator == 1){
+                session()->put('availableHotels',$responseArray);
+                session()->put('hotelSearchParam',$requestArray);
+            }
+            return $validator;
         }
     }
 

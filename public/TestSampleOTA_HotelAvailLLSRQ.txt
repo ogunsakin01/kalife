@@ -1,0 +1,11 @@
+<OTA_HotelAvailRQ Version="2.3.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <AvailRequestSegment>
+        <GuestCounts Count="1" />
+        <HotelSearchCriteria>
+            <Criterion>
+                <HotelRef HotelCityCode="DXB" />
+            </Criterion>
+        </HotelSearchCriteria>
+        <TimeSpan End="01-18" Start="01-11" />
+    </AvailRequestSegment>
+</OTA_HotelAvailRQ>

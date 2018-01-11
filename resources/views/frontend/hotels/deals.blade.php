@@ -12,15 +12,15 @@
 
 
     <div class="container">
-        <form>
+        <form class="booking-item-dates-change mb40">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group form-group-icon-left"><i class="fa fa-map-marker input-icon input-icon-hightlight"></i>
                         <label>Where</label>
-                        <input class="typeahead form-control destination_city" placeholder="City, Hotel Name or U.S. Zip Code" type="text" />
+                        <input class="typeahead form-control destination_city" value="" placeholder="City, Hotel Name or U.S. Zip Code" type="text" />
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="input-daterange" data-date-format="MM d, D">
                         <div class="row">
                             <div class="col-md-6">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group form-group- form-group-select-plus">
@@ -61,10 +61,15 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group form-group-select-plus">
+                                <label>&nbsp;</label>
+                                <button type="button" class="btn btn-primary search_hotel">Search Hotel</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <input class="btn btn-primary mt10 search_hotel" type="button" value="Search for Hotels" />
         </form>
         <div class="gap gap-small"></div>
         <h3 class="mb20">Hotels in Popular Destinations</h3>

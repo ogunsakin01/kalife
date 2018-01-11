@@ -7,16 +7,11 @@
             <HaltOnStatus Code="UN"/>
             <HaltOnStatus Code="NO"/>
             <HaltOnStatus Code="HL"/>
-			<OriginDestinationInformation><FlightSegment ArrivalDateTime="2018-01-12T04:00:00" DepartureDateTime="2018-01-11T17:05:00" FlightNumber="98" NumberInParty="1" ResBookDesigCode="Y" InstantPurchase="true" Status="NN">
+			<OriginDestinationInformation><FlightSegment ArrivalDateTime="2018-01-18T04:00:00" DepartureDateTime="2018-01-17T17:05:00" FlightNumber="98" NumberInParty="1" ResBookDesigCode="Y" InstantPurchase="true" Status="NN">
 						<DestinationLocation LocationCode="DXB"/>
 						<Equipment AirEquipType="787"/>
 						<MarketingAirline Code="BI" FlightNumber="98"/>
 						<OriginLocation LocationCode="LHR"/>
-					      </FlightSegment><FlightSegment ArrivalDateTime="2018-01-18T06:50:00" DepartureDateTime="2018-01-18T03:00:00" FlightNumber="97" NumberInParty="1" ResBookDesigCode="Y" InstantPurchase="true" Status="NN">
-						<DestinationLocation LocationCode="LHR"/>
-						<Equipment AirEquipType="787"/>
-						<MarketingAirline Code="BI" FlightNumber="97"/>
-						<OriginLocation LocationCode="DXB"/>
 					      </FlightSegment></OriginDestinationInformation>
 			</OTA_AirBookRQ>
 			<OTA_AirPriceRQ >

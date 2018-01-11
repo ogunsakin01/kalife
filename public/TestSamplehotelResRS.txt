@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">OTA_HotelResLLSRQ</eb:Service><eb:Action>OTA_HotelResLLSRS</eb:Action><eb:MessageData><eb:MessageId>928332370060610610</eb:MessageId><eb:Timestamp>2018-01-11T10:16:49</eb:Timestamp><eb:RefToMessageId>870201342462430150</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190570110013655926!1244418!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><OTA_HotelResRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.2.0">
+ <stl:ApplicationResults status="Complete">
+  <stl:Success timeStamp="2018-01-11T04:16:49-06:00"/>
+ </stl:ApplicationResults>
+ <Hotel NumberInParty="1" NumberOfUnits="1" SegmentNumber="1" Status="HK">
+  <BasicPropertyInfo ChainCode="HL" HotelCityCode="DXB" HotelCode="55497" HotelName="HILTON DUBAI JUMEIR">
+   <ConfirmationNumber>3105749469</ConfirmationNumber>
+  </BasicPropertyInfo>
+  <Customer>
+   <ReserveUnderName>HARRISON IKUPA</ReserveUnderName>
+  </Customer>
+  <Guarantee>VIXXXXXXXXXXXX1111EXP 07 19-TESTING</Guarantee>
+  <POS>
+   <Source>
+    <RequestorID>99999992</RequestorID>
+   </Source>
+  </POS>
+  <RoomRates>
+   <RoomRate>
+    <AdditionalInfo>
+     <CancelPolicy Option="C01D"/>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="1149" CurrencyCode="AED" DCS_AuxRateCode="A03LV5">
+      <HotelTotalPricing Amount="10193">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <TotalSurcharges Amount="804"/>
+       <TotalTaxes Amount="1346"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+  </RoomRates>
+  <SpecialPrefs>
+   <WrittenConfirmation Ind="true"/>
+  </SpecialPrefs>
+  <Text>55497 ARR11JAN CXL 1 DAY PRIOR TO ARRIVAL</Text>
+  <Text>55497 ARR11JAN CREDIT CARD GUARANTEE</Text>
+  <Text>THANK YOU FOR BOOKING HILTON</Text>
+  <TimeSpan Duration="7" End="01-18" Start="01-11"/>
+ </Hotel>
+</OTA_HotelResRS></soap-env:Body></soap-env:Envelope>
