@@ -1,6 +1,7 @@
 /**
- * Created by hp on 9/1/2018.
+ * Created by hp on 10/1/2018.
  */
+
 function toastWarning(message){
   return iziToast.warning({
     timeout: 10000,
@@ -132,35 +133,33 @@ function extractError(error) {
 }
 
 $(function () {
+  $('#send_link').click(function () {
+    var email = $('#email').val();
 
-  $('#save_markup').click(function () {
-    var role = $('#role').val();
-    var markup_type = $('#markup_type').val();
-    var markup_value_type = $('#markup_value_type').val();
-    var markup_value = $('#markup_value').val();
-
-    axios.post('/backend/additions/markup/admin', {
-      'role': role,
-      'markup_type': markup_type,
-      'markup_value_type': markup_value_type,
-      'markup_value': markup_value
-    }).then(function (response) {
-      if(response.data == 1)
-      {
-        toastSuccess('Markup saved successfully')
-      }
-      else
-      {
-        toastError('Could not save markup');
-      }
-    }).catch(function (error) {
-      extractError(error);
+    axios.post('/backend/password/reset', {
+      'email': email
     })
+        .then(function (response) {
+          if (response.data == 1)
+          {
+            toastSuccess('Password reset link sent');
+            window.location.href = baseUrl+'/backend/login';
+          }
+          else if(response.data == 0)
+          {
+            toastError('Could not send email. Check your email and try again');
+          }
+
+          console.log(response);
+        })
+        .catch(function (error) {
+          extractError(error);
+        })
   });
 
+  $('#change_password').click(function () {
+    var old_password = $('#old_password').val();
+    var new_password = $('#new_password').val();
+    var confirm_password = $('#confirm_password').val();
+  });
 });
-
-function fetchMarkups()
-{
-
-}

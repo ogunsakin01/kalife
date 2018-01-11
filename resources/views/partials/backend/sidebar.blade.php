@@ -5,7 +5,7 @@
         <img src="{{asset('backend/images/profiles/05.jpg')}}" alt="">
       </div>
       <div class="profile-name">
-        Jane Doe
+        {{auth()->user()->first_name}} {{auth()->user()->last_name}}
         <button class="btn-prof" type="button" data-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-ellipsis-v"></i>
         </button>
@@ -14,11 +14,15 @@
           <a class="dropdown-item" href="#"><span class="icon ti-email mr-3"></span>Inbox</a>
           <a class="dropdown-item" href="#"><span class="icon ti-settings mr-3"></span>Settings</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"><span class="icon ti-power-off mr-3"></span>Logout</a>
+          <a class="dropdown-item" href="{{route('backend-logout')}}"><span class="icon ti-power-off mr-3"></span>Logout</a>
         </div>
       </div>
       <div class="profile-title">
-        Administrator
+        @php
+        $role = new \App\Role();
+        @endphp
+
+        {{$role->role(auth()->id())}}
       </div>
     </div>
     <ul class="main-menu" id="menus">
@@ -29,13 +33,9 @@
       </li>
 
       <li>
-        <a class="pr-mn collapsed" data-toggle="collapse" href="#users" aria-expanded="true">
-          <span class="icon ti-notepad"></span>User Management
+        <a class="pr-mn collapsed" href="{{route('backend-profile-view')}}">
+          <span class="icon ti-user"></span>Profile Management
         </a>
-        <ul id="users" class="collapse" data-parent="#menus">
-          <li><a href="{{route('backend-new-users')}}">New</a></li>
-          <li><a href="{{route('backend-manage-users')}}">Manage</a></li>
-        </ul>
       </li>
 
       <li>

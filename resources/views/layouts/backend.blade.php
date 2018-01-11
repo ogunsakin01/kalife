@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Kalife - @yield('tab-title')</title>
+    <title>@yield('tab-title') | Kalife</title>
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="x-ua-compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +9,10 @@
     <meta content="yes" name="apple-touch-fullscreen">
     @include('partials.backend.css')
     @yield('css')
+
+    <script type="text/javascript">
+      var BaseUrl = "{{url("/")}}";
+    </script>
   </head>
   <body>
   <div id="page-container">

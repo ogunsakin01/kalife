@@ -15,5 +15,8 @@ class DatabaseSeeder extends Seeder
          $this->call(MarkupValueTypeSeeder::class);
          $this->call(RoleSeeder::class);
          $this->call(TitleSeeder::class);
+         $this->call(GenderSeeder::class);
+         $this->call(AccountStatusSeeder::class);
+         $this->call(UserSeeder::class);
     }
 }

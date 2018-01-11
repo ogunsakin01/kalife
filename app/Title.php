@@ -10,4 +10,9 @@ class Title extends Model
   {
     return static::pluck('name', 'id')->all();
   }
+
+  public function getTitleById($title_id)
+  {
+    return static::where('id', $title_id)->first()->name;
+  }
 }

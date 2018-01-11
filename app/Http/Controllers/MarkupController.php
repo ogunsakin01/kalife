@@ -52,8 +52,4 @@ class MarkupController extends Controller
 
   }
 
-  public function fetchAuthMarkup()
-  {
-    $markup = static::where('user_id', auth()->id)->get();
-  }
 }

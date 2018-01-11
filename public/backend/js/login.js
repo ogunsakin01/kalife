@@ -1,6 +1,7 @@
 /**
- * Created by hp on 9/1/2018.
+ * Created by hp on 10/1/2018.
  */
+
 function toastWarning(message){
   return iziToast.warning({
     timeout: 10000,
@@ -132,35 +133,34 @@ function extractError(error) {
 }
 
 $(function () {
+  $('#sign_in').click(function () {
+    var email = $('#email').val();
+    var password = $('#password').val();
 
-  $('#save_markup').click(function () {
-    var role = $('#role').val();
-    var markup_type = $('#markup_type').val();
-    var markup_value_type = $('#markup_value_type').val();
-    var markup_value = $('#markup_value').val();
+    axios.post('/backend/login', {
+      'email': email,
+      'password': password
+    })
+    .then(function (response) {
+      if (response.data == 1)
+      {
+        toastSuccess('Login successful. Redirecting to dashboard...');
 
-    axios.post('/backend/additions/markup/admin', {
-      'role': role,
-      'markup_type': markup_type,
-      'markup_value_type': markup_value_type,
-      'markup_value': markup_value
-    }).then(function (response) {
-      if(response.data == 1)
-      {
-        toastSuccess('Markup saved successfully')
+        setInterval(function () {
+          window.location.href = BaseUrl + '/backend/home';
+        },2000);
       }
-      else
+      else if(response.data == 2)
       {
-        toastError('Could not save markup');
+        toastError('User blocked. See the admin.');
       }
-    }).catch(function (error) {
+      else if(response.data == 0)
+      {
+        toastError('Incorrect email/password. Try again');
+      }
+    })
+    .catch(function (error) {
       extractError(error);
     })
   });
-
 });
-
-function fetchMarkups()
-{
-
-}
