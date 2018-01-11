@@ -103,6 +103,7 @@ class HotelController extends Controller
         else{
             $getDescription   = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('HotelPropertyDescriptionLLSRQ',$session_store),$this->SabreHotel->HotelPropertyDescriptionRQXML($r),'HotelPropertyDescriptionLLSRQ');
             $hotelPropertyResponse =  $this->SabreHotel->validateHotelPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription));
+//            return $this->SabreConfig->mungXmlToArray($getDescription);
             if($hotelPropertyResponse == 1){
                 $rate = 0;
                 $currency = $this->SabreHotel->getHotelRoomsCurrencyRate($this->SabreHotel->sortPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription), $rate));
@@ -137,5 +138,58 @@ class HotelController extends Controller
 
     }
 
+    public function createReservation(Request $r){
+        $selectedHotel = session()->get('selectedHotel');
+        $room = $r->room;
+        $session_store = $this->SabreSession->sessionStore();
+        if(empty($session_store) || is_null($session_store)){
+            return 0;
+        }
+        elseif($session_store == 0){
+            return 0;
+        }
+        elseif($session_store == 2){
+            return 2;
+        }
+        else{
+            $runPassengerDetails = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('PassengerDetailsRQ',$session_store),$this->SabreHotel->PassengerDetailsRQXML(),'PassengerDetailsRQ');
+            $runHotelReserve      = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('OTA_HotelResLLSRQ',$session_store),$this->SabreHotel->HotelReserveRQXML($room,$selectedHotel),'OTA_HotelResLLSRQ');
+            $runEndTransaction   = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('EndTransactionLLSRQ',$session_store),$this->SabreHotel->EndTransactionRQXML(),'EndTransactionLLSRQ');
 
+            $file = fopen("TestSamplehotelPassenegrDetailsRQ.txt","w");
+            fwrite($file, $this->SabreHotel->PassengerDetailsRQXML());
+            fclose($file);
+            $file = fopen("TestSamplehotelPassenegrDetailsRS.txt","w");
+            fwrite($file, $runPassengerDetails);
+            fclose($file);
+            $file = fopen("TestSamplehotelResRQ.txt","w");
+            fwrite($file, $this->SabreHotel->HotelReserveRQXML($room,$selectedHotel));
+            fclose($file);
+            $file = fopen("TestSamplehotelResRS.txt","w");
+            fwrite($file, $runHotelReserve);
+            fclose($file);
+            $file = fopen("TestSampleEndTransactionRQ.txt","w");
+            fwrite($file, $this->SabreHotel->EndTransactionRQXML());
+            fclose($file);
+            $file = fopen("TestSampleEndTransactionRS.txt","w");
+            fwrite($file, $runEndTransaction);
+            fclose($file);
+            dd(
+                [
+                    $this->SabreConfig->mungXmlToArray($runPassengerDetails),
+                    $this->SabreConfig->mungXmlToArray($runHotelReserve),
+                    $this->SabreConfig->mungXmlToArray($runEndTransaction)
+                ]
+            );
+        }
+    }
+
+    public function hotelPaymentOption($room){
+        $session_info = session()->get('selectedHotel');
+        $selectedHotel = $session_info;
+        $hotelSearchParam = session()->get('hotelSearchParam');
+        $hotelsAvail = session()->get('availableHotels');
+        $hotel = $this->SabreHotel->HotelAvailSort($hotelsAvail)[session()->get('selectedHotelId')];
+        return view('frontend.hotels.payment_options',compact('selectedHotel','hotelSearchParam','hotel','room'));
+    }
 }

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 @section('title')Available flights @endsection
-@section('activeFlight')
-   class='active'
+@section('loadingOverlay')
+    @include('partials.flightSearchOverlay')
+    @include('partials.flightPricingOverlay')
 @endsection
 @section('content')
+    <div class="gap gap-small"></div>
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>

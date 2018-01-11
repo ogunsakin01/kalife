@@ -78,9 +78,10 @@
                                     <div class="form-group form-group-icon-left"><i class="fa fa-user-secret input-icon input-icon-show"></i>
                                         <label>Title *</label>
                                         <select name="title" required class="form-control">
-                                            <option value="MR.">Mr.</option>
-                                            <option value="MRS.">Mrs.</option>
-                                            <option value="MISS">MISS</option>
+                                            <option value="1">Mr.</option>
+                                            <option value="2">Mrs.</option>
+                                            <option value="3">MISS</option>
+                                            <option value="4">MASTER</option>
                                         </select>
                                     </div>
                                 </div>
@@ -132,11 +133,11 @@
                                     <label>Gender *</label>
                                     <div class="radio-inline radio-small">
                                         <label>
-                                            <input class="i-radio" type="radio" value="Male" name="gender" required />Male</label>
+                                            <input class="i-radio" type="radio" value="1" name="gender" required />Male</label>
                                     </div>
                                     <div class="radio-inline radio-small">
                                         <label>
-                                            <input class="i-radio" type="radio" value="Female" name="gender" required />Female</label>
+                                            <input class="i-radio" type="radio" value="2" name="gender" required />Female</label>
                                     </div>
                                 </div>
                             </div>

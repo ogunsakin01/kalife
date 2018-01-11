@@ -210,12 +210,12 @@ $('.search_flight').on("click",function(){
 
 
 
-    // $('.main-content').addClass('hidden');
-    // $('.flight-search-loader').removeClass('hidden');
+    $('.template-content').addClass('hidden');
+    $('.flight-search-loader').removeClass('hidden');
 
 
     var flight_type = $('.flight_type').val();
-    $(body).LoadingOverlay("show");
+    // $(body).LoadingOverlay("show");
 
      if(flight_type === 'One Way'){
 
@@ -253,39 +253,28 @@ $('.search_flight').on("click",function(){
         cabin_type : cabin_type
     })
         .then(function (response) {
-            $(body).LoadingOverlay("hide");
-            // $('.main-content').removeClass('hidden');
-            // $('.flight-search-loader').addClass('hidden');
+
 
             if(response.data === 0){
                 toastError("Connection Error. Poor Internet Connection, try again.");
-                return false;
             }else if(response.data === 1){
                 toastSuccess("Search completed. Redirecting to available flights page");
                 window.location.href = baseUrl+"/available-flights/";
             }else if(response.data === 2) {
                 toastWarning("Unable to connect to server. Try again");
-                return false;
             }else if(response.data === 3) {
                 toastWarning("Connection error. Try again");
-                return false;
             }else if(response.data === 31) {
                 toastWarning("Fatal Connection error. Try again");
-                return false;
             }else if(response.data === 4) {
                 toastWarning("No result found for your search option. Try again");
-                return false;
             }else{
                 toastWarning("Your device could not establish a connection to the server. Try again");
-                return false;
             }
+            $('.template-content').removeClass('hidden');
+            $('.flight-search-loader').addClass('hidden');
         })
         .catch(function (error) {
-            $(body).LoadingOverlay("hide");
-            // $('.main-content').removeClass('hidden');
-            // $('.flight-search-loader').addClass('hidden');
-
-
             var Error = error.response.data.errors;
 
             if(Error.departure_airport[0]){
@@ -294,7 +283,8 @@ $('.search_flight').on("click",function(){
             if(Error.arrival_airport[0]){
                 toastWarning(Error.arrival_airport[0]);
             }
-            return false;
+            $('.template-content').removeClass('hidden');
+            $('.flight-search-loader').addClass('hidden');
         });
 
 
@@ -452,7 +442,8 @@ $('.reduce_by_one').on('click',function(){
 });
 
 $('.search_multi_flight').on('click',function(){
-    $(body).LoadingOverlay("show");
+    $('.template-content').addClass('hidden');
+    $('.flight-search-loader').removeClass('hidden');
     var seg = '.multi_seg_num';
     var seg_num = $(seg).val();
     var i;
@@ -490,41 +481,42 @@ $('.search_multi_flight').on('click',function(){
       searchParameters : searchParam
     })
         .then(function(response){
-            $(body).LoadingOverlay("hide");
             if(response.data === 0){
                 toastError("Connection Error. Poor Internet Connection");
-                return false;
             }else if(response.data === 1){
                 toastSuccess("Search completed. Redirecting to available flights page");
                 window.location.href = baseUrl+"/available-flights/";
             }else if(response.data === 2) {
                 toastWarning("Unable to connect to server. Try again.");
-                return false;
+
             }else if(response.data === 3) {
                 toastWarning("Connection error. Try again");
-                return false;
+
             }else if(response.data === 31) {
                 toastWarning("Fatal connection error. Try again");
-                return false;
+
             }else if(response.data === 4) {
                 toastWarning("No result found for your search option. Try again");
-                return false;
+
             }
+            $('.template-content').removeClass('hidden');
+            $('.flight-search-loader').addClass('hidden');
         })
         .catch(function(error){
-            $(body).LoadingOverlay("hide");
             var Error = error.response.data.errors;
+            $('.template-content').removeClass('hidden');
+            $('.flight-search-loader').addClass('hidden');
         });
 });
 
 $('.itinerary_select').on('click',function(){
   var id = $(this).val();
-  $(body).LoadingOverlay('show');
+    $('.template-content').addClass('hidden');
+    $('.flight-pricing-loader').removeClass('hidden');
   axios.post('/flightBookPricing',{
       id : id
   })
       .then(function(response){
-          $(body).LoadingOverlay('hide');
           if(response.data === 1){
              window.location.href = baseUrl+'/flight-passenger-details';
           }else if(response.data === 2){
@@ -536,9 +528,12 @@ $('.itinerary_select').on('click',function(){
           }else if(response.data === 21){
               toastWarning('Connection to server not established. Try again');
           }
+          $('.template-content').removeClass('hidden');
+          $('.flight-pricing-loader').addClass('hidden');
       })
       .catch(function(error){
-          $(body).LoadingOverlay('hide');
+          $('.template-content').removeClass('hidden');
+          $('.flight-pricing-loader').addClass('hidden');
       })
 });
 

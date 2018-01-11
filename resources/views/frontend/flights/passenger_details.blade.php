@@ -3,7 +3,7 @@
 
 @section('content')
 {{--{{dd(session()->get('flightSearchParam'))}}--}}
-
+<div class="gap gap-small"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -96,11 +96,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="adult_sex[]" />Male</label>
+                                                    <input class="i-radio" type="radio" name="adult_sex[]" value="M" />Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="adult_sex[]" />Female</label>
+                                                    <input class="i-radio" type="radio" name="adult_sex[]" value="F"/>Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -140,11 +140,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="child_sex[]" />Male</label>
+                                                    <input class="i-radio" type="radio" name="child_sex[]" value="M"/>Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="child_sex[]" />Female</label>
+                                                    <input class="i-radio" type="radio" name="child_sex[]" value="F" />Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -184,11 +184,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="infant_sex[]" />Male</label>
+                                                    <input class="i-radio" type="radio" name="infant_sex[]" value="M" />Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="infant_sex[]" />Female</label>
+                                                    <input class="i-radio" type="radio" name="infant_sex[]" value="F" />Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">

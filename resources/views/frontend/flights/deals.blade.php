@@ -2,6 +2,7 @@
 @section('title') Flight Deals @endsection
 @section('activeFlight')  active @endsection
 @section('content')
+    <div class="gap gap-small"></div>
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a></li>

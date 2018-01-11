@@ -1,9 +1,10 @@
 @extends('layouts.app')
 @section('title') {{$selectedHotel['hotelName']}} Hotel Information  @endsection
 @section('content')
-{{--{{dd($hotel)}}--}}
+{{--{{dd($selectedHotel)}}--}}
 
     <div class="container">
+
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
             </li>
@@ -12,9 +13,71 @@
             <li><a href="{{url('/available-hotels')}}">{{$hotelSearchParam['city']}} Hotels</a></li>
             <li class="active"><a>{{$selectedHotel['hotelName']}} Hotel</a></li>
         </ul>
+        <div class="gap gap-small"></div>
         <div class="booking-item-details">
             <header class="booking-item-header">
                 <div class="row">
+                    <div class="col-md-12">
+                        <form class="booking-item-dates-change mb40">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group form-group-icon-left"><i class="fa fa-map-marker input-icon input-icon-hightlight"></i>
+                                        <label>Where</label>
+                                        <input class="typeahead form-control destination_city" value="" placeholder="City, Hotel Name or U.S. Zip Code" type="text" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-daterange" data-date-format="MM d, D">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                                    <label>Check in</label>
+                                                    <input class="form-control checkin_date" name="start" type="text" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-icon-left"><i class="fa fa-calendar input-icon input-icon-hightlight"></i>
+                                                    <label>Check out</label>
+                                                    <input class="form-control checkout_date" name="end" type="text" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group- form-group-select-plus">
+                                                <label>Guests</label>
+                                                <select class="form-control guests">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-select-plus">
+                                                <label>&nbsp;</label>
+                                                <button type="button" class="btn btn-primary search_hotel">Search Hotel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <div class="col-md-9">
                         <h2 class="lh1em">{{$selectedHotel['hotelName']}}</h2>
                         <p class="lh1em text-small"><i class="fa fa-map-marker"></i> {{$selectedHotel['address']}} ({{$selectedHotel['locationDescription']}})</p>
@@ -25,7 +88,7 @@
                         </ul>
                     </div>
                     <div class="col-md-3">
-                        <p class="booking-item-header-price">  @if($hotel['minimumPrice'] == 0) Not Available @elseif($hotel['minimumPrice'] != 0) <small>price from</small><span class="text-lg">&#x20A6;{{number_format($hotel['minimumPrice'])}}</span>/night @endif </p>
+                        <p class="booking-item-header-price">  @if($hotel['minimumPrice'] == 0) Not Available @elseif($hotel['minimumPrice'] != 0) <small>price from</small><span class="text-lg">&#x20A6;{{number_format($hotel['minimumPrice'])}}</span>/day @endif </p>
                     </div>
                 </div>
             </header>
@@ -326,7 +389,7 @@
                                         <ul class="booking-item-features booking-item-features-sign clearfix">
                                             <li rel="tooltip" data-placement="top" title="Guests Occupancy"><i class="fa fa-male"></i><span class="booking-item-feature-sign">x {{session()->get('hotelSearchParam')['guests']}}</span>
                                             </li>
-                                            <li rel="tooltip" data-placement="top" title="Stay Duration"><i class="fa fa-calendar"></i><span class="booking-item-feature-sign">x {{number_format($room['Duration'])}}</span>
+                                            <li rel="tooltip" data-placement="top" title="Stay Duration (Day)"><i class="fa fa-calendar"></i><span class="booking-item-feature-sign">x {{number_format($room['Duration'])}}</span>
                                             </li>
                                         </ul>
                                         <span class="text">
@@ -334,7 +397,7 @@
                                             <p class="text text-bigger">Check Out :  {{date('D, M d',strtotime($selectedHotel['checkoutDate']))}} , {{date('g:i A',strtotime($selectedHotel['checkOutTime']))}} </p>
                                         </span>
                                     </div>
-                                    <div class="col-md-4"><span class="booking-item-price">&#x20A6;{{number_format($room['baseAmountPerNightNaira'])}}</span><span>/night</span>
+                                    <div class="col-md-4"><span class="booking-item-price">&#x20A6;{{number_format($room['baseAmountPerNightNaira'])}}</span><span>/day</span>
                                      <span class="btn btn-primary">Select Room</span>
                                     </div>
                                 </div>

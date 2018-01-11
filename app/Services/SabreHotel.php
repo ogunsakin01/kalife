@@ -10,6 +10,7 @@ namespace App\Services;
 
 use App\Vat;
 use App\AdminMarkup;
+use Faker\Provider\DateTime;
 use Illuminate\Support\Carbon;
 
 
@@ -267,24 +268,22 @@ class SabreHotel
                  </DisplayCurrencyRQ>';
     }
 
-    public function HotelReserveRQXML(){
-       return '<OTA_HotelResRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ReturnHostCommand="false" TimeStamp="2013-11-22T17:15:00-06:00" Version="2.2.0">
+    public function HotelReserveRQXML($room,$selectedHotel){
+        return '<OTA_HotelResRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ReturnHostCommand="false" TimeStamp="2013-11-22T17:15:00-06:00" Version="2.2.0">
                 <Hotel>
-                  <BasicPropertyInfo ChainCode="XX" HotelCode="1234567" InsertAfter="0" RPH="2" />
+                  <BasicPropertyInfo RPH="'.$selectedHotel['rooms'][$room]['rph'].'" />
                   <Guarantee Type="GDPST">
                     <CC_Info>
-                     <PaymentCard Code="VI" ExpireDate="2012-12" Number="4123412341234123"/>
+                     <PaymentCard Code="VI" ExpireDate="2019-07" Number="4111111111111111"/>
                      <PersonName>
-                     <Surname>TEST</Surname>
+                     <Surname>TESTING</Surname>
                      </PersonName>
                     </CC_Info>
                   </Guarantee>
-                  <GuestCounts Count="2" />
                   <RoomType NumberOfUnits="1"/>
                   <SpecialPrefs>
                    <WrittenConfirmation Ind="true" />
                   </SpecialPrefs>
-                  <TimeSpan End="12-24T13:00" Start="12-21T12:00"/>
                 </Hotel>
               </OTA_HotelResRQ>';
     }
@@ -491,10 +490,9 @@ class SabreHotel
     public function sortPropertyDescription($responseArray, $rate){
         $checkinDate = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['TimeSpan']['@attributes']['Start'];
         $checkoutDate = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['TimeSpan']['@attributes']['End'];
-        $duration = 0;
-        if(isset($responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['TimeSpan']['@attributes']['Duration'])){
-            $duration = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['TimeSpan']['@attributes']['Duration'];
-        }
+        $in = strtotime($checkinDate);
+        $out = strtotime($checkoutDate);
+        $duration = (($out - $in)/86400) + 1;
         $basicPropertyInfo = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['BasicPropertyInfo'];
         $checkinTime = 0;  $checkoutTime = 0;
         if(isset($basicPropertyInfo['CheckInTime'])){
@@ -546,8 +544,12 @@ class SabreHotel
         if(isset($responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['RoomRates']['RoomRate'])){
             $availableRooms = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['RoomRates']['RoomRate'];
             if(!isset($availableRooms[0])) {
+                $baseAmountPerNight = $availableRooms['Rates']['Rate']['@attributes']['Amount'];
                 $baseAmountPerNightNaira = $this->SabreConfig->rateAmountCalculator($availableRooms['Rates']['Rate']['@attributes']['Amount'],$rate);
-                $baseAmountAllNights = $availableRooms['Rates']['Rate']['HotelTotalPricing']['@attributes']['Amount'];
+                $baseAmountAllNights = $baseAmountPerNight * $duration;
+                if(isset($availableRooms['Rates']['Rate']['HotelTotalPricing']['@attributes']['Amount'])){
+                    $baseAmountAllNights = $availableRooms['Rates']['Rate']['HotelTotalPricing']['@attributes']['Amount'];
+                }
                 $baseAmountAllNightsNaira = $this->SabreConfig->rateAmountCalculator($baseAmountAllNights,$rate);
                 if($rate == 0){
                     $baseAmountAllNightsNaira = 0;
@@ -563,7 +565,7 @@ class SabreHotel
                     'hrdRequiredForSell' => $availableRooms['Rates']['Rate']['@attributes']['HRD_RequiredForSell'],
                     'guaranteeSurchargeRequired' => $availableRooms['@attributes']['GuaranteeSurchargeRequired'],
                     'iataCharacteristicsIdentification' => $availableRooms['@attributes']['IATA_CharacteristicIdentification'],
-                    'baseAmountPerNight' => $availableRooms['Rates']['Rate']['@attributes']['Amount'],
+                    'baseAmountPerNight' => $baseAmountPerNight,
                     'currencyCode' => $availableRooms['Rates']['Rate']['@attributes']['CurrencyCode'],
                     'baseAmountPerNightNaira' => $baseAmountPerNightNaira,
                     'tax' => $tax,
@@ -580,8 +582,12 @@ class SabreHotel
             }
             else {
                 foreach ($availableRooms as $k => $availableRoom) {
+                    $baseAmountPerNight = $availableRoom['Rates']['Rate']['@attributes']['Amount'];
                     $baseAmountPerNightNaira = $this->SabreConfig->rateAmountCalculator($availableRoom['Rates']['Rate']['@attributes']['Amount'],$rate);
-                    $baseAmountAllNights = $availableRoom['Rates']['Rate']['HotelTotalPricing']['@attributes']['Amount'];
+                    $baseAmountAllNights = $baseAmountPerNight * $duration;
+                    if(isset($availableRoom['Rates']['Rate']['HotelTotalPricing']['@attributes']['Amount'])){
+                        $baseAmountAllNights = $availableRoom['Rates']['Rate']['HotelTotalPricing']['@attributes']['Amount'];
+                    }
                     $baseAmountAllNightsNaira = $this->SabreConfig->rateAmountCalculator($baseAmountAllNights,$rate);
                     if($rate == 0){
                         $baseAmountAllNightsNaira = 0;
@@ -597,7 +603,7 @@ class SabreHotel
                         'hrdRequiredForSell' => $availableRoom['Rates']['Rate']['@attributes']['HRD_RequiredForSell'],
                         'guaranteeSurchargeRequired' => $availableRoom['@attributes']['GuaranteeSurchargeRequired'],
                         'iataCharacteristicsIdentification' => $availableRoom['@attributes']['IATA_CharacteristicIdentification'],
-                        'baseAmountPerNight' => $availableRoom['Rates']['Rate']['@attributes']['Amount'],
+                        'baseAmountPerNight' => $baseAmountPerNight,
                         'currencyCode' => $availableRoom['Rates']['Rate']['@attributes']['CurrencyCode'],
                         'baseAmountPerNightNaira' => $baseAmountPerNightNaira,
                         'tax' => $tax,
@@ -635,75 +641,63 @@ class SabreHotel
         ];
     }
 
-    public function PassengerDetailsPassenger($param){
-        $adults = session()->get('hotelSearchParam')['adult_passengers'];
-        $children = session()->get('fligSearchParam')['child_passengers'];
-        $infants = session()->get('flightSearchParam')['infant_passengers'];
-        $passengerDetails = '';
-        $priceQuoteInfo = '';
-        $y = 0;
-        $infants_num = 2;
-        if($adults > 0){
-            for($i = 0; $i < $adults; $i++){
-                $given_name = $param->adult_given_name[$i];
-                $surname = $param->adult_surname[$i];
-                $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="ADT">
-                <GivenName>'.$given_name.'</GivenName>
-                <Surname>'.$surname.'</Surname>
-            </PersonName>';
-
-
-                $passengerDetails = $passengerDetails.$personDetails;
-                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="1"/>';
-                $y = $y+1;
-            }
-        }
-        if($children > 0){
-            for($i = 0; $i < $children; $i++){
-                $given_name = $param->child_given_name[$i];
-                $surname = $param->child_surname[$i];
-                $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="CNN">
-                <GivenName>'.$given_name.'</GivenName>
-                <Surname>'.$surname.'</Surname>
-            </PersonName>';
-                $passengerDetails = $passengerDetails.$personDetails;
-                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="2"/>';
-                $y = $y+1;
-            }
-            $infants_num = $infants_num + 1;
-        }
-        if($infants > 0){
-            if($children > 0){$nameNumber = 3;}else{$nameNumber = 2;}
-            for($i = 0; $i < $infants; $i++){
-                $given_name = $param->infant_given_name[$i];
-                $surname = $param->infant_surname[$i];
-                $personDetails = '<PersonName Infant="true" NameNumber="'.($y + 1).'.1" PassengerType="INF">
-                <GivenName>'.$given_name.'</GivenName>
-                <Surname>'.$surname.'</Surname>
-            </PersonName>';
-                $passengerDetails = $passengerDetails.$personDetails;
-                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'. ($y + 1) .'.1" Record="'.$infants_num.'"/>';
-                $y = $y+1;
-            }
-        }
-        return ['passengers' => $passengerDetails, 'priceQuoteInfo' => $priceQuoteInfo];
-    }
-
-    public function PassengerDetailsRQXML($param){
-        $phone_number = auth()->user()->phone_number;  $email = auth()->user()->email;
+//    public function PassengerDetailsPassenger($param){
+//        $adults = session()->get('hotelSearchParam')['adult_passengers'];
+//        $children = session()->get('fligSearchParam')['child_passengers'];
+//        $infants = session()->get('flightSearchParam')['infant_passengers'];
+//        $passengerDetails = '';
+//        $priceQuoteInfo = '';
+//        $y = 0;
+//        $infants_num = 2;
+//        if($adults > 0){
+//            for($i = 0; $i < $adults; $i++){
+//                $given_name = $param->adult_given_name[$i];
+//                $surname = $param->adult_surname[$i];
+//                $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="ADT">
+//                <GivenName>'.$given_name.'</GivenName>
+//                <Surname>'.$surname.'</Surname>
+//            </PersonName>';
+//
+//
+//                $passengerDetails = $passengerDetails.$personDetails;
+//                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="1"/>';
+//                $y = $y+1;
+//            }
+//        }
+//        if($children > 0){
+//            for($i = 0; $i < $children; $i++){
+//                $given_name = $param->child_given_name[$i];
+//                $surname = $param->child_surname[$i];
+//                $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="CNN">
+//                <GivenName>'.$given_name.'</GivenName>
+//                <Surname>'.$surname.'</Surname>
+//            </PersonName>';
+//                $passengerDetails = $passengerDetails.$personDetails;
+//                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="2"/>';
+//                $y = $y+1;
+//            }
+//            $infants_num = $infants_num + 1;
+//        }
+//        if($infants > 0){
+//            if($children > 0){$nameNumber = 3;}else{$nameNumber = 2;}
+//            for($i = 0; $i < $infants; $i++){
+//                $given_name = $param->infant_given_name[$i];
+//                $surname = $param->infant_surname[$i];
+//                $personDetails = '<PersonName Infant="true" NameNumber="'.($y + 1).'.1" PassengerType="INF">
+//                <GivenName>'.$given_name.'</GivenName>
+//                <Surname>'.$surname.'</Surname>
+//            </PersonName>';
+//                $passengerDetails = $passengerDetails.$personDetails;
+//                $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'. ($y + 1) .'.1" Record="'.$infants_num.'"/>';
+//                $y = $y+1;
+//            }
+//        }
+//        return ['passengers' => $passengerDetails, 'priceQuoteInfo' => $priceQuoteInfo];
+//    }
+    public function PassengerDetailsRQXML(){
+        $phone_number = auth()->user()->phone_number;  $email = auth()->user()->email; $given_name = auth()->user()->last_name; $surname = auth()->user()->first_name;
 
         return '<PassengerDetailsRQ version="3.3.0" xmlns="http://services.sabre.com/sp/pd/v3_3" IgnoreOnError="false" HaltOnError="true">
-    <PostProcessing RedisplayReservation="true">
-		<EndTransactionRQ>
-			<EndTransaction Ind="true">
-			</EndTransaction>
-			<Source ReceivedFrom="SWS TESTING"/>
-		</EndTransactionRQ>
-	</PostProcessing>
-	<PriceQuoteInfo>
-		'.$this->PassengerDetailsPassenger($param)['priceQuoteInfo'].'
-	</PriceQuoteInfo>
-
     <TravelItineraryAddInfoRQ>
         <AgencyInfo>
 			<Address>
@@ -720,10 +714,20 @@ class SabreHotel
                 <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="'.$phone_number.'" PhoneUseType="H"/>
             </ContactNumbers>
             <Email Address="'.$email.'" NameNumber="1.1" Type="CC"/>
-            '.$this->PassengerDetailsPassenger($param)['passengers'].'
+            <PersonName Infant="false" NameNumber="1.1" PassengerType="ADT">
+                <GivenName>'.$given_name.'</GivenName>
+                <Surname>'.$surname.'</Surname>
+            </PersonName>
         </CustomerInfo>
 	</TravelItineraryAddInfoRQ>
 </PassengerDetailsRQ>';
+    }
+
+    public function EndTransactionRQXML(){
+        return '<EndTransactionRQ Version="2.0.8" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <EndTransaction Ind="true" />
+       <Source ReceivedFrom="SWS TESTING" />
+       </EndTransactionRQ>';
     }
 
 }

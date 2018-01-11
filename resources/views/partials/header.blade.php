@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <a class="logo" href="">
-                        <img src="{{url('img/logo-invert.png')}}" alt="Image Alternative text" title="Image Title" />
+                    <a class="logo" href="{{url('/')}}">
+                        <img src="{{asset('img/logo-invert.png')}}" alt="Image Alternative text" title="Image Title" />
                     </a>
                 </div>
                 <div class="col-md-4">

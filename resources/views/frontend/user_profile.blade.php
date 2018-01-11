@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title')Customer Bookings Overview  @endsection
 @section('content')
+    <div class="gap gap-small"></div>
     <div class="container">
         <h1 class="page-title">Travel Profile</h1>
     </div>

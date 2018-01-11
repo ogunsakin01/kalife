@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title')Interswitch Transaction logs @endsection
 @section('content')
-
+    <div class="gap gap-small"></div>
     <div class="container">
         <h1 class="page-title">Transactions Log</h1>
     </div>

@@ -5,6 +5,7 @@
 @endsection
 @section('content')
     {{--{{dd($paymentInfo)}}--}}
+    <div class="gap gap-small"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">

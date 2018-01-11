@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title')Booking History @endsection
 @section('content')
-
+    <div class="gap gap-small"></div>
     <div class="container">
         <h1 class="page-title">Bookings History</h1>
     </div>

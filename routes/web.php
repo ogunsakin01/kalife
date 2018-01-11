@@ -42,6 +42,7 @@ Route::get('/flight-booking-payment-methods','FlightController@flightPaymentPage
 Route::post('/flightBookPricing','FlightController@flightBookPricing');
 Route::get('/flight-passenger-details', 'FlightController@flightPassengerDetails');
 Route::get('/flight-booking-complete', 'FrontEndPaymentController@bookingComplete');
+Route::view('/loading','frontend.loading');
 
 Route::post('/searchHotel','HotelController@searchHotel');
 Route::get('/available-hotels', 'HotelController@availableHotels');
@@ -49,7 +50,8 @@ Route::post('/hotelPropertyDescription', 'HotelController@hotelPropertyDescripti
 Route::get('/hotel-information', 'HotelController@selectedHotel');
 Route::view('/hotels', 'frontend.hotels.deals');
 Route::get('/room-booking/{room}','HotelController@selectedRoomBooking');
-
+Route::post('/hotelPassengerDetailsRQ','HotelController@createReservation');
+Route::get('/payment-option/reservation/{room}','HotelController@hotelPaymentOption');
 
 Route::post('/initiatePaystack','FrontEndPaymentController@initiatePaystack');
 Route::post('/saveTransaction','FrontEndPaymentController@saveTransaction');
