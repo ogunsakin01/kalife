@@ -6,12 +6,10 @@ Below is the information of your booking
 > Your PNR Code is  **{{$bookingInfo->pnr}}**
 @endcomponent
 @component('mail::table')
-    |                            |                        |
-    | -------------------------- |:----------------------:|
-    | Adults                     |                        |
-    | Children                   |                        |
-    | Infants                    |                        |
-    |**Total Amount**            | &#x20A6;               |
+    |                            |                                                                     |
+    | -------------------------- |:-------------------------------------------------------------------:|
+    |**Total Amount**            | &#x20A6; {{number_format(($bookingInfo['total_amount'] / 100),2)}}  |
+    |**Booking Reference         |                          {{$bookingInfo['reference']}}              |
 @endcomponent
 @component('mail::panel')
 Note that your reservation has been created on the flights of your house according to the number of passengers and cabin you selected.

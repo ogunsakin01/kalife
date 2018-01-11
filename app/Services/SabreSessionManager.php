@@ -160,42 +160,11 @@ class SabreSessionManager{
     }
 
     public function getTokenSort($response){
-        return ['message_id' => $response->message_id, 'token' => $response->token ];
+        return [
+                 'message_id' => $response->message_id,
+                 'token' => $response->token
+               ];
     }
 
-//    public function refreshSessionToken()
-//    {
-//        if ($this->ifSessionExists('session_info'))
-//        {
-//            if ($this->ifSessionIsEmpty('session_info'))
-//            {
-//                return 4;
-//            }
-//            else{
-//                $token = session()->get('session_info')['session_token'];
-//                $messageId = session()->get('session_info')['message_id'];
-//
-//                $refresh_data = $this->sessionRefreshValidator($this->refreshSession($token,$messageId));
-//                if($refresh_data == 0){
-//                    return 0;
-//                }elseif($refresh_data == 1){
-//                    return 1;
-//                }elseif($refresh_data == 2){
-//                    return 2;
-//                }elseif($refresh_data == 3){
-//                    return 3;
-//                }
-//                /**
-//                Might return 3 on worst case scenario of errors
-//                 * add elseif($refresh_data == 3){
-//                return 3;
-//                 * }
-//                 */
-//            }
-//        }else{
-//            return 4;
-//        }
-//
-//    }
 
 }

@@ -269,11 +269,10 @@ class SabreHotel
     }
 
     public function HotelReserveRQXML($room,$selectedHotel){
-        return '<OTA_HotelResRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ReturnHostCommand="false" TimeStamp="2013-11-22T17:15:00-06:00" Version="2.2.0">
+        return '<OTA_HotelResRQ  Version="2.2.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
                 <Hotel>
                   <BasicPropertyInfo RPH="'.$selectedHotel['rooms'][$room]['rph'].'" />
-                  <Customer NameNumber="1.1" />           
-                  <Guarantee Type="'.$selectedHotel['rooms'][$room]['guaranteeSurchargeRequired'].'">
+                  <Guarantee Type="GDPST">
                     <CC_Info>
                      <PaymentCard Code="VI" ExpireDate="2019-07" Number="4111111111111111"/>
                      <PersonName>
@@ -281,10 +280,8 @@ class SabreHotel
                      </PersonName>
                     </CC_Info>
                   </Guarantee>
+                  <GuestCounts Count="'.session()->get('hotelSearchParam')['guests'].'"/>
                   <RoomType NumberOfUnits="1"/>
-                  <SpecialPrefs>
-                   <WrittenConfirmation Ind="true" />
-                  </SpecialPrefs>
                 </Hotel>
               </OTA_HotelResRQ>';
     }
@@ -545,6 +542,11 @@ class SabreHotel
         if(isset($responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['RoomRates']['RoomRate'])){
             $availableRooms = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['RoomRates']['RoomRate'];
             if(!isset($availableRooms[0])) {
+                $guaranteedSurchargeRequired = 'D';
+                if(isset($availableRooms['@attributes']['GuaranteeSurchargeRequired'])){
+                    $guaranteedSurchargeRequired = $availableRooms['@attributes']['GuaranteeSurchargeRequired'];
+                }
+
                 $baseAmountPerNight = $availableRooms['Rates']['Rate']['@attributes']['Amount'];
                 $baseAmountPerNightNaira = $this->SabreConfig->rateAmountCalculator($availableRooms['Rates']['Rate']['@attributes']['Amount'],$rate);
                 $baseAmountAllNights = $baseAmountPerNight * $duration;
@@ -564,7 +566,7 @@ class SabreHotel
                     'roomDescription' => $availableRooms['AdditionalInfo']['Text'][0],
                     'roomAmenitySummary' => $availableRooms['AdditionalInfo']['Text'][1],
                     'hrdRequiredForSell' => $availableRooms['Rates']['Rate']['@attributes']['HRD_RequiredForSell'],
-                    'guaranteeSurchargeRequired' => $availableRooms['@attributes']['GuaranteeSurchargeRequired'],
+                    'guaranteeSurchargeRequired' => $guaranteedSurchargeRequired,
                     'iataCharacteristicsIdentification' => $availableRooms['@attributes']['IATA_CharacteristicIdentification'],
                     'baseAmountPerNight' => $baseAmountPerNight,
                     'currencyCode' => $availableRooms['Rates']['Rate']['@attributes']['CurrencyCode'],
@@ -583,6 +585,11 @@ class SabreHotel
             }
             else {
                 foreach ($availableRooms as $k => $availableRoom) {
+                    $guaranteedSurchargeRequired = 'D';
+                    if(isset($availableRoom['@attributes']['GuaranteeSurchargeRequired'])){
+                        $guaranteedSurchargeRequired = $availableRoom['@attributes']['GuaranteeSurchargeRequired'];
+                    }
+
                     $baseAmountPerNight = $availableRoom['Rates']['Rate']['@attributes']['Amount'];
                     $baseAmountPerNightNaira = $this->SabreConfig->rateAmountCalculator($availableRoom['Rates']['Rate']['@attributes']['Amount'],$rate);
                     $baseAmountAllNights = $baseAmountPerNight * $duration;
@@ -602,7 +609,7 @@ class SabreHotel
                         'roomDescription' => $availableRoom['AdditionalInfo']['Text'][0],
                         'roomAmenitySummary' => $availableRoom['AdditionalInfo']['Text'][1],
                         'hrdRequiredForSell' => $availableRoom['Rates']['Rate']['@attributes']['HRD_RequiredForSell'],
-                        'guaranteeSurchargeRequired' => $availableRoom['@attributes']['GuaranteeSurchargeRequired'],
+                        'guaranteeSurchargeRequired' => $guaranteedSurchargeRequired,
                         'iataCharacteristicsIdentification' => $availableRoom['@attributes']['IATA_CharacteristicIdentification'],
                         'baseAmountPerNight' => $baseAmountPerNight,
                         'currencyCode' => $availableRoom['Rates']['Rate']['@attributes']['CurrencyCode'],
@@ -641,7 +648,6 @@ class SabreHotel
             'rooms' => $allRooms
         ];
     }
-
 //    public function PassengerDetailsPassenger($param){
 //        $adults = session()->get('hotelSearchParam')['adult_passengers'];
 //        $children = session()->get('fligSearchParam')['child_passengers'];
@@ -729,6 +735,34 @@ class SabreHotel
         <EndTransaction Ind="true" />
        <Source ReceivedFrom="SWS TESTING" />
        </EndTransactionRQ>';
+    }
+
+    public function validateHotelResResponse($responseArray){
+     if(!is_null($responseArray)){
+         if(isset($responseArray['soap-env_Body']['OTA_HotelResRS']['stl_ApplicationResults']['stl_Error'])){
+           return 2;
+         }else{
+             return 1;
+         }
+     }else{
+      return 0;
+     }
+    }
+
+    public function validatePassengerDetailsResponse($responseArray){
+        if(!is_null($responseArray)){
+            if(isset($responseArray['soap-env_Body']['PassengerDetailsRS']['Error'])){
+                return 2;
+            }else{
+                return 1;
+            }
+        }else{
+            return 0;
+        }
+    }
+
+    public function sortHotelResResponse($responseArray){
+
     }
 
 }
