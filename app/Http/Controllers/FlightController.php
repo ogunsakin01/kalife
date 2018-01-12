@@ -32,14 +32,16 @@ class FlightController extends Controller
     }
 
     public function availableFlights(){
+        if(!session()->has(['availableFLights','flightSearchParam'])){return back();}
         $flightsResult = session()->get('availableFlights');
+        $flightSearchParam = session()->get('flightSearchParam');
         $airlines = $this->Sabreflight->availableAirline($flightsResult);
         $flightsResult = $this->Sabreflight->sortFlightArray($flightsResult);
-        $flightSearchParam = session()->get('flightSearchParam');
         return view('frontend.flights.available_flights',compact('flightsResult','flightSearchParam','airlines'));
     }
 
     public function flightPassengerDetails(){
+        if(!session()->has('selectedItinerary')){return back();}
         $itinerary = session()->get('selectedItinerary');
        return view('frontend.flights.passenger_details',compact('itinerary'));
     }
@@ -238,6 +240,7 @@ class FlightController extends Controller
     }
 
     public function flightPaymentPage(){
+        if(!session()->has(['selectedItinerary','bookingReference'])){return back();}
         $itinerary = session()->get('selectedItinerary');
         $txnRef = session()->get('bookingReference');
         $bookingInfo = FlightBooking::getBooking($txnRef);

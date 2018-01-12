@@ -44,4 +44,28 @@ class OnlinePayment extends Model
             ->orderBy('id','desc')
             ->get();
     }
+
+
+
+    public static function getAllInterswitchTransactionsById($id){
+        return static::where('gateway_id', 1)
+            ->where('user_id', $id)
+            ->orderBy('id','desc')
+            ->get();
+    }
+
+    public static function getAllPayStackTransactions(){
+        return static::where('gateway_id', 2)
+            ->orderBy('id','desc')
+            ->get();
+    }
+
+
+
+    public static function getAllPayStackTransactionsById($id){
+        return static::where('gateway_id', 2)
+            ->where('user_id',$id)
+            ->orderBy('id','desc')
+            ->get();
+    }
 }

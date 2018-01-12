@@ -7,14 +7,21 @@
         </Source>
     </POS>
    <OriginDestinationInformation RPH="1">
-        <DepartureDateTime>2018-02-08T00:00:00</DepartureDateTime>
-        <OriginLocation LocationCode="ACC" />
-        <DestinationLocation LocationCode="ABV" />
+        <DepartureDateTime>2018-01-12T00:00:00</DepartureDateTime>
+        <OriginLocation LocationCode="LHR" />
+        <DestinationLocation LocationCode="DXB" />
         <TPA_Extensions>
             <SegmentType Code="O" />
         </TPA_Extensions>
     </OriginDestinationInformation>
-    
+    <OriginDestinationInformation RPH="2">
+        <DepartureDateTime>2018-01-19T00:00:00</DepartureDateTime>
+        <OriginLocation LocationCode="DXB" />
+        <DestinationLocation LocationCode="LHR" />
+        <TPA_Extensions>
+            <SegmentType Code="O" />
+        </TPA_Extensions>
+    </OriginDestinationInformation>
     <TravelPreferences ValidInterlineTicket="true">
         <CabinPref PreferLevel="Preferred" Cabin="Y" />
         <TPA_Extensions>
@@ -24,9 +31,9 @@
         </TPA_Extensions>
     </TravelPreferences>
     <TravelerInfoSummary>
-        <SeatsRequested>2</SeatsRequested>
+        <SeatsRequested>1</SeatsRequested>
         <AirTravelerAvail>
-               <PassengerTypeQuantity Code="ADT" Quantity="2" />
+               <PassengerTypeQuantity Code="ADT" Quantity="1" />
         </AirTravelerAvail>
     </TravelerInfoSummary>
     <TPA_Extensions>

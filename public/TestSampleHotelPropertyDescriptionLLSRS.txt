@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">HotelPropertyDescriptionLLSRQ</eb:Service><eb:Action>HotelPropertyDescriptionLLSRS</eb:Action><eb:MessageData><eb:MessageId>1280116525978330610</eb:MessageId><eb:Timestamp>2018-01-11T14:36:40</eb:Timestamp><eb:RefToMessageId>1280048525911420150</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTD!ICESMSLB\/CRT.LB!-3190494966493706870!1518371!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><HotelPropertyDescriptionRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">HotelPropertyDescriptionLLSRQ</eb:Service><eb:Action>HotelPropertyDescriptionLLSRS</eb:Action><eb:MessageData><eb:MessageId>662738294154280150</eb:MessageId><eb:Timestamp>2018-01-12T08:10:18</eb:Timestamp><eb:RefToMessageId>662664294138980151</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190236009034212722!1828882!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><HotelPropertyDescriptionRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
  <stl:ApplicationResults status="Complete">
-  <stl:Success timeStamp="2018-01-11T08:36:40-06:00"/>
+  <stl:Success timeStamp="2018-01-12T02:10:18-06:00"/>
  </stl:ApplicationResults>
  <RoomStay>
-  <BasicPropertyInfo ChainCode="SB" GeoConfidenceLevel="0" HotelCityCode="LOS" HotelCode="0004600" HotelName="SOFITEL THE MOORHOUSE IKOYI" NumFloors="4" RPH="001">
+  <BasicPropertyInfo ChainCode="RD" GeoConfidenceLevel="0" HotelCityCode="LHR" HotelCode="0022422" HotelName="RADISSON EDWARDIAN SUSSEX HOTE" Latitude="51.449840" Longitude="-.200080" NumFloors="4" RPH="001">
    <Address>
-    <AddressLine>1 BANKOLE OKI ROAD</AddressLine>
-    <AddressLine>LAGOS NG</AddressLine>
-    <CountryCode>NG</CountryCode>
+    <AddressLine>19-25 GRANVILLE PLACE</AddressLine>
+    <AddressLine>LONDON GB W1H 6PA</AddressLine>
+    <CountryCode>GB</CountryCode>
    </Address>
    <Awards>
-    <AwardProvider>NTM4  CROWN</AwardProvider>
+    <AwardProvider>NTM3  CROWN</AwardProvider>
    </Awards>
+   <CheckInTime>14:00</CheckInTime>
+   <CheckOutTime>11:00</CheckOutTime>
    <ContactNumbers>
-    <ContactNumber Fax="234-1-4615424" Phone="234-1-4615409-22"/>
+    <ContactNumber Fax="44-207-514-3427" Phone="44-207-408-0130"/>
    </ContactNumbers>
    <DirectConnect Ind="true">
-    <AdditionalData Ind="true"/>
+    <AdditionalData Ind="false"/>
     <CurrencyConverted Ind="false"/>
     <DC_AvailParticipant Ind="true"/>
     <DC_SellParticipant Ind="true"/>
-    <RequestFail Ind="false"/>
+    <RequestFail Ind="true"/>
     <UnAvail Ind="false"/>
    </DirectConnect>
    <IndexData>
-    <Index DistanceDirection="28S" LocationCode="C" Point="LOS" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="3N" LocationCode="A" Point="MADAME TUSSAUDS" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="2N" LocationCode="A" Point="TRAFALGAR SQUARE" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="3E" LocationCode="A" Point="TOWER OF LONDON" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="LONDON" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1N" LocationCode="A" Point="BUCKINGHAM PALACE" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="2N" LocationCode="A" Point="BRITISH MUSEUM" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1W" LocationCode="A" Point="BOND STREET" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="5N" LocationCode="A" Point="AMERICAN EMBASSY" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="HYDE PARK" TransportationCode="O"/>
+    <Index CountryState="C/GB" DistanceDirection="1N" LocationCode="A" Point="PICCADILLY CIRCLE" TransportationCode="O"/>
+    <Index DistanceDirection="16W" LocationCode="C" Point="LHR" TransportationCode="O"/>
+    <Index DistanceDirection="0E" LocationCode="A" Point="LON" TransportationCode="O"/>
+    <Index DistanceDirection="30SE" LocationCode="C" Point="LTN" TransportationCode="O"/>
+    <Index DistanceDirection="34SW" LocationCode="C" Point="STN" TransportationCode="O"/>
+    <Index DistanceDirection="34S" LocationCode="C" Point="LGW" TransportationCode="O"/>
    </IndexData>
    <PropertyOptionInfo>
     <ADA_Accessible Ind="false"/>
@@ -39,11 +55,11 @@
     <Conventions Ind="false"/>
     <Dataport Ind="false"/>
     <Dining Ind="true"/>
-    <DryClean Ind="false"/>
+    <DryClean Ind="true"/>
     <EcoCertified Ind="false"/>
     <ExecutiveFloors Ind="false"/>
     <FamilyPlan Ind="true"/>
-    <FitnessCenter Ind="false"/>
+    <FitnessCenter Ind="true"/>
     <FreeLocalCalls Ind="false"/>
     <FreeParking Ind="false"/>
     <FreeShuttle Ind="false"/>
@@ -53,8 +69,8 @@
     <FullServiceSpa Ind="false"/>
     <GameFacilities Ind="false"/>
     <Golf Ind="false"/>
-    <GovtSafetyFire Ind="false"/>
-    <HighSpeedInternet Ind="false"/>
+    <GovtSafetyFire Ind="true"/>
+    <HighSpeedInternet Ind="true"/>
     <HypoallergenicRooms Ind="false"/>
     <IndoorPool Ind="false"/>
     <IndPetRestriction Ind="false"/>
@@ -62,7 +78,7 @@
     <InRoomMiniBar Ind="false"/>
     <InRoomRefrigerator Ind="false"/>
     <InRoomSafe Ind="false"/>
-    <InteriorDoorways Ind="false"/>
+    <InteriorDoorways Ind="true"/>
     <Jacuzzi Ind="false"/>
     <KidsFacilities Ind="false"/>
     <KitchenFacilities Ind="false"/>
@@ -70,12 +86,12 @@
     <MeetingFacilities Ind="true"/>
     <NoAdultTV Ind="false"/>
     <NonSmoking Ind="true"/>
-    <OutdoorPool Ind="true"/>
-    <Parking>Y-OUTDOOR</Parking>
+    <OutdoorPool Ind="false"/>
+    <Parking>N</Parking>
     <Pets Ind="false"/>
-    <Pool Ind="true"/>
+    <Pool Ind="false"/>
     <PublicTransportationAdjacent Ind="false"/>
-    <Recreation Ind="false"/>
+    <Recreation Ind="true"/>
     <RestrictedRoomAccess Ind="false"/>
     <RoomService Ind="false"/>
     <RoomService24Hours Ind="false"/>
@@ -85,7 +101,7 @@
     <SmokingRoomsAvail Ind="false"/>
     <Tennis Ind="false"/>
     <WaterPurificationSystem Ind="false"/>
-    <Wheelchair Ind="false"/>
+    <Wheelchair Ind="true"/>
    </PropertyOptionInfo>
    <PropertyTypeInfo>
     <AllInclusive Ind="false"/>
@@ -104,187 +120,241 @@
     <Suites Ind="false"/>
    </PropertyTypeInfo>
    <SpecialOffers Ind="false"/>
-   <Taxes ShortText="SEE DETAILS"/>
+   <Taxes>
+    <Text>15.00 PCT</Text>
+   </Taxes>
    <VendorMessages>
     <Attractions>
      <Text>PRIMARY CITY -</Text>
-     <Text>LOS -</Text>
-     <Text>BEACH AREA                3 KM N</Text>
-     <Text>FIRST CONSULTANTS         5 KM NE</Text>
-     <Text>LAGOS                     1 KM N</Text>
-     <Text>LOS                       1 KM N</Text>
+     <Text>LON -</Text>
+     <Text>0 MI E</Text>
+     <Text>BRITISH MUSEUM            0.5 MI 0 BLOCKS W</Text>
+     <Text>BUCKINGHAM PALACE         1 MI 0 BLOCKS N</Text>
+     <Text>COVENT GARDEN             1.5 MI 0 BLOCKS E</Text>
+     <Text>HARRODS                   1.3 MI 0 BLOCKS N</Text>
+     <Text>HYDE PARK                 1 MI 0 BLOCKS NE</Text>
+     <Text>KENSINGTON SHOPPING       1.25 MI 0 BLOCKS NE</Text>
+     <Text>LEICESTER SQUARE          1 MI 0 BLOCKS W</Text>
+     <Text>MADAME TUSSAUD S          1 MI 0 BLOCKS S</Text>
+     <Text>MARBLE ARCH TUBE STATION  0 MI 0 BLOCKS W</Text>
+     <Text>MILLENNIUM DOME           8 MI 0 BLOCKS E</Text>
+     <Text>NATIONAL GALLERY          1.2 MI 0 BLOCKS NW</Text>
+     <Text>NATURAL HISTORY MUSEUM    2 MI 0 BLOCKS NW</Text>
+     <Text>THEATRES, THEATRELAND     1 MI 0 BLOCKS E</Text>
+     <Text>TOWER OF LONDON           3.5 MI 0 BLOCKS E</Text>
+     <Text>TRAFALGAR SQUARE          1.2 MI 0 BLOCKS NW</Text>
     </Attractions>
     <Awards>
-     <Text>STARS 4 STARS</Text>
+     <Text>4 STARS</Text>
     </Awards>
     <Cancellation>
-     <Text>-16JUN07 - 31DEC30 -</Text>
-     <Text>CANCEL BY 1800 HOURS ON DAY OF ARRIVAL, LOCAL HOTEL TIME</Text>
+     <Text>-20OCT09 - 31DEC12 -</Text>
+     <Text>CANCEL BY 1600 HOURS ON DAY OF ARRIVAL, LOCAL HOTEL TIME</Text>
      <Text>TO AVOID A CANCELLATION PENALTY</Text>
      <Text>CANCELLATION POLICY TEXT -</Text>
-     <Text>NO CANCELLATION CHARGE IF THE RESERVATION IS CANCELLED</Text>
-     <Text>PRIOR TO 6 00 PM  HOTEL LOCAL TIME  DAY OF ARRIVAL</Text>
+     <Text>-BECAUSE THE CANCEL POLICY MAY VARY BY RATE, PLEASE SEE</Text>
+     <Text>THE INDIVIDUAL RATE DETAILS/RATE RULES FOR CANCELLATION</Text>
+     <Text>POLICY</Text>
     </Cancellation>
+    <Deposit>
+     <Text>-20OCT09 - 31DEC12 MON-SUN</Text>
+     <Text>-BECAUSE THE DEPOSIT POLICY MAY VARY BY RATE, PLEASE</Text>
+     <Text>SEE INDIVIDUAL RATE DETAILS/RATE RULES FOR DEPOSIT</Text>
+     <Text>POLICY.</Text>
+     <Text>ACCEPTED FORMS OF DEPOSIT-</Text>
+     <Text>CREDIT CARD</Text>
+    </Deposit>
     <Description>
      <Text>- HOTEL</Text>
-     <Text>YEAR BUILT - 1999</Text>
+     <Text>YEAR BUILT - 1904            YEAR REMODELED - 2003</Text>
      <Text>ADDITIONAL PROPERTY DESCRIPTION -</Text>
-     <Text>SOFITEL THE MOORHOUSE IKOYI IS AN ULTRA MODERN LUXURY</Text>
-     <Text>HOTEL IDEALLY LOCATED IN THE HEART OF THE RESIDENTIAL</Text>
-     <Text>DISTRICT OF IKOYI IN LAGOS,  NIGERIA. THIS 5 STAR HOTEL</Text>
-     <Text>OFFERS 92 ROOMS AND SUITES, A CIGAR BAR, AN ASIAN BAR,</Text>
-     <Text>A JAPANESE GARDEN, TWO MEETING ROOMSPLUS AN  EXCLUSIVE</Text>
-     <Text>BOARDROOM, A SWIMMING POOL AND FITNESS FACILITIES.</Text>
-     <Text>SOFITEL THE MOORHOUSE IS PERFECT FOR BUSINESS TRIPS,</Text>
-     <Text>ROMANTIC  HOLIDAYS OR TOURISM. IT IS 10 MIN FROM</Text>
-     <Text>VICTORIA ISLAND, THE COMMERCIAL CENTRE OF NIGERIA AND</Text>
-     <Text>45 MIN FROM THE AIRPORT.</Text>
+     <Text>HOTEL HAS UNDERGONE A 6 MILLION POUND REFURBISHMENT TO</Text>
+     <Text>MAKE THIS HOTEL AN IDEAL PLACE TO STAY. CENTRALLY</Text>
+     <Text>LOCATED NEAR MABLE ARCH AND OXFORD STREET, IT IS A</Text>
+     <Text>PERFECT LOCATION FOR SHOPPING AND SIGHTSEEING. THE</Text>
+     <Text>HOTEL HAS A FULLY EQUIPPED FITNESS ROOM TOGETHER WITH</Text>
+     <Text>STATE OF THE ART BUSINESS CENTRE, ONE RESTAURANT</Text>
+     <Text>SERVING TRADITIONAL BRITISH CUISINE AND THE SUSSEX</Text>
+     <Text>LOUNGE</Text>
     </Description>
     <Dining>
      <Text>PROPERTY HAS 1 RESTAURANTS ON-SITE</Text>
-     <Text>MEAL PLANS AVAILABLE AT PROPERTY -</Text>
-     <Text>L AQUARELLE</Text>
+     <Text>ADDITIONAL MEAL PLAN DESCRIPTION -</Text>
+     <Text>REFER TO DINING FOR MEAL PLAN INFORMATION. BREAKFAST</Text>
+     <Text>COSTS 17 GBP PER PERSON.</Text>
+     <Text>NOVA BAR AND GRILL</Text>
      <Text>TYPE OF RESTAURANT - FULL SERVICE RESTAURANT</Text>
+     <Text>MEALS SERVED - BREAKFAST - LUNCH - DINNER - DESSERT</Text>
+     <Text>HOURS -</Text>
+     <Text>FROM 0630HRS TO 2230HRS MON-SUN</Text>
+     <Text>RESTAURANT DESCRIPTION -</Text>
+     <Text>RESTAURANT IS LOCATED ON SITE AND OFFERS A SELECTION OF</Text>
+     <Text>TOP QUALITY BRITISH CUISINE IN A RELAXED ATMOSPHERE</Text>
+     <Text>SUSSEX LOUNGE</Text>
+     <Text>TYPE OF RESTAURANT - BAR/LOUNGE</Text>
+     <Text>HOURS -</Text>
+     <Text>FROM 0600HRS TO 0200HRS MON-SUN</Text>
+     <Text>RESTAURANT DESCRIPTION -</Text>
+     <Text>SUSSEX LOUNGE IS LOCATED NEAR RECEPTION AND HAS A</Text>
+     <Text>CASUAL DRESS CODE</Text>
     </Dining>
     <Directions>
-     <Text>***HOW TO GET TO THE HOTEL***</Text>
-     <Text>-BY PLANE      *LAGOS AIRPORT 45KM-28.13ML</Text>
-     <Text>-BY ROAD       *IKOYI DIRECTION</Text>
-     <Text>-BY TAXI       *IKOYI DIRECTION</Text>
+     <Text>DIRECTION TO THE PROPERTY FROM NORTH -</Text>
+     <Text>EXIT THE AIRPORT AND TAKE THE M4 TO CENTRAL LONDON,</Text>
+     <Text>THIS WILL TURN INTO THE A4 -FOLLOW THIS ROAD THROUGH</Text>
+     <Text>KNIGHTSBRIDGE TO THE EXIT THE AIRPORT AND TAKE THE M4</Text>
+     <Text>TO CENTRAL LONDON, THIS WILL TURN INTO THE A4 -FOLLOW</Text>
+     <Text>THIS ROAD THROUGH KNIGHTSBRIDGE TO THE ROUNDABOUT -TAKE</Text>
+     <Text>THE FIRST EXIT WHICH IS PARK LANE AND CONTINUE TO THE</Text>
+     <Text>END, TO ANOTHER ROUNDABOUT WHICH IS MARBLE ARCH -TAKE</Text>
+     <Text>THE 4TH EXIT WHICH IS OXFORD STREET AND THE FIRST LEFT</Text>
+     <Text>ONTO PORTMAN STREET -GRANVILLE PLACE IS THE FIRST EXIT</Text>
+     <Text>ON THE RIGHT</Text>
     </Directions>
     <Facilities>
      <Text>ON-SITE FACILITIES -</Text>
      <Text>GENERAL FACILITIES -</Text>
-     <Text>BAR                         BARBER/BEAUTY SHOP</Text>
-     <Text>CONFERENCE ROOM             MEETING ROOM</Text>
-     <Text>NEWSSTAND                   OUTDOOR POOL</Text>
-     <Text>RESTAURANT</Text>
+     <Text>BAR                         ELEVATORS</Text>
+     <Text>LOUNGE                      MEETING ROOM</Text>
+     <Text>NON-SMOKING ROOMS           RESTAURANT</Text>
      <Text>CHARGEABLE FACILITIES -</Text>
      <Text>BUSINESS CENTER</Text>
+     <Text>FITNESS CENTER</Text>
+     <Text>PUBLIC AREA FACILITIES -</Text>
+     <Text>ANALOG DIAL UP DATAPORT</Text>
+     <Text>HIGH SPEED INTERNET ACCESS  BULLDOG 9.95 GBP</Text>
+     <Text>WIRELESS DATA CONNECTION  IYONDER COMPLIMENTARY</Text>
+     <Text>OFF-SITE FACILITIES -</Text>
+     <Text>GENERAL FACILITIES -</Text>
+     <Text>BANK                        BAR</Text>
+     <Text>BARBER/BEAUTY SHOP          COFFEE SHOP</Text>
+     <Text>GIFT SHOP                   INDOOR POOL</Text>
+     <Text>LOUNGE                      PHARMACY</Text>
+     <Text>RESTAURANT</Text>
+     <Text>CHARGEABLE FACILITIES -</Text>
+     <Text>FITNESS CENTER</Text>
      <Text>PARKING FACILITIES -</Text>
-     <Text>OUTDOOR PARKING</Text>
+     <Text>GARAGE PARKING</Text>
      <Text>MEETING AND CONVENTION FACILITIES -</Text>
-     <Text>TOTAL NBR OF MEETING ROOMS - 1</Text>
-     <Text>TOTAL MEETING ROOM CAPACITY - 16</Text>
-     <Text>CAPACITY OF LARGEST MEETING ROOM - 16</Text>
-     <Text>MEASUREMENT OF LARGEST MEETING ROOM - 22 SQ METERS</Text>
-     <Text>CAPACITY OF SMALLEST MEETING ROOM - 16</Text>
-     <Text>MEASUREMENT OF SMALLEST MEETING ROOM - 22 SQ METERS</Text>
     </Facilities>
     <Guarantee>
-     <Text>-16JUN07 - 31DEC30 MON-SUN</Text>
+     <Text>-20OCT09 - 31DEC12 MON-SUN</Text>
      <Text>GUARANTEE REQUIRED FOR LATE ARRIVAL</Text>
-     <Text>GUARANTEE REQUIRED FOR ALL RESERVATIONS</Text>
-     <Text>ALL BOOKING MUST BE GUARANTEED BY CREDIT CARD NUMBER WITH</Text>
-     <Text>EXPIRATION DATE OR 1 NIGHT  DEPOSIT</Text>
+     <Text>RESERVATIONS HELD UNTIL 1600 HOURS ON DAY OF ARRIVAL,</Text>
+     <Text>LOCAL HOTEL TIME.</Text>
+     <Text>-BECAUSE THE GUARANTEE POLICY MAY VARY BY RATE, PLEASE</Text>
+     <Text>SEE THE INDIVIDUAL RATE DETAILS/RATE RULES FOR GUARANTEE</Text>
+     <Text>POLICY</Text>
      <Text>ACCEPTED FORMS OF GUARANTEE-</Text>
-     <Text>FREQUENT GUEST</Text>
+     <Text>AGENCY IATA/ARC              COMPANY NAME/ADDRESS</Text>
+     <Text>CREDIT CARD</Text>
      <Text>ACCEPTED FORMS OF PAYMENT-</Text>
-     <Text>CASH                         CREDIT CARD</Text>
-     <Text>TRAVEL VOUCHER</Text>
+     <Text>CREDIT CARD</Text>
     </Guarantee>
     <Location>
      <Text>PRIMARY PROPERTY LOCATION - CITY</Text>
-     <Text>LOS AIRPORT                   45 KM S</Text>
-     <Text>AIRPORT PICK UP CAN BE ARRANGED WITH THE HOTEL.</Text>
+     <Text>DISTRICT - DOWNTOWN - SHOPPING</Text>
+     <Text>LHR AIRPORT                   17 MI W</Text>
+     <Text>LGW AIRPORT                   30 MI S</Text>
+     <Text>STN AIRPORT                   60 MI NE</Text>
     </Location>
     <MiscServices>
-     <Text>EMAIL - H2770-GM AT ACCOR.COM</Text>
+     <Text>EMAIL - RESSUSS RADISSON.COM</Text>
      <Text>TIME ZONE - GMT</Text>
      <Text>TAXES AND SURCHARGES -</Text>
+     <Text>TAX- 15.00 PCT</Text>
+     <Text>ADDITIONAL CURRENCY AND TAX INFORMATION -</Text>
+     <Text>FROM 1ST JANUARY, 2010 TAX WILL BE 17.5 PERCENT.</Text>
+     <Text>HOTEL FREQUENT GUEST PROGRAM -</Text>
+     <Text>GOLD POINTS</Text>
     </MiscServices>
     <Policies>
-     <Text>ACCOMMODATION IS FREE OF CHARGE FOR 1 CHILD UNDER 12</Text>
-     <Text>YEARS OLD SHARING PARENTS ROOM IF A BED CAN BE</Text>
-     <Text>INSTALLED IN THE ROOM</Text>
+     <Text>EXTRA CHILD - N/A.00 GBP     ROLLAWAY FOR CHILD - N/A.00</Text>
+     <Text>GBP</Text>
+     <Text>RATES ARE GUARANTEED</Text>
      <Text>NO PETS ALLOWED -</Text>
+     <Text>EXTENDED STAY OPTION AVAILABLE -</Text>
      <Text>PROPERTY OFFERS COMMISSION - RATE OF COMMISSION</Text>
      <Text>10.00 PCT</Text>
      <Text>PROPERTY PARTICIPATES IN A CENTRALIZED COMMISSION PROGRAM</Text>
     </Policies>
     <Recreation>
-     <Text>ON-SITE RECREATION -</Text>
-     <Text>MUSEUM/GALLERY VIEWING      SAILING/BOATING</Text>
-     <Text>SHOPPING                    SWIMMING</Text>
-     <Text>WATER SPORTS</Text>
+     <Text>OFF-SITE RECREATION -</Text>
+     <Text>DANCING                     FINE DINING</Text>
+     <Text>JOGGING                     MUSEUM/GALLERY VIEWING</Text>
+     <Text>NIGHT CLUBS                 OTHER ACTIVITY</Text>
+     <Text>SHOPPING                    SIGHTSEEING TOURS</Text>
+     <Text>SWIMMING                    THEATER</Text>
+     <Text>OFFSITE RECREATIONAL ACTIVITIES -</Text>
+     <Text>SEYMOUR LEISURE CENTRE IS LOCATED 5 MINUTES FROM HOTEL</Text>
+     <Text>WITH INDOOR POOL COSTS 2.50 GBP PER SESSION, FITNESS</Text>
+     <Text>CENTRE COSTS 7.50 GBP PER SESSION.</Text>
     </Recreation>
     <Rooms>
-     <Text>NBR OF SUITES - 8</Text>
-     <Text>A1D -</Text>
-     <Text>MAX OCCUPANCY - 2</Text>
-     <Text>MAX NBR OF ROLLAWAYS - 0</Text>
-     <Text>ROOM DESCRIPTION -</Text>
-     <Text>DELUXE ROOM WITH 1 DOUBLE BED -</Text>
-     <Text>ROOM AMENITIES -</Text>
-     <Text>220 AC / AIR CONDITIONING / AM/FM ALARM CLOCK / BATH</Text>
-     <Text>TUB / BATHROBE / CABLE/SATELLITE TV / DESK / DIRECT</Text>
-     <Text>DIAL TELEPHONE / FREE NEWSPAPER / HAIRDRYER / MINI BAR</Text>
-     <Text>/ NO SMOKING ROOM / SAFE</Text>
-     <Text>TECHNOLOGY -</Text>
-     <Text>FAX MACHINE</Text>
-     <Text>B1D -</Text>
-     <Text>MAX OCCUPANCY - 2</Text>
-     <Text>MAX NBR OF ROLLAWAYS - 0</Text>
-     <Text>ROOM DESCRIPTION -</Text>
-     <Text>SUPERIOR ROOM WITH 1 DOUBLE BED -</Text>
-     <Text>ROOM AMENITIES -</Text>
-     <Text>220 AC / AIR CONDITIONING / AM/FM ALARM CLOCK / BATH</Text>
-     <Text>TUB / BATHROBE / CABLE/SATELLITE TV / DESK / DIRECT</Text>
-     <Text>DIAL TELEPHONE / FREE NEWSPAPER / HAIRDRYER / MINI BAR</Text>
-     <Text>/ NO SMOKING ROOM / SAFE</Text>
-     <Text>TECHNOLOGY -</Text>
-     <Text>FAX MACHINE</Text>
-     <Text>S1D -</Text>
-     <Text>MAX OCCUPANCY - 2</Text>
-     <Text>MAX NBR OF ROLLAWAYS - 0</Text>
-     <Text>ROOM DESCRIPTION -</Text>
-     <Text>SUPERIOR SUITE WITH 1 DOUBLE BED -</Text>
-     <Text>ROOM AMENITIES -</Text>
-     <Text>220 AC / AIR CONDITIONING / AM/FM ALARM CLOCK / BATH</Text>
-     <Text>TUB / BATHROBE / CABLE/SATELLITE TV / DESK / DIRECT</Text>
-     <Text>DIAL TELEPHONE / FREE NEWSPAPER / HAIRDRYER / MINI BAR</Text>
-     <Text>/ NO SMOKING ROOM / SAFE</Text>
-     <Text>TECHNOLOGY -</Text>
-     <Text>FAX MACHINE</Text>
-     <Text>T1D -</Text>
-     <Text>MAX OCCUPANCY - 2</Text>
-     <Text>MAX NBR OF ROLLAWAYS - 0</Text>
-     <Text>ROOM DESCRIPTION -</Text>
-     <Text>DELUXE SUITE WITH 1 DOUBLE BED -</Text>
-     <Text>ROOM AMENITIES -</Text>
-     <Text>220 AC / AIR CONDITIONING / AM/FM ALARM CLOCK / BATH</Text>
-     <Text>TUB / BATHROBE / CABLE/SATELLITE TV / DESK / DIRECT</Text>
-     <Text>DIAL TELEPHONE / FREE NEWSPAPER / HAIRDRYER / MINI BAR</Text>
-     <Text>/ NO SMOKING ROOM / SAFE</Text>
-     <Text>TECHNOLOGY -</Text>
-     <Text>FAX MACHINE</Text>
+     <Text>NBR OF NON-SMOKING ROOMS - 70</Text>
+     <Text>AIR CONDITIONING, COFFEE SERVICE, IN ROOM SAFE, IRON AND</Text>
+     <Text>IRONING BOARD, HAIRDRYER AND MINIBAR. IF AVAILABLE ADULT</Text>
+     <Text>ROLLAWAYS ON REQUEST AT 40 GBP AND CHILD ROLLAWAYS AT 20</Text>
+     <Text>GBP</Text>
     </Rooms>
     <Safety>
      <Text>ROOM SAFETY AND SECURITY -</Text>
-     <Text>AUDIBLE SMOKE DETECTORS</Text>
-     <Text>DOORS HAVE DEAD BOLTS</Text>
      <Text>DOORS HAVE VIEW PORTS</Text>
      <Text>EMERGENCY EXIT MAPS</Text>
+     <Text>EMERGENCY INFORMATION IN ALL GUEST ROOMS</Text>
+     <Text>SMOKE DETECTORS</Text>
+     <Text>VISUAL ALARMS FOR HEARING IMPAIRED</Text>
      <Text>WINDOWS OPEN</Text>
      <Text>PROPERTY SAFETY AND SECURITY -</Text>
+     <Text>ELECTRONIC ROOM KEY SYSTEM</Text>
+     <Text>EMERGENCY EVACUATION DRILL</Text>
+     <Text>EMERGENCY LIGHTING</Text>
+     <Text>FIRE EXTINGUISHERS IN HALLWAYS</Text>
      <Text>MEETS FIRE SAFETY CODE</Text>
-     <Text>SECURITY</Text>
+     <Text>SMOKE DETECTORS IN HALLWAYS</Text>
      <Text>SMOKE DETECTORS IN PUBLIC AREAS</Text>
-     <Text>UNIFORMED SECURITY</Text>
-     <Text>VIDEO SURVEILLANCE IN ENTRANCES</Text>
     </Safety>
     <Services>
      <Text>ON-SITE GENERAL SERVICES -</Text>
-     <Text>EXPRESS CHECK-OUT           HAIR DRESSER</Text>
-     <Text>PORTER/BELLMEN              WAKE-UP CALLS</Text>
-     <Text>BUSINESS SERVICES -</Text>
-     <Text>BUSINESS CENTER</Text>
+     <Text>BAGGAGE HOLD                BANKING</Text>
+     <Text>BUSINESS SERVICES           CONCIERGE</Text>
+     <Text>CURRENCY EXCHANGE           DOCTOR ON CALL</Text>
+     <Text>DRY CLEANING                SAFE DEPOSIT BOX</Text>
+     <Text>WAKE-UP CALLS</Text>
+     <Text>ON-SITE CHARGEABLE SERVICES -</Text>
+     <Text>LAUNDRY/VALET</Text>
+     <Text>ADDITIONAL ON-SITE PROPERTY SERVICES -</Text>
+     <Text>PAY PER VIEW MOVIES, MUSIC ON DEMAND, INTERNET ON TV</Text>
+     <Text>AND HIGH SPEED INTERNET ACCESS ALL FOR 20 GBP PER 24</Text>
+     <Text>HOURS</Text>
+     <Text>OFF-SITE GENERAL SERVICES -</Text>
+     <Text>BANKING                     HAIR DRESSER</Text>
+     <Text>INTERPRETATION/TRANSLATION  MAIL SERVICES</Text>
+     <Text>THEATER TICKET DESK</Text>
+     <Text>OFF-SITE CHARGEABLE SERVICES -</Text>
+     <Text>CAR RENTAL</Text>
+     <Text>BUSINESS AND MEETING SERVICES -</Text>
+     <Text>FAX SERVICES AVAILABLE AT 2.50 GBP PER PAGE FOR UK.</Text>
+     <Text>EUROPE AND INTERNATIONAL COSTS 4 GBP PER PAGE. PHOTO</Text>
+     <Text>COPY SERVICE AVAILABLE AT .20P PER COPY</Text>
     </Services>
     <Transportation>
      <Text>CITY CENTER IS WITHIN WALKABLE DISTANCE FROM PROPERTY-</Text>
+     <Text>TRANSPORTATION FROM PRIMARY AIRPORT TO PROPERTY -</Text>
+     <Text>TAXI - LONDON BLACK TAXIS ARE THE MOST COMFROTABLE AND</Text>
+     <Text>BEST DESIGNED IN THE WORLD. DRIVERS ARE RELIABLE AND</Text>
+     <Text>LICENSED AND HAVE TO PASS AN EXAM KNOWN AS THE</Text>
+     <Text>KNOWLEDGE, TAKEN OVER 3 YEARS.AVAILABLE 24 HOURS. ADD</Text>
+     <Text>10-15  FOR TIPS</Text>
+     <Text>RENTAL CAR - HERTZ CAR RENTAL CARS DELIVERED AND PICKED</Text>
+     <Text>UP FROM HOTEL</Text>
+     <Text>RAIL OR SUBWAY - HEATHROW EXPRESS IS A TRAIN LINK FROM</Text>
+     <Text>THE AIRPORT TO LONDON CENTRAL</Text>
      <Text>TRANSPORTATION FROM CITY CENTER TO PROPERTY -</Text>
-     <Text>RAIL OR SUBWAY</Text>
-     <Text>BUS OR OTHER TRANSPORTATION</Text>
+     <Text>RAIL OR SUBWAY - MINUTES WALK TO MARBLE ARCH TUBE</Text>
+     <Text>STATION</Text>
+     <Text>BUS OR OTHER TRANSPORTATION - HOTEL IS MINUTES FROM</Text>
+     <Text>OXFORD STREET, AND IS SERVICED BY MANY BUSES</Text>
     </Transportation>
    </VendorMessages>
   </BasicPropertyInfo>
@@ -292,313 +362,14 @@
    <GuaranteesAccepted>
     <PaymentCard Code="AX" Type="AMERICAN EXPRESS"/>
     <PaymentCard Code="CA" Type="MASTERCARD"/>
-    <PaymentCard Code="EC" Type="EUROCARD"/>
-    <PaymentCard Code="IK" Type="MASTER CARD"/>
+    <PaymentCard Code="DC" Type="DINERS CLUB CARD"/>
+    <PaymentCard Code="DS" Type="DISCOVER CARD"/>
+    <PaymentCard Code="JC" Type="JCB CREDIT CARD"/>
     <PaymentCard Code="VI" Type="VISA"/>
+    <Text>/GC-              COMPANY NAME AND ADDRESS</Text>
+    <Text>/GAGT             GUARANTEE TO AGENCY TIDS/IATA NUMBER</Text>
    </GuaranteesAccepted>
   </Guarantee>
-  <RoomRates>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1Q3KD" IATA_ProductIdentification="HOTDEAL CCPREPAID NO REFUND-BB" LowInventoryThreshold="false" RPH="001" RateAccessCode="3KD" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="00" Option="N"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>SUPERIOR ROOM - 1 QUEEN SIZE BED,</Text>
-     <Text>MOST ROOMS WITH GARDEN   POOL VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="260.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="520.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1QRA3" IATA_ProductIdentification="ADVANCE SAVER-BB/BED BRKFAST" LowInventoryThreshold="false" RPH="002" RateAccessCode="RA3" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="00" Option="N"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>SUPERIOR ROOM - 1 QUEEN SIZE BED,</Text>
-     <Text>MOST ROOMS WITH GARDEN   POOL VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="260.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="520.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1Q2KD" IATA_ProductIdentification="SEMI-RESTRICTED RATE-COND. APP" LowInventoryThreshold="false" RPH="003" RateAccessCode="2KD" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="03" Option="D"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>SUPERIOR ROOM - 1 QUEEN SIZE BED,</Text>
-     <Text>MOST ROOMS WITH GARDEN   POOL VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="290.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="580.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1QASW" IATA_ProductIdentification="CC DEPOSIT NO CXL 72H PRIOR-BB" LowInventoryThreshold="false" RPH="004" RateAccessCode="ASW" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="03" Option="D"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>SUPERIOR ROOM - 1 QUEEN SIZE BED,</Text>
-     <Text>MOST ROOMS WITH GARDEN   POOL VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="290.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="580.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1Q1KD" IATA_ProductIdentification="BEST UNRESTRICTED RATE-BB/BED" LowInventoryThreshold="false" RPH="005" RateAccessCode="1KD" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false" XPM_GuaranteeRequired="06">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="06" Option="P"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>SUPERIOR ROOM - 1 QUEEN SIZE BED,</Text>
-     <Text>MOST ROOMS WITH GARDEN   POOL VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="310.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="620.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1QGOV" IATA_ProductIdentification="GOVERNMENT RATE-BB/BED BRKFAST" LowInventoryThreshold="false" RPH="006" RateAccessCode="GOV" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false" XPM_GuaranteeRequired="06">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="06" Option="P"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>SUPERIOR ROOM - 1 QUEEN SIZE BED,</Text>
-     <Text>MOST ROOMS WITH GARDEN   POOL VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="310.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="620.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1K2KD" IATA_ProductIdentification="SEMI-RESTRICTED RATE-COND. APP" LowInventoryThreshold="false" RPH="007" RateAccessCode="2KD" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="A1" SpecialOffer="false">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="03" Option="D"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>LUXURY ROOM - 1 KING SIZE BED,</Text>
-     <Text>GARDEN AND PALM VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="350.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="700.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1KASW" IATA_ProductIdentification="CC DEPOSIT NO CXL 72H PRIOR-BB" LowInventoryThreshold="false" RPH="008" RateAccessCode="ASW" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="A1" SpecialOffer="false">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="03" Option="D"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>LUXURY ROOM - 1 KING SIZE BED,</Text>
-     <Text>GARDEN AND PALM VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="350.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="700.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="B1QRAC" IATA_ProductIdentification="RACK RATE-BB/BED BRKFAST" LowInventoryThreshold="false" RPH="009" RateAccessCode="RAC" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="B1" SpecialOffer="false" XPM_GuaranteeRequired="06">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="06" Option="P"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>SUPERIOR ROOM - 1 QUEEN SIZE BED,</Text>
-     <Text>MOST ROOMS WITH GARDEN   POOL VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="350.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="700.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1K3KD" IATA_ProductIdentification="HOTDEAL CCPREPAID NO REFUND-BB" LowInventoryThreshold="false" RPH="010" RateAccessCode="3KD" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="A1" SpecialOffer="false">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="00" Option="N"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>LUXURY ROOM - 1 KING SIZE BED,</Text>
-     <Text>GARDEN AND PALM VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="365.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="730.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteeSurchargeRequired="D" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1KRA3" IATA_ProductIdentification="ADVANCE SAVER-BB/BED BRKFAST" LowInventoryThreshold="false" RPH="011" RateAccessCode="RA3" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="A1" SpecialOffer="false">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="00" Option="N"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>LUXURY ROOM - 1 KING SIZE BED,</Text>
-     <Text>GARDEN AND PALM VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="365.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="730.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-   <RoomRate ClientID="¤¤¤" DirectConnect="false" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A1K1KD" IATA_ProductIdentification="BEST UNRESTRICTED RATE-BB/BED" LowInventoryThreshold="false" RPH="012" RateAccessCode="1KD" RateCategory="¤" RateChangeInd="false" RateConversionInd="false" RoomLocationCode="A1" SpecialOffer="false" XPM_GuaranteeRequired="06">
-    <AdditionalInfo>
-     <CancelPolicy Numeric="06" Option="P"/>
-     <Commission NonCommission="true">**NON-COMMISSIONABLE PRODUCT**</Commission>
-     <PaymentCard Code="AX"/>
-     <PaymentCard Code="EC"/>
-     <PaymentCard Code="IK"/>
-     <PaymentCard Code="VI"/>
-     <Text>LUXURY ROOM - 1 KING SIZE BED,</Text>
-     <Text>GARDEN AND PALM VIEW</Text>
-    </AdditionalInfo>
-    <Rates>
-     <Rate Amount="370.00" ChangeIndicator="false" CurrencyCode="USD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
-      <AdditionalGuestAmounts>
-       <AdditionalGuestAmount MaxExtraPersonsAllowed="0">
-        <Charges ExtraPerson="0"/>
-       </AdditionalGuestAmount>
-      </AdditionalGuestAmounts>
-      <HotelTotalPricing Amount="740.00">
-       <Disclaimer>INCLUDES TAX</Disclaimer>
-       <TotalTaxes Amount="0.00"/>
-      </HotelTotalPricing>
-     </Rate>
-    </Rates>
-   </RoomRate>
-  </RoomRates>
-  <TimeSpan Duration="0005" End="2018-02-21" Start="2018-02-19"/>
+  <TimeSpan End="2018-01-30" Start="2018-01-28"/>
  </RoomStay>
 </HotelPropertyDescriptionRS></soap-env:Body></soap-env:Envelope>

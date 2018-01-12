@@ -372,6 +372,7 @@
                     </div>
                 </div>
             </div>
+            <div class="gap gap-small"></div>
             <h3>Available Rooms</h3>
             <div class="row">
                 <div class="col-md-8">
@@ -587,7 +588,7 @@
                     </ul>
                 </div>
             </div>
-            <h3 class="mb20">Hotel Reviews</h3>
+           {{-- <h3 class="mb20">Hotel Reviews</h3>
             <div class="row row-wrap">
                 <div class="col-md-8">
                     <ul class="booking-item-reviews list">
@@ -1616,7 +1617,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div>--}}
         </div>
         <div class="gap gap-small"></div>
     </div>

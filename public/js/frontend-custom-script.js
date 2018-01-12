@@ -254,7 +254,6 @@ $('.search_flight').on("click",function(){
     })
         .then(function (response) {
 
-
             if(response.data === 0){
                 toastError("Connection Error. Poor Internet Connection, try again.");
             }else if(response.data === 1){
@@ -268,7 +267,7 @@ $('.search_flight').on("click",function(){
                 toastWarning("Fatal Connection error. Try again");
             }else if(response.data === 4) {
                 toastWarning("No result found for your search option. Try again");
-            }else{
+            }else if(response.status === 500){
                 toastWarning("Your device could not establish a connection to the server. Try again");
             }
             $('.template-content').removeClass('hidden');
@@ -310,6 +309,8 @@ $(".subscribe").on('click',function(){
                 toastSuccess("Thank you, your email has been successfully added to our subscribers list");
             }else if(response.data === 2){
                 toastWarning("Email found on subscribers list");
+            }else if(response.status === 500){
+                toastWarning("Your device could not establish a connection to the server. Try again");
             }
         })
         .catch(function(error){
@@ -349,6 +350,9 @@ $("#send_message").on('click',function(){
             }
             if(response.data === 2){
                 toastWarning("You have sent us this message already");
+            }
+            if(response.status === 500){
+                toastWarning("Your device could not establish a connection to the server. Try again");
             }
         })
         .catch(function(error){
@@ -498,6 +502,8 @@ $('.search_multi_flight').on('click',function(){
             }else if(response.data === 4) {
                 toastWarning("No result found for your search option. Try again");
 
+            }else if(response.status === 500){
+                toastWarning("Your device could not establish a connection to the server. Try again");
             }
             $('.template-content').removeClass('hidden');
             $('.flight-search-loader').addClass('hidden');
@@ -527,6 +533,8 @@ $('.itinerary_select').on('click',function(){
               toastError('Unable to connect to server. Try again');
           }else if(response.data === 21){
               toastWarning('Connection to server not established. Try again');
+          }else if(response.status === 500){
+              toastWarning("Your device could not establish a connection to the server. Try again");
           }
           $('.template-content').removeClass('hidden');
           $('.flight-pricing-loader').addClass('hidden');
@@ -577,6 +585,8 @@ $('.search_hotel').on('click',function(){
                 toastError('No result found for your search options. Try again')
             }else if(response.data == 21){
                 toastInfo('Your search was completed, but no hotel was returned. Kindly chose another city or try again with different dates');
+            }else if(response.status === 500){
+                toastWarning("Your device could not establish a connection to the server. Try again");
             }
         })
         .catch(function (error){
@@ -644,6 +654,8 @@ $('.hotel_description').on('click',function(){
               toastWarning('Connection to server not established. Try again');
             }else if(response.data === 22){
                 toastWarning('No available rooms was found for this hotel when we checked. Kindly select another hotel');
+            }else if(response.status === 500){
+                toastWarning("Your device could not establish a connection to the server. Try again");
             }
         })
 
@@ -684,6 +696,9 @@ $('.requery').on('click', function(){
                 toastr.warning(response.data['responseDescription']);
                 $('.response_code_'+reference).text(response.data['responseCode']);
                 $('.response_description_'+reference).text(response.data['responseDescription']);
+            }
+            if(response.status === 500){
+                toastWarning("Your device could not establish a connection to the server. Try again");
             }
         })
 

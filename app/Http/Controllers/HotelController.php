@@ -20,7 +20,6 @@ class HotelController extends Controller
         $this->PaystackConfig = new PaystackConfig();
     }
 
-
     public function searchHotel(Request $r){
         $this->validate($r, [
             'city' => 'required|string',
@@ -63,6 +62,7 @@ class HotelController extends Controller
     }
 
     public function availableHotels(){
+        if(!session()->has(['availableHotels','hotelSearchParam'])){return back();}
         $hotelSearchParam = session()->get('hotelSearchParam');
         $responseArray = session()->get('availableHotels');
         $amenities = $this->SabreHotel->HotelAvailAmenities($responseArray);
@@ -73,6 +73,7 @@ class HotelController extends Controller
     }
 
     public function selectedRoomBooking($room){
+        if(!session()->has(['availableHotels','hotelSearchParam','selectedHotel'])){return back();}
         $session_info = session()->get('selectedHotel');
         $selectedHotel = $session_info;
         $hotelSearchParam = session()->get('hotelSearchParam');
@@ -82,6 +83,7 @@ class HotelController extends Controller
     }
 
     public function selectedHotel(){
+        if(!session()->has(['availableHotels','hotelSearchParam','selectedHotel'])){return back();}
         $session_info = session()->get('selectedHotel');
         $selectedHotel = $session_info;
         $hotelSearchParam = session()->get('hotelSearchParam');
@@ -117,7 +119,7 @@ class HotelController extends Controller
             if($hotelPropertyResponse == 1){
                 $rate = 0;
                 $currency = $this->SabreHotel->getHotelRoomsCurrencyRate($this->SabreHotel->sortPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription), $rate));
-                if(!is_null($currency)){
+                if(!empty($currency) && !is_null($currency) && $currency !== ""){
                     $getConversionRate = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('DisplayCurrencyLLSRQ',$session_store),$this->SabreHotel->DisplayCurrencyRQXML($currency),'DisplayCurrencyLLSRQ');
                     $file = fopen("TestSampleDisplayCurrencyLLSRQ.txt","w");
                     fwrite($file, $this->SabreHotel->DisplayCurrencyRQXML($currency));
@@ -131,7 +133,6 @@ class HotelController extends Controller
                     }else{
                         $rate = 0;
                     }
-
                 }
                 session()->put('rate',$rate);
                 session()->put('selectedHotel',$this->SabreHotel->sortPropertyDescription($this->SabreConfig->mungXmlToArray($getDescription),$rate));
@@ -212,6 +213,7 @@ class HotelController extends Controller
     }
 
     public function hotelPaymentOption($room){
+        if(!session()->has(['availableHotels','hotelSearchParam','selectedHotel','selectedHotelId'])){return back();}
         $session_info = session()->get('selectedHotel');
         $selectedHotel = $session_info;
         $hotelSearchParam = session()->get('hotelSearchParam');

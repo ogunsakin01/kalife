@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title')Booking History @endsection
+@section('booking') active @endsection
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">
