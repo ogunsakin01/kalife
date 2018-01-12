@@ -34,6 +34,8 @@
                         <li class="@yield('activeContact')"><a href="{{url('/contact-us')}}">Contact Us</a></li>
                         @if(auth()->guest())
                             <li class="@yield('activeRegisterLogin')"><a href="{{url('/register-login')}}">Login</a></li>
+                            @else
+                            <li class="active"><a>Logged In</a></li>
                         @endif
                     </ul>
                 </div>

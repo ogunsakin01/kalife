@@ -19,8 +19,15 @@ Route::view('/about-us','frontend.about_us');
 Route::view('/register-login','frontend.register_login');
 Route::view('/log', 'frontend.online_payment');
 Route::view('/logs', 'frontend.online_payment');
-Route::view('/bookings','frontend.bookings');
-Route::view('flight-bookings','frontend.flight_bookings');
+
+Route::middleware('auth')->group(function(){
+    Route::view('/bookings','frontend.bookings');
+    Route::view('/flight-bookings','frontend.flight_bookings');
+    Route::view('/my-online-payments','frontend.my_online_payments');
+//    Route::view('/hotel-bookings','frontend.hotel_bookings');
+//    Route::view('/package-bookings','frontend.package_bookings');
+});
+
 
 Route::get('/logout','Auth\LoginController@logout');
 
@@ -106,4 +113,4 @@ Route::prefix('backend')->group(function (){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

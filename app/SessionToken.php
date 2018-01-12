@@ -14,7 +14,9 @@ class SessionToken extends Model
     }
 
     public static function getToken(){
-        $a = static::where('available_status', '=', 1 , 'AND', 'session_user_token', '=', session()->get('token'))->first();
+        $a = static::where('available_status', 1)
+            ->where('session_user_token',session()->get('token'))
+            ->first();
         if(empty($a) || is_null($a)){
             return '';
         }else{

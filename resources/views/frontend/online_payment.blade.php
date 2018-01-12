@@ -10,7 +10,7 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
-                        <div clas="table-responseive">
+                        <div class="table-responseive">
                             <table class="table table-bordered table-striped table-booking-history">
                                 <thead>
                                 <tr>

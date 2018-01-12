@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">OTA_HotelAvailLLSRQ</eb:Service><eb:Action>OTA_HotelAvailLLSRS</eb:Action><eb:MessageData><eb:MessageId>1273941522884320611</eb:MessageId><eb:Timestamp>2018-01-11T14:31:35</eb:Timestamp><eb:RefToMessageId>1273652522729330611</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190496269510305398!1389634!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><OTA_HotelAvailRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">OTA_HotelAvailLLSRQ</eb:Service><eb:Action>OTA_HotelAvailLLSRS</eb:Action><eb:MessageData><eb:MessageId>656635291328480611</eb:MessageId><eb:Timestamp>2018-01-12T08:05:42</eb:Timestamp><eb:RefToMessageId>656571291311370610</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190237167004472692!1824722!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><OTA_HotelAvailRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
  <stl:ApplicationResults status="Complete">
-  <stl:Success timeStamp="2018-01-11T08:31:35-06:00"/>
+  <stl:Success timeStamp="2018-01-12T02:05:42-06:00"/>
  </stl:ApplicationResults>
  <AdditionalAvail Ind="true"/>
  <AvailabilityOptions>
   <AvailabilityOption RPH="001">
-   <BasicPropertyInfo AreaID="025W" ChainCode="IQ" Distance="K" GEO_ConfidenceLevel="7" HotelCityCode="LOS" HotelCode="0053460" HotelName="THE FEDERAL PALACE HOTEL">
+   <BasicPropertyInfo AreaID="017E" ChainCode="RD" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0022422" HotelName="RADISSON EDWARDIAN SUSSEX HOTE" Latitude="51.449840" Longitude="-.200080">
     <Address>
-     <AddressLine>THE FEDERAL PALACE HOTEL</AddressLine>
-     <AddressLine>LAGOS NG 0</AddressLine>
-     <AddressLine>VICTORIA ISLAND</AddressLine>
+     <AddressLine>19-25 GRANVILLE PLACE</AddressLine>
+     <AddressLine>LONDON GB W1H 6PA</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="234-1-4628310" Phone="234-1-4628300"/>
+     <ContactNumber Fax="44-207-514-3427" Phone="44-207-408-0130"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
@@ -22,9 +21,12 @@
      <RatesExceedMax Ind="false"/>
      <UnAvail Ind="false"/>
     </DirectConnect>
-    <LocationDescription Code="C">
-     <Text>LAGOS</Text>
+    <LocationDescription Code="G">
+     <Text>CITY CENTRE</Text>
     </LocationDescription>
+    <Property Rating="NTM">
+     <Text>3 CROWN</Text>
+    </Property>
     <PropertyOptionInfo>
      <ADA_Accessible Ind="false"/>
      <AdultsOnly Ind="false"/>
@@ -36,91 +38,7 @@
      <Dataport Ind="false"/>
      <Dining Ind="true"/>
      <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="false"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="true"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="false"/>
-     <OutdoorPool Ind="true"/>
-     <Pets Ind="false"/>
-     <Pool Ind="true"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="false"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="false"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="002">
-   <BasicPropertyInfo AreaID="017SE" ChainCode="SU" Distance="K" GEO_ConfidenceLevel="3" HotelCityCode="LOS" HotelCode="0102167" HotelName="SOUTHERN SUN IKOYI" Latitude="6.452260" Longitude="3.430330">
-    <Address>
-     <AddressLine>47 ALFRED REWANE ROAD</AddressLine>
-     <AddressLine>LAGOS NG 221106</AddressLine>
-     <AddressLine>ETI OSA LOCAL GOV AREA</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="23412707317" Phone="23417408859"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>LOS</Text>
-    </LocationDescription>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="false"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="false"/>
-     <EcoCertified Ind="false"/>
+     <EcoCertified Ind="true"/>
      <ExecutiveFloors Ind="false"/>
      <FitnessCenter Ind="true"/>
      <FreeLocalCalls Ind="false"/>
@@ -149,99 +67,18 @@
      <NonSmoking Ind="true"/>
      <OutdoorPool Ind="false"/>
      <Pets Ind="false"/>
-     <Pool Ind="true"/>
+     <Pool Ind="false"/>
      <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="false"/>
+     <RateAssured Ind="true"/>
      <Recreation Ind="false"/>
      <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
+     <RoomService Ind="false"/>
      <RoomService24Hours Ind="false"/>
      <RoomsWithBalcony Ind="false"/>
      <SkiInOutProperty Ind="false"/>
      <SmokeFree Ind="false"/>
      <SmokingRoomsAvail Ind="false"/>
      <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="false"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="003">
-   <BasicPropertyInfo AreaID="009S" ChainCode="GT" Distance="K" GEO_ConfidenceLevel="7" HotelCityCode="LOS" HotelCode="0117702" HotelName="GOLDEN TULIP FESTAC LAGOS">
-    <Address>
-     <AddressLine>OMUWO ODUFIN. MILE 2</AddressLine>
-     <AddressLine>LAGOS NG P.M.B. 031</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="234-1-2792981" Phone="234-1-2792980"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="A"/>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="true"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="true"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="true"/>
-     <InRoomMiniBar Ind="true"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="true"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="true"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="false"/>
-     <OutdoorPool Ind="true"/>
-     <Pets Ind="false"/>
-     <Pool Ind="true"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="false"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="true"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="true"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="true"/>
      <WaterPurificationSystem Ind="false"/>
      <Wheelchair Ind="true"/>
     </PropertyOptionInfo>
@@ -254,14 +91,14 @@
     <SpecialOffers Ind="false"/>
    </BasicPropertyInfo>
   </AvailabilityOption>
-  <AvailabilityOption RPH="004">
-   <BasicPropertyInfo AreaID="044S" ChainCode="SB" Distance="K" GEO_ConfidenceLevel="7" HotelCityCode="LOS" HotelCode="0004600" HotelName="SOFITEL THE MOORHOUSE IKOYI">
+  <AvailabilityOption RPH="002">
+   <BasicPropertyInfo AreaID="028E" ChainCode="RD" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0022426" HotelName="RADISSON MOUNTBATTEN HOTEL" Latitude="51.513940" Longitude="-.126970">
     <Address>
-     <AddressLine>1 BANKOLE OKI ROAD</AddressLine>
-     <AddressLine>LAGOS NG</AddressLine>
+     <AddressLine>20 MONMOUTH STREET</AddressLine>
+     <AddressLine>LONDON GB WC2H 9HD</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="234-1-4615424" Phone="234-1-4615409-22"/>
+     <ContactNumber Fax="44-207-240-2774" Phone="44-207-836-4300"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
@@ -271,25 +108,25 @@
      <UnAvail Ind="false"/>
     </DirectConnect>
     <LocationDescription Code="C">
-     <Text>SLAVE TRADE CAMP</Text>
+     <Text>COVENT GARDEN</Text>
     </LocationDescription>
     <Property Rating="NTM">
-     <Text>4 CROWN</Text>
+     <Text>3 CROWN</Text>
     </Property>
     <PropertyOptionInfo>
      <ADA_Accessible Ind="false"/>
      <AdultsOnly Ind="false"/>
      <BeachFront Ind="false"/>
      <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
+     <BusinessCenter Ind="false"/>
      <BusinessReady Ind="false"/>
      <Conventions Ind="false"/>
      <Dataport Ind="false"/>
      <Dining Ind="true"/>
-     <DryClean Ind="false"/>
+     <DryClean Ind="true"/>
      <EcoCertified Ind="false"/>
      <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="false"/>
+     <FitnessCenter Ind="true"/>
      <FreeLocalCalls Ind="false"/>
      <FreeParking Ind="false"/>
      <FreeShuttle Ind="false"/>
@@ -314,14 +151,14 @@
      <MeetingFacilities Ind="true"/>
      <NoAdultTV Ind="false"/>
      <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="true"/>
+     <OutdoorPool Ind="false"/>
      <Pets Ind="false"/>
-     <Pool Ind="true"/>
+     <Pool Ind="false"/>
      <PublicTransportationAdjacent Ind="false"/>
      <RateAssured Ind="true"/>
      <Recreation Ind="false"/>
      <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="false"/>
+     <RoomService Ind="true"/>
      <RoomService24Hours Ind="false"/>
      <RoomsWithBalcony Ind="false"/>
      <SkiInOutProperty Ind="false"/>
@@ -329,9 +166,266 @@
      <SmokingRoomsAvail Ind="false"/>
      <Tennis Ind="false"/>
      <WaterPurificationSystem Ind="false"/>
+     <Wheelchair Ind="true"/>
+    </PropertyOptionInfo>
+    <RoomRate RateLevelCode="RAC">
+     <AdditionalInfo>
+      <CancelPolicy Numeric="00"/>
+     </AdditionalInfo>
+     <HotelRateCode>RAC</HotelRateCode>
+    </RoomRate>
+    <SpecialOffers Ind="false"/>
+   </BasicPropertyInfo>
+  </AvailabilityOption>
+  <AvailabilityOption RPH="003">
+   <BasicPropertyInfo AreaID="020E" ChainCode="HY" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="LHR" HotelCode="0035494" HotelName="HYATT REGENCY LONDON - THE CHU" Latitude="51.515630" Longitude="-.156940">
+    <Address>
+     <AddressLine>30 PORTMAN SQUARE</AddressLine>
+     <AddressLine>LONDON GB W1H 7BH</AddressLine>
+    </Address>
+    <ContactNumbers>
+     <ContactNumber Fax="44-207-486-1255" Phone="44-207-4865800"/>
+    </ContactNumbers>
+    <DirectConnect>
+     <Alt_Avail Ind="false"/>
+     <DC_AvailParticipant Ind="true"/>
+     <DC_SellParticipant Ind="true"/>
+     <RatesExceedMax Ind="false"/>
+     <UnAvail Ind="false"/>
+    </DirectConnect>
+    <LocationDescription Code="G">
+     <Text>MARBLE ARCH</Text>
+    </LocationDescription>
+    <Property Rating="NTM">
+     <Text>5 CROWN</Text>
+    </Property>
+    <PropertyOptionInfo>
+     <ADA_Accessible Ind="true"/>
+     <AdultsOnly Ind="false"/>
+     <BeachFront Ind="false"/>
+     <Breakfast Ind="false"/>
+     <BusinessCenter Ind="false"/>
+     <BusinessReady Ind="false"/>
+     <Conventions Ind="true"/>
+     <Dataport Ind="false"/>
+     <Dining Ind="true"/>
+     <DryClean Ind="true"/>
+     <EcoCertified Ind="false"/>
+     <ExecutiveFloors Ind="true"/>
+     <FitnessCenter Ind="false"/>
+     <FreeLocalCalls Ind="false"/>
+     <FreeParking Ind="false"/>
+     <FreeShuttle Ind="false"/>
+     <FreeWifiInMeetingRooms Ind="false"/>
+     <FreeWifiInPublicSpaces Ind="true"/>
+     <FreeWifiInRooms Ind="true"/>
+     <FullServiceSpa Ind="false"/>
+     <GameFacilities Ind="false"/>
+     <Golf Ind="true"/>
+     <HighSpeedInternet Ind="true"/>
+     <HypoallergenicRooms Ind="false"/>
+     <IndoorPool Ind="false"/>
+     <InRoomCoffeeTea Ind="false"/>
+     <InRoomMiniBar Ind="true"/>
+     <InRoomRefrigerator Ind="false"/>
+     <InRoomSafe Ind="true"/>
+     <InteriorDoorways Ind="false"/>
+     <Jacuzzi Ind="false"/>
+     <KidsFacilities Ind="false"/>
+     <KitchenFacilities Ind="false"/>
+     <MealService Ind="false"/>
+     <MeetingFacilities Ind="false"/>
+     <NoAdultTV Ind="false"/>
+     <NonSmoking Ind="true"/>
+     <OutdoorPool Ind="false"/>
+     <Pets Ind="false"/>
+     <Pool Ind="false"/>
+     <PublicTransportationAdjacent Ind="false"/>
+     <RateAssured Ind="true"/>
+     <Recreation Ind="false"/>
+     <RestrictedRoomAccess Ind="false"/>
+     <RoomService Ind="false"/>
+     <RoomService24Hours Ind="true"/>
+     <RoomsWithBalcony Ind="true"/>
+     <SkiInOutProperty Ind="false"/>
+     <SmokeFree Ind="false"/>
+     <SmokingRoomsAvail Ind="true"/>
+     <Tennis Ind="true"/>
+     <WaterPurificationSystem Ind="false"/>
      <Wheelchair Ind="false"/>
     </PropertyOptionInfo>
-    <RateRange CurrencyCode="NGN" Max="165673" Min="93641"/>
+    <RoomRate RateLevelCode="RAC">
+     <AdditionalInfo>
+      <CancelPolicy Numeric="00"/>
+     </AdditionalInfo>
+     <HotelRateCode>RAC</HotelRateCode>
+    </RoomRate>
+    <SpecialOffers Ind="false"/>
+   </BasicPropertyInfo>
+  </AvailabilityOption>
+  <AvailabilityOption RPH="004">
+   <BasicPropertyInfo AreaID="001N" ChainCode="HI" Distance="K" GEO_ConfidenceLevel="3" HotelCityCode="LHR" HotelCode="0011259" HotelName="HOLIDAY INN HEATHROW M4 JCT 4" Latitude="51.494050" Longitude="-.458730">
+    <Address>
+     <AddressLine>SIPSON RD</AddressLine>
+     <AddressLine>HEATHROW GB UB7 0JU</AddressLine>
+    </Address>
+    <ContactNumbers>
+     <ContactNumber Fax="44-2088978659" Phone="44-871-9429095"/>
+    </ContactNumbers>
+    <DirectConnect>
+     <Alt_Avail Ind="false"/>
+     <DC_AvailParticipant Ind="true"/>
+     <DC_SellParticipant Ind="true"/>
+     <RatesExceedMax Ind="false"/>
+     <UnAvail Ind="false"/>
+    </DirectConnect>
+    <LocationDescription Code="A">
+     <Text>HEATHROW AIRPORT</Text>
+    </LocationDescription>
+    <Property Rating="NTM">
+     <Text>3 CROWN</Text>
+    </Property>
+    <PropertyOptionInfo>
+     <ADA_Accessible Ind="false"/>
+     <AdultsOnly Ind="false"/>
+     <BeachFront Ind="false"/>
+     <Breakfast Ind="false"/>
+     <BusinessCenter Ind="false"/>
+     <BusinessReady Ind="false"/>
+     <Conventions Ind="false"/>
+     <Dataport Ind="true"/>
+     <Dining Ind="true"/>
+     <DryClean Ind="false"/>
+     <EcoCertified Ind="false"/>
+     <ExecutiveFloors Ind="true"/>
+     <FitnessCenter Ind="true"/>
+     <FreeLocalCalls Ind="false"/>
+     <FreeParking Ind="false"/>
+     <FreeShuttle Ind="false"/>
+     <FreeWifiInMeetingRooms Ind="false"/>
+     <FreeWifiInPublicSpaces Ind="false"/>
+     <FreeWifiInRooms Ind="false"/>
+     <FullServiceSpa Ind="false"/>
+     <GameFacilities Ind="false"/>
+     <Golf Ind="true"/>
+     <HighSpeedInternet Ind="true"/>
+     <HypoallergenicRooms Ind="false"/>
+     <IndoorPool Ind="false"/>
+     <InRoomCoffeeTea Ind="false"/>
+     <InRoomMiniBar Ind="false"/>
+     <InRoomRefrigerator Ind="false"/>
+     <InRoomSafe Ind="false"/>
+     <InteriorDoorways Ind="false"/>
+     <Jacuzzi Ind="false"/>
+     <KidsFacilities Ind="true"/>
+     <KitchenFacilities Ind="false"/>
+     <MealService Ind="false"/>
+     <MeetingFacilities Ind="true"/>
+     <NoAdultTV Ind="false"/>
+     <NonSmoking Ind="true"/>
+     <OutdoorPool Ind="false"/>
+     <Pets Ind="false"/>
+     <Pool Ind="false"/>
+     <PublicTransportationAdjacent Ind="false"/>
+     <RateAssured Ind="true"/>
+     <Recreation Ind="false"/>
+     <RestrictedRoomAccess Ind="false"/>
+     <RoomService Ind="true"/>
+     <RoomService24Hours Ind="false"/>
+     <RoomsWithBalcony Ind="false"/>
+     <SkiInOutProperty Ind="false"/>
+     <SmokeFree Ind="false"/>
+     <SmokingRoomsAvail Ind="false"/>
+     <Tennis Ind="true"/>
+     <WaterPurificationSystem Ind="false"/>
+     <Wheelchair Ind="true"/>
+    </PropertyOptionInfo>
+    <RoomRate RateLevelCode="RAC">
+     <AdditionalInfo>
+      <CancelPolicy Numeric="00"/>
+     </AdditionalInfo>
+     <HotelRateCode>RAC</HotelRateCode>
+    </RoomRate>
+    <SpecialOffers Ind="false"/>
+   </BasicPropertyInfo>
+  </AvailabilityOption>
+  <AvailabilityOption RPH="005">
+   <BasicPropertyInfo AreaID="001N" ChainCode="HI" Distance="K" GEO_ConfidenceLevel="3" HotelCityCode="LHR" HotelCode="0054322" HotelName="HOLIDAY INN LONDON HEATHROW" Latitude="51.482170" Longitude="-.455270">
+    <Address>
+     <AddressLine>BATH ROAD CORNER SIPSON WAY</AddressLine>
+     <AddressLine>HEATHROW GB UB7 0DP</AddressLine>
+    </Address>
+    <ContactNumbers>
+     <ContactNumber Fax="442085647744" Phone="442089900000"/>
+    </ContactNumbers>
+    <DirectConnect>
+     <Alt_Avail Ind="false"/>
+     <DC_AvailParticipant Ind="true"/>
+     <DC_SellParticipant Ind="true"/>
+     <RatesExceedMax Ind="false"/>
+     <UnAvail Ind="false"/>
+    </DirectConnect>
+    <LocationDescription Code="A">
+     <Text>HEATHROW</Text>
+    </LocationDescription>
+    <Property Rating="NTM">
+     <Text>3 CROWN</Text>
+    </Property>
+    <PropertyOptionInfo>
+     <ADA_Accessible Ind="false"/>
+     <AdultsOnly Ind="false"/>
+     <BeachFront Ind="false"/>
+     <Breakfast Ind="false"/>
+     <BusinessCenter Ind="true"/>
+     <BusinessReady Ind="false"/>
+     <Conventions Ind="false"/>
+     <Dataport Ind="true"/>
+     <Dining Ind="true"/>
+     <DryClean Ind="true"/>
+     <EcoCertified Ind="false"/>
+     <ExecutiveFloors Ind="false"/>
+     <FitnessCenter Ind="true"/>
+     <FreeLocalCalls Ind="false"/>
+     <FreeParking Ind="false"/>
+     <FreeShuttle Ind="false"/>
+     <FreeWifiInMeetingRooms Ind="false"/>
+     <FreeWifiInPublicSpaces Ind="false"/>
+     <FreeWifiInRooms Ind="false"/>
+     <FullServiceSpa Ind="false"/>
+     <GameFacilities Ind="false"/>
+     <Golf Ind="false"/>
+     <HighSpeedInternet Ind="true"/>
+     <HypoallergenicRooms Ind="false"/>
+     <IndoorPool Ind="false"/>
+     <InRoomCoffeeTea Ind="false"/>
+     <InRoomMiniBar Ind="false"/>
+     <InRoomRefrigerator Ind="false"/>
+     <InRoomSafe Ind="false"/>
+     <InteriorDoorways Ind="false"/>
+     <Jacuzzi Ind="false"/>
+     <KidsFacilities Ind="false"/>
+     <KitchenFacilities Ind="false"/>
+     <MealService Ind="false"/>
+     <MeetingFacilities Ind="true"/>
+     <NoAdultTV Ind="false"/>
+     <NonSmoking Ind="true"/>
+     <OutdoorPool Ind="false"/>
+     <Pets Ind="true"/>
+     <Pool Ind="false"/>
+     <PublicTransportationAdjacent Ind="false"/>
+     <RateAssured Ind="true"/>
+     <Recreation Ind="false"/>
+     <RestrictedRoomAccess Ind="false"/>
+     <RoomService Ind="true"/>
+     <RoomService24Hours Ind="false"/>
+     <RoomsWithBalcony Ind="false"/>
+     <SkiInOutProperty Ind="false"/>
+     <SmokeFree Ind="false"/>
+     <SmokingRoomsAvail Ind="false"/>
+     <Tennis Ind="false"/>
+     <WaterPurificationSystem Ind="false"/>
+     <Wheelchair Ind="true"/>
+    </PropertyOptionInfo>
     <RoomRate RateLevelCode="RAC">
      <AdditionalInfo>
       <CancelPolicy Numeric="00"/>

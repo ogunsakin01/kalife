@@ -16,9 +16,11 @@ class SuccessfulRegistration extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $userInfo;
+
+    public function __construct($userInfo)
     {
-        //
+        $this->userInfo = $userInfo;
     }
 
     /**
