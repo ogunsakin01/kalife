@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('agency_name')->nullable();
             $table->string('agent_id')->nullable();;
             $table->string('office_number')->nullable();
+            $table->string('profile_photo')->nullable();
             $table->string('password');
             $table->integer('account_status');
             $table->rememberToken();
