@@ -26,10 +26,10 @@ class CreateUsersTable extends Migration
             $table->integer('gender');
             $table->string('agency_name')->nullable();
             $table->string('agent_id')->nullable();;
-            $table->string('office_number')->nullable();;
+            $table->string('office_number')->nullable();
             $table->string('password');
-            $table->rememberToken();
             $table->integer('account_status');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
