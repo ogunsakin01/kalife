@@ -2,6 +2,7 @@
 @section('title')Join Us,Create an account and login at Kalife Travels and Tours @endsection
 @section('activeRegisterLogin') active @endsection
 @section('content')
+    <div class="gap gap-small">    </div>
     <div class="container">
         <h1>Login/Register on Kalife Travels and Tours</h1>
     </div>
@@ -67,7 +68,7 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-12">
-                        <form method="post" action="{{ url('/register') }}">
+                        <form method="post" enctype="multipart/form-data" action="{{ url('/register') }}">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12" >
@@ -141,6 +142,7 @@
                                             <input class="i-radio" type="radio" value="2" name="gender" required />Female</label>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-12">

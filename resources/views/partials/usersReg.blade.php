@@ -1,5 +1,5 @@
 <div class="mfp-with-anim mfp-hide mfp-dialog mfp-search-dialog" id="register_new_user">
-    <form method="post" action="{{ url('/register') }}">
+    <form method="post" enctype="multipart/form-data" action="{{ url('/register') }}">
         {{ csrf_field() }}
     <div class="row">
         <div class="col-md-12" align="center">

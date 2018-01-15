@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('activeRegisterLogin')  active @endsection
+@section('title') Password Reset @endsection
 @section('content')
-
     <div class="container full-center">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">

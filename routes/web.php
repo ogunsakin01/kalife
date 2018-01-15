@@ -13,7 +13,8 @@
 Route::get('/', function () {
     return view('frontend.home');
 });
-
+Route::view('/login','frontend.register_login');
+Route::view('/register','frontend.register_login');
 Route::view('/contact-us','frontend.contact_us');
 Route::view('/about-us','frontend.about_us');
 Route::view('/register-login','frontend.register_login');
@@ -24,6 +25,9 @@ Route::middleware('auth')->group(function(){
     Route::view('/bookings','frontend.bookings');
     Route::view('/flight-bookings','frontend.flight_bookings');
     Route::view('/my-online-payments','frontend.my_online_payments');
+    Route::view('/manage-user','frontend.manage_user');
+    Route::post('/update-user','CustomerProfileController@updateProfile');
+    Route::post('/update-password','CustomerProfileController@updatePassword');
 //    Route::view('/hotel-bookings','frontend.hotel_bookings');
 //    Route::view('/package-bookings','frontend.package_bookings');
 });

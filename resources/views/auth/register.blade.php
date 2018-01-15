@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @section('title')Join Us,Create an account and login at Kalife Travels and Tours @endsection
-@section('activeHome')
-    class='active'
-@endsection
+@section('activeRegisterLogin') active @endsection
 @section('content')
+    <div class="gap gap-small">    </div>
     <div class="container">
         <h1>Login/Register on Kalife Travels and Tours</h1>
     </div>
@@ -13,6 +12,23 @@
 
     <div class="container">
         <div class="row" data-gutter="60">
+            <div class="col-md-12">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        <i class="fa fa-check"></i>
+                        {{session()->get('message')}}
+                    </div>
+                @endif
+            </div>
             <div class="col-md-4">
                 <h3>Welcome to Kalife</h3>
                 <p>Ultricies vestibulum egestas ad cras mollis nam dictumst netus leo facilisis justo maecenas molestie ipsum felis mus cubilia hendrerit vestibulum accumsan consectetur convallis vitae nec sapien diam justo lobortis aenean</p>
@@ -37,6 +53,9 @@
                             </div>
                         </div>
                         <div class="col-md-12">
+                            Can't remember password ? <a href="{{url('/password/reset')}}">Recover Here</a>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>&nbsp;</label>
                                 <button type="submit" class="btn btn-primary">Log In <i class="fa fa-sign-in"></i></button>
@@ -47,18 +66,9 @@
                 </div>
             </div>
             <div class="col-md-8">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="row">
                     <div class="col-md-12">
-                        <form method="post" action="{{ url('/register') }}">
+                        <form method="post" enctype="multipart/form-data" action="{{ url('/register') }}">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-md-12" >
@@ -70,9 +80,10 @@
                                     <div class="form-group form-group-icon-left"><i class="fa fa-user-secret input-icon input-icon-show"></i>
                                         <label>Title *</label>
                                         <select name="title" required class="form-control">
-                                            <option value="MR.">Mr.</option>
-                                            <option value="MRS.">Mrs.</option>
-                                            <option value="MISS">MISS</option>
+                                            <option value="1">Mr.</option>
+                                            <option value="2">Mrs.</option>
+                                            <option value="3">MISS</option>
+                                            <option value="4">MASTER</option>
                                         </select>
                                     </div>
                                 </div>
@@ -124,13 +135,14 @@
                                     <label>Gender *</label>
                                     <div class="radio-inline radio-small">
                                         <label>
-                                            <input class="i-radio" type="radio" value="Male" name="gender" required />Male</label>
+                                            <input class="i-radio" type="radio" value="1" name="gender" required />Male</label>
                                     </div>
                                     <div class="radio-inline radio-small">
                                         <label>
-                                            <input class="i-radio" type="radio" value="Female" name="gender" required />Female</label>
+                                            <input class="i-radio" type="radio" value="2" name="gender" required />Female</label>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-md-12">

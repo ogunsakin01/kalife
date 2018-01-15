@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('activeRegisterLogin')  active @endsection
+@section('title') Password Recovery @endsection
 @section('content')
     <div class="container full-center">
         <div class="row">
