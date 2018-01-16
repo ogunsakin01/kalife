@@ -120,6 +120,34 @@ Route::prefix('backend')->group(function (){
     Route::get('/fetch/{id}', 'WalletController@getBankDetail')->name('backend-bank-details');
   });
 
+
+});
+
+Route::group(['prefix' => 'packages',  'middleware' => 'auth'], function() {
+    Route::get('', 'ActivitiesController@index')->name('packages');
+    Route::get('activate/{id}', 'ActivitiesController@activate')->name('activate');
+    Route::get('deactivate/{id}', 'ActivitiesController@deactivate')->name('deactivate');
+    Route::get('create', 'ActivitiesController@packageCreate');
+    Route::get('description', 'ActivitiesController@packageDescription');
+    Route::get('delete/{id}', 'ActivitiesController@deleteActivities');
+    Route::get('delete/picture/{id}', 'ActivitiesController@deletePicture');
+    Route::get('delete/sight/{id}', 'ActivitiesController@deleteSight');
+    Route::post('storePackageInfo', 'ActivitiesController@storePackageInfo');
+    Route::post('storeFlightInfo', 'ActivitiesController@storeFlightInfo');
+    Route::post('storeHotelInfo', 'ActivitiesController@storeHotelInfo');
+    Route::post('storeAttractionInfo', 'ActivitiesController@storeAttractionInfo');
+    Route::post('storeSightSeeingInfo', 'ActivitiesController@storeSightSeeingInfo');
+    Route::post('storeGoodToKnowInfo', 'ActivitiesController@storeGoodToKnowInfo');
+    Route::post('storeGalleryInfo', 'ActivitiesController@storeGalleryInfo');
+    Route::post('sight-seeing', 'ActivitiesController@saveSightSeeing');
+    Route::post('update/sight-seeing', 'ActivitiesController@updateSightSeeing');
+    Route::get('edit/{id}', 'ActivitiesController@updateActivitiesView');
+
+    Route::patch('information/{id}', 'ActivitiesController@updateActivityInformation');
+    Route::patch('schedule/{id}', 'ActivitiesController@updateTimeSchedule');
+    Route::patch('good-to-know/{id}', 'ActivitiesController@updateGoodToKnow');
+    Route::post('gallery/{id}', 'ActivitiesController@updateGallery');
+//  Route::patch('good-to-know/{id}', 'ActivitiesController@updateActivityInformation');
 });
 
 

@@ -459,7 +459,7 @@ $('.search_multi_flight').on('click',function(){
       var departure_date = $('.toHide'+i).find('.departure_date_multi').val();
       if( !(departure_airport) || !(arrival_airport) || !(departure_date)){
           $(body).LoadingOverlay("show");
-          toastWarning("All input fields must be required");
+          toastWarning("All input fields are required");
           return false;
       }else{
           var originDestination = {
@@ -502,7 +502,7 @@ $('.search_multi_flight').on('click',function(){
             }else if(response.data === 4) {
                 toastWarning("No result found for your search option. Try again");
 
-            }else if(response.status === 500){
+            }if(response.status === 500){
                 toastWarning("Your device could not establish a connection to the server. Try again");
             }
             $('.template-content').removeClass('hidden');
@@ -523,6 +523,7 @@ $('.itinerary_select').on('click',function(){
       id : id
   })
       .then(function(response){
+          // toastr.info(response.status);
           if(response.data === 1){
              window.location.href = baseUrl+'/flight-passenger-details';
           }else if(response.data === 2){
@@ -533,7 +534,8 @@ $('.itinerary_select').on('click',function(){
               toastError('Unable to connect to server. Try again');
           }else if(response.data === 21){
               toastWarning('Connection to server not established. Try again');
-          }else if(response.status === 500){
+          }
+          if(response.status === 500){
               toastWarning("Your device could not establish a connection to the server. Try again");
           }
           $('.template-content').removeClass('hidden');
@@ -585,7 +587,7 @@ $('.search_hotel').on('click',function(){
                 toastError('No result found for your search options. Try again')
             }else if(response.data == 21){
                 toastInfo('Your search was completed, but no hotel was returned. Kindly chose another city or try again with different dates');
-            }else if(response.status === 500){
+            }if(response.status === 500){
                 toastWarning("Your device could not establish a connection to the server. Try again");
             }
         })
@@ -654,7 +656,7 @@ $('.hotel_description').on('click',function(){
               toastWarning('Connection to server not established. Try again');
             }else if(response.data === 22){
                 toastWarning('No available rooms was found for this hotel when we checked. Kindly select another hotel');
-            }else if(response.status === 500){
+            }if(response.status === 500){
                 toastWarning("Your device could not establish a connection to the server. Try again");
             }
         })

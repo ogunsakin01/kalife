@@ -16,3 +16,4 @@
 <link href="{{asset("css/jquery.datatables_themeroller.css")}}" rel="stylesheet" type="text/css"/>
 <link href="{{asset("css/iziModal.css")}}" rel="stylesheet" type="text/css"/>
 <link href="{{asset("css/iziToast.css")}}" rel="stylesheet" type="text/css"/>
+<link href="{{asset("css/materialize.css")}}" rel="stylesheet" type="text/css"/>

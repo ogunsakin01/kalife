@@ -26,6 +26,7 @@
                             </ul>
                         </div>
                         <div class="search-tabs search-tabs-bg search-tabs-bottom  mt50">
+
                             <div class="tabbable">
                                 <ul class="nav nav-tabs" id="myTab">
                                     <li class="active"><a href="#tab-1" data-toggle="tab"><i class="fa fa-plane"></i> <span >Flights</span></a>

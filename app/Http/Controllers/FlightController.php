@@ -32,7 +32,7 @@ class FlightController extends Controller
     }
 
     public function availableFlights(){
-        if(!session()->has(['availableFLights','flightSearchParam'])){return back();}
+        if(!session()->has(['availableFlights','flightSearchParam'])){return back();}
         $flightsResult = session()->get('availableFlights');
         $flightSearchParam = session()->get('flightSearchParam');
         $airlines = $this->Sabreflight->availableAirline($flightsResult);

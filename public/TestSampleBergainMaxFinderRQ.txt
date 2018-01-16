@@ -7,7 +7,7 @@
         </Source>
     </POS>
    <OriginDestinationInformation RPH="1">
-        <DepartureDateTime>2018-01-12T00:00:00</DepartureDateTime>
+        <DepartureDateTime>2018-01-15T00:00:00</DepartureDateTime>
         <OriginLocation LocationCode="LHR" />
         <DestinationLocation LocationCode="DXB" />
         <TPA_Extensions>
@@ -15,7 +15,7 @@
         </TPA_Extensions>
     </OriginDestinationInformation>
     <OriginDestinationInformation RPH="2">
-        <DepartureDateTime>2018-01-19T00:00:00</DepartureDateTime>
+        <DepartureDateTime>2018-01-22T00:00:00</DepartureDateTime>
         <OriginLocation LocationCode="DXB" />
         <DestinationLocation LocationCode="LHR" />
         <TPA_Extensions>

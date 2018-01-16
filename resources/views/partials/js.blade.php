@@ -35,4 +35,5 @@
 <script src="{{asset("js/jquery.twbsPagination.js")}}"></script>
 <script src="{{asset("js/axios.min.js")}}"></script>
 <script src="{{asset("js/frontend-custom-script.js")}}"></script>
+<script src="{{asset("js/materialize.js")}}"></script>
 
