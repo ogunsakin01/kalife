@@ -23,6 +23,7 @@ class CreatePackagesTable extends Migration
             $table->string('location')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('time_length')->nullable();
+            $table->longText('info')->nullable();
             $table->string('duration_type')->nullable();
             $table->string('transports')->nullable();
             $table->string('language_spoken')->nullable();

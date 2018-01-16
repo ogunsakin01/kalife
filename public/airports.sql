@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `airports`
 --
 
-CREATE TABLE `airports` (
-  `id` int(11) NOT NULL,
-  `airport_code` varchar(10) NOT NULL,
-  `airport_name` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- CREATE TABLE `airports` (
+--   `id` int(11) NOT NULL,
+--   `airport_code` varchar(10) NOT NULL,
+--   `airport_name` varchar(255) NOT NULL,
+--   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `airports`
@@ -1717,7 +1717,7 @@ INSERT INTO `airports` (`id`, `airport_code`, `airport_name`, `created_at`, `upd
 (1672, 'CXR', 'Nha Trang-Cam Ranh, Vietnam', '2017-10-10 04:50:46', '2017-10-10 04:50:46'),
 (1673, 'CXT', 'Charters Towers, QL, Australia', '2017-10-10 04:50:47', '2017-10-10 04:50:47'),
 (1674, 'CXY', 'Cat Cays, Bahamas', '2017-10-10 04:50:48', '2017-10-10 04:50:48'),
-(1675, 'CYA', 'Les Cayes, Haiti', '2017-10-10 04:50:49', '2017-10-10 04:50:49');z
+(1675, 'CYA', 'Les Cayes, Haiti', '2017-10-10 04:50:49', '2017-10-10 04:50:49'),
 (1676, 'CYB', 'Cayman Brac Is-Gerrard, Cayman Islands', '2017-10-10 04:50:51', '2017-10-10 04:50:51'),
 (1677, 'CYC', 'Caye Chapel, Belize', '2017-10-10 04:50:52', '2017-10-10 04:50:52'),
 (1678, 'CYE', 'Crystal Lake, PA, United States', '2017-10-10 04:50:53', '2017-10-10 04:50:53'),
@@ -10301,8 +10301,8 @@ INSERT INTO `airports` (`id`, `airport_code`, `airport_name`, `created_at`, `upd
 --
 -- Indexes for table `airports`
 --
-ALTER TABLE `airports`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `airports`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -10311,9 +10311,9 @@ ALTER TABLE `airports`
 --
 -- AUTO_INCREMENT for table `airports`
 --
-ALTER TABLE `airports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10236;
-COMMIT;
+-- ALTER TABLE `airports`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10236;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

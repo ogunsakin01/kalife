@@ -27,13 +27,13 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `airlines`
 --
-
-CREATE TABLE `airlines` (
-  `id` int(11) NOT NULL,
-  `IATA` varchar(6) DEFAULT NULL,
-  `ICAO` varchar(36) DEFAULT NULL,
-  `Airline` varchar(81) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- CREATE TABLE `airlines` (
+--   `id` int(11) NOT NULL,
+--   `IATA` varchar(6) DEFAULT NULL,
+--   `ICAO` varchar(36) DEFAULT NULL,
+--   `Airline` varchar(81) DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `airlines`
@@ -6444,8 +6444,8 @@ INSERT INTO `airlines` (`id`, `IATA`, `ICAO`, `Airline`) VALUES
 --
 -- Indexes for table `airlines`
 --
-ALTER TABLE `airlines`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `airlines`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -6454,9 +6454,9 @@ ALTER TABLE `airlines`
 --
 -- AUTO_INCREMENT for table `airlines`
 --
-ALTER TABLE `airlines`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6392;
-COMMIT;
+-- ALTER TABLE `airlines`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6392;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

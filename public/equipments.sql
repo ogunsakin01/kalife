@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `equipments`
 --
 
-CREATE TABLE `equipments` (
-  `id` int(11) NOT NULL,
-  `code` varchar(10) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- CREATE TABLE `equipments` (
+--   `id` int(11) NOT NULL,
+--   `code` varchar(10) NOT NULL,
+--   `name` varchar(200) NOT NULL,
+--   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+--   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `equipments`
@@ -293,8 +293,8 @@ INSERT INTO `equipments` (`id`, `code`, `name`, `created_at`, `updated_at`) VALU
 --
 -- Indexes for table `equipments`
 --
-ALTER TABLE `equipments`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `equipments`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -302,10 +302,10 @@ ALTER TABLE `equipments`
 
 --
 -- AUTO_INCREMENT for table `equipments`
---
-ALTER TABLE `equipments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
-COMMIT;
+-- --
+-- ALTER TABLE `equipments`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

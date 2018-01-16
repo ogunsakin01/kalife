@@ -27,14 +27,14 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `hotel_rooms`
 --
-
-CREATE TABLE `hotel_rooms` (
-  `id` int(11) NOT NULL,
-  `code` varchar(10) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- CREATE TABLE `hotel_rooms` (
+--   `id` int(11) NOT NULL,
+--   `code` varchar(10) NOT NULL,
+--   `name` varchar(200) NOT NULL,
+--   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hotel_rooms`
@@ -536,8 +536,8 @@ INSERT INTO `hotel_rooms` (`id`, `code`, `name`, `created_at`, `updated_at`) VAL
 --
 -- Indexes for table `hotel_rooms`
 --
-ALTER TABLE `hotel_rooms`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `hotel_rooms`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -546,9 +546,9 @@ ALTER TABLE `hotel_rooms`
 --
 -- AUTO_INCREMENT for table `hotel_rooms`
 --
-ALTER TABLE `hotel_rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=487;
-COMMIT;
+-- ALTER TABLE `hotel_rooms`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=487;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

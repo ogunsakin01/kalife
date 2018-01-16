@@ -123,7 +123,7 @@ Route::prefix('backend')->group(function (){
 
 });
 
-Route::group(['prefix' => 'packages',  'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'backend/packages',  'middleware' => 'auth'], function() {
     Route::get('', 'ActivitiesController@index')->name('packages');
     Route::get('activate/{id}', 'ActivitiesController@activate')->name('activate');
     Route::get('deactivate/{id}', 'ActivitiesController@deactivate')->name('deactivate');
@@ -147,7 +147,6 @@ Route::group(['prefix' => 'packages',  'middleware' => 'auth'], function() {
     Route::patch('schedule/{id}', 'ActivitiesController@updateTimeSchedule');
     Route::patch('good-to-know/{id}', 'ActivitiesController@updateGoodToKnow');
     Route::post('gallery/{id}', 'ActivitiesController@updateGallery');
-//  Route::patch('good-to-know/{id}', 'ActivitiesController@updateActivityInformation');
 });
 
 

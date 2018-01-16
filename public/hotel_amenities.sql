@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `hotel_amenities`
 --
 
-CREATE TABLE `hotel_amenities` (
-  `id` int(11) NOT NULL,
-  `code` varchar(10) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- CREATE TABLE `hotel_amenities` (
+--   `id` int(11) NOT NULL,
+--   `code` varchar(10) NOT NULL,
+--   `name` varchar(200) NOT NULL,
+--   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hotel_amenities`
@@ -604,7 +604,7 @@ INSERT INTO `hotel_amenities` (`id`, `code`, `name`, `created_at`, `updated_at`)
 (561, 'BUS60', 'Outgoing fax complimentary', '2017-11-28 13:53:35', '2017-11-28 13:53:35'),
 (562, 'BUS61', 'Fee charged for first page of outgoing fax', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
 (563, 'BUS62', 'Overnight delivery/pickup', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
-(564, 'BUS63', 'Pager rental', '2017-11-28 13:53:36', '2017-11-28 13:53:36');
+(564, 'BUS63', 'Pager rental', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
 (565, 'BUS64', 'Post/parcel service', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
 (566, 'BUS65', 'Private offices and business services', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
 (567, 'BUS66', 'Analog - dialup connectivity', '2017-11-28 13:53:36', '2017-11-28 13:53:36'),
@@ -961,8 +961,8 @@ INSERT INTO `hotel_amenities` (`id`, `code`, `name`, `created_at`, `updated_at`)
 --
 -- Indexes for table `hotel_amenities`
 --
-ALTER TABLE `hotel_amenities`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `hotel_amenities`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -971,9 +971,9 @@ ALTER TABLE `hotel_amenities`
 --
 -- AUTO_INCREMENT for table `hotel_amenities`
 --
-ALTER TABLE `hotel_amenities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=913;
-COMMIT;
+-- ALTER TABLE `hotel_amenities`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=913;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

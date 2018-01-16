@@ -27,6 +27,7 @@ class ActivitiesController extends Controller
       $activities = Package::getActivities();
       return view('backend.activities.package-desc', compact('activities'));
   }
+
   public function packageCreate(){
     /*dd(cabin());*/
       $cabin = array('Economy'=>'Economy','Business'=>'Business','Premium'=>'Premium','First'=>'First Class');
@@ -63,7 +64,7 @@ class ActivitiesController extends Controller
   {
       if ($r->isMethod('post')){
           PackageHotel::store($r);
-          $response['status']= 'success';
+          $response['status'] = 'success';
           return response()->json($response);
       }
       $response['status'] = 'error';
@@ -170,9 +171,6 @@ class ActivitiesController extends Controller
       }
   }
 
-
-
-
   public function saveActivity(Request $r){
     $this->validate($r, [
       'phone_number'=>'numeric',
@@ -260,13 +258,16 @@ class ActivitiesController extends Controller
       }
     }
   }
+
   public function packageDescription()
   {
 
   }
+
   public function deleteActivities($id){
     return Package::deletePackage($id);
   }
+
   public function updateActivitiesView($activity_id){
     $good_to_knows = GoodToKnow::getGoodToKnowByPackageId($activity_id);
     $activities = Package::getPackageById($activity_id);
@@ -274,9 +275,11 @@ class ActivitiesController extends Controller
     $sight_seeing = SightSeeing::getSightseeingByPackageId($activity_id);
     return view('backend.activities.activities-update', compact('good_to_knows', 'activities', 'pictures', 'sight_seeing'));
   }
+
   public function deletePicture($id){
     return Gallery::deletePicture($id);
   }
+
   public function updateActivityInformation(Request $r, $activity_id){
     $activity = Package::where('id', $activity_id)->first();
     $activity->package_type_id = $r->package_type_id;
@@ -298,6 +301,7 @@ class ActivitiesController extends Controller
       return back();
     }
   }
+
   public function updateTimeSchedule(Request $r, $activity_id){
     $activity = Package::where('id', $activity_id)->first();
     $activity->trip_schedule = $r->trip_schedule;
@@ -308,6 +312,7 @@ class ActivitiesController extends Controller
       return back();
     }
   }
+
   public function updateGoodToKnow(Request $r, $activity_id){
     $good_to_know = GoodToKnow::where('package_id', $activity_id)->first();
     $good_to_know->check_in = $r->check_in;
@@ -324,6 +329,7 @@ class ActivitiesController extends Controller
       return back();
     }
   }
+
   public function updateGallery(Request $r, $activity_id){
     $this->validate($r, [
        'photo_1'=>'required|mimes:bmp,png,jpg,jpeg,tif'
@@ -342,6 +348,7 @@ class ActivitiesController extends Controller
       return back();
     }
   }
+
   public function saveSightSeeing(Request $r){
     $this->validate($r, [
        'title' => 'required',
@@ -359,6 +366,7 @@ class ActivitiesController extends Controller
       return redirect(url('activities'));
     }
   }
+
   public function updateSightSeeing(Request $r){
     $this->validate($r, [
         'title' => 'required',
@@ -375,6 +383,7 @@ class ActivitiesController extends Controller
       return back();
     }
   }
+
   public function deleteSight($id){
     return SightSeeing::deleteSight($id);
   }

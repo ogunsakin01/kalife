@@ -24,8 +24,7 @@
         </div>
         <div class="panel-body">
           {!! Form::open(['url'=>'packages', 'method'=>'POST', 'files'=>'true']) !!}
-          <div class="row">
-            <div class="col-md-12">
+
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group col-md-6">
@@ -48,7 +47,6 @@
                     {!! Form::textarea('info', null, ['id'=>'info', 'class'=>'form-control', 'rows'=>3, 'placeholder'=>'Select Language', 'required'=>'required']) !!}
                   </div>
                 </div>
-
                 <div class="col-md-6">
                   <div class="form-group col-md-6">
                     {!! Form::label('adult_price', 'Adult price (&#8358;)') !!}
@@ -68,11 +66,12 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
               {!! Form::submit('Proceed', ['id'=> 'submit_package_info', 'class' => 'btn btn-success pull-right']) !!}
             </div>
           </div>
+
           {!! Form::close() !!}
         </div>
       </div>

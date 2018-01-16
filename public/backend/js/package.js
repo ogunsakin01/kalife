@@ -189,7 +189,7 @@ submit_package_info.addEventListener('click', function (e) {
         package_info.LoadingOverlay('show');
         $.ajax({
             type: "POST",
-            url: BaseUrl + '/packages/storePackageInfo',
+            url: BaseUrl + '/backend/packages/storePackageInfo',
             dataType: 'JSON',
             data: {
                 _token:CSRF_TOKEN,
@@ -274,7 +274,7 @@ submit_flight_info.addEventListener('click', function (e) {
 
         $.ajax({
             type: "POST",
-            url: BaseUrl + '/packages/storeFlightInfo',
+            url: BaseUrl + '/backend/packages/storeFlightInfo',
             dataType: 'JSON',
             data: {
                 _token:CSRF_TOKEN,
@@ -338,7 +338,7 @@ submit_hotel_info.addEventListener('click', function (e) {
 
     $.ajax({
         type: "POST",
-        url: BaseUrl + '/packages/storeHotelInfo',
+        url: BaseUrl + '/backend/packages/storeHotelInfo',
         dataType: 'JSON',
         data: {
             _token:CSRF_TOKEN,
@@ -374,7 +374,7 @@ submit_attraction_info.addEventListener('click', function (e) {
 
     $.ajax({
         type: "POST",
-        url: BaseUrl + '/packages/storeAttractionInfo',
+        url: BaseUrl + '/backend/packages/storeAttractionInfo',
         dataType: 'JSON',
         data: {
             _token:CSRF_TOKEN,
@@ -418,7 +418,7 @@ submit_sight_seeing.addEventListener('click', function (e) {
     console.log(s_title_post, s_description_post);
     $.ajax({
         type: "POST",
-        url: BaseUrl + '/packages/storeSightSeeingInfo',
+        url: BaseUrl + '/backend/packages/storeSightSeeingInfo',
         dataType: 'JSON',
         data: {
             _token:CSRF_TOKEN,
@@ -459,7 +459,7 @@ submit_good_to_know_info.addEventListener('click', function (e) {
     console.log(g_title_post, g_description_post);
     $.ajax({
         type: "POST",
-        url: BaseUrl + '/packages/storeGoodToKnowInfo',
+        url: BaseUrl + 'backend/packages/storeGoodToKnowInfo',
         dataType: 'JSON',
         data: {
             _token:CSRF_TOKEN,
@@ -482,7 +482,7 @@ submit_good_to_know_info.addEventListener('click', function (e) {
 function activate(id) {
     $.ajax({
         type: "GET",
-        url: BaseUrl + '/packages/activate/' + id,
+        url: BaseUrl + '/backend/packages/activate/' + id,
         success: function (response) {
             console.log(response.status);
 
@@ -504,7 +504,7 @@ function activate(id) {
 function deactivate(id) {
     $.ajax({
         type: "GET",
-        url: BaseUrl + '/packages/deactivate/' + id,
+        url: BaseUrl + '/backend/packages/deactivate/' + id,
         success: function (response) {
             console.log(response.status);
 
