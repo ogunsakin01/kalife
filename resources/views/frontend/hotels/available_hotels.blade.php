@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title')Available Hotels  @endsection
 @section('activeHotel') active @endsection
+@section('loadingOverlay')
+    @include('partials.hotelSearchOverlay')
+    @include('partials.hoteldescriptionOverlay')
+@endsection
 @section('content')
     <div class="container">
         <ul class="breadcrumb">
@@ -115,7 +119,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="booking-item-img-wrap">
-                                        <img src="img/hotel_porto_bay_rio_internacional_rooftop_pool_800x600.jpg" alt="Image Alternative text" title="{{$hotel['hotelName']}}" />
+                                        <img src="https://photo.hotellook.com/image_v2/limit/h{{$hotel['hotelCode']}}_1/640/480.jpg" alt="Image Alternative text" title="{{$hotel['hotelName']}}" />
                                         <div class="booking-item-img-num"><i class="fa fa-picture-o"></i>23</div>
                                     </div>
                                 </div>

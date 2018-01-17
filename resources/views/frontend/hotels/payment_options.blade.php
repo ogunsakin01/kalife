@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title') {{$selectedHotel['hotelName']}} Hotel Information  @endsection
 @section('activeHotel') active @endsection
+
 @section('content')
     <div class="container">
         <ul class="breadcrumb">

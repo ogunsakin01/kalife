@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\HotelBooking;
 use App\Services\InterswitchConfig;
 use App\Services\PaystackConfig;
 use App\Services\SabreConfig;
 use App\Services\SabreHotel;
 use App\Services\SabreSessionManager;
 use App\SessionToken;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class HotelController extends Controller
 {
@@ -79,7 +82,39 @@ class HotelController extends Controller
         $hotelSearchParam = session()->get('hotelSearchParam');
         $hotelsAvail = session()->get('availableHotels');
         $hotel = $this->SabreHotel->HotelAvailSort($hotelsAvail)[session()->get('selectedHotelId')];
-        return view('frontend.hotels.selected_room',compact('selectedHotel','hotelSearchParam','hotel','room'));
+        $rateDescription = [];
+//
+        if($selectedHotel['rooms'][$room]['hrdRequiredForSell'] == 'true'){
+            $rateDescriptionParam = [
+                'hotelCode' => $selectedHotel['hotelCode'],
+                'currencyCode' => $selectedHotel['rooms'][$room]['currencyCode'],
+                'checkOutDate' => $selectedHotel['checkoutDate'],
+                'checkInDate' => $selectedHotel['checkinDate']
+            ];
+            $session_store = $this->SabreSession->sessionStore();
+            if(empty($session_store) || is_null($session_store)){
+                return 0;
+            }
+            elseif($session_store == 0){
+                return 0;
+            }
+            elseif($session_store == 2){
+                return 2;
+            }
+            else {
+                $getRateDescription = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('HotelRateDescriptionLLSRQ', $session_store), $this->SabreHotel->HotelRateDescriptionRQXML($rateDescriptionParam), 'HotelRateDescriptionLLSRQ');
+                $file = fopen("TestRateDescriptionRQ.txt","w");
+                fwrite($file,  $this->SabreHotel->HotelRateDescriptionRQXML($rateDescriptionParam));
+                fclose($file);
+                $file = fopen("TestSampleRateDescriptionRS.txt","w");
+                fwrite($file, $getRateDescription);
+                fclose($file);
+                /*return*/
+                dd($this->SabreConfig->mungXmlToArray($getRateDescription));
+            }
+        }
+//        dd($selectedHotel);
+        return view('frontend.hotels.selected_room',compact('selectedHotel','hotelSearchParam','hotel','room','rateDescription'));
     }
 
     public function selectedHotel(){
@@ -165,7 +200,7 @@ class HotelController extends Controller
             $file = fopen("TestSampleHotelPassengerDetailsRS.txt","w");
             fwrite($file, $runPassengerDetails);
             fclose($file);
-            if($this->SabreHotel->validatePassengerDetailsResponse($runPassengerDetails) == 1){
+            if($this->SabreHotel->validatePassengerDetailsResponse($this->SabreConfig->mungXmlToArray($runPassengerDetails)) == 1){
                 $runHotelReserve = $this->SabreHotel->doCall($this->SabreHotel->callsHeader('OTA_HotelResLLSRQ',$session_store),$this->SabreHotel->HotelReserveRQXML($room,$selectedHotel),'OTA_HotelResLLSRQ');
                 $file = fopen("TestSampleHotelResRQ.txt","w");
                 fwrite($file, $this->SabreHotel->HotelReserveRQXML($room,$selectedHotel));
@@ -173,39 +208,34 @@ class HotelController extends Controller
                 $file = fopen("TestSampleHotelResRS.txt","w");
                 fwrite($file, $runHotelReserve);
                 fclose($file);
-//                dd(
-//                    [
-//                        $this->SabreConfig->mungXmlToArray($runPassengerDetails),
-//                        $this->SabreConfig->mungXmlToArray($runHotelReserve),
-//                    ]
-//                );
                 SessionToken::tokenClosed($session_store['message_id']);
                 SessionToken::tokenUsed($session_store['message_id']);
                 session()->put('message_id',$session_store['message_id']);
-                $responseValidator = $this->SabreHotel->validateHotelResResponse($runHotelReserve);
+                $responseValidator = $this->SabreHotel->validateHotelResResponse($this->SabreConfig->mungXmlToArray($runHotelReserve));
                 if($responseValidator == 1){
                     $reference = $this->SabreConfig->bookingReference('hotel');
                     session()->put('bookingReference',$reference);
                     /**
                     Store booking here
+                     *
                      */
+
                     return redirect(url('/payment-option/'.$room.'/reservation'));
                 }elseif($responseValidator == 2){
-                    return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Select another hotel or another room from the result and try again.');
+//                    Redirect::back();
+                    return redirect()->back()->with('errorMessage','You cannot continue the booking process. Select another hotel or another room from the result and try again.');
                 }elseif($responseValidator == 0){
-                    return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Could not connect to server.');
+//                    Redirect::back();
+                    return redirect()->back()->with('errorMessage','You cannot continue the booking process. Could not connect to server.');
                 }
             }else{
-//                dd(
-//                    [
-//                        $this->SabreConfig->mungXmlToArray($runPassengerDetails)
-//                    ]
-//                );
-                $responseValidator = $this->SabreHotel->validatePassengerDetailsResponse($runPassengerDetails);
+                $responseValidator = $this->SabreHotel->validatePassengerDetailsResponse($this->SabreConfig->mungXmlToArray($runPassengerDetails));
                 if($responseValidator == 2){
-                    return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Select another hotel or another room from the result and try again.');
+//                    Redirect::back();
+                    return redirect()->back()->with('errorMessage','You cannot continue the booking process. Select another hotel or another room from the result and try again.');
                 }elseif($responseValidator == 0){
-                    return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Could not connect to server.');
+//                    Redirect::back();
+                    return redirect()->back()->with('errorMessage','You cannot continue the booking process. Could not connect to server.');
                 }
             }
 
@@ -220,8 +250,8 @@ class HotelController extends Controller
         $hotelsAvail = session()->get('availableHotels');
         $hotel = $this->SabreHotel->HotelAvailSort($hotelsAvail)[session()->get('selectedHotelId')];
         $txnRef = session()->get('bookingReference');
-        $bookingInfo = FlightBooking::getBooking($txnRef);
-        $custInfo = User::getUserById($bookingInfo->user_id);
+        $bookingInfo = HotelBooking::find($txnRef);
+        $custInfo = User::find($bookingInfo->user_id);
         $paymentInfo = [
             'reference' => $txnRef,
             'amount' => $bookingInfo->total_amount,
@@ -235,4 +265,5 @@ class HotelController extends Controller
         ];
         return view('frontend.hotels.payment_options',compact('selectedHotel','hotelSearchParam','hotel','room','bookingInfo','paymentInfo'));
     }
+
 }

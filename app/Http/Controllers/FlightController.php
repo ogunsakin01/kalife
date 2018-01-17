@@ -154,7 +154,7 @@ class FlightController extends Controller
         }
         else{
             if($info['pnrStatus'] == 0){
-                return redirect(url(session()->previousUrl()))->with('errorMessage','You cannot continue the booking process. Select another flight from the result and try again.');
+                return redirect(back())->with('errorMessage','You cannot continue the booking process. Select another flight from the result and try again.');
             }else{
                 $this->SabreSession->closeSession($token,$message_id);
                 SessionToken::tokenClosed($message_id);

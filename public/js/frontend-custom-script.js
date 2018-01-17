@@ -187,19 +187,7 @@ function isEmail(email) {
 /**
  * Start of JavaScript Actions
  * **/
-$('.pagination').twbsPagination({
-    totalPages: 16,
-    visiblePages: 6,
-    next: 'Next',
-    prev: 'Prev',
-    onPageClick: function (event, page) {
-        //fetch content and render here
-        var i;
-        for(i = page; i < page + 6; i++){
-            $('.page-content-'+i).removeClass("hidden");
-        }
-    }
-});
+// $('.pagination').twbsPagination();
 
 $('.trip_type').on("click",function(){
     var trip_type = $(this).text();
@@ -210,7 +198,11 @@ $('.search_flight').on("click",function(){
 
 
 
+
+
     $('.template-content').addClass('hidden');
+    $('#flight-search-dialog').modal('hide');
+    $('#multi-city-dialog').modal('hide')
     $('.flight-search-loader').removeClass('hidden');
 
 
@@ -271,6 +263,8 @@ $('.search_flight').on("click",function(){
                 toastWarning("Your device could not establish a connection to the server. Try again");
             }
             $('.template-content').removeClass('hidden');
+            $('#flight-search-dialog').modal('show');
+            $('#multi-city-dialog').modal('show')
             $('.flight-search-loader').addClass('hidden');
         })
         .catch(function (error) {
@@ -283,6 +277,8 @@ $('.search_flight').on("click",function(){
                 toastWarning(Error.arrival_airport[0]);
             }
             $('.template-content').removeClass('hidden');
+            $('#flight-search-dialog').modal('show');
+            $('#multi-city-dialog').modal('show')
             $('.flight-search-loader').addClass('hidden');
         });
 
@@ -446,8 +442,8 @@ $('.reduce_by_one').on('click',function(){
 });
 
 $('.search_multi_flight').on('click',function(){
-    $('.template-content').addClass('hidden');
-    $('.flight-search-loader').removeClass('hidden');
+
+
     var seg = '.multi_seg_num';
     var seg_num = $(seg).val();
     var i;
@@ -458,7 +454,6 @@ $('.search_multi_flight').on('click',function(){
       var arrival_airport = $('.toHide'+i).find('.arrival_airport_multi').val();
       var departure_date = $('.toHide'+i).find('.departure_date_multi').val();
       if( !(departure_airport) || !(arrival_airport) || !(departure_date)){
-          $(body).LoadingOverlay("show");
           toastWarning("All input fields are required");
           return false;
       }else{
@@ -470,7 +465,13 @@ $('.search_multi_flight').on('click',function(){
           originDestinations.push(originDestination);
       }
    }
-   var cabinType = $(".cabin_type_multi").val();
+
+    $('.template-content').addClass('hidden');
+    $('.flight-search-loader').removeClass('hidden');
+    $.magnificPopup.close();
+
+
+    var cabinType = $(".cabin_type_multi").val();
     var numOfAdults = $(".adult_passengers_multi").val();
     var numOfInfants = $(".infant_passengers_multi").val();
     var numOfChildren = $(".child_passengers_multi").val();
@@ -505,13 +506,19 @@ $('.search_multi_flight').on('click',function(){
             }if(response.status === 500){
                 toastWarning("Your device could not establish a connection to the server. Try again");
             }
-            $('.template-content').removeClass('hidden');
             $('.flight-search-loader').addClass('hidden');
+            $('.template-content').removeClass('hidden');
+            $.magnificPopup.open({items: {src: '#multi-city-dialog'},type: 'inline'});
+
         })
         .catch(function(error){
             var Error = error.response.data.errors;
-            $('.template-content').removeClass('hidden');
             $('.flight-search-loader').addClass('hidden');
+            $('.template-content').removeClass('hidden');
+            $.magnificPopup.open({items: {src: '#multi-city-dialog'},type: 'inline'});
+            // $('#flight-search-dialog').modal('show');
+            // $('#multi-city-dialog').modal('show')
+
         });
 });
 
@@ -565,10 +572,14 @@ $('.pay_now').on('click',function(){
 
 $('.search_hotel').on('click',function(){
     var city = $('.destination_city').val();
+    var city_code = city.slice(0,3);
     var checkin_date = $('.checkin_date').val();
     var checkout_date = $('.checkout_date').val();
     var guests = $('.guests').val();
-    $(body).LoadingOverlay("show");
+    $('.to-be-searched-location').text(city);
+    $(".hotel-search-image").attr("src","https://photo.hotellook.com/static/cities/640x480/"+ city_code +".jpg");
+    $('.template-content').addClass('hidden');
+    $('.hotel-search-loader').removeClass('hidden');
     axios.post('/searchHotel',{
         city : city,
         checkin_date : checkin_date,
@@ -577,7 +588,8 @@ $('.search_hotel').on('click',function(){
     })
 
         .then(function (response){
-            $(body).LoadingOverlay("hide");
+            $('.template-content').removeClass('hidden');
+            $('.hotel-search-loader').addClass('hidden');
             if(response.data === 1){
                 toastSuccess('Search completed. Redirecting to available hotels page');
                 window.location.href = baseUrl+ '/available-hotels';
@@ -592,7 +604,8 @@ $('.search_hotel').on('click',function(){
             }
         })
         .catch(function (error){
-            $(body).LoadingOverlay("hide");
+            $('.template-content').removeClass('hidden');
+            $('.hotel-search-loader').addClass('hidden');
             var Error = error.response.data.errors;
             if(typeof Error.city[0] !== 'undefined'){
                 toastWarning(Error.city[0]);
@@ -636,13 +649,15 @@ $('.hotel_filter').on('click',function(){
 });
 
 $('.hotel_description').on('click',function(){
-    $(body).LoadingOverlay("show");
+    $('.template-content').addClass('hidden');
+    $('.hotel-description-loader').removeClass('hidden');
     var id = $(this).val();
     axios.post('/hotelPropertyDescription',{
       id : id
     })
         .then(function(response){
-            $(body).LoadingOverlay("hide");
+            $('.template-content').removeClass('hidden');
+            $('.hotel-description-loader').addClass('hidden');
             if(response.data === 1){
                 toastInfo('Hotel property description retained. Redirecting to information page');
                 window.location.href = baseUrl+'/hotel-information';
@@ -662,7 +677,8 @@ $('.hotel_description').on('click',function(){
         })
 
         .catch(function(error){
-            $(body).LoadingOverlay("hide");
+            $('.template-content').removeClass('hidden');
+            $('.hotel-description-loader').addClass('hidden');
             var Error = error.response.data.errors;
         })
 });

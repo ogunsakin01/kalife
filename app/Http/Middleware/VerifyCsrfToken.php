@@ -15,11 +15,11 @@ class VerifyCsrfToken extends Middleware
         '/flight-booking-confirmation',
         '/hotel-booking-confirmation',
         '/package-booking-confirmation',
-        '/packages/storePackageInfo',
-        '/packages/storeFlightInfo',
-        '/packages/storeHotelInfo',
-        '/packages/storeAttractionInfo',
-        '/packages/storeSightSeeingInfo',
-        '/packages/storeGoodToKnowInfo'
+        '/backend/packages/storePackageInfo',
+        '/backend/packages/storeFlightInfo',
+        '/backend/packages/storeHotelInfo',
+        '/backend/packages/storeAttractionInfo',
+        '/backend/packages/storeSightSeeingInfo',
+        '/backend/packages/storeGoodToKnowInfo'
     ];
 }

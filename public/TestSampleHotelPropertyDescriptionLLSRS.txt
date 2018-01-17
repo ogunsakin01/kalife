@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">HotelPropertyDescriptionLLSRQ</eb:Service><eb:Action>HotelPropertyDescriptionLLSRS</eb:Action><eb:MessageData><eb:MessageId>662738294154280150</eb:MessageId><eb:Timestamp>2018-01-12T08:10:18</eb:Timestamp><eb:RefToMessageId>662664294138980151</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3190236009034212722!1828882!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><HotelPropertyDescriptionRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">HotelPropertyDescriptionLLSRQ</eb:Service><eb:Action>HotelPropertyDescriptionLLSRS</eb:Action><eb:MessageData><eb:MessageId>1261644508598450611</eb:MessageId><eb:Timestamp>2018-01-16T14:07:41</eb:Timestamp><eb:RefToMessageId>1261504508582170150</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTC!ICESMSLB\/CRT.LB!-3188732595558107509!1724546!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><HotelPropertyDescriptionRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
  <stl:ApplicationResults status="Complete">
-  <stl:Success timeStamp="2018-01-12T02:10:18-06:00"/>
+  <stl:Success timeStamp="2018-01-16T08:07:40-06:00"/>
  </stl:ApplicationResults>
  <RoomStay>
-  <BasicPropertyInfo ChainCode="RD" GeoConfidenceLevel="0" HotelCityCode="LHR" HotelCode="0022422" HotelName="RADISSON EDWARDIAN SUSSEX HOTE" Latitude="51.449840" Longitude="-.200080" NumFloors="4" RPH="001">
+  <BasicPropertyInfo ChainCode="CN" GeoConfidenceLevel="0" HotelCityCode="SIN" HotelCode="0012942" HotelName="CONRAD SINGAPORE" Latitude="1.293770" Longitude="103.858460" NumFloors="31" RPH="001">
    <Address>
-    <AddressLine>19-25 GRANVILLE PLACE</AddressLine>
-    <AddressLine>LONDON GB W1H 6PA</AddressLine>
-    <CountryCode>GB</CountryCode>
+    <AddressLine>TWO TEMASEK BOULEVARD</AddressLine>
+    <AddressLine>SINGAPORE SG</AddressLine>
+    <CountryCode>SG</CountryCode>
    </Address>
    <Awards>
-    <AwardProvider>NTM3  CROWN</AwardProvider>
+    <AwardProvider>NTM4  CROWN</AwardProvider>
    </Awards>
    <CheckInTime>14:00</CheckInTime>
-   <CheckOutTime>11:00</CheckOutTime>
+   <CheckOutTime>12:00</CheckOutTime>
    <ContactNumbers>
-    <ContactNumber Fax="44-207-514-3427" Phone="44-207-408-0130"/>
+    <ContactNumber Fax="65--63339166" Phone="65--63348888"/>
    </ContactNumbers>
    <DirectConnect Ind="true">
     <AdditionalData Ind="false"/>
     <CurrencyConverted Ind="false"/>
     <DC_AvailParticipant Ind="true"/>
     <DC_SellParticipant Ind="true"/>
-    <RequestFail Ind="true"/>
+    <RequestFail Ind="false"/>
     <UnAvail Ind="false"/>
    </DirectConnect>
    <IndexData>
-    <Index CountryState="C/GB" DistanceDirection="3N" LocationCode="A" Point="MADAME TUSSAUDS" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="2N" LocationCode="A" Point="TRAFALGAR SQUARE" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="3E" LocationCode="A" Point="TOWER OF LONDON" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="LONDON" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="1N" LocationCode="A" Point="BUCKINGHAM PALACE" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="2N" LocationCode="A" Point="BRITISH MUSEUM" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="1W" LocationCode="A" Point="BOND STREET" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="5N" LocationCode="A" Point="AMERICAN EMBASSY" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="0N" LocationCode="A" Point="HYDE PARK" TransportationCode="O"/>
-    <Index CountryState="C/GB" DistanceDirection="1N" LocationCode="A" Point="PICCADILLY CIRCLE" TransportationCode="O"/>
-    <Index DistanceDirection="16W" LocationCode="C" Point="LHR" TransportationCode="O"/>
-    <Index DistanceDirection="0E" LocationCode="A" Point="LON" TransportationCode="O"/>
-    <Index DistanceDirection="30SE" LocationCode="C" Point="LTN" TransportationCode="O"/>
-    <Index DistanceDirection="34SW" LocationCode="C" Point="STN" TransportationCode="O"/>
-    <Index DistanceDirection="34S" LocationCode="C" Point="LGW" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="1N" LocationCode="A" Point="BOAT QUAY" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="1N" LocationCode="A" Point="MERLION PARK" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="2N" LocationCode="A" Point="CHINA TOWN" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="1N" LocationCode="A" Point="CHIJMES" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="12N" LocationCode="C" Point="NIGHT SAFARI" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="1N" LocationCode="A" Point="ASIAN CIVILISATION MUS" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="1N" LocationCode="A" Point="RAFFLES CITY" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="15N" LocationCode="C" Point="SINGAPORE ZOO GARDENS" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="3N" LocationCode="A" Point="ORCHARD ROAD" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="20N" LocationCode="C" Point="JURONG BIRD PARK" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="15N" LocationCode="C" Point="MANDAI ZOO NIGHT SAFARI" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="1N" LocationCode="A" Point="CLARKE QUAY" TransportationCode="O"/>
+    <Index CountryState="C/SG" DistanceDirection="4N" LocationCode="A" Point="BOTANIC GARDENS" TransportationCode="O"/>
+    <Index DistanceDirection="9SW" LocationCode="A" Point="SIN" TransportationCode="O"/>
    </IndexData>
    <PropertyOptionInfo>
     <ADA_Accessible Ind="false"/>
@@ -53,14 +52,14 @@
     <BusinessReady Ind="false"/>
     <CarRentalCounter>N</CarRentalCounter>
     <Conventions Ind="false"/>
-    <Dataport Ind="false"/>
+    <Dataport Ind="true"/>
     <Dining Ind="true"/>
     <DryClean Ind="true"/>
     <EcoCertified Ind="false"/>
-    <ExecutiveFloors Ind="false"/>
+    <ExecutiveFloors Ind="true"/>
     <FamilyPlan Ind="true"/>
     <FitnessCenter Ind="true"/>
-    <FreeLocalCalls Ind="false"/>
+    <FreeLocalCalls Ind="true"/>
     <FreeParking Ind="false"/>
     <FreeShuttle Ind="false"/>
     <FreeWifiInMeetingRooms Ind="false"/>
@@ -68,7 +67,7 @@
     <FreeWifiInRooms Ind="false"/>
     <FullServiceSpa Ind="false"/>
     <GameFacilities Ind="false"/>
-    <Golf Ind="false"/>
+    <Golf Ind="true"/>
     <GovtSafetyFire Ind="true"/>
     <HighSpeedInternet Ind="true"/>
     <HypoallergenicRooms Ind="false"/>
@@ -81,25 +80,25 @@
     <InteriorDoorways Ind="true"/>
     <Jacuzzi Ind="false"/>
     <KidsFacilities Ind="false"/>
-    <KitchenFacilities Ind="false"/>
+    <KitchenFacilities Ind="true"/>
     <MealService Ind="false"/>
     <MeetingFacilities Ind="true"/>
     <NoAdultTV Ind="false"/>
     <NonSmoking Ind="true"/>
-    <OutdoorPool Ind="false"/>
-    <Parking>N</Parking>
+    <OutdoorPool Ind="true"/>
+    <Parking>Y-ON SITE</Parking>
     <Pets Ind="false"/>
-    <Pool Ind="false"/>
+    <Pool Ind="true"/>
     <PublicTransportationAdjacent Ind="false"/>
     <Recreation Ind="true"/>
     <RestrictedRoomAccess Ind="false"/>
-    <RoomService Ind="false"/>
+    <RoomService Ind="true"/>
     <RoomService24Hours Ind="false"/>
     <RoomsWithBalcony Ind="false"/>
     <SkiInOutProperty Ind="false"/>
     <SmokeFree Ind="false"/>
     <SmokingRoomsAvail Ind="false"/>
-    <Tennis Ind="false"/>
+    <Tennis Ind="true"/>
     <WaterPurificationSystem Ind="false"/>
     <Wheelchair Ind="true"/>
    </PropertyOptionInfo>
@@ -121,255 +120,602 @@
    </PropertyTypeInfo>
    <SpecialOffers Ind="false"/>
    <Taxes>
-    <Text>15.00 PCT</Text>
+    <Text>17.7PCT VA</Text>
    </Taxes>
    <VendorMessages>
+    <AdditionalAttractions>
+     <Text>* ACCENTURE                      2 MILES/3.2KM</Text>
+     <Text>* AMERICAN EXPRESS               2 MILES/3.2KM</Text>
+     <Text>* ASTRAZENECA                    0.5 BLOCKS</Text>
+     <Text>* ATOS ORIGIN                    0 MILES/0KM</Text>
+     <Text>* BAE SYSTEMS                    5 MILES/8KM</Text>
+     <Text>* BASF SOUTH EAST ASIA           0 MILES/0KM</Text>
+     <Text>* BHP BILLITON                   4 MILES/6.4KM</Text>
+     <Text>* BMC SOFTWARE                   0 MILES/0KM</Text>
+     <Text>* BOEHRINGER INGELHEIM           2 MILES/3.2KM</Text>
+     <Text>* CABLE AND WIRELESS             0 MILES/0KM</Text>
+     <Text>* CALTEX/CHEVRON                 4 MILES/6.4KM</Text>
+     <Text>* CHUBB PACIFIC                  2 MILES/3.2KM</Text>
+     <Text>* CIBA VISION                    5 MILES/8KM</Text>
+     <Text>* CITIGROUP                      0 MILES/0KM</Text>
+     <Text>* COMPUTER ASSOCIATES            0 MILES/0KM</Text>
+     <Text>* CONOCO PHILLIPS                0 MILES/0KM</Text>
+     <Text>* CREATIVE TECHNOLOGY            18 MILES/28.8KM</Text>
+     <Text>* CREDIT SUISSE FIRST BOSTON     2 MILES/3.2KM</Text>
+     <Text>* DAIMLERCHRYSLER                0 MILES/0KM</Text>
+     <Text>* DANONE ASIA                    0 MILES/0KM</Text>
+     <Text>* DEUTSCHE BANK                  0 MILES/0KM</Text>
+     <Text>* DYSTAR SINGAPORE               2 MILES/3.2KM</Text>
+     <Text>* EMC COMPUTER SYSTEMS           0 MILES/0KM</Text>
+     <Text>* EMBASSY OF THE UNITED STATES   5 MILES/8KM</Text>
+     <Text>* EQUANT PTE LTD                 0 MILES/0KM</Text>
+     <Text>* EXXONMOBILE                    8 MILES/12.8KM</Text>
+     <Text>* GARTNER                        0 MILES/0KM</Text>
+     <Text>* GENERAL ELECTRIC               4 MILES/6.4KM</Text>
+     <Text>* GOLDMAN SACHS                  2 MILES/3.2KM</Text>
+     <Text>* HSH NORDBANK                   0 MILES/0KM</Text>
+     <Text>* HEWLETT PACKARD                6 MILES/9.6KM</Text>
+     <Text>* HITACHI                        4 MILES/6.4KM</Text>
+     <Text>* IBM SINGAPORE                  17 MILES/27.2KM</Text>
+     <Text>* IMC SHIPPING                   0 MILES/0KM</Text>
+     <Text>* JP MORGAN                      4 MILES/6.4KM</Text>
+     <Text>* JOHNSON AND JOHNSON            18 MILES/28.8KM</Text>
+     <Text>* KRAFT                          8 MILES/12.8KM</Text>
+     <Text>* LG ELECTRONICS                 0 MILES/0KM</Text>
+     <Text>* LG PHILLIPS                    0 MILES/0KM</Text>
+     <Text>* LEHMAN BROTHERS                0 MILES/0KM</Text>
+     <Text>* MAXTOR PERIPHERALS             18 MILES/28.8KM</Text>
+     <Text>* MCKINSEY AND COMPANY</Text>
+    </AdditionalAttractions>
     <Attractions>
-     <Text>PRIMARY CITY -</Text>
-     <Text>LON -</Text>
-     <Text>0 MI E</Text>
-     <Text>BRITISH MUSEUM            0.5 MI 0 BLOCKS W</Text>
-     <Text>BUCKINGHAM PALACE         1 MI 0 BLOCKS N</Text>
-     <Text>COVENT GARDEN             1.5 MI 0 BLOCKS E</Text>
-     <Text>HARRODS                   1.3 MI 0 BLOCKS N</Text>
-     <Text>HYDE PARK                 1 MI 0 BLOCKS NE</Text>
-     <Text>KENSINGTON SHOPPING       1.25 MI 0 BLOCKS NE</Text>
-     <Text>LEICESTER SQUARE          1 MI 0 BLOCKS W</Text>
-     <Text>MADAME TUSSAUD S          1 MI 0 BLOCKS S</Text>
-     <Text>MARBLE ARCH TUBE STATION  0 MI 0 BLOCKS W</Text>
-     <Text>MILLENNIUM DOME           8 MI 0 BLOCKS E</Text>
-     <Text>NATIONAL GALLERY          1.2 MI 0 BLOCKS NW</Text>
-     <Text>NATURAL HISTORY MUSEUM    2 MI 0 BLOCKS NW</Text>
-     <Text>THEATRES, THEATRELAND     1 MI 0 BLOCKS E</Text>
-     <Text>TOWER OF LONDON           3.5 MI 0 BLOCKS E</Text>
-     <Text>TRAFALGAR SQUARE          1.2 MI 0 BLOCKS NW</Text>
+     <Text>ATTRACTIONS-</Text>
+     <Text>CITY CENTER                        0.3  MI /0.5  KM</Text>
     </Attractions>
     <Awards>
-     <Text>4 STARS</Text>
+     <Text>RATINGS-</Text>
+     <Text>.</Text>
+     <Text>- MOBIL RATING</Text>
+     <Text>N STARS</Text>
+     <Text>.</Text>
     </Awards>
     <Cancellation>
-     <Text>-20OCT09 - 31DEC12 -</Text>
-     <Text>CANCEL BY 1600 HOURS ON DAY OF ARRIVAL, LOCAL HOTEL TIME</Text>
-     <Text>TO AVOID A CANCELLATION PENALTY</Text>
-     <Text>CANCELLATION POLICY TEXT -</Text>
-     <Text>-BECAUSE THE CANCEL POLICY MAY VARY BY RATE, PLEASE SEE</Text>
-     <Text>THE INDIVIDUAL RATE DETAILS/RATE RULES FOR CANCELLATION</Text>
-     <Text>POLICY</Text>
+     <Text>RESERVATIONS MUST BE CANCELED *24 HOURS* PRIOR TO ARRIVAL</Text>
+     <Text>DATE TO AVOID A PENALTY OF ONE NIGHT ROOM AND TAX CHARGE.</Text>
+     <Text>*NOTE-INDIVIDUAL PLANS MAY HAVE VARYING CANCELLATION</Text>
+     <Text>POLICIES.</Text>
+     <Text>.</Text>
     </Cancellation>
     <Deposit>
-     <Text>-20OCT09 - 31DEC12 MON-SUN</Text>
-     <Text>-BECAUSE THE DEPOSIT POLICY MAY VARY BY RATE, PLEASE</Text>
-     <Text>SEE INDIVIDUAL RATE DETAILS/RATE RULES FOR DEPOSIT</Text>
-     <Text>POLICY.</Text>
-     <Text>ACCEPTED FORMS OF DEPOSIT-</Text>
-     <Text>CREDIT CARD</Text>
+     <Text>DURING CERTAIN TIMES OF THE YEAR A DEPOSIT FOR PARTIAL OR</Text>
+     <Text>FULL STAY MAY BE REQUIRED AT THE TIME OF BOOKING. IF DEPOSIT</Text>
+     <Text>IS REQUIRED SEE RATE RULES TO AVOID FORFEITURE OF DEPOSIT.</Text>
+     <Text>.</Text>
     </Deposit>
     <Description>
-     <Text>- HOTEL</Text>
-     <Text>YEAR BUILT - 1904            YEAR REMODELED - 2003</Text>
-     <Text>ADDITIONAL PROPERTY DESCRIPTION -</Text>
-     <Text>HOTEL HAS UNDERGONE A 6 MILLION POUND REFURBISHMENT TO</Text>
-     <Text>MAKE THIS HOTEL AN IDEAL PLACE TO STAY. CENTRALLY</Text>
-     <Text>LOCATED NEAR MABLE ARCH AND OXFORD STREET, IT IS A</Text>
-     <Text>PERFECT LOCATION FOR SHOPPING AND SIGHTSEEING. THE</Text>
-     <Text>HOTEL HAS A FULLY EQUIPPED FITNESS ROOM TOGETHER WITH</Text>
-     <Text>STATE OF THE ART BUSINESS CENTRE, ONE RESTAURANT</Text>
-     <Text>SERVING TRADITIONAL BRITISH CUISINE AND THE SUSSEX</Text>
-     <Text>LOUNGE</Text>
+     <Text>LOCATED IN THE MARINA BAY HUB ADJACENT TO THE SUNTEC</Text>
+     <Text>SINGAPORE - CONVENTION - EXHIBITION CENTRE. 15 MINUTES DRIVE</Text>
+     <Text>TO/FROM CHANGI INTERNATIONAL AIRPORT. DIRECT ACCESS TO 1000</Text>
+     <Text>SHOPS AND 300 RESTAURANTS. CLOSE TO WORLD-CLASS ATTRACTIONS</Text>
+     <Text>INCLUDING THE SINGAPORE FLYER COLONIAL HERITAGE AREA AND</Text>
+     <Text>MUSEUMS.</Text>
+     <Text>.</Text>
     </Description>
     <Dining>
-     <Text>PROPERTY HAS 1 RESTAURANTS ON-SITE</Text>
-     <Text>ADDITIONAL MEAL PLAN DESCRIPTION -</Text>
-     <Text>REFER TO DINING FOR MEAL PLAN INFORMATION. BREAKFAST</Text>
-     <Text>COSTS 17 GBP PER PERSON.</Text>
-     <Text>NOVA BAR AND GRILL</Text>
-     <Text>TYPE OF RESTAURANT - FULL SERVICE RESTAURANT</Text>
-     <Text>MEALS SERVED - BREAKFAST - LUNCH - DINNER - DESSERT</Text>
-     <Text>HOURS -</Text>
-     <Text>FROM 0630HRS TO 2230HRS MON-SUN</Text>
-     <Text>RESTAURANT DESCRIPTION -</Text>
-     <Text>RESTAURANT IS LOCATED ON SITE AND OFFERS A SELECTION OF</Text>
-     <Text>TOP QUALITY BRITISH CUISINE IN A RELAXED ATMOSPHERE</Text>
-     <Text>SUSSEX LOUNGE</Text>
-     <Text>TYPE OF RESTAURANT - BAR/LOUNGE</Text>
-     <Text>HOURS -</Text>
-     <Text>FROM 0600HRS TO 0200HRS MON-SUN</Text>
-     <Text>RESTAURANT DESCRIPTION -</Text>
-     <Text>SUSSEX LOUNGE IS LOCATED NEAR RECEPTION AND HAS A</Text>
-     <Text>CASUAL DRESS CODE</Text>
+     <Text>ROOM ONLY - ROOM ONLY</Text>
+     <Text>.</Text>
+     <Text>-ON SITE RESTAURANT</Text>
+     <Text>GOLDEN PEONY-</Text>
+     <Text>SOPHISTICATED AND INTIMATE THE AWARD-WINNING GOLDEN</Text>
+     <Text>PEONY OFFERS THE EXQUISITE CHINESE /CANTONESE/</Text>
+     <Text>CREATIONS OF TOP HONG KONG CHEFS. THE TRANQUIL</Text>
+     <Text>ATMOSPHERE ENCOURAGES GUESTS TO REFLECT AS THEY SAVOR A</Text>
+     <Text>PANOPLY OF FLAVOURSOME DISHES INCLUDING THE HOUSE</Text>
+     <Text>SPECIALTY - DIM SUM FOR LUNCH.</Text>
+     <Text>.</Text>
+     <Text>OSCAR*S-</Text>
+     <Text>OPEN 24-HOURS 7 DAYS A WEEK OSCAR*S OFFERS DELICIOUS</Text>
+     <Text>LOCAL AND INTERNATIONAL A LA CARTE DISHES AND SUMPTUOUS</Text>
+     <Text>BUFFETS FOR BREAKFAST LUNCH AND DINNER. INDULGE IN MORE</Text>
+     <Text>DELECTABLE CULINARY CREATIONS FROM THE POPULAR AMAZING</Text>
+     <Text>GRAZE SUNDAY BRUNCH WITH FREE FLOW CHAMPAGNE WINE AND</Text>
+     <Text>BEER.</Text>
+     <Text>.</Text>
+     <Text>OSCAR*S SIDEWALK TERRACE-</Text>
+     <Text>WATCH THE WORLD PASSBY WHILE SIPPING ON SPECIALTY</Text>
+     <Text>COFFEES OR COLORFUL COCKTAILS AND INDULGE IN TEMPTING</Text>
+     <Text>ICE-CREAMS OR DESSERTS IN THE STYLISH TERRACE.</Text>
+     <Text>ALSO SERVES BREAKFAST LUNCH AND DINNER.</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>-OFF SITE RESTAURANT</Text>
     </Dining>
     <Directions>
-     <Text>DIRECTION TO THE PROPERTY FROM NORTH -</Text>
-     <Text>EXIT THE AIRPORT AND TAKE THE M4 TO CENTRAL LONDON,</Text>
-     <Text>THIS WILL TURN INTO THE A4 -FOLLOW THIS ROAD THROUGH</Text>
-     <Text>KNIGHTSBRIDGE TO THE EXIT THE AIRPORT AND TAKE THE M4</Text>
-     <Text>TO CENTRAL LONDON, THIS WILL TURN INTO THE A4 -FOLLOW</Text>
-     <Text>THIS ROAD THROUGH KNIGHTSBRIDGE TO THE ROUNDABOUT -TAKE</Text>
-     <Text>THE FIRST EXIT WHICH IS PARK LANE AND CONTINUE TO THE</Text>
-     <Text>END, TO ANOTHER ROUNDABOUT WHICH IS MARBLE ARCH -TAKE</Text>
-     <Text>THE 4TH EXIT WHICH IS OXFORD STREET AND THE FIRST LEFT</Text>
-     <Text>ONTO PORTMAN STREET -GRANVILLE PLACE IS THE FIRST EXIT</Text>
-     <Text>ON THE RIGHT</Text>
+     <Text>- CHANGI INTERNATIONAL AIRPORT..12.4MI / 20.0KM</Text>
+     <Text>- SELETAR.......................12.4MI / 20.0KM</Text>
+     <Text>- FROM SIN -</Text>
+     <Text>TAKE THE EAST COAST EXPRESSWAY /ECP/ IN THE DIRECTION OF THE</Text>
+     <Text>CITY.FILTER LEFT AT 15KM MARK AND CONTINUE TO ROCHOR. TURN</Text>
+     <Text>LEFT TO TEMASEK BLVD. GO ROUND THE SUNTEC FOUNTAIN AND</Text>
+     <Text>CONTINUE TO TEMASEK BLVD. THE HOTEL IS FACING THE SUNTEC</Text>
+     <Text>FOUNTAIN</Text>
+     <Text>.</Text>
+     <Text>- ADDITIONAL DIRECTIONS</Text>
+     <Text>DIRECTIONS *** FROM CHANGI INTERNATIONAL</Text>
+     <Text>AIRPORT***</Text>
+     <Text>- TAKE THE EAST COAST EXPRESSWAY /ECP/ IN THE</Text>
+     <Text>DIRECTION OF **THE CITY**</Text>
+     <Text>- FILTER LEFT AT THE 15 KM MARK AND CONTINUE IN</Text>
+     <Text>THE DIRECTION OF ROCHOR ROAD</Text>
+     <Text>- TURN LEFT TO TEMASEK BOULEVARD. GO ROUND THE</Text>
+     <Text>WORLD*S LARGEST FOUNTAIN - THE SUNTEC FOUNTAIN AND</Text>
+     <Text>CONTINUE TO TEMASEK BOULEVARD. THE HOTEL IS FACING</Text>
+     <Text>THE SUNTEC FOUNTAIN ON TEMASEK BOULEVARD. WEBSITE</Text>
+     <Text>WWW.STREETDIRECTORY.COM.SG FOR VARIOUS MAPS OF</Text>
+     <Text>SINGAPORE.</Text>
+     <Text>.</Text>
+     <Text>-PARKING DETAILS</Text>
+     <Text>SELF PARKING 1.00SGD. VALET 12.00SGD. SECURED. COVERED.</Text>
+     <Text>ADDITIONAL HOURLY PARKING CHARGES MAY APPLY</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>.</Text>
     </Directions>
     <Facilities>
-     <Text>ON-SITE FACILITIES -</Text>
-     <Text>GENERAL FACILITIES -</Text>
-     <Text>BAR                         ELEVATORS</Text>
-     <Text>LOUNGE                      MEETING ROOM</Text>
-     <Text>NON-SMOKING ROOMS           RESTAURANT</Text>
-     <Text>CHARGEABLE FACILITIES -</Text>
-     <Text>BUSINESS CENTER</Text>
-     <Text>FITNESS CENTER</Text>
-     <Text>PUBLIC AREA FACILITIES -</Text>
-     <Text>ANALOG DIAL UP DATAPORT</Text>
-     <Text>HIGH SPEED INTERNET ACCESS  BULLDOG 9.95 GBP</Text>
-     <Text>WIRELESS DATA CONNECTION  IYONDER COMPLIMENTARY</Text>
-     <Text>OFF-SITE FACILITIES -</Text>
-     <Text>GENERAL FACILITIES -</Text>
-     <Text>BANK                        BAR</Text>
-     <Text>BARBER/BEAUTY SHOP          COFFEE SHOP</Text>
-     <Text>GIFT SHOP                   INDOOR POOL</Text>
-     <Text>LOUNGE                      PHARMACY</Text>
-     <Text>RESTAURANT</Text>
-     <Text>CHARGEABLE FACILITIES -</Text>
-     <Text>FITNESS CENTER</Text>
-     <Text>PARKING FACILITIES -</Text>
-     <Text>GARAGE PARKING</Text>
-     <Text>MEETING AND CONVENTION FACILITIES -</Text>
+     <Text>AIR CONDITIONING            MEETS BUILDING CODES</Text>
+     <Text>ATM ON SITE                 COFFEE SHOP</Text>
+     <Text>EXECUTIVE FLOOR             GIFT SHOP</Text>
+     <Text>DISABLED PARKING            DISABLED ACCESS</Text>
+     <Text>HOTEL SAFE</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>EXPRESS MAIL                MEETING FACILITIES</Text>
+     <Text>MULTI LINGUAL STAFF         NOTARY PUBLIC</Text>
+     <Text>OFFICE RENTAL               POOL SIDE SERVICE</Text>
+     <Text>RESTAURANT                  CHILDREN*S MENU</Text>
+     <Text>CRIBS                       HIGH CHAIR</Text>
+     <Text>BAGGAGE STORAGE             BARBER SHOP</Text>
+     <Text>FLORIST                     FAX RENTAL</Text>
+     <Text>ROOM SERVICE</Text>
+     <Text>.</Text>
+     <Text>.</Text>
     </Facilities>
     <Guarantee>
-     <Text>-20OCT09 - 31DEC12 MON-SUN</Text>
-     <Text>GUARANTEE REQUIRED FOR LATE ARRIVAL</Text>
-     <Text>RESERVATIONS HELD UNTIL 1600 HOURS ON DAY OF ARRIVAL,</Text>
-     <Text>LOCAL HOTEL TIME.</Text>
-     <Text>-BECAUSE THE GUARANTEE POLICY MAY VARY BY RATE, PLEASE</Text>
-     <Text>SEE THE INDIVIDUAL RATE DETAILS/RATE RULES FOR GUARANTEE</Text>
-     <Text>POLICY</Text>
-     <Text>ACCEPTED FORMS OF GUARANTEE-</Text>
-     <Text>AGENCY IATA/ARC              COMPANY NAME/ADDRESS</Text>
-     <Text>CREDIT CARD</Text>
-     <Text>ACCEPTED FORMS OF PAYMENT-</Text>
-     <Text>CREDIT CARD</Text>
+     <Text>SEE RATES RULES FOR GUARANTEE REQUIREMENTS.</Text>
+     <Text>.</Text>
     </Guarantee>
     <Location>
-     <Text>PRIMARY PROPERTY LOCATION - CITY</Text>
-     <Text>DISTRICT - DOWNTOWN - SHOPPING</Text>
-     <Text>LHR AIRPORT                   17 MI W</Text>
-     <Text>LGW AIRPORT                   30 MI S</Text>
-     <Text>STN AIRPORT                   60 MI NE</Text>
+     <Text>-URL  WWW.CONRADHOTELS.COM</Text>
+     <Text>.</Text>
+     <Text>- DOWNTOWN ...........................0.3  MI/0.5  KM</Text>
     </Location>
+    <MarketingInformation>
+     <Text>NONSMOKING REQ-ENTER NS IN SI FIELD</Text>
+     <Text>CONRAD INTERNATIONAL</Text>
+    </MarketingInformation>
     <MiscServices>
-     <Text>EMAIL - RESSUSS RADISSON.COM</Text>
-     <Text>TIME ZONE - GMT</Text>
-     <Text>TAXES AND SURCHARGES -</Text>
-     <Text>TAX- 15.00 PCT</Text>
-     <Text>ADDITIONAL CURRENCY AND TAX INFORMATION -</Text>
-     <Text>FROM 1ST JANUARY, 2010 TAX WILL BE 17.5 PERCENT.</Text>
-     <Text>HOTEL FREQUENT GUEST PROGRAM -</Text>
-     <Text>GOLD POINTS</Text>
+     <Text>- GUARANTEED RATES</Text>
+     <Text>.</Text>
+     <Text>- YEAR BUILT</Text>
+     <Text>1996</Text>
+     <Text>- YEAR REMODELED</Text>
+     <Text>2008</Text>
+     <Text>.</Text>
+     <Text>- COMMISSION PERCENT   10 PCT</Text>
+     <Text>- COMMISSION PLAN MEMBER CENTRALIZED PROGRAMS - YE</Text>
+     <Text>.</Text>
     </MiscServices>
     <Policies>
-     <Text>EXTRA CHILD - N/A.00 GBP     ROLLAWAY FOR CHILD - N/A.00</Text>
-     <Text>GBP</Text>
-     <Text>RATES ARE GUARANTEED</Text>
-     <Text>NO PETS ALLOWED -</Text>
-     <Text>EXTENDED STAY OPTION AVAILABLE -</Text>
-     <Text>PROPERTY OFFERS COMMISSION - RATE OF COMMISSION</Text>
-     <Text>10.00 PCT</Text>
-     <Text>PROPERTY PARTICIPATES IN A CENTRALIZED COMMISSION PROGRAM</Text>
+     <Text>.</Text>
+     <Text>-PET POLICY</Text>
+     <Text>NO PETS ACCEPTED</Text>
+     <Text>.</Text>
+     <Text>-FAMILY POLICY</Text>
+     <Text>CHILDREN 18 AND UNDER STAY FREE IN PARENTS ROOM. CHILDREN 19</Text>
+     <Text>AND OVER WILL BE CHARGED AN EXTRA PERSON CHARGE. THIS WILL</Text>
+     <Text>BE FOR A MAXIMUM OF THREE PERSONS IN THE ROOM *INCLUDING</Text>
+     <Text>CHILDREN*.</Text>
+     <Text>.</Text>
+     <Text>-MINIMUM LENGTH OF STAY POLICY</Text>
+     <Text>MINIMUM NIGHT STAY MAY BE REQUIRED SEASONALLY.</Text>
+     <Text>.</Text>
     </Policies>
     <Recreation>
-     <Text>OFF-SITE RECREATION -</Text>
-     <Text>DANCING                     FINE DINING</Text>
-     <Text>JOGGING                     MUSEUM/GALLERY VIEWING</Text>
-     <Text>NIGHT CLUBS                 OTHER ACTIVITY</Text>
-     <Text>SHOPPING                    SIGHTSEEING TOURS</Text>
-     <Text>SWIMMING                    THEATER</Text>
-     <Text>OFFSITE RECREATIONAL ACTIVITIES -</Text>
-     <Text>SEYMOUR LEISURE CENTRE IS LOCATED 5 MINUTES FROM HOTEL</Text>
-     <Text>WITH INDOOR POOL COSTS 2.50 GBP PER SESSION, FITNESS</Text>
-     <Text>CENTRE COSTS 7.50 GBP PER SESSION.</Text>
+     <Text>.</Text>
+     <Text>RECREATION FACILITIES ONSITE-</Text>
+     <Text>-CARDIO EQUIPMENT             -LIMITED HEALTH CLUB</Text>
+     <Text>-MASSAGE                      -OUTDOOR POOL</Text>
+     <Text>-WEIGHT LIFTING</Text>
+     <Text>.</Text>
+     <Text>RECREATION FACILITIES OFFSITE-</Text>
+     <Text>-GAME ROOM                    -GOLF</Text>
+     <Text>-JOGGING TRACK                -SQUASH COURTS</Text>
+     <Text>-TENNIS COURTS</Text>
+     <Text>.</Text>
+     <Text>RECREATION FACILITIES-</Text>
+     <Text>DRIVING RANGE NEARBY - 3 KM</Text>
+     <Text>PUTTING GREEN - 3 KM</Text>
+     <Text>BOWLING NEARBY - 1 KM</Text>
+     <Text>BEACH - 8 KM</Text>
+     <Text>POOL TABLE - 5 KM</Text>
+     <Text>WALKING TRACK - 0.5 KM</Text>
+     <Text>WATER SKIING - 6 KM</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>CHARGES MAY APPLY FOR SOME RECREATION FACILITIES. CONTACT</Text>
+     <Text>HOTEL FOR INFORMATION</Text>
+     <Text>.</Text>
     </Recreation>
     <Rooms>
-     <Text>NBR OF NON-SMOKING ROOMS - 70</Text>
-     <Text>AIR CONDITIONING, COFFEE SERVICE, IN ROOM SAFE, IRON AND</Text>
-     <Text>IRONING BOARD, HAIRDRYER AND MINIBAR. IF AVAILABLE ADULT</Text>
-     <Text>ROLLAWAYS ON REQUEST AT 40 GBP AND CHILD ROLLAWAYS AT 20</Text>
-     <Text>GBP</Text>
+     <Text>- 507 ROOMS</Text>
+     <Text>- 25 SUITES</Text>
+     <Text>- 31 FLOORS</Text>
+     <Text>- INTERIOR CORRIDORS</Text>
+     <Text>.</Text>
+     <Text>AMENITIES IN ALL ROOMS-</Text>
+     <Text>- AIR CONDITIONING       - ALARM CLOCK</Text>
+     <Text>- CABLE TV               - COFFEE/TEA MAKER</Text>
+     <Text>- HAIR DRYER             - HIGH SPEED INTERNET</Text>
+     <Text>- MINIATURE REFRIGERATOR - MODEM DATAPORT</Text>
+     <Text>- TEMPERATURE CONTROL    - TWO PHONE LINES</Text>
+     <Text>.</Text>
+     <Text>AMENITIES IN SELECT ROOMS-</Text>
+     <Text>- BATH ROBE              - BATHROOM AMENITIES</Text>
+     <Text>- CABLE NEWS             - CORDLESS PHONE</Text>
+     <Text>- DIRECT DIAL PHONE      - DVD PLAYER</Text>
+     <Text>- ELECTRICAL PLUG        - FAX IN ROOM</Text>
+     <Text>ADAPTERS</Text>
+     <Text>- IRONING BOARD          - KITCHEN</Text>
+     <Text>- MINIBAR                - MOBILE PHONE</Text>
+     <Text>- NEWSPAPER              - PHONE IN BATHROOM</Text>
+     <Text>- RADIO                  - REFRIGERATOR</Text>
+     <Text>- SAFE                   - SOFA BED</Text>
+     <Text>- SPEAKER PHONE          - STEREO</Text>
+     <Text>- TELEPHONE ADAPTER      - VOICE MAIL</Text>
+     <Text>- VOLTAGE CONVERTERS     - WORKDESK LAMP</Text>
+     <Text>.</Text>
+     <Text>-FEATURED ROOM AMENITIES</Text>
+     <Text>.</Text>
+     <Text>NON-SMOKING ROOM</Text>
+     <Text>ACCESSIBLE</Text>
+     <Text>HAND HELD SHOWER</Text>
+     <Text>SHOWER FOR WHEELCHAIR</Text>
+     <Text>CONNECTING ROOMS</Text>
+     <Text>LEVER DOOR HANDLES</Text>
+     <Text>WELCOME AMENITY</Text>
+     <Text>STANDARD NETWORK TV</Text>
+     <Text>TWO PHONES</Text>
+     <Text>TELEPHONE - AUTO WAKEUP</Text>
+     <Text>AUTOMATIC DOOR CLOSER</Text>
+     <Text>220 AC</Text>
+     <Text>PAY PER VIEW TV</Text>
+     <Text>BATHROOM DOORS AT LEAST 32 INCHES WIDE</Text>
+     <Text>ROOMS ACCESSIBLE FOR WHEELCHAIRS</Text>
+     <Text>GRAB BARS IN BATHROOM</Text>
+     <Text>AMPLIFIED TELEPHONES</Text>
+     <Text>ROOM AIR FILTRATION</Text>
+     <Text>ONE-INCH DEADBOLT ON CONNECTING DOORS</Text>
+     <Text>EMERGENCY PHONE EXTENSION IN ALL GUEST ROOMS</Text>
+     <Text>.</Text>
+     <Text>.</Text>
     </Rooms>
     <Safety>
-     <Text>ROOM SAFETY AND SECURITY -</Text>
-     <Text>DOORS HAVE VIEW PORTS</Text>
-     <Text>EMERGENCY EXIT MAPS</Text>
-     <Text>EMERGENCY INFORMATION IN ALL GUEST ROOMS</Text>
-     <Text>SMOKE DETECTORS</Text>
-     <Text>VISUAL ALARMS FOR HEARING IMPAIRED</Text>
-     <Text>WINDOWS OPEN</Text>
-     <Text>PROPERTY SAFETY AND SECURITY -</Text>
-     <Text>ELECTRONIC ROOM KEY SYSTEM</Text>
-     <Text>EMERGENCY EVACUATION DRILL</Text>
-     <Text>EMERGENCY LIGHTING</Text>
-     <Text>FIRE EXTINGUISHERS IN HALLWAYS</Text>
-     <Text>MEETS FIRE SAFETY CODE</Text>
-     <Text>SMOKE DETECTORS IN HALLWAYS</Text>
-     <Text>SMOKE DETECTORS IN PUBLIC AREAS</Text>
+     <Text>RESTRICTED PUBLIC ACCESS TO GUEST ROOM FLOORS</Text>
+     <Text>HOTEL COMPLIES WITH AAA SECURITY STANDARDS</Text>
+     <Text>RESTRICTED PHONE ACCESS FROM PUBLIC AREAS</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>-24 HOUR SECURITY             -ALARMS MONITORED</Text>
+     <Text>-AUDIBLE ALARMS               -SMOKE ALARMS IN HALLS</Text>
+     <Text>-SMOKE ALARMS IN ROOMS        -SMOKE ALARMS PUBLIC AREAS</Text>
+     <Text>-ELEVATOR RECALL              -LINKED TO FIRE DEPT</Text>
+     <Text>-AUTOMATIC FIRE DOORS         -BASIC MEDICAL EQUIPMENT</Text>
+     <Text>-DEAD BOLTS                   -EMERGENCY EVAC PLAN</Text>
+     <Text>-EMERGENCY INFO IN ROOMS      -EMERGENCY LIGHTING</Text>
+     <Text>-EXIT MAPS IN ROOMS           -EXIT SIGNS LIT</Text>
+     <Text>-HALLWAY FIRE DETECTORS       -PUBLIC FIRE DETECTORS</Text>
+     <Text>-ROOM FIRE DETECTORS          -FIRE EXTINGUISHERS IN HALLS</Text>
+     <Text>-FIRST AID AVAILABLE          -SECONDARY LOCKS</Text>
+     <Text>-ROOMS HAVE VIEWPORTS         -MULTIPLE EXITS PER FLOOR</Text>
+     <Text>-PARKING AREAS LIT            -PATROLLED PARKING AREAS</Text>
+     <Text>-SAFETY COMPLIANT             -PA SYSTEM</Text>
+     <Text>-SECURITY PERSONNEL           -SECURE FLOORS AVAILABLE</Text>
+     <Text>-HALL SPRINKLERS              -PUBLIC AREAS SPRINKLERS</Text>
+     <Text>-SPRINKLERS ROOMS             -STAFF TRAINED IN CPR</Text>
+     <Text>-STAFF TRAINED TO DUP KEYS    -STAFF FIRST AID TRAINED</Text>
+     <Text>-UNIFORMED SECURITY           -VENTILATED STAIRWELLS</Text>
+     <Text>-24 HR VIDEO SURVEILLANCE     -RECORDED VID SURVEILLANCE</Text>
+     <Text>-WELL LIT WALKWAYS</Text>
+     <Text>.</Text>
     </Safety>
     <Services>
-     <Text>ON-SITE GENERAL SERVICES -</Text>
-     <Text>BAGGAGE HOLD                BANKING</Text>
-     <Text>BUSINESS SERVICES           CONCIERGE</Text>
-     <Text>CURRENCY EXCHANGE           DOCTOR ON CALL</Text>
-     <Text>DRY CLEANING                SAFE DEPOSIT BOX</Text>
-     <Text>WAKE-UP CALLS</Text>
-     <Text>ON-SITE CHARGEABLE SERVICES -</Text>
-     <Text>LAUNDRY/VALET</Text>
-     <Text>ADDITIONAL ON-SITE PROPERTY SERVICES -</Text>
-     <Text>PAY PER VIEW MOVIES, MUSIC ON DEMAND, INTERNET ON TV</Text>
-     <Text>AND HIGH SPEED INTERNET ACCESS ALL FOR 20 GBP PER 24</Text>
-     <Text>HOURS</Text>
-     <Text>OFF-SITE GENERAL SERVICES -</Text>
-     <Text>BANKING                     HAIR DRESSER</Text>
-     <Text>INTERPRETATION/TRANSLATION  MAIL SERVICES</Text>
-     <Text>THEATER TICKET DESK</Text>
-     <Text>OFF-SITE CHARGEABLE SERVICES -</Text>
-     <Text>CAR RENTAL</Text>
-     <Text>BUSINESS AND MEETING SERVICES -</Text>
-     <Text>FAX SERVICES AVAILABLE AT 2.50 GBP PER PAGE FOR UK.</Text>
-     <Text>EUROPE AND INTERNATIONAL COSTS 4 GBP PER PAGE. PHOTO</Text>
-     <Text>COPY SERVICE AVAILABLE AT .20P PER COPY</Text>
+     <Text>.</Text>
+     <Text>-SERVICES ON PROPERTY</Text>
+     <Text>- AUDIO VISUAL EQUIPMENT      - AIRLINE DESK</Text>
+     <Text>- BEAUTYSHOP                  - BREAKFAST BUFFET</Text>
+     <Text>- BUSINESS CENTER             - BUSINESS CENTER SERVICES</Text>
+     <Text>- CELL PHONE RENTAL           - COMPUTER</Text>
+     <Text>- COMPUTER RENTAL             - CONCIERGE</Text>
+     <Text>- COPY SERVICE                - CURRENCY EXCHANGE</Text>
+     <Text>- EARLY CHECK OUT PENALTY     - EVENING TURN DOWN</Text>
+     <Text>- EXPRESS CHECK OUT           - EXPRESS CHECK IN FEE</Text>
+     <Text>- FAXING INCOMING             - FAXING OUTGOING</Text>
+     <Text>- GROCERY SHOPPING SERVICE    - HAIR SALON</Text>
+     <Text>- DISABLED PARKING            - LATE CHECK OUT</Text>
+     <Text>- LAUNDRY VALET               - LOCAL SHUTTLE</Text>
+     <Text>- SHUTTLE TO ATTRACTIONS      - PARKING</Text>
+     <Text>- SECRETARY SERVICE           - SHOE SHINE</Text>
+     <Text>- SOCIAL HOUR                 - VALET PARKING</Text>
+     <Text>.</Text>
+     <Text>.</Text>
+     <Text>SOME SERVICES MAY INCUR AN ADDITIONAL CHARGE</Text>
+     <Text>.</Text>
     </Services>
     <Transportation>
-     <Text>CITY CENTER IS WITHIN WALKABLE DISTANCE FROM PROPERTY-</Text>
-     <Text>TRANSPORTATION FROM PRIMARY AIRPORT TO PROPERTY -</Text>
-     <Text>TAXI - LONDON BLACK TAXIS ARE THE MOST COMFROTABLE AND</Text>
-     <Text>BEST DESIGNED IN THE WORLD. DRIVERS ARE RELIABLE AND</Text>
-     <Text>LICENSED AND HAVE TO PASS AN EXAM KNOWN AS THE</Text>
-     <Text>KNOWLEDGE, TAKEN OVER 3 YEARS.AVAILABLE 24 HOURS. ADD</Text>
-     <Text>10-15  FOR TIPS</Text>
-     <Text>RENTAL CAR - HERTZ CAR RENTAL CARS DELIVERED AND PICKED</Text>
-     <Text>UP FROM HOTEL</Text>
-     <Text>RAIL OR SUBWAY - HEATHROW EXPRESS IS A TRAIN LINK FROM</Text>
-     <Text>THE AIRPORT TO LONDON CENTRAL</Text>
-     <Text>TRANSPORTATION FROM CITY CENTER TO PROPERTY -</Text>
-     <Text>RAIL OR SUBWAY - MINUTES WALK TO MARBLE ARCH TUBE</Text>
-     <Text>STATION</Text>
-     <Text>BUS OR OTHER TRANSPORTATION - HOTEL IS MINUTES FROM</Text>
-     <Text>OXFORD STREET, AND IS SERVICED BY MANY BUSES</Text>
+     <Text>- AREA TRANSPORTATION</Text>
+     <Text>RENTAL CAR-TAXI-LIMO</Text>
+     <Text>COMPLIMENTARY TRANSPORTATION AVAILABLE TO SHENTON WAY/</Text>
+     <Text>RAFFLES/ BEACH RD.</Text>
     </Transportation>
    </VendorMessages>
   </BasicPropertyInfo>
   <Guarantee>
+   <DepositsAccepted>
+    <PaymentCard Code="AX" Type="AMERICAN EXPRESS"/>
+    <PaymentCard Code="CA" Type="MASTERCARD"/>
+    <PaymentCard Code="DC" Type="DINERS CLUB CARD"/>
+    <PaymentCard Code="JC" Type="JCB CREDIT CARD"/>
+    <PaymentCard Code="MC" Type="MASTER CARD"/>
+    <PaymentCard Code="VI" Type="VISA"/>
+   </DepositsAccepted>
    <GuaranteesAccepted>
     <PaymentCard Code="AX" Type="AMERICAN EXPRESS"/>
     <PaymentCard Code="CA" Type="MASTERCARD"/>
     <PaymentCard Code="DC" Type="DINERS CLUB CARD"/>
-    <PaymentCard Code="DS" Type="DISCOVER CARD"/>
     <PaymentCard Code="JC" Type="JCB CREDIT CARD"/>
+    <PaymentCard Code="MC" Type="MASTER CARD"/>
     <PaymentCard Code="VI" Type="VISA"/>
-    <Text>/GC-              COMPANY NAME AND ADDRESS</Text>
     <Text>/GAGT             GUARANTEE TO AGENCY TIDS/IATA NUMBER</Text>
+    <Text>/GCR              CORPORATE ID</Text>
+    <Text>/GDPST            DEPOSIT WILL BE SENT</Text>
+    <Text>/GDPST...         IMMEDIATE DEPOSIT TYPE OR FORM</Text>
    </GuaranteesAccepted>
   </Guarantee>
-  <TimeSpan End="2018-01-30" Start="2018-01-28"/>
+  <RoomRates>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0WLV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="001" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>DELUXE KING</Text>
+     <Text>40M2/NEWLY REFURBISHED/CITY VIEW/LUX BATHROOM</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="370.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="2871.88">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="370.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="320.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="370.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="244.00"/>
+       <TotalTaxes Amount="187.88"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0XLV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="002" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>DELUXE TWIN</Text>
+     <Text>40M2/NEWLY REFURBISHED/CITY VIEW/LUX BATHROOM</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="370.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="2871.88">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="370.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="320.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="370.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="244.00"/>
+       <TotalTaxes Amount="187.88"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A10LV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="003" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>GRAND DELUXE KING</Text>
+     <Text>40M2. NEWLY REFURBISHED/13-17 FLR/CITY VIEW</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="390.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="3036.66">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="390.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="340.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="390.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="258.00"/>
+       <TotalTaxes Amount="198.66"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A11LV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="004" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>GRAND DELUXE TWIN</Text>
+     <Text>40M2. NEWLY REFURBISHED/13-17 FLR/CITY VIEW</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="390.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="3036.66">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="390.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="340.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="390.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="258.00"/>
+       <TotalTaxes Amount="198.66"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0ZLV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="005" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>PREMIUM TWIN</Text>
+     <Text>40M2/NEWLY REFURBISHED/HIGH FLR/LUX BATHROOM</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="420.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="3283.83">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="420.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="370.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="420.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="279.00"/>
+       <TotalTaxes Amount="214.83"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0YLV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="006" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>PREMIUM KING</Text>
+     <Text>40M2/NEWLY REFURBISHED/HIGH FLR/LUX BATHROOM</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="420.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="3283.83">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="420.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="370.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="420.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="279.00"/>
+       <TotalTaxes Amount="214.83"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A01LV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="007" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>EXECUTIVE KING</Text>
+     <Text>40M2/BRFAST/AFTN TEA/DRINKS IN LOUNGE</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="480.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="3778.17">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="480.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="430.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="480.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="321.00"/>
+       <TotalTaxes Amount="247.17"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A07LV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="008" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>EXECUTIVE TWIN</Text>
+     <Text>40M2/BREAKFAST/AFTN TEA/DRINKS IN LOUNGE</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="480.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="3778.17">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="480.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="430.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="480.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="321.00"/>
+       <TotalTaxes Amount="247.17"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+   <RoomRate DirectConnect="false" GuaranteeSurchargeRequired="G" GuaranteedRateProgram="false" IATA_CharacteristicIdentification="A0QLV6" IATA_ProductIdentification="BEST AVAILABLE RATE" LowInventoryThreshold="false" RPH="009" RateChangeInd="false" RateConversionInd="false" SpecialOffer="false">
+    <AdditionalInfo>
+     <CancelPolicy Numeric="02" Option="D"/>
+     <Commission NonCommission="false">COMMISSIONABLE</Commission>
+     <Text>CENTENNIAL KING SUITE</Text>
+     <Text>63M2 WITH LIVING ROOM/FREE STD WIFI/BATH TUB</Text>
+    </AdditionalInfo>
+    <Rates>
+     <Rate Amount="570.00" ChangeIndicator="true" CurrencyCode="SGD" HRD_RequiredForSell="false" PackageIndicator="false" RateConversionInd="false" ReturnOfRateInd="false" RoomOnRequest="false">
+      <AdditionalGuestAmounts>
+       <AdditionalGuestAmount MaxExtraPersonsAllowed="0" NumAdults="0" NumCribs="0">
+        <Charges AdultRollAway="0" Crib="0" ExtraPerson="110.00"/>
+       </AdditionalGuestAmount>
+      </AdditionalGuestAmounts>
+      <HotelTotalPricing Amount="4519.68">
+       <Disclaimer>INCLUDES TAXES AND SURCHARGES</Disclaimer>
+       <Disclaimer>EXCLUDES INCIDENTALS</Disclaimer>
+       <RateRange Amount="570.00" EffectiveDate="01-16" ExpireDate="01-19"/>
+       <RateRange Amount="520.00" EffectiveDate="01-19" ExpireDate="01-22"/>
+       <RateRange Amount="570.00" EffectiveDate="01-22" ExpireDate="01-23"/>
+       <TotalSurcharges Amount="384.00"/>
+       <TotalTaxes Amount="295.68"/>
+      </HotelTotalPricing>
+     </Rate>
+    </Rates>
+   </RoomRate>
+  </RoomRates>
+  <TimeSpan Duration="0005" End="2018-01-23" Start="2018-01-16"/>
  </RoomStay>
 </HotelPropertyDescriptionRS></soap-env:Body></soap-env:Envelope>

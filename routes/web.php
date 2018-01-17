@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+/**
+Front routes starts here
+ */
 Route::get('/', function () {
     return view('frontend.home');
 });
@@ -20,6 +24,7 @@ Route::view('/about-us','frontend.about_us');
 Route::view('/register-login','frontend.register_login');
 Route::view('/log', 'frontend.online_payment');
 Route::view('/logs', 'frontend.online_payment');
+Route::get('/activities','FrontEndController@activities');
 
 Route::middleware('auth')->group(function(){
     Route::view('/bookings','frontend.bookings');
@@ -73,6 +78,12 @@ Route::get('/hotel-booking-confirmation','FrontEndPaymentController@hotelPayment
 Route::post('/hotel-booking-confirmation','FrontEndPaymentController@hotelPaymentConfirmationInterswitch');
 Route::get('/package-booking-confirmation','FrontEndPaymentController@packagePaymentConfirmationPaystack');
 Route::post('/package-booking-confirmation','FrontEndPaymentController@packagePaymentConfirmationInterswitch');
+
+
+
+/**
+Front routes ends here
+ */
 
 
 

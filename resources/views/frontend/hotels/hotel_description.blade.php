@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title') {{$selectedHotel['hotelName']}} Hotel Information  @endsection
 @section('activeHotel') active @endsection
+@section('loadingOverlay')
+    @include('partials.hotelSearchOverlay')
+@endsection
 @section('content')
 {{--{{dd($selectedHotel)}}--}}
 

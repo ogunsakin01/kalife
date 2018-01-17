@@ -1,7 +1,7 @@
 <OTA_HotelResRQ  Version="2.2.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
                 <Hotel>
-                  <BasicPropertyInfo RPH="002" />
-                  <Guarantee Type="GDPST">
+                  <BasicPropertyInfo RPH="001" />
+                  <Guarantee Type="G">
                     <CC_Info>
                      <PaymentCard Code="VI" ExpireDate="2019-07" Number="4111111111111111"/>
                      <PersonName>

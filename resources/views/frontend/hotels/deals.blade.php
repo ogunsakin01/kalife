@@ -2,6 +2,9 @@
 
 @section('title') Top Hotels Deals   @endsection
 @section('activeHotel') active @endsection
+@section('loadingOverlay')
+    @include('partials.hotelSearchOverlay')
+@endsection
 @section('content')
 
     <div class="container">

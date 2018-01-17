@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Email;
 //use App\Message;
 use App\OnlinePayment;
+use App\Package;
+use App\PackageAttraction;
 use App\Services\InterswitchConfig;
 use App\Services\PaystackConfig;
 use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+
 
 class FrontEndController extends Controller
 {
@@ -64,8 +69,13 @@ class FrontEndController extends Controller
         return 1;
     }
 
+    public function activities(){
 
-
-
+          $activities = Package::where('attraction',1)
+              ->where('hotel', 0)
+              ->where('flight', 0)
+              ->simplePaginate(1);
+          return view('frontend.activities',compact('activities'));
+    }
 
 }

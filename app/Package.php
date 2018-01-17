@@ -23,10 +23,12 @@ class Package extends Model
     {
         return $this->belongsTo(Language::class, 'language_spoken_id', 'id');
     }
+
     public static function getActivities()
     {
         return static::all();
     }
+
     public static function deletePackage($package_id){
         $delete_package = static::where('id', $package_id)->delete();
         $delete_gallery = Gallery::where('package_id', $package_id)->delete();
@@ -37,6 +39,7 @@ class Package extends Model
             return redirect(url('activities'));
         }
     }
+
     public static function getPackageById($activity_id){
         return static::where('id', $activity_id)->first();
     }
@@ -100,4 +103,43 @@ class Package extends Model
             return true;
         return false;
     }
+
+    public static function getAttractionPackages(){
+        $a = static::where('attraction', 1)
+            ->where('flight',0)
+            ->where('hotel',0)
+            ->get();
+        if(empty($a) || is_null($a)){
+            return [];
+        }else{
+            return $a;
+        }
+    }
+
+    public static function getFLightPackages(){
+        $a = static::where('attraction', 0)
+            ->where('flight',1)
+            ->where('hotel',0)
+            ->get();
+        if(empty($a) || is_null($a)){
+            return [];
+        }else{
+            return $a;
+        }
+    }
+
+    public static function getHotelPackages(){
+        $a = static::where('attraction', 0)
+            ->where('flight',0)
+            ->where('hotel',1)
+            ->get();
+        if(empty($a) || is_null($a)){
+            return [];
+        }else{
+            return $a;
+        }
+    }
+
+
+
 }

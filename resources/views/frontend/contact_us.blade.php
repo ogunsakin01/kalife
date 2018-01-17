@@ -58,4 +58,8 @@
         </div>
         <div class="gap"></div>
     </div>
+    <script>
+        var customLatitude = '6.45407';
+        var customLongitude = '3.39467';
+    </script>
 @endsection
