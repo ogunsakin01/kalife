@@ -1,0 +1,47 @@
+<PassengerDetailsRQ version="3.3.0" xmlns="http://services.sabre.com/sp/pd/v3_3" IgnoreOnError="false" HaltOnError="true">
+    <PostProcessing RedisplayReservation="true">
+		<EndTransactionRQ>
+			<EndTransaction Ind="true">
+			</EndTransaction>
+			<Source ReceivedFrom="SWS TESTING"/>
+		</EndTransactionRQ>
+	</PostProcessing>
+	<PriceQuoteInfo>
+		<Link NameNumber="1.1" Record="1"/><Link NameNumber="2.1" Record="1"/>
+	</PriceQuoteInfo>
+	<SpecialReqDetails>
+    <SpecialServiceRQ>
+        <SpecialServiceInfo>
+            <SecureFlight SegmentNumber="A" >
+                <PersonName DateOfBirth="2006-01-17" Gender="M" NameNumber="1.1" >
+                    <GivenName>Damilola</GivenName>
+                    <Surname>Ogunsakin</Surname>
+                </PersonName>
+            </SecureFlight><SecureFlight SegmentNumber="A" >
+                <PersonName DateOfBirth="2006-01-19" Gender="M" NameNumber="2.1" >
+                    <GivenName>Olamide</GivenName>
+                    <Surname>Ogunsakin</Surname>
+                </PersonName>
+            </SecureFlight>
+        </SpecialServiceInfo>
+    </SpecialServiceRQ>
+</SpecialReqDetails>
+    <TravelItineraryAddInfoRQ>
+        <AgencyInfo>
+			<Ticketing TicketType="7T-"/>
+		</AgencyInfo>
+        <CustomerInfo>
+            <ContactNumbers>
+                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="09068957364" PhoneUseType="H"/>
+            </ContactNumbers>
+            <Email Address="ogunsakin191@gmail.com" NameNumber="1.1" Type="CC"/>
+            <PersonName Infant="false" NameNumber="1.1" PassengerType="ADT">
+                <GivenName>Damilola</GivenName>
+                <Surname>Ogunsakin</Surname>
+            </PersonName><PersonName Infant="false" NameNumber="2.1" PassengerType="ADT">
+                <GivenName>Olamide</GivenName>
+                <Surname>Ogunsakin</Surname>
+            </PersonName>
+        </CustomerInfo>
+	</TravelItineraryAddInfoRQ>
+</PassengerDetailsRQ>

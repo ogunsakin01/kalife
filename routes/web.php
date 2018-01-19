@@ -24,7 +24,8 @@ Route::view('/about-us','frontend.about_us');
 Route::view('/register-login','frontend.register_login');
 Route::view('/log', 'frontend.online_payment');
 Route::view('/logs', 'frontend.online_payment');
-Route::get('/activities','FrontEndController@activities');
+Route::get('/attractions','FrontEndController@attractions');
+Route::get('/attraction-details/{id}/{name}','FrontEndController@attractionDetails');
 
 Route::middleware('auth')->group(function(){
     Route::view('/bookings','frontend.bookings');
@@ -33,8 +34,6 @@ Route::middleware('auth')->group(function(){
     Route::view('/manage-user','frontend.manage_user');
     Route::post('/update-user','CustomerProfileController@updateProfile');
     Route::post('/update-password','CustomerProfileController@updatePassword');
-//    Route::view('/hotel-bookings','frontend.hotel_bookings');
-//    Route::view('/package-bookings','frontend.package_bookings');
 });
 
 

@@ -7,33 +7,18 @@
             <HaltOnStatus Code="UN"/>
             <HaltOnStatus Code="NO"/>
             <HaltOnStatus Code="HL"/>
-			<OriginDestinationInformation><FlightSegment ArrivalDateTime="2018-01-15T20:40:00" DepartureDateTime="2018-01-15T14:00:00" FlightNumber="778" NumberInParty="1" ResBookDesigCode="T" InstantPurchase="true" Status="NN">
-						<DestinationLocation LocationCode="CAI"/>
-						<Equipment AirEquipType="773"/>
-						<MarketingAirline Code="MS" FlightNumber="778"/>
-						<OriginLocation LocationCode="LHR"/>
-					      </FlightSegment><FlightSegment ArrivalDateTime="2018-01-16T03:45:00" DepartureDateTime="2018-01-15T22:30:00" FlightNumber="910" NumberInParty="1" ResBookDesigCode="T" InstantPurchase="true" Status="NN">
+			<OriginDestinationInformation><FlightSegment ArrivalDateTime="2018-01-25T04:00:00" DepartureDateTime="2018-01-24T17:05:00" FlightNumber="98" NumberInParty="2" ResBookDesigCode="Y" InstantPurchase="true" Status="NN">
 						<DestinationLocation LocationCode="DXB"/>
-						<Equipment AirEquipType="333"/>
-						<MarketingAirline Code="MS" FlightNumber="910"/>
-						<OriginLocation LocationCode="CAI"/>
-					      </FlightSegment><FlightSegment ArrivalDateTime="2018-01-22T14:05:00" DepartureDateTime="2018-01-22T11:55:00" FlightNumber="902" NumberInParty="1" ResBookDesigCode="S" InstantPurchase="true" Status="NN">
-						<DestinationLocation LocationCode="CAI"/>
-						<Equipment AirEquipType="738"/>
-						<MarketingAirline Code="MS" FlightNumber="902"/>
-						<OriginLocation LocationCode="DXB"/>
-					      </FlightSegment><FlightSegment ArrivalDateTime="2018-01-22T21:00:00" DepartureDateTime="2018-01-22T17:30:00" FlightNumber="779" NumberInParty="1" ResBookDesigCode="S" InstantPurchase="true" Status="NN">
-						<DestinationLocation LocationCode="LHR"/>
-						<Equipment AirEquipType="738"/>
-						<MarketingAirline Code="MS" FlightNumber="779"/>
-						<OriginLocation LocationCode="CAI"/>
+						<Equipment AirEquipType="787"/>
+						<MarketingAirline Code="BI" FlightNumber="98"/>
+						<OriginLocation LocationCode="LHR"/>
 					      </FlightSegment></OriginDestinationInformation>
 			</OTA_AirBookRQ>
 			<OTA_AirPriceRQ >
 				<PriceRequestInformation Retain="true">
 					<OptionalQualifiers>
 						<PricingQualifiers>
-							<PassengerType Code="ADT" Quantity="1" />
+							<PassengerType Code="ADT" Quantity="2" />
 						</PricingQualifiers>
 					</OptionalQualifiers>
 				</PriceRequestInformation>

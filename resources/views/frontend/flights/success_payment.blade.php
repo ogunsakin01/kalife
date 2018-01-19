@@ -71,7 +71,7 @@
                                         </p>
                                     </div>
                                     <div class="col-xs-3">
-                                        <p class="text-right"><span class="text-lg">&#x20A6;{{number_format($priceInfo['totalPrice'],2)}}</span>
+                                        <p class="text-right"><span class="text-lg">&#x20A6;{{number_format(($priceInfo['totalPrice'] * $priceInfo['quantity']),2)}}</span>
                                         </p>
                                     </div>
                                 </div>

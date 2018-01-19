@@ -1,5 +1,5 @@
 
-<div class="container flight-pricing-loader hidden full-center">
+<div class="container flight-pricing-loader hidden full-center hidden-xs hidden-sm">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -13,7 +13,7 @@
         <div class="gap"></div>
     </div>
         <div class="container" align="center" style="padding: 15px;">
-            <h2 class="mb5" style="color: #233044" align="left">Getting flight information and checking for availablity. </h2>
+            <h2 class="mb5" style="color: #233044" align="left">Getting flight information and checking for availability ... </h2>
             <div class="progress">
                 <div class="indeterminate"></div>
             </div>
@@ -21,6 +21,22 @@
 
     <div class="container">
     </div>
+</div>
+<div class="container flight-pricing-loader hidden full-center hidden-lg hidden-md">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4" align="center">
+                <img src="{{asset('img/kalife.png')}}" style="width: 25%; height:25%;" class="img-responsive">
+            </div>
+        </div>
+    </div>
+    <div class="container" align="center" style="padding: 15px;">
+        <p class="mb5" style="color: #233044" align="left">Getting flight information and checking for availability ... </p>
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
+    </div>
+
 </div>
 
 

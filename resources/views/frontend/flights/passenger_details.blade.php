@@ -95,11 +95,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="adult_sex[]" value="M" />Male</label>
+                                                    <input class="i-radio" type="radio" name="adult_sex[{{$i}}]" value="M" />Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="adult_sex[]" value="F"/>Female</label>
+                                                    <input class="i-radio" type="radio" name="adult_sex[{{$i}}]" value="F"/>Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -139,11 +139,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="child_sex[]" value="M"/>Male</label>
+                                                    <input class="i-radio" type="radio" name="child_sex[{{$i}}]" value="M"/>Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="child_sex[]" value="F" />Female</label>
+                                                    <input class="i-radio" type="radio" name="child_sex[{{$i}}]" value="F" />Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -183,11 +183,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="infant_sex[]" value="M" />Male</label>
+                                                    <input class="i-radio" type="radio" name="infant_sex[{{$i}}]" value="M" />Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="infant_sex[]" value="F" />Female</label>
+                                                    <input class="i-radio" type="radio" name="infant_sex[{{$i}}]" value="F" />Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">

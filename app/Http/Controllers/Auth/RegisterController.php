@@ -87,7 +87,7 @@ class RegisterController extends Controller
         ]);
 
         $user->attachrole(1);
-        Mail::to($data['email'])->send(new SuccessfulRegistration($data));
+        Mail::to($user)->send(new SuccessfulRegistration($data));
         return $user;
     }
 }

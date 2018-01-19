@@ -1,7 +1,6 @@
 @component('mail::message')
-    <img src="{{asset('img/logo-invert.png') }}">
+<p style="text-align: center;"><img src="{{asset('img/logo-invert.png')}}" style="height: 100px;" alt="" /></p>
 # Dear {{$userInfo->first_name}},
-
 Your payment of &#x20A6;{{number_format($transactionStatus['amount'],2) }} was successful.
 
 @component('mail::table')

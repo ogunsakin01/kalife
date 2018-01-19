@@ -7,9 +7,9 @@
         </Source>
     </POS>
    <OriginDestinationInformation RPH="1">
-        <DepartureDateTime>2018-01-25T00:00:00</DepartureDateTime>
-        <OriginLocation LocationCode="gyt" />
-        <DestinationLocation LocationCode="uhy" />
+        <DepartureDateTime>2018-01-24T00:00:00</DepartureDateTime>
+        <OriginLocation LocationCode="BQH" />
+        <DestinationLocation LocationCode="DPG" />
         <TPA_Extensions>
             <SegmentType Code="O" />
         </TPA_Extensions>

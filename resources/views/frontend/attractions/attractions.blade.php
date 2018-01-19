@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title') Activities and attractions @endsection
-@section('activeActivity')  active @endsection
+@section('title') Attractions @endsection
+@section('activeAttraction')  active @endsection
 @section('content')
     <div class="container">
         <ul class="breadcrumb">
@@ -11,12 +11,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row row-wrap page-content">
-                    @foreach($activities as $activity => $i)
+                    {{--{{dd($activities)}})--}}
+                    @foreach($attractions as $attraction)
+                        {{--{{dd(App\Gallery::getGalleryByPackageId($attraction->id))}}--}}
                     <div class="col-md-3 page-content-1">
                         <div class="thumb">
                             <header class="thumb-header">
-                                <a class="hover-img" href="{{url('/package-attraction-details/'.$i)}}">
-                                    <img src="img/new_york_at_an_angle_800x600.jpg" alt="Image Alternative text" title="new york at an angle" />
+                                <a class="hover-img" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->package_name)}}">
+                                    @if(isset(App\Gallery::getGalleryByPackageId($attraction->id)[0]))
+                                        <img src="{{asset(App\Gallery::getGalleryByPackageId($attraction->id)[0]['image_path'])}}" alt="{{$attraction->package_name}}" title="{{$attraction->package_name}}" />
+                                    @else
+                                        <img src="{{asset('images/gallery/packages/no-image.jpg')}}" alt="{{$attraction->package_name}}" title="{{$attraction->package_name}}" />
+                                        @endif
                                     <h5 class="hover-title-center">Book Now</h5>
                                 </a>
                             </header>
@@ -33,10 +39,10 @@
                                     <li><i class="fa fa-star"></i>
                                     </li>
                                 </ul>
-                                <h5 class="thumb-title"><a class="text-darken" href="{{url('/flight-details')}}">{{$activity->package_name}}</a></h5>
-                                <p class="mb0"><small><i class="fa fa-map-marker"></i> {{$activity->package_location}}</small>
+                                <h5 class="thumb-title"><a class="text-darken" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->package_name)}}">{{$attraction->package_name}}</a></h5>
+                                <p class="mb0"><small><i class="fa fa-map-marker"></i> {{$attraction->package_location}}</small>
                                 </p>
-                                <p class="mb0 text-darken"><span class="text-lg lh1em text-color"><small >from</small> &#x20A6;{{number_format($activity->adult_price,2)}}</span>
+                                <p class="mb0 text-darken"><span class="text-lg lh1em text-color"><small >from</small> &#x20A6;{{number_format($attraction->adult_price,2)}}</span>
                                 </p>
                             </div>
                         </div>
@@ -46,7 +52,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        {{$activities->links()}}
+                        {{$attractions->links()}}
                     </div>
                 </div>
             </div>

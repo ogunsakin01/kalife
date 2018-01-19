@@ -1,5 +1,5 @@
 @component('mail::message')
-<img src="{{asset('img/logo-invert.png') }}">
+<p style="text-align: center;"><img src="{{asset('img/logo-invert.png')}}" style="height: 100px;" alt="" /></p>
 # Hi {{$userInfo->first_name}},
 Below is the information of your booking
 @component('mail::panel')

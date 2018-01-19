@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Email;
 //use App\Message;
+use App\Gallery;
+use App\GoodToKnow;
 use App\OnlinePayment;
 use App\Package;
 use App\PackageAttraction;
@@ -11,6 +13,7 @@ use App\Services\InterswitchConfig;
 use App\Services\PaystackConfig;
 use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
+use App\SightSeeing;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\DB;
@@ -69,13 +72,22 @@ class FrontEndController extends Controller
         return 1;
     }
 
-    public function activities(){
-
-          $activities = Package::where('attraction',1)
+    public function attractions(){
+          $attractions = Package::where('attraction',1)
               ->where('hotel', 0)
               ->where('flight', 0)
-              ->simplePaginate(1);
-          return view('frontend.activities',compact('activities'));
+              ->where('status', 1)
+              ->paginate(1);
+          return view('frontend.attractions.attractions',compact('attractions'));
+
     }
 
+    public function attractionDetails($id,$name){
+
+          $images = Gallery::getGalleryByPackageId($id);
+          $attraction_info = Package::getPackageById($id);
+          $good_to_knows = GoodToKnow::getGoodToKnowByPackageId($id);
+          $sight_seeings = SightSeeing::getSightseeingByPackageId($id);
+        return view('frontend.attractions.attraction_details', compact('id','name','images','good_to_knows','attraction_info','sight_seeings'));
+    }
 }

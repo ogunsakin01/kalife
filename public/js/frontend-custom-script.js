@@ -196,19 +196,11 @@ $('.trip_type').on("click",function(){
 
 $('.search_flight').on("click",function(){
 
-
-
-
-
     $('.template-content').addClass('hidden');
-    $('#flight-search-dialog').modal('hide');
-    $('#multi-city-dialog').modal('hide')
     $('.flight-search-loader').removeClass('hidden');
-
+    $.magnificPopup.close();
 
     var flight_type = $('.flight_type').val();
-    // $(body).LoadingOverlay("show");
-
      if(flight_type === 'One Way'){
 
          var departure_airport = $('#departure_airport_one').val();
@@ -245,27 +237,28 @@ $('.search_flight').on("click",function(){
         cabin_type : cabin_type
     })
         .then(function (response) {
-
-            if(response.data === 0){
-                toastError("Connection Error. Poor Internet Connection, try again.");
-            }else if(response.data === 1){
-                toastSuccess("Search completed. Redirecting to available flights page");
-                window.location.href = baseUrl+"/available-flights/";
-            }else if(response.data === 2) {
-                toastWarning("Unable to connect to server. Try again");
-            }else if(response.data === 3) {
-                toastWarning("Connection error. Try again");
-            }else if(response.data === 31) {
-                toastWarning("Fatal Connection error. Try again");
-            }else if(response.data === 4) {
-                toastWarning("No result found for your search option. Try again");
-            }else if(response.status === 500){
-                toastWarning("Your device could not establish a connection to the server. Try again");
+            if(response.status == 500){
+                toastError("Unable to connect to the serve. Try again");
+            }else{
+                if(response.data === 0){
+                    toastError("Connection Error. Poor Internet Connection, try again.");
+                }else if(response.data === 1){
+                    toastSuccess("Search completed. Redirecting to available flights page");
+                    window.location.href = baseUrl+"/available-flights/";
+                }else if(response.data === 2) {
+                    toastWarning("Unable to connect to server. Try again");
+                }else if(response.data === 3) {
+                    toastWarning("Connection error. Try again");
+                }else if(response.data === 31) {
+                    toastWarning("Fatal Connection error. Try again");
+                }else if(response.data === 4) {
+                    toastWarning("No result found for your search option. Try again");
+                }
             }
+
             $('.template-content').removeClass('hidden');
-            $('#flight-search-dialog').modal('show');
-            $('#multi-city-dialog').modal('show')
             $('.flight-search-loader').addClass('hidden');
+            $.magnificPopup.open({items: {src: '#flight-search-dialog'},type: 'inline'});
         })
         .catch(function (error) {
             var Error = error.response.data.errors;
@@ -277,9 +270,8 @@ $('.search_flight').on("click",function(){
                 toastWarning(Error.arrival_airport[0]);
             }
             $('.template-content').removeClass('hidden');
-            $('#flight-search-dialog').modal('show');
-            $('#multi-city-dialog').modal('show')
             $('.flight-search-loader').addClass('hidden');
+            $.magnificPopup.open({items: {src: '#flight-search-dialog'},type: 'inline'});
         });
 
 
@@ -298,16 +290,19 @@ $(".subscribe").on('click',function(){
     })
         .then(function(response){
             $(".subscribe").LoadingOverlay("hide");
-            $("#subscribe_email").val('');
-            if(response.data === 0){
-                 toastError("Connection Error. Poor internet connection detected");
-            }else if(response.data === 1){
-                toastSuccess("Thank you, your email has been successfully added to our subscribers list");
-            }else if(response.data === 2){
-                toastWarning("Email found on subscribers list");
-            }else if(response.status === 500){
-                toastWarning("Your device could not establish a connection to the server. Try again");
+            if(response.status === 500){
+                toastError("Unable to connect to the serve. Try again");
+            }else{
+                if(response.data === 0){
+                    toastError("Connection Error. Poor internet connection detected");
+                }else if(response.data === 1){
+                    toastSuccess("Thank you, your email has been successfully added to our subscribers list");
+                }else if(response.data === 2){
+                    toastWarning("Email found on subscribers list");
+                }
             }
+            $("#subscribe_email").val('');
+
         })
         .catch(function(error){
             var Error = error.response.data.errors;
@@ -341,15 +336,17 @@ $("#send_message").on('click',function(){
             $('#message_email').val('');
             $('#message_name').val('');
             $('#message').val('');
-            if(response.data === 1){
-                toastSuccess("Your message was sent successfully");
-            }
-            if(response.data === 2){
-                toastWarning("You have sent us this message already");
-            }
             if(response.status === 500){
-                toastWarning("Your device could not establish a connection to the server. Try again");
+                toastError("Unable to connect to the serve. Try again");
+            }else{
+                if(response.data === 1){
+                    toastSuccess("Your message was sent successfully");
+                }
+                if(response.data === 2){
+                    toastWarning("You have sent us this message already");
+                }
             }
+
         })
         .catch(function(error){
             var Error = error.response.data.errors;
@@ -486,26 +483,29 @@ $('.search_multi_flight').on('click',function(){
       searchParameters : searchParam
     })
         .then(function(response){
-            if(response.data === 0){
-                toastError("Connection Error. Poor Internet Connection");
-            }else if(response.data === 1){
-                toastSuccess("Search completed. Redirecting to available flights page");
-                window.location.href = baseUrl+"/available-flights/";
-            }else if(response.data === 2) {
-                toastWarning("Unable to connect to server. Try again.");
+            if(response.status === 500){
+                toastError("Unable to connect to the serve. Try again");
+            }else{
+                if(response.data === 0){
+                    toastError("Connection Error. Poor Internet Connection");
+                }else if(response.data === 1){
+                    toastSuccess("Search completed. Redirecting to available flights page");
+                    window.location.href = baseUrl+"/available-flights/";
+                }else if(response.data === 2) {
+                    toastWarning("Unable to connect to server. Try again.");
 
-            }else if(response.data === 3) {
-                toastWarning("Connection error. Try again");
+                }else if(response.data === 3) {
+                    toastWarning("Connection error. Try again");
 
-            }else if(response.data === 31) {
-                toastWarning("Fatal connection error. Try again");
+                }else if(response.data === 31) {
+                    toastWarning("Fatal connection error. Try again");
 
-            }else if(response.data === 4) {
-                toastWarning("No result found for your search option. Try again");
+                }else if(response.data === 4) {
+                    toastWarning("No result found for your search option. Try again");
 
-            }if(response.status === 500){
-                toastWarning("Your device could not establish a connection to the server. Try again");
+                }
             }
+
             $('.flight-search-loader').addClass('hidden');
             $('.template-content').removeClass('hidden');
             $.magnificPopup.open({items: {src: '#multi-city-dialog'},type: 'inline'});
@@ -590,18 +590,21 @@ $('.search_hotel').on('click',function(){
         .then(function (response){
             $('.template-content').removeClass('hidden');
             $('.hotel-search-loader').addClass('hidden');
-            if(response.data === 1){
-                toastSuccess('Search completed. Redirecting to available hotels page');
-                window.location.href = baseUrl+ '/available-hotels';
-            }else if(response.data == 0){
-                toastError('Poor internet connection. Try again');
-            }else if(response.data == 2){
-                toastError('No result found for your search options. Try again')
-            }else if(response.data == 21){
-                toastInfo('Your search was completed, but no hotel was returned. Kindly chose another city or try again with different dates');
-            }if(response.status === 500){
+            if(response.status === 500){
                 toastWarning("Your device could not establish a connection to the server. Try again");
+            }else{
+                if(response.data === 1){
+                    toastSuccess('Search completed. Redirecting to available hotels page');
+                    window.location.href = baseUrl+ '/available-hotels';
+                }else if(response.data == 0){
+                    toastError('Poor internet connection. Try again');
+                }else if(response.data == 2){
+                    toastError('No result found for your search options. Try again')
+                }else if(response.data == 21){
+                    toastInfo('Your search was completed, but no hotel was returned. Kindly chose another city or try again with different dates');
+                }
             }
+
         })
         .catch(function (error){
             $('.template-content').removeClass('hidden');
@@ -658,22 +661,25 @@ $('.hotel_description').on('click',function(){
         .then(function(response){
             $('.template-content').removeClass('hidden');
             $('.hotel-description-loader').addClass('hidden');
-            if(response.data === 1){
-                toastInfo('Hotel property description retained. Redirecting to information page');
-                window.location.href = baseUrl+'/hotel-information';
-            }else if(response.data === 2){
-                toastInfo('Unable to fetch hotel')
-            }else if(response.data === 3){
-                toastWarning('Unable to get hotel description at the moment. Try again');
-            }else if(response.data === 0){
-              toastError('Unable to connect to server. Try again');
-            }else if(response.data === 21){
-              toastWarning('Connection to server not established. Try again');
-            }else if(response.data === 22){
-                toastWarning('No available rooms was found for this hotel when we checked. Kindly select another hotel');
-            }if(response.status === 500){
+            if(response.status === 500){
                 toastWarning("Your device could not establish a connection to the server. Try again");
+            }else{
+                if(response.data === 1){
+                    toastInfo('Hotel property description retained. Redirecting to information page');
+                    window.location.href = baseUrl+'/hotel-information';
+                }else if(response.data === 2){
+                    toastInfo('Unable to fetch hotel')
+                }else if(response.data === 3){
+                    toastWarning('Unable to get hotel description at the moment. Try again');
+                }else if(response.data === 0){
+                    toastError('Unable to connect to server. Try again');
+                }else if(response.data === 21){
+                    toastWarning('Connection to server not established. Try again');
+                }else if(response.data === 22){
+                    toastWarning('No available rooms was found for this hotel when we checked. Kindly select another hotel');
+                }
             }
+
         })
 
         .catch(function(error){

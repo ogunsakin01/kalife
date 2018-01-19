@@ -584,6 +584,7 @@ class SabreFlight
            $specialRequests ='';
            $y = 0;
            $infants_num = 2;
+//        dd($param->adult_sex);
         if($adults > 0){
             for($i = 0; $i < $adults; $i++){
                 $given_name = $param->adult_given_name[$i];

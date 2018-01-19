@@ -1,5 +1,6 @@
 @component('mail::message')
-<img src="{{asset('img/logo-invert.png') }}">
+<p style="text-align: center;"><img src="{{asset('img/logo-invert.png')}}" style="height: 100px;" alt="" /></p>
+
 # Hi {{$userInfo->first_name}},
 Your attempt tp make a payment failed,
 
