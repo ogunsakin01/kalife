@@ -30,6 +30,7 @@
   </div>
   @include('partials.backend.javascript')
   @yield('javascript')
+  {!! Toastr::message() !!}
 
   </body>
 </html>

@@ -124,6 +124,7 @@ Route::prefix('backend')->group(function (){
 
   Route::prefix('wallet')->group(function (){
     Route::get('', 'WalletController@walletView')->name('backend-wallet-view');
+    Route::post('deposit', 'WalletController@saveWalletDeposit')->name('backend-save-wallet-deposit');
   });
 
   Route::prefix('bank-details')->group(function (){

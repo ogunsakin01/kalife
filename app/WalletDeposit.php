@@ -22,6 +22,7 @@ class WalletDeposit extends Model
        'reference' => $this->reference(),
        'user_id' => auth()->id(),
        'bank_detail_id' => $data['bank_detail_id'],
+       'amount' => $data['amount'],
        'slip_photo' => $data['slip_photo'],
        'status' => $this->pending
     ]);
