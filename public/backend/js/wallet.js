@@ -138,10 +138,24 @@ function extractError(error)
   }
 }
 
+function readURL(e) {
+  if (this.files && this.files[0]) {
+    var reader = new FileReader();
+    $(reader).load(function(e) {
+      console.log(e.target.result);
+      // $('#slip_photo').attr('src', e.target.result);
+    });
+     reader.readAsDataURL(this.files[0]);
+
+  }
+}
 $(function () {
   $('#interswitch_option').click(function () {
     $('#webpay_amount_row').removeClass('hidden');
     $('#bank_form_row').addClass('hidden');
+    $('#submit_deposit').addClass('hidden');
+    $('#proceed_with_interswitch').removeClass('hidden');
+    $('#proceed_with_paystack').addClass('hidden');
     $('#bank_detail_id').val('');
     $('#bank_details').val('');
     $('#amount').val('');
@@ -151,6 +165,9 @@ $(function () {
   $('#paystack_option').click(function () {
     $('#webpay_amount_row').removeClass('hidden');
     $('#bank_form_row').addClass('hidden');
+    $('#submit_deposit').addClass('hidden');
+    $('#proceed_with_interswitch').addClass('hidden');
+    $('#proceed_with_paystack').removeClass('hidden');
     $('#bank_detail_id').val('');
     $('#bank_details').val('');
     $('#amount').val('');
@@ -160,6 +177,9 @@ $(function () {
   $('#bank_option').click(function () {
     $('#bank_form_row').removeClass('hidden');
     $('#webpay_amount_row').addClass('hidden');
+    $('#submit_deposit').removeClass('hidden');
+    $('#proceed_with_interswitch').addClass('hidden');
+    $('#proceed_with_paystack').addClass('hidden');
     $('#webpay_amount').val('');
   });
 
@@ -180,6 +200,15 @@ $(function () {
   });
 
   $('#submit_deposit').click(function () {
-    toastInfo('s');
+    var bank_detail_id = $('#bank_detail_id').val();
+    var amount = $('#amount').val();
+    /*/!*var slip_photo =*!/ $('#slip_photo').change(readURL())
+    // console.log(slip_photo);*/
+  });
+
+  $('#').click(function () {
+
   });
 });
+
+

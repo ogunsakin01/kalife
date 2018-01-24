@@ -7,6 +7,7 @@ use App\BankDetail;
 use App\Wallet;
 use App\WalletLog;
 use Illuminate\Http\Request;
+use nilsenj\Toastr\Toastr;
 
 class WalletController extends Controller
 {
@@ -28,6 +29,7 @@ class WalletController extends Controller
 
     $bank_details = $bank_detail->fetchBankDetails();
 
+    \Brian2694\Toastr\Facades\Toastr::success('sad');
     return view('backend.wallet.wallet', compact('balance', 'logs', 'banks', 'bank_details'));
   }
 
@@ -38,5 +40,10 @@ class WalletController extends Controller
     $response = $bank_detail->getBankDetails($id);
 
     return response()->json($response);
+  }
+
+  public function saveWalletDeposit(Request $r)
+  {
+
   }
 }

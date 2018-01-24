@@ -2,7 +2,10 @@
 
 @section('tab-title')Wallet @endsection
 
-@section('title')Wallet Management @endsection
+@section('title')Wallet Management
+<button class="btn btn-alt-primary btn-sm pull-right" data-toggle="modal" data-target="#fund_wallet">Fund Wallet</button>
+
+@endsection
 
 @section('css')
   <link type="text/css" href="{{asset('backend/css/rig-sidebar.css')}}" rel="stylesheet"/>
@@ -11,121 +14,86 @@
   <div class="row">
     <div class="col-md-9">
       <div class="card">
-        <div class="card-header">
-          Wallet Log
+        <div class="row">
+
         </div>
-        <div class="card-body">
-          <div id="example1_wrapper" class="dataTables_wrapper">
-            <table id="wallet_table" class="table table-striped dataTable">
-              <thead>
-              <th>#</th>
-              <th>Amount (&#x20A6;)</th>
-              <th>Transaction Type</th>
-              <th>Performed On</th>
-              </thead>
-              <tbody id="wallet_table_body">
-                @foreach($logs as $serial => $log)
-                  <tr>
-                    <td>{{$serial+1}}</td>
-                    <td>{{$log['amount']}}</td>
-                    <td> @php echo $log['transaction_type'] @endphp</td>
-                    <td>{{$log['performed_on']}}</td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <button class="btn btn-alt-primary btn-sm pull-right" data-toggle="modal" data-target="#fund_wallet">Fund Wallet</button>
-        </div>
+        <ul class="nav nav-tabs card-header" id="profile" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="wallet-log-tab" data-toggle="tab" href="#wallet_log" aria-expanded="true">Wallet</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="deposits-tab" data-toggle="tab" href="#deposits_tab" aria-expanded="false">Deposits</a>
+          </li>
+
+        </ul>
 
         <div class="card-body">
-          <div class="card">
-            <ul class="nav nav-tabs card-header" id="profile" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active" id="wallet-log-tab" data-toggle="tab" href="#wallet_log" aria-expanded="true">Wallet Log</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="deposits-tab" data-toggle="tab" href="#deposits_tab" aria-expanded="false">Deposits</a>
-              </li>
+          <div class="tab-content profile-content" id="profileContent">
 
-            </ul>
-
-
-
-            <div class="card-body">
-              <div class="tab-content profile-content" id="profileContent">
-
-                <div class="tab-pane fade active show" id="wallet_log" aria-expanded="true">
-                  <div class="card">
-                    <div class="card-header">
-                      Wallet Log
-                    </div>
-                    <div class="card-body">
-                      <div id="example1_wrapper" class="dataTables_wrapper">
-                        <table id="wallet_table" class="table table-striped dataTable">
-                          <thead>
-                          <th>#</th>
-                          <th>Amount (&#x20A6;)</th>
-                          <th>Transaction Type</th>
-                          <th>Performed On</th>
-                          </thead>
-                          <tbody id="wallet_table_body">
-                          @foreach($logs as $serial => $log)
-                            <tr>
-                              <td>{{$serial+1}}</td>
-                              <td>{{$log['amount']}}</td>
-                              <td> @php echo $log['transaction_type'] @endphp</td>
-                              <td>{{$log['performed_on']}}</td>
-                            </tr>
-                          @endforeach
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+            <div class="tab-pane fade active show" id="wallet_log" aria-expanded="true">
+              <div class="card">
+                <div class="card-header">
+                  Wallet Log
+                </div>
+                <div class="card-body">
+                  <div id="example1_wrapper" class="dataTables_wrapper">
+                    <table id="wallet_table" class="table table-striped dataTable">
+                      <thead>
+                      <th>#</th>
+                      <th>Amount (&#x20A6;)</th>
+                      <th>Transaction Type</th>
+                      <th>Performed On</th>
+                      </thead>
+                      <tbody id="wallet_table_body">
+                      @foreach($logs as $serial => $log)
+                        <tr>
+                          <td>{{$serial+1}}</td>
+                          <td>{{$log['amount']}}</td>
+                          <td> @php echo $log['transaction_type'] @endphp</td>
+                          <td>{{$log['performed_on']}}</td>
+                        </tr>
+                      @endforeach
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-
-                <div class="tab-pane fade" id="deposits_tab" aria-expanded="false">
-                  <div class="card">
-                    <div class="card-header">
-                      Wallet Log
-                    </div>
-                    <div class="card-body">
-                      <div id="example1_wrapper" class="dataTables_wrapper">
-                        <table id="wallet_table" class="table table-striped dataTable">
-                          <thead>
-                          <th>#</th>
-                          <th>Amount (&#x20A6;)</th>
-                          <th>Transaction Type</th>
-                          <th>Performed On</th>
-                          </thead>
-                          <tbody id="wallet_table_body">
-                          @foreach($logs as $serial => $log)
-                            <tr>
-                              <td>{{$serial+1}}</td>
-                              <td>{{$log['amount']}}</td>
-                              <td> @php echo $log['transaction_type'] @endphp</td>
-                              <td>{{$log['performed_on']}}</td>
-                            </tr>
-                          @endforeach
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
+
+            <div class="tab-pane fade" id="deposits_tab" aria-expanded="false">
+              <div class="card">
+                <div class="card-header">
+                  Wallet Log
+                </div>
+                <div class="card-body">
+                  <div id="example1_wrapper" class="dataTables_wrapper">
+                    <table id="wallet_table" class="table table-striped dataTable">
+                      <thead>
+                      <th>#</th>
+                      <th>Amount (&#x20A6;)</th>
+                      <th>Transaction Type</th>
+                      <th>Performed On</th>
+                      </thead>
+                      <tbody id="wallet_table_body">
+                      @foreach($logs as $serial => $log)
+                        <tr>
+                          <td>{{$serial+1}}</td>
+                          <td>{{$log['amount']}}</td>
+                          <td> @php echo $log['transaction_type'] @endphp</td>
+                          <td>{{$log['performed_on']}}</td>
+                        </tr>
+                      @endforeach
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
-
     <div class="col-md-3">
       <div class="col-md-12">
         <div class="card stats-card">
@@ -210,7 +178,8 @@
                 <div class="card-header">
                   Deposit Information
                 </div>
-                <div class="card-body">
+                {!! Form::open(['route' => 'backend-save-wallet-deposit', 'files' => 'true']) !!}
+                  <div class="card-body">
                   <div class="col-md-12">
                     <div class="form-group">
                       {!! Form::select('bank_detail_id', $bank_details, null, ['class' => 'form-control form-control-sm', 'id' => 'bank_detail_id', 'placeholder' => 'choose account number']) !!}
@@ -224,24 +193,34 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      {!! Form::text('amount', null, ['class' => 'form-control form-control', 'id' => 'amount', 'placeholder' => 'enter amount e.g. 10000']) !!}
+                      {!! Form::number('amount', null, ['class' => 'form-control form-control', 'id' => 'amount', 'placeholder' => 'enter amount e.g. 10000']) !!}
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <input type="file" class="form-control-file" id="slip_photo">
+                      <input type="file" name="slip_photo" class="form-control-file" id="slip_photo">
                     </div>
                   </div>
-
                 </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        {!! Form::submit('Submit', ['class' => 'btn btn-alt-primary hidden pull-right', 'id' => 'submit_deposit']) !!}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {!! Form::close() !!}
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" id="submit_deposit" class="btn btn-alt-primary">Submit</button>
-          <button type="button" class="btn btn-alt-primary">Proceed</button>
+          <button type="button" id="submit_deposit" class="btn btn-alt-primary hidden">Submit</button>
+          <button type="button" id="proceed_with_paystack" class="btn btn-alt-primary hidden">Proceed</button>
+          <button type="button" id="proceed_with_interswitch" class="btn btn-alt-primary hidden">Proceed</button>
 
         </div><!-- .modal-footer -->
       </div><!-- .modal-content -->
