@@ -511,6 +511,7 @@ $('.search_multi_flight').on('click',function(){
             $.magnificPopup.open({items: {src: '#multi-city-dialog'},type: 'inline'});
 
         })
+
         .catch(function(error){
             var Error = error.response.data.errors;
             $('.flight-search-loader').addClass('hidden');

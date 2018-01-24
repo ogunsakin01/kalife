@@ -79,6 +79,8 @@
         <ul id="packages" class="collapse" data-parent="#menus">
           <li><a href="{{url('backend/packages')}}">All Packages</a></li>
           <li><a href="{{url('backend/packages/create')}}">Create Package</a></li>
+          <li><a href="#">All Travel Package</a></li>
+          <li><a href="{{url('backend/travel-packages/create')}}">Create Travel Package</a></li>
         </ul>
       </li>
 

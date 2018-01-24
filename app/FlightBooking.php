@@ -25,11 +25,9 @@ class FlightBooking extends Model
         $new_booking->save();
     }
 
-
     public static function getBooking($bookingRef){
         return static::where('reference', $bookingRef)->first();
     }
-
 
     public static function getBookingsByUserId($userId){
         return static::where('user_id',$userId)->count();
@@ -41,10 +39,10 @@ class FlightBooking extends Model
             ->get();
     }
 
-
     public static function updatePaymentStatus($data){
         $booking = static::where('reference', $data['reference'])->first();
         $booking->payment_status = $data['status'];
         $booking->update();
     }
+
 }

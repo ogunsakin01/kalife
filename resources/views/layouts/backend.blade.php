@@ -12,6 +12,8 @@
 
     <script type="text/javascript">
       var BaseUrl = "{{url("/")}}";
+      var path = "<?php echo e(route('typeaheadJs')); ?>";
+      var airline_path = "<?php echo e(route('airlineTypeAheadJs')); ?>";
     </script>
   </head>
   <body>

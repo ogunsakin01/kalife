@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Airline;
 use App\Airport;
 use App\FlightBooking;
 use App\IataCity;
@@ -184,14 +185,18 @@ class FlightController extends Controller
 
     public function typeaheadJs(Request $request)
     {
-//        $data = IataCity::select(DB::raw('CONCAT(name, " - ", iata) AS name'))
-//            ->where("name","LIKE","%{$request->input('query')}%")
-//            ->orWhere("iata","LIKE","%{$request->input('query')}%")
-//            ->get();
-//        $data = IataCity::typeAhead($request);
         $data = Airport::select(DB::raw('CONCAT(airport_code, " - ", airport_name) AS name'))
             ->where("airport_code","LIKE","%{$request->input('query')}%")
             ->orWhere("airport_name","LIKE","%{$request->input('query')}%")
+            ->get();
+
+        return response()->json($data);
+    }
+
+    public function airlineTypeAheadJs(Request $request){
+        $data = Airline::select(DB::raw('CONCAT(Airline) AS name'))
+            ->where("IATA","LIKE","%{$request->input('query')}%")
+            ->orWhere("Airline","LIKE","%{$request->input('query')}%")
             ->get();
 
         return response()->json($data);

@@ -54,6 +54,9 @@ Route::post('/requery','FrontEndPaymentController@interswitchRequery');
 
 
 Route::get('typeaheadJs', 'FlightController@typeaheadJs')->name('typeaheadJs');
+Route::get('airlineTypeAheadJs', 'FlightController@airlineTypeAheadJs')->name('airlineTypeAheadJs');
+
+
 Route::get('/flights', 'FrontEndController@flightDeals');
 Route::post('/searchFlight','FlightController@searchFlight');
 Route::post('/multiCitySearch','FlightController@multiCitySearch');
@@ -165,6 +168,13 @@ Route::group(['prefix' => 'backend/packages',  'middleware' => 'auth'], function
     Route::patch('schedule/{id}', 'ActivitiesController@updateTimeSchedule');
     Route::patch('good-to-know/{id}', 'ActivitiesController@updateGoodToKnow');
     Route::post('gallery/{id}', 'ActivitiesController@updateGallery');
+
+});
+
+Route::group(['prefix' => 'backend/travel-packages', 'middleware' => 'auth' ], function(){
+    Route::get('create', 'TravelPackageController@packageCreate');
+    Route::post('createPackage','TravelPackageController@create');
+    Route::post('createFlightDeal','TravelPackageController@createFlightDeal');
 
 });
 
