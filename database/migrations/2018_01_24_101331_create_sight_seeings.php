@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGalleriesTable extends Migration
+class CreateSightSeeings extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateGalleriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('galleries', function (Blueprint $table) {
+        Schema::create('sight_seeings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('image_type_id');
-            $table->integer('parent_id');
-            $table->integer('package_id')->nullable();
-            $table->longText('image_path')->nullable();
+            $table->integer('package_id');
+            $table->integer('attraction_id');
+            $table->string('title');
+            $table->longText('description');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateGalleriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('galleries');
+        Schema::dropIfExists('sight_seeings');
     }
 }

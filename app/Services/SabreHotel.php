@@ -241,7 +241,7 @@ class SabreHotel
     }
 
     public function HotelRateDescriptionRQXML($rateParam){
-        return '<HotelRateDescriptionRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2.3.0">
+        return '<HotelRateDescriptionRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  TimeStamp="2014-08-26T13:45:00-06:00" Version="2.3.0">
     <AvailRequestSegment>
         <GuestCounts Count="'.session()->get('hotelSearchParam')['guests'].'" />
         <HotelSearchCriteria>
@@ -250,9 +250,9 @@ class SabreHotel
             </Criterion>
         </HotelSearchCriteria>
         <RatePlanCandidates>
-            <RatePlanCandidate CurrencyCode="'.$rateParam['currency'].'" DCA_ProductCode="A1B2C3D" />
+            <RatePlanCandidate CurrencyCode="'.$rateParam['currencyCode'].'" RPH="'.$rateParam['rph'].'" />
         </RatePlanCandidates>
-        <TimeSpan End="'.date('m-d',strtotime($rateParam['checkOutDate'])).'" Start="'.date('m-d',strtotime($rateParam['checkInDate'])).'" />
+        <TimeSpan Start="'.date('m-d',strtotime($rateParam['checkInDate'])).'" End="'.date('m-d',strtotime($rateParam['checkOutDate'])).'"/>
     </AvailRequestSegment>
 </HotelRateDescriptionRQ>';
     }
@@ -271,12 +271,12 @@ class SabreHotel
     public function HotelReserveRQXML($room,$selectedHotel){
         return '<OTA_HotelResRQ  Version="2.2.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01">
                 <Hotel>
-                  <BasicPropertyInfo RPH="'.$selectedHotel['rooms'][$room]['rph'].'" />
-                  <Guarantee Type="G">
+                  <BasicPropertyInfo RPH="'.number_format($selectedHotel['rooms'][$room]['rph']).'" />
+                  <Guarantee Type="GDPST">
                     <CC_Info>
-                     <PaymentCard Code="VI" ExpireDate="2019-07" Number="4111111111111111"/>
+                     <PaymentCard Code="VI" ExpireDate="2018-06" Number="4751280201874477"/>
                      <PersonName>
-                     <Surname>TESTING</Surname>
+                     <Surname>TEST</Surname>
                      </PersonName>
                     </CC_Info>
                   </Guarantee>
@@ -542,9 +542,12 @@ class SabreHotel
         if(isset($responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['RoomRates']['RoomRate'])){
             $availableRooms = $responseArray['soap-env_Body']['HotelPropertyDescriptionRS']['RoomStay']['RoomRates']['RoomRate'];
             if(!isset($availableRooms[0])) {
-                $guaranteedSurchargeRequired = 'D';
+                $guaranteedSurchargeRequired = 'GDPST';
                 if(isset($availableRooms['@attributes']['GuaranteeSurchargeRequired'])){
                     $guaranteedSurchargeRequired = $availableRooms['@attributes']['GuaranteeSurchargeRequired'];
+                    if($guaranteedSurchargeRequired === 'D'){
+                        $guaranteedSurchargeRequired = 'GDPST';
+                    }
                 }
 
                 $baseAmountPerNight = $availableRooms['Rates']['Rate']['@attributes']['Amount'];
@@ -585,9 +588,12 @@ class SabreHotel
             }
             else {
                 foreach ($availableRooms as $k => $availableRoom) {
-                    $guaranteedSurchargeRequired = 'D';
+                    $guaranteedSurchargeRequired = 'G';
                     if(isset($availableRoom['@attributes']['GuaranteeSurchargeRequired'])){
                         $guaranteedSurchargeRequired = $availableRoom['@attributes']['GuaranteeSurchargeRequired'];
+                        if($guaranteedSurchargeRequired == 'D'){
+                            $guaranteedSurchargeRequired = 'GDPST';
+                        }
                     }
 
                     $baseAmountPerNight = $availableRoom['Rates']['Rate']['@attributes']['Amount'];

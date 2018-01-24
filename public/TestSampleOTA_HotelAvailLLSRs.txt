@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">OTA_HotelAvailLLSRQ</eb:Service><eb:Action>OTA_HotelAvailLLSRS</eb:Action><eb:MessageData><eb:MessageId>1260615508156840151</eb:MessageId><eb:Timestamp>2018-01-16T14:07:03</eb:Timestamp><eb:RefToMessageId>1260575508120130151</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTD!ICESMSLB\/CRT.LB!-3188732784657726843!1622667!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><OTA_HotelAvailRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://sws-crt.cert.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>convId</eb:ConversationId><eb:Service eb:type="OTA">OTA_HotelAvailLLSRQ</eb:Service><eb:Action>OTA_HotelAvailLLSRS</eb:Action><eb:MessageData><eb:MessageId>615138586228970150</eb:MessageId><eb:Timestamp>2018-01-19T16:17:17</eb:Timestamp><eb:RefToMessageId>614940586154620150</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/ACPCRTD!ICESMSLB\/CRT.LB!-3187639135865633398!1180723!0!1</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><OTA_HotelAvailRS xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stl="http://services.sabre.com/STL/v01" Version="2.3.0">
  <stl:ApplicationResults status="Complete">
-  <stl:Success timeStamp="2018-01-16T08:07:03-06:00"/>
+  <stl:Success timeStamp="2018-01-19T10:17:17-06:00"/>
  </stl:ApplicationResults>
  <AdditionalAvail Ind="true"/>
  <AvailabilityOptions>
   <AvailabilityOption RPH="001">
-   <BasicPropertyInfo AreaID="016SW" ChainCode="CN" Distance="K" GEO_ConfidenceLevel="3" HotelCityCode="SIN" HotelCode="0012942" HotelName="CONRAD SINGAPORE" Latitude="1.293770" Longitude="103.858460">
+   <BasicPropertyInfo AreaID="019E" ChainCode="CY" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="DFW" HotelCode="0017061" HotelName="COURTYARD ADDISON MIDWAY" Latitude="32.945900" Longitude="-96.842859">
     <Address>
-     <AddressLine>TWO TEMASEK BOULEVARD</AddressLine>
-     <AddressLine>SINGAPORE SG</AddressLine>
+     <AddressLine>4165 PROTON DR</AddressLine>
+     <AddressLine>ADDISON TX 75001</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="65--63339166" Phone="65--63348888"/>
+     <ContactNumber Fax="972-490-0002" Phone="972-490-7390"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
@@ -22,34 +22,34 @@
      <UnAvail Ind="false"/>
     </DirectConnect>
     <LocationDescription Code="G">
-     <Text>SINGAPORE</Text>
+     <Text>ADDISON TX  14 MI T</Text>
     </LocationDescription>
     <Property Rating="NTM">
-     <Text>4 CROWN</Text>
+     <Text>3 CROWN</Text>
     </Property>
     <PropertyOptionInfo>
      <ADA_Accessible Ind="false"/>
      <AdultsOnly Ind="false"/>
      <BeachFront Ind="false"/>
      <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
+     <BusinessCenter Ind="false"/>
      <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
+     <Conventions Ind="true"/>
      <Dataport Ind="true"/>
      <Dining Ind="true"/>
      <DryClean Ind="true"/>
      <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="true"/>
+     <ExecutiveFloors Ind="false"/>
      <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="true"/>
-     <FreeParking Ind="false"/>
+     <FreeLocalCalls Ind="false"/>
+     <FreeParking Ind="true"/>
      <FreeShuttle Ind="false"/>
      <FreeWifiInMeetingRooms Ind="false"/>
      <FreeWifiInPublicSpaces Ind="false"/>
      <FreeWifiInRooms Ind="false"/>
      <FullServiceSpa Ind="false"/>
      <GameFacilities Ind="false"/>
-     <Golf Ind="true"/>
+     <Golf Ind="false"/>
      <HighSpeedInternet Ind="true"/>
      <HypoallergenicRooms Ind="false"/>
      <IndoorPool Ind="false"/>
@@ -72,17 +72,17 @@
      <RateAssured Ind="true"/>
      <Recreation Ind="false"/>
      <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
+     <RoomService Ind="false"/>
      <RoomService24Hours Ind="false"/>
      <RoomsWithBalcony Ind="false"/>
      <SkiInOutProperty Ind="false"/>
      <SmokeFree Ind="false"/>
      <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="true"/>
+     <Tennis Ind="false"/>
      <WaterPurificationSystem Ind="false"/>
      <Wheelchair Ind="true"/>
     </PropertyOptionInfo>
-    <RateRange CurrencyCode="NGN" Max="155250" Min="100776"/>
+    <RateRange CurrencyCode="NGN" Max="84277" Min="42552"/>
     <RoomRate RateLevelCode="RAC">
      <AdditionalInfo>
       <CancelPolicy Numeric="00"/>
@@ -93,13 +93,13 @@
    </BasicPropertyInfo>
   </AvailabilityOption>
   <AvailabilityOption RPH="002">
-   <BasicPropertyInfo AreaID="019W" ChainCode="PF" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="SIN" HotelCode="0022078" HotelName="PAN PACIFIC ORCHARD" Latitude="1.307080" Longitude="103.831380">
+   <BasicPropertyInfo AreaID="020SE" ChainCode="MC" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="DFW" HotelCode="0044255" HotelName="MARRIOTT STE DAL MKT CTR" Latitude="32.805280" Longitude="-96.838450">
     <Address>
-     <AddressLine>10 CLAYMORE ROAD</AddressLine>
-     <AddressLine>SINGAPORE SG 229540</AddressLine>
+     <AddressLine>2493 N STEMMONS FREEWAY</AddressLine>
+     <AddressLine>DALLAS TX 75207</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="65 67379075" Phone="65 67370811"/>
+     <ContactNumber Fax="214-905-0060" Phone="214-905-0050"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
@@ -109,97 +109,10 @@
      <UnAvail Ind="false"/>
     </DirectConnect>
     <LocationDescription Code="G">
-     <Text>SINGAPORE SINGAPORE</Text>
+     <Text>DALLAS TX</Text>
     </LocationDescription>
     <Property Rating="NTM">
-     <Text>4 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="false"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="false"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="true"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="true"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="true"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RateRange CurrencyCode="NGN" Max="427619" Min="69726"/>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="003">
-   <BasicPropertyInfo AreaID="019SW" ChainCode="MU" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="SIN" HotelCode="0045072" HotelName="GRAND COPTHORNE WATERFRONT" Latitude="1.290250" Longitude="103.834810">
-    <Address>
-     <AddressLine>392 HAVELOCK ROAD</AddressLine>
-     <AddressLine>SINGAPORE SG 169663</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="65-6737-8880" Phone="65-6733-0880"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>BY SINGAPORE RIVER</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>4 CROWN</Text>
+     <Text>3 CROWN</Text>
     </Property>
     <PropertyOptionInfo>
      <ADA_Accessible Ind="false"/>
@@ -212,11 +125,11 @@
      <Dataport Ind="true"/>
      <Dining Ind="true"/>
      <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
+     <EcoCertified Ind="true"/>
      <ExecutiveFloors Ind="true"/>
      <FitnessCenter Ind="true"/>
      <FreeLocalCalls Ind="true"/>
-     <FreeParking Ind="false"/>
+     <FreeParking Ind="true"/>
      <FreeShuttle Ind="true"/>
      <FreeWifiInMeetingRooms Ind="false"/>
      <FreeWifiInPublicSpaces Ind="false"/>
@@ -240,93 +153,7 @@
      <NoAdultTV Ind="false"/>
      <NonSmoking Ind="true"/>
      <OutdoorPool Ind="true"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="true"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="004">
-   <BasicPropertyInfo AreaID="016SW" ChainCode="YR" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="SIN" HotelCode="0013514" HotelName="RAFFLES HOTEL SINGAPORE" Latitude="1.303230" Longitude="103.864100">
-    <Address>
-     <AddressLine>1 BEACH ROAD</AddressLine>
-     <AddressLine>SINGAPORE SG 189673</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="65-6339-7650" Phone="65-6337-1886"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>RAFFLES CITY CONVEN</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>5 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="true"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="true"/>
-     <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="true"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="true"/>
-     <Pets Ind="false"/>
+     <Pets Ind="true"/>
      <Pool Ind="true"/>
      <PublicTransportationAdjacent Ind="false"/>
      <RateAssured Ind="true"/>
@@ -338,11 +165,11 @@
      <SkiInOutProperty Ind="false"/>
      <SmokeFree Ind="false"/>
      <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="true"/>
+     <Tennis Ind="false"/>
      <WaterPurificationSystem Ind="false"/>
      <Wheelchair Ind="true"/>
     </PropertyOptionInfo>
-    <RateRange CurrencyCode="NGN" Max="2734582" Min="392211"/>
+    <RateRange CurrencyCode="NGN" Max="154508" Min="143703"/>
     <RoomRate RateLevelCode="RAC">
      <AdditionalInfo>
       <CancelPolicy Numeric="00"/>
@@ -352,14 +179,14 @@
     <SpecialOffers Ind="false"/>
    </BasicPropertyInfo>
   </AvailabilityOption>
-  <AvailabilityOption RPH="005">
-   <BasicPropertyInfo AreaID="019SW" ChainCode="MU" Distance="K" GEO_ConfidenceLevel="10" HotelCityCode="SIN" HotelCode="0040541" HotelName="M HOTEL SINGAPORE">
+  <AvailabilityOption RPH="003">
+   <BasicPropertyInfo AreaID="008E" ChainCode="WG" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="DFW" HotelCode="0030960" HotelName="WINGATE BY WYNDHAM LAS COLINAS" Latitude="32.884876" Longitude="-96.959822">
     <Address>
-     <AddressLine>81 ANSON ROAD</AddressLine>
-     <AddressLine>BUSINESS DISTRICT SG 079908</AddressLine>
+     <AddressLine>850 W WALNUT HILL LANE</AddressLine>
+     <AddressLine>IRVING TX 75038</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="65-6222-0749" Phone="65-6224-1133"/>
+     <ContactNumber Fax="1-866-9108769" Phone="1-972-7511031"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
@@ -368,7 +195,7 @@
      <RatesExceedMax Ind="false"/>
      <UnAvail Ind="false"/>
     </DirectConnect>
-    <LocationDescription Code="C">
+    <LocationDescription Code="G">
      <Text>BUSINESS DISTRICT</Text>
     </LocationDescription>
     <Property Rating="NTM">
@@ -378,186 +205,15 @@
      <ADA_Accessible Ind="false"/>
      <AdultsOnly Ind="false"/>
      <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
+     <Breakfast Ind="true"/>
      <BusinessCenter Ind="true"/>
      <BusinessReady Ind="false"/>
      <Conventions Ind="false"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
+     <Dataport Ind="false"/>
+     <Dining Ind="false"/>
      <DryClean Ind="true"/>
      <EcoCertified Ind="false"/>
      <ExecutiveFloors Ind="false"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="true"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="false"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="false"/>
-     <InRoomMiniBar Ind="false"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="false"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="true"/>
-     <Pets Ind="false"/>
-     <Pool Ind="false"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="false"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="false"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="006">
-   <BasicPropertyInfo AreaID="017SW" ChainCode="SL" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="SIN" HotelCode="0008250" HotelName="SWISSOTEL MERCHANT COURT" Latitude="1.288090" Longitude="103.845190">
-    <Address>
-     <AddressLine>20 MERCHANT ROAD</AddressLine>
-     <AddressLine>SINGAPORE SG 058281</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="65-6-3340606" Phone="65-6-3372288"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="G">
-     <Text>CLARKE QUAY</Text>
-    </LocationDescription>
-    <Property Rating="NTM">
-     <Text>4 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="true"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="true"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="true"/>
-     <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
-     <FreeShuttle Ind="false"/>
-     <FreeWifiInMeetingRooms Ind="false"/>
-     <FreeWifiInPublicSpaces Ind="false"/>
-     <FreeWifiInRooms Ind="false"/>
-     <FullServiceSpa Ind="true"/>
-     <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
-     <HighSpeedInternet Ind="true"/>
-     <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
-     <InRoomCoffeeTea Ind="true"/>
-     <InRoomMiniBar Ind="true"/>
-     <InRoomRefrigerator Ind="false"/>
-     <InRoomSafe Ind="true"/>
-     <InteriorDoorways Ind="false"/>
-     <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="false"/>
-     <KitchenFacilities Ind="false"/>
-     <MealService Ind="false"/>
-     <MeetingFacilities Ind="true"/>
-     <NoAdultTV Ind="false"/>
-     <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="true"/>
-     <Pets Ind="false"/>
-     <Pool Ind="true"/>
-     <PublicTransportationAdjacent Ind="false"/>
-     <RateAssured Ind="true"/>
-     <Recreation Ind="false"/>
-     <RestrictedRoomAccess Ind="true"/>
-     <RoomService Ind="true"/>
-     <RoomService24Hours Ind="true"/>
-     <RoomsWithBalcony Ind="false"/>
-     <SkiInOutProperty Ind="false"/>
-     <SmokeFree Ind="false"/>
-     <SmokingRoomsAvail Ind="false"/>
-     <Tennis Ind="false"/>
-     <WaterPurificationSystem Ind="false"/>
-     <Wheelchair Ind="true"/>
-    </PropertyOptionInfo>
-    <RateRange CurrencyCode="NGN" Max="250579" Min="62644"/>
-    <RoomRate RateLevelCode="RAC">
-     <AdditionalInfo>
-      <CancelPolicy Numeric="00"/>
-     </AdditionalInfo>
-     <HotelRateCode>RAC</HotelRateCode>
-    </RoomRate>
-    <SpecialOffers Ind="false"/>
-   </BasicPropertyInfo>
-  </AvailabilityOption>
-  <AvailabilityOption RPH="007">
-   <BasicPropertyInfo AreaID="017SW" ChainCode="WW" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="SIN" HotelCode="0016608" HotelName="CARLTON HOTEL SINGAPORE" Latitude="1.295716" Longitude="103.852309">
-    <Address>
-     <AddressLine>76 BRAS BASAH ROAD</AddressLine>
-     <AddressLine>SINGAPORE SG 189558</AddressLine>
-    </Address>
-    <ContactNumbers>
-     <ContactNumber Fax="65-63396866" Phone="65-63388333"/>
-    </ContactNumbers>
-    <DirectConnect>
-     <Alt_Avail Ind="false"/>
-     <DC_AvailParticipant Ind="true"/>
-     <DC_SellParticipant Ind="true"/>
-     <RatesExceedMax Ind="false"/>
-     <UnAvail Ind="false"/>
-    </DirectConnect>
-    <LocationDescription Code="G"/>
-    <Property Rating="NTM">
-     <Text>4 CROWN</Text>
-    </Property>
-    <PropertyOptionInfo>
-     <ADA_Accessible Ind="false"/>
-     <AdultsOnly Ind="false"/>
-     <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
-     <BusinessCenter Ind="true"/>
-     <BusinessReady Ind="false"/>
-     <Conventions Ind="true"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="true"/>
-     <DryClean Ind="false"/>
-     <EcoCertified Ind="false"/>
-     <ExecutiveFloors Ind="true"/>
      <FitnessCenter Ind="true"/>
      <FreeLocalCalls Ind="false"/>
      <FreeParking Ind="true"/>
@@ -577,15 +233,15 @@
      <InRoomSafe Ind="false"/>
      <InteriorDoorways Ind="false"/>
      <Jacuzzi Ind="false"/>
-     <KidsFacilities Ind="true"/>
+     <KidsFacilities Ind="false"/>
      <KitchenFacilities Ind="false"/>
      <MealService Ind="false"/>
      <MeetingFacilities Ind="true"/>
      <NoAdultTV Ind="false"/>
      <NonSmoking Ind="true"/>
-     <OutdoorPool Ind="true"/>
+     <OutdoorPool Ind="false"/>
      <Pets Ind="false"/>
-     <Pool Ind="true"/>
+     <Pool Ind="false"/>
      <PublicTransportationAdjacent Ind="false"/>
      <RateAssured Ind="true"/>
      <Recreation Ind="false"/>
@@ -600,7 +256,6 @@
      <WaterPurificationSystem Ind="false"/>
      <Wheelchair Ind="true"/>
     </PropertyOptionInfo>
-    <RateRange CurrencyCode="NGN" Max="1035001" Min="64006"/>
     <RoomRate RateLevelCode="RAC">
      <AdditionalInfo>
       <CancelPolicy Numeric="00"/>
@@ -610,14 +265,14 @@
     <SpecialOffers Ind="false"/>
    </BasicPropertyInfo>
   </AvailabilityOption>
-  <AvailabilityOption RPH="008">
-   <BasicPropertyInfo AreaID="017SW" ChainCode="PF" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="SIN" HotelCode="0027416" HotelName="PAN PACIFIC SINGAPORE" Latitude="1.290453" Longitude="103.852038">
+  <AvailabilityOption RPH="004">
+   <BasicPropertyInfo AreaID="006S" ChainCode="ES" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="DFW" HotelCode="0026602" HotelName="EMBASSY STES DFW INTL ARPT" Latitude="32.836235" Longitude="-97.015776">
     <Address>
-     <AddressLine>7 RAFFLES BLVD</AddressLine>
-     <AddressLine>SINGAPORE SG</AddressLine>
+     <AddressLine>4650 W AIRPORT FWY</AddressLine>
+     <AddressLine>IRVING TX 75062</AddressLine>
     </Address>
     <ContactNumbers>
-     <ContactNumber Fax="65-63391861" Phone="65-63368111"/>
+     <ContactNumber Fax="1-972-790-4768" Phone="1-972-790-0093"/>
     </ContactNumbers>
     <DirectConnect>
      <Alt_Avail Ind="false"/>
@@ -627,37 +282,37 @@
      <UnAvail Ind="false"/>
     </DirectConnect>
     <LocationDescription Code="G">
-     <Text>MERLION</Text>
+     <Text>DFW INTL AIRPORT SO</Text>
     </LocationDescription>
     <Property Rating="NTM">
-     <Text>5 CROWN</Text>
+     <Text>3 CROWN</Text>
     </Property>
     <PropertyOptionInfo>
      <ADA_Accessible Ind="false"/>
      <AdultsOnly Ind="false"/>
      <BeachFront Ind="false"/>
-     <Breakfast Ind="false"/>
+     <Breakfast Ind="true"/>
      <BusinessCenter Ind="true"/>
      <BusinessReady Ind="false"/>
-     <Conventions Ind="true"/>
-     <Dataport Ind="true"/>
-     <Dining Ind="false"/>
-     <DryClean Ind="false"/>
-     <EcoCertified Ind="false"/>
+     <Conventions Ind="false"/>
+     <Dataport Ind="false"/>
+     <Dining Ind="true"/>
+     <DryClean Ind="true"/>
+     <EcoCertified Ind="true"/>
      <ExecutiveFloors Ind="false"/>
      <FitnessCenter Ind="true"/>
-     <FreeLocalCalls Ind="false"/>
-     <FreeParking Ind="false"/>
+     <FreeLocalCalls Ind="true"/>
+     <FreeParking Ind="true"/>
      <FreeShuttle Ind="false"/>
      <FreeWifiInMeetingRooms Ind="false"/>
      <FreeWifiInPublicSpaces Ind="false"/>
      <FreeWifiInRooms Ind="false"/>
      <FullServiceSpa Ind="false"/>
      <GameFacilities Ind="false"/>
-     <Golf Ind="false"/>
+     <Golf Ind="true"/>
      <HighSpeedInternet Ind="true"/>
      <HypoallergenicRooms Ind="false"/>
-     <IndoorPool Ind="false"/>
+     <IndoorPool Ind="true"/>
      <InRoomCoffeeTea Ind="false"/>
      <InRoomMiniBar Ind="false"/>
      <InRoomRefrigerator Ind="false"/>
@@ -683,11 +338,269 @@
      <SkiInOutProperty Ind="false"/>
      <SmokeFree Ind="false"/>
      <SmokingRoomsAvail Ind="false"/>
+     <Tennis Ind="true"/>
+     <WaterPurificationSystem Ind="false"/>
+     <Wheelchair Ind="true"/>
+    </PropertyOptionInfo>
+    <RateRange CurrencyCode="NGN" Max="95442" Min="72032"/>
+    <RoomRate RateLevelCode="RAC">
+     <AdditionalInfo>
+      <CancelPolicy Numeric="00"/>
+     </AdditionalInfo>
+     <HotelRateCode>RAC</HotelRateCode>
+    </RoomRate>
+    <SpecialOffers Ind="false"/>
+   </BasicPropertyInfo>
+  </AvailabilityOption>
+  <AvailabilityOption RPH="005">
+   <BasicPropertyInfo AreaID="041W" ChainCode="HY" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="DFW" HotelCode="0001846" HotelName="HYATT REGENCY NORTH DALLAS" Latitude="32.975537" Longitude="-96.715260">
+    <Address>
+     <AddressLine>701 E CAMPBELL ROAD</AddressLine>
+     <AddressLine>RICHARDSON TX 75081</AddressLine>
+    </Address>
+    <ContactNumbers>
+     <ContactNumber Fax="1-972-907-2578" Phone="1-972-619-1234"/>
+    </ContactNumbers>
+    <DirectConnect>
+     <Alt_Avail Ind="false"/>
+     <DC_AvailParticipant Ind="true"/>
+     <DC_SellParticipant Ind="true"/>
+     <RatesExceedMax Ind="false"/>
+     <UnAvail Ind="false"/>
+    </DirectConnect>
+    <LocationDescription Code="C">
+     <Text>SOUTHFORK RANCH</Text>
+    </LocationDescription>
+    <Property Rating="NTM">
+     <Text>4 CROWN</Text>
+    </Property>
+    <PropertyOptionInfo>
+     <ADA_Accessible Ind="true"/>
+     <AdultsOnly Ind="false"/>
+     <BeachFront Ind="false"/>
+     <Breakfast Ind="false"/>
+     <BusinessCenter Ind="false"/>
+     <BusinessReady Ind="false"/>
+     <Conventions Ind="true"/>
+     <Dataport Ind="false"/>
+     <Dining Ind="true"/>
+     <DryClean Ind="true"/>
+     <EcoCertified Ind="false"/>
+     <ExecutiveFloors Ind="true"/>
+     <FitnessCenter Ind="false"/>
+     <FreeLocalCalls Ind="false"/>
+     <FreeParking Ind="false"/>
+     <FreeShuttle Ind="false"/>
+     <FreeWifiInMeetingRooms Ind="false"/>
+     <FreeWifiInPublicSpaces Ind="true"/>
+     <FreeWifiInRooms Ind="true"/>
+     <FullServiceSpa Ind="false"/>
+     <GameFacilities Ind="false"/>
+     <Golf Ind="true"/>
+     <HighSpeedInternet Ind="true"/>
+     <HypoallergenicRooms Ind="false"/>
+     <IndoorPool Ind="false"/>
+     <InRoomCoffeeTea Ind="false"/>
+     <InRoomMiniBar Ind="false"/>
+     <InRoomRefrigerator Ind="false"/>
+     <InRoomSafe Ind="true"/>
+     <InteriorDoorways Ind="false"/>
+     <Jacuzzi Ind="false"/>
+     <KidsFacilities Ind="false"/>
+     <KitchenFacilities Ind="false"/>
+     <MealService Ind="false"/>
+     <MeetingFacilities Ind="false"/>
+     <NoAdultTV Ind="false"/>
+     <NonSmoking Ind="true"/>
+     <OutdoorPool Ind="true"/>
+     <Pets Ind="false"/>
+     <Pool Ind="true"/>
+     <PublicTransportationAdjacent Ind="false"/>
+     <RateAssured Ind="true"/>
+     <Recreation Ind="false"/>
+     <RestrictedRoomAccess Ind="false"/>
+     <RoomService Ind="true"/>
+     <RoomService24Hours Ind="false"/>
+     <RoomsWithBalcony Ind="false"/>
+     <SkiInOutProperty Ind="false"/>
+     <SmokeFree Ind="false"/>
+     <SmokingRoomsAvail Ind="false"/>
      <Tennis Ind="false"/>
      <WaterPurificationSystem Ind="false"/>
      <Wheelchair Ind="false"/>
     </PropertyOptionInfo>
-    <RateRange CurrencyCode="NGN" Max="182487" Min="108947"/>
+    <RoomRate RateLevelCode="RAC">
+     <AdditionalInfo>
+      <CancelPolicy Numeric="00"/>
+     </AdditionalInfo>
+     <HotelRateCode>RAC</HotelRateCode>
+    </RoomRate>
+    <SpecialOffers Ind="false"/>
+   </BasicPropertyInfo>
+  </AvailabilityOption>
+  <AvailabilityOption RPH="006">
+   <BasicPropertyInfo AreaID="008SE" ChainCode="MZ" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="DFW" HotelCode="0060461" HotelName="MAINSTAY SUITES IRVING MALL" Latitude="32.839399" Longitude="-96.987970">
+    <Address>
+     <AddressLine>2323 IMPERIAL DRIVE</AddressLine>
+     <AddressLine>IRVING TX 75062</AddressLine>
+    </Address>
+    <ContactNumbers>
+     <ContactNumber Fax="972-258-6173" Phone="972-257-5400"/>
+    </ContactNumbers>
+    <DirectConnect>
+     <Alt_Avail Ind="false"/>
+     <DC_AvailParticipant Ind="true"/>
+     <DC_SellParticipant Ind="true"/>
+     <RatesExceedMax Ind="false"/>
+     <UnAvail Ind="false"/>
+    </DirectConnect>
+    <LocationDescription Code="G">
+     <Text>IRVING</Text>
+    </LocationDescription>
+    <Property Rating="NTM">
+     <Text>2 CROWN</Text>
+    </Property>
+    <PropertyOptionInfo>
+     <ADA_Accessible Ind="false"/>
+     <AdultsOnly Ind="false"/>
+     <BeachFront Ind="false"/>
+     <Breakfast Ind="true"/>
+     <BusinessCenter Ind="true"/>
+     <BusinessReady Ind="false"/>
+     <Conventions Ind="false"/>
+     <Dataport Ind="true"/>
+     <Dining Ind="false"/>
+     <DryClean Ind="false"/>
+     <EcoCertified Ind="false"/>
+     <ExecutiveFloors Ind="false"/>
+     <FitnessCenter Ind="true"/>
+     <FreeLocalCalls Ind="true"/>
+     <FreeParking Ind="true"/>
+     <FreeShuttle Ind="false"/>
+     <FreeWifiInMeetingRooms Ind="false"/>
+     <FreeWifiInPublicSpaces Ind="false"/>
+     <FreeWifiInRooms Ind="false"/>
+     <FullServiceSpa Ind="false"/>
+     <GameFacilities Ind="false"/>
+     <Golf Ind="false"/>
+     <HighSpeedInternet Ind="true"/>
+     <HypoallergenicRooms Ind="false"/>
+     <IndoorPool Ind="false"/>
+     <InRoomCoffeeTea Ind="false"/>
+     <InRoomMiniBar Ind="false"/>
+     <InRoomRefrigerator Ind="false"/>
+     <InRoomSafe Ind="false"/>
+     <InteriorDoorways Ind="false"/>
+     <Jacuzzi Ind="false"/>
+     <KidsFacilities Ind="false"/>
+     <KitchenFacilities Ind="false"/>
+     <MealService Ind="false"/>
+     <MeetingFacilities Ind="true"/>
+     <NoAdultTV Ind="false"/>
+     <NonSmoking Ind="true"/>
+     <OutdoorPool Ind="false"/>
+     <Pets Ind="true"/>
+     <Pool Ind="false"/>
+     <PublicTransportationAdjacent Ind="false"/>
+     <RateAssured Ind="true"/>
+     <Recreation Ind="false"/>
+     <RestrictedRoomAccess Ind="false"/>
+     <RoomService Ind="false"/>
+     <RoomService24Hours Ind="false"/>
+     <RoomsWithBalcony Ind="false"/>
+     <SkiInOutProperty Ind="false"/>
+     <SmokeFree Ind="false"/>
+     <SmokingRoomsAvail Ind="false"/>
+     <Tennis Ind="false"/>
+     <WaterPurificationSystem Ind="false"/>
+     <Wheelchair Ind="true"/>
+    </PropertyOptionInfo>
+    <RoomRate RateLevelCode="RAC">
+     <AdditionalInfo>
+      <CancelPolicy Numeric="00"/>
+     </AdditionalInfo>
+     <HotelRateCode>RAC</HotelRateCode>
+    </RoomRate>
+    <SpecialOffers Ind="false"/>
+   </BasicPropertyInfo>
+  </AvailabilityOption>
+  <AvailabilityOption RPH="007">
+   <BasicPropertyInfo AreaID="024W" ChainCode="MX" Distance="K" GEO_ConfidenceLevel="1" HotelCityCode="DFW" HotelCode="0038830" HotelName="MOTEL 6 DALLAS  GARLAND" Latitude="32.840790" Longitude="-96.592870">
+    <Address>
+     <AddressLine>436 W I-30</AddressLine>
+     <AddressLine>GARLAND TX 75043</AddressLine>
+    </Address>
+    <ContactNumbers>
+     <ContactNumber Fax="1-972-226-2416" Phone="1-972-226-7140"/>
+    </ContactNumbers>
+    <DirectConnect>
+     <Alt_Avail Ind="false"/>
+     <DC_AvailParticipant Ind="true"/>
+     <DC_SellParticipant Ind="true"/>
+     <RatesExceedMax Ind="false"/>
+     <UnAvail Ind="false"/>
+    </DirectConnect>
+    <LocationDescription Code="C">
+     <Text>GARLAND</Text>
+    </LocationDescription>
+    <Property Rating="NTM">
+     <Text>1 CROWN</Text>
+    </Property>
+    <PropertyOptionInfo>
+     <ADA_Accessible Ind="false"/>
+     <AdultsOnly Ind="false"/>
+     <BeachFront Ind="false"/>
+     <Breakfast Ind="false"/>
+     <BusinessCenter Ind="false"/>
+     <BusinessReady Ind="false"/>
+     <Conventions Ind="false"/>
+     <Dataport Ind="true"/>
+     <Dining Ind="false"/>
+     <DryClean Ind="false"/>
+     <EcoCertified Ind="true"/>
+     <ExecutiveFloors Ind="false"/>
+     <FitnessCenter Ind="false"/>
+     <FreeLocalCalls Ind="true"/>
+     <FreeParking Ind="true"/>
+     <FreeShuttle Ind="false"/>
+     <FreeWifiInMeetingRooms Ind="false"/>
+     <FreeWifiInPublicSpaces Ind="false"/>
+     <FreeWifiInRooms Ind="false"/>
+     <FullServiceSpa Ind="false"/>
+     <GameFacilities Ind="false"/>
+     <Golf Ind="false"/>
+     <HighSpeedInternet Ind="false"/>
+     <HypoallergenicRooms Ind="false"/>
+     <IndoorPool Ind="false"/>
+     <InRoomCoffeeTea Ind="false"/>
+     <InRoomMiniBar Ind="false"/>
+     <InRoomRefrigerator Ind="false"/>
+     <InRoomSafe Ind="false"/>
+     <InteriorDoorways Ind="false"/>
+     <Jacuzzi Ind="false"/>
+     <KidsFacilities Ind="false"/>
+     <KitchenFacilities Ind="false"/>
+     <MealService Ind="false"/>
+     <MeetingFacilities Ind="false"/>
+     <NoAdultTV Ind="false"/>
+     <NonSmoking Ind="true"/>
+     <OutdoorPool Ind="true"/>
+     <Pets Ind="true"/>
+     <Pool Ind="true"/>
+     <PublicTransportationAdjacent Ind="false"/>
+     <RateAssured Ind="true"/>
+     <Recreation Ind="false"/>
+     <RestrictedRoomAccess Ind="false"/>
+     <RoomService Ind="false"/>
+     <RoomService24Hours Ind="false"/>
+     <RoomsWithBalcony Ind="false"/>
+     <SkiInOutProperty Ind="false"/>
+     <SmokeFree Ind="false"/>
+     <SmokingRoomsAvail Ind="false"/>
+     <Tennis Ind="false"/>
+     <WaterPurificationSystem Ind="false"/>
+     <Wheelchair Ind="true"/>
+    </PropertyOptionInfo>
     <RoomRate RateLevelCode="RAC">
      <AdditionalInfo>
       <CancelPolicy Numeric="00"/>

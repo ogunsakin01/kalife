@@ -17,6 +17,7 @@ class SightSeeing extends Model
             return back();
         }
     }
+
     public static function countSights($package_id){
         return static::where('package_id', $package_id)->count();
     }
@@ -33,4 +34,6 @@ class SightSeeing extends Model
             static::create($data);
         }
     }
+
+
 }

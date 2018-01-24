@@ -26,6 +26,12 @@ Route::view('/log', 'frontend.online_payment');
 Route::view('/logs', 'frontend.online_payment');
 Route::get('/attractions','FrontEndController@attractions');
 Route::get('/attraction-details/{id}/{name}','FrontEndController@attractionDetails');
+Route::get('/book-package/{id}/{name}','FrontEndController@attractionBook');
+Route::post('/package-booking','FrontEndController@bookPackage');
+Route::get('/package-payment-methods/{txnRef}','FrontEndController@packagePaymentMethod');
+Route::get('/package-booking-complete','FrontEndPaymentController@packageBookingComplete');
+
+
 
 Route::middleware('auth')->group(function(){
     Route::view('/bookings','frontend.bookings');
@@ -48,7 +54,7 @@ Route::post('/requery','FrontEndPaymentController@interswitchRequery');
 
 
 Route::get('typeaheadJs', 'FlightController@typeaheadJs')->name('typeaheadJs');
-Route::view('/flights', 'frontend.flights.deals');
+Route::get('/flights', 'FrontEndController@flightDeals');
 Route::post('/searchFlight','FlightController@searchFlight');
 Route::post('/multiCitySearch','FlightController@multiCitySearch');
 Route::get('/available-flights','FlightController@availableFlights');
@@ -57,6 +63,7 @@ Route::get('/flight-booking-payment-methods','FlightController@flightPaymentPage
 Route::post('/flightBookPricing','FlightController@flightBookPricing');
 Route::get('/flight-passenger-details', 'FlightController@flightPassengerDetails');
 Route::get('/flight-booking-complete', 'FrontEndPaymentController@bookingComplete');
+Route::get('/flight-details/{id}/{name}','FrontEndController@flightDealDetails');
 Route::view('/loading','frontend.loading');
 
 Route::post('/searchHotel','HotelController@searchHotel');
@@ -157,6 +164,7 @@ Route::group(['prefix' => 'backend/packages',  'middleware' => 'auth'], function
     Route::patch('schedule/{id}', 'ActivitiesController@updateTimeSchedule');
     Route::patch('good-to-know/{id}', 'ActivitiesController@updateGoodToKnow');
     Route::post('gallery/{id}', 'ActivitiesController@updateGallery');
+
 });
 
 

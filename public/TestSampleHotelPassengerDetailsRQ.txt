@@ -12,12 +12,12 @@
 		</AgencyInfo>
         <CustomerInfo>
             <ContactNumbers>
-                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="7676523832" PhoneUseType="H"/>
+                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="09068957364" PhoneUseType="H"/>
             </ContactNumbers>
-            <Email Address="janedoesarah123@gmail.com" NameNumber="1.1" Type="CC"/>
+            <Email Address="ogunsakin191@gmail.com" NameNumber="1.1" Type="CC"/>
             <PersonName Infant="false" NameNumber="1.1" PassengerType="ADT">
-                <GivenName>Doe</GivenName>
-                <Surname>John</Surname>
+                <GivenName>Damilola</GivenName>
+                <Surname>Ogunsakin</Surname>
             </PersonName>
         </CustomerInfo>
 	</TravelItineraryAddInfoRQ>

@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\FlightBooking;
+use App\Gallery;
 use App\Mail\FailedPayment;
 use App\Mail\PaymentPreNotification;
 use App\Mail\SuccessfulFlightBooking;
+use App\Mail\SuccessfulPackageBooking;
 use App\Mail\SuccessfulPayment;
 use App\OnlinePayment;
+use App\Package;
+use App\PackageBooking;
 use App\Services\InterswitchConfig;
 use App\Services\PaystackConfig;
 use App\Services\SabreFlight;
@@ -98,7 +102,8 @@ class FrontEndPaymentController extends Controller
                       Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
                   }
               }
-           }else{
+           }
+           else{
                $transactionStatus = [
                    'email' => '0',
                    'reference' => 0,
@@ -145,13 +150,47 @@ class FrontEndPaymentController extends Controller
             $txnRef = $_GET['reference'];
             $transactionInfo = OnlinePayment::getTransaction($txnRef);
             if(empty($transactionInfo) || is_null($transactionInfo)){
-
+                $transactionStatus = [
+                    'email' => '0',
+                    'reference' => $txnRef,
+                    'status' => 0,
+                    'responseCode' => 00,
+                    'responseDescription' => "Transaction with this transaction reference is not found in out database",
+                    'responseFull' => '0',
+                    'amount' => $transactionInfo->amount
+                ];
             }else{
+                $userInfo = User::getUserById($transactionInfo->user_id);
+                $transactionStatus = $this->PaystackConfig->query($txnRef);
+                $transactionStatus['email'] = $userInfo->email;
+                OnlinePayment::updateTransaction($transactionStatus);
+                PackageBooking::updatePaymentStatus($transactionStatus);
+                $bookingInfo = PackageBooking::getBookingByReference($txnRef);
+                $packageInfo = Package::getPackageById($bookingInfo->package_id);
+                if($transactionStatus['status'] == 1){
+                    Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
+                    Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $transactionStatus, $bookingInfo, $packageInfo));
+
+                }elseif($transactionStatus['status'] == 0){
+                    Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                }
 
             }
-        }else{
-
         }
+        else{
+            $transactionStatus = [
+                'email' => '0',
+                'reference' => 0,
+                'status' => 0,
+                'responseCode' => 00,
+                'responseDescription' => "Transaction reference can not be empty",
+                'responseFull' => '0',
+                'amount' => '0'
+            ];
+        }
+
+        session()->put('transactionStatus',$transactionStatus);
+        return redirect(url('/package-booking-complete'));
     }
 
     public function packagePaymentConfirmationInterswitch(){
@@ -159,13 +198,42 @@ class FrontEndPaymentController extends Controller
             $txnRef = $_POST['txnref'];
             $transactionInfo = OnlinePayment::getTransaction($txnRef);
             if(empty($transactionInfo) || is_null($transactionInfo)){
-
+                $transactionStatus = [
+                    'email' => '0',
+                    'reference' => $txnRef,
+                    'status' => 0,
+                    'responseCode' => 00,
+                    'responseDescription' => "Transaction with this transaction reference is not found in out database",
+                    'responseFull' => '0'
+                ];
             }else{
-
+                $userInfo = User::getUserById($transactionInfo->user_id);
+                $transactionStatus = $this->InterswitchConfig->requery($txnRef,$transactionInfo->amount);
+                $transactionStatus['email'] = $userInfo->email;
+                OnlinePayment::updateTransaction($transactionStatus);
+                PackageBooking::updatePaymentStatus($transactionStatus);
+                $bookingInfo = PackageBooking::getBookingByReference($txnRef);
+                $packageInfo = Package::getPackageById($bookingInfo->package_id);
+                if($transactionStatus['status'] == 1){
+                    Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
+                    Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $transactionStatus, $bookingInfo, $packageInfo));
+                }elseif($transactionStatus['status'] == 0){
+                    Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                }
             }
-        }else{
-
         }
+        else{
+            $transactionStatus = [
+                'email' => '0',
+                'reference' => 0,
+                'status' => 0,
+                'responseCode' => 00,
+                'responseDescription' => "Transaction reference can not be empty",
+                'responseFull' => '0'
+            ];
+        }
+        session()->put('transactionStatus',$transactionStatus);
+        return redirect(url('/package-booking-complete'));
     }
 
     public function initiatePaystack(Request $r){
@@ -182,6 +250,23 @@ class FrontEndPaymentController extends Controller
         $Itinerary = session()->get('selectedItinerary');
         $transactionStatus = session()->get('transactionStatus');
         return view("frontend.flights.success_payment", compact('transactionStatus','Itinerary'));
+    }
+
+    public function packageBookingComplete(){
+        $transactionStatus = session()->get('transactionStatus');
+        $bookingInfo = '';
+        $packageInfo = '';
+        $images = '';
+        if($transactionStatus['reference'] !== 0){
+           $bookingInfo = PackageBooking::getBookingByReference($transactionStatus['reference']);
+           $packageInfo = Package::getPackageById($bookingInfo->package_id);
+           $images = Gallery::getGalleryByPackageId($bookingInfo->package_id);
+        }
+        return view("frontend.packages.success_payment", compact('transactionStatus','bookingInfo','packageInfo','images'));
+    }
+
+    public function hotelBookingComplete(){
+
     }
 
     public function interswitchRequery(Request $r){
@@ -201,4 +286,5 @@ class FrontEndPaymentController extends Controller
            }
         return $requery;
     }
+
 }

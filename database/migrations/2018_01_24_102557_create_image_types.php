@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePackageBookings extends Migration
+class CreateImageTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreatePackageBookings extends Migration
      */
     public function up()
     {
-        Schema::table('package_bookings', function (Blueprint $table) {
-            //
+        Schema::create('image_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('type');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class CreatePackageBookings extends Migration
      */
     public function down()
     {
-        Schema::table('package_bookings', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('image_types');
     }
 }

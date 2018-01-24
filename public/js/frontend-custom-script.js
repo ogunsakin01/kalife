@@ -730,6 +730,25 @@ $('.requery').on('click', function(){
             $('#'+reference).LoadingOverlay('hide');
         })
 });
+
+$('.package_guests').on('change',function(){
+    var adults = $('.num_of_adults').val();
+    var kids   = $('.num_of_kids').val();
+    $('.num_of_adult_guests').val(adults);
+    $('.num_of_kid_guests').val(kids);
+    var adults_total = adults * adultPrice;
+    var kids_total = kids * kidPrice;
+    var totalPrice = adults_total + kids_total;
+    $('.total_package_amount').text(totalPrice.toFixed(2));
+    $('.total_amount').val(totalPrice);
+    if((adults != 0) || (kids != 0)){
+        $('#package_payment').prop('disabled',false);
+    }else if((adults == 0) && (kids == 0)){
+        $('#package_payment').prop('disabled',true);
+    }
+
+});
+
 /**
  * End of JavaScript Actions
  * **/

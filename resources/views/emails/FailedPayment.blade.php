@@ -2,7 +2,7 @@
 <p style="text-align: center;"><img src="{{asset('img/logo-invert.png')}}" style="height: 100px;" alt="" /></p>
 
 # Hi {{$userInfo->first_name}},
-Your attempt tp make a payment failed,
+Your attempt to make a payment failed,
 
 @component('mail::panel')
     {{$transactionStatus['responseDescription']}}
@@ -13,6 +13,5 @@ Bookings
 @endcomponent
 
 Regards,
-Kalife Travels and Tours<br>
 {{ config('app.name') }}
 @endcomponent

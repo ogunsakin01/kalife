@@ -7,7 +7,7 @@ Your payment of &#x20A6;{{number_format($transactionStatus['amount'],2) }} was s
     | Transaction Details        |                                             |
     | -------------------------- |:-------------------------------------------:|
     | Transaction Reference      | {{$transactionStatus['reference']}}         |
-    | Amount Paid                | &#x20A6;{{number_format($transactionStatus['amount'],2) }}   |
+    | Amount Paid                | &#x20A6;{{number_format(($transactionStatus['amount'] / 100),2) }}   |
 @endcomponent
 
 @component('mail::panel')

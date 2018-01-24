@@ -3,9 +3,9 @@
         <GuestCounts Count="1" />
         <HotelSearchCriteria>
             <Criterion>
-                <HotelRef HotelCityCode="sin" />
+                <HotelRef HotelCityCode="DFW" />
             </Criterion>
         </HotelSearchCriteria>
-        <TimeSpan End="01-23" Start="01-16" />
+        <TimeSpan End="01-26" Start="01-24" />
     </AvailRequestSegment>
 </OTA_HotelAvailRQ>

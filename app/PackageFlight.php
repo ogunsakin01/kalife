@@ -29,4 +29,9 @@ class PackageFlight extends Model
             static::create($flight);
         }
     }
+
+    public static function getFlightsByPackageId($id){
+        return static::where('package_id',$id)->get();
+    }
+
 }

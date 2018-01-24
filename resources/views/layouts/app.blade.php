@@ -29,7 +29,7 @@
                         <li class="@yield('activeFlight')"><a href="{{url('/flights')}}">Flights</a></li>
                         <li class="@yield('activeHotel')"><a href="{{url('/hotels')}}">Hotels</a></li>
                         {{--<li class="@yield('activeCar')"><a href="#">Cars</a></li>--}}
-                        <li class="@yield('activeAttraction')"><a href="{{url('/attractions')}}">Activities</a></li>
+                        <li class="@yield('activeAttraction')"><a href="{{url('/attractions')}}">Attractions</a></li>
                         <li class="@yield('activeAbout')"><a href="{{url('/about-us')}}">About Us</a></li>
                         <li class="@yield('activeContact')"><a href="{{url('/contact-us')}}">Contact Us</a></li>
                         @if(auth()->guest())
