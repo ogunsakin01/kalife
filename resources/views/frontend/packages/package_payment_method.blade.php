@@ -117,7 +117,7 @@
                                 <img src="{{asset('images/gallery/packages/no-image.jpg')}}"  alt="No image available for this attraction" title="No image available for this attraction" />
                             @endif
                         </a>
-                        <h5 class="booking-item-payment-title"><a href="#">{{$name}}</a></h5>
+                        <h5 class="booking-item-payment-title"><a href="#">{{$attraction_info->name}}</a></h5>
                     </header>
                     <ul class="booking-item-payment-details">
                         <li>
@@ -131,8 +131,12 @@
                                     <p class="booking-item-payment-price-amount">&#x20A6; {{number_format(($attraction_info->adult_price * $bookingData['adults']), 2)}}</p>
                                 </li>
                                 <li>
-                                    <p class="booking-item-payment-price-title">{{$bookingData['kids']}} Kid(s)</p>
-                                    <p class="booking-item-payment-price-amount">&#x20A6; {{number_format(($attraction_info->kids_price * $bookingData['kids']), 2)}}</p>
+                                    <p class="booking-item-payment-price-title">{{$bookingData['children']}} Children (Child)</p>
+                                    <p class="booking-item-payment-price-amount">&#x20A6; {{number_format(($attraction_info->child_price * $bookingData['children']), 2)}}</p>
+                                </li>
+                                <li>
+                                    <p class="booking-item-payment-price-title">{{$bookingData['infants']}} infant(s)</p>
+                                    <p class="booking-item-payment-price-amount">&#x20A6; {{number_format(($attraction_info->infant_price * $bookingData['infants']), 2)}}</p>
                                 </li>
                             </ul>
                         </li>

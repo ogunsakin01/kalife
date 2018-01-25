@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Attraction;
 use App\Email;
 //use App\Message;
 use App\Gallery;
@@ -17,6 +18,7 @@ use App\Services\SabreConfig;
 use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
 use App\SightSeeing;
+use App\TravelPackage;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
@@ -79,7 +81,7 @@ class FrontEndController extends Controller
     }
 
     public function attractions(){
-          $attractions = Package::where('attraction',1)
+          $attractions = TravelPackage::where('attraction',1)
               ->where('hotel', 0)
               ->where('flight', 0)
               ->where('status', 1)
@@ -91,18 +93,18 @@ class FrontEndController extends Controller
     public function attractionDetails($id,$name){
 
           $images = Gallery::getGalleryByPackageId($id);
-          $attraction_info = Package::getPackageById($id);
-          $good_to_knows = GoodToKnow::getGoodToKnowByPackageId($id);
+          $attraction_info = TravelPackage::find($id);
+          $attraction = Attraction::getByPackageId($id);
           $sight_seeings = SightSeeing::getSightseeingByPackageId($id);
-        return view('frontend.attractions.attraction_details', compact('id','name','images','good_to_knows','attraction_info','sight_seeings'));
+        return view('frontend.attractions.attraction_details', compact('id','name','images','attraction_info','sight_seeings','attraction'));
     }
 
     public function attractionBook($id,$name){
         $images = Gallery::getGalleryByPackageId($id);
-        $attraction_info = Package::getPackageById($id);
-        $good_to_knows = GoodToKnow::getGoodToKnowByPackageId($id);
+        $attraction_info = TravelPackage::find($id);
+        $attraction = Attraction::getByPackageId($id);
         $sight_seeings = SightSeeing::getSightseeingByPackageId($id);
-        return view('frontend.packages.package_booking', compact('id','name','images','good_to_knows','attraction_info','sight_seeings'));
+        return view('frontend.packages.package_booking', compact('id','name','images','attraction','attraction_info','sight_seeings'));
     }
 
     public function flightDeals(){
@@ -123,7 +125,8 @@ class FrontEndController extends Controller
             'user_id' => $user_id,
             'package_id' => $r->package_id,
             'adults' => $r->adults,
-            'kids' => $r->kids,
+            'children' => $r->children,
+            'infants'  => $r->infants,
             'total_amount' => $amount
         ];
         PackageBooking::store($bookingData);
@@ -150,10 +153,11 @@ class FrontEndController extends Controller
             'email' => $custInfo->email
             ];
             $id = $bookingInfo->package_id;
-            $attraction_info = Package::find($id);
+            $attraction_info = TravelPackage::find($id);
             $bookingData = $bookingInfo;
             $name = $attraction_info->package_name;
-            return view('frontend.packages.package_payment_method', compact('id','name','paymentInfo','bookingData','attraction_info'));
+            $images = Gallery::getGalleryByPackageId($id);
+            return view('frontend.packages.package_payment_method', compact('id','name','paymentInfo','bookingData','attraction_info','images'));
     }
 
     public function flightDealDetails($id,$name){
@@ -162,6 +166,15 @@ class FrontEndController extends Controller
         $good_to_knows = GoodToKnow::getGoodToKnowByPackageId($id);
         $flights = PackageFlight::getFlightsByPackageId($id);
         return view('frontend.flights.details', compact('id','name','images','flights','flight_info','good_to_knows'));
+    }
+
+    public function hotelDeals(){
+        $hotel_packages = TravelPackage::where('attraction',0)
+            ->where('hotel', 1)
+            ->where('flight', 0)
+            ->where('status', 1)
+            ->paginate(8);
+        return view('frontend.hotels.deals',compact('hotel_packages'));
     }
 
 }

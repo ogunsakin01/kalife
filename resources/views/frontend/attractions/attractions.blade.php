@@ -41,33 +41,42 @@
                         </div>
                     @else
                         @foreach($attractions as $attraction)
+                            {{--<div class="col-md-3">--}}
+                                {{--<div class="thumb">--}}
+                                    {{--<a class="hover-img" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->package_name)}}">--}}
+                                        {{--@if(isset(App\Gallery::getGalleryByPackageId($attraction->id)[0]))--}}
+
+                                            {{--<img src="{{asset(App\Gallery::getGalleryByPackageId($attraction->id)[0]['image_path'])}}" style="height: 100%; width:100%" alt="{{$attraction->package_name}}" title="{{$attraction->package_name}}" />--}}
+                                        {{--@else--}}
+                                            {{--<img src="{{asset('images/gallery/packages/no-image.jpg')}}" alt="{{$attraction->package_name}}" style="height:100%; width: 100%;" title="{{$attraction->package_name}}" />--}}
+                                        {{--@endif--}}
+                                        {{--<div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">--}}
+                                            {{--<div class="text-small">--}}
+
+                                                {{--<h5>{{$attraction->name}}</h5>--}}
+                                                {{--<p class="mb0"><i class="fa fa-map-marker"></i>{{\App\Attraction::getByPackageId($attraction->id)->city}}</p>--}}
+                                                {{--<p class="mb0">offer from &#x20A6;{{number_format($attraction->adult_price,2)}}</p>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             <div class="col-md-3 page-content-1">
                                 <div class="thumb">
                                     <header class="thumb-header">
-                                        <a class="hover-img" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->package_name)}}">
+                                        <a class="hover-img" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->name)}}">
                                             @if(isset(App\Gallery::getGalleryByPackageId($attraction->id)[0]))
-                                                <img src="{{asset(App\Gallery::getGalleryByPackageId($attraction->id)[0]['image_path'])}}" style="height: 100%; width:100%" alt="{{$attraction->package_name}}" title="{{$attraction->package_name}}" />
+
+                                                <img src="{{asset(App\Gallery::getGalleryByPackageId($attraction->id)[0]['image_path'])}}" style="height: 100%; width:100%" alt="{{$attraction->name}}" title="{{$attraction->name}}" />
                                             @else
-                                                <img src="{{asset('images/gallery/packages/no-image.jpg')}}" alt="{{$attraction->package_name}}" style="height:100%; width: 100%;" title="{{$attraction->package_name}}" />
+                                                <img src="{{asset('images/gallery/packages/no-image.jpg')}}" alt="{{$attraction->name}}" style="height:100%; width: 100%;" title="{{$attraction->name}}" />
                                             @endif
                                             <h5 class="hover-title-center">Book Now</h5>
                                         </a>
                                     </header>
                                     <div class="thumb-caption">
-                                        <ul class="icon-group text-tiny text-color">
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                            <li><i class="fa fa-star"></i>
-                                            </li>
-                                        </ul>
-                                        <h5 class="thumb-title"><a class="text-darken" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->package_name)}}">{{$attraction->package_name}}</a></h5>
-                                        <p class="mb0"><small><i class="fa fa-map-marker"></i> {{$attraction->package_location}}</small>
+                                        <h5 class="thumb-title"><a class="text-darken" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->name)}}">{{$attraction->name}}</a></h5>
+                                        <p class="mb0"><small><i class="fa fa-map-marker"></i> {{\App\Attraction::getByPackageId($attraction->id)->city}}</small>
                                         </p>
                                         <p class="mb0 text-darken"><span class="text-lg lh1em text-color"><small >from</small> &#x20A6;{{number_format($attraction->adult_price,2)}}</span>
                                         </p>

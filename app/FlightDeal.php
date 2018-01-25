@@ -9,15 +9,15 @@ class FlightDeal extends Model
 
     public static function store($data){
         $table = new static();
-        $table->package_id = '';
-        $table->origin = '';
-        $table->destination = '';
-        $table->date = '';
-        $table->airline = '';
-        $table->cabin = '';
-        $table->information = '';
+        $table->package_id = $data->package_id;
+        $table->origin = $data->origin;
+        $table->destination = $data->destination;
+        $table->date = $data->date;
+        $table->airline = $data->airline;
+        $table->cabin = $data->cabin;
+        $table->information = $data->information;
         $table->save();
-
+         return $table;
     }
 
 }

@@ -16,6 +16,7 @@ use App\Services\InterswitchConfig;
 use App\Services\PaystackConfig;
 use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
+use App\TravelPackage;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -166,7 +167,7 @@ class FrontEndPaymentController extends Controller
                 OnlinePayment::updateTransaction($transactionStatus);
                 PackageBooking::updatePaymentStatus($transactionStatus);
                 $bookingInfo = PackageBooking::getBookingByReference($txnRef);
-                $packageInfo = Package::getPackageById($bookingInfo->package_id);
+                $packageInfo = TravelPackage::find($bookingInfo->package_id);
                 if($transactionStatus['status'] == 1){
                     Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
                     Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $transactionStatus, $bookingInfo, $packageInfo));
@@ -213,7 +214,7 @@ class FrontEndPaymentController extends Controller
                 OnlinePayment::updateTransaction($transactionStatus);
                 PackageBooking::updatePaymentStatus($transactionStatus);
                 $bookingInfo = PackageBooking::getBookingByReference($txnRef);
-                $packageInfo = Package::getPackageById($bookingInfo->package_id);
+                $packageInfo = TravelPackage::find($bookingInfo->package_id);
                 if($transactionStatus['status'] == 1){
                     Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
                     Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $transactionStatus, $bookingInfo, $packageInfo));
@@ -259,7 +260,7 @@ class FrontEndPaymentController extends Controller
         $images = '';
         if($transactionStatus['reference'] !== 0){
            $bookingInfo = PackageBooking::getBookingByReference($transactionStatus['reference']);
-           $packageInfo = Package::getPackageById($bookingInfo->package_id);
+           $packageInfo = TravelPackage::find($bookingInfo->package_id);
            $images = Gallery::getGalleryByPackageId($bookingInfo->package_id);
         }
         return view("frontend.packages.success_payment", compact('transactionStatus','bookingInfo','packageInfo','images'));

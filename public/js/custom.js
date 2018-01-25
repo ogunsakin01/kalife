@@ -1,5 +1,6 @@
 "use strict";
 
+
 $('ul.slimmenu').slimmenu({
     resizeWidth: '992',
     collapserTitle: 'Main Menu',

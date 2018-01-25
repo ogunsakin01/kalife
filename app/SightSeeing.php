@@ -34,6 +34,16 @@ class SightSeeing extends Model
             static::create($data);
         }
     }
+    public static function storeSightSeeing($r)
+    {
+            $data = [
+                'package_id'     => $r['package_id'],
+                'attraction_id'  => $r['attraction_id'],
+                'title'          => $r['title'],
+                'description'    => $r['description'],
+            ];
+            static::create($data);
+    }
 
 
 }

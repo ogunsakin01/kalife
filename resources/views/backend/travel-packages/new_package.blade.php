@@ -6,6 +6,14 @@
 
 @section('content')
 
+    <input type="hidden" value="" class="package_id"/>
+    <input type="hidden" value="" class="attraction_id"/>
+    <input type="hidden" value="" class="hotel_id"/>
+
+    <input type="hidden" value="0" class="flight"/>
+    <input type="hidden" value="0" class="hotel"/>
+    <input type="hidden" value="0" class="attraction"/>
+
     <div class="row base_package">
         <div class="col-md-12">
                 <div class="alert alert-info" role="alert">
@@ -256,7 +264,40 @@
 
     </div>
 
-    <div class="row attraction hidden">
+    <div id="gallery" class="row hotel_deal_images hidden">
+        <div class="col-md-12">
+            <div class="card card-white">
+                <div class="card-header clearfix">
+                    <h4 class="card-title"><i class="fa fa-info"></i>Hotel Gallery</h4>
+                </div>
+                <div class="card-body">
+                    {!! Form::open(['url'=>'backend/packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
+                    {{ Form::hidden('package_id', '', ['class'=>'package_id']) }}
+                    {{ Form::hidden('parent_id', '', ['class'=>'hotel_images_parent_id']) }}
+                    {{ Form::hidden('image_type_id', '1', ['class'=>'image_type_id']) }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group col-md-12">
+                                <div>
+                                    <h3>Drag and Drop or Click On Box to Select Multiple Images</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12" align="right">
+                            <button type="button" class="btn btn-alt-primary hotel_images_complete pull-right"><i class="fa fa-check"></i> Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row attraction_deals hidden">
       <div class="col-md-12">
           <div class="card">
               <div class="card-header">
@@ -267,7 +308,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label> Attraction Name *</label>
-                            <textarea class="form-control attraction_name"></textarea>
+                            <input type="text" class="form-control attraction_name"/>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -330,6 +371,41 @@
           </div>
       </div>
     </div>
+
+    <div id="gallery" class="row attraction_images hidden">
+        <div class="col-md-12">
+            <div class="card card-white">
+                <div class="card-header clearfix">
+                    <h4 class="card-title"><i class="fa fa-info"></i>Attraction Gallery</h4>
+                </div>
+                <div class="card-body">
+                    {!! Form::open(['url'=>'backend/packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
+                    {{ Form::hidden('package_id', '', ['class'=>'package_id']) }}
+                    {{ Form::hidden('parent_id', '', ['class'=>'attraction_images_parent_id']) }}
+                    {{ Form::hidden('image_type_id', '2', ['class'=>'image_type_id']) }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group col-md-12">
+                                <div>
+                                    <h3>Drag and Drop or Click On Box to Select Multiple Images</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {!! Form::close() !!}
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12" align="right">
+                            <button type="button" class="btn btn-alt-primary attraction_images_complete pull-right"><i class="fa fa-check"></i> Continue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
 @endsection

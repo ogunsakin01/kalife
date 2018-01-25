@@ -9,7 +9,6 @@
     <meta content="yes" name="apple-touch-fullscreen">
     @include('partials.backend.css')
     @yield('css')
-
     <script type="text/javascript">
       var BaseUrl = "{{url("/")}}";
       var path = "<?php echo e(route('typeaheadJs')); ?>";

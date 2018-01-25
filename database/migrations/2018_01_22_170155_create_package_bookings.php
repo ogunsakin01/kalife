@@ -19,8 +19,9 @@ class CreatePackageBookings extends Migration
             $table->integer('package_id');
             $table->string('reference');
             $table->integer('adults');
-            $table->integer('kids');
-            $table->integer('total_amount');
+            $table->integer('children');
+            $table->integer('infants');
+            $table->string('total_amount');
             $table->integer('payment_status');
             $table->timestamps();
         });

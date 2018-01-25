@@ -734,17 +734,20 @@ $('.requery').on('click', function(){
 
 $('.package_guests').on('change',function(){
     var adults = $('.num_of_adults').val();
-    var kids   = $('.num_of_kids').val();
+    var children   = $('.num_of_children').val();
+    var infants   = $('.num_of_infants').val();
     $('.num_of_adult_guests').val(adults);
-    $('.num_of_kid_guests').val(kids);
+    $('.num_of_child_guests').val(children);
+    $('.num_of_infant_guests').val(infants);
     var adults_total = adults * adultPrice;
-    var kids_total = kids * kidPrice;
-    var totalPrice = adults_total + kids_total;
+    var children_total = children * childPrice;
+    var infants_total = infants * infantPrice;
+    var totalPrice = adults_total + children_total + infants_total;
     $('.total_package_amount').text(totalPrice.toFixed(2));
     $('.total_amount').val(totalPrice);
-    if((adults != 0) || (kids != 0)){
+    if((adults != 0) || (children != 0)){
         $('#package_payment').prop('disabled',false);
-    }else if((adults == 0) && (kids == 0)){
+    }else if((adults == 0) && (children == 0)){
         $('#package_payment').prop('disabled',true);
     }
 

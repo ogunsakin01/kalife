@@ -8,6 +8,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/DataTables/js/jquery.dataTables.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/izi/iziModal.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/izi/iziToast.js')}}"></script>
+<script src="{{asset("js/axios.min.js")}}"></script>
 <script src="{{asset("js/typeahead.js")}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 <script src="{{asset("js/jspdf.debug.js")}}"></script>

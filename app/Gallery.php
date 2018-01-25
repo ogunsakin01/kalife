@@ -9,6 +9,7 @@ class Gallery extends Model
     public static function getGalleryByPackageId($activity_id){
         return static::where('package_id',$activity_id)->get();
     }
+
     public static function deletePicture($id){
         $delete = static::where('id', $id)->delete();
         if($delete){
@@ -16,6 +17,7 @@ class Gallery extends Model
             return back();
         }
     }
+
     public function package(){
         return $this->belongsTo(Package::class, 'package_id');
     }

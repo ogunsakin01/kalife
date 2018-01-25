@@ -116,6 +116,8 @@ class ActivitiesController extends Controller
       $image->move(public_path('images/gallery/packages'),$imageName);
       $gallery = new Gallery();
       $gallery->package_id = $r->package_id;
+      $gallery->image_type_id = $r->image_type_id;
+      $gallery->parent_id = $r->parent_id;
       $gallery->image_path = $image_path;
       $gallery->save();
       return response()->json(['success'=>$imageName]);

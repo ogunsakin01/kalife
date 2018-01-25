@@ -30,6 +30,7 @@ Route::get('/book-package/{id}/{name}','FrontEndController@attractionBook');
 Route::post('/package-booking','FrontEndController@bookPackage');
 Route::get('/package-payment-methods/{txnRef}','FrontEndController@packagePaymentMethod');
 Route::get('/package-booking-complete','FrontEndPaymentController@packageBookingComplete');
+Route::get('/hotels', 'FrontEndController@hotelDeals');
 
 
 
@@ -73,7 +74,7 @@ Route::post('/searchHotel','HotelController@searchHotel');
 Route::get('/available-hotels', 'HotelController@availableHotels');
 Route::post('/hotelPropertyDescription', 'HotelController@hotelPropertyDescription');
 Route::get('/hotel-information', 'HotelController@selectedHotel');
-Route::view('/hotels', 'frontend.hotels.deals');
+
 Route::get('/room-booking/{room}','HotelController@selectedRoomBooking');
 Route::post('/hotelPassengerDetailsRQ','HotelController@createReservation');
 Route::get('/payment-option/{room}/reservation','HotelController@hotelPaymentOption');
@@ -172,9 +173,16 @@ Route::group(['prefix' => 'backend/packages',  'middleware' => 'auth'], function
 });
 
 Route::group(['prefix' => 'backend/travel-packages', 'middleware' => 'auth' ], function(){
+
+    Route::get('', 'TravelPackageController@travelPackages');
     Route::get('create', 'TravelPackageController@packageCreate');
     Route::post('createPackage','TravelPackageController@create');
     Route::post('createFlightDeal','TravelPackageController@createFlightDeal');
+    Route::post('createHotelDeal','TravelPackageController@createHotelDeal');
+    Route::post('createAttraction','TravelPackageController@createAttraction');
+    Route::get('activate/{id}', 'TravelPackageController@activate')->name('activate');
+    Route::get('deactivate/{id}', 'TravelPackageController@deactivate')->name('deactivate');
+    Route::get('delete/{id}', 'TravelPackageController@deletePackage');
 
 });
 
