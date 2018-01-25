@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class TravelPackage extends Model
 {
@@ -79,6 +80,12 @@ class TravelPackage extends Model
 
     }
 
+    public static function getAllPackagesDesc(){
+
+        return DB::table('travel_packages')
+            ->orderBy('id','desc')
+            ->get();
+    }
 
 
 }

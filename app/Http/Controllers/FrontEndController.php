@@ -7,6 +7,7 @@ use App\Email;
 //use App\Message;
 use App\Gallery;
 use App\GoodToKnow;
+use App\HotelDeal;
 use App\OnlinePayment;
 use App\Package;
 use App\PackageAttraction;
@@ -175,6 +176,13 @@ class FrontEndController extends Controller
             ->where('status', 1)
             ->paginate(8);
         return view('frontend.hotels.deals',compact('hotel_packages'));
+    }
+
+    public function hotelDetails($id,$name){
+        $hotel = HotelDeal::getByPackageId($id);
+        $hotel_info = TravelPackage::find($id);
+        $images = Gallery::getGalleryByPackageId($id);
+        return view("frontend.hotels.hotel_details", compact('hotel','hotel_info','images','id','name'));
     }
 
 }

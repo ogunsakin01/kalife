@@ -30,7 +30,7 @@
                                 <tbody>
                                 @foreach($packages as $serial=> $package)
                                     <tr>
-                                        <td>{{$serial+1}}</td>
+                                        <td>{{$package->id}}</td>
                                         <td>
                                             @if($package->flight)
                                                 <button data-toggle="modal" data-target="#flight_{{$package->id}}" class="btn btn-success btn-sm">Flight</button>
@@ -60,7 +60,7 @@
                                             <a class="btn btn-success btn-sm" onclick="activate({{$package->id}})"><i class="fa fa-check"></i></a>
                                             <a class="btn btn-warning btn-sm" onclick="deactivate({{$package->id}})"><i class="fa fa-times"></i></a>
                                             <a class="btn btn-info btn-sm" href="{{--{{url('packages/edit')}}/{{$package->id}}--}}#"><i class="fa fa-edit"></i></a>
-                                            <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_{{$package->id}}"><i class="fa fa-trash"></i></a>
+                                            {{--<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_{{$package->id}}"><i class="fa fa-trash"></i></a>--}}
                                         </td>
                                     </tr>
 

@@ -30,4 +30,8 @@ class PackageBooking extends Model
         return $a;
     }
 
+    public static function getUserBookingsById($user_id){
+        return static::where('user_id', $user_id)->get();
+    }
+
 }

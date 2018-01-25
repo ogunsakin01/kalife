@@ -31,12 +31,14 @@ Route::post('/package-booking','FrontEndController@bookPackage');
 Route::get('/package-payment-methods/{txnRef}','FrontEndController@packagePaymentMethod');
 Route::get('/package-booking-complete','FrontEndPaymentController@packageBookingComplete');
 Route::get('/hotels', 'FrontEndController@hotelDeals');
+Route::get('/hotel-details/{id}/{name}','FrontEndController@hotelDetails');
 
 
 
 Route::middleware('auth')->group(function(){
     Route::view('/bookings','frontend.bookings');
     Route::view('/flight-bookings','frontend.flight_bookings');
+    Route::view('/package-bookings','frontend.package_bookings');
     Route::view('/my-online-payments','frontend.my_online_payments');
     Route::view('/manage-user','frontend.manage_user');
     Route::post('/update-user','CustomerProfileController@updateProfile');

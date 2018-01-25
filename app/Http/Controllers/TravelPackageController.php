@@ -80,7 +80,7 @@ class TravelPackageController extends Controller
     }
 
     public function travelPackages(){
-        $packages = TravelPackage::all();
+        $packages = TravelPackage::getAllPackagesDesc();
         return view('backend.travel-packages.packages', compact('packages'));
     }
 
