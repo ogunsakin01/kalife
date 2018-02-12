@@ -10,29 +10,49 @@ namespace App\Services;
 
 
 use App\OnlinePayment;
+use Exception;
+use Illuminate\Support\Facades\Mail;
+use Brian2694\Toastr\Facades\Toastr;
+use App\Mail\PaymentPreNotification;
+
 
 class InterswitchConfig
 {
 
-    public $request_text_url = 'https://sandbox.interswitchng.com/webpay/pay';
+    public $web_pay_request_test_url     = 'https://sandbox.interswitchng.com/webpay/pay';
 
-    public $request_live_url = 'https://webpay.interswitchng.com/paydirect/pay';
+    public  $web_pay_test_query_url      = 'https://sandbox.interswitchng.com/webpay/api/v1/gettransaction.json';
 
-    public  $text_query_url = 'https://sandbox.interswitchng.com/webpay/api/v1/gettransaction.json';
+    public $web_pay_request_live_url     = '';
 
-    public $live_query_url = 'https://webpay.interswitchng.com/paydirect/api/v1/gettransaction.json';
+    public $web_pay_query_live_url       = '';
 
-    public static $ActionUrl = 'https://sandbox.interswitchng.com/webpay/pay';
+    public $pay_direct_request_test_url  = 'https://sandbox.interswitchng.com/collections/w/pay';
 
-    public $mac_key = 'D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F';
+    public $pay_direct_query_test_url    = 'https://sandbox.interswitchng.com/collections/api/v1/gettransaction.json';
 
-    public $item_id = '101';
+    public $pay_direct_request_live_url  = 'https://webpay.interswitchng.com/paydirect/pay';
 
-    public $product_id = '6205';
+    public $pay_direct_live_query_url    = 'https://webpay.interswitchng.com/paydirect/api/v1/gettransaction.json';
+
+    public static $ActionUrl             = 'https://sandbox.interswitchng.com/webpay/pay';
+
+    public $mac_key                      = 'D3D1D05AFE42AD50818167EAC73C109168A0F108F32645C8B59E897FA930DA44F9230910DAC9E20641823799A107A02068F7BC0F4CC41D2952E249552255710F';
+
+    public $web_pay_item_id              = '101';
+
+    public $web_pay_product_id           = '6205';
+
+    public $pay_direct_pay_item_id       = '101';
+
+    public $pay_direct_product_id        = '1706';
 
     public function __construct(){
-        $this->requestActionUrl = $this->request_text_url;
-        $this->queryActionUrl   = $this->text_query_url;
+
+        $this->requestActionUrl = $this->web_pay_request_test_url;
+        $this->queryActionUrl   = $this->web_pay_test_query_url;
+        $this->item_id = $this->web_pay_item_id;
+        $this->product_id = $this->web_pay_product_id;
 
     }
 
@@ -50,6 +70,12 @@ class InterswitchConfig
             'payment_status' => 0
         ];
         OnlinePayment::store($info);
+        try{
+            Mail::to(auth()->user())->send(new PaymentPreNotification(auth()->user(),$amount,$txnRef));
+        }
+        catch(Exception $e){
+            Toastr::warning('Unable to send pre payment notification');
+        }
         $toHash = $txnRef.$this->product_id.$this->item_id.$amount.$redirectUrl.$this->mac_key;
         return openssl_digest($toHash, "SHA512");
     }

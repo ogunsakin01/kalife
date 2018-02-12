@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-md-6">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header" id="vat_header">
           Add VAT
         </div>
         <div class="card-body">
@@ -50,12 +50,11 @@
 
     <div class="col-md-6">
       <div class="card">
-        <div class="card-header">vat List</div>
+        <div class="card-header">Vat List</div>
         <div class="card-body">
           <table class="table table-sm">
             <thead>
             <tr>
-              <th>#</th>
               <th>Type</th>
               <th>Value Type</th>
               <th>Value</th>
@@ -63,7 +62,30 @@
             </tr>
             </thead>
             <tbody id="vat-body">
-
+              <tr>
+                <td>Flight</td>
+                <td>{{\App\MarkupValueType::find($vat->flight_vat_type)->type}}</td>
+                <td>{{$vat->flight_vat_value}}</td>
+                <td><button class="btn btn-primary editVat" value="flight" data-toggle="tooltip" title="Edit flight vat information"><i class="fa fa-edit"></i></button></td>
+              </tr>
+              <tr>
+                <td>Hotel</td>
+                <td>{{\App\MarkupValueType::find($vat->hotel_vat_type)->type}}</td>
+                <td>{{$vat->hotel_vat_value}}</td>
+                <td><button class="btn btn-primary editVat" value="hotel" data-toggle="tooltip" title="Edit hotel vat information"><i class="fa fa-edit"></i></button></td>
+              </tr>
+              <tr>
+                <td>Car</td>
+                <td>{{\App\MarkupValueType::find($vat->car_vat_type)->type}}</td>
+                <td>{{$vat->car_vat_value}}</td>
+                <td><button class="btn btn-primary editVat" value="car" data-toggle="tooltip" title="Edit car vat information"><i class="fa fa-edit"></i></button></td>
+              </tr>
+              <tr>
+                <td>Package</td>
+                <td>{{\App\MarkupValueType::find($vat->package_vat_type)->type}}</td>
+                <td>{{$vat->package_vat_value}}</td>
+                <td><button class="btn btn-primary editVat" value="package" data-toggle="tooltip" title="Edit car vat information"><i class="fa fa-edit"></i></button></td>
+              </tr>
             </tbody>
           </table>
 

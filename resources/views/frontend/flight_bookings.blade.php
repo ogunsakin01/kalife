@@ -22,7 +22,7 @@
                          <th>Total Amount</th>
                          <th>Payment Status</th>
                          <th>Ticket Status</th>
-                         <th>Created Date</th>
+                         <th>Booking Date</th>
                          <th>Starting Date / Time</th>
                          <th>Deadline</th>
                          <th>Flight Info</th>
@@ -35,13 +35,37 @@
                      @foreach(\App\FlightBooking::getAllBookingsByUserId(auth()->user()->id) as $i => $flight)
                          <tr>
                              <td>{{$flight->reference}}</td>
-                             <td>@if($flight->payment_status == 1) {{$flight->pnr}} @else <label class="label label-danger">Incomplete</label> @endif </td>
+                             <td>@if($flight->payment_status == 1)
+                                     <b class="text-darken">{{$flight->pnr}}</b>
+                                 @else
+                                     <label class="label label-warning"><i class="fa fa-warning"></i> Incomplete</label>
+                                 @endif </td>
                              <td>&#x20A6;{{number_format($flight->itinerary_amount)}} </td>
                              <td>&#x20A6;{{number_format(($flight->admin_markup + $flight->vat))}}</td>
                              <td>&#x20A6;{{number_format($flight->airline_markdown)}} </td>
                              <td>&#x20A6; {{number_format($flight->total_amount)}}</td>
-                             <td class="text-center">@if($flight->payment_status == 1) <i class="fa fa-check"></i> @else <i class="fa fa-times"></i> @endif </td>
-                             <td class="text-center">   @if($flight->issue_ticket_status == 1) <i class="fa fa-check"></i> @else <i class="fa fa-times"></i> @endif </td>
+                             <td class="text-center">
+                                 @if($flight->payment_status == 1)
+                                     <label class="label label-success">
+                                         <i class="fa fa-check"></i> Success
+                                     </label>
+                                 @else
+                                     <label class="label label-danger">
+                                         <i class="fa fa-times"></i> Failed
+                                     </label>
+                                 @endif
+                             </td>
+                             <td class="text-center">
+                                 @if($flight->issue_ticket_status == 1)
+                                     <label class="label label-success">
+                                         <i class="fa fa-check"></i> Success
+                                     </label>
+                                 @else
+                                     <label class="label label-warning">
+                                         <i class="fa fa-warning"></i> Incomplete
+                                     </label>
+                                 @endif
+                             </td>
                              <td>{{date('M d, Y',strtotime($flight->created_at))}}</td>
                              <td>Jan 17 2017, 10 am</td>
                              <td>Jan 17 2017, 10 am</td>
@@ -120,11 +144,63 @@
                                                                      </div>
                                                              @endif
 
-                                                         @endforeach
 
+                                                     @endforeach
                                                  @else
+                                                     @php $item = json_decode($flight->pnr_request_response, true)['soap-env_Body']['PassengerDetailsRS']['TravelItineraryReadRS']['TravelItinerary']['ItineraryInfo']['ReservationItems']['Item']; @endphp
+                                                     @if(isset($item['FlightSegment'][0]))
+                                                         @foreach($item['FlightSegment'] as $g => $ite)
+                                                             <div class="row">
+                                                                 <div class="col-md-9">
+                                                                     <div class="booking-item-flight-details">
+                                                                         <div class="booking-item-departure"><i class="fa fa-plane"></i>
 
+                                                                             <h5>{{date('g:i A',strtotime($ite['@attributes']['DepartureDateTime']))}}</h5>
+                                                                             <p class="booking-item-date">{{date('D, M d',strtotime($ite['@attributes']['DepartureDateTime']))}}</p>
+                                                                             <p class="booking-item-destination">{{\App\Airport::getCity($ite['OriginLocation']['@attributes']['LocationCode'])}}({{$ite['OriginLocation']['@attributes']['LocationCode']}}) {{--{{$ite['OriginLocation']['@attributes']['Terminal']}}--}}</p>
+                                                                         </div>
+                                                                         <div class="booking-item-arrival"><i class="fa fa-plane fa-flip-vertical"></i>
+                                                                             <h5>{{date('g:i A',strtotime($ite['@attributes']['ArrivalDateTime']))}}</h5>
+                                                                             <p class="booking-item-date">{{date('D, M d',strtotime($ite['@attributes']['ArrivalDateTime']))}}</p>
+                                                                             <p class="booking-item-destination">{{\App\Airport::getCity($ite['DestinationLocation']['@attributes']['LocationCode'])}}({{$ite['DestinationLocation']['@attributes']['LocationCode']}}) {{--{{$ite['DestinationLocation']['@attributes']['Terminal']}}--}}</p>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div class="col-md-3">
+                                                                     <div class="booking-item-flight-duration">
+                                                                         <p>Duration</p>
+                                                                         <h5>{{$ite['@attributes']['ElapsedTime']}}</h5>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                         @endforeach
+                                                     @else
+                                                         <div class="row">
+                                                             <div class="col-md-9">
+                                                                 <div class="booking-item-flight-details">
+                                                                     <div class="booking-item-departure"><i class="fa fa-plane"></i>
+
+                                                                         <h5>{{date('g:i A',strtotime($item['FlightSegment']['@attributes']['DepartureDateTime']))}}</h5>
+                                                                         <p class="booking-item-date">{{date('D, M d',strtotime($item['FlightSegment']['@attributes']['DepartureDateTime']))}}</p>
+                                                                         <p class="booking-item-destination">{{\App\Airport::getCity($item['FlightSegment']['OriginLocation']['@attributes']['LocationCode'])}}({{$item['FlightSegment']['OriginLocation']['@attributes']['LocationCode']}}) {{--{{$item['FlightSegment']['OriginLocation']['@attributes']['Terminal']}}--}}</p>
+                                                                     </div>
+                                                                     <div class="booking-item-arrival"><i class="fa fa-plane fa-flip-vertical"></i>
+                                                                         <h5>{{date('g:i A',strtotime($item['FlightSegment']['@attributes']['ArrivalDateTime']))}}</h5>
+                                                                         <p class="booking-item-date">{{date('D, M d',strtotime($item['FlightSegment']['@attributes']['ArrivalDateTime']))}}</p>
+                                                                         <p class="booking-item-destination">{{\App\Airport::getCity($item['FlightSegment']['DestinationLocation']['@attributes']['LocationCode'])}}({{$item['FlightSegment']['DestinationLocation']['@attributes']['LocationCode']}}) {{--{{$item['FlightSegment']['DestinationLocation']['@attributes']['Terminal']}}--}}</p>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="col-md-3">
+                                                                 <div class="booking-item-flight-duration">
+                                                                     <p>Duration</p>
+                                                                     <h5>{{$item['FlightSegment']['@attributes']['ElapsedTime']}}</h5>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
                                                      @endif
+
+                                                  @endif
                                              </div>
                                          </li>
                                      </ul>
@@ -160,7 +236,8 @@
                                              </div>
                                          </li>
                                          @endforeach
-                                         @else
+
+                                     @else
                                          @php($passengerInfo = json_decode($flight->pnr_request_response, true)['soap-env_Body']['PassengerDetailsRS']['TravelItineraryReadRS']['TravelItinerary']['CustomerInfo']['PersonName'])
                                          <li>
                                              <div class="row">
@@ -185,7 +262,7 @@
                                                  </div>
                                              </div>
                                          </li>
-                                         @endif
+                                     @endif
 
 
                                  </ul>

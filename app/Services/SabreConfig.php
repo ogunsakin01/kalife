@@ -31,6 +31,8 @@ class SabreConfig{
             return 'PKG-'. rand(000,999) .'-KLF-'.uniqid();
         }elseif($type == 'car'){
             return 'CAR-'. rand(000,999) .'-KLF-'.uniqid();
+        }elseif($type == 'wallet-deposit'){
+            return 'WDR-'. rand(000,999) .'-KLF-'.uniqid();
         }
     }
 
@@ -88,9 +90,9 @@ class SabreConfig{
     }
 
     public function priceTypeCalculator($type,$value,$amount){
-        if($type == 0){
+        if($type == 1){
             return (($value/100) * $amount);
-        }if($type == 1){
+        }if($type == 2){
             return $value;
         }
     }
@@ -109,5 +111,15 @@ class SabreConfig{
             return '<i class="fa fa-times"></i>';
         }
     }
-    
+
+    public static function cityImage($cityCode){
+        return 'https://photo.hotellook.com/static/cities/960x720/'.$cityCode.'.jpg';
+    }
+
+    public static function iataCode($string){
+        if(strlen($string) == 3){
+            return $string;
+        }
+        return substr($string, 0,3);
+    }
 }

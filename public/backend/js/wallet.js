@@ -1,142 +1,10 @@
 /**
  * Created by hp on 9/1/2018.
  */
+var pageUrl = '/backend/wallet';
 
 $('#wallet_table').DataTable();
-
-function toastWarning(message){
-  return iziToast.warning({
-    timeout: 10000,
-    close: true,
-    id: 'question',
-    title: 'Hey',
-    message: message,
-    position: 'topRight',
-    buttons: [
-      ['<button><b>OK</b></button>', function (instance, toast) {
-
-        instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
-
-      }, true]
-    ],
-    onClosing: function(instance, toast, closedBy){
-      // console.info('Closing | closedBy: ' + closedBy);
-    },
-    onClosed: function(instance, toast, closedBy){
-      console.info('Closed | closedBy: ' + closedBy);
-    }
-  });
-}
-
-function toastSuccess(message){
-  return iziToast.success({
-    id: 'success',
-    timeout: 7000,
-    close: true,
-    title: 'Success',
-    message: message,
-    position: 'bottomRight',
-    transitionIn: 'bounceInLeft',
-    // iconText: 'star',
-    onOpened: function(instance, toast){
-
-    },
-    onClosed: function(instance, toast, closedBy){
-      console.info('closedBy: ' + closedBy);
-
-    }
-  });
-}
-
-function toastError(message){
-  return iziToast.error({
-    id: 'error',
-    timeout: 7000,
-    close: true,
-    title: 'Error',
-    message: message,
-    position: 'topRight',
-    transitionIn: 'fadeInDown'
-  });
-}
-
-function toastInfo(message)
-{
-  return iziToast.info({
-    id: 'info',
-    timeout: 7000,
-    close: true,
-    title: 'Hello',
-    message: message,
-    position: 'topLeft',
-    transitionIn: 'bounceInRight'
-  });
-}
-
-function modalError(message)
-{
-  $("#modalError").iziModal({
-    title: "Attention",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#BD5B5B',
-    width: 600,
-    timeout: 10000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalError').iziModal('open');
-}
-
-function modalSuccess(message)
-{
-  $("#modalSuccess").iziModal({
-    title: "Success",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#1bbd65',
-    width: 600,
-    timeout: 10000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalSuccess').iziModal('open');
-}
-
-function modalInfo(message)
-{
-  $("#modalInfo").iziModal({
-    title: "Info",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#1bbd65',
-    width: 600,
-    timeout: 20000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalInfo').iziModal('open');
-}
-
-function extractError(error)
-{
-  for(var error_log in error.response.data.errors) {
-    var err = error.response.data.errors[error_log];
-    toastError(err);
-  }
-}
+$('.dataTable').DataTable();
 
 function readURL(e) {
   if (this.files && this.files[0]) {
@@ -152,6 +20,7 @@ function readURL(e) {
 $(function () {
   $('#interswitch_option').click(function () {
     $('#webpay_amount_row').removeClass('hidden');
+    $('#paystack_amount_row').addClass('hidden');
     $('#bank_form_row').addClass('hidden');
     $('#submit_deposit').addClass('hidden');
     $('#proceed_with_interswitch').removeClass('hidden');
@@ -163,7 +32,8 @@ $(function () {
   });
 
   $('#paystack_option').click(function () {
-    $('#webpay_amount_row').removeClass('hidden');
+    $('#paystack_amount_row').removeClass('hidden');
+    $('#webpay_amount_row').addClass('hidden');
     $('#bank_form_row').addClass('hidden');
     $('#submit_deposit').addClass('hidden');
     $('#proceed_with_interswitch').addClass('hidden');
@@ -176,11 +46,44 @@ $(function () {
 
   $('#bank_option').click(function () {
     $('#bank_form_row').removeClass('hidden');
+      $('#paystack_amount_row').addClass('hidden');
     $('#webpay_amount_row').addClass('hidden');
     $('#submit_deposit').removeClass('hidden');
     $('#proceed_with_interswitch').addClass('hidden');
     $('#proceed_with_paystack').addClass('hidden');
     $('#webpay_amount').val('');
+  });
+
+  $('#build_transaction').click(function(){
+      buttonClicked('build_transaction','Build Transaction',1);
+      var amount = $('#webpay_amount').val();
+      axios.post(pageUrl + '/buildInterswitchTransaction',{
+          amount : amount
+      })
+      .then(function(response){
+         console.log(response.data);
+         $('#transaction_amount').val(response.data.fancy_amount);
+         $('#transaction_reference').val(response.data.reference);
+         $('#webpay_info').removeClass('hidden');
+         $('#webpay_build').addClass('hidden');
+         $('.amount_1').val(response.data.amount);
+         $('.reference_1').val(response.data.reference);
+         $('.pay_item_id').val(response.data.item_id);
+         $('.product_id').val(response.data.product_id);
+         $('.site_redirect_url').val(response.data.redirect_url);
+         $('.hash').val(response.data.hash);
+
+         toastr.success('Transaction built, click on the PAY NOW button to continue your payment')
+
+
+      })
+      .catch(function(error){
+          buttonClicked('build_transaction','Build Transaction',0);
+          var Error = error.response.data.errors.amount;
+          for(var i = 0; i < Error.length; i++){
+              toastr.error(Error[i]);
+          }
+      })
   });
 
   $('#bank_detail_id').change(function () {
@@ -206,9 +109,65 @@ $(function () {
     // console.log(slip_photo);*/
   });
 
-  $('#').click(function () {
+  $('.requery-wallet-online-payment').click(function () {
+   var reference = $(this).val();
+      toastr.info(reference);
+   $('#online_payment_'+reference).LoadingOverlay('show');
+   axios.post(pageUrl+'/requery',{
+       reference : reference
+   })
+   .then(function(response){
+       $('#online_payment_'+reference).LoadingOverlay('hide');
+       if(response.data.status === 1){
+        var data = '<span class="badge badge-success"><i class="fa fa-check"></i> Success</span>';
+        $('#status_'+reference).html(data);
+       }
+       toastr.info('Requery done, '+response.data.responseDescription);
+       console.log(response.data);
+   })
+   .catch(function(error){
+       $('#online_payment_'+reference).LoadingOverlay('hide');
+       var Error = error.response.data.errors.reference;
+       for(var i = 0; i < Error.length; i++){
+           toastr.error(Error[i]);
+       }
+   })
 
   });
+});
+
+
+$('.requery').on('click', function(){
+    var reference = $(this).val();
+
+    $('#'+reference).LoadingOverlay('show');
+    axios.post('/requery',{
+        reference : reference
+    })
+        .then(function(response){
+            $('#'+reference).LoadingOverlay('hide');
+            if(response.data['responseCode'] == '--'){
+                toastr.error(response.data['responseDescription']);
+            }
+            if(response.data['responseCode'] == '00'){
+                toastr.success(response.data['responseDescription']);
+                $('.response_code_'+reference).text(response.data['responseCode']);
+                $('.response_description_'+reference).text(response.data['responseDescription']);
+                $(this).addClass('hidden');
+            }
+            if(response.data['responseCode'] != '00' && response.data['responseCode'] != '--'){
+                toastr.warning(response.data['responseDescription']);
+                $('.response_code_'+reference).text(response.data['responseCode']);
+                $('.response_description_'+reference).text(response.data['responseDescription']);
+            }
+            if(response.status === 500){
+                toastr.warning("Your device could not establish a connection to the server. Try again");
+            }
+        })
+
+        .catch(function(error){
+            $('#'+reference).LoadingOverlay('hide');
+        })
 });
 
 

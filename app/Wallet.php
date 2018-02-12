@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Wallet extends Model
 {
+
   public function authenticatedUserWalletBalance()
   {
     $wallet = static::where('user_id', auth()->id())->first();
-
+//     dd($wallet);
     if (empty($wallet))
     {
       $this->createWallet(auth()->id());
     }
-
-    return number_format($wallet->balance);
+    return $wallet->balance;
   }
 
   public function createWallet($user_id)
@@ -40,4 +40,26 @@ class Wallet extends Model
 
 
   }
+
+  public static function updateWalletBalance($user_id, $amount, $creditORdebit){
+
+      $getWalletBalance = static::where('user_id',$user_id)->first();
+
+      $balance = $getWalletBalance->balance;
+
+      if($creditORdebit == 'credit'){
+          $newBalance = $balance + $amount;
+          WalletLog::createLog($user_id,$amount,1);
+      }elseif($creditORdebit == 'debit'){
+          $newBalance = $balance - $amount;
+          WalletLog::createLog($user_id,$amount,0);
+      }
+
+      $getWalletBalance->balance = $newBalance;
+      $getWalletBalance->update();
+
+
+  }
+
+
 }

@@ -7,22 +7,18 @@
 		</EndTransactionRQ>
 	</PostProcessing>
 	<PriceQuoteInfo>
-		<Link NameNumber="1.1" Record="1"/><Link NameNumber="2.1" Record="1"/>
+		<Link NameNumber="1.1" Record="1"/>
 	</PriceQuoteInfo>
 	<SpecialReqDetails>
     <SpecialServiceRQ>
         <SpecialServiceInfo>
             <SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="2006-01-17" Gender="M" NameNumber="1.1" >
+                <PersonName DateOfBirth="2006-02-07" Gender="M" NameNumber="1.1" >
                     <GivenName>Damilola</GivenName>
                     <Surname>Ogunsakin</Surname>
                 </PersonName>
-            </SecureFlight><SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="2006-01-19" Gender="M" NameNumber="2.1" >
-                    <GivenName>Olamide</GivenName>
-                    <Surname>Ogunsakin</Surname>
-                </PersonName>
             </SecureFlight>
+            
         </SpecialServiceInfo>
     </SpecialServiceRQ>
 </SpecialReqDetails>
@@ -37,9 +33,6 @@
             <Email Address="ogunsakin191@gmail.com" NameNumber="1.1" Type="CC"/>
             <PersonName Infant="false" NameNumber="1.1" PassengerType="ADT">
                 <GivenName>Damilola</GivenName>
-                <Surname>Ogunsakin</Surname>
-            </PersonName><PersonName Infant="false" NameNumber="2.1" PassengerType="ADT">
-                <GivenName>Olamide</GivenName>
                 <Surname>Ogunsakin</Surname>
             </PersonName>
         </CustomerInfo>

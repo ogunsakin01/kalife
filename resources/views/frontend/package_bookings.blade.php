@@ -35,9 +35,9 @@
                                     <td>{{\App\TravelPackage::find($booking->package_id)->name}}</td>
                                     <td>{{\App\TravelPackage::find($booking->package_id)->phone_number}}</td>
                                     <td>
-                                        @if(\App\TravelPackage::find($booking->package_id)->flight == 1)     <button class="btn btn-default" data-toggle="title" title="Includes flight"><i class="fa fa-plane"></i></button>            @endif
-                                        @if(\App\TravelPackage::find($booking->package_id)->hotel == 1)      <button class="btn btn-default" data-toggle="title" title="Includes hotel"><i class="fa fa-home"></i></button>              @endif
-                                        @if(\App\TravelPackage::find($booking->package_id)->attraction == 1) <button class="btn btn-default" data-toggle="title" title="Includes attraction"><i class="fa fa-map-marker"></i></button>   @endif
+                                        @if(\App\TravelPackage::find($booking->package_id)->flight == 1)     <button class="btn btn-default" data-toggle="tooltip" title="Hooray!"><i class="fa fa-plane"></i></button>            @endif
+                                        @if(\App\TravelPackage::find($booking->package_id)->hotel == 1)      <button class="btn btn-default" data-toggle="tooltip" title="{{\App\HotelDeal::getByPackageId($booking->package_id)->name}}"><i class="fa fa-home"></i></button>              @endif
+                                        @if(\App\TravelPackage::find($booking->package_id)->attraction == 1) <button class="btn btn-default" data-toggle="tooltip" title="{{\App\Attraction::getByPackageId($booking->package_id)->name}}"><i class="fa fa-briefcase"></i></button>   @endif
                                     </td>
                                     <td>{{$booking->adults}}</td>
                                     <td>{{$booking->children}}</td>
@@ -51,7 +51,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button class="btn btn-default" type="button"><i class="fa fa-cog"></i> More INfo</button>
+                                        <button class="btn btn-default" type="button"><i class="fa fa-cog"></i> More Info</button>
                                     </td>
 
 

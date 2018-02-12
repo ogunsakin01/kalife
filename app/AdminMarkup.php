@@ -14,7 +14,11 @@ class AdminMarkup extends Model
 
     public static function getAdminUserMarkup()
     {
-        return static::where('role_id', 3)->first();
+        return static::where('role_id', 1)->first();
+    }
+
+    public static function getAdminAgentMarkup(){
+        return static::where('role_id', 2)->first();
     }
 
     public function updateOrCreateMarkup($data)

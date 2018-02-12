@@ -3,6 +3,7 @@
 @section('activeHotel') active @endsection
 
 @section('content')
+    @php  $InterswitchConfig = new \App\Services\InterswitchConfig() @endphp
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
@@ -42,7 +43,7 @@
                     <div class="tab-content" style="background-color: #f7f7f7; padding: 15px; ">
                         <div class="tab-pane fade in active" id="tab-1">
                             <h4>Interswitch Payment Gateway</h4>
-                            <form method="post" action="{{\App\Services\InterswitchConfig::$ActionUrl}}">
+                            <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
                                 <input type="hidden" class="reference_1" name="txn_ref" value="{{$paymentInfo['reference']}}"/>
                                 <input type="hidden" class="amount_1" name="amount" value="{{$paymentInfo['amount']}}"/>
                                 <input type="hidden" name="currency" value="566"/>

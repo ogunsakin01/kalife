@@ -5,15 +5,17 @@
 @section('title')My Dashboard @endsection
 
 @section('content')
+
+  @role('Super Admin')
   <div class="row">
     <div class="col-md-3">
       <div class="card stats-card">
         <div class="stats-icon">
-          <span class="ti-arrow-top-right"></span>
+          <span class="fa fa-plane fa-flip-vertical"></span>
         </div>
         <div class="stats-ctn">
-          <div class="stats-counter"><span class="counter">87</span></div>
-          <span class="desc">flight bookings</span>
+          <div class="stats-counter"><span class="counter">{{$allFlightBookings}}</span></div>
+          <span class="desc">All Flight bookings</span>
         </div>
       </div>
     </div>
@@ -23,8 +25,8 @@
           <span class="ti-home"></span>
         </div>
         <div class="stats-ctn">
-          <div class="stats-counter"><span class="counter">100</span></div>
-          <span class="desc">hotel bookings</span>
+          <div class="stats-counter"><span class="counter">0</span></div>
+          <span class="desc"><span class="badge badge-warning"><i class="fa fa-warning"></i></span>All Hotel bookings</span>
         </div>
       </div>
 
@@ -35,24 +37,83 @@
           <span class="ti-car"></span>
         </div>
         <div class="stats-ctn">
-          <div class="stats-counter"><span class="counter">31</span></div>
-          <span class="desc">car bookings</span>
+          <div class="stats-counter"><span class="counter">{{$allPackagesBookings}}</span></div>
+          <span class="desc">All Packages bookings</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <a href="{{route('backend-wallet-view')}}">
+      <div class="card stats-card">
+        <div class="stats-icon">
+          <span class="ti-wallet"></span>
+        </div>
+        <div class="stats-ctn">
+          <div class="stats-counter">&#x20A6;<span class="counter">{{number_format(($userWalletBalance/100))}}</span></div>
+          <span class="desc">My Wallet</span>
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+  @endrole
+
+  @role('Agent')
+  <div class="row">
+    <div class="col-md-3">
+      <a href="{{route('my-flight-bookings')}}">
+        <div class="card stats-card">
+          <div class="stats-icon">
+            <span class="fa fa-plane fa-flip-vertical"></span>
+          </div>
+          <div class="stats-ctn">
+            <div class="stats-counter"><span class="counter">{{$userFlightBookings}}</span></div>
+            <span class="desc">Flight bookings</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <div class="card stats-card">
+        <div class="stats-icon">
+          <span class="ti-home"></span>
+        </div>
+        <div class="stats-ctn">
+          <div class="stats-counter"><span class="counter">0</span></div>
+          <span class="desc"><span class="badge badge-warning"><i class="fa fa-warning"></i></span> Hotel bookings</span>
         </div>
       </div>
 
     </div>
     <div class="col-md-3">
-        <div class="card stats-card">
-          <div class="stats-icon">
-            <span class="ti-wallet"></span>
-          </div>
-          <div class="stats-ctn">
-            <div class="stats-counter">&#x20A6;<span class="counter">22,000</span></div>
-            <span class="desc">wallet</span>
-          </div>
+      <a href="{{route('my-package-bookings')}}">
+      <div class="card stats-card">
+        <div class="stats-icon">
+          <span class="ti-car"></span>
+        </div>
+        <div class="stats-ctn">
+          <div class="stats-counter"><span class="counter">{{$userPackagesBookings}}</span></div>
+          <span class="desc">Packages bookings</span>
         </div>
       </div>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="{{route('backend-wallet-view')}}">
+      <div class="card stats-card">
+        <div class="stats-icon">
+          <span class="ti-wallet"></span>
+        </div>
+        <div class="stats-ctn">
+          <div class="stats-counter">&#x20A6;<span class="counter">{{number_format(($userWalletBalance/100))}}</span></div>
+          <span class="desc">My Wallet</span>
+        </div>
+      </div>
+      </a>
+    </div>
   </div>
+  @endrole
+
 
   <div class="row">
     <div class="col-md-9">
@@ -79,16 +140,7 @@
                       <h3 class="text-info">Search for cheap flights</h3>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="form-group col-md-6">
-                      {!! Form::label('from_loc', 'From') !!}
-                      {!! Form::text('from_loc', null, ['class' => 'form-control']) !!}
-                    </div>
 
-                    <div class="form-group col-md-6">
-                      {!! Form::label('to_loc', 'To') !!}
-                      {!! Form::text('to_loc', null, ['class' => 'form-control']) !!}
-                    </div>
                   </div>
                 </div>
               </div>

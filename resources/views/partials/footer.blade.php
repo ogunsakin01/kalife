@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row row-wrap">
             <div class="col-md-3">
-                <a class="logo" href="index-2.html">
-                    <img src="{{url('img/logo-invert.png')}}" alt="Image Alternative text" title="Image Title" />
+                <a class="logo" href="{{url('/')}}">
+                    <img src="{{url('img/logo-footer.png')}}" style="height: 126px; width: 100px;" alt="Image Alternative text" title="Image Title" />
                 </a>
                 <p class="mb20">Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
                 <ul class="list list-horizontal list-space">

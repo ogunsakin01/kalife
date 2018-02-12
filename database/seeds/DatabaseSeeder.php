@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
          $this->call(HotelSeeder::class);
          $this->call(BankSeeder::class);
          $this->call(BankDetailsSeeder::class);
+         $this->call(PermissionsSeeder::class);
     }
 }

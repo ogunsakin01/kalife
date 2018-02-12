@@ -57,9 +57,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-success btn-sm" onclick="activate({{$package->id}})"><i class="fa fa-check"></i></a>
-                                            <a class="btn btn-warning btn-sm" onclick="deactivate({{$package->id}})"><i class="fa fa-times"></i></a>
-                                            <a class="btn btn-info btn-sm" href="{{--{{url('packages/edit')}}/{{$package->id}}--}}#"><i class="fa fa-edit"></i></a>
+                                            <a class="btn btn-success btn-sm" data-toggle="title" title="Activate Package" onclick="activate({{$package->id}})"><i class="fa fa-check"></i></a>
+                                            <a class="btn btn-warning btn-sm" data-toggle="title" title="Deactivate Package" onclick="deactivate({{$package->id}})"><i class="fa fa-times"></i></a>
+                                            <a class="btn btn-info btn-sm" data-toggle="title" title="Edit Package" href="{{url('backend/travel-packages/edit')}}/{{$package->id}}"><i class="fa fa-edit"></i></a>
                                             {{--<a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_{{$package->id}}"><i class="fa fa-trash"></i></a>--}}
                                         </td>
                                     </tr>
@@ -95,6 +95,7 @@
                                             {!! Form::close() !!}
                                         </div>
                                     </div>
+
                                     <div class="modal fade" id="delete_{{$package->id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-sm">
                                             <div class="modal-content">
@@ -114,7 +115,9 @@
                                     </div>
 
                                     <div class="modal fade" id="flight_{{$package->id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
                                         <div class="modal-dialog modal-md">
+
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -130,6 +133,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 @endforeach
                                 </tbody>
                             </table>
@@ -140,4 +144,7 @@
         </div>
     </div>
 
+@endsection
+@section('javascript')
+    <script src="{{asset('backend/js/travel-packages.js')}}" type="text/javascript"></script>
 @endsection

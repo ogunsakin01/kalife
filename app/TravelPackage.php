@@ -12,23 +12,44 @@ class TravelPackage extends Model
         ACTIVATED = 1,
         DEACTIVATED = 0;
 
+    protected $fillable = [
+        'category_id',
+        'name',
+        'flight',
+        'hotel',
+        'attraction',
+        'phone_number',
+        'information',
+        'adult_price',
+        'child_price',
+        'infant_price',
+        'status',
+    ];
 
     public static function store($data){
-        $table = new static();
-        $table->category_id  = $data['default']->category;
-        $table->name         = $data['default']->name;
-        $table->flight       = $data['flight'];
-        $table->hotel        = $data['hotel'];
-        $table->attraction   = $data['attraction'];
-        $table->phone_number = $data['default']->contact_number;
-        $table->information  = $data['default']->information;
-        $table->adult_price  = $data['default']->adult_price;
-        $table->child_price  = $data['default']->child_price;
-        $table->infant_price = $data['default']->infant_price;
-        $table->status = 0;
-        $table->save();
 
-        return $table;
+        $package = static::updateOrCreate(
+            [
+                'id' => $data['default']->package_id
+            ],
+
+            [
+                'category_id'  => $data['default']->category,
+                'name'         => $data['default']->name,
+                'flight'       => $data['flight'],
+                'hotel'        => $data['hotel'],
+                'attraction'   => $data['attraction'],
+                'phone_number' => $data['default']->contact_number,
+                'information'  => $data['default']->information,
+                'adult_price'  => $data['default']->adult_price,
+                'child_price'  => $data['default']->child_price,
+                'infant_price' => $data['default']->infant_price,
+                'status'       => 0
+            ]
+        );
+
+
+        return $package;
     }
 
     public static function isDeactivated($id)
@@ -86,6 +107,8 @@ class TravelPackage extends Model
             ->orderBy('id','desc')
             ->get();
     }
+
+
 
 
 }

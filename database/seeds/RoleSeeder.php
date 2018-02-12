@@ -14,18 +14,20 @@ class RoleSeeder extends Seeder
       $roles = [
 
           [
+              'id' => 1,
               'name' => 'Customer',
               'display_name' => 'Customer',
               'description' => '',
           ],
 
           [
+              'id' => 2,
               'name' => 'Agent',
               'display_name' => 'Agent',
               'description' => '',
           ],
 
-          [
+          [   'id' => 3,
               'name' => 'Super Admin',
               'display_name' => 'Super Admin',
               'description' => '',

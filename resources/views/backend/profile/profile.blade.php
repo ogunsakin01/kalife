@@ -11,7 +11,11 @@
       <!-- Photo & Description card -->
       <div class="profile-side">
         <div class="profile-photo">
-          <img src="{{asset('backend/images/profiles/05.jpg')}}" class="circle" alt="">
+          @if(empty(auth()->user()->profile_photo))
+            <img src="{{asset('backend/img/logo-invert.png')}}" class="circle" alt="">
+          @else
+            <img src="{{asset(auth()->user()->profile_photo)}}" class="circle" alt="">
+          @endif
           <div class="prof-name">
             {{$name}}
           </div>

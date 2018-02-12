@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Attraction;
 use App\CabinType;
 use App\FlightDeal;
+use App\Gallery;
 use App\HotelDeal;
 use App\PackageCategory;
 use App\SightSeeing;
@@ -136,6 +137,21 @@ class TravelPackageController extends Controller
 
     public function deletePackage($id){
         return TravelPackage::deletePackage($id);
+    }
+
+    public function editPackage($id){
+        $package_categories = PackageCategory::all();
+        $cabin_types = CabinType::all();
+        $package    = TravelPackage::find($id);
+        $flightDeal = FlightDeal::getByPackageId($id);
+        $hotelDeal = HotelDeal::getByPackageId($id);
+        $attraction = Attraction::getByPackageId($id);
+        return view('backend.travel-packages.edit_package',compact('package','flightDeal','hotelDeal','attraction','package_categories','cabin_types'));
+
+    }
+
+    public function deleteImage(Request $r){
+       Gallery::deletePicture($r->id);
     }
 
 

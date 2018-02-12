@@ -17,11 +17,11 @@
             <li class="@yield('user')"><a href="{{url('/manage-user')}}"><i class="fa fa-user"></i>Manage Info</a></li>
             <li class="@yield('booking')"><a href="{{url('/bookings')}}"><i class="fa fa-dashboard"></i> Bookings</a></li>
             <li class="@yield('flightBooking')"><a href="{{url('/flight-bookings')}}"><i class="fa fa-plane"></i> Flight Bookings</a></li>
-            <li class="@yield('hotelBooking')"><a href="#"><i class="fa fa-building-o"></i> Hotel Bookings</a></li>
-            <li class="@yield('carBooking')"><a href="#"><i class="fa fa-car"></i> Car Bookings</a></li>
+            <li class="@yield('hotelBooking')"><a href="#"><i class="fa fa-building-o"></i> Hotel Bookings <span class="badge badge-info">Not Avail</span></a></li>
+            <li class="@yield('carBooking')"><a href="#"><i class="fa fa-car"></i> Car Bookings <span class="badge badge-info">Not Avail</span></a></li>
             <li class="@yield('packageBooking')"><a href="{{url('/package-bookings')}}"><i class="fa fa-suitcase"></i> Travel Packages</a></li>
             <li class="@yield('onlinePayment')"><a href="{{url('/my-online-payments')}}"><i class="fa fa-money"></i>Online Payments</a></li>
-            <li class="@yield('bankPayment')"><a href="#"><i class="fa fa-bank"></i>Bank Payments</a></li>
+            <li class="@yield('bankPayment')"><a href="{{url('/bank-payments')}}"><i class="fa fa-bank"></i>Bank Payments</a></li>
         </ul>
     </aside>
 </div>

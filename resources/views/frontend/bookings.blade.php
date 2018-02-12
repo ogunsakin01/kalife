@@ -15,7 +15,7 @@
                     <li>
                         <a href="{{url('/flight-bookings')}}">
                             <i class="fa fa-plane user-profile-statictics-icon"></i>
-                            <h5>{{\App\FlightBooking::getBookingsByUserId(auth()->user()->id)}}</h5>
+                            <h5>{{count(\App\FlightBooking::getBookingsByUserId(auth()->user()->id))}}</h5>
                             <p>Itineraries</p>
                         </a>
                     </li>
@@ -33,7 +33,7 @@
                     </li>
                     <li><a href="#">
                             <i class="fa fa-suitcase user-profile-statictics-icon"></i>
-                            <h5>0</h5>
+                            <h5>{{count(\App\PackageBooking::getUserBookingsById(auth()->user()->id))}}</h5>
                             <p>Travel Packages</p>
                         </a>
                     </li>

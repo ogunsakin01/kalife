@@ -2,195 +2,14 @@
  * Created by UniQue on 1/24/2018.
  */
 
-function toastWarning(message){
-    return iziToast.warning({
-        timeout: 10000,
-        close: true,
-        id: 'question',
-        title: 'Hey',
-        message: message,
-        position: 'topRight',
-        buttons: [
-            ['<button><b>OK</b></button>', function (instance, toast) {
-
-                instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
-
-            }, true]
-        ],
-        onClosing: function(instance, toast, closedBy){
-            // console.info('Closing | closedBy: ' + closedBy);
-        },
-        onClosed: function(instance, toast, closedBy){
-            console.info('Closed | closedBy: ' + closedBy);
-        }
-    });
-}
-
-function toastSuccess(message){
-    return iziToast.success({
-        id: 'success',
-        timeout: 7000,
-        close: true,
-        title: 'Success',
-        message: message,
-        position: 'bottomRight',
-        transitionIn: 'bounceInLeft',
-        // iconText: 'star',
-        onOpened: function(instance, toast){
-
-        },
-        onClosed: function(instance, toast, closedBy){
-            console.info('closedBy: ' + closedBy);
-
-        }
-    });
-
-}
-
-function toastError(message){
-    return iziToast.error({
-        id: 'error',
-        timeout: 7000,
-        close: true,
-        title: 'Error',
-        message: message,
-        position: 'topRight',
-        transitionIn: 'fadeInDown'
-    });
-}
-
-function toastInfo(message) {
-    return iziToast.info({
-        id: 'info',
-        timeout: 7000,
-        close: true,
-        title: 'Hello',
-        message: message,
-        position: 'topLeft',
-        transitionIn: 'bounceInRight'
-    });
-}
-
-function modalError(message){
-    $("#modalError").iziModal({
-        title: "Attention",
-        close: true,
-        subtitle: message,
-        icon: 'icon-power_settings_new',
-        headerColor: '#BD5B5B',
-        width: 600,
-        timeout: 10000,
-        timeoutProgressbar: true,
-        transitionIn: 'fadeInDown',
-        transitionOut: 'fadeOutDown',
-        pauseOnHover: true
-    });
-    event.preventDefault();
-    return $('#modalError').iziModal('open');
-}
-
-function modalSuccess(message){
-    $("#modalSuccess").iziModal({
-        title: "Success",
-        close: true,
-        subtitle: message,
-        icon: 'icon-power_settings_new',
-        headerColor: '#1bbd65',
-        width: 600,
-        timeout: 10000,
-        timeoutProgressbar: true,
-        transitionIn: 'fadeInDown',
-        transitionOut: 'fadeOutDown',
-        pauseOnHover: true
-    });
-    event.preventDefault();
-    return $('#modalSuccess').iziModal('open');
-}
-
-function modalInfo(message){
-    $("#modalInfo").iziModal({
-        title: "Info",
-        close: true,
-        subtitle: message,
-        icon: 'icon-power_settings_new',
-        headerColor: '#1bbd65',
-        width: 600,
-        timeout: 20000,
-        timeoutProgressbar: true,
-        transitionIn: 'fadeInDown',
-        transitionOut: 'fadeOutDown',
-        pauseOnHover: true
-    });
-    event.preventDefault();
-    return $('#modalInfo').iziModal('open');
-}
-
-function isEmail(email) {
-    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
-}
-
 function packageCreateComplete(){
     var flight     = $('.flight').val();
     var hotel      = $('.hotel').val();
     var attraction = $('.attraction').val();
     if(flight == 0 && hotel == 0 && attraction == 0){
-        toastInfo("Travel package creation complete. Redirecting to travel package menu");
+        toastr.info("Travel package creation complete. Redirecting to travel package menu");
         window.location.href = BaseUrl+'/backend/travel-packages';
     }
-}
-
-function validateFormWithClasses(classes) {
-    if (Array.isArray(classes))
-    {
-        for(var i=0; i < classes.length; i++)
-        {
-            var result = 0;
-            if(Array.isArray($("."+classes[i]))){
-                for(var j=0; j < $("."+classes[i]).length; j++){
-                    if($("."+classes[i][j]).val() == "" || $("."+classes[i][j]).val() == null)
-                    {
-                        $("."+classes[i][j]).css("border-color", "red");
-                        result++;
-                    }else{
-                        $("."+classes[i][j]).css("border-color", "green");
-                    }
-                }
-            }else{
-                if($("."+classes[i]).val() == "" || $("."+classes[i]).val() == null)
-                {
-                    $("."+classes[i]).css("border-color", "red");
-                    result++;
-                }else{
-                    $("."+classes[i]).css("border-color", "green");
-                }
-            }
-
-        }
-        if (result > 0){
-            toastError("Please fill all highlighted field(s)");
-            return false;
-        }
-    }else if(typeof classes === 'string')
-    {
-        if(Array.isArray($("."+classes))){
-           for(var k=0; k < $("."+classes).length; k++){
-               if($("."+classes[k]).val() == "" || $("."+classes[k]).val() == null)
-               {
-                   $("."+classes[k]).css("border-color", "red");
-               }
-               toastError("Please fill all highlighted field(s)");
-           }
-        }else{
-            if($("."+classes).val() == "" || $("."+classes).val() == null)
-            {
-                $("."+classes).css("border-color", "red");
-            }
-            toastError("Please fill all highlighted field(s)");
-            return false;
-        }
-    }
-    return true;
 }
 
 function activate(id) {
@@ -203,13 +22,13 @@ function activate(id) {
             if (response.status == true) {
                 $('#status' + id).empty();
                 $('#status' + id).html("<span disabled class='btn btn-success btn-xs'>Activated</span>");
-                toastSuccess("Package has been activated");
+                toastr.success("Package has been activated");
             }else if(response.status == false)
             {
-                toastError("Error: Something went wrong, package not activated, try again later");
+                toastr.error("Error: Something went wrong, package not activated, try again later");
             }else if(response.status == 'activated')
             {
-                toastWarning("Package already activated");
+                toastr.warning("Package already activated");
             }
         }
     });
@@ -225,13 +44,13 @@ function deactivate(id) {
             if (response.status == true) {
                 $('#status' + id).empty();
                 $('#status' + id).html("<span disabled class='btn btn-danger btn-xs'>Deactivated</span>");
-                toastSuccess("Package has been deactivated");
+                toastr.success("Package has been deactivated");
             }else if(response.status == false)
             {
-                toastError("Error: Something went wrong, package not deactivated, try again later");
+                toastr.error("Error: Something went wrong, package not deactivated, try again later");
             }else if(response.status == 'deactivated')
             {
-                toastWarning("Package already deactivated");
+                toastr.warning("Package already deactivated");
             }
         }
     });
@@ -280,11 +99,12 @@ $('.create_new_package').on('click',function(){
     var adult_price    = $('.adult_price').val();
     var child_price    = $('.child_price').val();
     var infant_price   = $('.infant_price').val();
+    var package_id     = $('.package_id').val();
     if(infant_price == null || infant_price == ""){
         infant_price = 0;
     }
     if(options == "" || options == null){
-        toastWarning("You must select at least one package option");
+        toastr.warning("You must select at least one package option");
         return false;
     }
 
@@ -298,14 +118,15 @@ $('.create_new_package').on('click',function(){
         information    : information,
         adult_price    : adult_price,
         child_price    : child_price,
-        infant_price   : infant_price
+        infant_price   : infant_price,
+        package_id     : package_id
     })
     .then(function(response){
         $('.base_package').LoadingOverlay('hide');
 
         $('.base_package').addClass('hidden');
 
-        toastSuccess("Package Created. Continue to add more information");
+        toastr.success("Package Created. Continue to add more information");
 
         $('.package_id').val(response.data.id);
         $('.flight').val(response.data.flight);
@@ -371,7 +192,6 @@ $('.submit_flight_deal').on('click',function(){
     })
     .catch(function(error){
         $('.flight_deal').LoadingOverlay("hide");
-
     })
 
 });
@@ -416,8 +236,10 @@ $('.submit_hotel_deal').on('click',function(){
           $('.hotel_deal').LoadingOverlay("hide");
           $('.hotel_deal').addClass('hidden');
           $('.hotel_images_parent_id').val(response.data.id);
-          toastInfo("Hotel information has been uploaded, proceed to upload hotel images");
+          toastr.info("Hotel information has been uploaded, proceed to upload hotel images");
           $('.hotel_deal_images').removeClass("hidden");
+          packageCreateComplete();
+
       })
       .catch(function(error){
 
@@ -426,7 +248,7 @@ $('.submit_hotel_deal').on('click',function(){
 });
 
 $('.hotel_images_complete').on('click',function(){
-    toastSuccess("Your hotel image and hotel information has been successfully uploaded");
+    toastr.success("Your hotel image and hotel information has been successfully uploaded");
     $('.hotel').val(0);
     $('.hotel_deal_images').addClass('hidden');
     packageCreateComplete();
@@ -468,8 +290,10 @@ $('.submit_attraction').on('click',function(){
          $('.attraction_deals').LoadingOverlay("hide");
          $('.attraction_deals').addClass('hidden');
          $('.attraction_images_parent_id').val(response.data.id);
-         toastInfo("Attraction information has been uploaded, proceed to upload attraction images");
+         toastr.info("Attraction information has been uploaded, proceed to upload attraction images");
          $('.attraction_images').removeClass("hidden");
+         packageCreateComplete();
+
      })
      .catch(function(error){
 
@@ -479,10 +303,20 @@ $('.submit_attraction').on('click',function(){
 
 $('.attraction_images_complete').on('click',function(){
 
-    toastSuccess("Your attraction image and attraction information has been successfully uploaded");
+    toastr.success("Your attraction image and attraction information has been successfully uploaded");
     $('.attraction').val(0);
     $('.attraction_images').addClass('hidden');
     packageCreateComplete();
 
+});
+
+$('.delete_image').on('click', function(){
+    var id = $(this).val();
+    $('#image_'+id).LoadingOverlay("show");
+    axios.post('/backend/travel-packages/delete-image',{id:id})
+        .then(function(){
+            $('#image_'+id).LoadingOverlay("hide");
+            $('#image_'+id).addClass('hidden');
+        })
 });
 

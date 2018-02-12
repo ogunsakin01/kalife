@@ -1,139 +1,6 @@
 /**
  * Created by hp on 9/1/2018.
  */
-$('#users_table').dataTable({
-
-});
-
-function toastWarning(message){
-  return iziToast.warning({
-    timeout: 10000,
-    close: true,
-    id: 'question',
-    title: 'Hey',
-    message: message,
-    position: 'topRight',
-    buttons: [
-      ['<button><b>OK</b></button>', function (instance, toast) {
-
-        instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
-
-      }, true]
-    ],
-    onClosing: function(instance, toast, closedBy){
-      // console.info('Closing | closedBy: ' + closedBy);
-    },
-    onClosed: function(instance, toast, closedBy){
-      console.info('Closed | closedBy: ' + closedBy);
-    }
-  });
-}
-
-function toastSuccess(message){
-  return iziToast.success({
-    id: 'success',
-    timeout: 7000,
-    close: true,
-    title: 'Success',
-    message: message,
-    position: 'bottomRight',
-    transitionIn: 'bounceInLeft',
-    // iconText: 'star',
-    onOpened: function(instance, toast){
-
-    },
-    onClosed: function(instance, toast, closedBy){
-      console.info('closedBy: ' + closedBy);
-
-    }
-  });
-
-}
-
-function toastError(message){
-  return iziToast.error({
-    id: 'error',
-    timeout: 7000,
-    close: true,
-    title: 'Error',
-    message: message,
-    position: 'topRight',
-    transitionIn: 'fadeInDown'
-  });
-}
-
-function toastInfo(message) {
-  return iziToast.info({
-    id: 'info',
-    timeout: 7000,
-    close: true,
-    title: 'Hello',
-    message: message,
-    position: 'topLeft',
-    transitionIn: 'bounceInRight'
-  });
-}
-
-function modalError(message){
-  $("#modalError").iziModal({
-    title: "Attention",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#BD5B5B',
-    width: 600,
-    timeout: 10000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalError').iziModal('open');
-}
-
-function modalSuccess(message){
-  $("#modalSuccess").iziModal({
-    title: "Success",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#1bbd65',
-    width: 600,
-    timeout: 10000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalSuccess').iziModal('open');
-}
-
-function modalInfo(message){
-  $("#modalInfo").iziModal({
-    title: "Info",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#1bbd65',
-    width: 600,
-    timeout: 20000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalInfo').iziModal('open');
-}
-
-function extractError(error) {
-  for(var error_log in error.response.data.errors) {
-    var err = error.response.data.errors[error_log];
-    toastError(err);
-  }
-}
 
 function checkRole(role_id)
 {
@@ -147,8 +14,7 @@ function checkRole(role_id)
   }
 }
 
-function editUser(id)
-{
+function editUser(id) {
   axios.get('/backend/users/edit/'+id)
       .then(function (response) {
 
@@ -188,8 +54,7 @@ function editUser(id)
       })
 }
 
-function deleteUser(id)
-{
+function deleteUser(id) {
   axios.get('/backend/users/delete/'+id)
       .then(function (response) {
         console.log(response);
@@ -208,8 +73,7 @@ function deleteUser(id)
       })
 }
 
-function fetchUsers()
-{
+function fetchUsers() {
   axios.get('/backend/users/fetch')
       .then(function (response) {
 
@@ -248,8 +112,7 @@ function fetchUsers()
       })
 }
 
-function clearRecords()
-{
+function clearRecords() {
   $('#title').val('');
   $('#account_status').val('');
   $('#role').val('');
@@ -265,6 +128,7 @@ function clearRecords()
   $('#agent_id').val('');
   $('#office_number').val('');
 }
+
 $(function () {
 
   fetchUsers();
@@ -277,7 +141,10 @@ $(function () {
 
   $('#save_user').click(function () {
     $('#save_user').html('Save');
-
+      var ids = ['title','gender','account_status','role','first_name','last_name','other_name','phone_number','date_of_birth','address','email','agency_name','agency_id','office_number'];
+      if(!validateFormWithIds(ids)){
+        return false;
+      }
     var title = $('#title').val();
     var gender = $('#gender').val();
     var account_status = $('#account_status').val();
@@ -292,7 +159,7 @@ $(function () {
     var agency_name = $('#agency_name').val();
     var agency_id = $('#agency_id').val();
     var office_number = $('#office_number').val();
-
+     buttonClicked('save_user','Save',1);
     axios.post('/backend/users/new', {
       'title': title,
       'gender': gender,
@@ -309,6 +176,7 @@ $(function () {
       'agent_id': agent_id,
       'office_number': office_number
     }).then(function (response) {
+        buttonClicked('save_user','Save',0);
       if (response.data == 1)
       {
         fetchUsers();
@@ -321,6 +189,7 @@ $(function () {
         toastError('Could not create user');
       }
     }).catch(function(error){
+        buttonClicked('save_user','Save',0);
       fetchUsers();
       extractError(error)
     })

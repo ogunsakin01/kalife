@@ -52,7 +52,6 @@
                                         {{--@endif--}}
                                         {{--<div class="hover-inner hover-inner-block hover-inner-bottom hover-inner-bg-black hover-hold">--}}
                                             {{--<div class="text-small">--}}
-
                                                 {{--<h5>{{$attraction->name}}</h5>--}}
                                                 {{--<p class="mb0"><i class="fa fa-map-marker"></i>{{\App\Attraction::getByPackageId($attraction->id)->city}}</p>--}}
                                                 {{--<p class="mb0">offer from &#x20A6;{{number_format($attraction->adult_price,2)}}</p>--}}

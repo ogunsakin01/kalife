@@ -21,4 +21,8 @@ class Gallery extends Model
     public function package(){
         return $this->belongsTo(Package::class, 'package_id');
     }
+
+    public static function getGalleryByParentId($id){
+        return static::where('parent_id', $id)->get();
+    }
 }

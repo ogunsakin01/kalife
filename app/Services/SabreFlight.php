@@ -10,6 +10,7 @@ use App\Markdown;
 use App\Vat;
 use Faker\Provider\DateTime;
 use Illuminate\Support\Carbon;
+use Exception;
 
 
 class SabreFlight
@@ -58,8 +59,17 @@ class SabreFlight
         curl_setopt($ch, CURLOPT_VERBOSE, false);
 
         // converting
-        $response = curl_exec($ch);
+
+        try {
+            $response = curl_exec($ch);
+        }
+        catch(Exception $e){
+
+            return $e->getMessage();
+        }
+
         curl_close($ch);
+
         return $response;
 
     }
@@ -470,7 +480,7 @@ class SabreFlight
                 $vatObject = Vat::getVat();
                 $vat = $this->sabreConfig->priceTypeCalculator($vatObject->flight_vat_type,$vatObject->flight_vat_value,$itineraryPrice);
                 $markdownObject = Markdown::getAirlineMarkdown($airline);
-                if($markdownObject == 0){
+                if($markdownObject == "0"){
                     $airlineMarkdown = 0;
                     $adminUserMarkup = $this->sabreConfig->priceTypeCalculator($adminUserMarkupObject->flight_markup_type,$adminUserMarkupObject->flight_markup_value,$itineraryPrice);
                 }else{
@@ -582,6 +592,7 @@ class SabreFlight
            $passengerDetails = '';
            $priceQuoteInfo = '';
            $specialRequests ='';
+           $infantChildSpecialRequests = '';
            $y = 0;
            $infants_num = 2;
 //        dd($param->adult_sex);
@@ -615,18 +626,26 @@ class SabreFlight
                 $surname = $param->child_surname[$i];
                 $dob = $param->child_date_of_birth[$i];
                 $sex = $param->child_sex[$i];
-                $personDetails = '<PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="CNN">
+                $personDetails = '
+            <PersonName Infant="false" NameNumber="'.($y + 1).'.1" PassengerType="CNN">
                 <GivenName>'.$given_name.'</GivenName>
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
-                $specialRequest = '<SecureFlight SegmentNumber="A" >
+                $specialRequest = '
+            <SecureFlight SegmentNumber="A" >
                 <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($y + 1).'.1" >
                     <GivenName>'.$given_name.'</GivenName>
                     <Surname>'.$surname.'</Surname>
                 </PersonName>
             </SecureFlight>';
+                $infantChildSpecialRequest = '
+                     <Service SSR_Code="CHLD">
+                       <PersonName NameNumber="'.($y + 1).'.1"/>
+                       <Text>'.date('dMy',strtotime($dob)).'</Text>
+                     </Service>';
                 $passengerDetails = $passengerDetails.$personDetails;
                 $specialRequests = $specialRequests.$specialRequest;
+                $infantChildSpecialRequests = $infantChildSpecialRequests.$infantChildSpecialRequest;
                 $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'.($y + 1).'.1" Record="2"/>';
                 $y = $y+1;
             }
@@ -644,18 +663,29 @@ class SabreFlight
                 <Surname>'.$surname.'</Surname>
             </PersonName>';
                 $specialRequest = '<SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($y + 1).'.1" >
+                <PersonName DateOfBirth="'.date('Y-m-d',strtotime($dob)).'" Gender="'.$sex.'" NameNumber="'.($i + 1).'.1" >
                     <GivenName>'.$given_name.'</GivenName>
                     <Surname>'.$surname.'</Surname>
                 </PersonName>
             </SecureFlight>';
+                $infantChildSpecialRequest = '
+                   <Service SSR_Code="INFT">
+                    <PersonName NameNumber="'.($i + 1).'.1"/>
+                    <Text>'.$surname.'/'.$given_name.'/'.date('dMy',strtotime($dob)).'</Text>
+                   </Service>';
                 $passengerDetails = $passengerDetails.$personDetails;
                 $specialRequests = $specialRequests.$specialRequest;
+                $infantChildSpecialRequests = $infantChildSpecialRequests.$infantChildSpecialRequest;
                 $priceQuoteInfo = $priceQuoteInfo.'<Link NameNumber="'. ($y + 1) .'.1" Record="'.$infants_num.'"/>';
                 $y = $y+1;
             }
         }
-        return ['passengers' => $passengerDetails, 'priceQuoteInfo' => $priceQuoteInfo, 'specialRequests' => $specialRequests];
+        return [
+            'passengers'                => $passengerDetails,
+            'priceQuoteInfo'            => $priceQuoteInfo,
+            'specialRequests'           => $specialRequests,
+            'infantChildSpecialRequests' => $infantChildSpecialRequests
+        ];
     }
 
     public function PassengerDetailsRQXML($param){
@@ -676,6 +706,7 @@ class SabreFlight
     <SpecialServiceRQ>
         <SpecialServiceInfo>
             '.$this->PassengerDetailsPassenger($param)['specialRequests'].'
+            '.$this->PassengerDetailsPassenger($param)['infantChildSpecialRequests'].'
         </SpecialServiceInfo>
     </SpecialServiceRQ>
 </SpecialReqDetails>
@@ -854,6 +885,212 @@ class SabreFlight
                 return ['responseObject' => $responseObject, 'pnr' => null, 'ticketTimeLimit' => null, 'pnrStatus' => 0];
             }
         }
+    }
+
+    public function issueTicketRQXML($pnrCode){
+        return '
+<?xml version="1.0" encoding="UTF-8"?>
+<AirTicketRQ xmlns="http://services.sabre.com/sp/air/ticket/v1" version="1.2.0" targetCity="">
+
+   <Itinerary ID="'.$pnrCode.'"/>
+   <AccountingLines All="true" None="false">
+      <Delete EndNumber="2" Number="1" />
+      <Delete Number="3" />
+   </AccountingLines>
+   <Ticketing>
+      <FlightQualifiers>
+         <VendorPrefs>
+            <Airline Code="XX" />
+         </VendorPrefs>
+      </FlightQualifiers>
+      <FOP_Qualifiers>
+         <BasicFOP Reference="1" Type="CK" Virtual="SABREAIRONETWOFOUR">
+            <CC_Info Suppress="true">
+               <PaymentCard Code="VI" CardSecurityCode="123" ExpireDate="2012-12" ExtendedPayment="12" ManualApprovalCode="1234" Number="4123412341234123" />
+            </CC_Info>
+         </BasicFOP>
+         <BSP_Ticketing>
+            <MultipleFOP>
+               <Fare Amount="100.00" />
+               <FOP_One Type="CA">
+                  <CC_Info Suppress="true">
+                     <PaymentCard Code="AX" CardSecurityCode="123" ExpireDate="2012-11" ExtendedPayment="12" ManualApprovalCode="1234" ManualOBFee="10.00" Number="373912345621003" />
+                  </CC_Info>
+               </FOP_One>
+               <FOP_Two Type="CK">
+                  <CC_Info Suppress="true">
+                     <PaymentCard Code="AX" CardSecurityCode="123" ExpireDate="2012-11" ExtendedPayment="12" ManualApprovalCode="5678" ManualOBFee="5.00" Number="373912345621003" />
+                  </CC_Info>
+               </FOP_Two>
+               <Taxes>
+                  <Tax Amount="5.00" TaxCode="GB" />
+               </Taxes>
+            </MultipleFOP>
+            <MultipleMiscFOP>
+               <Fare Amount="300.00" />
+               <FOP_One Type="CK">
+                  <CC_Info Suppress="true">
+                     <PaymentCard Code="MC" ExpireDate="2012-11" ExtendedPayment="12" ManualApprovalCode="1234" Number="12345678999001" />
+                  </CC_Info>
+               </FOP_One>
+               <FOP_Two Type="PL189947">
+                  <ExtendedPayment NumMonths="11" />
+               </FOP_Two>
+               <Taxes>
+                  <Tax Amount="30.00" TaxCode="XT" />
+               </Taxes>
+            </MultipleMiscFOP>
+            <PayLaterPlan>
+               <Fare Amount="200.00" />
+               <FOP Type="CA">
+                  <CC_Info>
+                     <PaymentCard Code="AX" ExpireDate="2012-11" ManualApprovalCode="23" Number="376422221000" />
+                  </CC_Info>
+               </FOP>
+               <Installment Count="03" PayLaterReferenceNumber="XRG065" Value="10000" />
+            </PayLaterPlan>
+         </BSP_Ticketing>
+         <MultipleCC_FOP>
+            <Fare Amount="100.00" />
+            <CC_One>
+               <CC_Info Suppress="true">
+                  <PaymentCard Code="AX" CardSecurityCode="123" ExpireDate="2012-11" ExtendedPayment="12" ManualApprovalCode="1234" ManualOBFee="10.00" Number="373912345621003" />
+               </CC_Info>
+            </CC_One>
+            <CC_Two>
+               <CC_Info Suppress="true">
+                  <PaymentCard Code="VI" CardSecurityCode="123" ExpireDate="2016-12" ExtendedPayment="12" ManualApprovalCode="5678" ManualOBFee="5.00" Number="4537156488578956" />
+               </CC_Info>
+            </CC_Two>
+         </MultipleCC_FOP>
+         <SabreSonicTicketing>
+            <BasicFOP ManualApprovalCode="1234" Type="CK">
+               <CC_Info Suppress="true">
+                  <PaymentCard CardSecurityCode="123" Code="VI" ExpireDate="2012-12" ExtendedPayment="12" ManualApprovalCode="1234" Number="4123412341234123" />
+               </CC_Info>
+            </BasicFOP>
+            <EnhancedMultipleFOP>
+               <Fare Amount="90.00" />
+               <FOP_One Type="CK">
+                  <CC_Info>
+                     <PaymentCard CardSecurityCode="123" Code="VI" ExpireDate="2012-12" ExtendedPayment="12" ManualApprovalCode="1234" Number="4123412341234123" />
+                  </CC_Info>
+               </FOP_One>
+               <FOP_Two Type="CK">
+                  <CC_Info>
+                     <PaymentCard CardSecurityCode="456" Code="AX" ExpireDate="2012-12" ExtendedPayment="11" ManualApprovalCode="5678" Number="4123412341234124" />
+                  </CC_Info>
+               </FOP_Two>
+               <Taxes>
+                  <Tax Amount="6.00" TaxCode="US" />
+               </Taxes>
+            </EnhancedMultipleFOP>
+            <MultipleFOP>
+               <Fare Amount="350.00" />
+               <FOP_One Type="CK">
+                  <CC_Info>
+                     <PaymentCard Code="BA" ManualApprovalCode="1234" Number="4712345678901" />
+                  </CC_Info>
+               </FOP_One>
+               <FOP_Two Type="CK">
+                  <CC_Info>
+                     <PaymentCard Code="VI" ManualApprovalCode="5678" Number="4123412341234123" />
+                  </CC_Info>
+               </FOP_Two>
+               <Taxes>
+                  <Tax Amount="10.00" TaxCode="US" />
+               </Taxes>
+            </MultipleFOP>
+         </SabreSonicTicketing>
+      </FOP_Qualifiers>
+      <MiscQualifiers>
+         <AirExtras EndNumber="3" Number="1" />
+         <BaggageAllowance Number="02" Weight="20" />
+         <Certificate Number="123456789" />
+         <Commission Amount="25.00" Percent="5.00" />
+         <DateOfBirth />
+         <Endorsement Override="true">
+            <Text>TEST0</Text>
+         </Endorsement>
+         <FutureTicket>
+            <Line EndNumber="3" NameNumber="1.1" Number="1" />
+            <Line Number="3" />
+         </FutureTicket>
+         <Invoice Ind="true" ETReceipt="true" />
+         <NeedPrint AuditorCoupon="true" Itinerary="true" PassengerReceipt="false" />
+         <NetRemit Amount="600.00" ContractAgreementCode="ABCDEFGHIJ" NetCreditAmount="20051.60" ValueCode="D2469" />
+         <Ticket Action="PRINT" Type="ETR" />
+         <TourCode>
+            <SuppressFareReplaceWithBT Ind="true" />
+            <SuppressFareReplaceWithIT Ind="true" />
+            <SuppressIT Ind="true" />
+            <SuppressITSupressFare Ind="true" />
+            <Text>TEST1212</Text>
+         </TourCode>
+      </MiscQualifiers>
+      <PricingQualifiers>
+         <Brand RPH="1">CP</Brand>
+         <FareFocusExclude Ind="true" />
+         <Fare Type="NL" />
+         <ItineraryOptions>
+            <SegmentSelect EndNumber="3" Number="1" RPH="1" />
+            <SegmentSelect EndNumber="6" Number="4" RPH="2" />
+            <SegmentSelect Number="4" />
+            <SideTrip EndNumber="3" Number="1" />
+         </ItineraryOptions>
+         <NameSelect EndNameNumber="2.1" NameNumber="1.1" />
+         <NameSelect NameNumber="4.1" />
+         <PhaseIV Number="1">
+            <NameSelect EndNameNumber="4.1" NameNumber="2.1" />
+         </PhaseIV>
+         <PriceQuote>
+            <NameSelect EndNameNumber="4.1" NameNumber="2.1" />
+            <Record EndNumber="3" Number="1" Reissue="true" />
+         </PriceQuote>
+         <RefundableBalance Amount="100.00">
+            <Taxes>
+               <Tax Amount="20.00" Code="XX" />
+            </Taxes>
+         </RefundableBalance>
+         <SpanishLargeFamilyDiscountLevel>1</SpanishLargeFamilyDiscountLevel>
+         <SpecificFare RPH="1">
+            <FareBasis>ABCDE</FareBasis>
+         </SpecificFare>
+         <SpecificPenalty AdditionalInfo="true">
+            <EitherOr Any="true" CurrencyCode="USD" MaxPenalty="100" BeforeDeparture="true" AfterDeparture="true" />
+            <Refundable Any="true" CurrencyCode="USD" MaxPenalty="100" BeforeDeparture="true" AfterDeparture="true" />
+         </SpecificPenalty>
+         <Taxes>
+            <NoTax Ind="true" />
+            <TaxExempt Code="GB" />
+            <TaxExempt Code="UB" />
+         </Taxes>
+         <ValidityDates>
+            <NotValidAfter>2012-12-31</NotValidAfter>
+            <NotValidBefore>2012-12-21</NotValidBefore>
+            <Segment EndNumber="3" Number="1" />
+         </ValidityDates>
+      </PricingQualifiers>
+   </Ticketing>
+   <PostProcessing acceptNegotiatedFare="true" acceptPriceChanges="true" actionOnPQExpired="O">
+      <EndTransaction>
+         <Source ReceivedFrom="SWS TESTING"/>
+         <Email Ind="true">
+            <eTicket Ind="true">
+               <PDF Ind="true"/>
+            </eTicket>
+            <Invoice Ind="true"/>
+            <Itinerary Ind="true">
+               <PDF Ind="true"/>
+               <Segment EndNumber="1" Number="2"/>
+               <Segment Number="4" />
+            </Itinerary>
+            <PersonName NameNumber="1.1" />
+         </Email>
+      </EndTransaction>
+   </PostProcessing>
+</AirTicketRQ>
+        ';
     }
 
 }

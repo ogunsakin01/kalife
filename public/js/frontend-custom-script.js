@@ -13,6 +13,8 @@ var date = new Date();
 
 date.setDate(date.getDate()+1);
 
+$('[data-toggle="tooltip"]').tooltip();
+
 $.LoadingOverlaySetup({
     color           : "rgba(0, 0, 0, 0.6)",
     // image           : "images/loadingflight.gif",
@@ -22,6 +24,9 @@ $.LoadingOverlaySetup({
     size            : "90%"
 });
 
+$('input[type="submit"]').on('click',function(){
+    $('input[type="submit"]').prop('disabled','disabled');
+});
 
 /**
  * End of Variables Used Through out
@@ -38,7 +43,7 @@ function toastWarning(message){
         timeout: 10000,
         close: true,
         id: 'question',
-        title: 'Hey',
+        title: 'Warning',
         message: message,
         position: 'topRight',
         buttons: [
@@ -706,13 +711,14 @@ $('.requery').on('click', function(){
     axios.post('/requery',{
         reference : reference
       })
+
         .then(function(response){
             $('#'+reference).LoadingOverlay('hide');
             if(response.data['responseCode'] == '--'){
-                toastr.error(response.data['responseDescription']);
+                toastError(response.data['responseDescription']);
             }
             if(response.data['responseCode'] == '00'){
-                toastr.success(response.data['responseDescription']);
+                toastSuccess(response.data['responseDescription']);
                 $('.response_code_'+reference).text(response.data['responseCode']);
                 $('.response_description_'+reference).text(response.data['responseDescription']);
                 $(this).addClass('hidden');

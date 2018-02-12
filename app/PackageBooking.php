@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PackageBooking extends Model
 {
+
     public static function store($data){
         $new_booking = new static();
         $new_booking->reference      = $data['reference'];
@@ -33,5 +34,6 @@ class PackageBooking extends Model
     public static function getUserBookingsById($user_id){
         return static::where('user_id', $user_id)->get();
     }
+
 
 }

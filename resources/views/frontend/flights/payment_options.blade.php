@@ -2,7 +2,7 @@
 @section('title')Payment Options @endsection
 @section('activeFlight')  active @endsection
 @section('content')
-    {{--{{dd($paymentInfo)}}--}}
+    @php $InterswitchConfig = new \App\Services\InterswitchConfig() @endphp
     <div class="gap gap-small"></div>
     <div class="container">
         <div class="row">
@@ -104,7 +104,7 @@
                         <div class="tab-content" style="background-color: #f7f7f7; padding: 15px; ">
                                 <div class="tab-pane fade in active" id="tab-1">
                                     <h4>Interswitch Payment Gateway</h4>
-                                    <form method="post" action="{{\App\Services\InterswitchConfig::$ActionUrl}}">
+                                    <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
                                         <input type="hidden" class="reference_1" name="txn_ref" value="{{$paymentInfo['reference']}}"/>
                                         <input type="hidden" class="amount_1" name="amount" value="{{$paymentInfo['amount']}}"/>
                                         <input type="hidden" name="currency" value="566"/>
@@ -156,25 +156,63 @@
 
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="tab-3">
-                                    <h4>Pay By Bank</h4>
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="alert alert-info">
-                                                    <i class="fa fa-info"></i>
-                                                    You will be presented with the list of our banks and a means of confirmation of payment will be needed from you to confirm your booking
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <button class="btn btn-primary btn-lg" type="button">Proceed</button>
-                                            </div>
-                                            <div class="col-md-6">
-
+                            <div class="tab-pane fade" id="tab-3">
+                                <h4>Pay By Bank Transfer (Select a Bank)</h4>
+                                <form method="post" action="{{url('/bankPayment')}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="reference" value="{{$paymentInfo['reference']}}"/>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="alert alert-info">
+                                                <i class="fa fa-info"></i>
+                                                You will be presented with the list of our banks and a means of confirmation of payment will be needed from you to confirm your booking
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="col-md-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                </div>
+                                                <div class="panel panel-body table-responsive">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Bank Name</th>
+                                                            <th>Account Name</th>
+                                                            <th>Account Number</th>
+                                                            <th>Select </th>
+                                                        </tr>
+
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr class="hidden">
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td><input type="radio" value="" name="selected_bank" required/></td>
+                                                        </tr>
+                                                        @foreach(\App\BankDetail::getActiveBanksDetails() as $serial => $bankDetail)
+                                                            <tr>
+                                                                <td>{{\App\Bank::find($bankDetail->bank_id)->bank_name}}</td>
+                                                                <td>{{$bankDetail->account_name}}</td>
+                                                                <td>{{$bankDetail->account_number}}</td>
+                                                                <td><input type="radio" value="{{$bankDetail->id}}" name="selected_bank" required/></td>
+                                                            </tr>
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary btn-lg" type="submit">Proceed</button>
+                                        </div>
+                                        <div class="col-md-6">
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
             </div>

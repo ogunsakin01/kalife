@@ -553,8 +553,10 @@ function validateFormWithIds(ids) {
     return true;
 }
 
-function validateFormWithInputName(names) {
+function validateFormWithInputName(names){
+
     if (Array.isArray(names))
+
     {
         for(var i=0; i<names.length; i++)
         {
@@ -572,6 +574,7 @@ function validateFormWithInputName(names) {
             return false;
         }
     }else if(typeof names === 'string')
+
     {
         if($("input[name='"+names+"']").val() == "" || $("input[name='"+names+"']").val() == null)
         {
@@ -580,10 +583,13 @@ function validateFormWithInputName(names) {
         toastr["error"]("Please fill the highlighted field");
         return false;
     }
+
     return true;
+
 }
 
 $(document).ready(function () {
+
     flight_info.hide();
     hotel_infor.hide();
     attraction_info.hide();
@@ -616,4 +622,5 @@ $(document).ready(function () {
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+
 });

@@ -21,7 +21,7 @@ class CreateVatsTable extends Migration
             $table->integer('hotel_vat_value')->default(0);
             $table->integer('car_vat_type')->default(1);
             $table->integer('car_vat_value')->default(0);
-            $table->integer('package_markup_type')->default(1);
+            $table->integer('package_vat_type')->default(1);
             $table->integer('package_vat_value')->default(0);
             $table->timestamps();
         });

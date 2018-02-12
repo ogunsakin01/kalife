@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title')Flight, Hotel, Travel and Tourism Booking Agency @endsection
+@section('title') Flight, Hotel, Travel and Tourism Booking Agency @endsection
 @section('loadingOverlay')
     @include('partials.flightSearchOverlay')
     @include('partials.hotelSearchOverlay')
@@ -609,7 +609,6 @@
 
     <div class="gap"></div>
 
-
     <div class="container">
         <div class="row row-wrap" data-gutter="60">
             <div class="col-md-4">
@@ -645,32 +644,92 @@
         </div>
         <div class="gap gap-small"></div>
     </div>
+
+    @if(!is_null($hotel_package) || !empty($hotel_package))
+
     <div class="bg-holder">
-        <div class="bg-mask"></div>
-        <div class="bg-parallax" style="background-image:url({{asset('img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg')}});"></div>
-        <div class="bg-content">
-            <div class="container">
-                <div class="gap gap-big text-center text-white">
-                    <h2 class="text-uc mb20">Last Minute Deal</h2>
-                    <ul class="icon-list list-inline-block mb0 last-minute-rating">
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                        <li><i class="fa fa-star"></i>
-                        </li>
-                    </ul>
-                    <h5 class="last-minute-title">The Peninsula - New York</h5>
-                    <p class="last-minute-date">Fri 14 Mar - Sun 16 Mar</p>
-                    <p class="mb20"><b>$120</b> / person</p><a class="btn btn-lg btn-white btn-ghost" href="#">Book Now <i class="fa fa-angle-right"></i></a>
+            <div class="bg-mask"></div>
+            @if(isset($hotel_images[0]))
+                <div class="bg-parallax" style="background-image:url({{asset($hotel_images[0]['image_path'])}});"></div>
+            @else
+                <div class="bg-parallax" style="background-image:url({{asset('img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg')}});"></div>
+            @endif
+            <div class="bg-content">
+                <div class="container">
+                    <div class="gap gap-big text-center text-white">
+                        <h2 class="text-uc mb20">{{$hotel_package->name}}</h2>
+                        <ul class="icon-list list-inline-block mb0 last-minute-rating">
+                            @for($i = 0; $i < \App\HotelDeal::getByPackageId($hotel_package->id)->star_rating; $i++)
+                                <li><i class="fa fa-star"></i>
+                                </li>
+                            @endfor
+                            @for($i = 0; $i < (5 - \App\HotelDeal::getByPackageId($hotel_package->id)->star_rating); $i++)
+                                <li><i class="fa fa-star-o"></i>
+                                </li>
+                            @endfor
+                        </ul>
+                        <h5 class="last-minute-title">{{\App\HotelDeal::getByPackageId($hotel_package->id)->name}} - {{\App\HotelDeal::getByPackageId($hotel_package->id)->city}}</h5>
+                        <p class="last-minute-date">{{date('D d M',strtotime(\App\HotelDeal::getByPackageId($hotel_package->id)->stay_start_date))}} - {{date('D d M',strtotime(\App\HotelDeal::getByPackageId($hotel_package->id)->end_start_date))}}</p>
+                        <p class="mb20"><b>&#x20A6;{{number_format($hotel_package->adult_price)}}</b> / adult</p>
+                        <a class="btn btn-lg btn-white btn-ghost" href="{{url('/hotel-details/'.$hotel_package->id.'/'.$hotel_package->name)}}">Book Now <i class="fa fa-angle-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    @elseif(!is_null($attraction) || !empty($attraction))
+
+    <div class="bg-holder">
+            <div class="bg-mask"></div>
+            @if(isset($attraction_images[0]))
+                <div class="bg-parallax" style="background-image:url({{asset($attraction_images[0]['image_path'])}});"></div>
+            @else
+                <div class="bg-parallax" style="background-image:url({{asset('img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg')}});"></div>
+            @endif
+            <div class="bg-content">
+                <div class="container">
+                    <div class="gap gap-big text-center text-white">
+                        <h2 class="text-uc mb20">{{$attraction->name}}</h2>
+                        <h5 class="last-minute-title">{{\App\Attraction::getByPackageId($attraction->id)->name}} - {{\App\Attraction::getByPackageId($attraction->id)->city}}</h5>
+                        <p class="last-minute-date">{{date('D d M Y',strtotime(\App\Attraction::getByPackageId($attraction->id)->date))}}</p>
+                        <p class="mb20"><b>&#x20A6;{{number_format($attraction->adult_price)}}</b> / adult</p>
+                        <a class="btn btn-lg btn-white btn-ghost" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->name)}}">Book Now <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    @else
+
+    <div class="bg-holder">
+            <div class="bg-mask"></div>
+            <div class="bg-parallax" style="background-image:url({{asset('img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg')}});"></div>
+            <div class="bg-content">
+                <div class="container">
+                    <div class="gap gap-big text-center text-white">
+                        <h2 class="text-uc mb20">Last Minute Deal</h2>
+                        <ul class="icon-list list-inline-block mb0 last-minute-rating">
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                            <li><i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                        <h5 class="last-minute-title">The Peninsula - New York</h5>
+                        <p class="last-minute-date">Fri 14 Mar - Sun 16 Mar</p>
+                        <p class="mb20"><b>$120</b> / person</p><a class="btn btn-lg btn-white btn-ghost" href="#">Book Now <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    @endif
+
     <div class="container">
         <div class="gap"></div>
         <h2 class="text-center">Top Destinations</h2>

@@ -20,7 +20,7 @@ class WalletLog extends Model
     foreach ($logs as $key => $log)
     {
       $record = [
-        'amount' => number_format($log->amount),
+        'amount' => number_format(($log->amount/ 100)),
         'transaction_type' => $this->generateTransactionTypeHtmlByTransactionTypeId($log->transaction_type),
         'performed_on' => Carbon::parse($log->created_at)->toFormattedDateString()
       ];
@@ -41,5 +41,19 @@ class WalletLog extends Model
     {
       return '<span class="badge badge-success"><i class="fa fa-check"></i>&nbsp;CREDIT</span>';
     }
+  }
+
+  public static function createLog($user_id,$amount,$type){
+    $log = new static();
+    $log->user_id = $user_id;
+    $log->amount = $amount;
+    $log->transaction_type = $type;
+    $log->save();
+  }
+
+  public static function getLogsOfAuthenticatedUser(){
+      return static::where('user_id', auth()->user()->id)
+          ->orderBy('id','desc')
+          ->get();
   }
 }

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Airline extends Model
 {
+
   public static function getAirline($iata_code)
   {
     $airline = static::where('IATA', $iata_code)->first();
@@ -19,5 +20,9 @@ class Airline extends Model
       return $airline->Airline;
     }
 
+  }
+
+  public static function getAirlineCodeByName($name){
+      return static::where('Airline',$name)->first();
   }
 }

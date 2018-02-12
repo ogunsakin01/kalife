@@ -33,9 +33,9 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
-                                <p class="text-hero">505</p>
+                                <p class="text-hero">403</p>
                                 <h1>Forbidden Error</h1>
-                                <p>You do not have permission to access the page. Login or create an account with us before you try accessing those pages</p><a class="btn btn-white btn-ghost btn-lg mt5" href="{{url("/register-login")}}">Log in <i class="fa fa-long-arrow-right"></i></a>
+                                <p>You do not have permission to access the page.</p>
                             </div>
                         </div>
                     </div>
@@ -43,11 +43,11 @@
                 <ul class="footer-links">
                     <li><a href="{{url("/")}}">Home</a>
                     </li>
-                    <li><a href="{{url("/flight-deals")}}">Flight</a>
+                    <li><a href="{{url("/flights")}}">Flight</a>
                     </li>
-                    <li><a href="#">Hotel</a>
+                    <li><a href="{{url('/hotels')}}">Hotel</a>
                     </li>
-                    <li><a href="#">Attractions</a>
+                    <li><a href="{{url('/attractions')}}">Attractions</a>
                     </li>
                     <li><a href="{{url("/about-us")}}">About Us</a>
                     </li>

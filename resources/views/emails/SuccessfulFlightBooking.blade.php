@@ -1,5 +1,6 @@
 @component('mail::message')
 <p style="text-align: center;"><img src="{{asset('img/logo-invert.png')}}" style="height: 100px;" alt="" /></p>
+
 # Hi {{$userInfo->first_name}},
 Below is the information of your booking
 @component('mail::panel')
@@ -12,8 +13,8 @@ Below is the information of your booking
     |**Booking Reference         |                          {{$bookingInfo['reference']}}              |
 @endcomponent
 @component('mail::panel')
-Note that your reservation has been created on the flights of your house according to the number of passengers and cabin you selected.
-We urge you to follow the link below to you issue the ticket to the flight yourself.
+Note that your reservation has been created on the flights of your choice according to the number of passengers and cabin you selected.
+We urge you to follow the link below to get more information on your booking.
 @endcomponent
 @component('mail::button', ['url' => url('/flight-bookings') ])
 Flight Bookings

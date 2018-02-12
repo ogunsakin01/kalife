@@ -16,7 +16,10 @@ class OnlinePayment extends Model
 
     public static function store($data){
      return static::updateOrCreate(
-            ['txn_reference' => $data['txn_reference'], 'user_id' => $data['user_id']],
+            [
+                'txn_reference' => $data['txn_reference'],
+                'user_id' => $data['user_id']
+            ],
 
             ['amount' => $data['amount'],
              'gateway_id' => $data['gateway_id'],
@@ -65,6 +68,12 @@ class OnlinePayment extends Model
     public static function getAllPayStackTransactionsById($id){
         return static::where('gateway_id', 2)
             ->where('user_id',$id)
+            ->orderBy('id','desc')
+            ->get();
+    }
+
+    public static function getAllTransactionByUserId($id){
+        return static::where('user_id',$id)
             ->orderBy('id','desc')
             ->get();
     }

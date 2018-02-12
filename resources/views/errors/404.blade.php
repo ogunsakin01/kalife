@@ -43,11 +43,11 @@
                 <ul class="footer-links">
                     <li><a href="{{url("/")}}">Home</a>
                     </li>
-                    <li><a href="{{url("/flight-deals")}}">Flight</a>
+                    <li><a href="{{url("/flights")}}">Flight</a>
                     </li>
-                    <li><a href="#">Hotel</a>
+                    <li><a href="{{url('/hotels')}}">Hotel</a>
                     </li>
-                    <li><a href="#">Attractions</a>
+                    <li><a href="{{url('/attractions')}}">Attractions</a>
                     </li>
                     <li><a href="{{url("/about-us")}}">About Us</a>
                     </li>

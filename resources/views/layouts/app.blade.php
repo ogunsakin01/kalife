@@ -20,8 +20,8 @@
 <body class="full">
 <div class="global-wrap">
     <div class="template-content">
+        @include('partials.header')
         <header id="main-header">
-            @include('partials.header')
             <div class="container">
                 <div class="nav">
                     <ul class="slimmenu" id="slimmenu">
@@ -33,9 +33,9 @@
                         <li class="@yield('activeAbout')"><a href="{{url('/about-us')}}">About Us</a></li>
                         <li class="@yield('activeContact')"><a href="{{url('/contact-us')}}">Contact Us</a></li>
                         @if(auth()->guest())
-                            <li class="@yield('activeRegisterLogin')"><a href="{{url('/register-login')}}">Login</a></li>
+                            <li class="@yield('activeRegisterLogin')"><a href="{{url('/register-login')}}">Log In</a></li>
                             @else
-                            <li class="active"><a>Logged In</a></li>
+                            <li class="active"><a>Active</a></li>
                         @endif
                     </ul>
                 </div>
@@ -52,6 +52,7 @@
     @include('partials.js')
 </div>
 @yield('timeoutScript')
+{!! Toastr::message() !!}
 </body>
 
 </html>

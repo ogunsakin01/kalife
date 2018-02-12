@@ -222,6 +222,13 @@
     </div>
 
     <script>
+        // document.getElementsByClassName('num_of_adults').value(0);
+        // document.getElementsByClassName('num_of_children').value(0);
+        // document.getElementsByClassName('num_of_infants').value(0);
+        // document.getElementsByClassName('num_of_adult_guests').value(0);
+        // document.getElementsByClassName('num_of_child_guests').value(0);
+        // document.getElementsByClassName('num_of_infant_guests').value(0);
+
         var adultsHere = document.getElementsByClassName('num_of_adults');
         var childrenHere   = document.getElementsByClassName('num_of_children');
         if((adultsHere[0].value == 0 ) && (childrenHere[0].value == 0)){

@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vat extends Model
 {
+
+    public $flight = 1;
+    public $hotel = 2;
+    public $car = 3;
+    public $package = 4;
+
     public static function getVat()
     {
         return static::where('id', 1)->first();

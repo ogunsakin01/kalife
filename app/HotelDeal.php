@@ -7,19 +7,39 @@ use Illuminate\Database\Eloquent\Model;
 class HotelDeal extends Model
 {
 
+    protected $fillable = [
+        'name',
+        'city',
+        'address',
+        'star_rating',
+        'stay_start_date',
+        'stay_duration',
+        'stay_end_date',
+        'information',
+        'package_id'
+    ];
+
     public static function store($data){
-        $table = new static();
-        $table->package_id      = $data->package_id;
-        $table->name            = $data->hotel_name;
-        $table->city            = $data->hotel_city;
-        $table->address         = $data->hotel_address;
-        $table->star_rating     = $data->hotel_rating;
-        $table->stay_start_date = $data->start_date;
-        $table->stay_duration   = $data->duration;
-        $table->stay_end_date   = $data->end_date;
-        $table->information     = $data->information;
-        $table->save();
-        return $table;
+
+        $hotel = static::updateOrCreate(
+            [
+                'package_id' => $data->package_id
+            ],
+
+            [
+                'name'         => $data->hotel_name,
+                'city'         => $data->hotel_city,
+                'address'        => $data->hotel_address,
+                'star_rating'   => $data->hotel_rating,
+                'stay_start_date' => $data->start_date,
+                'stay_duration'  => $data->duration,
+                'stay_end_date'  => $data->end_date,
+                'information'    => $data->information
+            ]
+        );
+
+
+        return $hotel;
     }
 
     public static function getByPackageId($id){

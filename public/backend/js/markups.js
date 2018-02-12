@@ -1,161 +1,70 @@
 /**
  * Created by hp on 9/1/2018.
  */
-function toastWarning(message){
-  return iziToast.warning({
-    timeout: 10000,
-    close: true,
-    id: 'question',
-    title: 'Hey',
-    message: message,
-    position: 'topRight',
-    buttons: [
-      ['<button><b>OK</b></button>', function (instance, toast) {
-
-        instance.hide(toast, { transitionOut: 'fadeOut' }, 'button');
-
-      }, true]
-    ],
-    onClosing: function(instance, toast, closedBy){
-      // console.info('Closing | closedBy: ' + closedBy);
-    },
-    onClosed: function(instance, toast, closedBy){
-      console.info('Closed | closedBy: ' + closedBy);
-    }
-  });
-}
-
-function toastSuccess(message){
-  return iziToast.success({
-    id: 'success',
-    timeout: 7000,
-    close: true,
-    title: 'Success',
-    message: message,
-    position: 'bottomRight',
-    transitionIn: 'bounceInLeft',
-    // iconText: 'star',
-    onOpened: function(instance, toast){
-
-    },
-    onClosed: function(instance, toast, closedBy){
-      console.info('closedBy: ' + closedBy);
-
-    }
-  });
-
-}
-
-function toastError(message){
-  return iziToast.error({
-    id: 'error',
-    timeout: 7000,
-    close: true,
-    title: 'Error',
-    message: message,
-    position: 'topRight',
-    transitionIn: 'fadeInDown'
-  });
-}
-
-function toastInfo(message) {
-  return iziToast.info({
-    id: 'info',
-    timeout: 7000,
-    close: true,
-    title: 'Hello',
-    message: message,
-    position: 'topLeft',
-    transitionIn: 'bounceInRight'
-  });
-}
-
-function modalError(message){
-  $("#modalError").iziModal({
-    title: "Attention",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#BD5B5B',
-    width: 600,
-    timeout: 10000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalError').iziModal('open');
-}
-
-function modalSuccess(message){
-  $("#modalSuccess").iziModal({
-    title: "Success",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#1bbd65',
-    width: 600,
-    timeout: 10000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalSuccess').iziModal('open');
-}
-
-function modalInfo(message){
-  $("#modalInfo").iziModal({
-    title: "Info",
-    close: true,
-    subtitle: message,
-    icon: 'icon-power_settings_new',
-    headerColor: '#1bbd65',
-    width: 600,
-    timeout: 20000,
-    timeoutProgressbar: true,
-    transitionIn: 'fadeInDown',
-    transitionOut: 'fadeOutDown',
-    pauseOnHover: true
-  });
-  event.preventDefault();
-  return $('#modalInfo').iziModal('open');
-}
-
-function extractError(error) {
-  for(var error_log in error.response.data.errors) {
-    var err = error.response.data.errors[error_log];
-    toastError(err);
-  }
-}
+var pageUrl = '/backend/additions';
 
 $(function () {
 
   $('#save_markup').click(function () {
+    buttonClicked('save_markup',$('#save_markup').text(),1);
     var role = $('#role').val();
     var markup_type = $('#markup_type').val();
     var markup_value_type = $('#markup_value_type').val();
     var markup_value = $('#markup_value').val();
 
-    axios.post('/backend/additions/markup/admin', {
+    axios.post(pageUrl+ '/markup/admin', {
       'role': role,
       'markup_type': markup_type,
       'markup_value_type': markup_value_type,
       'markup_value': markup_value
-    }).then(function (response) {
-      if(response.data == 1)
-      {
-        toastSuccess('Markup saved successfully')
+    })
+    .then(function (response) {
+        buttonClicked('save_markup',$('#save_markup').text(),0);
+      if(response.data == 1){
+        window.location.href = BaseUrl + '/backend/additions/markup';
+        toastr.success('Markup saved successfully')
       }
-      else
-      {
+      else{
         toastError('Could not save markup');
       }
-    }).catch(function (error) {
-      extractError(error);
     })
+
+    .catch(function (error) {
+        buttonClicked('save_markup','Save',0);
+        extractError(error);
+    })
+  });
+
+  $('.edit_markup').click(function(){
+    $('#header_info').text('Edit Markup Information');
+    $('#save_markup').text('Edit');
+    var data = $(this).val();
+    var id =  data.split('_')[0];
+    var type = data.split('_')[1];
+    axios.get(pageUrl +'/getMarkup/'+id)
+        .then(function(response){
+           if(type === "flight"){
+             var markup_type       = 1;
+             var markup_value_type = response.data.flight_markup_type;
+             var markup_value      = response.data.flight_markup_value;
+           }else if(type === 'hotel'){
+               var markup_type       = 2;
+               var markup_value_type = response.data.hotel_markup_type;
+               var markup_value      = response.data.hotel_markup_value;
+           }else if(type === 'car'){
+               var markup_type       = 3;
+               var markup_value_type = response.data.car_markup_type;
+               var markup_value      = response.data.car_markup_value;
+           }
+          $('#role').val(response.data.role_id);
+          $('#markup_type').val(markup_type);
+          $('#markup_value_type').val(markup_value_type);
+          $('#markup_value').val(markup_value);
+          toastr.info('Markup info populated');
+        })
+        .catch(function(error){
+
+        });
   });
 
 });

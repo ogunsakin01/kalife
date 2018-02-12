@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Attraction;
+use App\BankPayment;
 use App\Email;
 //use App\Message;
+use App\FlightDeal;
 use App\Gallery;
 use App\GoodToKnow;
 use App\HotelDeal;
@@ -109,7 +111,7 @@ class FrontEndController extends Controller
     }
 
     public function flightDeals(){
-        $flights = Package::where('attraction',0)
+        $flights = TravelPackage::where('attraction',0)
             ->where('hotel', 0)
             ->where('flight', 1)
             ->where('status', 1)
@@ -163,10 +165,10 @@ class FrontEndController extends Controller
 
     public function flightDealDetails($id,$name){
         $images = Gallery::getGalleryByPackageId($id);
-        $flight_info = Package::getPackageById($id);
+        $flight_info = TravelPackage::find($id);
         $good_to_knows = GoodToKnow::getGoodToKnowByPackageId($id);
-        $flights = PackageFlight::getFlightsByPackageId($id);
-        return view('frontend.flights.details', compact('id','name','images','flights','flight_info','good_to_knows'));
+        $flight = FlightDeal::getByPackageId($id);
+        return view('frontend.flights.details', compact('id','name','images','flight','flight_info','good_to_knows'));
     }
 
     public function hotelDeals(){
@@ -183,6 +185,34 @@ class FrontEndController extends Controller
         $hotel_info = TravelPackage::find($id);
         $images = Gallery::getGalleryByPackageId($id);
         return view("frontend.hotels.hotel_details", compact('hotel','hotel_info','images','id','name'));
+    }
+
+    public function index(){
+        $hotel_images = '';
+        $attraction_images = '';
+        $hotel_package = TravelPackage::where('attraction',0)
+            ->where('hotel', 1)
+            ->where('flight', 0)
+            ->where('status', 1)
+            ->first();
+        $attraction = TravelPackage::where('attraction',1)
+            ->where('hotel', 0)
+            ->where('flight', 0)
+            ->where('status', 1)
+            ->first();
+        if(!empty($attraction) || !is_null($attraction)){
+            $attraction_images = Gallery::getGalleryByPackageId($attraction->id);
+        }
+        if(!empty($hotel_package) || !is_null($hotel_package)){
+            $hotel_images = Gallery::getGalleryByPackageId($hotel_package->id);
+        }
+
+        return view('frontend.home',compact('hotel_package','attraction','hotel_images','attraction_images'));
+    }
+
+    public function banksPayment(){
+        $bank_payments = BankPayment::getAllAuthenticatedUserBankPayments();
+        return view('frontend.bank_payments',compact('bank_payments'));
     }
 
 }

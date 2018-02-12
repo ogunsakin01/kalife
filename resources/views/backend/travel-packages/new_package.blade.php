@@ -141,7 +141,7 @@
                       <div class="col-md-4">
                           <div class="form-group">
                               <label>Date *</label>
-                              <input type="text" class="form-control datepicker flight_deal_date" name="flight_deal_date" value="" placeholder="Flight date">
+                              <input type="text" class="form-control datetimepicker flight_deal_date" name="flight_deal_date" value="" placeholder="Flight date">
                           </div>
                       </div>
                       <div class="col-md-4">
@@ -379,7 +379,7 @@
                     <h4 class="card-title"><i class="fa fa-info"></i>Attraction Gallery</h4>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['url'=>'backend/packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
+                    {!!Form::open(['url'=>'backend/packages/storeGalleryInfo', 'method'=>'POST', 'files'=>'true', 'enctype' => 'multipart/form-data', 'class'=>'dropzone', 'id' => 'image-upload']) !!}
                     {{ Form::hidden('package_id', '', ['class'=>'package_id']) }}
                     {{ Form::hidden('parent_id', '', ['class'=>'attraction_images_parent_id']) }}
                     {{ Form::hidden('image_type_id', '2', ['class'=>'image_type_id']) }}
@@ -408,4 +408,8 @@
 
 
 
+@endsection
+
+@section('javascript')
+    <script src="{{asset('backend/js/travel-packages.js')}}" type="text/javascript"></script>
 @endsection

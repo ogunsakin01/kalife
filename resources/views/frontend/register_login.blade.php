@@ -29,6 +29,8 @@
                         </div>
                     @endif
             </div>
+
+            @if(auth()->guest())
             <div class="col-md-4">
                 <h3>Welcome to Kalife</h3>
                 <p>Ultricies vestibulum egestas ad cras mollis nam dictumst netus leo facilisis justo maecenas molestie ipsum felis mus cubilia hendrerit vestibulum accumsan consectetur convallis vitae nec sapien diam justo lobortis aenean</p>
@@ -174,7 +176,14 @@
                     </div>
                 </div>
                 </div>
-
+             @else
+                <div class="col-md-12">
+                    <div class="alert alert-info">
+                        <strong><i class="fa fa-info"></i> You are logged in as {{auth()->user()->first_name}}&nbsp;{{auth()->user()->last_name}}</strong>
+                        <p>You can access your bookings and other information by clicking the bookings button above</p>
+                    </div>
+                </div>
+            @endif
             </div>
 
         </div>

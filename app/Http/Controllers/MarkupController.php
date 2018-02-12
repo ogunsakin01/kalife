@@ -38,18 +38,23 @@ class MarkupController extends Controller
       'markup_value' =>'required|numeric'
     ]);
 
+    $response = 0;
+
     if ($markup->updateOrCreateMarkup($r->all()))
     {
       $response = 1;
-      return response()->json($response);
     }
 
-    $response = 0;
     return response()->json($response);
 
 
 
 
   }
+
+  public function getMarkupById($id){
+      return AdminMarkup::find($id);
+  }
+
 
 }

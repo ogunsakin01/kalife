@@ -6,16 +6,33 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attraction extends Model
 {
+
+    protected $fillable = [
+        'package_id',
+        'name',
+        'city',
+        'address',
+        'date',
+        'information'
+    ];
+
     public static function store($data){
-        $table = new static();
-        $table->package_id  = $data->package_id;
-        $table->name        = $data->name;
-        $table->city        = $data->city;
-        $table->address     = $data->address;
-        $table->date        = $data->date;
-        $table->information = $data->information;
-        $table->save();
-        return $table;
+
+        $attraction = static::updateOrCreate(
+            [
+               'package_id' => $data->package_id
+            ],
+
+            [
+                'name' => $data->name,
+                'city' => $data->city,
+                'address' => $data->address,
+                'date'  => $data->date,
+                'information' => $data->information
+            ]
+        );
+
+        return $attraction;
     }
 
     public static function getByPackageId($id){

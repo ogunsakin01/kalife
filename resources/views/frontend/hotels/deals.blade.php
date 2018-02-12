@@ -84,9 +84,9 @@
                         <a class="hover-img" href="{{url('/hotel-details/'.$hotel_package->id.'/'.$hotel_package->name)}}">
                             @if(isset(App\Gallery::getGalleryByPackageId($hotel_package->id)[0]))
 
-                                <img src="{{asset(App\Gallery::getGalleryByPackageId($hotel_package->id)[0]['image_path'])}}" alt="{{$hotel_package->name}}" title="{{$hotel_package->name}}" />
+                                <img src="{{asset(App\Gallery::getGalleryByPackageId($hotel_package->id)[0]['image_path'])}}" style="width: 100%; height: 250px;" alt="{{$hotel_package->name}}" title="{{$hotel_package->name}}" />
                             @else
-                                <img src="{{asset('images/gallery/packages/no-image.jpg')}}" alt="{{$hotel_package->name}}" title="{{$hotel_package->name}}" />
+                                <img src="{{asset('images/gallery/packages/no-image.jpg')}}" alt="{{$hotel_package->name}}" style="width: 100%; height: 250px;" title="{{$hotel_package->name}}" />
                             @endif
                                 <h5 class="hover-title-center">Book Now</h5>
                         </a>

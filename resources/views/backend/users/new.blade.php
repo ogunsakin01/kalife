@@ -157,7 +157,7 @@
       <div class="card-header">User List</div>
       <div class="card-body">
         <div id="example1_wrapper" class="dataTables_wrapper">
-          <table id="users_table" class="table table-striped dataTable">
+          <table class="table table-striped dataTable">
             <thead>
               <th>#</th>
               <th>Full Name</th>

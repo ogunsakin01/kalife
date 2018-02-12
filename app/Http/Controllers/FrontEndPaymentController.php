@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BankPayment;
 use App\FlightBooking;
 use App\Gallery;
 use App\Mail\FailedPayment;
@@ -18,8 +19,11 @@ use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
 use App\TravelPackage;
 use App\User;
+use App\Wallet;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Exception;
 
 class FrontEndPaymentController extends Controller
 {
@@ -42,9 +46,10 @@ class FrontEndPaymentController extends Controller
                     'responseCode' => 00,
                     'responseDescription' => "Transaction with this transaction reference is not found in out database",
                     'responseFull' => '0',
-                    'amount' => $transactionInfo->amount
+                    'amount' => 0
                 ];
-            }else{
+            }
+            else{
                 $userInfo = User::getUserById($transactionInfo->user_id);
                 $transactionStatus = $this->PaystackConfig->query($txnRef);
                 $transactionStatus['email'] = $userInfo->email;
@@ -52,10 +57,26 @@ class FrontEndPaymentController extends Controller
                 FlightBooking::updatePaymentStatus($transactionStatus);
                 $bookingInfo = FlightBooking::getBooking($txnRef);
                 if($transactionStatus['status'] == 1){
-                    Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
-                    Mail::to($userInfo)->send(new SuccessfulFlightBooking($userInfo,$transactionStatus,$bookingInfo));
+                    try{
+                        Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
+                    }
+                    catch(Exception $e){
+                        Toastr::info('Your payment was successful but we are unable to send you a payment success email');
+                    }
+                    try{
+                        Mail::to($userInfo)->send(new SuccessfulFlightBooking($userInfo,$transactionStatus,$bookingInfo));
+                    }
+                    catch(Exception $e){
+                        Toastr::info('Could not sen email containing booking information, visit your booking page for more info');
+                    }
                 }elseif($transactionStatus['status'] == 0){
-                    Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                    try{
+                        Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                    }
+                    catch(Exception $e){
+
+                        Toastr::error('Your payment failed and we could not send an email containing the details to you');
+                    }
                 }
 
             }
@@ -97,10 +118,26 @@ class FrontEndPaymentController extends Controller
                   FlightBooking::updatePaymentStatus($transactionStatus);
                   $bookingInfo = FlightBooking::getBooking($txnRef);
                   if($transactionStatus['status'] == 1){
-                      Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
-                      Mail::to($userInfo)->send(new SuccessfulFlightBooking($userInfo,$transactionStatus,$bookingInfo));
+                      try{
+                          Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
+                      }
+                      catch(Exception $e){
+                          Toastr::info('Your payment was successful but we are unable to send you a payment success email');
+                      }
+                      try{
+                          Mail::to($userInfo)->send(new SuccessfulFlightBooking($userInfo,$transactionStatus,$bookingInfo));
+                      }
+                      catch(Exception $e){
+                          Toastr::info('Could not sen email containing booking information, visit your booking page for more info');
+                      }
+
                   }elseif($transactionStatus['status'] == 0){
-                      Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                      try{
+                          Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                      }
+                      catch(Exception $e){
+                          Toastr::error('Your payment failed and we could not send an email containing the details to you');
+                      }
                   }
               }
            }
@@ -169,11 +206,26 @@ class FrontEndPaymentController extends Controller
                 $bookingInfo = PackageBooking::getBookingByReference($txnRef);
                 $packageInfo = TravelPackage::find($bookingInfo->package_id);
                 if($transactionStatus['status'] == 1){
-                    Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
-                    Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $transactionStatus, $bookingInfo, $packageInfo));
+                    try{
+                        Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
+                    }
+                    catch(Exception $e){
+                        Toastr::info('Unable to send email','Email Failed');
+                    }
+                    try{
+                        Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $transactionStatus, $bookingInfo, $packageInfo));
+                    }
+                    catch(Exception $e){
+                        Toastr::info('Unable to send email','Email Failed');
+                    }
 
                 }elseif($transactionStatus['status'] == 0){
-                    Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                    try{
+                        Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                    }
+                    catch(Exception $e){
+                        Toastr::info('Unable to send email','Email Failed');
+                    }
                 }
 
             }
@@ -216,10 +268,27 @@ class FrontEndPaymentController extends Controller
                 $bookingInfo = PackageBooking::getBookingByReference($txnRef);
                 $packageInfo = TravelPackage::find($bookingInfo->package_id);
                 if($transactionStatus['status'] == 1){
-                    Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
-                    Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $transactionStatus, $bookingInfo, $packageInfo));
+                    try{
+                        Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$transactionStatus));
+                    }
+                    catch(Exception $e){
+                        Toastr::info('Unable to send email','Email Failed');
+                    }
+                    try{
+                        Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $transactionStatus, $bookingInfo, $packageInfo));
+                    }
+                    catch(Exception $e){
+                        Toastr::info('Unable to send email','Email Failed');
+                    }
+
+
                 }elseif($transactionStatus['status'] == 0){
-                    Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                    try{
+                        Mail::to($userInfo)->send(new FailedPayment($userInfo,$transactionStatus));
+                    }
+                    catch(Exception $e){
+                        Toastr::info('Unable to send email','Email Failed');
+                    }
                 }
             }
         }
@@ -278,14 +347,67 @@ class FrontEndPaymentController extends Controller
            $requery['email'] = $userInfo->email;
            if($requery['responseCode'] !== '--'){
                OnlinePayment::updateTransaction($requery);
-               FlightBooking::updatePaymentStatus($requery);
-               $bookingInfo = FlightBooking::getBooking($r->reference);
                if($requery['status'] == 1){
-                   Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$requery));
-                   Mail::to($userInfo)->send(new SuccessfulFlightBooking($userInfo,$requery,$bookingInfo));
+                   try{
+                       Mail::to($userInfo)->send(new SuccessfulPayment($userInfo,$requery));
+                   }
+                   catch(Exception $e){
+                       Toastr::success('Payment confirmed. Could not send you a confirmation email');
+                   }
+                   if(substr($r->reference, 0 , 3) == "PKG"){
+                       $bookingInfo = PackageBooking::getBookingByReference($r->reference);
+                       $packageInfo = TravelPackage::find($bookingInfo->package_id);
+                       PackageBooking::updatePaymentStatus($requery);
+                       try{
+                           Mail::to($userInfo)->send(new SuccessfulPackageBooking($userInfo, $requery, $bookingInfo, $packageInfo));
+                       }
+                       catch(Exception $e){
+                           Toastr::success('Travel package booking successful,could not send email containing booking information');
+                       }
+                   }elseif(substr($r->reference, 0 , 3) == "AIR"){
+                       $bookingInfo = FlightBooking::getBooking($r->reference);
+                       FlightBooking::updatePaymentStatus($requery);
+
+                       try{
+                           Mail::to($userInfo)->send(new SuccessfulFlightBooking($userInfo,$requery,$bookingInfo));
+                       }
+                       catch(Exception $e){
+                           Toastr::success('Flight booking successful, could not send email containing booking information');
+                       }
+
+                   }elseif(substr($r->reference, 0 , 3) == "HOT"){
+
+                   }elseif(substr($r->reference, 0 , 3) == "WDR"){
+                       Wallet::updateWalletBalance(auth()->user()->id,$requery['amount'],'credit');
+                   }
                }
            }
         return $requery;
+    }
+
+    public function bankPayment(Request $r){
+        if(substr($r->reference,0,3) == 'AIR'){
+            $booking = FlightBooking::getBooking($r->reference);
+        }elseif(substr($r->reference,0,3) == 'PKG'){
+            $booking = PackageBooking::getBookingByReference($r->reference);
+        }
+        $amount = $booking->total_amount;
+        $rawData = [
+          'reference' => $r->reference,
+          'user_id'   => auth()->user()->id,
+          'amount'    => $amount,
+          'bank_detail_id' =>$r->selected_bank,
+          'slip_photo'      => '',
+          'status'          => 2
+        ];
+        $data = (object) $rawData;
+        BankPayment::storeOrUpdate($data);
+       return redirect(url('/bank-payments'));
+
+    }
+
+    public function banks(){
+
     }
 
 }

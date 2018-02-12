@@ -2153,7 +2153,7 @@ img.pp-img {
 .header-top {
   padding: 10px 0;
   max-height: 60px;
-  background: #1751cd;
+  background: #fff;
 }
 @media (max-width:992px) {
   .header-top {
@@ -2201,7 +2201,8 @@ img.pp-img {
   background: none;
 }
 .top-user-area .top-user-area-list > li > a {
-  color: #f2f2f2;
+  color: #1a5ae4;
+  font-weight: bold;
 }
 .top-user-area .top-user-area-list > li > a:hover {
   color: #f19c4f;
@@ -3028,7 +3029,7 @@ aside.sidebar-left {
   font-style: italic;
 }
 ::selection {
-  background: #ed8323;
+  background: #1a5ae4;
   color: #fff;
 }
 .datepicker {

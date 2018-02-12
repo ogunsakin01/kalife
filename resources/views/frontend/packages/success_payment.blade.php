@@ -35,7 +35,7 @@
                 </div>
                 @else
 
-            <div class="col-md-8 ">
+            <div class="col-md-12 ">
                 @if($transactionStatus['status'] == 0)
                     <i class="fa fa-times round box-icon-large box-icon-center box-icon-danger mb30"></i>
                     <h2 class="text-center">Sorry {{auth()->user()->first_name}}, your payment failed</h2>
@@ -71,21 +71,36 @@
                                 </div>
                             </li>
                        @endif
-                        @if($bookingInfo->kids > 0)
+                        @if($bookingInfo->children > 0)
                                 <li>
                                     <div class="row">
                                         <div class="col-xs-9">
-                                            <h5><i class="fa fa-user"></i> Kid(s)</h5>
-                                            <p><small>(x{{$bookingInfo->kids}})</small>
+                                            <h5><i class="fa fa-user"></i> Children</h5>
+                                            <p><small>(x{{$bookingInfo->children}})</small>
                                             </p>
                                         </div>
                                         <div class="col-xs-3">
-                                            <p class="text-right"><span class="text-lg">&#x20A6;{{number_format(($bookingInfo->kids * $packageInfo->kids_price),2)}}</span>
+                                            <p class="text-right"><span class="text-lg">&#x20A6;{{number_format(($bookingInfo->children * $packageInfo->child_price),2)}}</span>
                                             </p>
                                         </div>
                                     </div>
                                 </li>
                             @endif
+                        @if($bookingInfo->infants > 0)
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <h5><i class="fa fa-user"></i> Infant(s)</h5>
+                                        <p><small>(x{{$bookingInfo->infants}})</small>
+                                        </p>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <p class="text-right"><span class="text-lg">&#x20A6;{{number_format(($bookingInfo->infants * $packageInfo->infant_price),2)}}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
                         <li>
                             <div class="row">
                                 <div class="col-xs-9">
@@ -126,52 +141,52 @@
                     {{--</li>--}}
                 </ul>
             </div>
-                <div class="col-md-4">
-                    <div class="booking-item-payment">
-                        <header class="clearfix">
-                            <a class="booking-item-payment-img" href="#">
-                                @if(isset($images[0]))
+                {{--<div class="col-md-4">--}}
+                    {{--<div class="booking-item-payment">--}}
+                        {{--<header class="clearfix">--}}
+                            {{--<a class="booking-item-payment-img" href="#">--}}
+                                {{--@if(isset($images[0]))--}}
 
-                                    <img src="{{asset($images[0]['image_path'])}}" alt="{{$packageInfo->package_name}}" style="width:100%; height: 100%" title="{{$packageInfo->package_name}}"/>
-                                @else
-                                    <img src="{{asset('images/gallery/packages/no-image.jpg')}}"  alt="No image available for this attraction" title="No image available for this attraction" />
-                                @endif
-                            </a>
-                            <h5 class="booking-item-payment-title"><a href="#">{{$packageInfo->name}}</a></h5>
-                        </header>
-                        <ul class="booking-item-payment-details">
-                            <li>
-                                <h5>April, 27 Saturday</h5>
-                            </li>
-                            <li>
-                                <h5>Pricing</h5>
-                                <ul class="booking-item-payment-price">
-                                    @if($bookingInfo->adults > 0)
-                                        <li>
-                                            <p class="booking-item-payment-price-title">{{$bookingInfo->adults}} Adult(s)</p>
-                                            <p class="booking-item-payment-price-amount">&#x20A6;{{number_format(($bookingInfo->adults * $packageInfo->adult_price),2)}}</p>
-                                        </li>
-                                    @endif
-                                    @if($bookingInfo->children > 0)
-                                        <li>
-                                            <p class="booking-item-payment-price-title">{{$bookingInfo->children}} Children(child)</p>
-                                            <p class="booking-item-payment-price-amount">&#x20A6;&#x20A6;{{number_format(($bookingInfo->children * $packageInfo->child_price),2)}}</p>
-                                        </li>
-                                    @endif
-                                        @if($bookingInfo->infants > 0)
-                                            <li>
-                                                <p class="booking-item-payment-price-title">{{$bookingInfo->infants}} Infant(s)</p>
-                                                <p class="booking-item-payment-price-amount">&#x20A6;&#x20A6;{{number_format(($bookingInfo->infants * $packageInfo->infant_price),2)}}</p>
-                                            </li>
-                                        @endif
+                                    {{--<img src="{{asset($images[0]['image_path'])}}" alt="{{$packageInfo->package_name}}" style="width:100%; height: 100%" title="{{$packageInfo->package_name}}"/>--}}
+                                {{--@else--}}
+                                    {{--<img src="{{asset('images/gallery/packages/no-image.jpg')}}"  alt="No image available for this attraction" title="No image available for this attraction" />--}}
+                                {{--@endif--}}
+                            {{--</a>--}}
+                            {{--<h5 class="booking-item-payment-title"><a href="#">{{$packageInfo->name}}</a></h5>--}}
+                        {{--</header>--}}
+                        {{--<ul class="booking-item-payment-details">--}}
+                            {{--<li>--}}
+                                {{--<h5>April, 27 Saturday</h5>--}}
+                            {{--</li>--}}
+                            {{--<li>--}}
+                                {{--<h5>Pricing</h5>--}}
+                                {{--<ul class="booking-item-payment-price">--}}
+                                    {{--@if($bookingInfo->adults > 0)--}}
+                                        {{--<li>--}}
+                                            {{--<p class="booking-item-payment-price-title">{{$bookingInfo->adults}} Adult(s)</p>--}}
+                                            {{--<p class="booking-item-payment-price-amount">&#x20A6;{{number_format(($bookingInfo->adults * $packageInfo->adult_price),2)}}</p>--}}
+                                        {{--</li>--}}
+                                    {{--@endif--}}
+                                    {{--@if($bookingInfo->children > 0)--}}
+                                        {{--<li>--}}
+                                            {{--<p class="booking-item-payment-price-title">{{$bookingInfo->children}} Children(child)</p>--}}
+                                            {{--<p class="booking-item-payment-price-amount">&#x20A6;&#x20A6;{{number_format(($bookingInfo->children * $packageInfo->child_price),2)}}</p>--}}
+                                        {{--</li>--}}
+                                    {{--@endif--}}
+                                        {{--@if($bookingInfo->infants > 0)--}}
+                                            {{--<li>--}}
+                                                {{--<p class="booking-item-payment-price-title">{{$bookingInfo->infants}} Infant(s)</p>--}}
+                                                {{--<p class="booking-item-payment-price-amount">&#x20A6;&#x20A6;{{number_format(($bookingInfo->infants * $packageInfo->infant_price),2)}}</p>--}}
+                                            {{--</li>--}}
+                                        {{--@endif--}}
 
 
-                                </ul>
-                            </li>
-                        </ul>
-                        <p class="booking-item-payment-total">Total trip: <span>&#x20A6;<b class="total_package_amount">{{number_format(($bookingInfo->total_amount / 100),2)}}</b></span></p>
-                    </div>
-                </div>
+                                {{--</ul>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                        {{--<p class="booking-item-payment-total">Total trip: <span>&#x20A6;<b class="total_package_amount">{{number_format(($bookingInfo->total_amount / 100),2)}}</b></span></p>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 @endif
         </div>
         <div class="gap"></div>

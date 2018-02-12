@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Mail\SuccessfulRegistration;
 use App\User;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Exception;
+
 
 class RegisterController extends Controller
 {
@@ -87,7 +90,12 @@ class RegisterController extends Controller
         ]);
 
         $user->attachrole(1);
-        Mail::to($user)->send(new SuccessfulRegistration($data));
+        try{
+            Mail::to($user)->send(new SuccessfulRegistration($data));
+        }catch(Exception $e){
+            Toastr::info('Could not send email');
+
+        }
         return $user;
     }
 }

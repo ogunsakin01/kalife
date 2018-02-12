@@ -20,6 +20,7 @@ use App\Services\SabreConfig;
 
 class FlightController extends Controller
 {
+
     public function __construct(){
         $this->Sabreflight = new SabreFlight();
         $this->SabreSession = new SabreSessionManager();
@@ -155,7 +156,7 @@ class FlightController extends Controller
         }
         else{
             if($info['pnrStatus'] == 0){
-                return redirect(back())->with('errorMessage','You cannot continue the booking process. Select another flight from the result and try again.');
+                return redirect(url('/flight-passenger-details'))->with('errorMessage','You cannot continue the booking process. Select another flight from the result and try again.');
             }else{
                 $this->SabreSession->closeSession($token,$message_id);
                 SessionToken::tokenClosed($message_id);
@@ -263,9 +264,5 @@ class FlightController extends Controller
         ];
         return view('frontend.flights.payment_options',compact('itinerary','paymentInfo'));
     }
-
-
-
-
 
 }

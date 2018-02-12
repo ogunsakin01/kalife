@@ -2,6 +2,8 @@
  * Created by hp on 10/1/2018.
  */
 
+var pageUrl = '/backend/additions';
+
 function toastWarning(message){
   return iziToast.warning({
     timeout: 10000,
@@ -146,7 +148,8 @@ $(function () {
     }).then(function (response) {
       if(response.data == 1)
       {
-        toastSuccess('Vat saved successfully')
+        toastr.success('Vat saved successfully');
+        window.location.href = pageUrl+'/vat';
       }
       else
       {
@@ -157,6 +160,22 @@ $(function () {
     })
   });
 
+  $('.editVat').click(function(){
+    var type = $(this).val();
+    axios.get(pageUrl+'/getVat/'+type)
+        .then(function(response){
+          console.log(response.data);
+            $('#vat_type').val(response.data.type);
+            $('#vat_value_type').val(response.data.value_type);
+            $('#vat_value').val(response.data.value);
+            $('#save_vat').text('Edit Vat');
+            $('#vat_header').text('Edit Vat');
+            toastr.info('Vat information populated');
+        })
+        .catch(function(error){
+
+        })
+  });
 });
 
 function fetchVats()

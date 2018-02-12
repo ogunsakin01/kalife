@@ -1,4 +1,4 @@
 <DisplayCurrencyRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ReturnHostCommand="false" TimeStamp="2012-01-12T11:00:00-06:00" Version="2.1.0">
                  <CountryCode>NG</CountryCode>
-                 <CurrencyCode>USD</CurrencyCode>
+                 <CurrencyCode>ZAR</CurrencyCode>
                  </DisplayCurrencyRQ>
