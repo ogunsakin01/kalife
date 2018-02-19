@@ -17,8 +17,8 @@
 
 </head>
 
-<body>
-  <div id="page-container2">
+<body style="">
+  <div id="page-container2" style="background-image: url({{asset('img/viva_las_vegas_2048x1365.jpg')}});">
   <div class="page-helper">
     <div class="form-container">
       <div class="logo mb-3">
@@ -26,8 +26,8 @@
       </div>
 
       <div class="login-box">
-
-        <p class="mb-4">Welcome, Don't have an account? <a href="#">Register</a></p>
+<div class="loader"></div>
+        {{--<p class="mb-4">Welcome, Don't have an account? <a href="#">Register</a></p>--}}
 
         {!! Form::open(['route' => 'backend-post-login']) !!}
 
@@ -41,7 +41,7 @@
           <br>
           <div class="row">
             <div class="col-md-12">
-              <a class="pull-right" href="#">Forgot Password?</a>
+              <p class="mb-4"> Can't remember password ?  <a href="{{url('/password/reset')}}"> Click here</a></p>
             </div>
           </div>
 
@@ -50,7 +50,7 @@
 
     </div>
   </div>
-</div>
+ </div>
 
   @include('partials.backend.javascript')
 <script type="text/javascript" src="{{asset('backend/js/login.js')}}">

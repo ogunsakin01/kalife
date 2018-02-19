@@ -17,7 +17,7 @@ class CreateWalletDepositsTable extends Migration
             $table->increments('id');
             $table->string('reference');
             $table->integer('user_id');
-            $table->integer('amount');
+            $table->bigInteger('amount');
             $table->integer('bank_detail_id');
             $table->string('slip_photo');
             $table->integer('status');

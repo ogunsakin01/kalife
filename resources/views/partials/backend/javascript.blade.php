@@ -20,5 +20,5 @@
 <script src="{{asset("js/bootstrap-timepicker.js")}}"></script>
 <script src="{{asset("backend/js/jquery.validate.min.js")}}"></script>
 <script type="text/javascript" src="{{asset('backend/js/required.js')}}"></script>
-{{--<script type="text/javascript" src="{{asset('backend/js/package.js')}}"></script>--}}
-{{--<script type="text/javascript" src="{{asset('backend/js/travel-packages.js')}}"></script>--}}
+{{-- <script type="text/javascript" src="{{asset('backend/js/package.js')}}"></script>         --}}
+{{-- <script type="text/javascript" src="{{asset('backend/js/travel-packages.js')}}"></script> --}}

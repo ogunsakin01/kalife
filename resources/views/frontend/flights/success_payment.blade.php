@@ -108,7 +108,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-xs-9">
-                                        <h5><i class="fa fa-money"></i> Price Increase</h5>
+                                        <h5><i class="fa fa-money"></i> Price Change</h5>
                                         <p><small></small>
                                         </p>
                                     </div>

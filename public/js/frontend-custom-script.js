@@ -3,7 +3,9 @@
  */
 
 /**
+ *
  * Variables Used Through out
+ *
  * **/
 
 
@@ -28,15 +30,25 @@ $('input[type="submit"]').on('click',function(){
     $('input[type="submit"]').prop('disabled','disabled');
 });
 
+
 /**
- * End of Variables Used Through out
+ *
+ *  End of Variables Used Through out
+ *
  * **/
 
 
+
 /**
- * Start of JavaScript Functions
+ *
+ *  Start of JavaScript Functions
+ *
  * **/
 
+function disabledHotelSearch(){
+    $('.hotel_search').prop('disabled',true);
+    $('.hotel_search').html('<i class="fa fa-warning"></i> Not Avail');
+}
 
 function toastWarning(message){
    return iziToast.warning({
@@ -185,14 +197,19 @@ function isEmail(email) {
 
 
 /**
- * End of JavaScript Functions
- * **/
+ *
+ *  End of JavaScript Functions
+ *
+ *  **/
 
 
 /**
- * Start of JavaScript Actions
- * **/
-// $('.pagination').twbsPagination();
+ *
+ *  Start of JavaScript Actions
+ *
+ *  **/
+
+disabledHotelSearch();
 
 $('.trip_type').on("click",function(){
     var trip_type = $(this).text();
@@ -759,6 +776,9 @@ $('.package_guests').on('change',function(){
 
 });
 
+
 /**
+ *
  * End of JavaScript Actions
- * **/
+ *
+ *  **/

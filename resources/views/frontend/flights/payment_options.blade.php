@@ -64,7 +64,7 @@
                                 @foreach($itinerary[2] as $i => $priceInfo)
                                     <li>
                                         <p class="booking-item-payment-price-title">{{$priceInfo['passengerType']}} <small>(x{{$priceInfo['quantity']}})</small></p>
-                                        <p class="booking-item-payment-price-amount">&#x20A6; {{number_format($priceInfo['totalPrice'],2)}}
+                                        <p class="booking-item-payment-price-amount">&#x20A6; {{number_format(($priceInfo['totalPrice'] * $priceInfo['quantity']),2)}}
                                         </p>
                                     </li>
                                 @endforeach()
@@ -79,7 +79,7 @@
                                     </p>
                                 </li>
                                     <li>
-                                        <p class="booking-item-payment-price-title">Price Increase</p>
+                                        <p class="booking-item-payment-price-title">Price Change</p>
                                         <p class="booking-item-payment-price-amount">&#x20A6; {{number_format($itinerary[0]['itineraryPriceAddition'])}}
                                         </p>
                                     </li>

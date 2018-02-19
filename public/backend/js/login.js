@@ -14,11 +14,13 @@ $(function () {
     var email = $('#email').val();
     var password = $('#password').val();
     buttonClicked('sign_in','Sign In',1);
+    $('.loader').html(loader);
     axios.post('/backend/login', {
       'email': email,
       'password': password
     })
     .then(function (response) {
+
         buttonClicked('sign_in','Sign In',0);
       if (response.data == 1)
       {
@@ -30,14 +32,17 @@ $(function () {
       }
       else if(response.data == 2)
       {
+          $('.loader').html('');
         toastr.error('User blocked. See the admin.');
       }
       else if(response.data == 0)
       {
+          $('.loader').html('');
         toastr.error('Incorrect email/password. Try again');
       }
     })
     .catch(function (error) {
+        $('.loader').html('');
         buttonClicked('sign_in','Sign In',0);
       extractError(error);
     })

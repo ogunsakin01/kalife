@@ -48,8 +48,18 @@
                                     <tr>
                                         <td>{{$booking->reference}}</td>
                                         <td>
+
                                             @if($booking->pnr_status == 1)
-                                              <strong>{{$booking->pnr}}</strong>
+                                                @if($booking->payment_status == 1)
+                                                    <strong>{{$booking->pnr}}</strong>
+                                                    @else
+                                                    @role('Super Admin')
+                                                    <strong>{{$booking->pnr}}</strong>
+                                                    @endrole
+                                                    @role('Agent')
+                                                    <span class="badge badge-danger"><i class="fa fa-warning"></i> Incomplete</span>
+                                                    @endrole
+                                                @endif
                                             @elseif($booking->pnr_status == 0)
                                                 <span class="badge badge-danger"><i class="fa fa-warning"></i> Failed / Incomplete</span>
                                             @endif
@@ -360,11 +370,29 @@
                                                 <span class="badge badge-danger"><i class="fa fa-warning"></i> Failed / Incomplete</span>
                                             @endif
                                         </td>
-                                        <td></td>
                                         <td>
-                                            <button class="btn btn-primary" data-toggle="tooltip" title="Issue Ticket"><i class="fa fa-check"></i></button>
-                                            <button class="btn btn-danger"  data-toggle="tooltip" title="Cancel Ticket"><i class="fa fa-trash"></i></button>
-                                            <button class="btn btn-warning" data-toggle="tooltip" title="Void Ticket"><i class="fa fa-warning"></i></button>
+                                        @if($booking->void_ticket_status == 0)
+                                            @if($booking->issue_ticket_status == 1)
+                                                <span class="badge badge-success"><i class="fa fa-success"></i> Ticket Issued</span>
+                                            @else
+                                                @if($booking->payment_status == 1)
+                                                    <span class="badge badge-warning"><i class="fa fa-warning"></i> Pending</span>
+                                                @else
+                                                    <span class="badge badge-danger"><i class="fa fa-warning"></i> Failed</span>
+                                                @endif
+                                            @endif
+                                        @else
+                                                @if($booking->cancel_ticket_status == 1)
+                                                    <span class="badge badge-danger"><i class="fa fa-times"></i> Ticket Cancelled</span>
+                                                @else
+                                                    <span class="badge badge-danger"><i class="fa fa-warning"></i> Ticket Voided</span>
+                                                @endif
+                                        @endif
+                                        </td>
+                                        <td>
+                                            {{--<button class="btn btn-primary" data-toggle="tooltip" title="Issue Ticket"><i class="fa fa-check"></i></button>--}}
+                                            {{--<button class="btn btn-danger"  data-toggle="tooltip" title="Cancel Ticket"><i class="fa fa-trash"></i></button>--}}
+                                            {{--<button class="btn btn-warning" data-toggle="tooltip" title="Void Ticket"><i class="fa fa-warning"></i></button>--}}
                                         </td>
                                         <td>{{date('d, D M Y, G:i A',strtotime($booking->created_at))}}</td>
                                     </tr>

@@ -13,7 +13,7 @@
     <SpecialServiceRQ>
         <SpecialServiceInfo>
             <SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="2006-02-07" Gender="M" NameNumber="1.1" >
+                <PersonName DateOfBirth="2018-02-28" Gender="M" NameNumber="1.1" >
                     <GivenName>Damilola</GivenName>
                     <Surname>Ogunsakin</Surname>
                 </PersonName>

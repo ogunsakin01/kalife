@@ -148,7 +148,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Date *</label>
-                                <input type="text" class="form-control datepicker flight_deal_date" name="flight_deal_date" value="{{$flightDeal->date}}" placeholder="Flight date">
+                                <input type="text" class="form-control datetimepicker flight_deal_date" name="flight_deal_date" value="{{$flightDeal->date}}" placeholder="Flight date">
                             </div>
                         </div>
                         <div class="col-md-4">

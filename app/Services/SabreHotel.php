@@ -114,13 +114,13 @@ class SabreHotel
     }
 
     public function HotelImageRQXML($r){
-        return '<GetHotelImageRQ xmlns="http://services.sabre.com/hotel/image/v1" version="1.0.0">
-    <HotelRefs>
-        <HotelRef HotelCode="'.session()->get('hotels')[$r->id]['hotelCode'].'" CodeContext="Sabre" />
-    </HotelRefs>
-    <ImageRef Type="MEDIUM" CategoryCode="3" LanguageCode="EN" />
-
-</GetHotelImageRQ>';
+        return '
+      <GetHotelImageRQ xmlns="http://services.sabre.com/hotel/image/v1" version="1.0.0">
+       <HotelRefs>
+           <HotelRef HotelCode="'.session()->get('hotels')[$r->id]['hotelCode'].'" CodeContext="Sabre" />
+       </HotelRefs>
+           <ImageRef Type="MEDIUM" CategoryCode="3" LanguageCode="EN" />
+       </GetHotelImageRQ>';
     }
 
     public function HotelMediaRQXML($r){

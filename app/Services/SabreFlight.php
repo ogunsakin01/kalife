@@ -7,6 +7,7 @@ use App\Airport;
 use App\IataCity;
 use App\AdminMarkup;
 use App\Markdown;
+use App\User;
 use App\Vat;
 use Faker\Provider\DateTime;
 use Illuminate\Support\Carbon;
@@ -18,6 +19,7 @@ class SabreFlight
 
     public function __construct(){
       $this->sabreConfig = new SabreConfig();
+      $this->user = new User();
     }
 
     public function doCall($headersXml, $body, $action) {
@@ -477,17 +479,41 @@ class SabreFlight
                 $itineraryPricingSubSource = $itinerary['AirItineraryPricingInfo']['@attributes']['PricingSubSource'];
                 $adminUserMarkupObject = AdminMarkup::getAdminUserMarkup();
                 $adminUserMarkupDefault = $this->sabreConfig->priceTypeCalculator($adminUserMarkupObject->flight_markup_type,$adminUserMarkupObject->flight_markup_value,$itineraryPrice);
+                $adminAgentMarkupObject = AdminMarkup::getAdminAgentMarkup();
+                $adminAgentMarkupDefault = $this->sabreConfig->priceTypeCalculator($adminAgentMarkupObject->flight_markup_type,$adminAgentMarkupObject->flight_markup_value,$itineraryPrice);
                 $vatObject = Vat::getVat();
                 $vat = $this->sabreConfig->priceTypeCalculator($vatObject->flight_vat_type,$vatObject->flight_vat_value,$itineraryPrice);
                 $markdownObject = Markdown::getAirlineMarkdown($airline);
                 if($markdownObject == "0"){
                     $airlineMarkdown = 0;
                     $adminUserMarkup = $this->sabreConfig->priceTypeCalculator($adminUserMarkupObject->flight_markup_type,$adminUserMarkupObject->flight_markup_value,$itineraryPrice);
+                    $adminAgentMarkup = $this->sabreConfig->priceTypeCalculator($adminAgentMarkupObject->flight_markup_type,$adminAgentMarkupObject->flight_markup_value,$itineraryPrice);
+
                 }else{
                     $airlineMarkdown = $this->sabreConfig->priceTypeCalculator($markdownObject->type,$markdownObject->value,$itineraryPrice);
                     $adminUserMarkup = 0;
+                    $adminAgentMarkup = 0;
                 }
-                $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                if(auth()->guest()){
+                    $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                    $adminToAgentSumTotal = $adminAgentMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                    $adminToAdminSumTotal = $airlineMarkdown + $vat + $itineraryPrice;
+                }elseif(auth()->user()){
+                    if(auth()->user()->hasRole('Agent')){
+                        $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                        $adminToAgentSumTotal = $adminAgentMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                        $adminToAdminSumTotal = $airlineMarkdown + $vat + $itineraryPrice;
+                    }elseif(auth()->user()->hasRole('Super Admin')){
+                        $adminToAdminSumTotal = $airlineMarkdown + $vat + $itineraryPrice;
+                        $adminToAgentSumTotal = $adminAgentMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                        $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                    }elseif(auth()->user()->hasRole('Customer')){
+                        $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                        $adminToAgentSumTotal = $adminAgentMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                        $adminToAdminSumTotal = 0;
+                    }
+                }
+
                 $itineraryPrimaryInfo = [
                     "totalPrice" => $itineraryPrice,
                     "itineraryPricingSource" =>  $itineraryPricingSource,
@@ -495,9 +521,13 @@ class SabreFlight
                     "airline" => $airline,
                     "stops" => $stops,
                     "adminToUserMarkup" => $adminUserMarkupDefault,
+                    "adminToAgentMarkup" => $adminAgentMarkupDefault,
+                    "adminToAdminMarkup" => 0,
                     "airlineMarkdown" => $airlineMarkdown,
                     "vat" => $vat,
-                    "adminToUserSumTotal" => $adminToUserSumTotal
+                    "adminToUserSumTotal" => $adminToUserSumTotal,
+                    "adminToAgentSumTotal" => $adminToAgentSumTotal,
+                    "adminToAdminSumTotal" => $adminToAdminSumTotal,
                 ];
 
                 array_push($itineraryInfoArray,$itineraryPrimaryInfo);

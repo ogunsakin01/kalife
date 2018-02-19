@@ -109,7 +109,23 @@ Route::view('/test', 'backend.test');
 
 Route::group(['prefix' => 'backend'],function (){
 
-  Route::get('', 'HomeController@index')->name('backend-home')->middleware('role:Super Admin|Agent');
+Route::get('email-subscriptions','SubscriptionController@emailSubscribers')->name('emails')->middleware('role:Super Admin');
+    Route::post('email/activate','SubscriptionController@activate')->middleware('role:Super Admin');
+    Route::post('email/deActivate','SubscriptionController@deActivate')->middleware('role:Super Admin');
+
+
+    Route::get('available-flights','HomeController@availableFLights');
+    Route::get('flight-passenger-details','HomeController@flightPassengerDetails');
+    Route::post('passengerDetailsRQ','HomeController@flightCreatePNR');
+    Route::get('flight-booking-payment-methods','HomeController@flightPaymentPage');
+    Route::post('flightBookPricing','HomeController@flightBookPricing');
+    Route::post('flight-booking-bank-payment','HomeController@flightBankPayment');
+    Route::get('flight-booking-complete','HomeController@bookingComplete')->name('backend-flight-booking-complete');
+
+
+
+
+    Route::get('', 'HomeController@index')->name('backend-home')->middleware('role:Super Admin|Agent');
   Route::get('home', 'HomeController@index')->name('backend-home')->middleware('role:Super Admin|Agent');
 
   Route::get('password/reset', 'PasswordController@showLinkRequestForm')->name('backend-password-reset');
@@ -160,6 +176,7 @@ Route::group(['prefix' => 'backend'],function (){
     Route::get('online-transactions','WalletController@onlineTransactions')->name('backend-online-transactions')->middleware('role:Super Admin');
     Route::get('all-wallets-transaction-log','WalletController@allWalletsTransactionLogs')->name('backend-wallet-transactions')->middleware('role:Super Admin');
     Route::get('all-bank-transactions-log','WalletController@allBankTransactionLogs')->name('backend-bank-transactions')->middleware('role:Super Admin');
+    Route::post('flight-payment-with-wallet','WalletController@flightPaymentWithWallet')->name('backend-wallet-flight-payment');
 
     Route::post('buildInterswitchTransaction','WalletController@buildInterswitchTransaction');
     Route::post('initiatePaystackTransaction','WalletController@initiatePaystackTransaction');
@@ -260,6 +277,10 @@ Route::group(['prefix' => 'backend/travel-packages', 'middleware' => ['auth','ro
     Route::get('delete/{id}', 'TravelPackageController@deletePackage');
     Route::get('edit/{id}', 'TravelPackageController@editPackage');
     Route::post('delete-image','TravelPackageController@deleteImage');
+    Route::get('categories','TravelPackageController@categories');
+    Route::post('activate/category','TravelPackageController@activateCategory');
+    Route::post('deActivate/category','TravelPackageController@deActivateCategory');
+    Route::post('categoryCreateOrUpdate','TravelPackageController@categoryCreateOrUpdate');
 
 });
 

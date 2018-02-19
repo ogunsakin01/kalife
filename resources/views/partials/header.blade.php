@@ -1,4 +1,3 @@
-
     <div class="header-top" style="border-color: blue;">
         <div class="container">
             <div class="row">
@@ -32,7 +31,15 @@
                                             Hi, {{auth()->user()->first_name}} </a>
                                     </li>
                                     <li>
+                                        @role('Agent')
+                                        <a href="{{url('backend/login')}}" class="btn btn-primary" style="color:#000;">Agent Bookings</a>
+                                        @endrole
+                                        @role('Super Admin')
+                                        <a href="{{url('/backend/login')}}" class="btn btn-primary" style="color:#000;">Admin Bookings</a>
+                                        @endrole
+                                        @role('Customer')
                                         <a href="{{url('/bookings')}}" class="btn btn-primary" style="color:#000;">Bookings</a>
+                                        @endrole
                                     </li>
                                     <li><a href="{{url('/logout')}}">Sign Out</a>
                                     </li>

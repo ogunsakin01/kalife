@@ -10,6 +10,7 @@ use App\HotelDeal;
 use App\PackageCategory;
 use App\SightSeeing;
 use App\TravelPackage;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class TravelPackageController extends Controller
@@ -152,6 +153,37 @@ class TravelPackageController extends Controller
 
     public function deleteImage(Request $r){
        Gallery::deletePicture($r->id);
+    }
+
+    public function categories(){
+        $package_categories = PackageCategory::orderBy('id','desc')->get();
+        return view('backend.travel-packages.categories',compact('package_categories'));
+    }
+
+    public function activateCategory(Request $r){
+        $category = PackageCategory::find($r->id);
+        if($category->status == 1){
+            return 2;
+        }
+        $category->status = 1;
+        $category->update();
+        return 1;
+    }
+
+    public function deActivateCategory(Request $r){
+        $category = PackageCategory::find($r->id);
+        if($category->status == 0){
+            return 2;
+        }
+        $category->status = 0;
+        $category->update();
+        return 1;
+    }
+
+    public function categoryCreateOrUpdate(Request $r){
+        PackageCategory::store($r);
+        Toastr::success('Package information updated in database');
+        return redirect(url('backend/travel-packages/categories'));
     }
 
 

@@ -451,5 +451,23 @@ class WalletController extends Controller
         return redirect(session()->previousUrl());
     }
 
+    public function flightPaymentWithWallet(Request $r){
+
+        Wallet::updateWalletBalance(auth()->user()->id,$r->amount,'debit');
+
+        $transactionStatus = [
+            'email' => auth()->user()->email,
+            'reference' => $r->reference,
+            'status' => 1,
+            'responseCode' => "00",
+            'responseDescription' => 'Payment with wallet was successful, check your bookings for more information',
+            'responseFull' => '',
+            'amount' => $r->amount
+        ];
+
+        FlightBooking::updatePaymentStatus($transactionStatus);
+        session()->put('transactionStatus',$transactionStatus);
+        return redirect(route('backend-flight-booking-complete'));
+    }
 
 }

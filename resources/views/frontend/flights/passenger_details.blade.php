@@ -7,10 +7,15 @@
         <div class="row">
             <div class="col-md-12">
                 @if($itinerary[0]['itineraryPriceAddition'] > 0)
-                   <div class="alert alert-warning">
-                       <i class="fa fa-warning"></i>
-                       The price of this this Itinerary has increased by &#x20A6; {{number_format($itinerary[0]['itineraryPriceAddition'])}}
-                   </div>
+                    <div class="alert alert-info">
+                        <p><strong><i class="fa fa-warning"></i> Important Notice !!!</strong>
+                            @if($itinerary[0]['itineraryPriceAddition'] < 0)
+                                The price of this this Itinerary has decreased by &#x20A6; {{number_format($itinerary[0]['itineraryPriceAddition'])}}
+                            @elseif($itinerary[0]['itineraryPriceAddition'] > 0)
+                                The price of this this Itinerary has increased by &#x20A6; {{number_format($itinerary[0]['itineraryPriceAddition'])}}
+                            @endif
+                        </p>
+                    </div>
                 @endif
 
                 @if ($errors->any())
@@ -82,7 +87,7 @@
                             </div>
                                @endif
                               @if(!auth()->guest())
-                    <form method="post" action="{{url('passengerDetailsRQ')}}">
+                            <form method="post" action="{{url('passengerDetailsRQ')}}">
                         {{csrf_field()}}
                         <ul class="list booking-item-passengers">
                             @for($i = 0; $i < session()->get('flightSearchParam')['adult_passengers']; $i++)
@@ -95,11 +100,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="adult_sex[{{$i}}]" value="M" />Male</label>
+                                                    <input class="i-radio" type="radio" required name="adult_sex[{{$i}}]" value="M" />Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="adult_sex[{{$i}}]" value="F"/>Female</label>
+                                                    <input class="i-radio" type="radio" required name="adult_sex[{{$i}}]" value="F"/>Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -139,11 +144,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="child_sex[{{$i}}]" value="M"/>Male</label>
+                                                    <input class="i-radio" type="radio" required name="child_sex[{{$i}}]" value="M"/>Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="child_sex[{{$i}}]" value="F" />Female</label>
+                                                    <input class="i-radio" type="radio" required name="child_sex[{{$i}}]" value="F" />Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -183,11 +188,11 @@
                                             <label>Sex</label>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="infant_sex[{{$i}}]" value="M" />Male</label>
+                                                    <input class="i-radio" type="radio" required name="infant_sex[{{$i}}]" value="M" />Male</label>
                                             </div>
                                             <div class="radio-inline radio-small">
                                                 <label>
-                                                    <input class="i-radio" type="radio" name="infant_sex[{{$i}}]" value="F" />Female</label>
+                                                    <input class="i-radio" type="radio" required name="infant_sex[{{$i}}]" value="F" />Female</label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -279,7 +284,7 @@
                                 @foreach($itinerary[2] as $i => $priceInfo)
                                 <li>
                                     <p class="booking-item-payment-price-title">{{$priceInfo['passengerType']}} <small>(x{{$priceInfo['quantity']}})</small></p>
-                                    <p class="booking-item-payment-price-amount">&#x20A6; {{number_format($priceInfo['totalPrice'],2)}}
+                                    <p class="booking-item-payment-price-amount">&#x20A6; {{number_format(($priceInfo['totalPrice'] * $priceInfo['quantity']),2)}}
                                     </p>
                                 </li>
                                 @endforeach()
@@ -294,7 +299,7 @@
                                         </p>
                                     </li>
                                     <li>
-                                        <p class="booking-item-payment-price-title">Price Increase</p>
+                                        <p class="booking-item-payment-price-title">Price Change</p>
                                         <p class="booking-item-payment-price-amount">&#x20A6; {{number_format($itinerary[0]['itineraryPriceAddition'])}}
                                         </p>
                                     </li>

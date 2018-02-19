@@ -19,11 +19,11 @@ class CreateFlightBookingsTable extends Migration
             $table->text('reference');
             $table->text('pnr')->nullable();
             $table->bigInteger('itinerary_amount');
-            $table->integer('admin_markup');
+            $table->bigInteger('admin_markup');
             $table->integer('agent_markup')->default("0");
-            $table->integer('airline_markdown');
+            $table->bigInteger('airline_markdown');
             $table->integer('vat');
-            $table->integer('total_amount');
+            $table->bigInteger('total_amount');
             $table->text('ticket_time_limit');
             $table->integer('pnr_status')->default("0");
             $table->integer('payment_status')->default("0");

@@ -5,7 +5,7 @@
         <span class="ti-menu"></span>
       </button>
       <div class="app-title">
-        <img src="{{asset('backend/images/logo_white.png')}}" alt="">
+        <img src="{{asset('img/logo-invert1.png')}}" alt="">
       </div>
       <div class="mobile-nav">
         <button class="btn" type="button" id="mobileBtn">

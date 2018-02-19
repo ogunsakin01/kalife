@@ -7,16 +7,11 @@
             <HaltOnStatus Code="UN"/>
             <HaltOnStatus Code="NO"/>
             <HaltOnStatus Code="HL"/>
-			<OriginDestinationInformation><FlightSegment ArrivalDateTime="2018-02-14T05:05:00" DepartureDateTime="2018-02-13T18:50:00" FlightNumber="784" NumberInParty="1" ResBookDesigCode="R" InstantPurchase="true" Status="NN">
+			<OriginDestinationInformation><FlightSegment ArrivalDateTime="2018-03-08T04:00:00" DepartureDateTime="2018-03-07T17:05:00" FlightNumber="98" NumberInParty="1" ResBookDesigCode="Y" InstantPurchase="true" Status="NN">
 						<DestinationLocation LocationCode="DXB"/>
-						<Equipment AirEquipType="77W"/>
-						<MarketingAirline Code="EK" FlightNumber="784"/>
-						<OriginLocation LocationCode="LOS"/>
-					      </FlightSegment><FlightSegment ArrivalDateTime="2018-02-15T15:40:00" DepartureDateTime="2018-02-15T10:30:00" FlightNumber="783" NumberInParty="1" ResBookDesigCode="R" InstantPurchase="true" Status="NN">
-						<DestinationLocation LocationCode="LOS"/>
-						<Equipment AirEquipType="77W"/>
-						<MarketingAirline Code="EK" FlightNumber="783"/>
-						<OriginLocation LocationCode="DXB"/>
+						<Equipment AirEquipType="787"/>
+						<MarketingAirline Code="BI" FlightNumber="98"/>
+						<OriginLocation LocationCode="LHR"/>
 					      </FlightSegment></OriginDestinationInformation>
 			</OTA_AirBookRQ>
 			<OTA_AirPriceRQ >

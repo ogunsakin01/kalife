@@ -17,7 +17,7 @@ class CreateWalletsTable extends Migration
         Schema::create('wallets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('balance');
+            $table->bigInteger('balance');
             $table->timestamps();
         });
     }

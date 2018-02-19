@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\AccountStatus;
 use App\Gender;
+use App\PackageCategory;
 use App\Title;
 use App\Role;
 use App\User;
@@ -11,6 +12,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+
+
   public function index()
   {
 
@@ -162,4 +166,7 @@ class UserController extends Controller
     return response()->json($user_array);
 
   }
+
+
+
 }

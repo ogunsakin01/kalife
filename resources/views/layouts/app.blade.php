@@ -6,9 +6,9 @@
 
 
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-    <meta name="keywords" content="Template, html, premium, themeforest" />
-    <meta name="description" content="Traveler - Premium template for travel companies">
-    <meta name="author" content="Tsoy">
+    <meta name="keywords" content="affordable, flight deals, travel, tickets" />
+    <meta name="description" content="Kalife - Travels and Tours">
+    <meta name="author" content="Touchcore">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript">
         var baseUrl = "{{url("/")}}";

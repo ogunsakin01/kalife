@@ -17,7 +17,7 @@ function toastWarning(message){
             // console.info('Closing | closedBy: ' + closedBy);
         },
         onClosed: function(instance, toast, closedBy){
-            console.info('Closed | closedBy: ' + closedBy);
+            // console.info('Closed | closedBy: ' + closedBy);
         }
     });
 }
@@ -58,7 +58,7 @@ function toastError(message){
 function toastInfo(message) {
     return iziToast.info({
         id: 'info',
-        timeout: 7000,
+        timeout: 60000,
         close: true,
         title: 'Hello',
         message: message,
@@ -172,6 +172,10 @@ function validateFormWithClasses(classes) {
                         $("."+classes[i][j]).css("border-color", "green");
                     }
                 }
+                if (result > 0){
+                    toastr.error("Please fill all highlighted field(s)");
+                    return false;
+                }
             }else{
                 if($("."+classes[i]).val() == "" || $("."+classes[i]).val() == null)
                 {
@@ -184,7 +188,7 @@ function validateFormWithClasses(classes) {
 
         }
         if (result > 0){
-            toastError("Please fill all highlighted field(s)");
+            toastr.error("Please fill all highlighted field(s)");
             return false;
         }
     }else if(typeof classes === 'string')
@@ -194,16 +198,23 @@ function validateFormWithClasses(classes) {
                 if($("."+classes[k]).val() == "" || $("."+classes[k]).val() == null)
                 {
                     $("."+classes[k]).css("border-color", "red");
+                    toastr.error("Please fill all highlighted field(s)");
+                    return false;
+                }else{
+                    $("."+classes).css("border-color", "green");
                 }
-                toastError("Please fill all highlighted field(s)");
+
             }
         }else{
             if($("."+classes).val() == "" || $("."+classes).val() == null)
             {
                 $("."+classes).css("border-color", "red");
+                toastr.error("Please fill all highlighted field(s)");
+                return false;
+            }else{
+                $("."+classes).css("border-color", "green");
             }
-            toastError("Please fill all highlighted field(s)");
-            return false;
+
         }
     }
     return true;
@@ -218,6 +229,19 @@ function buttonClicked(button_id,button_text,option){
         var appendInfo = button_text;
         $('#'+button_id).html(appendInfo);
         $('#'+button_id).prop('disabled',false);
+    }
+
+}
+
+function buttonClassClicked(button_class,button_text,option){
+    if(option === 1){
+        var appendInfo = '<i class="fa fa-refresh fa-spin"></i> '+button_text;
+        $('.'+button_class).html(appendInfo);
+        $('.'+button_class).prop('disabled',true);
+    }else if(option === 0){
+        var appendInfo = button_text;
+        $('.'+button_class).html(appendInfo);
+        $('.'+button_class).prop('disabled',false);
     }
 
 }
@@ -246,18 +270,17 @@ $('.typeahead').typeahead({
 });
 
 $('.datepicker').datepicker({
-    startDate: '-0d',
-    changeMonth: true,
     showClose : true,
     showClear : true
 });
 
 $('.datetimepicker').datetimepicker({
-    startDate: '-0d',
-    changeMonth: true,
     showClose : true,
     showClear : true
 });
 
-
 $('.dataTable').dataTable({"bSort" : false});
+
+var loader = '<div class="progress">'+
+    '<div class="indeterminate"></div>'+
+    '</div>';

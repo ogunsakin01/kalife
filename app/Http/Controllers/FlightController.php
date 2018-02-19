@@ -12,6 +12,7 @@ use App\Services\SabreFlight;
 use App\Services\SabreSessionManager;
 use App\SessionToken;
 use App\User;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -29,12 +30,23 @@ class FlightController extends Controller
         $this->PaystackConfig = new PaystackConfig();
     }
 
+    public function checkUserPermission(){
+        if(auth()->user()){
+            if(auth()->user()->hasRole('Agent') || auth()->user()->hasRole('Super Admin')){
+                return redirect(url('backend/login'));
+            }
+        }
+    }
+
     public function flightDeals(){
         return view("frontend.flights.deals", compact('var'));
     }
 
     public function availableFlights(){
-        if(!session()->has(['availableFlights','flightSearchParam'])){return back();}
+        if(!session()->has(['availableFlights','flightSearchParam'])){
+            Toastr::error('Session Expired. Try search again');
+            return back();
+        }
         $flightsResult = session()->get('availableFlights');
         $flightSearchParam = session()->get('flightSearchParam');
         $airlines = $this->Sabreflight->availableAirline($flightsResult);
@@ -43,9 +55,12 @@ class FlightController extends Controller
     }
 
     public function flightPassengerDetails(){
-        if(!session()->has('selectedItinerary')){return back();}
+        if(!session()->has('selectedItinerary')){
+            Toastr::error('Session Expired. Try search again');
+            return redirect(url('/'));
+        }
         $itinerary = session()->get('selectedItinerary');
-       return view('frontend.flights.passenger_details',compact('itinerary'));
+            return view('frontend.flights.passenger_details',compact('itinerary'));
     }
 
     public function searchFlight(Request $r){
@@ -158,6 +173,19 @@ class FlightController extends Controller
             if($info['pnrStatus'] == 0){
                 return redirect(url('/flight-passenger-details'))->with('errorMessage','You cannot continue the booking process. Select another flight from the result and try again.');
             }else{
+                $total_amount = 0;
+                $markup = 0;
+                if(auth()->user()->hasRole('Agent')){
+                    $total_amount = $itinerary[0]['adminToAgentSumTotal'];
+                    $markup = $itinerary[0]['adminToAgentMarkup'];
+                }elseif(auth()->user()->hasRole('Super Admin')){
+                    $total_amount = $itinerary[0]['adminToAdminSumTotal'];
+                    $markup = $itinerary[0]['adminToAdminMarkup'];
+                }elseif(auth()->user()->hasRole('Customer')){
+                    $total_amount = $itinerary[0]['adminToUserSumTotal'];
+                    $markup = $itinerary[0]['adminToUserMarkup'];
+                }
+                if(auth())
                 $this->SabreSession->closeSession($token,$message_id);
                 SessionToken::tokenClosed($message_id);
                 SessionToken::tokenUsed($message_id);
@@ -167,18 +195,18 @@ class FlightController extends Controller
                     'booking_reference' => $txnRef,
                     'pnr_code' => $info['pnr'],
                     'itinerary_amount' => $itinerary[0]['totalPrice'],
-                    'admin_markup' => $itinerary[0]['adminToUserMarkup'],
+                    'admin_markup' => $markup,
                     'airline_markdown' => $itinerary[0]['airlineMarkdown'],
                     'vat' => $itinerary[0]['vat'],
                     'agent_markup' => 0,
-                    'total_amount' => $itinerary[0]['adminToUserSumTotal'],
+                    'total_amount' => $total_amount,
                     'ticket_time_limit' => $info['ticketTimeLimit'],
                     'pnr_status' => $info['pnrStatus'],
                     'pnr_request_response' => $info['responseObject']
                 ];
                 FlightBooking::store($data);
                 session()->put('bookingReference',$txnRef);
-              return redirect(url("/flight-booking-payment-methods"));
+                return redirect(url("/flight-booking-payment-methods"));
             }
 
         }
@@ -217,14 +245,15 @@ class FlightController extends Controller
              $priceItinerary = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('EnhancedAirBookRQ',$check_session),$this->Sabreflight->EnhancedAirBookRQXML($Itinerary,session()->get('flightSearchParam')),'EnhancedAirBookRQ');
              $flightBookPricing = $this->SabreConfig->mungXmlToArray($priceItinerary);
              $status = $this->Sabreflight->enhancedAirBookValidator($flightBookPricing);
-            $file = fopen("TestSampleEnhancedAirBookRQ.txt","w");
-            fwrite($file,$this->Sabreflight->EnhancedAirBookRQXML($Itinerary,session()->get('flightSearchParam')));
-            fclose($file);
-            $file = fopen("TestSampleEnhancedAirBookRs.txt","w");
-            fwrite($file,$priceItinerary);
-            fclose($file);
+             $file = fopen("TestSampleEnhancedAirBookRQ.txt","w");
+             fwrite($file,$this->Sabreflight->EnhancedAirBookRQXML($Itinerary,session()->get('flightSearchParam')));
+             fclose($file);
+             $file = fopen("TestSampleEnhancedAirBookRs.txt","w");
+             fwrite($file,$priceItinerary);
+             fclose($file);
              if($status == 1){
                  /**
+                  *
                   * Updating price with new price update from price quote
                   *
                   * */
@@ -233,6 +262,9 @@ class FlightController extends Controller
                  $itineraryPriceAddition = $newItineraryPrice - $oldItineraryPrice;
                  $Itinerary[0]['itineraryPriceAddition'] = $itineraryPriceAddition;
                  $Itinerary[0]['adminToUserSumTotal'] = $Itinerary[0]['adminToUserSumTotal'] + $itineraryPriceAddition;
+                 $Itinerary[0]['adminToAgentSumTotal'] = $Itinerary[0]['adminToAgentSumTotal'] + $itineraryPriceAddition;
+                 $Itinerary[0]['adminToAdminSumTotal'] = $Itinerary[0]['adminToAdminSumTotal'] + $itineraryPriceAddition;
+                 $Itinerary[0]['totalPrice'] = $newItineraryPrice;
                  session()->put('selectedItinerary',$Itinerary);
 
                   return $status;

@@ -3,7 +3,7 @@
     <div class="profile-sidebar">
       <div class="avatar">
         @if(empty(auth()->user()->profile_photo))
-        <img src="{{asset('backend/img/logo-invert.png')}}" class="circle" alt="">
+        <img src="{{asset('img/male.png')}}" class="circle" alt="">
         @else
         <img src="{{asset(auth()->user()->profile_photo)}}" class="circle" alt="">
         @endif
@@ -56,8 +56,8 @@
         </a>
         <ul id="flights" class="collapse" data-parent="#menus">
           <li><a href="{{route('my-flight-bookings')}}">My Bookings</a></li>
-          <li><a href="#">Agent Bookings</a></li>
-          <li><a href="#">Customers Bookings</a></li>
+          <li><a href="{{route('agents-flight-bookings')}}">Agent Bookings</a></li>
+          <li><a href="{{route('customers-flight-bookings')}}">Customers Bookings</a></li>
         </ul>
       </li>
 
@@ -133,7 +133,14 @@
           {{--<li><a href="{{url('backend/packages/create')}}">Create Package</a></li>--}}
           <li><a href="{{url('backend/travel-packages')}}">All Travel Package</a></li>
           <li><a href="{{url('backend/travel-packages/create')}}">Create Travel Package</a></li>
+          <li><a href="{{url('backend/travel-packages/categories')}}">Categories</a></li>
         </ul>
+      </li>
+
+      <li>
+        <a class="pr-mn collapsed" href="{{route('emails')}}">
+          <span class="icon ti-email"></span>Email Subscriptions
+        </a>
       </li>
 
       @endrole
@@ -168,8 +175,6 @@
         </a>
         <ul id="hotels" class="collapse" data-parent="#menus">
           <li><a href="#">My Bookings</a></li>
-          <li><a href="#">Agent Bookings</a></li>
-          <li><a href="#">Customers Bookings</a></li>
         </ul>
       </li>
 

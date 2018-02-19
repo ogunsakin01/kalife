@@ -16,7 +16,7 @@ class CreateWalletLogsTable extends Migration
         Schema::create('wallet_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('amount');
+            $table->bigInteger('amount');
             $table->integer('transaction_type');
             $table->timestamps();
         });

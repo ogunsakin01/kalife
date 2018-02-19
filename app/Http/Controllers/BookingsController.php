@@ -63,11 +63,40 @@ class BookingsController extends Controller
     }
 
     public function agentsFlightBookings(){
+        $bookings = FlightBooking::orderBy('id','desc')->get();
+        $successful_bookings = 0;
+        $failed_bookings = 0;
+
+        foreach($bookings as $booking){
+            if($this->role->getUserRole($booking->user_id) === 2){
+                if($booking->payment_status === 1){
+                    $successful_bookings =  $successful_bookings+1;
+                }elseif($booking->payment_status === 0){
+                    $failed_bookings = $failed_bookings + 1;
+                }
+            }
+        }
+
+        return view('backend.bookings.flight.agents',compact('bookings','successful_bookings','failed_bookings'));
 
     }
 
     public function customersFlightBookings(){
+        $bookings = FlightBooking::orderBy('id','desc')->get();
+        $successful_bookings = 0;
+        $failed_bookings = 0;
 
+        foreach($bookings as $booking){
+            if($this->role->getUserRole($booking->user_id) === 3){
+                if($booking->payment_status === 1){
+                    $successful_bookings =  $successful_bookings+1;
+                }elseif($booking->payment_status === 0){
+                    $failed_bookings = $failed_bookings + 1;
+                }
+            }
+        }
+
+        return view('backend.bookings.flight.customers',compact('bookings','successful_bookings','failed_bookings'));
     }
 
     public function authenticatedUserHotelBookings(){

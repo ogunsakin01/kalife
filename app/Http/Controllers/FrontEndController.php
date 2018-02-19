@@ -38,7 +38,9 @@ class FrontEndController extends Controller
         $this->SessionManager = new SabreSessionManager();
         $this->InterswitchConfig = new InterswitchConfig();
         $this->PaystackConfig = new PaystackConfig();
+
     }
+
 
     public function subscribe(Request $r){
         $this->validate($r, [
@@ -111,6 +113,11 @@ class FrontEndController extends Controller
     }
 
     public function flightDeals(){
+        if(auth()->user()){
+            if(auth()->user()->hasRole('Agent')){
+                return redirect(url('backend/login'));
+            }
+        }
         $flights = TravelPackage::where('attraction',0)
             ->where('hotel', 0)
             ->where('flight', 1)

@@ -11,8 +11,8 @@
     @yield('css')
     <script type="text/javascript">
       var BaseUrl = "{{url("/")}}";
-      var path = "<?php echo e(route('typeaheadJs')); ?>";
-      var airline_path = "<?php echo e(route('airlineTypeAheadJs')); ?>";
+      var path = "<?= e(route('typeaheadJs')); ?>";
+      var airline_path = "<?= e(route('airlineTypeAheadJs')); ?>";
     </script>
   </head>
   <body>
@@ -22,7 +22,12 @@
     @include('partials.backend.r-sidebar')
     <main id="main-container">
       <div class="content">
-        <h2 class="content-heading">@yield('title')</h2>
+        <h2 class="content-heading">@yield('title')
+          <b style="margin-left:15px;">
+            Your Wallet Balance : &#x20A6;
+            {{number_format((\App\Wallet::where('user_id',auth()->user()->id)->first()->balance/100),2)}}
+          </b>
+        </h2>
 
         @yield('content')
       </div>
