@@ -2,33 +2,31 @@
 @section('title')Flight Booking History @endsection
 @section('flightBooking') active @endsection
 @section('content')
+
+    @php
+        $InterswitchConfig = new \App\Services\InterswitchConfig();
+    @endphp
     <div class="gap gap-small"></div>
-    <div class="container">
-        <h1 class="page-title">Flights History</h1>
-    </div>
     <div class="container">
         <div class="row">
             @include('partials.profileSideBar')
             <div class="col-md-9">
+                <h4>Flights History</h4>
              <div style="overflow-x: scroll;">
                  <table class="table table-bordered table-striped table-booking-history data-table">
                      <thead>
                      <tr>
                          <th>Booking Reference</th>
                          <th>PNR Code</th>
-                         <th>Base Amount</th>
-                         <th>Tax and Fees</th>
-                         <th>Discount</th>
+
                          <th>Total Amount</th>
                          <th>Payment Status</th>
                          <th>Ticket Status</th>
-                         <th>Booking Date</th>
-                         <th>Starting Date / Time</th>
                          <th>Deadline</th>
                          <th>Flight Info</th>
                          <th>Passenger Info</th>
                          <th>Action</th>
-                         <th>Setting</th>
+
                      </tr>
                      </thead>
                      <tbody>
@@ -40,18 +38,16 @@
                                  @else
                                      <label class="label label-warning"><i class="fa fa-warning"></i> Incomplete</label>
                                  @endif </td>
-                             <td>&#x20A6;{{number_format($flight->itinerary_amount)}} </td>
-                             <td>&#x20A6;{{number_format(($flight->admin_markup + $flight->vat))}}</td>
-                             <td>&#x20A6;{{number_format($flight->airline_markdown)}} </td>
-                             <td>&#x20A6; {{number_format($flight->total_amount)}}</td>
+
+                             <td>&#x20A6; {{number_format(($flight->total_amount/100))}}</td>
                              <td class="text-center">
                                  @if($flight->payment_status == 1)
                                      <label class="label label-success">
                                          <i class="fa fa-check"></i> Success
                                      </label>
                                  @else
-                                     <label class="label label-danger">
-                                         <i class="fa fa-times"></i> Failed
+                                     <label class="label label-warning">
+                                         <i class="fa fa-times"></i> Pending/Failed
                                      </label>
                                  @endif
                              </td>
@@ -66,21 +62,40 @@
                                      </label>
                                  @endif
                              </td>
-                             <td>{{date('M d, Y',strtotime($flight->created_at))}}</td>
-                             <td>Jan 17 2017, 10 am</td>
-                             <td>Jan 17 2017, 10 am</td>
+
+                             <td>24 hours</td>
                              <td>
-                                 @if($flight->payment_status == 1)  <a class="btn btn-default popup-text" href="#flights-info-{{$flight->id}}" data-effect="mfp-zoom-out"  title="Flights"> <i class="fa fa-plane"></i> <i class="fa fa-plane fa-flip-vertical"></i></a> @else <label class="label label-danger">Incomplete</label> @endif
+                                     <a class="btn btn-default popup-text" href="#flights-info-{{$flight->id}}" data-effect="mfp-zoom-out"  title="Flights"> <i class="fa fa-plane"></i> <i class="fa fa-plane fa-flip-vertical"></i></a>
                              </td>
                              <td>
-                                 @if($flight->payment_status == 1)  <a class="btn btn-default popup-text" href="#passengers-info-{{$flight->id}}" data-effect="mfp-zoom-out" title="Passengers"> <i class="fa fa-users"></i></a> @else <label class="label label-danger">Incomplete</label> @endif
+                                     <a class="btn btn-default popup-text" href="#passengers-info-{{$flight->id}}" data-effect="mfp-zoom-out" title="Passengers"> <i class="fa fa-users"></i></a>
+
                              </td>
                              <td>
-                                 @if($flight->payment_status == 1)  <button class="btn btn-default" type="button"><i class="fa fa-plane"></i> Ticket</button>@else <label class="label label-danger">Incomplete</label> @endif
+                                 @if($flight->payment_status == 1)
+                                 @else
+                                     @if(strtotime('+24 hours', strtotime($flight->created_at)) > strtotime(date('Y-M-d')))
+                                         @if(count(\App\OnlinePayment::where('txn_reference',$flight->reference)->first()) < 1)
+                                         <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
+                                             <input type="hidden" class="reference_1" name="txn_ref" value="{{$flight->reference}}"/>
+                                             <input type="hidden" class="amount_1" name="amount" value="{{$flight->total_amount}}"/>
+                                             <input type="hidden" name="currency" value="566"/>
+                                             <input type="hidden" name="pay_item_id" value="{{$InterswitchConfig->item_id}}"/>
+                                             <input type="hidden" name="site_redirect_url" value="{{url('/flight-booking-confirmation')}}"/>
+                                             <input type="hidden" name="product_id" value="{{$InterswitchConfig->product_id}}"/>
+                                             <input type="hidden" class="cust_id_1" name="cust_id" value="{{auth()->user()->id}}"/>
+                                             <input type="hidden" name="cust_name" value="{{auth()->user()->first_name,auth()->user()->last_name}}"/>
+                                             <input type="hidden" name="hash" value="{{$InterswitchConfig->cheatTransactionHash($flight->reference,$flight->total_amount,url('/flight-booking-confirmation'))}}"/>
+                                             <button class="btn btn-primary btn-sm pay_now" value="1" type="submit">Pay Now</button>
+                                         </form>
+                                         @endif
+                                     @else
+
+                                     @endif
+
+                                 @endif
                              </td>
-                             <td>
-                                 @if($flight->payment_status == 1)  <button class="btn btn-default" type="button"><i class="fa fa-cog"></i> Edit</button>@else <label class="label label-danger">Incomplete</label> @endif
-                             </td>
+
                              <div class="mfp-with-anim mfp-hide mfp-dialog mfp-search-dialog" id="flights-info-{{$flight->id}}">
                                  <div class="booking-item-payment">
                                      <header class="clearfix">
@@ -143,8 +158,6 @@
                                                                      </div>
                                                                      </div>
                                                              @endif
-
-
                                                      @endforeach
                                                  @else
                                                      @php $item = json_decode($flight->pnr_request_response, true)['soap-env_Body']['PassengerDetailsRS']['TravelItineraryReadRS']['TravelItinerary']['ItineraryInfo']['ReservationItems']['Item']; @endphp

@@ -83,7 +83,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             @foreach($flightsResult as $serial => $flight)
-                            <div class="card flights_{{$flight[0]['airline']}} {{"flights_".$flight[0]['totalPrice']}} {{"flights_".$flight[0]['stops']}} flights">
+                            <div class="card flights_{{$flight[0]['airline']}} {{"flights_".$flight[0]['totalPrice']}} {{"flights_".$flight[0]['stops']}} flights flight_{{$serial}}">
                                 <div class="card-header">
                                     <div class="loader_{{$serial}}"></div>
                                     <div class="row">

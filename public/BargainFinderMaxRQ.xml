@@ -1,0 +1,65 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header><m:MessageHeader xmlns:m="http://www.ebxml.org/namespaces/messageHeader">
+			<m:From>
+				<m:PartyId type="urn:x12.org:IO5:01">http://localhost:8000</m:PartyId>
+			</m:From>
+			<m:To>
+				<m:PartyId type="urn:x12.org:IO5:01">https://webservices.havail.sabre.com</m:PartyId>
+			</m:To>
+			<m:CPAId>WD4H</m:CPAId>
+			<m:ConversationId>V1@pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@5abb6e9d1b7d9@http://localhost:8000</m:ConversationId>
+			<m:Service m:type="OTA">BargainFinderMaxRQ</m:Service>
+			<m:Action>BargainFinderMaxRQ</m:Action>
+			<m:MessageData>
+				<m:MessageId>4085588377915800203</m:MessageId>
+				<m:Timestamp>2018-03-28T11:29:50Z</m:Timestamp>
+				<m:TimeToLive>2018-03-28T12:29:50Z</m:TimeToLive>
+			</m:MessageData>
+			<m:DuplicateElimination/>
+			<m:Description>BargainFinderMaxRQ</m:Description>
+		</m:MessageHeader>
+		<wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
+			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/RESA!ICESMSLB\/RES.LB!-3163659613881730929!759200!0</wsse:BinarySecurityToken>
+		</wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><OTA_AirLowFareSearchRQ xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opentravel.org/OTA/2003/05" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Target="Production" Version="3.3.0" ResponseType="OTA" ResponseVersion="3.3.0">
+    <POS>
+        <Source PseudoCityCode="WD4H">
+        <RequestorID ID="1" Type="1">
+            <CompanyName Code="TN" />
+        </RequestorID>
+        </Source>
+    </POS>
+   <OriginDestinationInformation RPH="1">
+        <DepartureDateTime>2018-04-01T00:00:00</DepartureDateTime>
+        <OriginLocation LocationCode="LHR" />
+        <DestinationLocation LocationCode="DXB" />
+        <TPA_Extensions>
+            <SegmentType Code="O" />
+        </TPA_Extensions>
+    </OriginDestinationInformation>
+    <OriginDestinationInformation RPH="2">
+        <DepartureDateTime>2018-04-04T00:00:00</DepartureDateTime>
+        <OriginLocation LocationCode="DXB" />
+        <DestinationLocation LocationCode="LHR" />
+        <TPA_Extensions>
+            <SegmentType Code="O" />
+        </TPA_Extensions>
+    </OriginDestinationInformation>
+    <TravelPreferences ValidInterlineTicket="true">
+        <CabinPref PreferLevel="Preferred" Cabin="S" />
+        <TPA_Extensions>
+            <TripType Value="Return" />
+            <LongConnectTime Min="780" Max="1200" Enable="true"/>
+            <ExcludeCallDirectCarriers Enabled="true"/>
+        </TPA_Extensions>
+    </TravelPreferences>
+    <TravelerInfoSummary>
+        <SeatsRequested>1</SeatsRequested>
+        <AirTravelerAvail>
+               <PassengerTypeQuantity Code="ADT" Quantity="1" />
+        </AirTravelerAvail>
+    </TravelerInfoSummary>
+    <TPA_Extensions>
+        <IntelliSellTransaction>
+            <RequestType Name="50ITINS" />
+        </IntelliSellTransaction>
+    </TPA_Extensions>
+</OTA_AirLowFareSearchRQ></SOAP-ENV:Body></SOAP-ENV:Envelope>

@@ -1,0 +1,30 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/1999/XMLSchema"><SOAP-ENV:Header>
+      <eb:MessageHeader  xmlns="http://www.ebxml.org/namespaces/messageHeader">
+      <eb:From>
+      <eb:PartyId type="urn:x12.org:IO5:01">http://localhost:8000</eb:PartyId>
+      </eb:From>
+      <eb:To>
+      <eb:PartyId type="urn:x12.org:IO5:01">https://webservices.havail.sabre.com</eb:PartyId>
+      </eb:To>
+      <eb:CPAId>WD4H</eb:CPAId>
+      <eb:ConversationId>V1@pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@5abb6eb5944da@http://localhost:8000</eb:ConversationId>
+      <eb:Service eb:type="sabreXML">SessionCreateRQ</eb:Service>
+      <eb:Action>SessionCreateRQ</eb:Action>
+      <eb:MessageData>
+       <MessageId>pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@http://localhost:8000</MessageId>
+       <Timestamp>2018-03-28T11:30:13+01:00</Timestamp>
+       <TimeToLive>2018-03-28T12:30:13+01:00</TimeToLive>
+      </eb:MessageData>
+      </eb:MessageHeader>
+      <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/12/utility">
+      <wsse:UsernameToken>
+      <wsse:Username>7971</wsse:Username>
+      <wsse:Password>WS031315</wsse:Password>
+      <Organization>WD4H</Organization>
+      <Domain>DEFAULT</Domain>
+      </wsse:UsernameToken>
+      </wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><SessionCreateRQ xmlns="http://www.opentravel.org/OTA/2002/11">
+           <POS>
+               <Source PseudoCityCode="WD4H" />
+           </POS>
+       </SessionCreateRQ></SOAP-ENV:Body></SOAP-ENV:Envelope>

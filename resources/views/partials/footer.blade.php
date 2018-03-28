@@ -8,19 +8,16 @@
                 <p class="mb20">Booking, reviews and advices on hotels, resorts, flights, vacation rentals, travel packages, and lots more!</p>
                 <ul class="list list-horizontal list-space">
                     <li>
-                        <a class="fa fa-facebook box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
+                        <a class="fa fa-facebook box-icon-normal round animate-icon-bottom-to-top" href="http://www.facebook.com/kalifetravel"></a>
                     </li>
                     <li>
-                        <a class="fa fa-twitter box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
+                        <a class="fa fa-twitter box-icon-normal round animate-icon-bottom-to-top" href="http://www.twitter.com/kalifetravel"></a>
                     </li>
                     <li>
-                        <a class="fa fa-google-plus box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
+                        <a class="fa fa-linkedin box-icon-normal round animate-icon-bottom-to-top" href="http://www.linkedin.com/kalifetravel"></a>
                     </li>
                     <li>
-                        <a class="fa fa-linkedin box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
-                    </li>
-                    <li>
-                        <a class="fa fa-pinterest box-icon-normal round animate-icon-bottom-to-top" href="#"></a>
+                        <a class="fa fa-instagram box-icon-normal round animate-icon-bottom-to-top" href="http://www.instagram.com/kalifetravel"></a>
                     </li>
                 </ul>
             </div>
@@ -37,28 +34,22 @@
             </div>
             <div class="col-md-2">
                 <ul class="list list-footer">
-                    <li><a href="#">About US</a>
+                    <li><a href="{{url('/')}}">Home</a>
                     </li>
-                    <li><a href="#">Press Centre</a>
+                    <li><a href="{{url('/flights')}}">Flights</a>
                     </li>
-                    <li><a href="#">Best Price Guarantee</a>
+                    <li><a href="#">Deals</a>
                     </li>
-                    <li><a href="#">Travel News</a>
+                    <li><a href="{{url('/about-us')}}">About Us</a>
                     </li>
-                    <li><a href="#">Jobs</a>
-                    </li>
-                    <li><a href="#">Privacy Policy</a>
-                    </li>
-                    <li><a href="#">Terms of Use</a>
-                    </li>
-                    <li><a href="#">Feedback</a>
+                    <li><a href="{{url('/contact-us')}}">Contact Us</a>
                     </li>
                 </ul>
             </div>
             <div class="col-md-4">
                 <h4>Have Questions?</h4>
-                <h4 class="text-color">+1-202-555-0173</h4>
-                <h4><a href="#" class="text-color">support@traveler.com</a></h4>
+                <h4 class="text-color">0818 727 1255</h4>
+                <h4><a href="#" class="text-color">info@kalifetravel.com</a></h4>
                 <p>24/7 Dedicated Customer Support</p>
             </div>
 

@@ -70,7 +70,7 @@ class SabreHotel
     public function callsHeader($action,$session_info){
         return '<m:MessageHeader xmlns:m="http://www.ebxml.org/namespaces/messageHeader">
 			<m:From>
-				<m:PartyId type="urn:x12.org:IO5:01">'.$_SERVER['HTTP_HOST'].'</m:PartyId>
+				<m:PartyId type="urn:x12.org:IO5:01">'.url('/').'</m:PartyId>
 			</m:From>
 			<m:To>
 				<m:PartyId type="urn:x12.org:IO5:01">'.$this->SabreConfig->soapEnvironment.'</m:PartyId>

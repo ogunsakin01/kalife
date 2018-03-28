@@ -8,9 +8,6 @@ $(function(){
         $('.flight_type').val(trip_type);
     });
 
-
-
-
     $('.search_flight').on("click",function(){
 
 
@@ -158,9 +155,11 @@ $(function(){
                 if(response.data === 1){
                     window.location.href = baseUrl+'/flight-passenger-details';
                 }else if(response.data === 2){
-                    toastr.warning('Unable to get flight pricing. Select another flight');
+                    toastr.warning('You just missed the deal. Please select another flight.');
+                    $('.flight_'+id).fadeOut("slow");
                 }else if(response.data === 3){
-                    toastr.error('Unable to get flight pricing. Select another flight from the list');
+                    toastr.warning('You just missed the deal. Please select another flight.');
+                    $('.flight_'+id).fadeOut("slow");
                 }else if(response.data === 0){
                     toastr.error('Unable to connect to server. Try again');
                 }else if(response.data === 21){

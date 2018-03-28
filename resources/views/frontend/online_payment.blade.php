@@ -3,7 +3,7 @@
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">
-        <h1 class="page-title">Transactions Log</h1>
+        <h4>Transactions Log</h4>
     </div>
     <div class="container">
         <div class="row">

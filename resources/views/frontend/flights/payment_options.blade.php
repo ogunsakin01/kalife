@@ -23,7 +23,7 @@
             <div class="col-md-4">
                 <div class="booking-item-payment">
                     <header class="clearfix">
-                        <h5 class="mb0" style="color: #1751cd;"><i class="fa fa-plane"></i> {{session()->get('flightSearchParam')['departure_airport']}} - <i class="fa fa-plane fa-flip-vertical"></i> {{session()->get('flightSearchParam')['arrival_airport']}}</h5>
+                        <h5 class="mb0" style="color: #1751cd;"><i class="fa fa-plane"></i> {{ \App\Services\SabreConfig::iataCode(session()->get('flightSearchParam')['departure_airport'])}} - <i class="fa fa-plane fa-flip-vertical"></i> {{ \App\Services\SabreConfig::iataCode(session()->get('flightSearchParam')['arrival_airport'])}}</h5>
                     </header>
                     <ul class="booking-item-payment-details">
                         <li>
@@ -59,7 +59,7 @@
                             </div>
                         </li>
                         <li>
-                            <h5>Pricing BrakeDown</h5>
+                            <h5>Price Break Down</h5>
                             <ul class="booking-item-payment-price">
                                 @foreach($itinerary[2] as $i => $priceInfo)
                                     <li>
@@ -96,8 +96,8 @@
                         <ul class="nav nav-tabs" id="myTab">
                             <li class="active"><a href="#tab-1" data-toggle="tab"><span ><img src="{{url("img/payment/interswitch-New.png")}}" style="max-width: 100px; max-height: 50px;" class="img-responsive"/></span></a>
                             </li>
-                            <li><a href="#tab-2" data-toggle="tab"><span ><img src="{{url("img/payment/paystack_new_logo.png")}}" style="max-width: 100px; max-height: 50px;" class="img-responsive"/></span></a>
-                            </li>
+                            {{--<li><a href="#tab-2" data-toggle="tab"><span ><img src="{{url("img/payment/paystack_new_logo.png")}}" style="max-width: 100px; max-height: 50px;" class="img-responsive"/></span></a>--}}
+                            {{--</li>--}}
                             <li><a href="#tab-3" data-toggle="tab"> <span > <img src="{{url("img/payment/bank_payment.png")}}" style="max-width: 100px; max-height: 50px;" class="img-responsive"/></span></a>
                             </li>
                         </ul>
@@ -130,7 +130,8 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane fade" id="tab-2">
+
+                               {{-- <div class="tab-pane fade" id="tab-2">
                                     <h4>Paystack Payment Gateway</h4>
                                     <form method="post" action="{{url('/initiatePaystack')}}">
                                         {{csrf_field()}}
@@ -155,8 +156,9 @@
                                         </div>
 
                                     </form>
-                                </div>
-                            <div class="tab-pane fade" id="tab-3">
+                                </div>--}}
+
+                                <div class="tab-pane fade" id="tab-3">
                                 <h4>Pay By Bank Transfer (Select a Bank)</h4>
                                 <form method="post" action="{{url('/bankPayment')}}">
                                     {{csrf_field()}}
@@ -181,7 +183,6 @@
                                                             <th>Account Number</th>
                                                             <th>Select </th>
                                                         </tr>
-
                                                         </thead>
                                                         <tbody>
                                                         <tr class="hidden">

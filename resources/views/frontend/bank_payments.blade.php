@@ -4,9 +4,6 @@
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">
-        <h1 class="page-title">Bank Payments</h1>
-    </div>
-    <div class="container">
         <div class="row">
             @include('partials.profileSideBar')
             <div class="col-md-9">

@@ -13,8 +13,8 @@
         <div class="gap"></div>
         <div class="row">
             <div class="col-md-7">
-                <p>Sodales laoreet mattis ut in nullam consequat turpis mus aenean mattis senectus mollis luctus ornare et at feugiat a habitasse hendrerit justo mollis penatibus cras blandit proin euismod nostra dignissim</p>
-                <p>Morbi sit mattis at ligula himenaeos ante morbi lacinia mattis varius vulputate ultricies habitant ipsum elit ultrices lorem diam orci</p>
+                <p>Kalife Travel Bureau can be considered as one of the pioneers in the travel agency industry in Lagos, if not in Nigeria as a whole. It was first registered under the Business Name Acts 1961 on April 18, 1963 and acquired its incorporation on March 5, 1974. It opened its first agency at 25, Balogun Street, Lagos and is presently located at 20 – 24 Ozumba Mbadiwe Avenue in Victoria Island, Lagos.</p>
+
                 <form class="mt30">
                     <div class="row">
                         <div class="col-md-6">
@@ -41,16 +41,21 @@
                 <aside class="sidebar-right">
                     <ul class="address-list list">
                         <li>
-                            <h5>Email</h5><a href="#">info@traveler.com</a>
+                            <h5>Email</h5><a href="#">info@kalifetravel.com</a>
                         </li>
                         <li>
-                            <h5>Phone Number</h5><a href="#">+1 (286) 929-1739</a>
+                            <h5>Phone Number</h5><a href="#"> 0818 727 1255</a>
                         </li>
+                        {{--<li>--}}
+                            {{--<h5>Skype</h5><a href="#">contact_traveller</a>--}}
+                        {{--</li>--}}
                         <li>
-                            <h5>Skype</h5><a href="#">contact_traveller</a>
-                        </li>
-                        <li>
-                            <h5>Address</h5><address>Traveler Ltd.<br />1355 Market St, Suite 900<br />San Francisco, CA 94103<br />United States<br /></address>
+
+                            <h5>Address</h5><address>Kalife Travel Bureau
+                                <br />20 – 24 Ozumba Mbadiwe Avenue
+                                <br />in Victoria Island, Lagos.<br />
+                                Nigeria<br />
+                            </address>
                         </li>
                     </ul>
                 </aside>
@@ -59,7 +64,7 @@
         <div class="gap"></div>
     </div>
     <script>
-        var customLatitude = '6.45407';
-        var customLongitude = '3.39467';
+        var customLatitude = '6.4400755';
+        var customLongitude = '3.4301604';
     </script>
 @endsection

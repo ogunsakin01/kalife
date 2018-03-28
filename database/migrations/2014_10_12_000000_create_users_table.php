@@ -19,11 +19,11 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('other_name')->nullable();
-            $table->string('date_of_birth');
+            $table->string('date_of_birth')->nullable();
             $table->string('email')->unique();
-            $table->string('phone_number');
-            $table->longText('address');
-            $table->integer('gender');
+            $table->string('phone_number')->nullable();
+            $table->longText('address')->nullable();
+            $table->integer('gender')->nullable();
             $table->string('agency_name')->nullable();
             $table->string('agent_id')->nullable();;
             $table->string('office_number')->nullable();

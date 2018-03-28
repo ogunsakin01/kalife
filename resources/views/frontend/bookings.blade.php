@@ -4,13 +4,10 @@
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">
-        <h1 class="page-title">Bookings History</h1>
-    </div>
-    <div class="container">
         <div class="row">
            @include('partials.profileSideBar');
             <div class="col-md-9">
-                <h4>Records</h4>
+                <h4>Bookings History</h4>
                 <ul class="list list-inline user-profile-statictics mb30">
                     <li>
                         <a href="{{url('/flight-bookings')}}">

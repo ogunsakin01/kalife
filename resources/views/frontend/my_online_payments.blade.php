@@ -4,12 +4,11 @@
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">
-        <h1 class="page-title">Flights History</h1>
-    </div>
-    <div class="container">
         <div class="row">
             @include('partials.profileSideBar')
             <div class="col-md-9">
+                <h4>Flights History</h4>
+
                 <div class="alert alert-info"><i class="fa fa-info"></i> Only transaction made through the interswitch payment gateway are displaed here</div>
                 <div class="table-responseive">
                     <table class="table table-bordered table-striped table-booking-history">

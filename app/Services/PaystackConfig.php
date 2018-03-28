@@ -8,7 +8,6 @@
 
 namespace App\Services;
 
-
 use App\OnlinePayment;
 use Exception;
 use Illuminate\Support\Facades\Mail;
@@ -35,14 +34,14 @@ class PaystackConfig{
     }
 
     public function initialize($email,$amount,$txnRef,$redirectUrl){
+
         $postData =  [
             'email' => $email,
             'amount' => $amount,
             "reference" => $txnRef,
             "callback_url" => $redirectUrl
             ];
-
-
+        
         $url = $this->request_url;
 
         $headers = [

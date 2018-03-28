@@ -82,15 +82,16 @@ class HomeController extends Controller
     }
 
     public function flightCreatePNR(Request $r){
-        $itinerary = session()->get('selectedItinerary');
-        $message_id = session()->get('message_id');
-        $token = SessionToken::getTokenWithId($message_id);
+        $itinerary    = session()->get('selectedItinerary');
+        $message_id   = session()->get('message_id');
+        $tokenData    = SessionToken::where('message_id',$message_id)->first();
         $session_info = [
-            'token' => $token,
-            'message_id' => $message_id
+           'token'      => $tokenData->token,
+           'message_id' => $message_id,
+           'conv_id'    => $tokenData->conv_id
         ];
 
-        $check_session = $this->SabreSession->sessionRefreshValidator($this->SabreSession->refreshSession($session_info['token'],$session_info['message_id']));
+        $check_session = $this->SabreSession->sessionRefreshValidator($this->SabreSession->refreshSession($session_info['token'],$session_info['message_id'],$session_info['conv_id']));
 
         if($check_session == 1){
 
@@ -127,7 +128,7 @@ class HomeController extends Controller
                         $markup = $itinerary[0]['adminToUserMarkup'];
                     }
                     if(auth())
-                        $this->SabreSession->closeSession($token,$message_id);
+                        $this->SabreSession->closeSession($tokenData->token,$message_id,$tokenData->conv_id);
                     SessionToken::tokenClosed($message_id);
                     SessionToken::tokenUsed($message_id);
                     $txnRef = $this->SabreConfig->bookingReference('flight');

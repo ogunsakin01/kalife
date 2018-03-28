@@ -389,9 +389,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            {{--<button class="btn btn-primary" data-toggle="tooltip" title="Issue Ticket"><i class="fa fa-check"></i></button>--}}
-                                            {{--<button class="btn btn-danger"  data-toggle="tooltip" title="Cancel Ticket"><i class="fa fa-trash"></i></button>--}}
-                                            {{--<button class="btn btn-warning" data-toggle="tooltip" title="Void Ticket"><i class="fa fa-warning"></i></button>--}}
+                                            <button class="btn btn-primary btn-sm" data-toggle="tooltip" title="Issue Ticket"><i class="fa fa-check"></i></button>
+                                            <button class="btn btn-danger btn-sm"  data-toggle="tooltip" title="Cancel Ticket"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-warning btn-sm" data-toggle="tooltip" title="Void Ticket"><i class="fa fa-warning"></i></button>
                                         </td>
                                         <td>{{date('d, D M Y, G:i A',strtotime($booking->created_at))}}</td>
                                     </tr>

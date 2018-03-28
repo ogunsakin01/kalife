@@ -80,6 +80,12 @@ class InterswitchConfig
         return openssl_digest($toHash, "SHA512");
     }
 
+
+    public function cheatTransactionHash($txnRef,$amount,$redirectUrl){
+        $toHash = $txnRef.$this->product_id.$this->item_id.$amount.$redirectUrl.$this->mac_key;
+        return openssl_digest($toHash, "SHA512");
+    }
+
     public function requery($txnRef,$amount){
         $headers = array(
             "GET /HTTP/1.1",

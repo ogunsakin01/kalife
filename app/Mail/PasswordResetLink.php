@@ -35,6 +35,7 @@ class PasswordResetLink extends Mailable
       $first_name = $user->getFirstNameByEmail($this->email);
 
       return $this->markdown('emails.PasswordResetLink')
+          ->from('no-reply@kalifetravel.com','Kalife Travels and Tours')
           ->subject('Password Reset Link')
           ->with('first_name', $first_name);
     }

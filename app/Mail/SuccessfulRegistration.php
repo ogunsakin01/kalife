@@ -30,6 +30,8 @@ class SuccessfulRegistration extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.SuccessfulRegistration');
+        return $this->from('no-reply@kalifetravel.com','Kalife Travels and Tours')
+               ->subject('Registration successful')
+               ->markdown('emails.SuccessfulRegistration');
     }
 }

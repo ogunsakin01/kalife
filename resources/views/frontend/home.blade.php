@@ -23,9 +23,7 @@
                                 <li>go</li>
                                 <li>live</li>
                                 <li>meet</li>
-                                <li>run away</li>
-                                <li>being lost</li>
-                                <li>escape Nigeria</li>
+
                             </ul>
                         </div>
                         <div class="search-tabs search-tabs-bg search-tabs-bottom  mt50">
@@ -611,9 +609,9 @@
 
     <div class="container">
         <div class="row row-wrap" data-gutter="60">
-            <div class="col-md-4">
+            <div class="col-md-4" align="center" style="text-align: justify;">
                 <div class="thumb">
-                    <header class="thumb-header"><i class="fa fa-dollar box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
+                    <header class="thumb-header"><i class="fa fa-money box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
                     </header>
                     <div class="thumb-caption">
                         <h5 class="thumb-title"><a class="text-darken" href="#">Best Price Guarantee</a></h5>
@@ -621,7 +619,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" align="center" style="text-align: justify;">
                 <div class="thumb">
                     <header class="thumb-header"><i class="fa fa-lock box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
                     </header>
@@ -631,7 +629,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" align="center" style="text-align: justify;">
                 <div class="thumb">
                     <header class="thumb-header"><i class="fa fa-thumbs-o-up box-icon-md round box-icon-black animate-icon-top-to-bottom"></i>
                     </header>
@@ -644,40 +642,7 @@
         </div>
         <div class="gap gap-small"></div>
     </div>
-
-    @if(!is_null($hotel_package) || !empty($hotel_package))
-
-    <div class="bg-holder">
-            <div class="bg-mask"></div>
-            @if(isset($hotel_images[0]))
-                <div class="bg-parallax" style="background-image:url({{asset($hotel_images[0]['image_path'])}});"></div>
-            @else
-                <div class="bg-parallax" style="background-image:url({{asset('img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg')}});"></div>
-            @endif
-            <div class="bg-content">
-                <div class="container">
-                    <div class="gap gap-big text-center text-white">
-                        <h2 class="text-uc mb20">{{$hotel_package->name}}</h2>
-                        <ul class="icon-list list-inline-block mb0 last-minute-rating">
-                            @for($i = 0; $i < \App\HotelDeal::getByPackageId($hotel_package->id)->star_rating; $i++)
-                                <li><i class="fa fa-star"></i>
-                                </li>
-                            @endfor
-                            @for($i = 0; $i < (5 - \App\HotelDeal::getByPackageId($hotel_package->id)->star_rating); $i++)
-                                <li><i class="fa fa-star-o"></i>
-                                </li>
-                            @endfor
-                        </ul>
-                        <h5 class="last-minute-title">{{\App\HotelDeal::getByPackageId($hotel_package->id)->name}} - {{\App\HotelDeal::getByPackageId($hotel_package->id)->city}}</h5>
-                        <p class="last-minute-date">{{date('D d M',strtotime(\App\HotelDeal::getByPackageId($hotel_package->id)->stay_start_date))}} - {{date('D d M',strtotime(\App\HotelDeal::getByPackageId($hotel_package->id)->end_start_date))}}</p>
-                        <p class="mb20"><b>&#x20A6;{{number_format($hotel_package->adult_price)}}</b> / adult</p>
-                        <a class="btn btn-lg btn-white btn-ghost" href="{{url('/hotel-details/'.$hotel_package->id.'/'.$hotel_package->name)}}">Book Now <i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    @elseif(!is_null($attraction) || !empty($attraction))
+       @if(!is_null($attraction) || !empty($attraction))
 
     <div class="bg-holder">
             <div class="bg-mask"></div>
@@ -701,97 +666,51 @@
 
     @else
 
-    <div class="bg-holder">
-            <div class="bg-mask"></div>
-            <div class="bg-parallax" style="background-image:url({{asset('img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg')}});"></div>
-            <div class="bg-content">
-                <div class="container">
-                    <div class="gap gap-big text-center text-white">
-                        <h2 class="text-uc mb20">Last Minute Deal</h2>
-                        <ul class="icon-list list-inline-block mb0 last-minute-rating">
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                            <li><i class="fa fa-star"></i>
-                            </li>
-                        </ul>
-                        <h5 class="last-minute-title">The Peninsula - New York</h5>
-                        <p class="last-minute-date">Fri 14 Mar - Sun 16 Mar</p>
-                        <p class="mb20"><b>$120</b> / person</p><a class="btn btn-lg btn-white btn-ghost" href="#">Book Now <i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
     @endif
 
-    <div class="container">
-        <div class="gap"></div>
-        <h2 class="text-center">Top Destinations</h2>
-        <div class="gap">
-            <div class="row row-wrap">
-                <div class="col-md-3">
-                    <div class="thumb">
-                        <header class="thumb-header">
-                            <a class="hover-img curved" href="#">
-                                <img src="{{url('img/the_journey_home_400x300.jpg')}}" alt="Image Alternative text" title="the journey home" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
-                            </a>
-                        </header>
-                        <div class="thumb-caption">
-                            <h4 class="thumb-title">Africa</h4>
-                            <p class="thumb-desc">Ut blandit pharetra suspendisse montes libero eleifend bibendum</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="thumb">
-                        <header class="thumb-header">
-                            <a class="hover-img curved" href="#">
-                                <img src="{{url('img/upper_lake_in_new_york_central_park_800x600.jpg')}}" alt="Image Alternative text" title="Upper Lake in New York Central Park" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
-                            </a>
-                        </header>
-                        <div class="thumb-caption">
-                            <h4 class="thumb-title">USA</h4>
-                            <p class="thumb-desc">Cursus faucibus egestas rutrum mauris vulputate consequat ante</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="thumb">
-                        <header class="thumb-header">
-                            <a class="hover-img curved" href="#">
-                                <img src="{{url('img/people_on_the_beach_800x600.jpg')}}" alt="Image Alternative text" title="people on the beach" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
-                            </a>
-                        </header>
-                        <div class="thumb-caption">
-                            <h4 class="thumb-title">Australia</h4>
-                            <p class="thumb-desc">Senectus hendrerit torquent lorem scelerisque quam a curae</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="thumb">
-                        <header class="thumb-header">
-                            <a class="hover-img curved" href="#">
-                                <img src="{{url('img/lack_of_blue_depresses_me_800x600.jpg')}}" alt="Image Alternative text" title="lack of blue depresses me" /><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
-                            </a>
-                        </header>
-                        <div class="thumb-caption">
-                            <h4 class="thumb-title">Greece</h4>
-                            <p class="thumb-desc">Penatibus ac lacinia platea cras lobortis nullam dapibus</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-
-    </div>
+    @if(!is_null($attraction) || !empty($attraction))
+                    <div class="container">
+                        <div class="gap"></div>
+                        <h2 class="text-center">Top Deals</h2>
+                        <div class="gap">
+                            <div class="row row-wrap">
+                    @foreach(
+                    \App\TravelPackage::orderBy('id','desc')
+                    ->where('status',1)
+                    ->where('attraction',1)
+                    ->where('flight', 0)
+                    ->where('hotel', 0)
+                    ->get()
+                    as $serial => $attraction
+                    )
+                        @php
+                            $attraction_images = \App\Gallery::getGalleryByPackageId($attraction->id);
+                        @endphp
+                        <div class="col-md-3">
+                            <div class="thumb">
+                                <header class="thumb-header">
+                                    <a class="hover-img curved" href="{{url('/attraction-details/'.$attraction->id.'/'.$attraction->name)}}">
+                                        @if(isset($attraction_images[0]))
+                                            <img src="{{asset($attraction_images[0]['image_path'])}}"/><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                                        @else
+                                            <img src="{{asset('img/hotel_the_cliff_bay_spa_suite_2048x1310.jpg')}}"/><i class="fa fa-plus box-icon-white box-icon-border hover-icon-top-right round"></i>
+                                        @endif
+                                    </a>
+                                </header>
+                                <div class="thumb-caption">
+                                    <h4 class="thumb-title">{{$attraction->name}}</h4>
+                                    <p class="thumb-desc">{{\App\Attraction::getByPackageId($attraction->id)->name}} - {{\App\Attraction::getByPackageId($attraction->id)->city}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                      </div>
+                  </div>
+              </div>
+   @endif
 
 @endsection
 

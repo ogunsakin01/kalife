@@ -1,0 +1,23 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/1999/XMLSchema"><SOAP-ENV:Header><eb:MessageHeader SOAP-ENV:mustUnderstand="1" eb:version="1.0">
+        <eb:ConversationId/>
+        <eb:From>
+        <eb:PartyId type="urn:x12.org:IO5:01">http://localhost:8000</eb:PartyId>
+        </eb:From>
+        <eb:To>
+        <eb:PartyId type="urn:x12.org:IO5:01">https://webservices.havail.sabre.com</eb:PartyId>
+        </eb:To>
+        <eb:CPAId>WD4H</eb:CPAId>
+        <eb:ConversationId>V1@pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@5abb5186a1d3e@http://localhost:8000</eb:ConversationId>
+        <eb:Service>OTA_PingRQ</eb:Service>
+        <eb:Action>OTA_PingRQ</eb:Action>
+        <eb:MessageData>
+        <eb:MessageId>3285582303463080282</eb:MessageId>
+        <eb:Timestamp>2018-03-28T11:30:11Z</eb:Timestamp>
+        <eb:TimeToLive>2018-03-28T12:30:11Z</eb:TimeToLive>
+        </eb:MessageData>
+        </eb:MessageHeader>
+        <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/12/utility">
+        <wsse:BinarySecurityToken>Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/RESE!ICESMSLB\/RES.LB!-3163690109720237169!1631844!0</wsse:BinarySecurityToken>
+        </wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><OTA_PingRQ xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2018-03-28T10:15:00-06:00" Version="1.0.0">
+               <EchoData>Are you there</EchoData>
+               </OTA_PingRQ></SOAP-ENV:Body></SOAP-ENV:Envelope>

@@ -69,8 +69,8 @@
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="active"><a href="#tab-1" data-toggle="tab"><span ><img src="{{url("img/payment/interswitch-New.png")}}" style="max-width: 100px; max-height: 50px;" class="img-responsive"/></span></a>
                         </li>
-                        <li><a href="#tab-2" data-toggle="tab"><span ><img src="{{url("img/payment/paystack_new_logo.png")}}" style="max-width: 100px; max-height: 50px;" class="img-responsive"/></span></a>
-                        </li>
+                        {{--<li><a href="#tab-2" data-toggle="tab"><span ><img src="{{url("img/payment/paystack_new_logo.png")}}" style="max-width: 100px; max-height: 50px;" class="img-responsive"/></span></a>--}}
+                        {{--</li>--}}
                         <li><a href="#tab-3" data-toggle="tab"> <span > <img src="{{url("img/payment/bank_payment.png")}}" style="max-width: 100px; max-height: 50px;" class="img-responsive"/></span></a>
                         </li>
                     </ul>
@@ -103,7 +103,8 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="tab-2">
+
+                        {{--<div class="tab-pane fade" id="tab-2">
                             <h4>Paystack Payment Gateway</h4>
                             <form method="post" action="{{url('/initiatePaystack')}}">
                                 {{csrf_field()}}
@@ -128,7 +129,8 @@
                                 </div>
 
                             </form>
-                        </div>
+                        </div>--}}
+
                         <div class="tab-pane fade" id="tab-3">
                             <h4>Pay By Bank Transfer (Select a Bank)</h4>
                             <form method="post" action="{{url('/bankPayment')}}">

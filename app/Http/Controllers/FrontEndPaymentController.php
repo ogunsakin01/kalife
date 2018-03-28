@@ -402,12 +402,12 @@ class FrontEndPaymentController extends Controller
         ];
         $data = (object) $rawData;
         BankPayment::storeOrUpdate($data);
-       return redirect(url('/bank-payments'));
-
+        if(auth()->user()->hasRole('Customer')){
+            return redirect(url('/bank-payments'));
+        }
+       return redirect(url('/backend/login'));
     }
 
-    public function banks(){
 
-    }
 
 }

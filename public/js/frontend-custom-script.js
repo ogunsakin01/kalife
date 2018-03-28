@@ -55,7 +55,7 @@ function toastWarning(message){
         timeout: 10000,
         close: true,
         id: 'question',
-        title: 'Warning',
+        title: 'Sorry !!!',
         message: message,
         position: 'topRight',
         buttons: [
@@ -549,20 +549,29 @@ $('.itinerary_select').on('click',function(){
   var id = $(this).val();
     $('.template-content').addClass('hidden');
     $('.flight-pricing-loader').removeClass('hidden');
-  axios.post('/flightBookPricing',{
+      axios.post('/flightBookPricing',{
       id : id
   })
       .then(function(response){
-          // toastr.info(response.status);
           if(response.data === 1){
              window.location.href = baseUrl+'/flight-passenger-details';
-          }else if(response.data === 2){
-              toastWarning('Unable to get flight pricing. Select another flight');
-          }else if(response.data === 3){
-              toastError('Unable to get flight pricing. Select another flight from the list');
-          }else if(response.data === 0){
+          }
+          else if(response.data === 2){
+              toastWarning('You just missed the deal. Please select another flight.');
+              $('.flight_'+id).fadeOut("slow",function(){
+                  $(this).hide();
+              });
+          }
+          else if(response.data === 3){
+              toastWarning('You just missed the deal. Please select another flight.');
+              $('.flight_'+id).fadeOut("slow",function(){
+                  $(this).hide();
+              });
+          }
+          else if(response.data === 0){
               toastError('Unable to connect to server. Try again');
-          }else if(response.data === 21){
+          }
+          else if(response.data === 21){
               toastWarning('Connection to server not established. Try again');
           }
           if(response.status === 500){
@@ -582,15 +591,12 @@ $('.pay_now').on('click',function(){
     var user_id = $('.cust_id_'+ gateway_id).val();
     var txn_reference = $('.reference_'+ gateway_id).val();
     var amount = $('.amount_'+ gateway_id).val();
-    // alert(gateway_id + '__' + user_id + '__' + txn_reference + '__' + amount);
     axios.post('/saveTransaction',{
         gateway_id : gateway_id,
         user_id : user_id,
         txn_reference : txn_reference,
         amount : amount
     });
-
-
 });
 
 $('.search_hotel').on('click',function(){
@@ -774,6 +780,28 @@ $('.package_guests').on('change',function(){
         $('#package_payment').prop('disabled',true);
     }
 
+});
+
+$('.login-button').on('click',function(){
+    $('.login-form').fadeIn('slow',function(){
+        $(this).toggleClass('hidden');
+    });
+});
+
+$('#show_booking_history').on('click',function(){
+    $('#bookings_history').fadeIn('slow',function(){
+        $( this ).find( 'i.pull-right' ).removeClass('fa-caret-right');
+        $( this ).find( 'i.pull-right' ).addClass('fa-caret-down');
+        $(this).toggleClass('hidden');
+    });
+});
+
+$('#show_payments').on('click',function(){
+    $('#payments').fadeIn('slow',function(){
+        $( this ).find( 'i.pull-right' ).removeClass('fa-caret-right');
+        $( this ).find( 'i.pull-right' ).addClass('fa-caret-down');
+        $(this).toggleClass('hidden');
+    });
 });
 
 

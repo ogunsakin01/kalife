@@ -1,0 +1,25 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsd="http://www.w3.org/1999/XMLSchema"><SOAP-ENV:Header><eb:MessageHeader SOAP-ENV:mustUnderstand="1" eb:version="1.0">
+            <eb:ConversationId/>
+            <eb:From>
+            <eb:PartyId type="urn:x12.org:IO5:01">http://localhost:8000</eb:PartyId>
+            </eb:From>
+            <eb:To>
+            <eb:PartyId type="urn:x12.org:IO5:01">https://webservices.havail.sabre.com</eb:PartyId>
+            </eb:To>
+            <eb:CPAId>WD4H</eb:CPAId>
+            <eb:ConversationId>V1@pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@5abb6eb5944da@http://localhost:8000</eb:ConversationId>
+            <eb:Service>SessionCloseRQ</eb:Service>
+            <eb:Action>SessionCloseRQ</eb:Action>
+            <eb:MessageData>
+            <eb:MessageId>3892199378158030203</eb:MessageId>
+            <eb:Timestamp>2018-03-28T11:31:00Z</eb:Timestamp>
+            <eb:TimeToLive>2018-03-28T12:31:00Z</eb:TimeToLive>
+            </eb:MessageData>
+            </eb:MessageHeader>
+            <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/12/utility">
+            <wsse:BinarySecurityToken>Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/RESB!ICESMSLB\/RES.LB!-3163659514664408946!1438241!0</wsse:BinarySecurityToken>
+            </wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><SessionCloseRQ>
+               <POS>
+               <Source PseudoCityCode="WD4H"/>
+               </POS>
+               </SessionCloseRQ></SOAP-ENV:Body></SOAP-ENV:Envelope>

@@ -284,3 +284,16 @@ $('.dataTable').dataTable({"bSort" : false});
 var loader = '<div class="progress">'+
     '<div class="indeterminate"></div>'+
     '</div>';
+
+$('.pay_now').on('click',function(){
+    var gateway_id = $(this).val();
+    var user_id = $('.cust_id_'+ gateway_id).val();
+    var txn_reference = $('.reference_'+ gateway_id).val();
+    var amount = $('.amount_'+ gateway_id).val();
+    axios.post('/saveTransaction',{
+        gateway_id : gateway_id,
+        user_id : user_id,
+        txn_reference : txn_reference,
+        amount : amount
+    });
+});

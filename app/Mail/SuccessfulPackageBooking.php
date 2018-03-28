@@ -40,7 +40,8 @@ class SuccessfulPackageBooking extends Mailable
      */
     public function build()
     {
-        return $this->from('no-reply@KalifeTravelsandTours.com','Kalife Travels and Tours')
+        return $this->from('no-reply@kalifetravel.com','Kalife Travels and Tours')
+                    ->subject('Successful Travel Package Booking')
                     ->markdown('emails.SuccessfulPackageBooking');
     }
 }

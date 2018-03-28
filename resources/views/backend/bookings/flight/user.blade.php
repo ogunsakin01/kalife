@@ -11,6 +11,7 @@
         $user = new \App\User();
         $sabreConfig = new \App\Services\SabreConfig();
         $role = new \App\Role();
+        $InterswitchConfig = new \App\Services\InterswitchConfig();
 
     @endphp
 
@@ -36,6 +37,7 @@
                                 <th>Taxes (₦)</th>
                                 <th>Discount (₦)</th>
                                 <th>Amount Paid (₦)</th>
+                                <th>Deadline</th>
                                 <th>Payment Status</th>
                                 <th>Ticket Status</th>
                                 <th>Actions</th>
@@ -363,6 +365,7 @@
                                         <td>
                                             {{number_format(($booking->total_amount/100),2)}}
                                         </td>
+                                        <td>24hrs</td>
                                         <td>
                                             @if($booking->payment_status == 1)
                                                 <span class="badge badge-success"><i class="fa fa-success"></i> Success</span>
@@ -390,9 +393,28 @@
                                         @endif
                                         </td>
                                         <td>
-                                            {{--<button class="btn btn-primary" data-toggle="tooltip" title="Issue Ticket"><i class="fa fa-check"></i></button>--}}
-                                            {{--<button class="btn btn-danger"  data-toggle="tooltip" title="Cancel Ticket"><i class="fa fa-trash"></i></button>--}}
-                                            {{--<button class="btn btn-warning" data-toggle="tooltip" title="Void Ticket"><i class="fa fa-warning"></i></button>--}}
+                                            @if($booking->payment_status == 1)
+                                            @else
+                                                @if(strtotime('+24 hours', strtotime($booking->created_at)) > strtotime(date('Y-M-d')))
+                                                    @if(count(\App\OnlinePayment::where('txn_reference',$booking->reference)->first()) < 1)
+                                                        <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
+                                                            <input type="hidden" class="reference_1" name="txn_ref" value="{{$booking->reference}}"/>
+                                                            <input type="hidden" class="amount_1" name="amount" value="{{$booking->total_amount}}"/>
+                                                            <input type="hidden" name="currency" value="566"/>
+                                                            <input type="hidden" name="pay_item_id" value="{{$InterswitchConfig->item_id}}"/>
+                                                            <input type="hidden" name="site_redirect_url" value="{{url('backend/flight-booking-confirmation/')}}"/>
+                                                            <input type="hidden" name="product_id" value="{{$InterswitchConfig->product_id}}"/>
+                                                            <input type="hidden" class="cust_id_1" name="cust_id" value="{{auth()->user()->id}}"/>
+                                                            <input type="hidden" name="cust_name" value="{{auth()->user()->first_name,auth()->user()->last_name}}"/>
+                                                            <input type="hidden" name="hash" value="{{$InterswitchConfig->cheatTransactionHash($booking->reference,$booking->total_amount,url('backend/flight-booking-confirmation/'))}}"/>
+                                                            <button class="btn btn-primary btn-sm pay_now" value="1" type="submit">Pay Now</button>
+                                                        </form>
+                                                    @endif
+                                                 @else
+
+                                                @endif
+
+                                            @endif
                                         </td>
                                         <td>{{date('d, D M Y, G:i A',strtotime($booking->created_at))}}</td>
                                     </tr>

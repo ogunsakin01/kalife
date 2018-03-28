@@ -269,7 +269,7 @@
         <div class="modal-body">
           <div class="row">
             <div class="col-xs-4 col-md-4">
-              <button class="btn btn-outline-secondary" id="interswitch_option"><img src="{{asset('backend/images/payment/interswitch-New.png')}}" style="width: 100px; height: 28px; " /></button>
+              <button class="btn btn-outline-secondary" id="interswitch_option"><img src="{{asset('backend/images/payment/Interswitch-New.png')}}" style="width: 100px; height: 28px; " /></button>
             </div>
             <div class="col-xs-4 col-md-4">
               <button class="btn btn-outline-secondary" id="paystack_option"><img src="{{asset('backend/images/payment/paystack_new_logo.png')}}" style="width: 100px;" /></button>

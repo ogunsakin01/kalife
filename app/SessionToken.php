@@ -10,6 +10,7 @@ class SessionToken extends Model
         $session_info = new static();
         $session_info->message_id = $data['message_id'];
         $session_info->token = $data['token'];
+        $session_info->conv_id = $data['conv_id'];
         $session_info->save();
     }
 

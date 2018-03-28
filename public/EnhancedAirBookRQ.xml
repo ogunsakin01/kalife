@@ -1,0 +1,66 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header><m:MessageHeader xmlns:m="http://www.ebxml.org/namespaces/messageHeader">
+			<m:From>
+				<m:PartyId type="urn:x12.org:IO5:01">http://localhost:8000</m:PartyId>
+			</m:From>
+			<m:To>
+				<m:PartyId type="urn:x12.org:IO5:01">https://webservices.havail.sabre.com</m:PartyId>
+			</m:To>
+			<m:CPAId>WD4H</m:CPAId>
+			<m:ConversationId>V1@pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@5abb6eb5944da@http://localhost:8000</m:ConversationId>
+			<m:Service m:type="OTA">EnhancedAirBookRQ</m:Service>
+			<m:Action>EnhancedAirBookRQ</m:Action>
+			<m:MessageData>
+				<m:MessageId>3892199378158030203</m:MessageId>
+				<m:Timestamp>2018-03-28T11:30:15Z</m:Timestamp>
+				<m:TimeToLive>2018-03-28T12:30:15Z</m:TimeToLive>
+			</m:MessageData>
+			<m:DuplicateElimination/>
+			<m:Description>EnhancedAirBookRQ</m:Description>
+		</m:MessageHeader>
+		<wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
+			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/RESB!ICESMSLB\/RES.LB!-3163659514664408946!1438241!0</wsse:BinarySecurityToken>
+		</wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body>
+      <EnhancedAirBookRQ version="3.8.0" xmlns="http://services.sabre.com/sp/eab/v3_8" HaltOnError="true">
+			<OTA_AirBookRQ>
+			<HaltOnStatus Code="NO"/>
+            <HaltOnStatus Code="NN"/>
+            <HaltOnStatus Code="UC"/>
+            <HaltOnStatus Code="US"/>
+			<OriginDestinationInformation><FlightSegment ArrivalDateTime="2018-04-01T12:05:00" DepartureDateTime="2018-04-01T09:30:00" FlightNumber="901" NumberInParty="1" ResBookDesigCode="Y" InstantPurchase="true" Status="NN">
+						<DestinationLocation LocationCode="FRA"/>
+						<Equipment AirEquipType="32A"/>
+						<MarketingAirline Code="LH" FlightNumber="901"/>
+						<OriginLocation LocationCode="LHR"/>
+					      </FlightSegment><FlightSegment ArrivalDateTime="2018-04-01T22:30:00" DepartureDateTime="2018-04-01T14:20:00" FlightNumber="630" NumberInParty="1" ResBookDesigCode="E" InstantPurchase="true" Status="NN">
+						<DestinationLocation LocationCode="DXB"/>
+						<Equipment AirEquipType="744"/>
+						<MarketingAirline Code="LH" FlightNumber="630"/>
+						<OriginLocation LocationCode="FRA"/>
+					      </FlightSegment><FlightSegment ArrivalDateTime="2018-04-04T05:35:00" DepartureDateTime="2018-04-04T01:00:00" FlightNumber="631" NumberInParty="1" ResBookDesigCode="E" InstantPurchase="true" Status="NN">
+						<DestinationLocation LocationCode="FRA"/>
+						<Equipment AirEquipType="744"/>
+						<MarketingAirline Code="LH" FlightNumber="631"/>
+						<OriginLocation LocationCode="DXB"/>
+					      </FlightSegment><FlightSegment ArrivalDateTime="2018-04-04T10:40:00" DepartureDateTime="2018-04-04T10:00:00" FlightNumber="904" NumberInParty="1" ResBookDesigCode="Y" InstantPurchase="true" Status="NN">
+						<DestinationLocation LocationCode="LHR"/>
+						<Equipment AirEquipType="32A"/>
+						<MarketingAirline Code="LH" FlightNumber="904"/>
+						<OriginLocation LocationCode="FRA"/>
+					      </FlightSegment></OriginDestinationInformation>
+			</OTA_AirBookRQ>
+			<OTA_AirPriceRQ>
+				<PriceRequestInformation Retain="true">
+					<OptionalQualifiers>
+						<PricingQualifiers CurrencyCode="NGN">
+						<BargainFinder Rebook="true"/>
+							<PassengerType Code="ADT" Quantity="1" />
+						</PricingQualifiers>
+					</OptionalQualifiers>
+				</PriceRequestInformation>
+			</OTA_AirPriceRQ>
+			 <PostProcessing IgnoreAfter="false">
+               <RedisplayReservation/>
+               </PostProcessing>
+               <PreProcessing IgnoreBefore="false">
+             </PreProcessing>
+		</EnhancedAirBookRQ></SOAP-ENV:Body></SOAP-ENV:Envelope>

@@ -16,12 +16,7 @@
                 <div class="row">
                     <div class="col-md-9">
                         <h2 class="lh1em">{{$name}}</h2>
-                        {{--<p class="lh1em text-small"><i class="fa fa-map-marker"></i>{{$flight_info->info}}</p>--}}
                         <ul class="list list-inline text-small">
-                            {{--<li><a href="#"><i class="fa fa-envelope"></i> Owner E-mail</a>--}}
-                            {{--</li>--}}
-                            {{--<li><a href="#"><i class="fa fa-home"></i> Owner Website</a>--}}
-                            {{--</li>--}}
                             <li><i class="fa fa-phone"></i> {{$flight_info->phone_number}}</li>
                         </ul>
                     </div>

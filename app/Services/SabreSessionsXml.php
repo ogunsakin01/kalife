@@ -9,28 +9,33 @@
 namespace App\Services;
 
 use App\Services\SabreConfig;
+
 class SabreSessionsXml{
+
     public $sabreConfig;
+
     public function __construct(){
         $this->sabreConfig = new SabreConfig();
     }
+
     public function sessionCreateHeader(){
-        $time_stamp = date("y-m-d");
-      return '
-      <eb:MessageHeader SOAP-ENV:mustUnderstand="1" eb:version="1.0">
+
+     $head = '
+      <eb:MessageHeader  xmlns="http://www.ebxml.org/namespaces/messageHeader">
       <eb:From>
-      <eb:PartyId type="urn:x12.org:IO5:01">'.$_SERVER['HTTP_HOST'].'</eb:PartyId>
+      <eb:PartyId type="urn:x12.org:IO5:01">'.url('/').'</eb:PartyId>
       </eb:From>
       <eb:To>
       <eb:PartyId type="urn:x12.org:IO5:01">' . $this->sabreConfig->soapEnvironment . '</eb:PartyId>
       </eb:To>
       <eb:CPAId>'. $this->sabreConfig->soap_ipcc . '</eb:CPAId>
-      <eb:ConversationId>webservices.support@sabre.com</eb:ConversationId>
-      <eb:Service eb:type="OTA">SessionCreateRQ</eb:Service>
+      <eb:ConversationId>V1@'. session()->token().'@'.uniqid().'@'.url('/').'</eb:ConversationId>
+      <eb:Service eb:type="sabreXML">SessionCreateRQ</eb:Service>
       <eb:Action>SessionCreateRQ</eb:Action>
       <eb:MessageData>
-      <eb:MessageId>1000</eb:MessageId>
-      <eb:Timestamp>'.$time_stamp.'T00:00:00Z</eb:Timestamp>
+       <MessageId>'.session()->token().'@'.url('/').'</MessageId>
+       <Timestamp>'.date('Y-m-d\TH:i:s',strtotime('+1 hour')).'+01:00</Timestamp>
+       <TimeToLive>'.date('Y-m-d\TH:i:s',strtotime('+2 hour')).'+01:00</TimeToLive>
       </eb:MessageData>
       </eb:MessageHeader>
       <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/12/utility">
@@ -41,25 +46,27 @@ class SabreSessionsXml{
       <Domain>'. $this->sabreConfig->soap_domain . '</Domain>
       </wsse:UsernameToken>
       </wsse:Security>';
+
+     return $head;
     }
 
-    public function sessionRefreshHeader($token,$message_id){
+    public function sessionRefreshHeader($token,$message_id,$conv_id){
      return '<eb:MessageHeader SOAP-ENV:mustUnderstand="1" eb:version="1.0">
         <eb:ConversationId/>
         <eb:From>
-        <eb:PartyId type="urn:x12.org:IO5:01">'.$_SERVER['HTTP_HOST'].'</eb:PartyId>
+        <eb:PartyId type="urn:x12.org:IO5:01">'.url('/').'</eb:PartyId>
         </eb:From>
         <eb:To>
         <eb:PartyId type="urn:x12.org:IO5:01">'.$this->sabreConfig->soapEnvironment.'</eb:PartyId>
         </eb:To>
         <eb:CPAId>'.$this->sabreConfig->soap_ipcc.'</eb:CPAId>
-        <eb:ConversationId>webservices.support@sabre.com</eb:ConversationId>
+        <eb:ConversationId>'.$conv_id.'</eb:ConversationId>
         <eb:Service>OTA_PingRQ</eb:Service>
         <eb:Action>OTA_PingRQ</eb:Action>
         <eb:MessageData>
         <eb:MessageId>'.$message_id.'</eb:MessageId>
-        <eb:Timestamp>'.date("y-m-d").'T11:15:12Z</eb:Timestamp>
-        <eb:TimeToLive>'.date("y-m-d").'T11:15:12Z</eb:TimeToLive>
+        <eb:Timestamp>'.date('Y-m-d\TH:i:s\Z',strtotime('+1 hour')).'</eb:Timestamp>
+        <eb:TimeToLive>'.date('Y-m-d\TH:i:s\Z',strtotime('+2 hour')).'</eb:TimeToLive>
         </eb:MessageData>
         </eb:MessageHeader>
         <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/12/utility">
@@ -67,23 +74,23 @@ class SabreSessionsXml{
         </wsse:Security>';
     }
 
-    public function sessionCloseHeader($token,$message_id){
+    public function sessionCloseHeader($token,$message_id,$conv_id){
     return '<eb:MessageHeader SOAP-ENV:mustUnderstand="1" eb:version="1.0">
             <eb:ConversationId/>
             <eb:From>
-            <eb:PartyId type="urn:x12.org:IO5:01">'.$_SERVER['HTTP_HOST'].'</eb:PartyId>
+            <eb:PartyId type="urn:x12.org:IO5:01">'.url('/').'</eb:PartyId>
             </eb:From>
             <eb:To>
             <eb:PartyId type="urn:x12.org:IO5:01">'.$this->sabreConfig->soapEnvironment.'</eb:PartyId>
             </eb:To>
             <eb:CPAId>'.$this->sabreConfig->soap_ipcc.'</eb:CPAId>
-            <eb:ConversationId>webservices.support@sabre.com</eb:ConversationId>
+            <eb:ConversationId>'.$conv_id.'</eb:ConversationId>
             <eb:Service>SessionCloseRQ</eb:Service>
             <eb:Action>SessionCloseRQ</eb:Action>
             <eb:MessageData>
             <eb:MessageId>'.$message_id.'</eb:MessageId>
-            <eb:Timestamp>'.date('Y-m-d').'T11:15:12Z</eb:Timestamp>
-            <eb:TimeToLive>'.date('Y-m-d').'T11:15:12Z</eb:TimeToLive>
+            <eb:Timestamp>'.date('Y-m-d\TH:i:s\Z',strtotime('+1 hour')).'</eb:Timestamp>
+            <eb:TimeToLive>'.date('Y-m-d\TH:i:s\Z',strtotime('+2 hour')).'</eb:TimeToLive>
             </eb:MessageData>
             </eb:MessageHeader>
             <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/12/utility">
@@ -92,11 +99,11 @@ class SabreSessionsXml{
     }
 
     public function sessionCreateBody(){
-      return '<SessionCreateRQ returnContextID="true">
-              <POS>
-              <Source PseudoCityCode="'.$this->sabreConfig->soap_ipcc.'"/>
-              </POS>
-              </SessionCreateRQ>';
+      return '<SessionCreateRQ xmlns="http://www.opentravel.org/OTA/2002/11">
+           <POS>
+               <Source PseudoCityCode="WD4H" />
+           </POS>
+       </SessionCreateRQ>';
     }
 
     public function sessionRefreshBody(){

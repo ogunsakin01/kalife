@@ -156,7 +156,7 @@
                                    <div class="tab-content" id="v-pills-tabContent">
                                        <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-expanded="true">
                                            <form method="post" action="{{$InterswitchConfig->requestActionUrl}}">
-                                               <img src="{{asset('img/payment/interswitch-images.png')}}" style="height: 100px;" />
+                                               <img src="{{asset('img/payment/Interswitch-images.png')}}" style="height: 100px;" />
                                                <input type="hidden" class="reference_1" name="txn_ref" value="{{$paymentInfo['reference']}}"/>
                                                <input type="hidden" class="amount_1" name="amount" value="{{$paymentInfo['amount']}}"/>
                                                <input type="hidden" name="currency" value="566"/>
@@ -201,55 +201,7 @@
                                                 </div>
                                            @endif
                                        </div>
-                                       {{--<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-expanded="false">--}}
-                                           {{--<div class="card">--}}
-                                               {{--<div class="card-header">--}}
-                                                   {{--Deposit Information--}}
-                                               {{--</div>--}}
-                                               {{--<form method="post" enctype="multipart/form-data" action="{{url('backend/flight-booking-bank-payment')}}">--}}
-                                               {{--{{csrf_field()}}--}}
-                                               {{--<input type="hidden" name="reference" value="{{$paymentInfo['reference']}}"/>--}}
-                                               {{--<input type="hidden" name="amount" value="{{$paymentInfo['amount']}}"/>--}}
-                                               {{--@php--}}
-                                                   {{--$SabreConfig = new \App\Services\SabreConfig();--}}
-                                               {{--@endphp--}}
 
-                                               {{--<div class="card-body">--}}
-                                                   {{--<div class="col-md-12">--}}
-                                                       {{--<div class="form-group">--}}
-                                                           {{--<select class="form-control" name="selected_bank" id="selected_bank">--}}
-                                                               {{--<option>[SELECT BANK]</option>--}}
-                                                               {{--@foreach($bank_details as $serial => $bank_detail)--}}
-                                                                   {{--<option value="{{$bank_detail->id}}">{{\App\Bank::find($bank_detail->bank_id)->bank_name}}</option>--}}
-                                                                   {{--@endforeach--}}
-                                                           {{--</select>--}}
-                                                       {{--</div>--}}
-                                                   {{--</div>--}}
-                                                   {{--<input type="hidden" value="{{auth()->user()->id}}" name="user_id" />--}}
-                                                   {{--<div class="col-md-12">--}}
-                                                       {{--<div class="form-group">--}}
-                                                           {{--<textarea class="form-control" id="bank_details"  rows="3" disabled="disabled" placeholder="Account Name & Bank Name"></textarea>--}}
-                                                       {{--</div>--}}
-                                                   {{--</div>--}}
-                                                   {{--<div class="col-md-12">--}}
-                                                       {{--<div class="form-group">--}}
-                                                           {{--<label>Total Amount</label>--}}
-                                                           {{--<input type="text" readonly="" class="form-control" value="{{number_format(($paymentInfo['amount'] / 100),2)}}">--}}
-                                                       {{--</div>--}}
-                                                   {{--</div>--}}
-                                               {{--</div>--}}
-                                               {{--<div class="card-footer">--}}
-                                                   {{--<div class="row">--}}
-                                                       {{--<div class="col-md-12">--}}
-                                                           {{--<div class="form-group">--}}
-                                                               {{--<button type="submit" class="btn btn-primary"> Continue</button>--}}
-                                                           {{--</div>--}}
-                                                       {{--</div>--}}
-                                                   {{--</div>--}}
-                                               {{--</div>--}}
-                                               {{--</form>--}}
-                                           {{--</div>--}}
-                                       {{--</div>--}}
                                    </div>
                                </div>
                            </div>

@@ -23,10 +23,10 @@
     <main id="main-container">
       <div class="content">
         <h2 class="content-heading">@yield('title')
-          <b style="margin-left:15px;">
+          <small style="margin-left:15px;">
             Your Wallet Balance : &#x20A6;
             {{number_format((\App\Wallet::where('user_id',auth()->user()->id)->first()->balance/100),2)}}
-          </b>
+          </small>
         </h2>
 
         @yield('content')
@@ -37,6 +37,5 @@
   @include('partials.backend.javascript')
   @yield('javascript')
   {!! Toastr::message() !!}
-
   </body>
 </html>

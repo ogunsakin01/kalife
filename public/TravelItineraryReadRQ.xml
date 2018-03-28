@@ -1,0 +1,33 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header><m:MessageHeader xmlns:m="http://www.ebxml.org/namespaces/messageHeader">
+			<m:From>
+				<m:PartyId type="urn:x12.org:IO5:01">http://localhost:8000</m:PartyId>
+			</m:From>
+			<m:To>
+				<m:PartyId type="urn:x12.org:IO5:01">https://webservices.havail.sabre.com</m:PartyId>
+			</m:To>
+			<m:CPAId>WD4H</m:CPAId>
+			<m:ConversationId>V1@pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@5abb5f3d1401c@http://localhost:8000</m:ConversationId>
+			<m:Service m:type="OTA">TravelItineraryReadRQ</m:Service>
+			<m:Action>TravelItineraryReadRQ</m:Action>
+			<m:MessageData>
+				<m:MessageId>3664976338552600231</m:MessageId>
+				<m:Timestamp>2018-03-28T10:24:15Z</m:Timestamp>
+				<m:TimeToLive>2018-03-28T11:24:15Z</m:TimeToLive>
+			</m:MessageData>
+			<m:DuplicateElimination/>
+			<m:Description>TravelItineraryReadRQ</m:Description>
+		</m:MessageHeader>
+		<wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
+			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/RESB!ICESMSLB\/RES.LB!-3163675734599596913!407321!0</wsse:BinarySecurityToken>
+		</wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body>
+      <TravelItineraryReadRQ xmlns="http://services.sabre.com/res/tir/v3_10" xmlns:dd="http://webservices.sabre.com/dd2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="3.10.0">
+         <MessagingDetails>
+            <SubjectAreas>
+               <SubjectArea>FULL</SubjectArea>
+               <SubjectArea>AIR_CABIN</SubjectArea>
+            </SubjectAreas>
+         </MessagingDetails>
+         <UniqueID ID="ZCWTEV"/>
+         <EchoToken/>
+      </TravelItineraryReadRQ>
+  </SOAP-ENV:Body></SOAP-ENV:Envelope>

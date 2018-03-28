@@ -1,3 +1,4 @@
+<link rel="shortcut icon" href="{{asset("img/favicon.png")}}"/>
 <link rel="stylesheet" type="text/css" href="{{asset('backend/bootstrap/css/bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/css/style.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/css/kalife.css')}}">

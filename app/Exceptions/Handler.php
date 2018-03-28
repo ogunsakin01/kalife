@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
+
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Foundation\Testing\HttpException;
+use \Brian2694\Toastr\Facades\Toastr;
+
 
 class Handler extends ExceptionHandler
 {
@@ -46,6 +50,7 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
+
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);

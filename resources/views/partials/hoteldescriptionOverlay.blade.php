@@ -12,7 +12,7 @@
         <div class="gap"></div>
     </div>
     <div class="container" align="center" style="padding: 15px;">
-        <h2 class="mb5" style="color: #233044" align="left">Collecting the hotel property description .... </h2>
+        <h2 class="mb5" style="color: #233044" align="left">Please hold on, while we get the hotel property description ... </h2>
         <div class="progress">
             <div class="indeterminate"></div>
         </div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="container" align="center" style="padding: 15px;">
-        <p style="color: #233044" align="left">Collecting the hotel property description ... </p>
+        <p style="color: #233044" align="left">Please hold on, while we get the hotel property description ... </p>
         <div class="progress">
             <div class="indeterminate"></div>
         </div>

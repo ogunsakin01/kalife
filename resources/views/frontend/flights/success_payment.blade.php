@@ -8,7 +8,7 @@
             <div class="col-md-4">
                 <div class="booking-item-payment">
                     <header class="clearfix">
-                        <h5 class="mb0" style="color: #1751cd;"><i class="fa fa-plane"></i> {{session()->get('flightSearchParam')['departure_airport']}} - <i class="fa fa-plane fa-flip-vertical"></i> {{session()->get('flightSearchParam')['arrival_airport']}}</h5>
+                        <h5 class="mb0" style="color: #1751cd;"><i class="fa fa-plane"></i> {{\App\Services\SabreConfig::iataCode(session()->get('flightSearchParam')['departure_airport'])}} - <i class="fa fa-plane fa-flip-vertical"></i> {{\App\Services\SabreConfig::iataCode(session()->get('flightSearchParam')['arrival_airport'])}}</h5>
                     </header>
                     <ul class="booking-item-payment-details">
                         <li>

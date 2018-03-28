@@ -41,7 +41,9 @@ class BankPayment extends Model
     }
 
     public static function getAllAuthenticatedUserBankPayments(){
-        return static::where('user_id',auth()->user()->id)->get();
+        return static::where('user_id',auth()->user()->id)
+            ->orderBy('id','desc')
+            ->get();
     }
 
 }

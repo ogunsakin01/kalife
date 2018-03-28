@@ -17,6 +17,7 @@ class CreateSessionTokens extends Migration
             $table->increments('id');
             $table->text('message_id');
             $table->longText('token');
+            $table->longText('conv_id');
             $table->integer('available_status')->default('1');
             $table->integer('closed_status')->default("0");
             $table->timestamps();

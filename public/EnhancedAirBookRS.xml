@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/"><soap-env:Header><eb:MessageHeader xmlns:eb="http://www.ebxml.org/namespaces/messageHeader" eb:version="1.0" soap-env:mustUnderstand="1"><eb:From><eb:PartyId eb:type="URI">https://webservices.havail.sabre.com</eb:PartyId></eb:From><eb:To><eb:PartyId eb:type="URI">http://localhost:8000</eb:PartyId></eb:To><eb:CPAId>WD4H</eb:CPAId><eb:ConversationId>V1@pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@5abb6eb5944da@http://localhost:8000</eb:ConversationId><eb:Service eb:type="OTA">EnhancedAirBookRQ</eb:Service><eb:Action>EnhancedAirBookRS</eb:Action><eb:MessageData><eb:MessageId>271f26ymm</eb:MessageId><eb:Timestamp>2018-03-28T10:30:22</eb:Timestamp><eb:RefToMessageId>3892199378158030203</eb:RefToMessageId></eb:MessageData></eb:MessageHeader><wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext"><wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/RESB!ICESMSLB\/RES.LB!-3163659514664408946!1438241!0</wsse:BinarySecurityToken></wsse:Security></soap-env:Header><soap-env:Body><EnhancedAirBookRS xmlns="http://services.sabre.com/sp/eab/v3_8"><ApplicationResults xmlns="http://services.sabre.com/STL_Payload/v02_01" status="Complete"><Success timeStamp="2018-03-28T05:30:22.098-05:00"/></ApplicationResults><OTA_AirBookRS><OriginDestinationOption><FlightSegment ArrivalDateTime="2018-04-01T12:05:00" DepartureDateTime="2018-04-01T09:30:00" eTicket="true" FlightNumber="901" NumberInParty="1" ResBookDesigCode="Y" Status="NN"><DestinationLocation LocationCode="FRA"/><MarketingAirline Code="LH" FlightNumber="901"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="LHR"/></FlightSegment><FlightSegment ArrivalDateTime="2018-04-01T22:30:00" DepartureDateTime="2018-04-01T14:20:00" eTicket="true" FlightNumber="630" NumberInParty="1" ResBookDesigCode="E" Status="NN"><DestinationLocation LocationCode="DXB"/><MarketingAirline Code="LH" FlightNumber="630"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="FRA"/></FlightSegment><FlightSegment ArrivalDateTime="2018-04-04T05:35:00" DepartureDateTime="2018-04-04T01:00:00" eTicket="true" FlightNumber="631" NumberInParty="1" ResBookDesigCode="E" Status="NN"><DestinationLocation LocationCode="FRA"/><MarketingAirline Code="LH" FlightNumber="631"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="DXB"/></FlightSegment><FlightSegment ArrivalDateTime="2018-04-04T10:40:00" DepartureDateTime="2018-04-04T10:00:00" eTicket="true" FlightNumber="904" NumberInParty="1" ResBookDesigCode="Y" Status="NN"><DestinationLocation LocationCode="LHR"/><MarketingAirline Code="LH" FlightNumber="904"/><MarriageGrp Ind="0" Group="0" Sequence="0"/><OriginLocation LocationCode="FRA"/></FlightSegment></OriginDestinationOption></OTA_AirBookRS><OTA_AirPriceRS><PriceQuote>
+  <MiscInformation>
+   <BaggageInfo>
+    <SubCodeProperties RPH="1" SolutionSequenceNmbr="1">
+     <AncillaryFeeGroupCode>BG</AncillaryFeeGroupCode>
+     <CommercialNameofBaggageItemType>FREE BAGGAGE ALLOWANCE</CommercialNameofBaggageItemType>
+     <EMD_Type>4</EMD_Type>
+     <ExtendedSubCodeKey>0DFAALH</ExtendedSubCodeKey>
+     <RFIC>C</RFIC>
+    </SubCodeProperties>
+    <SubCodeProperties RPH="2" SolutionSequenceNmbr="1">
+     <AncillaryFeeGroupCode>BG</AncillaryFeeGroupCode>
+     <BookingMethod>01</BookingMethod>
+     <CommercialNameofBaggageItemType>UPTO50LB 23KG AND62LI 158LCM</CommercialNameofBaggageItemType>
+     <DescriptionOne Code="23">
+      <Text>UP TO 50 POUNDS/23 KILOGRAMS</Text>
+     </DescriptionOne>
+     <DescriptionTwo Code="6U">
+      <Text>UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS</Text>
+     </DescriptionTwo>
+     <EMD_Type>2</EMD_Type>
+     <ExtendedSubCodeKey>0GOACLH</ExtendedSubCodeKey>
+     <RFIC>C</RFIC>
+     <SizeWeightInfo>
+      <MaximumSizeInAlternate Units="C">158</MaximumSizeInAlternate>
+      <MaximumSize Units="I">62</MaximumSize>
+      <MaximumWeightInAlternate Units="K">23</MaximumWeightInAlternate>
+      <MaximumWeight Units="L">50</MaximumWeight>
+     </SizeWeightInfo>
+     <SSR_Code>XBAG</SSR_Code>
+    </SubCodeProperties>
+    <SubCodeProperties RPH="3" SolutionSequenceNmbr="1">
+     <AncillaryFeeGroupCode>BG</AncillaryFeeGroupCode>
+     <AncillaryService SubGroupCode="CY">
+      <Text>CARRY ON HAND BAGGAGE</Text>
+     </AncillaryService>
+     <CommercialNameofBaggageItemType>CARRYON HAND BAGGAGE ALLOWANCE</CommercialNameofBaggageItemType>
+     <EMD_Type>4</EMD_Type>
+     <ExtendedSubCodeKey>0LNABLH</ExtendedSubCodeKey>
+    </SubCodeProperties>
+    <SubCodeProperties RPH="4" SolutionSequenceNmbr="1">
+     <AncillaryFeeGroupCode>BG</AncillaryFeeGroupCode>
+     <AncillaryService SubGroupCode="CY">
+      <Text>CARRY ON HAND BAGGAGE</Text>
+     </AncillaryService>
+     <CommercialNameofBaggageItemType>CARRY8KG 18LB UPTO46LI 118LCM</CommercialNameofBaggageItemType>
+     <DescriptionOne Code="08">
+      <Text>UP TO 18 POUNDS/8 KILOGRAMS</Text>
+     </DescriptionOne>
+     <DescriptionTwo Code="4Y">
+      <Text>UP TO 46 LINEAR INCHES/118 LINEAR CENTIMETERS</Text>
+     </DescriptionTwo>
+     <EMD_Type>2</EMD_Type>
+     <ExtendedSubCodeKey>0M1ACLH</ExtendedSubCodeKey>
+     <RFIC>C</RFIC>
+     <SizeWeightInfo>
+      <MaximumSizeInAlternate Units="C">118</MaximumSizeInAlternate>
+      <MaximumSize Units="I">46</MaximumSize>
+      <MaximumWeightInAlternate Units="K">8</MaximumWeightInAlternate>
+      <MaximumWeight Units="L">18</MaximumWeight>
+     </SizeWeightInfo>
+    </SubCodeProperties>
+   </BaggageInfo>
+   <HeaderInformation SolutionSequenceNmbr="1">
+    <BargainFinder>
+     <AlternateBooking ResBookDesigCode="2G"/>
+     <AlternateBooking ResBookDesigCode="3G"/>
+    </BargainFinder>
+    <DepartureDate>2018-04-01</DepartureDate>
+    <Text>VALIDATING CARRIER - LH</Text>
+    <Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text>
+    <Text>BAG ALLOWANCE     -LHRDXB-02P/LH/EACH PIECE UP TO 50 POUNDS/23</Text>
+    <Text>KILOGRAMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS</Text>
+    <Text>BAG ALLOWANCE     -DXBLHR-02P/LH/EACH PIECE UP TO 50 POUNDS/23</Text>
+    <Text>KILOGRAMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS</Text>
+    <Text>CARRY ON ALLOWANCE</Text>
+    <Text>LHRFRA FRADXB DXBFRA FRALHR-01P/LH</Text>
+    <Text>01/UP TO 18 POUNDS/8 KILOGRAMS AND UP TO 46 LINEAR INCHES/118 L</Text>
+    <Text>INEAR CENTIMETERS</Text>
+    <Text>CARRY ON CHARGES</Text>
+    <Text>LHRFRA FRADXB DXBFRA FRALHR-LH</Text>
+    <Text>UP TO 18 POUNDS/8 KILOGRAMS AND UP TO 46 LINEAR INCHES/118 LINE</Text>
+    <Text>AR CENTIMETERS-NOT PERMITTED</Text>
+    <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
+    <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
+    <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
+    <Text>1 LH 901Y 01APR S LHRFRA*SS1   930A 1205P /DCLH /E</Text>
+    <Text>2 LH 630G 01APR S FRADXB*SS1   220P 1030P /DCLH /E</Text>
+    <Text>3 LH 631G 04APR W DXBFRA*SS1   100A  535A /DCLH /E</Text>
+    <Text>4 LH 904Y 04APR W FRALHR*SS1  1000A 1040A /DCLH /E</Text>
+    <ValidatingCarrier Code="LH"/>
+   </HeaderInformation>
+   <SolutionInformation SolutionSequenceNmbr="1">
+    <CurrencyCode>NGN</CurrencyCode>
+    <RequiresRebook>false</RequiresRebook>
+    <TicketNumber>0</TicketNumber>
+    <TotalAmount>1181945</TotalAmount>
+   </SolutionInformation>
+  </MiscInformation>
+  <PricedItinerary AlternativePricing="false" CurrencyCode="NGN" MultiTicket="false" TotalAmount="1181945">
+   <AirItineraryPricingInfo SolutionSequenceNmbr="1">
+    <BaggageProvisions RPH="1">
+     <Associations>
+      <CarrierCode RPH="1">LH</CarrierCode>
+      <CarrierCode RPH="2">LH</CarrierCode>
+      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2018-04-01</DepartureDate>
+      <DepartureDate RPH="2">2018-04-01</DepartureDate>
+      <DestinationLocation LocationCode="FRA" RPH="1"/>
+      <DestinationLocation LocationCode="DXB" RPH="2"/>
+      <FlightNumber RPH="1">901</FlightNumber>
+      <FlightNumber RPH="2">630</FlightNumber>
+      <OriginLocation LocationCode="LHR" RPH="1"/>
+      <OriginLocation LocationCode="FRA" RPH="2"/>
+      <PNR_Segment RPH="1">6</PNR_Segment>
+      <PNR_Segment RPH="2">2</PNR_Segment>
+      <ResBookDesigCode RPH="1">Y</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">G</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>LH</CarrierWhoseBaggageProvisionsApply>
+     <NumPiecesBDI>2</NumPiecesBDI>
+     <NumPiecesITR>2</NumPiecesITR>
+     <ProvisionType>A</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForAllowance RPH="1">0GOACLH</SubCodeForAllowance>
+      <SubCodeForChargesOthers>0DFAALH</SubCodeForChargesOthers>
+     </SubCodeInfo>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="2">
+     <Associations>
+      <CarrierCode RPH="1">LH</CarrierCode>
+      <CarrierCode RPH="2">LH</CarrierCode>
+      <CountForSegmentAssociatedID>2</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2018-04-04</DepartureDate>
+      <DepartureDate RPH="2">2018-04-04</DepartureDate>
+      <DestinationLocation LocationCode="FRA" RPH="1"/>
+      <DestinationLocation LocationCode="LHR" RPH="2"/>
+      <FlightNumber RPH="1">631</FlightNumber>
+      <FlightNumber RPH="2">904</FlightNumber>
+      <OriginLocation LocationCode="DXB" RPH="1"/>
+      <OriginLocation LocationCode="FRA" RPH="2"/>
+      <PNR_Segment RPH="1">3</PNR_Segment>
+      <PNR_Segment RPH="2">4</PNR_Segment>
+      <ResBookDesigCode RPH="1">G</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">Y</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>LH</CarrierWhoseBaggageProvisionsApply>
+     <NumPiecesBDI>2</NumPiecesBDI>
+     <NumPiecesITR>2</NumPiecesITR>
+     <ProvisionType>A</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForAllowance RPH="1">0GOACLH</SubCodeForAllowance>
+      <SubCodeForChargesOthers>0DFAALH</SubCodeForChargesOthers>
+     </SubCodeInfo>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="3">
+     <Associations>
+      <CarrierCode RPH="1">LH</CarrierCode>
+      <CarrierCode RPH="2">LH</CarrierCode>
+      <CarrierCode RPH="3">LH</CarrierCode>
+      <CarrierCode RPH="4">LH</CarrierCode>
+      <CountForSegmentAssociatedID>4</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2018-04-01</DepartureDate>
+      <DepartureDate RPH="2">2018-04-01</DepartureDate>
+      <DepartureDate RPH="3">2018-04-04</DepartureDate>
+      <DepartureDate RPH="4">2018-04-04</DepartureDate>
+      <DestinationLocation LocationCode="FRA" RPH="1"/>
+      <DestinationLocation LocationCode="DXB" RPH="2"/>
+      <DestinationLocation LocationCode="FRA" RPH="3"/>
+      <DestinationLocation LocationCode="LHR" RPH="4"/>
+      <FlightNumber RPH="1">901</FlightNumber>
+      <FlightNumber RPH="2">630</FlightNumber>
+      <FlightNumber RPH="3">631</FlightNumber>
+      <FlightNumber RPH="4">904</FlightNumber>
+      <OriginLocation LocationCode="LHR" RPH="1"/>
+      <OriginLocation LocationCode="FRA" RPH="2"/>
+      <OriginLocation LocationCode="DXB" RPH="3"/>
+      <OriginLocation LocationCode="FRA" RPH="4"/>
+      <PNR_Segment RPH="1">6</PNR_Segment>
+      <PNR_Segment RPH="2">2</PNR_Segment>
+      <PNR_Segment RPH="3">3</PNR_Segment>
+      <PNR_Segment RPH="4">4</PNR_Segment>
+      <ResBookDesigCode RPH="1">Y</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">G</ResBookDesigCode>
+      <ResBookDesigCode RPH="3">G</ResBookDesigCode>
+      <ResBookDesigCode RPH="4">Y</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+      <StatusCode RPH="3">SS</StatusCode>
+      <StatusCode RPH="4">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>LH</CarrierWhoseBaggageProvisionsApply>
+     <NumPiecesBDI>1</NumPiecesBDI>
+     <NumPiecesITR>1</NumPiecesITR>
+     <ProvisionType>B</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForAllowance RPH="1">0M1ACLH</SubCodeForAllowance>
+      <SubCodeForChargesOthers>0LNABLH</SubCodeForChargesOthers>
+     </SubCodeInfo>
+    </BaggageProvisions>
+    <BaggageProvisions RPH="4">
+     <Associations>
+      <CarrierCode RPH="1">LH</CarrierCode>
+      <CarrierCode RPH="2">LH</CarrierCode>
+      <CarrierCode RPH="3">LH</CarrierCode>
+      <CarrierCode RPH="4">LH</CarrierCode>
+      <CountForSegmentAssociatedID>4</CountForSegmentAssociatedID>
+      <DepartureDate RPH="1">2018-04-01</DepartureDate>
+      <DepartureDate RPH="2">2018-04-01</DepartureDate>
+      <DepartureDate RPH="3">2018-04-04</DepartureDate>
+      <DepartureDate RPH="4">2018-04-04</DepartureDate>
+      <DestinationLocation LocationCode="FRA" RPH="1"/>
+      <DestinationLocation LocationCode="DXB" RPH="2"/>
+      <DestinationLocation LocationCode="FRA" RPH="3"/>
+      <DestinationLocation LocationCode="LHR" RPH="4"/>
+      <FlightNumber RPH="1">901</FlightNumber>
+      <FlightNumber RPH="2">630</FlightNumber>
+      <FlightNumber RPH="3">631</FlightNumber>
+      <FlightNumber RPH="4">904</FlightNumber>
+      <OriginLocation LocationCode="LHR" RPH="1"/>
+      <OriginLocation LocationCode="FRA" RPH="2"/>
+      <OriginLocation LocationCode="DXB" RPH="3"/>
+      <OriginLocation LocationCode="FRA" RPH="4"/>
+      <PNR_Segment RPH="1">6</PNR_Segment>
+      <PNR_Segment RPH="2">2</PNR_Segment>
+      <PNR_Segment RPH="3">3</PNR_Segment>
+      <PNR_Segment RPH="4">4</PNR_Segment>
+      <ResBookDesigCode RPH="1">Y</ResBookDesigCode>
+      <ResBookDesigCode RPH="2">G</ResBookDesigCode>
+      <ResBookDesigCode RPH="3">G</ResBookDesigCode>
+      <ResBookDesigCode RPH="4">Y</ResBookDesigCode>
+      <StatusCode RPH="1">SS</StatusCode>
+      <StatusCode RPH="2">SS</StatusCode>
+      <StatusCode RPH="3">SS</StatusCode>
+      <StatusCode RPH="4">SS</StatusCode>
+     </Associations>
+     <CarrierWhoseBaggageProvisionsApply>LH</CarrierWhoseBaggageProvisionsApply>
+     <Commissionable>N</Commissionable>
+     <FeeNotGuaranteedIndicator>Y</FeeNotGuaranteedIndicator>
+     <FirstOccurrence>1</FirstOccurrence>
+     <Interlineable>N</Interlineable>
+     <NoChargeNotAvailableIndicator>X</NoChargeNotAvailableIndicator>
+     <PassengerType Code="ADT"/>
+     <PriceInformation>
+      <Base Amount="0"/>
+      <Equiv CurrencyCode="NGN"/>
+     </PriceInformation>
+     <ProvisionType>CC</ProvisionType>
+     <SubCodeInfo>
+      <SubCodeForChargesOthers>0M1ACLH</SubCodeForChargesOthers>
+     </SubCodeInfo>
+    </BaggageProvisions>
+    <FareCalculation>
+     <Text>LON LH X/FRA LH DXB1258.30LH X/FRA LH LON1258.30NUC2516.60END ROE0.744255</Text>
+    </FareCalculation>
+    <FareCalculationBreakdown>
+     <Branch PCC="WD4H"/>
+     <Departure AirlineCode="LH" AirportCode="LHR" ArrivalAirportCode="FRA" ArrivalCityCode="FRA" CityCode="LON" GenericInd="X"/>
+     <FareBasis Cabin="Y" Code="GFFGB" FilingCarrier="LH"/>
+     <FreeBaggageAllowance>PC002</FreeBaggageAllowance>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch FirstJointCarrier="LH" PCC="WD4H"/>
+     <Departure AirlineCode="LH" AirportCode="FRA" ArrivalAirportCode="DXB" ArrivalCityCode="DXB" CityCode="FRA" GenericInd="O"/>
+     <FareBasis Cabin="S" Code="GFFGB" FareAmount="1258.30" FarePassengerType="ADT" FareType="P" FilingCarrier="LH" GlobalInd="EH" Market="LONDXB" TripTypeInd="R"/>
+     <FreeBaggageAllowance>PC002</FreeBaggageAllowance>
+     <RuleCategoryIndicator>4</RuleCategoryIndicator>
+     <RuleCategoryIndicator>5</RuleCategoryIndicator>
+     <RuleCategoryIndicator>6</RuleCategoryIndicator>
+     <RuleCategoryIndicator>7</RuleCategoryIndicator>
+     <RuleCategoryIndicator>8</RuleCategoryIndicator>
+     <RuleCategoryIndicator>9</RuleCategoryIndicator>
+     <RuleCategoryIndicator>10</RuleCategoryIndicator>
+     <RuleCategoryIndicator>16</RuleCategoryIndicator>
+     <RuleCategoryIndicator>18</RuleCategoryIndicator>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch PCC="WD4H"/>
+     <Departure AirlineCode="LH" AirportCode="DXB" ArrivalAirportCode="FRA" ArrivalCityCode="FRA" CityCode="DXB" GenericInd="X"/>
+     <FareBasis Cabin="S" Code="GFFGB" FilingCarrier="LH"/>
+     <FreeBaggageAllowance>PC002</FreeBaggageAllowance>
+    </FareCalculationBreakdown>
+    <FareCalculationBreakdown>
+     <Branch FirstJointCarrier="LH" PCC="WD4H"/>
+     <Departure AirlineCode="LH" AirportCode="FRA" ArrivalAirportCode="LHR" ArrivalCityCode="LON" CityCode="FRA" GenericInd="O"/>
+     <FareBasis Cabin="Y" Code="GFFGB" FareAmount="1258.30" FarePassengerType="ADT" FareType="P" FilingCarrier="LH" GlobalInd="EH" Market="LONDXB" TripTypeInd="R"/>
+     <FreeBaggageAllowance>PC002</FreeBaggageAllowance>
+     <RuleCategoryIndicator>4</RuleCategoryIndicator>
+     <RuleCategoryIndicator>5</RuleCategoryIndicator>
+     <RuleCategoryIndicator>6</RuleCategoryIndicator>
+     <RuleCategoryIndicator>7</RuleCategoryIndicator>
+     <RuleCategoryIndicator>8</RuleCategoryIndicator>
+     <RuleCategoryIndicator>9</RuleCategoryIndicator>
+     <RuleCategoryIndicator>10</RuleCategoryIndicator>
+     <RuleCategoryIndicator>16</RuleCategoryIndicator>
+     <RuleCategoryIndicator>18</RuleCategoryIndicator>
+    </FareCalculationBreakdown>
+    <ItinTotalFare NonRefundableInd="O">
+     <BaggageInfo>
+      <NonUS_DOT_Disclosure>
+       <Text>BAG ALLOWANCE     -LHRDXB-02P/LH/EACH PIECE UP TO 50 POUNDS/23</Text>
+       <Text>KILOGRAMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS</Text>
+       <Text>BAG ALLOWANCE     -DXBLHR-02P/LH/EACH PIECE UP TO 50 POUNDS/23</Text>
+       <Text>KILOGRAMS AND UP TO 62 LINEAR INCHES/158 LINEAR CENTIMETERS</Text>
+       <Text>CARRY ON ALLOWANCE</Text>
+       <Text>LHRFRA FRADXB DXBFRA FRALHR-01P/LH</Text>
+       <Text>01/UP TO 18 POUNDS/8 KILOGRAMS AND UP TO 46 LINEAR INCHES/118 L</Text>
+       <Text>INEAR CENTIMETERS</Text>
+       <Text>CARRY ON CHARGES</Text>
+       <Text>LHRFRA FRADXB DXBFRA FRALHR-LH</Text>
+       <Text>UP TO 18 POUNDS/8 KILOGRAMS AND UP TO 46 LINEAR INCHES/118 LINE</Text>
+       <Text>AR CENTIMETERS-NOT PERMITTED</Text>
+       <Text>ADDITIONAL ALLOWANCES AND/OR DISCOUNTS MAY APPLY DEPENDING ON</Text>
+       <Text>FLYER-SPECIFIC FACTORS /E.G. FREQUENT FLYER STATUS/MILITARY/</Text>
+       <Text>CREDIT CARD FORM OF PAYMENT/EARLY PURCHASE OVER INTERNET,ETC./</Text>
+      </NonUS_DOT_Disclosure>
+     </BaggageInfo>
+     <BaseFare Amount="1873.00" CurrencyCode="GBP"/>
+     <Endorsements>
+      <Text>FARE RESTRICTION MAY APPLY</Text>
+     </Endorsements>
+     <EquivFare Amount="957690" CurrencyCode="NGN"/>
+     <Taxes TotalAmount="224255">
+      <Tax Amount="93572" TaxCode="YQI" TaxName="SERVICE FEE - INSURANCE" TicketingTaxCode="YQ"/>
+      <Tax Amount="5778" TaxCode="YRI" TaxName="SERVICE FEE - CARRIER-IMPOSED" TicketingTaxCode="YR"/>
+      <Tax Amount="79765" TaxCode="GB" TaxName="AIR PASSENGER DUTY APD" TicketingTaxCode="GB"/>
+      <Tax Amount="9869" TaxCode="UB" TaxName="PASSENGER SERVICE CHARGE DEPAR" TicketingTaxCode="UB"/>
+      <Tax Amount="4022" TaxCode="DE" TaxName="AIRPORT SECURITY CHARGE" TicketingTaxCode="DE"/>
+      <Tax Amount="18992" TaxCode="RA2" TaxName="PASSENGER SERVICE CHARGE INTER" TicketingTaxCode="RA"/>
+      <Tax Amount="7353" TaxCode="AE4" TaxName="PASSENGER SERVICE CHARGE INTER" TicketingTaxCode="AE"/>
+      <Tax Amount="491" TaxCode="TP" TaxName="PASSENGER SECURITY AND SAFETY" TicketingTaxCode="TP"/>
+      <Tax Amount="982" TaxCode="ZR" TaxName="INTERNATIONAL ADVANCED PASSENG" TicketingTaxCode="ZR"/>
+      <Tax Amount="3431" TaxCode="F62" TaxName="PASSENGER FACILITIES CHARGE" TicketingTaxCode="F6"/>
+     </Taxes>
+     <TotalFare Amount="1181945" CurrencyCode="NGN"/>
+    </ItinTotalFare>
+    <PassengerTypeQuantity Code="ADT" Quantity="1"/>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="GFFGB" FilingCarrier="LH"/>
+     <FreeBaggageAllowance>PC002</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>S</Cabin>
+     <FareBasis Code="GFFGB" FareAmount="1258.30" FarePassengerType="ADT" FareType="P" FilingCarrier="LH" GlobalInd="EH" Market="LONDXB"/>
+     <FreeBaggageAllowance>PC002</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>S</Cabin>
+     <FareBasis Code="GFFGB" FilingCarrier="LH"/>
+     <FreeBaggageAllowance>PC002</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+    <PTC_FareBreakdown>
+     <Cabin>Y</Cabin>
+     <FareBasis Code="GFFGB" FareAmount="1258.30" FarePassengerType="ADT" FareType="P" FilingCarrier="LH" GlobalInd="EH" Market="LONDXB"/>
+     <FreeBaggageAllowance>PC002</FreeBaggageAllowance>
+    </PTC_FareBreakdown>
+   </AirItineraryPricingInfo>
+  </PricedItinerary>
+ </PriceQuote></OTA_AirPriceRS><TravelItineraryReadRS><TravelItinerary><CustomerInfo/><ItineraryInfo><ItineraryPricing><PriceQuote RPH="1"><MiscInformation><SignatureLine ExpirationDateTime="00:00" Source="SYS" Status="ACTIVE"><Text>WD4H WD4H*AWS 1130/28MAR18</Text></SignatureLine></MiscInformation><PricedItinerary DisplayOnly="false" InputMessage="WPMNGN¥NCB¥P1ADT¥RQ" RPH="1" StatusCode="A" TaxExempt="false" ValidatingCarrier="LH" StoredDateTime="2018-03-28T11:30"><AirItineraryPricingInfo><ItinTotalFare><BaseFare Amount="1873.00" CurrencyCode="GBP"/><EquivFare Amount="957690" CurrencyCode="NGN"/><Taxes><Tax Amount="224255" TaxCode="XT"/><TaxBreakdownCode TaxPaid="false">93572YQ</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">5778YR</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">79765GB</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">9869UB</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">4022DE</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">18992RA</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">7353AE</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">491TP</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">982ZR</TaxBreakdownCode><TaxBreakdownCode TaxPaid="false">3431F6</TaxBreakdownCode></Taxes><TotalFare Amount="1181945" CurrencyCode="NGN"/><Totals><BaseFare Amount="1873.00"/><EquivFare Amount="957690"/><Taxes><Tax Amount="224255"/></Taxes><TotalFare Amount="1181945"/></Totals></ItinTotalFare><PassengerTypeQuantity Code="ADT" Quantity="01"/><PTC_FareBreakdown><Endorsements><Endorsement type="PRICING_PARAMETER"><Text>WPMNGN$NCB$P1ADT$RQ</Text></Endorsement><Endorsement type="WARNING"><Text>VALIDATING CARRIER - LH</Text></Endorsement><Endorsement type="WARNING"><Text>CAT 15 SALES RESTRICTIONS FREE TEXT FOUND - VERIFY RULES</Text></Endorsement><Endorsement type="SYSTEM_ENDORSEMENT"><Text>FARE RESTRICTION MAY APPLY</Text></Endorsement></Endorsements><FareBasis Code="GFFGB/GFFGB/GFFGB/GFFGB"/><FareCalculation><Text>LON LH X/FRA LH DXB1258.30LH X/FRA LH LON1258.30NUC2516.60END ROE0.744255</Text></FareCalculation><FareSource>ATPC</FareSource><FlightSegment ConnectionInd="O" DepartureDateTime="04-01T09:30" FlightNumber="901" ResBookDesigCode="Y" SegmentNumber="1" Status="SS"><BaggageAllowance Number="02P"/><FareBasis Code="GFFGB"/><MarketingAirline Code="LH" FlightNumber="901"/><OriginLocation LocationCode="LHR"/><ValidityDates><NotValidAfter>2019-04-01</NotValidAfter></ValidityDates></FlightSegment><FlightSegment ConnectionInd="X" DepartureDateTime="04-01T14:20" FlightNumber="630" ResBookDesigCode="G" SegmentNumber="2" Status="SS"><BaggageAllowance Number="02P"/><FareBasis Code="GFFGB"/><MarketingAirline Code="LH" FlightNumber="630"/><OriginLocation LocationCode="FRA"/><ValidityDates><NotValidAfter>2019-04-01</NotValidAfter></ValidityDates></FlightSegment><FlightSegment ConnectionInd="O" DepartureDateTime="04-04T01:00" FlightNumber="631" ResBookDesigCode="G" SegmentNumber="3" Status="SS"><BaggageAllowance Number="02P"/><FareBasis Code="GFFGB"/><MarketingAirline Code="LH" FlightNumber="631"/><OriginLocation LocationCode="DXB"/><ValidityDates><NotValidAfter>2019-04-01</NotValidAfter></ValidityDates></FlightSegment><FlightSegment ConnectionInd="X" DepartureDateTime="04-04T10:00" FlightNumber="904" ResBookDesigCode="Y" SegmentNumber="4" Status="SS"><BaggageAllowance Number="02P"/><FareBasis Code="GFFGB"/><MarketingAirline Code="LH" FlightNumber="904"/><OriginLocation LocationCode="FRA"/><ValidityDates><NotValidAfter>2019-04-01</NotValidAfter></ValidityDates></FlightSegment><FlightSegment><OriginLocation LocationCode="LHR"/></FlightSegment><FareComponent FareBasisCode="GFFGB" FareDirectionality="FROM" Amount="125830" TicketDesignator="" GoverningCarrier="LH"><Location Origin="LON" Destination="DXB"/><Dates DepartureDateTime="04-01T09:30" ArrivalDateTime="04-01T22:30"/></FareComponent><FareComponent FareBasisCode="GFFGB" FareDirectionality="TO" Amount="125830" TicketDesignator="" GoverningCarrier="LH"><Location Origin="DXB" Destination="LON"/><Dates DepartureDateTime="04-04T01:00" ArrivalDateTime="04-04T10:40"/></FareComponent></PTC_FareBreakdown></AirItineraryPricingInfo></PricedItinerary><ResponseHeader><Text>FARE - PRICE RETAINED</Text><Text>FARE USED TO CALCULATE DISCOUNT</Text><Text>FARE NOT GUARANTEED UNTIL TICKETED</Text></ResponseHeader><PriceQuotePlus DomesticIntlInd="I" PricingStatus="S" VerifyFareCalc="false" ItineraryChanged="false" ManualFare="false" NegotiatedFare="false" SystemIndicator="S" NUCSuppresion="false" SubjToGovtApproval="false" IT_BT_Fare="BT" DisplayOnly="false" DiscountAmount="0"><TicketingInstructionsInfo/></PriceQuotePlus></PriceQuote><PriceQuoteTotals><BaseFare Amount="1873.00"/><EquivFare Amount="957690.00"/><Taxes><Tax Amount="224255.00"/></Taxes><TotalFare Amount="1181945.00"/></PriceQuoteTotals></ItineraryPricing><ReservationItems><Item RPH="1"><FlightSegment AirMilesFlown="0408" ArrivalDateTime="04-01T12:05" ConnectionInd="O" DayOfWeekInd="7" DepartureDateTime="2018-04-01T09:30" ElapsedTime="01.35" eTicket="true" FlightNumber="0901" NumberInParty="01" ResBookDesigCode="Y" SegmentNumber="0001" SmokingAllowed="false" SpecialMeal="false" Status="SS" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="FRA" Terminal="TERMINAL 1" TerminalCode="1"/><Equipment AirEquipType="32A"/><MarketingAirline Code="LH" FlightNumber="0901"><Banner>MARKETED BY LUFTHANSA</Banner></MarketingAirline><MarriageGrp Group="003" Ind="O" Sequence="1"/><Meal Code="S"/><OperatingAirline Code="LH" FlightNumber="0901" ResBookDesigCode="Y"><Banner>OPERATED BY LUFTHANSA</Banner></OperatingAirline><OperatingAirlinePricing Code="LH"/><DisclosureCarrier Code="LH"><Banner>LUFTHANSA</Banner></DisclosureCarrier><OriginLocation LocationCode="LHR" Terminal="TERMINAL 2" TerminalCode="2"/><SupplierRef ID="DCLH"/><UpdatedArrivalTime>04-01T12:05</UpdatedArrivalTime><UpdatedDepartureTime>04-01T09:30</UpdatedDepartureTime></FlightSegment></Item><Item RPH="2"><FlightSegment AirMilesFlown="3012" ArrivalDateTime="04-01T22:30" ConnectionInd="I" DayOfWeekInd="7" DepartureDateTime="2018-04-01T14:20" ElapsedTime="06.10" eTicket="true" FlightNumber="0630" NumberInParty="01" ResBookDesigCode="G" SegmentNumber="0002" SmokingAllowed="false" SpecialMeal="false" Status="SS" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="DXB" Terminal="TERMINAL 1" TerminalCode="1"/><Equipment AirEquipType="744"/><MarketingAirline Code="LH" FlightNumber="0630"><Banner>MARKETED BY LUFTHANSA</Banner></MarketingAirline><MarriageGrp Group="003" Ind="I" Sequence="2"/><Meal Code="M"/><OperatingAirline Code="LH" FlightNumber="0630" ResBookDesigCode="G"><Banner>OPERATED BY LUFTHANSA</Banner></OperatingAirline><OperatingAirlinePricing Code="LH"/><DisclosureCarrier Code="LH"><Banner>LUFTHANSA</Banner></DisclosureCarrier><OriginLocation LocationCode="FRA" Terminal="TERMINAL 1" TerminalCode="1"/><SupplierRef ID="DCLH"/><UpdatedArrivalTime>04-01T22:30</UpdatedArrivalTime><UpdatedDepartureTime>04-01T14:20</UpdatedDepartureTime></FlightSegment></Item><Item RPH="3"><FlightSegment AirMilesFlown="3012" ArrivalDateTime="04-04T05:35" ConnectionInd="O" DayOfWeekInd="3" DepartureDateTime="2018-04-04T01:00" ElapsedTime="06.35" eTicket="true" FlightNumber="0631" NumberInParty="01" ResBookDesigCode="G" SegmentNumber="0003" SmokingAllowed="false" SpecialMeal="false" Status="SS" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="FRA" Terminal="TERMINAL 1" TerminalCode="1"/><Equipment AirEquipType="744"/><MarketingAirline Code="LH" FlightNumber="0631"><Banner>MARKETED BY LUFTHANSA</Banner></MarketingAirline><MarriageGrp Group="004" Ind="O" Sequence="1"/><Meal Code="M"/><OperatingAirline Code="LH" FlightNumber="0631" ResBookDesigCode="G"><Banner>OPERATED BY LUFTHANSA</Banner></OperatingAirline><OperatingAirlinePricing Code="LH"/><DisclosureCarrier Code="LH"><Banner>LUFTHANSA</Banner></DisclosureCarrier><OriginLocation LocationCode="DXB" Terminal="TERMINAL 1" TerminalCode="1"/><SupplierRef ID="DCLH"/><UpdatedArrivalTime>04-04T05:35</UpdatedArrivalTime><UpdatedDepartureTime>04-04T01:00</UpdatedDepartureTime></FlightSegment></Item><Item RPH="4"><FlightSegment AirMilesFlown="0408" ArrivalDateTime="04-04T10:40" ConnectionInd="I" DayOfWeekInd="3" DepartureDateTime="2018-04-04T10:00" ElapsedTime="01.40" eTicket="true" FlightNumber="0904" NumberInParty="01" ResBookDesigCode="Y" SegmentNumber="0004" SmokingAllowed="false" SpecialMeal="false" Status="SS" StopQuantity="00" IsPast="false" CodeShare="false"><DestinationLocation LocationCode="LHR" Terminal="TERMINAL 2" TerminalCode="2"/><Equipment AirEquipType="32A"/><MarketingAirline Code="LH" FlightNumber="0904"><Banner>MARKETED BY LUFTHANSA</Banner></MarketingAirline><MarriageGrp Group="004" Ind="I" Sequence="2"/><Meal Code="S"/><OperatingAirline Code="LH" FlightNumber="0904" ResBookDesigCode="Y"><Banner>OPERATED BY LUFTHANSA</Banner></OperatingAirline><OperatingAirlinePricing Code="LH"/><DisclosureCarrier Code="LH"><Banner>LUFTHANSA</Banner></DisclosureCarrier><OriginLocation LocationCode="FRA" Terminal="TERMINAL 1" TerminalCode="1"/><SupplierRef ID="DCLH"/><UpdatedArrivalTime>04-04T10:40</UpdatedArrivalTime><UpdatedDepartureTime>04-04T10:00</UpdatedDepartureTime></FlightSegment></Item></ReservationItems></ItineraryInfo><ItineraryRef AirExtras="false" InhibitCode="U" PartitionID="AA" PrimeHostID="1S"><Source PseudoCityCode="WD4H"/></ItineraryRef></TravelItinerary></TravelItineraryReadRS></EnhancedAirBookRS></soap-env:Body></soap-env:Envelope>

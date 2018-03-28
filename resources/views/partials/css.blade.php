@@ -3,7 +3,7 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
 <!-- /GOOGLE FONTS -->
 
-<link rel="shortcut icon" href="{{asset("assets/images/logo/favicon.png")}}"/>
+<link rel="shortcut icon" href="{{asset("img/favicon.png")}}"/>
 <link href="{{asset("css/bootstrap.css")}}" rel="stylesheet"/>
 <link href="{{asset("css/icomoon.css")}}" rel="stylesheet"/>
 <link href="{{asset("css/font-awesome.css")}}" rel="stylesheet"/>

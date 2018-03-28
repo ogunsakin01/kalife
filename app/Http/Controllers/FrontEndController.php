@@ -90,6 +90,7 @@ class FrontEndController extends Controller
               ->where('hotel', 0)
               ->where('flight', 0)
               ->where('status', 1)
+              ->orderBy('id','desc')
               ->paginate(8);
           return view('frontend.attractions.attractions',compact('attractions'));
 
@@ -122,6 +123,7 @@ class FrontEndController extends Controller
             ->where('hotel', 0)
             ->where('flight', 1)
             ->where('status', 1)
+            ->orderBy('id','desc')
             ->paginate(8);
         return view('frontend.flights.deals',compact('flights'));
     }

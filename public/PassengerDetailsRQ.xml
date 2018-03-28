@@ -1,0 +1,61 @@
+<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header><m:MessageHeader xmlns:m="http://www.ebxml.org/namespaces/messageHeader">
+			<m:From>
+				<m:PartyId type="urn:x12.org:IO5:01">http://localhost:8000</m:PartyId>
+			</m:From>
+			<m:To>
+				<m:PartyId type="urn:x12.org:IO5:01">https://webservices.havail.sabre.com</m:PartyId>
+			</m:To>
+			<m:CPAId>WD4H</m:CPAId>
+			<m:ConversationId>V1@pRY8BvflDGigiQ3olCYbm7MqhfcemWIJwNY1hfbY@5abb6eb5944da@http://localhost:8000</m:ConversationId>
+			<m:Service m:type="OTA">PassengerDetailsRQ</m:Service>
+			<m:Action>PassengerDetailsRQ</m:Action>
+			<m:MessageData>
+				<m:MessageId>3892199378158030203</m:MessageId>
+				<m:Timestamp>2018-03-28T11:30:57Z</m:Timestamp>
+				<m:TimeToLive>2018-03-28T12:30:57Z</m:TimeToLive>
+			</m:MessageData>
+			<m:DuplicateElimination/>
+			<m:Description>PassengerDetailsRQ</m:Description>
+		</m:MessageHeader>
+		<wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
+			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">Shared/IDL:IceSess\/SessMgr:1\.0.IDL/Common/!ICESMS\/RESB!ICESMSLB\/RES.LB!-3163659514664408946!1438241!0</wsse:BinarySecurityToken>
+		</wsse:Security></SOAP-ENV:Header><SOAP-ENV:Body><PassengerDetailsRQ version="3.3.0" xmlns="http://services.sabre.com/sp/pd/v3_3" IgnoreOnError="false" HaltOnError="true">
+    <PostProcessing RedisplayReservation="true">
+		<EndTransactionRQ>
+			<EndTransaction Ind="true">
+			</EndTransaction>
+			<Source ReceivedFrom="SWS TESTING"/>
+		</EndTransactionRQ>
+	</PostProcessing>
+	<PriceQuoteInfo>
+		<Link NameNumber="1.1" Record="1"/>
+	</PriceQuoteInfo>
+	<SpecialReqDetails>
+    <SpecialServiceRQ>
+        <SpecialServiceInfo>
+            <SecureFlight SegmentNumber="A" >
+                <PersonName DateOfBirth="2006-03-21" Gender="M" NameNumber="1.1" >
+                    <GivenName>Damilola</GivenName>
+                    <Surname>Ogunsakin</Surname>
+                </PersonName>
+            </SecureFlight>
+            
+        </SpecialServiceInfo>
+    </SpecialServiceRQ>
+</SpecialReqDetails>
+    <TravelItineraryAddInfoRQ>
+        <AgencyInfo>
+			<Ticketing TicketType="7T-"/>
+		</AgencyInfo>
+        <CustomerInfo>
+            <ContactNumbers>
+                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="099812723231" PhoneUseType="H"/>
+            </ContactNumbers>
+            <Email Address="lukasmia@gmail.com" NameNumber="1.1" Type="CC"/>
+            <PersonName Infant="false" NameNumber="1.1" PassengerType="ADT">
+                <GivenName>Damilola</GivenName>
+                <Surname>Ogunsakin</Surname>
+            </PersonName>
+        </CustomerInfo>
+	</TravelItineraryAddInfoRQ>
+</PassengerDetailsRQ></SOAP-ENV:Body></SOAP-ENV:Envelope>

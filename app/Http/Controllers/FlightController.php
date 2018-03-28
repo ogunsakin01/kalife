@@ -73,7 +73,7 @@ class FlightController extends Controller
            'flight_type' => 'required|string',
            'cabin_type' =>  'required|string'
        ]);
-        $check_session = $this->SabreSession->sessionStore();
+        $check_session = $this->SabreSession->searchSessionStore();
         if(empty($check_session) || is_null($check_session)){
             return 0;
         }
@@ -96,10 +96,8 @@ class FlightController extends Controller
             $search_array = $this->SabreConfig->mungXmlToArray($search);
             session()->put('availableFlights',$search_array);
             session()->put('flightSearchParam',$requestArray);
-            $file = fopen("TestSampleBergainMaxFinderRQ.txt","w");
-            fwrite($file,$this->Sabreflight->BargainMaxFinderXml($r));
-            fclose($file);
-            $file = fopen("TestSampleBergainMaxFinderRS.txt","w");
+
+            $file = fopen("BargainFinderMaxRS.xml","w");
             fwrite($file, $search);
             fclose($file);
             return  $this->Sabreflight->flightSearchValidator($search_array);
@@ -109,7 +107,7 @@ class FlightController extends Controller
     }
 
     public function multiCitySearch(Request $r){
-        $check_session = $this->SabreSession->sessionStore();
+        $check_session = $this->SabreSession->searchSessionStore();
         if($check_session == 0){
             return 0;
         }elseif($check_session == 2){
@@ -135,10 +133,7 @@ class FlightController extends Controller
             session()->put('availableFlights',$search_array);
             session()->put('flightSearchParam',$requestArray);
 
-            $file = fopen("TestSampleBergainMaxFinderMultipleCitiesRQ.txt","w");
-            fwrite($file,$this->Sabreflight->MultiCityBargainMaxFinderXml($r));
-            fclose($file);
-            $file = fopen("TestSampleBergainMaxFinderMultipleCitiesRS.txt","w");
+            $file = fopen("BargainFinderMaxRS.xml","w");
             fwrite($file, $search);
             fclose($file);
 
@@ -150,19 +145,17 @@ class FlightController extends Controller
     public function flightCreatePNR(Request $r){
         $itinerary = session()->get('selectedItinerary');
         $message_id = session()->get('message_id');
-        $token = SessionToken::getTokenWithId($message_id);
+        $tokenData    = SessionToken::where('message_id',$message_id)->first();
         $session_info = [
-            'token' => $token,
-            'message_id' => $message_id
+            'token'      => $tokenData->token,
+            'message_id' => $message_id,
+            'conv_id'    => $tokenData->conv_id
         ];
         $request = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('PassengerDetailsRQ',$session_info),$this->Sabreflight->PassengerDetailsRQXML($r),'PassengerDetailsRQ');
         $responseArray = $this->SabreConfig->mungXmlToArray($request);
         $info = $this->Sabreflight->passengerDetailsValidator($responseArray);
 
-        $file = fopen("TestSamplePassengerDetailsRQ.txt","w");
-        fwrite($file,$this->Sabreflight->PassengerDetailsRQXML($r));
-        fclose($file);
-        $file = fopen("TestSamplePassengerDetailsRS.txt","w");
+        $file = fopen("PassengerDetailsRS.xml","w");
         fwrite($file,$request);
         fclose($file);
 
@@ -186,7 +179,7 @@ class FlightController extends Controller
                     $markup = $itinerary[0]['adminToUserMarkup'];
                 }
                 if(auth())
-                $this->SabreSession->closeSession($token,$message_id);
+                $this->SabreSession->closeSession($tokenData->token,$message_id,$tokenData->conv_id);
                 SessionToken::tokenClosed($message_id);
                 SessionToken::tokenUsed($message_id);
                 $txnRef = $this->SabreConfig->bookingReference('flight');
@@ -232,31 +225,38 @@ class FlightController extends Controller
     }
 
     public function flightBookPricing(Request $r){
-         $id = $r->id;
-         $Itinerary = $this->Sabreflight->sortFlightArray(session()->get('availableFlights'))[$id];
+        $id = $r->id;
+        $Itinerary = $this->Sabreflight->sortFlightArray(session()->get('availableFlights'))[$id];
         $check_session = $this->SabreSession->sessionStore();
         if($check_session == 0){
+
             return 0;
-        }elseif($check_session == 2){
+
+        }
+        elseif($check_session == 2){
+
             return 21;
-        }else{
+
+        }
+        else{
+
              session()->put('message_id',$check_session['message_id']);
              SessionToken::tokenUsed($check_session['message_id']);
              $priceItinerary = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('EnhancedAirBookRQ',$check_session),$this->Sabreflight->EnhancedAirBookRQXML($Itinerary,session()->get('flightSearchParam')),'EnhancedAirBookRQ');
              $flightBookPricing = $this->SabreConfig->mungXmlToArray($priceItinerary);
              $status = $this->Sabreflight->enhancedAirBookValidator($flightBookPricing);
-             $file = fopen("TestSampleEnhancedAirBookRQ.txt","w");
-             fwrite($file,$this->Sabreflight->EnhancedAirBookRQXML($Itinerary,session()->get('flightSearchParam')));
-             fclose($file);
-             $file = fopen("TestSampleEnhancedAirBookRs.txt","w");
+             $file = fopen("EnhancedAirBookRS.xml","w");
              fwrite($file,$priceItinerary);
              fclose($file);
+
              if($status == 1){
+
                  /**
                   *
                   * Updating price with new price update from price quote
                   *
                   * */
+
                  $newItineraryPrice = $flightBookPricing['soap-env_Body']['EnhancedAirBookRS']['TravelItineraryReadRS']['TravelItinerary']['ItineraryInfo']['ItineraryPricing']['PriceQuoteTotals']['TotalFare']['@attributes']['Amount'];
                  $oldItineraryPrice = $Itinerary[0]['totalPrice'];
                  $itineraryPriceAddition = $newItineraryPrice - $oldItineraryPrice;
@@ -266,10 +266,14 @@ class FlightController extends Controller
                  $Itinerary[0]['adminToAdminSumTotal'] = $Itinerary[0]['adminToAdminSumTotal'] + $itineraryPriceAddition;
                  $Itinerary[0]['totalPrice'] = $newItineraryPrice;
                  session()->put('selectedItinerary',$Itinerary);
-
-                  return $status;
-             }else{
                  return $status;
+
+             }else{
+
+                 $this->SabreSession->closeSession($check_session['token'],$check_session['message_id'],$check_session['conv_id']);
+                 SessionToken::tokenClosed($check_session['message_id']);
+                 return $status;
+
              }
          }
 
@@ -295,6 +299,104 @@ class FlightController extends Controller
             'email' => $custInfo->email
         ];
         return view('frontend.flights.payment_options',compact('itinerary','paymentInfo'));
+    }
+
+    public function closeSabreToken($token_id){
+        $tokenData = SessionToken::find($token_id);
+        $close_session = $this->SabreSession->closeSession($tokenData->token,$tokenData->message_id,$tokenData->conv_id);
+
+        $close_status = $this->SabreSession->sessionTokenCloseValidator($close_session);
+
+        if($close_status == 1){
+            SessionToken::tokenClosed($tokenData->message_id);
+            SessionToken::tokenUsed($tokenData->message_id);
+            dd('Yes, Session Closed Successfully');
+        }else{
+            dd($close_session);
+        }
+
+    }
+
+    public function closeAllSabreSessionTokens(){
+        $tokenDatas = SessionToken::all();
+        foreach($tokenDatas as $serial => $tokenData){
+
+            if(strtotime($tokenData->created_at,strtotime('+ 1 hour')) < strtotime(date('Y-m-d H:i:s'))){
+                if($tokenData->closed_status == 0){
+                    $close_session = $this->SabreSession->closeSession($tokenData->token,$tokenData->message_id,$tokenData->conv_id);
+                    $close_status = $this->SabreSession->sessionTokenCloseValidator($close_session);
+                    if($close_status == 1){
+                        SessionToken::tokenClosed($tokenData->message_id);
+                        SessionToken::tokenUsed($tokenData->message_id);
+                        Toastr::success('Session toke with id = '. $tokenData->id. "has been closed successfully");
+                    }else{
+                        Toastr::error('Unable to close session token with id = '. $tokenData->id);
+                    }
+                }
+            }
+        }
+    }
+
+    public function cancelPnr($pnr){
+        $check_session = $this->SabreSession->sessionStore();
+        if(empty($check_session) || is_null($check_session)){
+            return 0;
+        }
+        elseif($check_session == 0){
+            return 0;
+        }elseif($check_session == 2){
+            return 2;
+        }else{
+            $readItinerary = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('TravelItineraryReadRQ',$check_session),$this->Sabreflight->travelItineraryReadRQ($pnr),'TravelItineraryReadRQ');
+            $responseArray = $this->SabreConfig->mungXmlToArray($readItinerary);
+            $readItineraryValidator = $this->Sabreflight->travelItineraryReadValidator($responseArray);
+            if($readItineraryValidator == 1){
+                session()->put('message_id',$check_session['message_id']);
+                SessionToken::tokenUsed($check_session['message_id']);
+                 $cancelPnr = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('OTA_CancelLLSRQ',$check_session),$this->Sabreflight->cancelPnrRQXML(),'OTA_CancelLLSRQ');
+                 $responseArray = $this->SabreConfig->mungXmlToArray($cancelPnr);
+                 $cancelPnrValidator = $this->Sabreflight->cancelPnrValidator($responseArray);
+                 if($cancelPnrValidator == 1){
+                     $flightBooking = FlightBooking::where('pnr',$pnr)->first();
+                     $flightBooking->cancel_tikcet_status = 1;
+                     $flightBooking->update();
+                 }
+                 $this->SabreSession->closeSession($check_session['token'],$check_session['message_id'],$check_session['conv_id']);
+                 SessionToken::tokenClosed($check_session['message_id']);
+                 return $cancelPnrValidator;
+            }elseif($readItineraryValidator == 0){
+                   return 0;
+            }elseif(is_array($readItineraryValidator)){
+                if($readItineraryValidator[0] == 2){
+                   return json_encode($readItineraryValidator);
+                }else{
+                   return 2;
+                }
+            }
+
+
+        }
+
+    }
+
+    public function voidTicket($ticketNumber){
+        $check_session = $this->SabreSession->sessionStore();
+        if(empty($check_session) || is_null($check_session)){
+            return 0;
+        }
+        elseif($check_session == 0){
+            return 0;
+        }elseif($check_session == 2){
+            return 2;
+        }else{
+            $voidTicket = $this->Sabreflight->doCall($this->Sabreflight->callsHeader('VoidTicketLLSRQ',$check_session),$this->Sabreflight->voidTicketRQXML($ticketNumber),'VoidTicketLLSRQ');
+            $responseArray = $this->SabreConfig->mungXmlToArray($voidTicket);
+            return $this->Sabreflight->voidTicketValidator($responseArray);
+        }
+    }
+
+    public function issueTicket($pnr){
+
     }
 
 }

@@ -34,7 +34,8 @@ class SuccessfulPayment extends Mailable
      */
     public function build()
     {
-        return $this->from('no-reply@KalifeTravelsandTours.com','Kalife Travels and Tours')
+        return $this->from('no-reply@kalifetravel.com','Kalife Travels and Tours')
+                    ->subject('Payment Successful')
                     ->markdown('emails.SuccessfulPayment');
     }
 }

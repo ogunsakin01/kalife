@@ -13,7 +13,7 @@
     <SpecialServiceRQ>
         <SpecialServiceInfo>
             <SecureFlight SegmentNumber="A" >
-                <PersonName DateOfBirth="2018-02-28" Gender="M" NameNumber="1.1" >
+                <PersonName DateOfBirth="2018-03-21" Gender="M" NameNumber="1.1" >
                     <GivenName>Damilola</GivenName>
                     <Surname>Ogunsakin</Surname>
                 </PersonName>
@@ -28,9 +28,9 @@
 		</AgencyInfo>
         <CustomerInfo>
             <ContactNumbers>
-                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="09068957364" PhoneUseType="H"/>
+                <ContactNumber LocationCode="LOS" NameNumber="1.1" Phone="099812723231" PhoneUseType="H"/>
             </ContactNumbers>
-            <Email Address="ogunsakin191@gmail.com" NameNumber="1.1" Type="CC"/>
+            <Email Address="lukasmia@gmail.com" NameNumber="1.1" Type="CC"/>
             <PersonName Infant="false" NameNumber="1.1" PassengerType="ADT">
                 <GivenName>Damilola</GivenName>
                 <Surname>Ogunsakin</Surname>

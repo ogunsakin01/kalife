@@ -6,6 +6,7 @@
 @endsection
 @section('activeFlight')  active @endsection
 @section('content')
+    {{--{{dd($flightsResult)}}--}}
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="{{url('/')}}">Home</a>
@@ -15,7 +16,7 @@
             <li class="active">{{session()->get('flightSearchParam')['arrival_airport']}}</li>
         </ul>
 
-        <h3 class="booking-title">{{count($flightsResult)}} Flights from {{session()->get('flightSearchParam')['departure_airport']}} to {{session()->get('flightSearchParam')['arrival_airport']}} on {{date('D, M d',strtotime(session()->get('flightSearchParam')['departure_date']))}} for {{session()->get('flightSearchParam')['adult_passengers']}} adult(s),{{session()->get('flightSearchParam')['child_passengers']}} children and {{session()->get('flightSearchParam')['infant_passengers']}} infant(s) <small><a class="popup-text" href="#flight-search-dialog" data-effect="mfp-zoom-out">Change search</a></small></h3>
+        <h5>{{count($flightsResult)}} Flights from {{session()->get('flightSearchParam')['departure_airport']}} to {{session()->get('flightSearchParam')['arrival_airport']}} on {{date('D, M d',strtotime(session()->get('flightSearchParam')['departure_date']))}} for {{session()->get('flightSearchParam')['adult_passengers']}} adult(s),{{session()->get('flightSearchParam')['child_passengers']}} children and {{session()->get('flightSearchParam')['infant_passengers']}} infant(s) <small><a class="popup-text" href="#flight-search-dialog" data-effect="mfp-zoom-out">Change search</a></small></h5>
         <div class="row">
             <div class="col-md-3">
                 <aside class="booking-filters text-white">
@@ -63,7 +64,7 @@
             <div class="col-md-9">
                 <ul class="booking-list">
                     @foreach($flightsResult as $i => $flight)
-                                                <li class="flights_{{$flight[0]['airline']}} {{"flights_".$flight[0]['totalPrice']}} {{"flights_".$flight[0]['stops']}} flights">
+                                                <li class="flights_{{$flight[0]['airline']}} {{"flights_".$flight[0]['totalPrice']}} {{"flights_".$flight[0]['stops']}} flights flight_{{$i}}">
                         <div class="booking-item-container">
                             <div class="booking-item">
                                 <div class="row">
@@ -92,7 +93,7 @@
                                         <p>{{$flight[0]['stops']}} stop(s)</p>
                                     </div>
                                     <div class="col-md-4"><span class="booking-item-price">&#x20A6; {{number_format($flight[0]['adminToUserSumTotal'])}}</span>
-                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}}</p><button class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</button>&nbsp; <button class="btn btn-primary itinerary_select" type="button" value="{{$i}}" {{--href="{{url($i.'/flight-booking-details')}}"--}}> Select <i class="fa fa-plane"></i></button>
+                                        <p class="booking-item-flight-class">Class: {{\App\Services\SabreFlight::cabinType(session()->get('flightSearchParam')['cabin_type'])}}</p><button class="btn btn-primary"><i class="fa fa-info-circle"></i> Details</button>&nbsp; <button class="btn btn-primary itinerary_select" type="button" value="{{$i}}"> Select <i class="fa fa-plane"></i></button>
                                     </div>
                                 </div>
                             </div>

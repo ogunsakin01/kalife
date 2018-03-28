@@ -4,12 +4,12 @@
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">
-        <h1 class="page-title">Manage your information</h1>
-    </div>
-    <div class="container">
         <div class="row">
             @include('partials.profileSideBar')
+
+
             <div class="col-md-9">
+                <h4>Manage your information</h4>
                 <div class="row">
                     <div class="col-md-12">
                         @if ($errors->any())
@@ -38,11 +38,6 @@
                     <form method="post" enctype="multipart/form-data" action="{{ url('/update-user') }}">
                         {{ csrf_field() }}
                         <input type="hidden" value="{{auth()->user()->id}}" name="id"/>
-                        <div class="row">
-                            <div class="col-md-12" >
-                                <h3> Join Us</h3>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="form-group form-group-icon-left"><i class="fa fa-user-secret input-icon input-icon-show"></i>

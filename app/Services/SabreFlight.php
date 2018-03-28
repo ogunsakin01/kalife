@@ -24,7 +24,6 @@ class SabreFlight
 
     public function doCall($headersXml, $body, $action) {
         //Data, connection, auth
-        $soapUrl = "https://sws-crt.cert.havail.sabre.com";
         // xml post structure
         $xml_post_string = '<SOAP-ENV:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">'
             . '<SOAP-ENV:Header>'
@@ -44,14 +43,15 @@ class SabreFlight
             "Content-length: " . strlen($xml_post_string)
         );
 
-        error_log($action);
-        error_log($xml_post_string);
-        error_log("------------------------------------------------");
+          $file = fopen($action.'.xml','w');
+          fwrite($file,$xml_post_string);
+          fclose($file);
+
 
         // PHP cURL  for https connection with auth
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_URL, $soapUrl);
+        curl_setopt($ch, CURLOPT_URL, $this->sabreConfig->soapEnvironment);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
 //            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
@@ -79,25 +79,27 @@ class SabreFlight
     public function callsHeader($action,$session_info){
         return '<m:MessageHeader xmlns:m="http://www.ebxml.org/namespaces/messageHeader">
 			<m:From>
-				<m:PartyId type="urn:x12.org:IO5:01">'.$_SERVER['HTTP_HOST'].'</m:PartyId>
+				<m:PartyId type="urn:x12.org:IO5:01">'.url('/').'</m:PartyId>
 			</m:From>
 			<m:To>
 				<m:PartyId type="urn:x12.org:IO5:01">'.$this->sabreConfig->soapEnvironment.'</m:PartyId>
 			</m:To>
 			<m:CPAId>'.$this->sabreConfig->soap_ipcc.'</m:CPAId>
-			<m:ConversationId>convId</m:ConversationId>
+			<m:ConversationId>'.$session_info['conv_id'].'</m:ConversationId>
 			<m:Service m:type="OTA">'.$action.'</m:Service>
 			<m:Action>'.$action.'</m:Action>
 			<m:MessageData>
 				<m:MessageId>'.$session_info['message_id'].'</m:MessageId>
-				<m:Timestamp>2001-02-15T11:15:12Z</m:Timestamp>
-				<m:TimeToLive>2001-02-15T11:15:12Z</m:TimeToLive>
+				<m:Timestamp>'.date('Y-m-d\TH:i:s\Z',strtotime('+1 hour')).'</m:Timestamp>
+				<m:TimeToLive>'.date('Y-m-d\TH:i:s\Z',strtotime('+2 hour')).'</m:TimeToLive>
 			</m:MessageData>
 			<m:DuplicateElimination/>
 			<m:Description>'.$action.'</m:Description>
 		</m:MessageHeader>
 		<wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2002/12/secext">
-			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">'.$session_info['token'].'</wsse:BinarySecurityToken>
+			<wsse:BinarySecurityToken valueType="String" EncodingType="wsse:Base64Binary">'
+            .$session_info['token'].
+            '</wsse:BinarySecurityToken>
 		</wsse:Security>';
     }
 
@@ -148,14 +150,15 @@ class SabreFlight
     public function MultiCityOriginDestination($params){
         $returnValue = '';
         foreach($params as $i => $param){
-            $originDestination = '<OriginDestinationInformation RPH="'. ($i+1) .'">
+            $originDestination = '
+            <OriginDestinationInformation RPH="'. ($i+1) .'">
         <DepartureDateTime>'.date('Y-m-d',strtotime($param['departure_date'])).'T00:00:00</DepartureDateTime>
         <OriginLocation LocationCode="'.$this->airportCode($param['departure_airport']).'" />
         <DestinationLocation LocationCode="'.$this->airportCode($param['arrival_airport']).'" />
         <TPA_Extensions>
             <SegmentType Code="O" />
         </TPA_Extensions>
-    </OriginDestinationInformation>';
+          </OriginDestinationInformation>';
             $returnValue = $returnValue.$originDestination;
         }
 
@@ -198,14 +201,14 @@ class SabreFlight
         <CabinPref PreferLevel="Preferred" Cabin="'.$param->cabin_type.'" />
         <TPA_Extensions>
             <TripType Value="Return" />
-            <LongConnectTime Min="780" Max="1200" Enable="true" />
-            <ExcludeCallDirectCarriers Enabled="true" />
+            <LongConnectTime Min="780" Max="1200" Enable="true"/>
+            <ExcludeCallDirectCarriers Enabled="true"/>
         </TPA_Extensions>
     </TravelPreferences>
     '.$this->travelerInfoSummary($param).'
     <TPA_Extensions>
         <IntelliSellTransaction>
-            <RequestType Name="100ITINS" />
+            <RequestType Name="50ITINS" />
         </IntelliSellTransaction>
     </TPA_Extensions>
 </OTA_AirLowFareSearchRQ>';
@@ -235,7 +238,7 @@ class SabreFlight
     '.$this->travelerInfoSummary($otherParamObject).'
     <TPA_Extensions>
         <IntelliSellTransaction>
-            <RequestType Name="100ITINS" />
+            <RequestType Name="50ITINS" />
         </IntelliSellTransaction>
     </TPA_Extensions>
 </OTA_AirLowFareSearchRQ>';
@@ -495,22 +498,22 @@ class SabreFlight
                     $adminAgentMarkup = 0;
                 }
                 if(auth()->guest()){
-                    $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
-                    $adminToAgentSumTotal = $adminAgentMarkup + $airlineMarkdown + $vat + $itineraryPrice;
-                    $adminToAdminSumTotal = $airlineMarkdown + $vat + $itineraryPrice;
+                    $adminToUserSumTotal = $adminUserMarkup + $vat + $itineraryPrice - $airlineMarkdown;
+                    $adminToAgentSumTotal = $adminAgentMarkup + $vat + $itineraryPrice - $airlineMarkdown;
+                    $adminToAdminSumTotal = $vat + $itineraryPrice - $airlineMarkdown;
                 }elseif(auth()->user()){
                     if(auth()->user()->hasRole('Agent')){
-                        $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
-                        $adminToAgentSumTotal = $adminAgentMarkup + $airlineMarkdown + $vat + $itineraryPrice;
-                        $adminToAdminSumTotal = $airlineMarkdown + $vat + $itineraryPrice;
+                        $adminToUserSumTotal = $adminUserMarkup + $vat + $itineraryPrice - $airlineMarkdown;
+                        $adminToAgentSumTotal = $adminAgentMarkup + $vat + $itineraryPrice - $airlineMarkdown;
+                        $adminToAdminSumTotal = $vat + $itineraryPrice - $airlineMarkdown;
                     }elseif(auth()->user()->hasRole('Super Admin')){
-                        $adminToAdminSumTotal = $airlineMarkdown + $vat + $itineraryPrice;
-                        $adminToAgentSumTotal = $adminAgentMarkup + $airlineMarkdown + $vat + $itineraryPrice;
-                        $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
+                        $adminToUserSumTotal = $adminUserMarkup + $vat + $itineraryPrice - $airlineMarkdown;
+                        $adminToAgentSumTotal = $adminAgentMarkup + $vat + $itineraryPrice - $airlineMarkdown;
+                        $adminToAdminSumTotal = $vat + $itineraryPrice - $airlineMarkdown;
                     }elseif(auth()->user()->hasRole('Customer')){
-                        $adminToUserSumTotal = $adminUserMarkup + $airlineMarkdown + $vat + $itineraryPrice;
-                        $adminToAgentSumTotal = $adminAgentMarkup + $airlineMarkdown + $vat + $itineraryPrice;
-                        $adminToAdminSumTotal = 0;
+                        $adminToUserSumTotal = $adminUserMarkup + $vat + $itineraryPrice - $airlineMarkdown;
+                        $adminToAgentSumTotal = $adminAgentMarkup + $vat + $itineraryPrice - $airlineMarkdown;
+                        $adminToAdminSumTotal = $vat + $itineraryPrice - $airlineMarkdown;
                     }
                 }
 
@@ -582,19 +585,18 @@ class SabreFlight
 //dd($originDestinationInformation);
         $returnXml = '
       <EnhancedAirBookRQ version="3.8.0" xmlns="http://services.sabre.com/sp/eab/v3_8" HaltOnError="true">
-			<OTA_AirBookRQ >
-			<HaltOnStatus Code="UC"/>
-            <HaltOnStatus Code="LL"/>
-            <HaltOnStatus Code="UL"/>
-            <HaltOnStatus Code="UN"/>
-            <HaltOnStatus Code="NO"/>
-            <HaltOnStatus Code="HL"/>
+			<OTA_AirBookRQ>
+			<HaltOnStatus Code="NO"/>
+            <HaltOnStatus Code="NN"/>
+            <HaltOnStatus Code="UC"/>
+            <HaltOnStatus Code="US"/>
 			'.$originDestinationInformation.'
 			</OTA_AirBookRQ>
-			<OTA_AirPriceRQ >
+			<OTA_AirPriceRQ>
 				<PriceRequestInformation Retain="true">
 					<OptionalQualifiers>
-						<PricingQualifiers>
+						<PricingQualifiers CurrencyCode="NGN">
+						<BargainFinder Rebook="true"/>
 							'.$passenger.'
 						</PricingQualifiers>
 					</OptionalQualifiers>
@@ -607,12 +609,7 @@ class SabreFlight
              </PreProcessing>
 		</EnhancedAirBookRQ>';
 
-//        dd($returnXml);
-
         return $returnXml;
-
-
-
     }
 
     public function PassengerDetailsPassenger($param){
@@ -767,7 +764,6 @@ class SabreFlight
             if(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success'])){
                   return 1;
             }elseif(!(isset($responseArray['soap-env_Body']['EnhancedAirBookRS']['ApplicationResults']['Success']))){
-//                return $responseArray;
                 return 2;
             }else{
                 return 3;
@@ -917,210 +913,89 @@ class SabreFlight
         }
     }
 
-    public function issueTicketRQXML($pnrCode){
+    public function travelItineraryReadRQ($pnrCode){
         return '
-<?xml version="1.0" encoding="UTF-8"?>
-<AirTicketRQ xmlns="http://services.sabre.com/sp/air/ticket/v1" version="1.2.0" targetCity="">
-
-   <Itinerary ID="'.$pnrCode.'"/>
-   <AccountingLines All="true" None="false">
-      <Delete EndNumber="2" Number="1" />
-      <Delete Number="3" />
-   </AccountingLines>
-   <Ticketing>
-      <FlightQualifiers>
-         <VendorPrefs>
-            <Airline Code="XX" />
-         </VendorPrefs>
-      </FlightQualifiers>
-      <FOP_Qualifiers>
-         <BasicFOP Reference="1" Type="CK" Virtual="SABREAIRONETWOFOUR">
-            <CC_Info Suppress="true">
-               <PaymentCard Code="VI" CardSecurityCode="123" ExpireDate="2012-12" ExtendedPayment="12" ManualApprovalCode="1234" Number="4123412341234123" />
-            </CC_Info>
-         </BasicFOP>
-         <BSP_Ticketing>
-            <MultipleFOP>
-               <Fare Amount="100.00" />
-               <FOP_One Type="CA">
-                  <CC_Info Suppress="true">
-                     <PaymentCard Code="AX" CardSecurityCode="123" ExpireDate="2012-11" ExtendedPayment="12" ManualApprovalCode="1234" ManualOBFee="10.00" Number="373912345621003" />
-                  </CC_Info>
-               </FOP_One>
-               <FOP_Two Type="CK">
-                  <CC_Info Suppress="true">
-                     <PaymentCard Code="AX" CardSecurityCode="123" ExpireDate="2012-11" ExtendedPayment="12" ManualApprovalCode="5678" ManualOBFee="5.00" Number="373912345621003" />
-                  </CC_Info>
-               </FOP_Two>
-               <Taxes>
-                  <Tax Amount="5.00" TaxCode="GB" />
-               </Taxes>
-            </MultipleFOP>
-            <MultipleMiscFOP>
-               <Fare Amount="300.00" />
-               <FOP_One Type="CK">
-                  <CC_Info Suppress="true">
-                     <PaymentCard Code="MC" ExpireDate="2012-11" ExtendedPayment="12" ManualApprovalCode="1234" Number="12345678999001" />
-                  </CC_Info>
-               </FOP_One>
-               <FOP_Two Type="PL189947">
-                  <ExtendedPayment NumMonths="11" />
-               </FOP_Two>
-               <Taxes>
-                  <Tax Amount="30.00" TaxCode="XT" />
-               </Taxes>
-            </MultipleMiscFOP>
-            <PayLaterPlan>
-               <Fare Amount="200.00" />
-               <FOP Type="CA">
-                  <CC_Info>
-                     <PaymentCard Code="AX" ExpireDate="2012-11" ManualApprovalCode="23" Number="376422221000" />
-                  </CC_Info>
-               </FOP>
-               <Installment Count="03" PayLaterReferenceNumber="XRG065" Value="10000" />
-            </PayLaterPlan>
-         </BSP_Ticketing>
-         <MultipleCC_FOP>
-            <Fare Amount="100.00" />
-            <CC_One>
-               <CC_Info Suppress="true">
-                  <PaymentCard Code="AX" CardSecurityCode="123" ExpireDate="2012-11" ExtendedPayment="12" ManualApprovalCode="1234" ManualOBFee="10.00" Number="373912345621003" />
-               </CC_Info>
-            </CC_One>
-            <CC_Two>
-               <CC_Info Suppress="true">
-                  <PaymentCard Code="VI" CardSecurityCode="123" ExpireDate="2016-12" ExtendedPayment="12" ManualApprovalCode="5678" ManualOBFee="5.00" Number="4537156488578956" />
-               </CC_Info>
-            </CC_Two>
-         </MultipleCC_FOP>
-         <SabreSonicTicketing>
-            <BasicFOP ManualApprovalCode="1234" Type="CK">
-               <CC_Info Suppress="true">
-                  <PaymentCard CardSecurityCode="123" Code="VI" ExpireDate="2012-12" ExtendedPayment="12" ManualApprovalCode="1234" Number="4123412341234123" />
-               </CC_Info>
-            </BasicFOP>
-            <EnhancedMultipleFOP>
-               <Fare Amount="90.00" />
-               <FOP_One Type="CK">
-                  <CC_Info>
-                     <PaymentCard CardSecurityCode="123" Code="VI" ExpireDate="2012-12" ExtendedPayment="12" ManualApprovalCode="1234" Number="4123412341234123" />
-                  </CC_Info>
-               </FOP_One>
-               <FOP_Two Type="CK">
-                  <CC_Info>
-                     <PaymentCard CardSecurityCode="456" Code="AX" ExpireDate="2012-12" ExtendedPayment="11" ManualApprovalCode="5678" Number="4123412341234124" />
-                  </CC_Info>
-               </FOP_Two>
-               <Taxes>
-                  <Tax Amount="6.00" TaxCode="US" />
-               </Taxes>
-            </EnhancedMultipleFOP>
-            <MultipleFOP>
-               <Fare Amount="350.00" />
-               <FOP_One Type="CK">
-                  <CC_Info>
-                     <PaymentCard Code="BA" ManualApprovalCode="1234" Number="4712345678901" />
-                  </CC_Info>
-               </FOP_One>
-               <FOP_Two Type="CK">
-                  <CC_Info>
-                     <PaymentCard Code="VI" ManualApprovalCode="5678" Number="4123412341234123" />
-                  </CC_Info>
-               </FOP_Two>
-               <Taxes>
-                  <Tax Amount="10.00" TaxCode="US" />
-               </Taxes>
-            </MultipleFOP>
-         </SabreSonicTicketing>
-      </FOP_Qualifiers>
-      <MiscQualifiers>
-         <AirExtras EndNumber="3" Number="1" />
-         <BaggageAllowance Number="02" Weight="20" />
-         <Certificate Number="123456789" />
-         <Commission Amount="25.00" Percent="5.00" />
-         <DateOfBirth />
-         <Endorsement Override="true">
-            <Text>TEST0</Text>
-         </Endorsement>
-         <FutureTicket>
-            <Line EndNumber="3" NameNumber="1.1" Number="1" />
-            <Line Number="3" />
-         </FutureTicket>
-         <Invoice Ind="true" ETReceipt="true" />
-         <NeedPrint AuditorCoupon="true" Itinerary="true" PassengerReceipt="false" />
-         <NetRemit Amount="600.00" ContractAgreementCode="ABCDEFGHIJ" NetCreditAmount="20051.60" ValueCode="D2469" />
-         <Ticket Action="PRINT" Type="ETR" />
-         <TourCode>
-            <SuppressFareReplaceWithBT Ind="true" />
-            <SuppressFareReplaceWithIT Ind="true" />
-            <SuppressIT Ind="true" />
-            <SuppressITSupressFare Ind="true" />
-            <Text>TEST1212</Text>
-         </TourCode>
-      </MiscQualifiers>
-      <PricingQualifiers>
-         <Brand RPH="1">CP</Brand>
-         <FareFocusExclude Ind="true" />
-         <Fare Type="NL" />
-         <ItineraryOptions>
-            <SegmentSelect EndNumber="3" Number="1" RPH="1" />
-            <SegmentSelect EndNumber="6" Number="4" RPH="2" />
-            <SegmentSelect Number="4" />
-            <SideTrip EndNumber="3" Number="1" />
-         </ItineraryOptions>
-         <NameSelect EndNameNumber="2.1" NameNumber="1.1" />
-         <NameSelect NameNumber="4.1" />
-         <PhaseIV Number="1">
-            <NameSelect EndNameNumber="4.1" NameNumber="2.1" />
-         </PhaseIV>
-         <PriceQuote>
-            <NameSelect EndNameNumber="4.1" NameNumber="2.1" />
-            <Record EndNumber="3" Number="1" Reissue="true" />
-         </PriceQuote>
-         <RefundableBalance Amount="100.00">
-            <Taxes>
-               <Tax Amount="20.00" Code="XX" />
-            </Taxes>
-         </RefundableBalance>
-         <SpanishLargeFamilyDiscountLevel>1</SpanishLargeFamilyDiscountLevel>
-         <SpecificFare RPH="1">
-            <FareBasis>ABCDE</FareBasis>
-         </SpecificFare>
-         <SpecificPenalty AdditionalInfo="true">
-            <EitherOr Any="true" CurrencyCode="USD" MaxPenalty="100" BeforeDeparture="true" AfterDeparture="true" />
-            <Refundable Any="true" CurrencyCode="USD" MaxPenalty="100" BeforeDeparture="true" AfterDeparture="true" />
-         </SpecificPenalty>
-         <Taxes>
-            <NoTax Ind="true" />
-            <TaxExempt Code="GB" />
-            <TaxExempt Code="UB" />
-         </Taxes>
-         <ValidityDates>
-            <NotValidAfter>2012-12-31</NotValidAfter>
-            <NotValidBefore>2012-12-21</NotValidBefore>
-            <Segment EndNumber="3" Number="1" />
-         </ValidityDates>
-      </PricingQualifiers>
-   </Ticketing>
-   <PostProcessing acceptNegotiatedFare="true" acceptPriceChanges="true" actionOnPQExpired="O">
-      <EndTransaction>
-         <Source ReceivedFrom="SWS TESTING"/>
-         <Email Ind="true">
-            <eTicket Ind="true">
-               <PDF Ind="true"/>
-            </eTicket>
-            <Invoice Ind="true"/>
-            <Itinerary Ind="true">
-               <PDF Ind="true"/>
-               <Segment EndNumber="1" Number="2"/>
-               <Segment Number="4" />
-            </Itinerary>
-            <PersonName NameNumber="1.1" />
-         </Email>
-      </EndTransaction>
-   </PostProcessing>
-</AirTicketRQ>
-        ';
+      <TravelItineraryReadRQ xmlns="http://services.sabre.com/res/tir/v3_10" xmlns:dd="http://webservices.sabre.com/dd2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="3.10.0">
+         <MessagingDetails>
+            <SubjectAreas>
+               <SubjectArea>FULL</SubjectArea>
+               <SubjectArea>AIR_CABIN</SubjectArea>
+            </SubjectAreas>
+         </MessagingDetails>
+         <UniqueID ID="'.$pnrCode.'"/>
+         <EchoToken/>
+      </TravelItineraryReadRQ>
+  ';
     }
 
+    public function travelItineraryReadValidator($responseArray){
+        if(empty($responseArray)){
+            return 0;
+        }else{
+          if(isset($responseArray['soap-env_Body']['tir310_TravelItineraryReadRS']['stl_ApplicationResults']['stl_Error'])){
+              return [2, $responseArray['soap-env_Body']['tir310_TravelItineraryReadRS']['stl_ApplicationResults']['stl_Error']['stl_SystemSpecificResults']['stl_Message']];
+          }else{
+              return 1;
+          }
+        }
+    }
+
+    public function cancelPnrRQXML(){
+        return '<OTA_CancelRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" NumResponses="1" ReturnHostCommand="false" TimeStamp="2016-05-17T10:00:00-06:00" Version="2.0.2">
+                  <Segment Type="entire" />
+               </OTA_CancelRQ>';
+    }
+
+    public function cancelPnrValidator($responseArray){
+        if(empty($responseArray)){
+            return 0;
+        }else{
+            if(isset($responseArray['soap-env_Body']['OTA_CancelRS']['stl_ApplicationResults']['stl_Success'])){
+                return 1;
+            }else{
+                return 2;
+            }
+        }
+    }
+
+    public function voidTicketRQXML($ticketNum){
+        return '<VoidTicketRQ xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2.0.2">
+                  <Ticketing eTicketNumber="'.$ticketNum.'" />
+                </VoidTicketRQ>';
+    }
+
+    public function voidTicketValidator($responseArray){
+        if(empty($responseArray)){
+            return 0;
+        }else{
+            if(isset($responseArray['soap-env_Body']['VoidTicketRS']['stl_ApplicationResults']['stl_Error'])){
+                 return [2,$responseArray['soap-env_Body']['VoidTicketRS']['stl_ApplicationResults']['stl_Error']['stl_SystemSpecificResults']['stl_Message']];
+            }else{
+                dd($responseArray);
+            }
+        }
+    }
+
+    public function issueTicketRQXML($itineraryData){
+        return '<AirTicketRQ NumResponses="1" Version="2.11.0" xmlns="http://webservices.sabre.com/sabreXML/2011/10" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <OptionalQualifiers>
+                <FlightQualifiers>
+                    <VendorPrefs>
+                        <Airline Code="XX"/>
+                    </VendorPrefs>
+                </FlightQualifiers>
+                <MiscQualifiers>
+                    <Ticket Type="ETR"/>
+                </MiscQualifiers>
+                <PricingQualifiers>
+                    <PriceQuote>
+                        <Record Number="1"/>
+                    </PriceQuote>
+                </PricingQualifiers>
+            </OptionalQualifiers>
+            </AirTicketRQ>';
+    }
 }
+
+
+

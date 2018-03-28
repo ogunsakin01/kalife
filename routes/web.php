@@ -15,6 +15,9 @@
 Front routes starts here
  */
 
+Route::get('/closeSabreToken/{id}','FlightController@closeSabreToken');
+Route::get('/close/all/sabre/token/','FlightController@closeAllSabreSessionTokens');
+
 
 Route::get('/','FrontEndController@index');
 Route::view('/login','frontend.register_login');
@@ -33,7 +36,8 @@ Route::get('/hotel-details/{id}/{name}','FrontEndController@hotelDetails');
 Route::get('/flights', 'FrontEndController@flightDeals');
 Route::post('/bankPayment','FrontEndPaymentController@bankPayment');
 
-
+Route::get('/package-booking-complete','FrontEndPaymentController@packageBookingComplete');
+Route::get('/package-payment-methods/{txnRef}','FrontEndController@packagePaymentMethod');
 
 Route::middleware(['auth','role:Customer'])->group(function(){
     Route::view('/bookings','frontend.bookings');
@@ -44,9 +48,6 @@ Route::middleware(['auth','role:Customer'])->group(function(){
     Route::post('/update-user','CustomerProfileController@updateProfile');
     Route::post('/update-password','CustomerProfileController@updatePassword');
     Route::get('/bank-payments','FrontEndController@banksPayment');
-    Route::get('/package-booking-complete','FrontEndPaymentController@packageBookingComplete');
-    Route::get('/package-payment-methods/{txnRef}','FrontEndController@packagePaymentMethod');
-
 });
 
 
@@ -284,7 +285,8 @@ Route::group(['prefix' => 'backend/travel-packages', 'middleware' => ['auth','ro
 
 });
 
-
+Route::get('/cancel/pnr/{pnrCode}','FlightController@cancelPnr');
+Route::get('/void/ticket/{ticketNumber}','FlightController@voidTicket');
 
 Auth::routes();
 

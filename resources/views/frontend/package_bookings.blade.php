@@ -4,13 +4,10 @@
 @section('content')
     <div class="gap gap-small"></div>
     <div class="container">
-        <h4 class="page-title">Packages Booking History</h4>
-    </div>
-    <div class="container">
         <div class="row">
             @include('partials.profileSideBar')
             <div class="col-md-9">
-
+                <h4>Packages Booking History</h4>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped table-booking-history data-table well">
                             <thead>
@@ -24,7 +21,7 @@
                                 <th>Infants</th>
                                 <th>Total Amount</th>
                                 <th>Status</th>
-                                <th>Actions</th>
+                                <th>Performed On</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -47,11 +44,11 @@
                                     <td>@if($booking->payment_status == 1)
                                             <label class="label label-success"><i class="fa fa-check"></i> Successful</label>
                                         @else
-                                            <label class="label label-danger"> Failed</label>
+                                            <label class="label label-warning"> Pending/Failed</label>
                                         @endif
                                     </td>
                                     <td>
-                                        <button class="btn btn-default" type="button"><i class="fa fa-cog"></i> More Info</button>
+                                        {{date('Y-m-d G:i A',strtotime($booking->created_at))}}
                                     </td>
 
 

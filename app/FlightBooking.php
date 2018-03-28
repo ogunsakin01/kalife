@@ -30,7 +30,9 @@ class FlightBooking extends Model
     }
 
     public static function getBookingsByUserId($userId){
-        return static::where('user_id',$userId)->get();
+        return static::where('user_id',$userId)
+            ->orderBy('id','desc')
+            ->get();
     }
 
     public static function getAllBookingsByUserId($userId){
